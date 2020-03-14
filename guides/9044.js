@@ -248,7 +248,7 @@ module.exports = {
      {"type": "func","func": Spawnitem2.bind(null,445,356,400,8,350,100,3000)}], 
  
  "s-444-1000-2108-0": [{"type": "text","sub_type": "message","message": 'Back Throw -> Front',"message_RU": "Стан назад -> Черенок" }], 
- "s-444-1000-2111-0": [{"type": "text","sub_type": "message","message":  'Back',"message_RU": "Удар назад (慢慢慢慢)" },
+ "s-444-1000-2111-0": [{"type": "text","sub_type": "message","message":  'Back',"message_RU": "Удар назад --" },
 
      {"type": "func","func": Spawnitem2.bind(null,445,180,500,8,480,100,2000)}				
  ],  
@@ -302,7 +302,7 @@ module.exports = {
      {"type": "func","func": Spawnitem2.bind(null,445,356,400,8,350,100,3000)}], 
  
  "s-444-1000-1108-0": [{"type": "text","sub_type": "message","message":  'Back Throw -> Front',"message_RU": "Стан назад -> Черенок" }], 
- "s-444-1000-1111-0": [{"type": "text","sub_type": "message","message":  'Back',"message_RU": "Удар назад (慢慢慢慢)" },
+ "s-444-1000-1111-0": [{"type": "text","sub_type": "message","message":  'Back',"message_RU": "Удар назад --" },
 
      {"type": "func","func": Spawnitem2.bind(null,445,180,500,8,480,100,2000)}				
  ],  
@@ -376,8 +376,8 @@ module.exports = {
 				
      {"type": "func","func": Spawnitem2.bind(null,445,356,400,8,350,100,3000)}], 
  
- "s-444-2000-1107-0": [{"type": "text","sub_type": "message","message":  '4 Hit (3)',"message_RU": "4 闪避" }], 
- "s-444-2000-1108-0": [{"type": "text","sub_type": "message","message":  'Back Throw -> Front',"message_RU": "СТан назад -> удар вперед" }], 
+ "s-444-2000-1107-0": [{"type": "text","sub_type": "message","message":  '4 Hit (3)',"message_RU": "4 " }], 
+ "s-444-2000-1108-0": [{"type": "text","sub_type": "message","message":  'Back Throw -> Front',"message_RU": "Стан назад -> удар вперед" }], 
  "s-444-2000-1111-0": [{"type": "text","sub_type": "message","message":  'Back',"message_RU": "Удар назад" },
      {"type": "func","func": Spawnitem2.bind(null,445,180,500,8,480,100,2000)}				
  ],  
