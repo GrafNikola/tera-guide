@@ -1,0 +1,19 @@
+{
+    "disableAutoUpdate": false,
+    "name": "TERA-Guide",
+    "options": {
+        "niceName": "TERA-Guide",
+        "guiName": "TERA-Guide",
+        "settingsFile": "config.json",
+        "settingsMigrator": "settings_migrator.js",
+        "settingsVersion": "1.01"
+    },
+    "author": "Kasea/michengs/ITunk",
+    "description": "Советы по данжам",
+    "servers": ["https://raw.githubusercontent.com/GrafNikola/tera-guide/master/"],
+    "supportUrl": "https://github.com/GrafNikola/tera-guide/pulls",
+    "dependencies": {
+        "library": "https://raw.githubusercontent.com/tera-toolbox-mods/library/master/module.json"
+    },
+    "version": "91.03"
+}
