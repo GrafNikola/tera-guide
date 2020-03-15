@@ -315,13 +315,13 @@ class TeraGuide{
 		StrSheet_RU_Dungeon_String = MapID_RU.find(obj => obj.id === e.zone);		
 		if (StrSheet_RU_Dungeon_String) {
         if( spguide ) {
-				 text_handler({"sub_type": "alert","delay": 8000,"message_RU": '1Вы вошли в ' +  cr +  StrSheet_RU_Dungeon_String.string, "message": ' Enter SP  Dungeon： ' +  cr + StrSheet_Dungeon_String.string});  
+				 text_handler({"sub_type": "alert","delay": 8000,"message_RU": 'Вы вошли в ' +  cr +  StrSheet_RU_Dungeon_String.string, "message": ' Enter SP  Dungeon： ' +  cr + StrSheet_Dungeon_String.string});  
 			}
              else if( esguide ) {
-				 text_handler({"sub_type": "alert","delay": 8000,"message_RU": '2Вы вошли в ' +  cr + StrSheet_RU_Dungeon_String.string, "message": ' Enter ES  Dungeon： ' + cr +  StrSheet_Dungeon_String.string}); 
+				 text_handler({"sub_type": "alert","delay": 8000,"message_RU": 'Вы вошли в ' +  cr + StrSheet_RU_Dungeon_String.string, "message": ' Enter ES  Dungeon： ' + cr +  StrSheet_Dungeon_String.string}); 
 			}
              else{				 
-			     text_handler({"sub_type": "alert","delay": 8000,"message_RU": '3Вы вошли в ' +  cr + StrSheet_RU_Dungeon_String.string, "message": ' Enter   Dungeon： ' +  cr + StrSheet_Dungeon_String.string}); 
+			     text_handler({"sub_type": "alert","delay": 8000,"message_RU": 'Вы вошли в ' +  cr + StrSheet_RU_Dungeon_String.string, "message": ' Enter   Dungeon： ' +  cr + StrSheet_Dungeon_String.string}); 
 			}
 			
 		} 
