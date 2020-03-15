@@ -137,7 +137,7 @@ timer4 = setTimeout(()=>{
 handlers['text']({
 "sub_type": "message",
 //"message_RU": "4 полосы!!!",
-"message": "quadra kill coming soon！"
+"message": "4 полосы!!!"
 });	
   }, 70000);
 }
