@@ -1,4 +1,4 @@
-﻿// 
+// млх
 //made by michengs
 let notice_guide = true;
 let player, entity, library, effect;
@@ -8,27 +8,7 @@ let power = true;
 let Level = 0;
 let powerMsg = null;
 let notice = true  ; 
-let steptwo = false ;
-function guid_voice(handlers) {   
-if(notice_guide) {
-handlers['text']({
-"sub_type": "message",
-"delay": 2000,
-"message_TW": "获取更多信息 proxy频道输入:補助 help"
-});
-
-handlers['text']({
-"sub_type": "notification",
-"delay": 2000,
-"message_TW": "获取更多信息 proxy频道输入:補助 help"
-});
-}
-notice_guide = false;
-
-}		
-
-
-
+let stepRUo = false ;
 
 	function  applyDistance(loc, distance, degrees) {
         let r = loc.w; //(loc.w / 0x8000) * Math.PI;
@@ -132,7 +112,7 @@ power = false;
 Level = 0;
 notice = true;
 powerMsg = null;
-steptwo = false ;
+stepRUo = false ;
 rad = 300;   
 print = true;    
 }
@@ -154,41 +134,41 @@ print = true;
 if (Level== 4) {
 handlers['text']({
 "sub_type": "message",
-"message_TW": "电量填充完毕!!",
+"message_RU": "полностью заряжен!!!",
 "message": "fully charged!!"
 
 });	
 handlers['text']({
 "sub_type": "notification",
-"message_TW": "电量填充完毕!!",
+"message_RU": "полностью заряжен!!!",
 "message": "fully charged!!"
 });			
-} else if (Level== 2 && steptwo) {
+} else if (Level== 2 && stepRUo) {
 handlers['text']({
 "sub_type": "message",
-"message_TW": "电量填充完毕!!",
+"message_RU": "полностью заряжен!!!",
 "message": "fully charged!!"
 });	
 handlers['text']({
 "sub_type": "notification",
-"message_TW": "电量填充完毕!!",
+"message_RU": "полностью заряжен!!!",
 "message": "fully charged!!"
 });			
 } 				
 				
 if ( powerMsg !== null &&  skillid !== 399){
 	
-if ( !steptwo &&  Level !== 4){
+if ( !stepRUo &&  Level !== 4){
 handlers['text']({
 "sub_type": "message",
-"message_TW": powerMsg,
+"message_RU": powerMsg,
 "message": powerMsg
 });
 }
-if ( steptwo &&  Level !== 2){
+if ( stepRUo &&  Level !== 2){
 handlers['text']({
 "sub_type": "message",
-"message_TW": powerMsg,
+"message_RU": powerMsg,
 "message": powerMsg
 });
 }
@@ -199,7 +179,7 @@ handlers['text']({
 
 
 if ( skillid === 399){
-steptwo = true ;			
+stepRUo = true ;			
 }					
 }
 
@@ -207,7 +187,7 @@ function start_3boss40(handlers) {
 if(print) {
 handlers['text']({
 "sub_type": "message",
-"message_TW": "30%-------------------------"
+"message_RU": "30%-------------------------"
 });
 }		
 print = false;
@@ -236,7 +216,7 @@ function Spawnitem11(item,degrees, maxRadius, times, handlers, event, entity) {
 }
 
 // 	召喚特殊告示牌提示（  角度 距离   时间）
-function SpawnThingob( degrees, radius, times, handlers, event, entity ) {	
+/*function SpawnThingob( degrees, radius, times, handlers, event, entity ) {	
 	let shield_loc = shield = entity['loc'].clone();
 	shield_loc.w = shield.w = entity['loc'].w;	
 		let X = Math.pow((-95703 - shield.x), 2),
@@ -258,7 +238,7 @@ function SpawnThingob( degrees, radius, times, handlers, event, entity ) {
 			"message": "位置"
         }, {loc: shield_loc});  
   
-}
+}*/
 module.exports = {
 
 	load(dispatch) {
@@ -275,59 +255,59 @@ module.exports = {
  //一王
 
  
-  "s-982-1000-106-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Heavy","message_TW": "重击" }],
-  "s-982-1000-107-0": [{"type": "text","class_position":"dps","sub_type": "message","message": "Pushback","message_TW": "后喷击退" },
-                        {"type": "text","class_position":"heal","sub_type": "message","message": "Pushback","message_TW": "后喷击退" }],
-  "s-982-1000-108-0": [{"type": "text","class_position":"dps","sub_type": "message","message_TW": "点名击飞" },
-                        {"type": "text","class_position":"heal","sub_type": "message","message_TW": "点名击飞" }], 
-  "s-982-1000-109-0": [{"type": "text","sub_type": "message","message": "Rocks (Small)","message_TW": "滚石" }],
-  "s-982-1000-110-0": [{"type": "text","sub_type": "message","message": "Rocks (Large)","message_TW": "滚石" }],
-  "s-982-1000-301-0": [{"type": "text","sub_type": "message","message": "Flower stuns","message_TW": "食人花眩晕" }], 
-  "s-982-1000-307-0": [{"type": "text","class_position":"dps","sub_type": "message","message_TW": "笼子禁锢" },
-                        {"type": "text","class_position":"heal","sub_type": "message","message_TW": "笼子禁锢" }],
-  "s-982-1000-309-0": [{"type": "text","sub_type": "message","message": "1 flower","message_TW": "1朵花-鉴定!!" }],
-  "s-982-1000-310-0": [{"type": "text","sub_type": "message","message": "2 flower","message_TW": "2朵花-鉴定!!" }], 
-  "s-982-1000-116-0": [{"type": "text","sub_type": "message","message": "Big AoE attack!!","message_TW": "全屏攻击!!" }],
-  "s-982-1000-312-0": [{"type": "text","sub_type": "message","message": "Golden flower!!","message_TW": "金色花!!" }],
+  "s-982-1000-106-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Heavy","message_RU": "Тяжелый удар" }],
+  "s-982-1000-107-0": [{"type": "text","class_position":"dps","sub_type": "message","message": "Pushback","message_RU": "Откид (конус)" },
+                        {"type": "text","class_position":"heal","sub_type": "message","message": "Pushback","message_RU": "Откид (кайя)" }],
+  "s-982-1000-108-0": [{"type": "text","class_position":"dps","sub_type": "message","message_RU": "Байт(подет)" },
+                        {"type": "text","class_position":"heal","sub_type": "message","message_RU": "Байт(подлет)" }], 
+  "s-982-1000-109-0": [{"type": "text","sub_type": "message","message": "Rocks (Small)","message_RU": "Камни(малые)" }],
+  "s-982-1000-110-0": [{"type": "text","sub_type": "message","message": "Rocks (Large)","message_RU": "Камни(большие)" }],
+  "s-982-1000-301-0": [{"type": "text","sub_type": "message","message": "Flower stuns","message_RU": "Оглушающие цветы" }], 
+  "s-982-1000-307-0": [{"type": "text","class_position":"dps","sub_type": "message","message_RU": "Клетка" },
+                        {"type": "text","class_position":"heal","sub_type": "message","message_RU": "Клетка" }],
+  "s-982-1000-309-0": [{"type": "text","sub_type": "message","message": "1 flower","message_RU": "1 цветок!!!" }],
+  "s-982-1000-310-0": [{"type": "text","sub_type": "message","message": "2 flower","message_RU": "2 цветка!!!" }], 
+  "s-982-1000-116-0": [{"type": "text","sub_type": "message","message": "Big AoE attack!!","message_RU": "AoE!!!" }],
+  "s-982-1000-312-0": [{"type": "text","sub_type": "message","message": "Golden flower!!","message_RU": "Золотой цветок!!!" }],
 
  
   //二王
    "h-982-3000-30": [{"type": "func","func": start_3boss40}], 
    
    
-  "s-982-3022-101-0": [{"type": "func","func": Spawnitem11.bind(null,912,0,420,8000)},
+  /*"s-982-3022-101-0": [{"type": "func","func": Spawnitem11.bind(null,912,0,420,8000)},
 	                   {"type": "func","func": SpawnThingob.bind(null,0,105,8000)},
                        {"type": "func","func": SpawnThingob.bind(null,0,210,8000)},
                        {"type": "func","func": SpawnThingob.bind(null,0,315,8000)},
-                       {"type": "func","func": SpawnThingob.bind(null,0,420,8000)}	],   
+                       {"type": "func","func": SpawnThingob.bind(null,0,420,8000)}	],   */
    
-  "s-982-2000-105-0": [{"type": "text","sub_type": "message","message": "Spin","message_TW": "翻滚" }], 
-  "s-982-2000-113-0": [{"type": "text","sub_type": "message","message": "Stun inc","message_TW": "双手眩晕" }],
-  "s-982-2000-114-0": [{"type": "text","sub_type": "message","message": "Get IN","message_TW": "三连地板靠近" },
+  "s-982-2000-105-0": [{"type": "text","sub_type": "message","message": "Spin","message_RU": "Кувырок" }], 
+  "s-982-2000-113-0": [{"type": "text","sub_type": "message","message": "Stun inc","message_RU": "Стан" }],
+  "s-982-2000-114-0": [{"type": "text","sub_type": "message","message": "Get IN","message_RU": "К" },
  	{"type": "func","func": Spawnitem2.bind(null,912,0,0,15,260,0,3000)}],
-  "s-982-2000-116-0": [{"type": "text","sub_type": "message","message": "Front then Back","message_TW": "前砸 后砸" },
+  "s-982-2000-116-0": [{"type": "text","sub_type": "message","message": "Front then Back","message_RU": "Вперед | Назад" },
   {"type": "func","func": Spawnitem1.bind(null,912,90,500,5000)},
   {"type": "func","func": Spawnitem1.bind(null,912,270,500,5000)}], 
-  "s-982-2000-301-0": [{"type": "text","sub_type": "message","message": "↓ Get OUT + dodge","message_TW": "捶地远离 旋转击退"},
+  "s-982-2000-301-0": [{"type": "text","sub_type": "message","message": "↓ Get OUT + dodge","message_RU": "От | Эвейд"},
  	{"type": "func","func": Spawnitem2.bind(null,912,0,0,15,260,0,3000)}   
   ],
-  "s-982-2000-302-0": [{"type": "text","sub_type": "message","message": "↑ Get IN + dodge","message_TW": "旋转靠近 捶地击飞" },
+  "s-982-2000-302-0": [{"type": "text","sub_type": "message","message": "↑ Get IN + dodge","message_RU": "К | Эвейд" },
  	{"type": "func","func": Spawnitem2.bind(null,912,0,0,15,260,0,3000)}   
   ], 
  
 //三王
   "h-982-3000-99": [{"type": "func","func": start_boss}],
 
-  "s-982-3000-118-0": [{"type": "text","sub_type": "message","message": "Front triple","message_TW": "三连击左-右-喷" },
+  "s-982-3000-118-0": [{"type": "text","sub_type": "message","message": "Front triple","message_RU": "Передняя комба" },
 	{"type": "func","func": skilld_event.bind(null, 118)} 
   ],
-  "s-982-3000-143-0": [{"type": "text","sub_type": "message","message": "←← Left rear ←←","message_TW": "左后" },
+  "s-982-3000-143-0": [{"type": "text","sub_type": "message","message": "←← Left rear ←←","message_RU": "Слева сзади" },
 	{"type": "func","func": skilld_event.bind(null, 143)}  
   ],
-  "s-982-3000-145-0": [{"type": "text","sub_type": "message","message": "←← Left rear ←←","message_TW": "左后" },
+  "s-982-3000-145-0": [{"type": "text","sub_type": "message","message": "←← Left rear ←←","message_RU": "Слева сзади" },
 	{"type": "func","func": skilld_event.bind(null, 145)}  
   ], 
-  "s-982-3000-146-0": [{"type": "text","sub_type": "message","message": "←← Left rear ←← (pulses)","message_TW": "左后扩散" },
+  "s-982-3000-146-0": [{"type": "text","sub_type": "message","message": "←← Left rear ←← (pulses)","message_RU": "Слева сзади(Бублик)" },
      {"type": "func","func": SpawnThing.bind(null,215,370,8000)},	 
      {"type": "func","func": Spawnitem2.bind(null,445,215,370,15,160,2500,8000)},
      {"type": "func","func": Spawnitem2.bind(null,445,215,370,12,320,2500,8000)},
@@ -335,7 +315,7 @@ module.exports = {
      {"type": "func","func": Spawnitem2.bind(null,445,215,370,8,640,2500,8000)},	
      {"type": "func","func": Spawnitem2.bind(null,445,215,370,6,800,2500,8000)},
 	{"type": "func","func": skilld_event.bind(null, 146)} ],
-  "s-982-3000-154-0": [{"type": "text","sub_type": "message","message": "←← Left rear ←← (pulses)","message_TW": "左后扩散" },
+  "s-982-3000-154-0": [{"type": "text","sub_type": "message","message": "←← Left rear ←← (pulses)","message_RU": "Слева сзади(Бублик)" },
      {"type": "func","func": SpawnThing.bind(null,215,370,8000)},	 
      {"type": "func","func": Spawnitem2.bind(null,445,215,370,15,160,2500,8000)},
      {"type": "func","func": Spawnitem2.bind(null,445,215,370,12,320,2500,8000)},
@@ -346,14 +326,14 @@ module.exports = {
 	 ],
 	 
 	 
-  "s-982-3000-144-0": [{"type": "text","sub_type": "message","message": "→→ Right rear →→","message_TW": "右后" },
+  "s-982-3000-144-0": [{"type": "text","sub_type": "message","message": "→→ Right rear →→","message_RU": "Справа сзади" },
 	{"type": "func","func": skilld_event.bind(null, 144)}], 
   
   
-  "s-982-3000-147-0": [{"type": "text","sub_type": "message","message": "→→ Right rear →→","message_TW": "右后" },
+  "s-982-3000-147-0": [{"type": "text","sub_type": "message","message": "→→ Right rear →→","message_RU": "Справа сзади" },
 	{"type": "func","func": skilld_event.bind(null,147 )}  ],
 	 
-  "s-982-3000-148-0": [{"type": "text","sub_type": "message","message": "→→ Right rear →→ (pulses)","message_TW": "右后扩散" },
+  "s-982-3000-148-0": [{"type": "text","sub_type": "message","message": "→→ Right rear →→ (pulses)","message_RU": "Справа сзади(Бублик)" },
      {"type": "func","func": SpawnThing.bind(null,155,388,8000)}, 
      {"type": "func","func": Spawnitem2.bind(null,445,155,388,15,160,2500,8000)},
      {"type": "func","func": Spawnitem2.bind(null,445,155,388,12,320,2500,8000)},
@@ -362,7 +342,7 @@ module.exports = {
      {"type": "func","func": Spawnitem2.bind(null,445,155,388,6,800,2500,8000)},
 	{"type": "func","func": skilld_event.bind(null, 148)}  ],
 
-  "s-982-3000-155-0": [{"type": "text","sub_type": "message","message": "→→ Right rear →→ (pulses)","message_TW": "右后扩散" },
+  "s-982-3000-155-0": [{"type": "text","sub_type": "message","message": "→→ Right rear →→ (pulses)","message_RU": "Справа сзади(Бублик)" },
      {"type": "func","func": SpawnThing.bind(null,155,388,8000)}, 
      {"type": "func","func": Spawnitem2.bind(null,445,155,388,15,160,2500,8000)},
      {"type": "func","func": Spawnitem2.bind(null,445,155,388,12,320,2500,8000)},
@@ -371,45 +351,45 @@ module.exports = {
      {"type": "func","func": Spawnitem2.bind(null,445,155,388,6,800,2500,8000)},
 	{"type": "func","func": skilld_event.bind(null, 155)}  ],
 	 
-  "s-982-3000-161-0": [{"type": "text","sub_type": "message","message": "Back then Front","message_TW": "后砸 前砸" },
+  "s-982-3000-161-0": [{"type": "text","sub_type": "message","message": "Back then Front","message_RU": "Назад | Вперед" },
 	{"type": "func","func": skilld_event.bind(null, 161)}   
   ],
-  "s-982-3000-162-0": [{"type": "text","sub_type": "message","message": "Back then Front","message_TW": "后砸 前砸" },
+  "s-982-3000-162-0": [{"type": "text","sub_type": "message","message": "Back then Front","message_RU": "Назад | Вперед" },
 	{"type": "func","func": skilld_event.bind(null, 162)}   
   ],
-  "s-982-3000-213-0": [{"type": "text","sub_type": "message","message": "Tail","message_TW": "尾巴" },
+  "s-982-3000-213-0": [{"type": "text","sub_type": "message","message": "Tail","message_RU": "Хвост!!!" },
 	{"type": "func","func": skilld_event.bind(null, 213)}   
   ],
-  "s-982-3000-215-0": [{"type": "text","sub_type": "message","message": "Tail!!","message_TW": "尾巴!!" },
+  "s-982-3000-215-0": [{"type": "text","sub_type": "message","message": "Tail!!","message_RU": "Хвост!!!" },
 	{"type": "func","func": skilld_event.bind(null, 215)}   
   ], 
-   "s-982-3000-139-0": [{"type": "text","sub_type": "message","message": "Left safe","message_TW": "打右边" },
+   "s-982-3000-139-0": [{"type": "text","sub_type": "message","message": "Left safe","message_RU": "Слева безопасно" },
   {"type": "func","func": Spawnitem1.bind(null,912,0,500,5000)},
   {"type": "func","func": Spawnitem1.bind(null,912,180,500,5000)},
    {"type": "func","func": SpawnThing.bind(null,270,200,8000)},
 	{"type": "func","func": skilld_event.bind(null, 139)}  ],
-  "s-982-3000-150-0": [{"type": "text","sub_type": "message","message": "Left safe","message_TW": "打右边" },
+  "s-982-3000-150-0": [{"type": "text","sub_type": "message","message": "Left safe","message_RU": "Слева безопасно" },
   {"type": "func","func": Spawnitem1.bind(null,912,0,500,5000)},
   {"type": "func","func": Spawnitem1.bind(null,912,180,500,5000)},
    {"type": "func","func": SpawnThing.bind(null,270,200,8000)},
 	{"type": "func","func": skilld_event.bind(null, 150)}  ],
-  "s-982-3000-141-0": [{"type": "text","sub_type": "message","message": "Right safe","message_TW": "打左边" },
+  "s-982-3000-141-0": [{"type": "text","sub_type": "message","message": "Right safe","message_RU": "Справа безопасно" },
   {"type": "func","func": Spawnitem1.bind(null,912,0,500,5000)},
   {"type": "func","func": Spawnitem1.bind(null,912,180,500,5000)},
    {"type": "func","func": SpawnThing.bind(null,90,200,8000)},
 	{"type": "func","func": skilld_event.bind(null, 141)}  ], 
-  "s-982-3000-152-0": [{"type": "text","sub_type": "message","message": "Right safe","message_TW": "打左边" },
+  "s-982-3000-152-0": [{"type": "text","sub_type": "message","message": "Right safe","message_RU": "Справа безопасно" },
   {"type": "func","func": Spawnitem1.bind(null,912,0,500,5000)},
   {"type": "func","func": Spawnitem1.bind(null,912,180,500,5000)},
    {"type": "func","func": SpawnThing.bind(null,90,200,8000)},
 	{"type": "func","func": skilld_event.bind(null, 152)}  ],
-  "s-982-3000-300-0": [{"type": "text","sub_type": "message","message": "Dodge!! (Awakening 1","message_TW": "一次觉醒 推人" },
+  "s-982-3000-300-0": [{"type": "text","sub_type": "message","message": "Dodge!! (Awakening 1","message_RU": "Эвейд(Пробуждение 1)" },
 	{"type": "func","func": skilld_event.bind(null, 300)}  ],
-  "s-982-3000-399-0": [{"type": "text","sub_type": "message","message": "Dodge!! (Awakening 2)","message_TW": "二次觉醒 推人" },
+  "s-982-3000-399-0": [{"type": "text","sub_type": "message","message": "Dodge!! (Awakening 2)","message_RU": "Эвейд(Пробуждение 2)" },
 	{"type": "func","func": skilld_event.bind(null, 399)}    
   
   ], 
-  "s-982-3000-360-0": [{"type": "text","sub_type": "message","message": "Explosion!!","message_TW": "爆炸爆炸" },
+  "s-982-3000-360-0": [{"type": "text","sub_type": "message","message": "Explosion!!","message_RU": "Взрыв!!!" },
 	{"type": "func","func": skilld_event.bind(null, 360)}  ] 
 
 };
