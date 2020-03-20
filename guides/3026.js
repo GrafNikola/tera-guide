@@ -1,4 +1,3 @@
-//Corrupted Skynest
 //made by michengs
 let player, entity, library, effect;
 let	print = true;
@@ -9,6 +8,8 @@ let timer3;
 let timer4;
 let timer5;
 let qbacting = null;
+let blue = false;
+let red = false;
 function  applyDistance(loc, distance, degrees) {
         let r = loc.w; //(loc.w / 0x8000) * Math.PI;
      	let	rads = (degrees * Math.PI/180);
@@ -21,7 +22,7 @@ function  applyDistance(loc, distance, degrees) {
 function Spawnitem2(item,degree,distance, intervalDegrees, radius, delay, times, handlers, event, entity ) {
 	let shield_loc = entity['loc'].clone();
 	shield_loc.w = entity['loc'].w;
-    let	degrees = 360 - degree;	
+    let	degrees = degree;	
 	applyDistance(shield_loc, distance, degrees);
     for (let angle = -Math.PI; angle <= Math.PI; angle +=  Math.PI * intervalDegrees / 180) {
         handlers['spawn']({
@@ -32,11 +33,43 @@ function Spawnitem2(item,degree,distance, intervalDegrees, radius, delay, times,
         	"offset": angle
         }, {loc: shield_loc});
     }
-}	
+}
+		//构建特殊圆形范围提示    （提示标志  偏移角度 偏移距离 间隔 半径 延迟 时间）90°-180  Π/2-Π   -2 - 1
+function Spawnitemsp2(d1,d2,item,degree,distance, intervalDegrees, radius, delay, times, handlers, event, entity ) {
+	let shield_loc = entity['loc'].clone();
+	shield_loc.w = entity['loc'].w;
+                                                                                                                                                                                                                                                                      let	degrees = 360 - degree;	
+	applyDistance(shield_loc, distance, degrees);
+    for (let angle = -Math.PI/ d1; angle <= Math.PI/ d2; angle +=  Math.PI * intervalDegrees / 180) {
+        handlers['spawn']({		
+        	"id": item,
+			"delay": delay,			
+        	"sub_delay": times,
+        	"distance": radius,
+        	"offset": angle
+        }, {loc: shield_loc});
+    }
+}
+	//构建直线（提示标志 偏移角度 偏移距离  角度 最远距离   时间）
+function Spawnitem1(item,degree,distance,angles, maxRadius, times, handlers, event, entity) {
+	let shield_loc = entity['loc'].clone();
+	shield_loc.w = entity['loc'].w;	
+    let	degrees = 360 - degree;	
+	applyDistance(shield_loc, distance, degrees);		
+    let angle = angles * Math.PI/180
+    for (let radius=50 ; radius<=maxRadius; radius+=50) {
+        handlers['spawn']({
+        	"id": item,
+        	"sub_delay": times,
+        	"distance": radius,
+        	"offset": angle
+        }, {loc: shield_loc});
+    }
+}
 const CK_TipMsg =
 {
- 0: {msgt: 'IN',     msg: 'К'}, 
- 1: {msgt: 'OUT',     msg: 'От'}
+ 0: {msgt: 'IN',     msg: 'К нему'}, 
+ 1: {msgt: 'OUT',     msg: 'От него'}
 };
 const debuff_TipMsg =
 {
@@ -118,6 +151,9 @@ handlers['text']({
 "message": (`${boss_skill[skillid].msgt} | ${CK_TipMsg[(qbacting + debuff +1) %2].msgt}`),
 "message_RU": (`${boss_skill[skillid].msg} | ${CK_TipMsg[(qbacting + debuff +1) %2].msg}`)
 });	
+blue = true;
+red  = false;
+setTimeout(() => blue  = false, 6500);	    //6700
  } 
 }
 if ([212,215].includes(skillid)) {   // //红内
@@ -127,6 +163,9 @@ handlers['text']({
 "message": (`${boss_skill[skillid].msgt} | ${CK_TipMsg[(qbacting + debuff) %2].msgt}`),
 "message_RU": (`${boss_skill[skillid].msg} | ${CK_TipMsg[(qbacting + debuff) %2].msg}`)
 });	
+blue = false;
+red  = true; 
+setTimeout(() => red  = false, 6500);
  }
 }
 if (skillid === 99020020) { //死亡解除debuff
@@ -161,7 +200,20 @@ function start_debuff(handlers, event, entity, dispatch) {
 	const abnormality_change = (added, event) => {
 		if ((player.isMe(event.target) || player.playersInParty.includes(event.target.toString())) && debuffs_targe[event.id]) {
 				if (added) {
-			setTimeout(() =>  debuff = event.id, 500);			   
+			    debuff = event.id ;	
+                if(blue){
+				handlers['text']({
+				"sub_type": "message",
+				"message": (` ${CK_TipMsg[(qbacting + debuff +1) %2].msgt}`),
+				"message_RU": (` ${CK_TipMsg[(qbacting + debuff +1) %2].msg}`)
+				 });		
+				}else if(red){
+				 handlers['text']({
+				 "sub_type": "message",
+				 "message": (` ${CK_TipMsg[(qbacting + debuff) %2].msgt}`),
+				 "message_RU": (`${CK_TipMsg[(qbacting + debuff) %2].msg}`)
+				 });		
+				} 				
 				} else {
                   debuff = null
 				}
@@ -177,52 +229,102 @@ module.exports = {
 	load(dispatch) {
 		({ player, entity, library, effect } = dispatch.require.library);
 	},
-"s-3026-1000-1112-0": [{"type": "text","sub_type": "message","message": "Ice()","message_RU": "Лёд"}],
-"s-3026-1000-1110-0": [{"type": "text","sub_type": "message","message": "fire","message_RU": "Огонь"}],
-"s-3026-1000-2112-0": [{"type": "text","sub_type": "message","message": "Ice()","message_RU": "Лёд"}],
-"s-3026-1000-2110-0": [{"type": "text","sub_type": "message","message": "fire","message_RU": "Огонь"}],
-"s-3026-1000-1108-0": [{"type": "text","sub_type": "message","message": "beat back","message_RU": "Поверните направо, чтобы отбить"}],
-"s-3026-1000-2108-0": [{"type": "text","sub_type": "message","message": "beat back","message_RU": "Поверните направо, чтобы отбить"}],
-"s-3026-1000-1158-0": [{"type": "text","sub_type": "message","message": "beat back","message_RU": "Поверните направо, чтобы отбить"}],
-"s-3026-1000-2158-0": [{"type": "text","sub_type": "message","message": "beat back","message_RU": "Поверните направо, чтобы отбить"}],
-"s-3026-1000-1109-0": [{"type": "text","sub_type": "message","message": "beat back","message_RU": "Поверните влево, чтобы отбить"}],
-"s-3026-1000-2109-0": [{"type": "text","sub_type": "message","message": "beat back","message_RU": "Поверните влево, чтобы отбить"}],
-"s-3026-1000-1159-0": [{"type": "text","sub_type": "message","message": "beat back","message_RU": "Поверните влево, чтобы отбить"}],
-"s-3026-1000-2159-0": [{"type": "text","sub_type": "message","message": "beat back","message_RU": "Поверните влево, чтобы отбить"}],
+"s-3026-1000-1112-0": [{"type": "text","sub_type": "message","message": "Air-conditioned DOT (away)","message_RU": "Лёд"}],
+"s-3026-1000-1110-0": [{"type": "text","sub_type": "message","message": "Fire DOT (Away)","message_RU": "Огонь"}],
+"s-3026-1000-2112-0": [{"type": "text","sub_type": "message","message": "Air-conditioned DOT (away)","message_RU": "Лёд"}],
+"s-3026-1000-2110-0": [{"type": "text","sub_type": "message","message": "Fire DOT (Away)","message_RU": "Огонь"}],
+"s-3026-1000-1108-0": [{"type": "text","sub_type": "message","message": "Turn right (repel !!)","message_RU": "Поворот вправо"},
+                       {"type": "func","func": Spawnitem2.bind(null,445,0,0,8,440,100,2000)}],
+"s-3026-1000-2108-0": [{"type": "text","sub_type": "message","message": "Turn right (repel !!)","message_RU": "Поворот вправо"},
+                       {"type": "func","func": Spawnitem2.bind(null,445,0,0,8,440,100,2000)}],
+"s-3026-1000-1158-0": [{"type": "text","sub_type": "message","message": "Turn right (repel !!)","message_RU": "Поворот вправо"},
+                       {"type": "func","func": Spawnitem2.bind(null,445,0,0,8,440,100,2000)}],
+"s-3026-1000-2158-0": [{"type": "text","sub_type": "message","message": "Turn right (repel !!)","message_RU": "Поворот вправо"},
+                       {"type": "func","func": Spawnitem2.bind(null,445,0,0,8,440,100,2000)}],
+
+"s-3026-1000-1109-0": [{"type": "text","sub_type": "message","message": "Turn left (repel !!)","message_RU": "Поворот влево"},
+                       {"type": "func","func": Spawnitem2.bind(null,445,0,0,8,440,100,2000)}],
+"s-3026-1000-2109-0": [{"type": "text","sub_type": "message","message": "Turn left (repel !!)","message_RU": "Поворот влево"},
+                       {"type": "func","func": Spawnitem2.bind(null,445,0,0,8,440,100,2000)}],
+"s-3026-1000-1159-0": [{"type": "text","sub_type": "message","message": "Turn left (repel !!)","message_RU": "Поворот влево"},
+                       {"type": "func","func": Spawnitem2.bind(null,445,0,0,8,440,100,2000)}],
+"s-3026-1000-2159-0": [{"type": "text","sub_type": "message","message": "Turn left (repel !!)","message_RU": "Поворот влево"},
+                       {"type": "func","func": Spawnitem2.bind(null,445,0,0,8,440,100,2000)}],
+
 "s-3026-1000-1120-0": [{"type": "text","sub_type": "message","message": "together","message_RU": "Яростный рёв"}],
 "s-3026-1000-2120-0": [{"type": "text","sub_type": "message","message": "together","message_RU": "Яростный рёв"}],
 "s-3026-1000-1157-0": [{"type": "text","sub_type": "message","message": "change","message_RU": "Смена"},{"type": "func","func": start_debuff}],
 "s-3026-1000-2157-0": [{"type": "text","sub_type": "message","message": "change","message_RU": "Смена"},{"type": "func","func": start_debuff}],
-"s-3026-1000-1103-0": [{"type": "text","sub_type": "message","message": "tail","message_RU": "Хвост"}],
-"s-3026-1000-2103-0": [{"type": "text","sub_type": "message","message": "tail","message_RU": "Хвост"}],
+"s-3026-1000-1103-0": [{"type": "text","sub_type": "message","message": "Tail (Flying !!)","message_RU": "Хвост (полет)"},
+					   {"type": "func","func": Spawnitemsp2.bind(null,-4/3,1,445,0,0,10,500,100,1500)},
+					   {"type": "func","func": Spawnitemsp2.bind(null,-1,9/13,445,0,0,10,500,100,1500)},
+					   {"type": "func","func": Spawnitem1.bind(null,445,0,0,135,500,1500)},					
+                       {"type": "func","func": Spawnitem1.bind(null,445,0,0,260,500,1500)}],
+"s-3026-1000-2103-0": [{"type": "text","sub_type": "message","message": "Tail (Flying !!)","message_RU": "Хвост (полет)"},
+					   {"type": "func","func": Spawnitemsp2.bind(null,-4/3,1,445,0,0,10,500,100,1500)},
+					   {"type": "func","func": Spawnitemsp2.bind(null,-1,9/13,445,0,0,10,500,100,1500)},
+					   {"type": "func","func": Spawnitem1.bind(null,445,0,0,135,500,1500)},					
+                       {"type": "func","func": Spawnitem1.bind(null,445,0,0,260,500,1500)}],
 "s-3026-1000-1118-1": [{"type": "text","sub_type": "message","message": "Jump","message_RU": "Прыжок"}],
 "s-3026-1000-2118-1": [{"type": "text","sub_type": "message","message": "Jump","message_RU": "Прыжок"}],
-//"s-3026-1000-118-2": [{"type": "text","sub_type": "message","message": "Jump","message_RU": "闪"}],
-//"s-3026-1000-118-2": [{"type": "text","sub_type": "message","message": "Jump","message_RU": "闪"}],
+//"s-3026-1000-118-2": [{"type": "text","sub_type": "message","message": "Jump","message_RU": "Прыжок"}],
+//"s-3026-1000-118-2": [{"type": "text","sub_type": "message","message": "Jump","message_RU": "Прыжок"}],
 "s-3026-1000-1145-0": [{"type": "text","sub_type": "message","message": "stun","message_RU": "Стан"}],
 "s-3026-1000-2145-0": [{"type": "text","sub_type": "message","message": "stun","message_RU": "Стан"}],
+
+
+	// boss位置 ，角度， 持续时间,类型， 偏角       ，偏距，       ，最小半径   ，角度范围 ，间距      ，半径         
+	//(distance, angle, duration, type, offsetAngle, offsetDistance, minRadius, maxRadius, rotateAngle, rotateRadius) 
+
+
+"s-3026-1000-1105-0": [{"type": "func","func": Spawnitem2.bind(null,445,135,500,10,270,100,3000)},
+                       {"type": "func","func": Spawnitem2.bind(null,445,315,500,10,270,100,3250)},
+                       {"type": "func","func": Spawnitem2.bind(null,445,45,500,10,270,100,3500)},
+                       {"type": "func","func": Spawnitem2.bind(null,445,235,500,10,270,100,3750)},
+                       {"type": "func","func": Spawnitem2.bind(null,445,90,500,10,270,100,4000)},
+                       {"type": "func","func": Spawnitem2.bind(null,445,270,500,10,270,100,4250)},
+                       {"type": "func","func": Spawnitem2.bind(null,445,0,500,10,270,100,4500)},
+                       {"type": "func","func": Spawnitem2.bind(null,445,180,500,10,270,100,4750)}],
+
+"s-3026-1000-2105-0": [{"type": "func","func": Spawnitem2.bind(null,445,135,500,10,270,100,3000)},
+                       {"type": "func","func": Spawnitem2.bind(null,445,315,500,10,270,100,3250)},
+                       {"type": "func","func": Spawnitem2.bind(null,445,45,500,10,270,100,3500)},
+                       {"type": "func","func": Spawnitem2.bind(null,445,235,500,10,270,100,3750)},
+                       {"type": "func","func": Spawnitem2.bind(null,445,90,500,10,270,100,4000)},
+                       {"type": "func","func": Spawnitem2.bind(null,445,270,500,10,270,100,4250)},
+                       {"type": "func","func": Spawnitem2.bind(null,445,0,500,10,270,100,4500)},
+                       {"type": "func","func": Spawnitem2.bind(null,445,180,500,10,270,100,4750)}],
+
 "s-3026-1000-1206-0": [{"type": "text","sub_type": "message","message": "Jump back","message_RU": "Прыжок назад (полет)"}],
 "s-3026-1000-2206-0": [{"type": "text","sub_type": "message","message": "Jump back","message_RU": "Прыжок назад (полет)"}],
 "s-3026-1000-1206-2": [{"type": "func","func": Spawnitem2.bind(null,553,0,0,15,350,200,3000)}],
 "s-3026-1000-2206-2": [{"type": "func","func": Spawnitem2.bind(null,553,0,0,15,350,200,3000)}],
-"s-3026-1000-1153-0": [{"type": "text","sub_type": "message","message": "tail","message_RU": "Хвост"}],
-"s-3026-1000-2153-0": [{"type": "text","sub_type": "message","message": "tail","message_RU": "Хвост"}],
-"s-3026-1000-1154-0": [{"type": "text","sub_type": "message","message": "Ice storm","message_RU": "Ледяной шторм"}],   //30不可防
-"s-3026-1000-2154-0": [{"type": "text","sub_type": "message","message": "Ice storm","message_RU": "Ледяной шторм"}],   //30不可防
-"s-3026-1000-1155-0": [{"type": "text","sub_type": "message","message": "Knock down","message_RU": "Огненный столб(опрокид)"}],      //30不可防
-"s-3026-1000-2155-0": [{"type": "text","sub_type": "message","message": "Knock down","message_RU": "Огненный столб(опрокид)"}],      //30不可防
+"s-3026-1000-1153-0": [{"type": "text","sub_type": "message","message": "Tail (Flying !!)","message_RU": "Хвост (полет)"},
+					   {"type": "func","func": Spawnitemsp2.bind(null,-4/3,1,445,0,0,10,500,100,1500)},
+					   {"type": "func","func": Spawnitemsp2.bind(null,-1,9/13,445,0,0,10,500,100,1500)},
+					   {"type": "func","func": Spawnitem1.bind(null,445,0,0,135,500,1500)},					
+                       {"type": "func","func": Spawnitem1.bind(null,445,0,0,260,500,1500)}],
+"s-3026-1000-2153-0": [{"type": "text","sub_type": "message","message": "Tail (Flying !!)","message_RU": "Хвост (полет)"},
+					   {"type": "func","func": Spawnitemsp2.bind(null,-4/3,1,445,0,0,10,500,100,1500)},
+					   {"type": "func","func": Spawnitemsp2.bind(null,-1,9/13,445,0,0,10,500,100,1500)},
+					   {"type": "func","func": Spawnitem1.bind(null,445,0,0,135,500,1500)},					
+                       {"type": "func","func": Spawnitem1.bind(null,445,0,0,260,500,1500)}],
+"s-3026-1000-1154-0": [{"type": "text","sub_type": "message","message": "Ice storm","message_RU": "Ледяной шторм"},{"type": "func","func": Spawnitem2.bind(null,445,180,80,8,520,100,5000)}],   //30不可防
+"s-3026-1000-2154-0": [{"type": "text","sub_type": "message","message": "Ice storm","message_RU": "Ледяной шторм"},{"type": "func","func": Spawnitem2.bind(null,445,180,80,8,520,100,5000)}],   //30不可防
+"s-3026-1000-1155-0": [{"type": "text","sub_type": "message","message": "Knock down","message_RU": "Огненный столб (опрокид)"}],      //30不可防
+"s-3026-1000-2155-0": [{"type": "text","sub_type": "message","message": "Knock down","message_RU": "Огненный столб (опрокид)"}],      //30不可防
 "s-3026-1000-1137-0": [{"type": "text","sub_type": "message","message": "Knock down","message_RU": "Опрокидывание"},{"type": "func","func": Spawnitem2.bind(null,553,0,0,2,1275,200,13000)}],
 "s-3026-1000-2137-0": [{"type": "text","sub_type": "message","message": "Knock down","message_RU": "Опрокидывание"},{"type": "func","func": Spawnitem2.bind(null,553,0,0,2,1275,200,13000)}],
 "s-3026-1000-1138-0": [{"type": "text","sub_type": "message","message": "AOE","message_RU": "AOE"}],
 "s-3026-1000-2138-0": [{"type": "text","sub_type": "message","message": "AOE","message_RU": "AOE"}],
-"s-3026-1000-1139-0": [{"type": "text","sub_type": "message","message": "60°","message_RU": "60° всем (Лёд)"}],
-"s-3026-1000-2139-0": [{"type": "text","sub_type": "message","message": "60°","message_RU": "60° всем (Лёд)"}],
-"s-3026-1000-1140-0": [{"type": "text","sub_type": "message","message": "40","message_RU":  "40° всем (Огонь)"}],
-"s-3026-1000-2140-0": [{"type": "text","sub_type": "message","message": "40","message_RU":  "40° всем (Огонь)"}],
-"s-3026-1000-1212-0": [{"type": "func","func": skilld_event.bind(null, 212)},{"type": "func","func": Spawnitem2.bind(null,445,0,0,8,425,200,6000)}],  
-"s-3026-1000-1215-0": [{"type": "func","func": skilld_event.bind(null, 215)},{"type": "func","func": Spawnitem2.bind(null,445,0,0,8,425,200,6000)}],      
-"s-3026-1000-1213-0": [{"type": "func","func": skilld_event.bind(null, 213)},{"type": "func","func": Spawnitem2.bind(null,445,0,0,8,425,200,6000)}],
-"s-3026-1000-1214-0": [{"type": "func","func": skilld_event.bind(null, 214)},{"type": "func","func": Spawnitem2.bind(null,445,0,0,8,425,200,6000)}],
+"s-3026-1000-1139-0": [{"type": "text","sub_type": "message","message": "60°","message_RU": "60° всем (Огонь)"}],
+"s-3026-1000-2139-0": [{"type": "text","sub_type": "message","message": "60°","message_RU": "60° всем (Огонь)"}],
+"s-3026-1000-1140-0": [{"type": "text","sub_type": "message","message": "40","message_RU":  "40° всем (Лёд)"}],
+"s-3026-1000-2140-0": [{"type": "text","sub_type": "message","message": "40","message_RU":  "40° всем (Лёд)"}],
+"s-3026-1000-1212-0": [{"type": "func","func": skilld_event.bind(null, 212)},{"type": "func","func": Spawnitem2.bind(null,445,0,0,8,440,200,6000)}],  
+"s-3026-1000-1215-0": [{"type": "func","func": skilld_event.bind(null, 215)},{"type": "func","func": Spawnitem2.bind(null,445,0,0,8,440,200,6000)}],      
+"s-3026-1000-1213-0": [{"type": "func","func": skilld_event.bind(null, 213)},{"type": "func","func": Spawnitem2.bind(null,445,0,0,8,440,200,6000)}],
+"s-3026-1000-1214-0": [{"type": "func","func": skilld_event.bind(null, 214)},{"type": "func","func": Spawnitem2.bind(null,445,0,0,8,440,200,6000)}],
 "qb-3026-1000-3026005": [{"type": "func","func": skilld_event.bind(null, 3026005)}],//吃同色恐惧
 "qb-3026-1000-3026004": [{"type": "func","func": skilld_event.bind(null, 3026004)}],//吃异色愤怒
 "qb-3026-1000-3126005": [{"type": "func","func": skilld_event.bind(null, 3126005)}],//吃同色恐惧
