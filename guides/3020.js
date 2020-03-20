@@ -97,29 +97,29 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 
 if (skillid == 120){
 	if (purple && !boss_thirty){
-		handlers['text']({"sub_type": "msgcp","message": "back","message_RU": "К нему-От него-К нему"}); 
+		handlers['text']({"type": "text","sub_type": "message","message": "back","message_RU": "К нему > От него > К нему"}); 
 		setTimeout(() => purple = false, 2000);		
 	} else if(purple && boss_thirty){
-		handlers['text']({"sub_type": "msgcp","message": "back","message_RU": "К нему-От него"}); 
-		handlers['text']({"sub_type": "msgcp","delay": 6000,"message": "back","message_RU": "К нему"}); 		
+		handlers['text']({"type": "text","sub_type": "message","message": "back","message_RU": "К нему > От него"}); 
+		handlers['text']({"type": "text","sub_type": "message","delay": 6000,"message": "back","message_RU": "К нему"});
 		setTimeout(() => purple = false, 2000);			 	 		 
 	 
   }
 }
 if (skillid == 123){
 	if (green && !boss_thirty){
-		handlers['text']({"sub_type": "msgcp","message": "back","message_RU": "От него-К нему-От него"}); 
+		handlers['text']({"type": "text","sub_type": "message","message": "back","message_RU": "От него > К нему > От него"}); 
 		setTimeout(() => green = false, 2000);		
 	 } else if(purple && !boss_thirty){
-		handlers['text']({"sub_type": "msgcp","message": "back","message_RU": "К нему-От него-От него"}); 
+		handlers['text']({"type": "text","sub_type": "message","message": "back","message_RU": "К нему > От него > От него"}); 
 		setTimeout(() => purple = false, 2000);			 	 		 
 	 } else if(green && boss_thirty){
-		handlers['text']({"sub_type": "msgcp","message": "back","message_RU": "От него-От него"}); 
-		handlers['text']({"sub_type": "msgcp","delay":6000,"message": "back","message_RU": "От него"}); 		
+		handlers['text']({"type": "text","sub_type": "message","message": "back","message_RU": "От него > От него"}); 
+		handlers['text']({"type": "text","sub_type": "message","delay":6000,"message": "back","message_RU": "От него"});
 		setTimeout(() => purple = false, 2000);							
    } else if(purple && boss_thirty){
-		handlers['text']({"sub_type": "msgcp","message": "back","message_RU": "К нему-От него"}); 
-		handlers['text']({"sub_type": "msgcp","delay": 6000,"message": "back","message_RU": "От него"}); 		
+		handlers['text']({"type": "text","sub_type": "message","message": "back","message_RU": "К нему > От него"}); 
+		handlers['text']({"type": "text","sub_type": "message","delay": 6000,"message": "back","message_RU": "От него"});
 		setTimeout(() => purple = false, 2000);	
   }
  }
@@ -171,10 +171,10 @@ module.exports = {
 
 
 
-"s-3020-1900-104-0": [{"type": "text","sub_type": "message","message": "Jump","message_RU": "Высасывание(Выйти)"},
+"s-3020-1900-104-0": [{"type": "text","sub_type": "message","message": "Jump","message_RU": "Высасывание (Выйти)"},
                       {"type": "func","func": Spawnitem2.bind(null,445,0,0,15,300,200,3000)}],
 
-"s-3020-1200-103-0": [{"type": "text","sub_type": "message","message": "Jump","message_RU": "Высасывание(Выйти)"}],
+"s-3020-1200-103-0": [{"type": "text","sub_type": "message","message": "Jump","message_RU": "Высасывание (Выйти)"}],
                       /*{"type": "func","func": Spawnitem2.bind(null,445,0,0,15,200,200,3000)}*/
 					  
 					  
@@ -268,7 +268,7 @@ module.exports = {
 // "s-3020-6103-203-0": [{"type": "text","sub_type": "message","message":  'Left swipe',"message_TW": "6103-203" },{"type": "func","func": SpawnThing.bind(null,0,0,100,2000)}], 
 // "s-3020-6103-202-0": [{"type": "text","sub_type": "message","message":  'Left swipe',"message_TW": "6103-202" },{"type": "func","func": SpawnThing.bind(null,0,0,100,2000)}], 
 // "s-3020-6103-201-0": [{"type": "text","sub_type": "message","message":  'Left swipe',"message_TW": "6103-201" },{"type": "func","func": SpawnThing.bind(null,0,0,100,2000)}],  
-  "s-3020-2200-127-0": [{"type": "text","sub_type": "message","message": "Jump","message_RU": "Прыжок | К"},
+  "s-3020-2200-127-0": [{"type": "text","sub_type": "message","message": "Jump","message_RU": "Прыжок | К нему"},
                         {"type": "func","func": Spawnitem2.bind(null,445,0,0,15,200,250,1000)},
                         {"type": "func","func": Spawnitem2.bind(null,445,0,0,10,300,1000,4000)}
   
@@ -279,7 +279,7 @@ module.exports = {
 "s-3020-2200-129-0": [{"type": "text","sub_type": "message","message": "Jump","message_RU": "Полоса в цель"},				
   {"type": "func","func": Spawnitem1.bind(null,445,90,100,0,500,6000)},					
   {"type": "func","func": Spawnitem1.bind(null,445,270,100,0,500,6000)}],
-"s-3020-2200-131-0": [{"type": "text","sub_type": "message","message": "Jump","message_RU": "Прыжок | От"}],
+"s-3020-2200-131-0": [{"type": "text","sub_type": "message","message": "Jump","message_RU": "Прыжок | От него"}],
 
 "s-3020-2200-133-1": [{"type": "text","sub_type": "message","message": "Jump","message_RU": "Бублики"},
                       {"type": "func","func": Spawnitem2.bind(null,445,0,0,10,300,200,4000)}],

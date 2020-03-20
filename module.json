@@ -8,12 +8,12 @@
         "settingsMigrator": "settings_migrator.js",
         "settingsVersion": "1.01"
     },
-    "author": "Kasea/michengs/ITunk",
+    "author": "HSDN / Kasea / michengs / ITunk",
     "description": "Советы по данжам",
-    "servers": ["https://raw.githubusercontent.com/GrafNikola/tera-guide/master/"],
-    "supportUrl": "https://github.com/GrafNikola/tera-guide/pulls",
+    "servers": ["https://raw.githubusercontent.com/hsdn/tera-guide/master/"],
+    "supportUrl": "https://github.com/hsdn/tera-guide/pulls",
     "dependencies": {
         "library": "https://raw.githubusercontent.com/tera-toolbox-mods/library/master/module.json"
     },
-    "version": "91.03"
+    "version": "91.04"
 }

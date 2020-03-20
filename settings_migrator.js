@@ -2,7 +2,7 @@
 const DefaultSettings = {
     "enabled": true,
     "systemNotice": false,
-    "notice": false,
+    "notice": true,
     "stream": false,
 	"cc": [
 		"</font><font color=\"#ffff00\">"

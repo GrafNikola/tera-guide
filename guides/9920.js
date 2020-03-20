@@ -65,18 +65,18 @@ SPAWNING_SECOND_CIRCLE_FLOWERS.push({
 //剑舞前戳+逆时针旋转+右手扇形攻击+外到内甜甜圈 
 //heart thrust+anticlockwise spin+right swipe+AOEs from out to in
 
-SPAWNING_FIRST_CIRCLE_FLOWERS.push({"type": "text","class_position":"tank","sub_type": "message","message": "right→>out to in","message_TW": "右→ + 从外到内"});
-SPAWNING_FIRST_CIRCLE_FLOWERS.push({"type": "text","class_position":"dps","sub_type": "message","message": "left←>out to in","message_TW": "左← + 从外到内"});
-SPAWNING_FIRST_CIRCLE_FLOWERS.push({"type": "text","class_position":"heal","sub_type": "message","message": "left←>out to in","message_TW": "左← + 从外到内"});
+SPAWNING_FIRST_CIRCLE_FLOWERS.push({"type": "text","class_position":"tank","sub_type": "message","message": "right→>out to in","message_TW": "右→ + 从外到内","message_RU": "Вправо > наружу + внутрь"});
+SPAWNING_FIRST_CIRCLE_FLOWERS.push({"type": "text","class_position":"dps","sub_type": "message","message": "left←>out to in","message_TW": "左← + 从外到内","message_RU": "Влево > наружу + внутрь"});
+SPAWNING_FIRST_CIRCLE_FLOWERS.push({"type": "text","class_position":"heal","sub_type": "message","message": "left←>out to in","message_TW": "左← + 从外到内","message_RU": "Влево > наружу + внутрь"});
 SPAWNING_FIRST_CIRCLE_FLOWERS.push({"type": "spawn","id": ITEM_SPAWNED_ON_SWIPE_ID,"sub_delay": ITEM_SPAWNED_ON_SWIPE_SUB_DELAY,"distance": ITEM_SPAWNED_ON_SWIPE_DISTANCE,"offset": -1});
 SPAWNING_FIRST_CIRCLE_FLOWERS.push({"type": "spawn","id": ITEM_SPAWNED_ON_SWIPE_ID,"sub_delay": ITEM_SPAWNED_ON_SWIPE_SUB_DELAY,"distance": ITEM_SPAWNED_ON_SWIPE_DISTANCE,"offset": -2.3});
 
 //剑舞前戳+顺时针旋转+左手扇形攻击+内到外甜甜圈
 //heart thrust+clockwise spin+left swipe+AOEs from in to out
 
-SPAWNING_SECOND_CIRCLE_FLOWERS.push({"type": "text","class_position":"tank","sub_type": "message","message": "left←>in to out","message_TW": "左← + 从内到外"});
-SPAWNING_SECOND_CIRCLE_FLOWERS.push({"type": "text","class_position":"dps","sub_type": "message","message": "right→>in to out","message_TW": "右→ + 从内到外"});
-SPAWNING_SECOND_CIRCLE_FLOWERS.push({"type": "text","class_position":"heal","sub_type": "message","message": "right→>in to out","message_TW": "右→ + 从内到外"});
+SPAWNING_SECOND_CIRCLE_FLOWERS.push({"type": "text","class_position":"tank","sub_type": "message","message": "left←>in to out","message_TW": "左← + 从内到外","message_RU": "Влево > внутрь + наружу"});
+SPAWNING_SECOND_CIRCLE_FLOWERS.push({"type": "text","class_position":"dps","sub_type": "message","message": "right→>in to out","message_TW": "右→ + 从内到外","message_RU": "Вправо > внутрь + наружу"});
+SPAWNING_SECOND_CIRCLE_FLOWERS.push({"type": "text","class_position":"heal","sub_type": "message","message": "right→>in to out","message_TW": "右→ + 从内到外","message_RU": "Вправо > внутрь + наружу"});
 SPAWNING_SECOND_CIRCLE_FLOWERS.push({"type": "spawn","id": ITEM_SPAWNED_ON_SWIPE_ID,"sub_delay": ITEM_SPAWNED_ON_SWIPE_SUB_DELAY,"distance": ITEM_SPAWNED_ON_SWIPE_DISTANCE,"offset": 1});
 SPAWNING_SECOND_CIRCLE_FLOWERS.push({"type": "spawn","id": ITEM_SPAWNED_ON_SWIPE_ID,"sub_delay": ITEM_SPAWNED_ON_SWIPE_SUB_DELAY,"distance": ITEM_SPAWNED_ON_SWIPE_DISTANCE,"offset": 2.3});
 
@@ -89,7 +89,8 @@ const EVENT_DELAY_FIRST_BOSS_HM = [
 "sub_type": "message",
 "delay": TIMER_DELAY,
 "message": "Dodge!",
-"message_TW": "注意躲避"
+"message_TW": "注意躲避",
+"message_RU": "Ивейд!"
 },
 ];
 
@@ -131,7 +132,8 @@ if(counter >= 2) {
 handlers['text']({
 "sub_type": "message",
 "message": "Back attack",
-"message_TW": "后砸"
+"message_TW": "后砸",
+"message_RU": "Задняя"
 });
 }
 timer = setTimeout(()=>{
@@ -199,22 +201,22 @@ module.exports = {
 //后跳+内外圈,安全区域:站里面+站外面
 //Backstep+donuts, stay in, get out
 
-"s-920-1000-1117-0": [{"type": "text","sub_type": "message","message": "stay in↑ + get out↓","message_TW": "站里面↑+站外面↓"}],
+"s-920-1000-1117-0": [{"type": "text","sub_type": "message","message": "stay in↑ + get out↓","message_TW": "站里面↑+站外面↓","message_RU": "Внутрь + Наружу"}],
 
 //原地抬腿+内外圈,安全区域:站外面+站里面
 //Stomp+donuts, get out, stay in
 
-"s-920-1000-1116-0": [{"type": "text","sub_type": "message","message": "get out↓ + stay in↑","message_TW": "站外面↓+站里面↑"}],
+"s-920-1000-1116-0": [{"type": "text","sub_type": "message","message": "get out↓ + stay in↑","message_TW": "站外面↓+站里面↑","message_RU": "Наружу + Внутрь"}],
 
 //剑戳地2下+后方挥盾
 //ground thrust 2x+shield swing
 
-"s-920-1000-1109-0": [{"type": "text","sub_type": "message","message": "back attack","message_TW": "后方攻击"}],
+"s-920-1000-1109-0": [{"type": "text","sub_type": "message","message": "back attack","message_TW": "后方攻击","message_RU": "Задняя"}],
 
 //三圈顺序:全+外+内 站里面站外面
 //Massive In-Out Big AoE+Outer AoE+Inner AoE
 
-"s-920-1000-1130-0": [{"type": "text","sub_type": "message","message": "full>outer>inner","message_TW": "伤害顺序：全>外>内"}],
+"s-920-1000-1130-0": [{"type": "text","sub_type": "message","message": "full>outer>inner","message_TW": "伤害顺序：全>外>内","message_RU": "Общий > Внешний > Внутренний"}],
 
 
 //一王愤怒
@@ -223,22 +225,22 @@ module.exports = {
 //后跳+内外圈,安全区域:站里面+站外面
 //Backstep+donuts, stay in, get out
 
-"s-920-1000-2117-0": [{"type": "text","sub_type": "message","message": "stay in↑ + get out↓","message_TW": "站里面↑+站外面↓"}],
+"s-920-1000-2117-0": [{"type": "text","sub_type": "message","message": "stay in↑ + get out↓","message_TW": "站里面↑+站外面↓","message_RU": "Внутрь + Наружу"}],
 
 //原地抬腿+内外圈,安全区域:站外面+站里面
 //Stomp+donuts, get out, stay in
 
-"s-920-1000-2116-0": [{"type": "text","sub_type": "message","message": "get out↓ + stay in↑","message_TW": "站外面↓+站里面↑"}],
+"s-920-1000-2116-0": [{"type": "text","sub_type": "message","message": "get out↓ + stay in↑","message_TW": "站外面↓+站里面↑","message_RU": "Наружу + Внутрь"}],
 
 //剑戳地2下+后方挥盾
 //ground thrust 2x+shield swing
 
-"s-920-1000-2109-0": [{"type": "text","sub_type": "message","message": "back attack","message_TW": "后方攻击"}],
+"s-920-1000-2109-0": [{"type": "text","sub_type": "message","message": "back attack","message_TW": "后方攻击","message_RU": "Задняя"}],
 
 //愤怒时 三圈顺序:全+内+外
 //enraged Massive In-Out Big AoE+Inner AoE+Outer AoE
 
-"s-920-1000-2130-0": [{"type": "text","sub_type": "message","message": "full>inner>outer","message_TW": "伤害顺序：全>内>外"}],
+"s-920-1000-2130-0": [{"type": "text","sub_type": "message","message": "full>inner>outer","message_TW": "伤害顺序：全>内>外","message_RU": "Общий > Внутренний > Внешний"}],
 
 //一王特殊技能
 //firstboss special attack
@@ -254,52 +256,52 @@ module.exports = {
 //点名转身划刀
 //target one player then turn aroud with swing
 
-"s-920-2000-1108-0": [{"type": "text","sub_type": "message","message": "Target swing","message_TW": "点名划刀攻击"}],
+"s-920-2000-1108-0": [{"type": "text","sub_type": "message","message": "Target swing","message_TW": "点名划刀攻击","message_RU": "Выпад"}],
 
 //点名转身划刀,左手边伤害
 //target one player then turn aroud with left swing
 
-"s-920-2000-1113-0": [{"type": "text","sub_type": "message","message": "right hand swing","message_TW": "左手伤害"}],
+"s-920-2000-1113-0": [{"type": "text","sub_type": "message","message": "right hand swing","message_TW": "左手伤害","message_RU": "Замах по правую руку"}],
 
 //点名转身划刀,右手边伤害
 //target one player then turn aroud with right swing
 
-"s-920-2000-1114-0": [{"type": "text","sub_type": "message","message": "left hand swing","message_TW": "右手伤害"}],
+"s-920-2000-1114-0": [{"type": "text","sub_type": "message","message": "left hand swing","message_TW": "右手伤害","message_RU": "Замах по левую руку"}],
 
 //转圈攻击（1106）
 //Spin attack
 
-"s-920-2000-1106-0": [{"type": "text","sub_type": "message","message": "Spin attack","message_TW": "转圈攻击"}],
+"s-920-2000-1106-0": [{"type": "text","sub_type": "message","message": "Spin attack","message_TW": "转圈攻击","message_RU": "Крутилка"}],
 
 //后方攻击（1105）
 //Back attack
 
-"s-920-2000-1105-0": [{"type": "text","sub_type": "message","message": "Back attack","message_TW": "后方攻击"}],
+"s-920-2000-1105-0": [{"type": "text","sub_type": "message","message": "Back attack","message_TW": "后方攻击","message_RU": "Задняя"}],
 
 //点名大跳晕人
 //Random aggro stun
 
-"s-920-2000-1104-0": [{"type": "text","sub_type": "message","message": "Random jump","message_TW": "点名大跳"}],
+"s-920-2000-1104-0": [{"type": "text","sub_type": "message","message": "Random jump","message_TW": "点名大跳","message_RU": "Прыжок"}],
 
 
 //眩晕攻击
 //Stun attack
 
-"s-920-2000-1110-0": [{"type": "text","sub_type": "message","message": "Stun attack","message_TW": "眩晕攻击"}],
+"s-920-2000-1110-0": [{"type": "text","sub_type": "message","message": "Stun attack","message_TW": "眩晕攻击","message_RU": "Стан"}],
 
 //BOSS右手边划刀,安全区域：坦右,打左
 //right hand side swing, tank goes to right, dps goes to left
 
-"s-920-2000-1112-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "right→","message_TW": "右→"},
-{"type": "text","class_position":"dps","sub_type": "message","message": "left←","message_TW": "左←"},
-{"type": "text","class_position":"heal","sub_type": "message","message": "left←","message_TW": "左←"}],
+"s-920-2000-1112-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "right→","message_TW": "右→","message_RU": "Право"},
+{"type": "text","class_position":"dps","sub_type": "message","message": "left←","message_TW": "左←","message_RU": "Лево"},
+{"type": "text","class_position":"heal","sub_type": "message","message": "left←","message_TW": "左←","message_RU": "Лево"}],
 
 //BOSS左手边划刀,安全区域：坦左,打右
 //left hand side swing, tank goes to left, dps goes to right
 
-"s-920-2000-1111-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "left←","message_TW": "左←"},
-{"type": "text","class_position":"dps","sub_type": "message","message": "right→","message_TW": "右→"},
-{"type": "text","class_position":"heal","sub_type": "message","message": "right→","message_TW": "右→"}],
+"s-920-2000-1111-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "left←","message_TW": "左←","message_RU": "Право"},
+{"type": "text","class_position":"dps","sub_type": "message","message": "right→","message_TW": "右→","message_RU": "Право"},
+{"type": "text","class_position":"heal","sub_type": "message","message": "right→","message_TW": "右→","message_RU": "Право"}],
 
 //二王 愤怒
 //secondboss,enraged
@@ -307,51 +309,51 @@ module.exports = {
 //转圈攻击（1106）
 //Spin attack
 
-"s-920-2000-2106-0": [{"type": "text","sub_type": "message","message": "Spin attack","message_TW": "转圈攻击"}],
+"s-920-2000-2106-0": [{"type": "text","sub_type": "message","message": "Spin attack","message_TW": "转圈攻击","message_RU": "Круговая"}],
 
 //愤怒后方攻击（2105）
 //enraged back attack
 
-"s-920-2000-2105-0": [{"type": "text","sub_type": "message","message": "back attack","message_TW": "后方攻击"}], 
+"s-920-2000-2105-0": [{"type": "text","sub_type": "message","message": "back attack","message_TW": "后方攻击","message_RU": "Задняя"}], 
 
 //点名大跳晕人
 //Random aggro stun
 
-"s-920-2000-2104-0": [{"type": "text","sub_type": "message","message": "Random jump","message_TW": "点名大跳"}],
+"s-920-2000-2104-0": [{"type": "text","sub_type": "message","message": "Random jump","message_TW": "点名大跳","message_RU": "Прыжок"}],
 
 //BOSS右手边划刀,安全区域：坦右,打左
 //right hand side swing, tank goes to right, dps goes to left
 
-"s-920-2000-2112-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "right→","message_TW": "右→"},
+"s-920-2000-2112-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "right→","message_TW": "右→","message_RU": "Право"},
 {"type": "text","class_position":"dps","sub_type": "message","message": "left←","message_TW": "左←"},
 {"type": "text","class_position":"heal","sub_type": "message","message": "left←","message_TW": "左←"}],
 
 //BOSS左手边划刀,安全区域：坦左,打右
 //left hand side swing, tank goes to left, dps goes to right
 
-"s-920-2000-2111-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "left←","message_TW": "左←"},
-{"type": "text","class_position":"dps","sub_type": "message","message": "right→","message_TW": "右→"},
-{"type": "text","class_position":"heal","sub_type": "message","message": "right→","message_TW": "右→"}],
+"s-920-2000-2111-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "left←","message_TW": "左←","message_RU": "Лево"},
+{"type": "text","class_position":"dps","sub_type": "message","message": "right→","message_TW": "右→","message_RU": "Право"},
+{"type": "text","class_position":"heal","sub_type": "message","message": "right→","message_TW": "右→","message_RU": "Право"}],
 
 //眩晕攻击
 //Stun attack
 
-"s-920-2000-2110-0": [{"type": "text","sub_type": "message","message": "Stun attack","message_TW": "眩晕攻击"}],
+"s-920-2000-2110-0": [{"type": "text","sub_type": "message","message": "Stun attack","message_TW": "眩晕攻击","message_RU": "Стан"}],
 
 //点名转身划刀
 //target one player then turn aroud with swing
 
-"s-920-2000-2108-0": [{"type": "text","sub_type": "message","message": "Target swing","message_TW": "点名划刀攻击"}],
+"s-920-2000-2108-0": [{"type": "text","sub_type": "message","message": "Target swing","message_TW": "点名划刀攻击","message_RU": "Выпад"}],
 
 //点名转身划刀,左手边伤害
 //target one player then turn aroud with left swing
 
-"s-920-2000-2113-0": [{"type": "text","sub_type": "message","message": "right hand swing","message_TW": "左手伤害"}],
+"s-920-2000-2113-0": [{"type": "text","sub_type": "message","message": "right hand swing","message_TW": "左手伤害","message_RU": "Замах по правую руку"}],
 
 //点名转身划刀,右手边伤害
 //target one player then turn aroud with right swing
 
-"s-920-2000-2114-0": [{"type": "text","sub_type": "message","message": "left hand swing","message_TW": "右手伤害"}],
+"s-920-2000-2114-0": [{"type": "text","sub_type": "message","message": "left hand swing","message_TW": "右手伤害","message_RU": "Замах по левую руку"}],
 
 
 //二王特殊技能
@@ -360,17 +362,17 @@ module.exports = {
 //红色鉴定,安全区域：15M外
 //Red, stay 15m away
 
-"s-920-2000-3119-0": [{"type": "text","sub_type": "message","message": "red: get out↓","message_TW": "红色：外↓"}],
+"s-920-2000-3119-0": [{"type": "text","sub_type": "message","message": "red: get out↓","message_TW": "红色：外↓","message_RU": "Красный: наружу"}],
 
 //蓝色鉴定,安全区域：15M内（3220）
 //Blue, stay near within 15m
 
-"s-920-2000-3220-0": [{"type": "text","sub_type": "message","message": "blue: stay in↑","message_TW": "蓝色：内↑"}],
+"s-920-2000-3220-0": [{"type": "text","sub_type": "message","message": "blue: stay in↑","message_TW": "蓝色：内↑","message_RU": "Синий: внутрь"}],
 
 //眩晕圈（3116）+外圈伤害（3118）
 //stun+donut
 
-"s-920-2000-3116-0": [{"type": "text","sub_type": "message","message": "dodge + stay in↑","message_TW": "躲避+内↑"}],
+"s-920-2000-3116-0": [{"type": "text","sub_type": "message","message": "dodge + stay in↑","message_TW": "躲避+内↑","message_RU": "Ивейд + Внутрь"}],
 
 //点名喷长条毒（3107）
 //random aggro poison（3107）
@@ -397,16 +399,16 @@ module.exports = {
 //进场的推人红圈
 //pushback when engaging
 
-"s-920-3000-1315-0": [{"type": "text","sub_type": "message","message": "Pushback","message_TW": "开场推人"}],
+"s-920-3000-1315-0": [{"type": "text","sub_type": "message","message": "Pushback","message_TW": "开场推人","message_RU": "Откид"}],
 
 //点名大跳晕人（1107）
 //random aggro stun
 
-"s-920-3000-1107-0": [{"type": "text","sub_type": "message","message": "Random jump","message_TW": "点名大跳"}],
+"s-920-3000-1107-0": [{"type": "text","sub_type": "message","message": "Random jump","message_TW": "点名大跳","message_RU": "Прыжок"}],
 
 //点名出剑刃风暴（1204）
 //random target energy beam
-"s-920-3000-1204-0": [{"type": "text","sub_type": "message","message": "energy beam","message_TW": "点名剑气"}],
+"s-920-3000-1204-0": [{"type": "text","sub_type": "message","message": "energy beam","message_TW": "点名剑气","message_RU": "Волна"}],
 
 //剑舞前戳+逆时针旋转+右手扇形攻击+外到内甜甜圈 注:坦右边安全,打左边安全请自行更改
 //heart thrust+anticlockwise spin+right swipe+AOEs from out to in
@@ -421,12 +423,12 @@ module.exports = {
 //前后砸
 //front, back slam
 
-"s-920-3000-1113-0": [{"type": "text","sub_type": "message","message": "front, back slam","message_TW": "前后砸"}],
+"s-920-3000-1113-0": [{"type": "text","sub_type": "message","message": "front, back slam","message_TW": "前后砸","message_RU": "Передний, задний"}],
 
 //旋转攻击
 //spinning attack
 
-"s-920-3000-1115-0": [{"type": "text","sub_type": "message","message": "spinning attack","message_TW": "旋转攻击"}],
+"s-920-3000-1115-0": [{"type": "text","sub_type": "message","message": "spinning attack","message_TW": "旋转攻击","message_RU": "Круговая"}],
 
 //2连斜上挥（1104）后接的后砸（1119）
 //golf swing x2 + back slam
@@ -436,12 +438,12 @@ module.exports = {
 //后闪+旋转or前后砸
 //teleport back+ spin or front, back slam
 
-"s-920-3000-1202-0": [{"type": "text","sub_type": "message","message": "spin or front,back slam","message_TW": "旋转or前后砸"}],
+"s-920-3000-1202-0": [{"type": "text","sub_type": "message","message": "spin or front,back slam","message_TW": "旋转or前后砸","message_RU": "Круговая или передний, задний"}],
 
 //蓝球+镭射
 //target energy beam（almost tank ?_?）
 
-"s-920-3000-1120-0": [{"type": "text","sub_type": "message","message": "energy beam","message_TW": "剑气攻击"}],
+"s-920-3000-1120-0": [{"type": "text","sub_type": "message","message": "energy beam","message_TW": "剑气攻击","message_RU": "Волна"}],
 
 //三王 愤怒
 //thirdboss, enraged
@@ -449,7 +451,7 @@ module.exports = {
 //点名出剑刃风暴,手里握篮球挥篮球（1204）,剑刃风暴（1121）
 //random aggro, holding blue orb, energy beam
 
-"s-920-3000-2204-0": [{"type": "text","sub_type": "message","message": "enraged:energy beam","message_TW": "愤怒：点名剑气"}],
+"s-920-3000-2204-0": [{"type": "text","sub_type": "message","message": "enraged:energy beam","message_TW": "愤怒：点名剑气","message_RU": "Волна в раге"}],
 
 //剑舞前戳+逆时针旋转+右手扇形攻击+外到内甜甜圈 注:坦右边安全,打左边安全请自行更改
 //heart thrust+anticlockwise spin+right swipe+AOEs from out to in
@@ -464,7 +466,7 @@ module.exports = {
 //前后砸
 //front, back slam
 
-"s-920-3000-2113-0": [{"type": "text","sub_type": "message","message": "front, back slam","message_TW": "前后砸"}],
+"s-920-3000-2113-0": [{"type": "text","sub_type": "message","message": "front, back slam","message_TW": "前后砸","message_RU": "Передний, задний"}],
 
 //2连斜上挥（1104）后接的后砸（1119）
 //golf swing x2 + back slam
@@ -474,7 +476,7 @@ module.exports = {
 //旋转攻击
 //spinning attack
 
-"s-920-3000-2115-0": [{"type": "text","sub_type": "message","message": "spinning attack","message_TW": "旋转攻击"}],
+"s-920-3000-2115-0": [{"type": "text","sub_type": "message","message": "spinning attack","message_TW": "旋转攻击","message_RU": "Круговая"}],
 
 //点名大跳晕人（1107）
 //random aggro stun
@@ -484,12 +486,12 @@ module.exports = {
 //后闪+旋转or前后砸
 //teleport back+ spin or front, back slam
 
-"s-920-3000-2202-0": [{"type": "text","sub_type": "message","message": "spin or front,back slam","message_TW": "旋转or前后砸"}],
+"s-920-3000-2202-0": [{"type": "text","sub_type": "message","message": "spin or front,back slam","message_TW": "旋转or前后砸","message_RU": "Прыжок"}],
 
 //蓝球+镭射
 //target energy beam（almost tank ?_?）
 
-"s-920-3000-2120-0": [{"type": "text","sub_type": "message","message": "energy beam","message_TW": "剑气攻击"}],
+"s-920-3000-2120-0": [{"type": "text","sub_type": "message","message": "energy beam","message_TW": "剑气攻击","message_RU": "Волна"}],
 
 //三王特殊技能
 //thirdboss, special attacks
@@ -497,27 +499,27 @@ module.exports = {
 //召唤分身出点名剑气
 //clones, random aggro, energy beam
 
-"s-920-3000-1400-0": [{"type": "text","sub_type": "message","message": "beam","message_TW": "召咄分身：点名剑气"}],
+"s-920-3000-1400-0": [{"type": "text","sub_type": "message","message": "beam","message_TW": "召咄分身：点名剑气","message_RU": "Волны"}],
 
 //召唤分身出旋转攻击
 //clones, random aggro, spin attack
 
-"s-920-3000-1401-0": [{"type": "text","sub_type": "message","message": "spin","message_TW": "召咄分身：旋转攻击"}],
+"s-920-3000-1401-0": [{"type": "text","sub_type": "message","message": "spin","message_TW": "召咄分身：旋转攻击","message_RU": "Круговые"}],
 
 //三王色鉴颜色位置标识
 //color marks in cage
 /* -------------------------------- */ 
 // 红色 red
-"ae-0-0-9203037": [{"type": "text","sub_type": "message","message": "Red","message_TW": "红色"},
+"ae-0-0-9203037": [{"type": "text","sub_type": "message","message": "Red","message_TW": "红色","message_RU": "Красный"},
 {"type": "func","func": change_colour.bind(null, 'red')}],
 
 // 黄色 yellow
-"ae-0-0-9203038": [{"type": "text","sub_type": "message","message": "Yellow","message_TW": "黄色"},
+"ae-0-0-9203038": [{"type": "text","sub_type": "message","message": "Yellow","message_TW": "黄色","message_RU": "Желтый"},
 {"type": "func","func": change_colour.bind(null, 'yellow')}],
 
 
 // 蓝色 blue
-"ae-0-0-9203039": [{"type": "text","sub_type": "message","message": "Blue","message_TW": "蓝色"},
+"ae-0-0-9203039": [{"type": "text","sub_type": "message","message": "Blue","message_TW": "蓝色","message_RU": "Синий"},
 {"type": "func","func": change_colour.bind(null, 'blue')}],
 
 // 逆时针色鉴
