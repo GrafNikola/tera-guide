@@ -306,7 +306,7 @@ module.exports = {
 	{"type": "text","sub_type": "message","delay": 2250,"message": "pull","message_RU": "Откид!!!"}],	
 	
     "s-3201-1000-111-0": [{"type": "text","sub_type": "message","message": "Ranged DPS attention","message_RU": "Волна назад" }],	
-    "s-3201-1000-112-0": [{"type": "text","sub_type": "message","message": "left right","message_RU": "лево + право" }],	
+    //"s-3201-1000-112-0": [{"type": "text","sub_type": "message","message": "left right","message_RU": "лево + право" }],	
     "s-3201-1000-113-0": [{"type": "text","sub_type": "message","message": "Jump (Slow)","message_RU": "Прыжок" },
 	{"type": "text","sub_type": "message","delay": 1500,"message": "pull","message_RU": "Камень!"}
 	],
@@ -316,10 +316,10 @@ module.exports = {
 	{"type": "text","sub_type": "message","delay": 1500,"message": "pull","message_RU": "Камень!"},	
 	],	
 	//{"type": "text","sub_type": "notification","delay": 1500,"message": "pull","message_RU": "Камень!"}	
-    "s-3201-1000-119-0": [{"type": "text","sub_type": "message","delay": 1000,"message": "Back + Front","message_RU": "вперед + назад" }],
+    //"s-3201-1000-119-0": [{"type": "text","sub_type": "message","delay": 1000,"message": "Back + Front","message_RU": "вперед + назад" }],
     //"s-3201-1000-121-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "right","message_RU": "право" }],			
     //"s-3201-1000-122-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "left","message_RU": "лево" }],
-	"s-3201-1000-124-0": [{"type": "text","class_position":"tank","sub_type": "msgcg","message": "Stun attack","message_RU": "Стан(фаст)"}],
+	"s-3201-1000-124-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Stun attack","message_RU": "Стан(фаст)"}],
 	"s-3201-1000-127-0": [{"type": "text","class_position":"dps","sub_type": "message","message": "back","message_RU": "|Полоса| (фаст)"},
 	                       {"type": "text","class_position":"heal","sub_type": "message","message": "back","message_RU": "|Полоса| (фаст)"}],	
 	//"s-3201-1000-128-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Triple Attack","message_RU": "Комба"}],	
@@ -328,20 +328,20 @@ module.exports = {
     "s-3201-1000-132-0": [{"type": "text","sub_type": "message","message": "left right ←→","message_RU": "лево + право (фаст)" }],			
     "s-3201-1000-133-0": [{"type": "text","sub_type": "message","delay": 500,"message": "Jump (Fast)","message_RU": "Прыжок (фаст)" }],			
     "s-3201-1000-138-0": [{"type": "text","sub_type": "message","delay": 500,"message": "Jump P (Fast)","message_RU": "Прыжок (фаст)" }],	
-    "s-3201-1000-139-0": [{"type": "text","sub_type": "message","message": "Back + Front (Fast)","message_RU": "вперед + назад (фаст)" }],
+    //"s-3201-1000-139-0": [{"type": "text","sub_type": "message","message": "Back + Front (Fast)","message_RU": "вперед + назад (фаст)" }],
     //"s-3201-1000-141-0": [{"type": "text","class_position":"tank","sub_type": "message","message_RU": "双手前砸 (медленно)" }],	
 	//"s-3201-1000-142-0": [{"type": "text","class_position":"tank","sub_type": "message","message_RU": "1правая+левая"}],	
-    "s-3201-1000-143-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "left→right","message_RU": "слева-справа" },
-	 {"type": "text","class_position":"dps","sub_type": "message","message": "right←left","message_RU": "справа-слева" },
-	 {"type": "text","class_position":"heal","sub_type": "message","message": "right←left","message_RU": "справа-слева" },	 
+    "s-3201-1000-143-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "left→right","message_RU": "слева > справа" },
+	 {"type": "text","class_position":"dps","sub_type": "message","message": "right←left","message_RU": "справа < слева" },
+	 {"type": "text","class_position":"heal","sub_type": "message","message": "right←left","message_RU": "справа < слева" },	 
      {"type": "func","func": SpawnThing.bind(null,150,300,100,2715)},	//1
      {"type": "func","func": SpawnThing.bind(null,225,300,2800,4175)},   //6
      {"type": "func","func": SpawnThing.bind(null,30,300,100,1000)},	//1
      {"type": "func","func": SpawnThing.bind(null,330,300,1100,5000)}   //7	  
 	],	
-    "s-3201-1000-145-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "left→right","message_RU": "слева-справа" },
-	 {"type": "text","class_position":"dps","sub_type": "message","message": "right←left","message_RU": "справа-слева" },
-	 {"type": "text","class_position":"heal","sub_type": "message","message": "right←left","message_RU": "справа-слева" },	
+    "s-3201-1000-145-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "left→right","message_RU": "слева > справа" },
+	 {"type": "text","class_position":"dps","sub_type": "message","message": "right←left","message_RU": "справа < слева" },
+	 {"type": "text","class_position":"heal","sub_type": "message","message": "right←left","message_RU": "справа < слева" },	
      {"type": "func","func": SpawnThing.bind(null,30,300,100,1000)},	//1
      {"type": "func","func": SpawnThing.bind(null,330,300,1100,5000)},   //7	 	
      {"type": "func","func": SpawnThing.bind(null,150,300,100,2000)},	  //1
@@ -355,7 +355,7 @@ module.exports = {
 	{"type": "text","sub_type": "message","delay": 4000,"message": "pull","message_RU": "откид!"}],	
     "s-3201-1000-312-0": [{"type": "text","sub_type": "message","message_RU": "Мёд (фаст)!!!" },
 	{"type": "text","sub_type": "message","delay": 2000,"message": "pull","message_RU": "откид!!!"}],
-    "s-3201-1000-313-0": [{"type": "text","sub_type": "msgcg","message": "Circles (Slow)","message_RU": "Кольцо"},
+    "s-3201-1000-313-0": [{"type": "text","sub_type": "message","message": "Circles (Slow)","message_RU": "Кольцо"},
 	{"type": "func","func": Spawnitem2.bind(null,553,0,75,15,300,6000)}],		
     "s-3201-1000-314-0": [{"type": "text","sub_type": "message","message": "Circles (Fast)","message_RU": "Кольцо (фаст)" },
 	{"type": "func","func": Spawnitem2.bind(null,553,0,75,15,300,6000)}],	
@@ -370,10 +370,10 @@ module.exports = {
   //  "s-3201-2000-104-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "right","message_RU": "右手" }],
    // "s-3201-2000-105-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "front","message_RU": "前突刺" }],
  //   "s-3201-2000-107-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "left","message_RU": "左手" }],	
-    "s-3201-2000-108-0": [{"type": "text","sub_type": "message","message": "Back attack!","message_RU": "Вперед | Назад" }],		
+    "s-3201-2000-108-0": [{"type": "text","sub_type": "message","message": "Back attack!","message_RU": "Откид назад!" }],		
    // "s-3201-2000-109-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "quaternion Attack","message_RU": "4连击" }],	
-    "s-3201-2000-110-0": [{"type": "text","sub_type": "message","message_RU": "?" }],			
-    "s-3201-2000-114-0": [{"type": "text","sub_type": "message","message_RU": "??" }],	
+    //"s-3201-2000-110-0": [{"type": "text","sub_type": "message","message_RU": "?" }],			
+    //"s-3201-2000-114-0": [{"type": "text","sub_type": "message","message_RU": "??" }],	
    // "s-3201-2000-116-0": [{"type": "text","sub_type": "message","message": "back","message_RU": "后喷" }],	
     "s-3201-2000-150-0": [{"type": "text","sub_type": "message","message_RU": "фантом" }],	
 	//"s-3201-2000-201-0": [{"type": "text","sub_type": "message","message": "back 8m","message_RU": "Движение назад 8 м" }],	
@@ -385,9 +385,9 @@ module.exports = {
    "am-3201-2000-32010220": [{"type": "text","sub_type": "notification","message": "next false","message_RU": "след ложь" },{"type": "func","func": skilld_event.bind(null, 32010220)}],		
 	"ae-0-0-9203100": [{"type": "func","func": skilld_event.bind(null, 9203100)}],
 	
-    "s-3201-2000-211-0": [{"type": "text","sub_type": "message","message": "front","message_RU": "???" }],	
+    //"s-3201-2000-211-0": [{"type": "text","sub_type": "message","message": "front","message_RU": "???" }],	
 
-    "s-3201-2000-213-0": [{"type": "text","sub_type": "message","message": "back","message_RU": "????" }],	
+    //"s-3201-2000-213-0": [{"type": "text","sub_type": "message","message": "back","message_RU": "????" }],	
 
    // "s-3201-2000-226-0": [{"type": "text","sub_type": "message","message_RU": "空中吸收 蓄力" }],	
     "s-3201-2000-228-0": [ 
@@ -397,11 +397,11 @@ module.exports = {
        //{"type": "text","sub_type": "notification","delay": 3500,"message": "dodge","message_RU": "Эвейд"}
       // {"type": "text","sub_type": "message","delay": 65000,"message": "dodge","message_RU": "?????"},
     //"s-3201-2000-229-0": [{"type": "text","sub_type": "message","message": "3","message_RU": "3 Бомбы" }],	
-    "s-3201-2000-230-0": [{"type": "text","sub_type": "msgcg","message": "AOE","message_RU": "AOE!!" }],
-    "s-3201-2000-231-0": [{"type": "text","sub_type": "msgcg","message": "OUT safe ↓","message_RU": "От"},
+    "s-3201-2000-230-0": [{"type": "text","sub_type": "message","message": "AOE","message_RU": "AOE!!" }],
+    "s-3201-2000-231-0": [{"type": "text","sub_type": "message","message": "OUT safe ↓","message_RU": "ОТ НЕГО"},
 						
 						{"type": "func","func": Spawnitem2.bind(null,553,0,0,15,300,3000)}],	
-    "s-3201-2000-232-0": [{"type": "text","sub_type": "msgcg","message": "IN safe ↑","message_RU": "К"},
+    "s-3201-2000-232-0": [{"type": "text","sub_type": "message","message": "IN safe ↑","message_RU": "К НЕМУ"},
 					
 						{"type": "func","func": Spawnitem2.bind(null,553,0,0,15,300,3000)},
 						{"type": "func","func": Spawnitem2.bind(null,553,0,0,15,1000,3000)}	
