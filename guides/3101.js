@@ -51,7 +51,7 @@ module.exports = {
     "s-3101-1000-149-0": [{"type": "text","sub_type": "message","message_RU": "Левая рука(подлет)" }],	
     "s-3101-1000-305-0": [{"type": "text","sub_type": "message","message": "Pizza","message_RU": "Pizza" }],		
     "s-3101-1000-313-0": [{"type": "text","sub_type": "msgcp","message": "Circles (Slow)","message_RU": "Кольцо"},
-	{"type": "func","func": Spawnitem2.bind(null,912,0,75,15,300,6000)}],		
+	{"type": "func","func": Spawnitem2.bind(null,553,0,75,15,300,6000)}],		
 
 
 
@@ -79,10 +79,10 @@ module.exports = {
     "s-3101-2000-226-0": [{"type": "text","sub_type": "message","message_RU": "????" }],	
     "s-3101-2000-228-0": [ {"type": "text","sub_type": "message","message": "Team up","message_RU": "Камни (вместе)!!!" }],
     "s-3101-2000-230-0": [{"type": "text","sub_type": "msgcg","message": "AOE","message_RU": "AOE" }],
-    "s-3101-2000-231-0": [{"type": "text","sub_type": "msgcp","message": "OUT safe ↓","message_RU": "От"},{"type": "func","func": Spawnitem2.bind(null,912,0,0,15,300,3000)}],	
+    "s-3101-2000-231-0": [{"type": "text","sub_type": "msgcp","message": "OUT safe ↓","message_RU": "От"},{"type": "func","func": Spawnitem2.bind(null,553,0,0,15,300,3000)}],	
     "s-3101-2000-232-0": [{"type": "text","sub_type": "msgcp","message": "IN safe ↑","message_RU": "К"},
-	{"type": "func","func": Spawnitem2.bind(null,912,0,0,15,300,3000)},
-	{"type": "func","func": Spawnitem2.bind(null,912,0,0,15,875,3000)}	
+	{"type": "func","func": Spawnitem2.bind(null,553,0,0,15,300,3000)},
+	{"type": "func","func": Spawnitem2.bind(null,553,0,0,15,875,3000)}	
 	],		
     "s-3101-2000-234-0": [{"type": "text","sub_type": "message","message": "Debuffs","message_RU": "Debuffs" }],
     "s-3101-2000-235-0": [{"type": "text","sub_type": "message","message": "Debuffs","message_RU": "Debuffs" }]	
