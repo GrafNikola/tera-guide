@@ -45,10 +45,10 @@
         "lib.js": "513df666094c096340348f1c87acef9b7406c30f0873f267d207824c89193d40",
         "LICENSE": "7f2ae2125b491e75c546a5d538f82ad4431d5d6b1bbd4aea724864a21daeca63",
         "module.json": "4435ae4cf94392653a0552a8afe16de8b2ccf19ec1a6b5aaed2bc46d5f4494f5",
-        "README.md": "859637c3f6f74ce316fab22486a258968061e5e00b2c0f82a8aea9841c49a6d9",
+        "README.md": "266b7579c7a28d9c24bfbdfab1546c0dbebc085dc5dfa3069477e962792a69da",
         "settings_migrator.js": "10620e940494a1009677c513b3e189276d2375ac8b592397f7742552f46639fa",
-        "StrSheet_Dungeon.json": "d8aaf4687808bf20d37ec9209cef4acbda91c389b599203469786e964a8600c6",
-        "StrSheet_RU_Dungeon.json": "8a1b5697c9e69cf2661c117781efbe8ca45ba1d6a18a1757c69c8aba0a8967de"
+        "StrSheet_Dungeon.json": "453b6d96026fd255108dc22bab4d75dfa2d1f76778647e4cf95a9f5160fb858a",
+        "StrSheet_RU_Dungeon.json": "453b6d96026fd255108dc22bab4d75dfa2d1f76778647e4cf95a9f5160fb858a"
         
     },
     "defs": {
