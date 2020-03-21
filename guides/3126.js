@@ -68,13 +68,13 @@ function Spawnitem1(item,degree,distance,angles, maxRadius, times, handlers, eve
 }
 const CK_TipMsg =
 {
- 0: {msgt: 'IN',     msg: 'К'}, 
- 1: {msgt: 'OUT',     msg: 'От'}
+ 0: {msgt: 'IN',     msg: 'К НЕМУ'}, 
+ 1: {msgt: 'OUT',     msg: 'ОТ НЕГО'}
 };
 const debuff_TipMsg =
 {
- 0: {msg: '------Готов к переключению красного-------!'},
- 1: {msg: '------Готов к переключению синего-------'}
+ 0: {msg: 'Готов к переключению красного'},
+ 1: {msg: 'Готов к переключению синего'}
 };
 const boss_skill =
 {
@@ -262,8 +262,8 @@ module.exports = {
                        {"type": "func","func": Spawnitem1.bind(null,445,0,0,260,500,1500)}],
 "s-3126-1000-1118-1": [{"type": "text","sub_type": "message","message": "Jump","message_RU": "Ивейд!"}],
 "s-3126-1000-2118-1": [{"type": "text","sub_type": "message","message": "Jump","message_RU": "Ивейд!"}],
-"s-3126-1000-118-0": [{"type": "text","sub_type": "message","message": "Jump","message_RU": "Прыжок"}],
-"s-3126-1000-160-0": [{"type": "text","sub_type": "message","message": "Jump","message_RU": "Прыжок"}],
+"s-3126-1000-118-2": [{"type": "text","sub_type": "message","message": "Jump","message_RU": "Прыжок"}],
+"s-3126-1000-160-2": [{"type": "text","sub_type": "message","message": "Jump","message_RU": "Прыжок"}],
 "s-3126-1000-1114-0": [{"type": "text","sub_type": "message","message": "front fire","message_RU": "Огонь впереди"}],
 "s-3126-1000-2114-0": [{"type": "text","sub_type": "message","message": "front fire","message_RU": "Огонь впереди"}],
 "s-3126-1000-1145-0": [{"type": "text","sub_type": "message","message": "stun","message_RU": "Стан"}],
