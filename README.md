@@ -54,3 +54,6 @@ https://github.com/tera-toolbox-mods/library
 3027 Арена безумия
 
 3126 Логово Бессмертного Келсаика
+
+## Примечания
+Основано на https://github.com/michengs/tera-guide/
