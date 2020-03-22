@@ -309,10 +309,10 @@ module.exports = {
 "s-3126-1000-2139-0": [{"type": "text","sub_type": "message","message": "60°","message_RU": "60° всем (Огонь)"}],
 "s-3126-1000-1140-0": [{"type": "text","sub_type": "message","message": "40","message_RU": "40° всем (Лёд)"}],
 "s-3126-1000-2140-0": [{"type": "text","sub_type": "message","message": "40","message_RU": "40° всем (Лёд)"}],
-"s-3126-1000-1212-0": [{"type": "func","func": skilld_event.bind(null, 212)},{"type": "func","func": Spawnitem2.bind(null,912,0,0,8,425,200,6000)}],  
-"s-3126-1000-1215-0": [{"type": "func","func": skilld_event.bind(null, 215)},{"type": "func","func": Spawnitem2.bind(null,912,0,0,8,425,200,6000)}],      
-"s-3126-1000-1213-0": [{"type": "func","func": skilld_event.bind(null, 213)},{"type": "func","func": Spawnitem2.bind(null,912,0,0,8,425,200,6000)}],
-"s-3126-1000-1214-0": [{"type": "func","func": skilld_event.bind(null, 214)},{"type": "func","func": Spawnitem2.bind(null,912,0,0,8,425,200,6000)}],
+"s-3126-1000-1212-0": [{"type": "func","func": skilld_event.bind(null, 212)},{"type": "func","func": Spawnitem2.bind(null,553,0,0,8,425,200,6000)}],  
+"s-3126-1000-1215-0": [{"type": "func","func": skilld_event.bind(null, 215)},{"type": "func","func": Spawnitem2.bind(null,553,0,0,8,425,200,6000)}],      
+"s-3126-1000-1213-0": [{"type": "func","func": skilld_event.bind(null, 213)},{"type": "func","func": Spawnitem2.bind(null,553,0,0,8,425,200,6000)}],
+"s-3126-1000-1214-0": [{"type": "func","func": skilld_event.bind(null, 214)},{"type": "func","func": Spawnitem2.bind(null,553,0,0,8,425,200,6000)}],
 "qb-3126-1000-3026005": [{"type": "func","func": skilld_event.bind(null, 3026005)}],//吃同色恐惧
 "qb-3126-1000-3026004": [{"type": "func","func": skilld_event.bind(null, 3026004)}],//吃异色愤怒
 "qb-3126-1000-3126005": [{"type": "func","func": skilld_event.bind(null, 3126005)}],//吃同色恐惧
