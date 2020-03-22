@@ -147,10 +147,10 @@ module.exports = {
 	
 	
 	
-"s-3027-1001-255-0": [{"type": "func","func": Spawnitem1.bind(null,912,0,0,0,3000,5000)}],	//0
-"s-3027-1002-256-0": [{"type": "func","func": Spawnitem11.bind(null,912,0,0,0,3000,5000)}],	//60	
-"s-3027-1003-257-0": [{"type": "func","func": Spawnitem1.bind(null,912,0,0,0,3000,5000)}],	//0
-"s-3027-1004-258-0": [{"type": "func","func": Spawnitem11.bind(null,912,0,0,0,3000,5000)}],	//60	
+"s-3027-1001-255-0": [{"type": "func","func": Spawnitem1.bind(null,553,0,0,0,3000,5000)}],	//0
+"s-3027-1002-256-0": [{"type": "func","func": Spawnitem11.bind(null,553,0,0,0,3000,5000)}],	//60	
+"s-3027-1003-257-0": [{"type": "func","func": Spawnitem1.bind(null,553,0,0,0,3000,5000)}],	//0
+"s-3027-1004-258-0": [{"type": "func","func": Spawnitem11.bind(null,553,0,0,0,3000,5000)}],	//60	
 	
 "s-3027-1000-108-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Strike(slow)","message_RU": "Меч (медленный)"}],
 
@@ -185,15 +185,15 @@ module.exports = {
 "s-3027-1000-144-0": [{"type": "text","sub_type": "message","message": "Sword","message_RU": "Меч"}],		
 	
 	
-"s-3027-1000-356-0": [{"type": "text","sub_type": "message","message": "Teleport","message_RU": "Телепорт(таргет)"}], ////连招	点名					  
+"s-3027-1000-356-0": [{"type": "text","sub_type": "message","message": "Teleport","message_RU": "Телепорт (таргет)"}], ////连招	点名					  
 	
 	
-"s-3027-1000-117-0": [{"type": "text","sub_type": "message","message": "Teleport","message_RU": "Телепорт(таргет)"}],//连招	 随机
+"s-3027-1000-117-0": [{"type": "text","sub_type": "message","message": "Teleport","message_RU": "Телепорт (таргет)"}],//连招	 随机
 
 
 "s-3027-1000-145-0": [{"type": "text","sub_type": "message","message": "3x360°","message_RU": "3 удара | прыжок"}], //连招  3连挥刀 
 "s-3027-1000-139-0": [{"type": "text","sub_type": "message","message": "！","message_RU": "！"}],
-"s-3027-1000-140-0": [{"type": "text","sub_type": "message","message": "Jump","message_RU": "прыжок"},{"type": "func","func": Spawnitem2.bind(null,445,0,180,8,460,200,3000)}],	
+"s-3027-1000-140-0": [{"type": "text","sub_type": "message","message": "Jump","message_RU": "прыжок"},{"type": "func","func": Spawnitem2.bind(null,912,0,180,8,460,200,3000)}],	
 
 "s-3027-1000-151-0": [{"type": "text","sub_type": "message","message": "Three chop","message_RU": "3 удара | меч"}],  //连招  2次点
 "s-3027-1000-149-0": [{"type": "text","sub_type": "message","message": "random aggro","message_RU": "таргет"}],
@@ -208,7 +208,7 @@ module.exports = {
 "s-3027-1000-143-0": [{"type": "text","sub_type": "message","message": "Overhand Strike","message_RU": "меч"}],					  
 					  
 "s-3027-1000-116-0": [{"type": "text","sub_type": "message","message": "Jump","message_RU": "прыжок)"}],	
-"s-3027-1000-116-1": [{"type": "text","sub_type": "message","message": "dodge","message_RU": "эвейд!!"},{"type": "func","func": Spawnitem2.bind(null,445,0,180,8,460,200,3000)}],
+"s-3027-1000-116-1": [{"type": "text","sub_type": "message","message": "dodge","message_RU": "эвейд!!"},{"type": "func","func": Spawnitem2.bind(null,912,0,180,8,460,200,3000)}],
 
 "s-3027-1000-402-0": [{"type": "text","sub_type": "message","message": "Jump","message_RU": "прыжок)"}],
 "s-3027-1000-109-0": [{"type": "text","sub_type": "message","message": "Forward Jump","message_RU": "Прыжок вперед"}],
