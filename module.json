@@ -6,7 +6,7 @@
         "guiName": "TERA-Guide",
         "settingsFile": "config.json",
         "settingsMigrator": "settings_migrator.js",
-        "settingsVersion": "1.01"
+        "settingsVersion": "1.02"
     },
     "author": "HSDN / Kasea / michengs / ITunk",
     "description": "Советы по данжам",

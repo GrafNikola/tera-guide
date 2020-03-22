@@ -4,13 +4,10 @@ const DefaultSettings = {
     "systemNotice": false,
     "notice": true,
     "stream": false,
+    "spawnObject": true,
 	"cc": [
 		"</font><font color=\"#ffff00\">"
 	],
-	"rate": [
-		1
-	],	
-	 "speaks": true,	
     "chat-name": "Guide"	
 };
 
@@ -26,7 +23,10 @@ module.exports = function MigrateSettings(from_ver, to_ver, settings) {
         if (from_ver + 1 < to_ver) {
             // Recursively upgrade in one-version steps
             settings = MigrateSettings(from_ver, from_ver + 1, settings);
-            return MigrateSettings(from_ver + 1, to_ver, settings);
+            
+            setTimeout(function(){ 
+                    return MigrateSettings(from_ver + 1, to_ver, settings); 
+            }, 0);
         }
         
         // If we reach this point it's guaranteed that from_ver === to_ver - 1, so we can implement

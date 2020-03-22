@@ -25,16 +25,6 @@ const clb = '</font><font color="#00ffff">';//LIGHT BLUE 浅蓝色
 const cbl = '</font><font color="#000000">';//BLACK 黑色
 const cgr = '</font><font color="#777777">';//GRAY 灰色
 const cw = '</font><font color="#ffffff">';//WHITE 白色	
-const rate1 = 1;
-const rate2 = 2;
-const rate3 = 3;
-const rate4 = 4;
-const rate5 = 5;
-const rate6 = 6;
-const rate7 = 7;
-const rate8 = 8;
-const rate9 = 9;
-const rate10 = 10;
 
 class TeraGuide{
     constructor(dispatch) {
@@ -316,14 +306,11 @@ class TeraGuide{
 		if (StrSheet_RU_Dungeon_String) {
         if( spguide ) {
 				 text_handler({"sub_type": "alert","delay": 8000,"message_RU": 'Вы вошли в ' +  cr +  StrSheet_RU_Dungeon_String.string, "message": ' Enter SP  Dungeon： ' +  cr + StrSheet_Dungeon_String.string});  
-			}
-             else if( esguide ) {
+            }else if( esguide ) {
 				 text_handler({"sub_type": "alert","delay": 8000,"message_RU": 'Вы вошли в ' +  cr + StrSheet_RU_Dungeon_String.string, "message": ' Enter ES  Dungeon： ' + cr +  StrSheet_Dungeon_String.string}); 
+            }else{
+				 text_handler({"sub_type": "alert","delay": 8000,"message_RU": 'Вы вошли в ' +  cr + StrSheet_RU_Dungeon_String.string, "message": ' Enter   Dungeon： ' +  cr + StrSheet_Dungeon_String.string}); 
 			}
-             else{				 
-			     text_handler({"sub_type": "alert","delay": 8000,"message_RU": 'Вы вошли в ' +  cr + StrSheet_RU_Dungeon_String.string, "message": ' Enter   Dungeon： ' +  cr + StrSheet_Dungeon_String.string}); 
-			}
-			
 		} 
             }catch(e) {
                 active_guide = {};
@@ -338,7 +325,7 @@ class TeraGuide{
         });
 
         // Guide command
-        command.add(['guide','補助','辅助'], {
+        command.add(['guide'], {
             // Toggle debug settings
             debug(arg1) {
                 if(!arg1 || debug[arg1] === undefined) return command.message(`Invalid sub command for debug mode. ${arg1}`);
@@ -357,157 +344,102 @@ class TeraGuide{
                     // Call a function handler with the event we got from arg2 with yourself as the entity
                     function_event_handlers[arg1](JSON.parse(arg2), player);
             },
-			
             stream() {
             	dispatch.settings.stream = !dispatch.settings.stream;
-            	command.message(`仅声音提示 ${dispatch.settings.stream?"开启":"关闭"}.`);
-            	command.message(`stream ${dispatch.settings.stream?"on":"off"}.`);				
+				text_handler({"sub_type": "PRMSG","message_RU": `Стрим, скрытие сообщений ${dispatch.settings.stream?"Вкл.":"Выкл."}.`, "message": `stream ${dispatch.settings.stream?"on":"off"}.` }); 				
             },
-			
-            組隊長通知() {
-            	dispatch.settings.notice = !dispatch.settings.notice;	
-            	command.message(`虚拟队长通知已 ${dispatch.settings.notice?"开启":"关闭"}.`);
+            spawnObject() {
+            	dispatch.settings.spawnObject = !dispatch.settings.spawnObject;
+				text_handler({"sub_type": "PRMSG","message_RU": `Спавн объектов ${dispatch.settings.spawnObject?"Выкл.":"Вкл."}.`, "message": `spawn object ${dispatch.settings.spawnObject?"on":"off"}.` });  				
             },				
-            组队长通知() {
-            	dispatch.settings.notice = !dispatch.settings.notice;	
-            	command.message(`虚拟队长通知已 ${dispatch.settings.notice?"开启":"关闭"}.`);
-            },	
             alert() {
             	dispatch.settings.notice = !dispatch.settings.notice;
-            	command.message(`Virtual captain has been ${dispatch.settings.notice?"on":"off"}.`);
-            },
-            組隊通知() {
-            	dispatch.settings.systemNotice = !dispatch.settings.systemNotice;
-            	command.message(`组队通知已 ${dispatch.settings.systemNotice?"开启":"关闭"}.`);
-            },			
+				text_handler({"sub_type": "PRMSG","message_RU": `Сообщения в чат ${dispatch.settings.notice?"Вкл.":"Выкл."}.`, "message": `Virtual captain has been ${dispatch.settings.notice?"on":"off"}.` });  				
+            },		
             systemNotice() {
             	dispatch.settings.systemNotice = !dispatch.settings.systemNotice;
             	command.message(`system Notice ${dispatch.settings.systemNotice?"on":"off"}.`);
+				text_handler({"sub_type": "PRMSG","message_RU": `сообщения в группе ${dispatch.settings.systemNotice?"Вкл.":"Выкл."}.`, "message": `system Notice ${dispatch.settings.systemNotice?"on":"off"}.` });  				
             },
-           
             cr() {
-               command.message( cr +"系统消息通知颜色红色");
-		       command.message(cr + ' system message notification color is red ');			   
+				text_handler({"sub_type": "CRMSG","message_RU": `Цвет системного сообщения: красный`, "message": `system message notification color is red` }); 		   
 	           dispatch.settings.cc.splice(0,1, cr );		   
             },
             cc() {
-            
-            	command.message( dispatch.settings.cc +"查看系统消息通知颜色");
-		command.message(dispatch.settings.cc + 'View the current system message notification color');			   
+				text_handler({"sub_type": "PRMSG","message_RU": `Текущий цвет системного сообщения`, "message": `View the current system message notification color` }); 							   
             },			
             co() {
-            	command.message( co +"系统消息通知颜色橘色");
-		command.message(co + ' system message notification color is ORANGE ');				
+				text_handler({"sub_type": "COMSG","message_RU": `Цвет системного сообщения: оранжевый`, "message": `system message notification color is  ORANGE` }); 			
 	           dispatch.settings.cc.splice(0,1, co);					
             },
             cy() {
-            	command.message( cy +"系统消息通知颜色黄色");
-		command.message(cy + ' system message notification color is YELLOW ');				
+				text_handler({"sub_type": "CYMSG","message_RU": `Цвет системного сообщения: желтый`, "message": `system message notification color is YELLOW` }); 			
 	           dispatch.settings.cc.splice(0,1, cy);					
             },
             cg() {
-            	command.message( cg +"系统消息通知颜色绿色");
-		command.message(cg + ' system message notification color is GREEN ');				
+				text_handler({"sub_type": "CGMSG","message_RU": `Цвет системного сообщения: зеленый`, "message": `system message notification color is GREEN` }); 			
 	           dispatch.settings.cc.splice(0,1, cg);					
             },
             cdb() {
-
-            	command.message( cdb +"系统消息通知颜色深蓝色");
-		command.message(cdb + ' system message notification color is DARK BLUE ');					
+				text_handler({"sub_type": "CDBMSG","message_RU": `Цвет системного сообщения: темно-синий`, "message": `system message notification color is DARK BLUE` }); 			
 	           dispatch.settings.cc.splice(0,1, cr);					
             },
             cb() {
-
-            	command.message( cb +"系统消息通知颜色蓝色");
-		command.message(cb + ' system message notification color is BLUE ');				
+				text_handler({"sub_type": "CBMSG","message_RU": `Цвет системного сообщения: синий`, "message": `system message notification color is BLUE` }); 			
 	           dispatch.settings.cc.splice(0,1, cb);				
             },
             cv() {
-            	command.message( cv +"系统消息通知颜色紫色");
-		command.message(cv + ' system message notification color is VIOLET ');				
+				text_handler({"sub_type": "CVMSG","message_RU": `Цвет системного сообщения: фиолетовый`, "message": `system message notification color is VIOLET` }); 			
 	           dispatch.settings.cc.splice(0,1, cv);				
             },
             cp() {
-
-            	command.message( cp +"系统消息通知颜色粉色");
-		command.message(cp + ' system message notification color is PINK ');					
+				text_handler({"sub_type": "CPMSG","message_RU": `Цвет системного сообщения: розовый`, "message": `system message notification color is PINK` }); 			
 	           dispatch.settings.cc.splice(0,1, cp);				
             },
             clp() {
-
-            	command.message( clp +"系统消息通知颜色浅粉色");
-		command.message(clp + ' system message notification color is LIGHT PINK ');				
+				text_handler({"sub_type": "CLPMSG","message_RU": `Цвет системного сообщения: светло-розовый`, "message": `system message notification color is LIGHT PINK` }); 			
 	           dispatch.settings.cc.splice(0,1, clp);				
             },
             clb() {
-
-            	command.message( clb +"系统消息通知颜色浅蓝色");
-		command.message(clb + ' system message notification color is LIGHT BLUE ');					
+				text_handler({"sub_type": "CLBMSG","message_RU": `Цвет системного сообщения: светло-синий`, "message": `system message notification color is LIGHT BLUE` }); 			
 	           dispatch.settings.cc.splice(0,1, clb);				
             },
             cbl() {
-
-            	command.message( cbl +"系统消息通知颜色黑色");
-		command.message(cbl + ' system message notification color is BLACK ');			
+				text_handler({"sub_type": "CBLMSG","message_RU": `Цвет системного сообщения: черный`, "message": `system message notification color is  BLACK` }); 			
 	           dispatch.settings.cc.splice(0,1, cbl);				
             },
             cgr() {
-		command.message(cgr + ' system message notification color is GRAY ');	
-            	command.message( cgr +"系统消息通知颜色灰色");
+				text_handler({"sub_type": "CGRMSG","message_RU": `Цвет системного сообщения: серый`, "message": `system message notification color is  GRAY` }); 			
 	           dispatch.settings.cc.splice(0,1, cgr);				
             },	
             cw() {
-
-            	command.message( cw +"系统消息通知颜色白色");
-		command.message(cw + ' system message notification color is WHITE ');					
+				text_handler({"sub_type": "CWMSG","message_RU": `Цвет системного сообщения: белый`, "message": `system message notification color is  WHITE` }); 			
 	           dispatch.settings.cc.splice(0,1, cw);				
-            },
-			
+            },			
             help() {
-		command.message('補助 ，副本補助开/关 ，默认系统通知，通知颜色为绿色');
-		command.message('補助 语音，副本補助语音开/关');
-		command.message('補助 组队通知， 组队通知开/关');
-		command.message('補助 组队长通知，组队长通知开/关');		
-		command.message('補助 1~10，调节语音速度10为最快语速，默认为1正常速度');
-		command.message(dispatch.settings.cc + '補助 cc，查看当前系统消息通知颜色');		
-		command.message(cr + '補助 cr，系统消息通知颜色为红色 ');
-		command.message(co + '補助 co，系统消息通知颜色为橙色 ');
-		command.message(cy + '補助 cy，系统消息通知颜色为黄色 ');
-		command.message(cg + '補助 cg，系统消息通知颜色为绿色 ');
-		command.message(cdb + '補助 cdb，系统消息通知颜色为青色 ');	
-		command.message(cb + '補助 cb，系统消息通知颜色为蓝色 ');
-		command.message(cv + '補助 cv，系统消息通知颜色为紫色 ');
-		command.message(cp + '補助 cp，系统消息通知颜色为粉红色 ');
-		command.message(clp + '補助 clp，系统消息通知颜色为浅粉色 ');	
-		command.message(clb + '補助 clb，系统消息通知颜色为浅蓝色 ');
-		command.message(cbl + '補助 cbl，系统消息通知颜色为黑色 ');
-		command.message(cgr + '補助 cgr，系统消息通知颜色为灰色 ');	
-		command.message(cw + '補助 cw，系统消息通知颜色为白色 ');
-		command.message('guide stream，主播模式(stream)on/off');		
-		command.message('guide,  on/off, default system notification, notification color green ');
-		command.message('guide  voice，text-to-speech on/off');
-		command.message('guide alert， Virtual captain  notifie on/off');
-		command.message('guide systemNotice，system Notice on/off');		
-		command.message('guide 1~10，to settings Voice speed');
-		command.message(dispatch.settings.cc + 'guide cc，View the current system message notification color');
-		command.message(cr + 'guide cr， system message notification color is red ');
-		command.message(co + 'guide co， system message notification color is ORANGE ');
-		command.message(cy + 'guide cy， system message notification color is YELLOW ');
-		command.message(cg + 'guide cg， system message notification color is GREEN ');
-		command.message(cdb + 'guide cdb， system message notification color is DARK BLUE ');	
-		command.message(cb + 'guide cb， system message notification color is BLUE ');
-		command.message(cv + 'guide cv， system message notification color is VIOLET ');
-		command.message(cp + 'guide cp， system message notification color is PINK ');
-		command.message(clp + 'guide clp， system message notification color is LIGHT PINK ');	
-		command.message(clb + 'guide clb， system message notification color is LIGHT BLUE ');
-		command.message(cbl + 'guide cbl， system message notification color is BLACK ');
-		command.message(cgr + 'guide cgr， system message notification color is GRAY ');	
-		command.message(cw + 'guide cw， system message notification color is WHITE ');	
+			   text_handler({"sub_type": "PRMSG","message_RU": 'guide, вкл./выкл. модуля', "message": 'guide,  on/off, default system notification, notification color yellow ' });  					
+			   text_handler({"sub_type": "PRMSG","message_RU": 'guide systemNotice, вкл./выкл. сообщений в группе', "message": 'guide systemNotice，system Notice on/off' });  	
+			   text_handler({"sub_type": "PRMSG","message_RU": 'guide alert, вкл./выкл. сообщений в чате', "message": 'guide alert， Virtual captain  notifie on/off' });  	
+			   text_handler({"sub_type": "PRMSG","message_RU": 'guide spawnObject, вкл./выкл. спавна объектов', "message": 'guide spawnObject，spawn Object on/off' }); 
+			   text_handler({"sub_type": "PRMSG","message_RU": 'guide stream, вкл./выкл. режима стрима (скрытие сообщений)', "message": 'guide stream，(stream)on/off' }); 	
+			   text_handler({"sub_type": "PRMSG","message_RU": 'guide cc, отобразить текущий цвет системного сообщения', "message": 'guide cc，View the current system message notification color' }); 	
+			   text_handler({"sub_type": "CRMSG","message_RU": 'guide cr, установить цвет сообщения: красный', "message": 'guide cr，message color is red' }); 				   
+			   text_handler({"sub_type": "COMSG","message_RU": 'guide c, установить цвет сообщения: оранжевый', "message": 'guide co，message color is ORANGE' }); 	
+			   text_handler({"sub_type": "CYMSG","message_RU": 'guide cy, установить цвет сообщения: желтый', "message": 'guide cy，message color is YELLOW' }); 	
+			   text_handler({"sub_type": "CGMSG","message_RU": 'guide cg, установить цвет сообщения: зеленый', "message": 'guide cg，message color is GREEN' }); 	
+			   text_handler({"sub_type": "CDBMSG","message_RU": 'guide cdb, установить цвет сообщения: темно-синий', "message": 'guide cdb，message color is DARK BLUE' }); 	
+			   text_handler({"sub_type": "CBMSG","message_RU": 'guide cb, установить цвет сообщения: синий', "message": 'guide cb，message color is BLUE' }); 	
+			   text_handler({"sub_type": "CVMSG","message_RU": 'guide cv, установить цвет сообщения: фиолетовый', "message": 'guide cv，message color is VIOLET' }); 	
+			   text_handler({"sub_type": "CPMSG","message_RU": 'guide cp, установить цвет сообщения: розовый', "message": 'guide cp，message color is PINK' }); 	
+			   text_handler({"sub_type": "CLPMSG","message_RU": 'guide clp, установить цвет сообщения: светло-розовый', "message": 'guide clp，message color is LIGHT PINK' }); 	
+			   text_handler({"sub_type": "CLBMSG","message_RU": 'guide clb, установить цвет сообщения: светло-синий', "message": 'guide clb，message color is LIGHT BLUE' }); 	
+			   text_handler({"sub_type": "CBLMSG","message_RU": 'guide cbl, установить цвет сообщения: черный', "message": 'guide cbl，message color is BLACK' }); 	
+			   text_handler({"sub_type": "CGRMSG","message_RU": 'guide cgr, установить цвет сообщения: серый', "message": 'guide cgr，message color is GRAY' }); 				   
+			   text_handler({"sub_type": "CWMSG","message_RU": 'guide cw, установить цвет сообщения: белый', "message": 'guide cw，message color is WHITE' }); 				   
             },
             $default() {
               dispatch.settings.enabled = !dispatch.settings.enabled;
-                command.message(`副本補助已 ${dispatch.settings.enabled?"on":"off"}.`);
-                command.message(`guide ${dispatch.settings.enabled?"on":"off"}.`);				
+				text_handler({"sub_type": "PRMSG","message_RU": `Модуль ${dispatch.settings.enabled?"Вкл.":"Выкл."}.`, "message": `guide ${dispatch.settings.enabled?"on":"off"}.` });  				
             }
         });
 		
@@ -516,6 +448,7 @@ class TeraGuide{
         // Spawn handler
         function spawn_handler(event, ent, speed=1.0) {
             if(dispatch.settings.stream) return;
+            if(!dispatch.settings.spawnObject) return;			
             // Make sure id is defined
             if(!event['id']) return debug_message(true, "Spawn handler needs a id");
             // Make sure sub_delay is defined
@@ -619,8 +552,8 @@ class TeraGuide{
             // Make sure id is defined
             if(!event['id']) return debug_message(true, "Spawn handler needs a id");
             // Ignore if dispatch.settings.streamer mode is enabled
-
             if(dispatch.settings.stream) return;
+            if(!dispatch.settings.spawnObject) return;	
             // Set sub_type to be collection as default for backward compatibility
             const sub_type =  event['sub_type'] || 'collection';
 
@@ -694,13 +627,65 @@ class TeraGuide{
                         }, (event['delay'] || 0 ) - 600 /speed);		  
 		  
                     break;
-                }				
-                case "PRMSG": {
-				  if(dispatch.settings.stream) return;	
-              command.message( cr + message );	             
+                }
+                case "COMSG": {
+              command.message( co + message );	             
                     break;
                 }				
-				 //团队长通知				
+                case "CYMSG": {
+              command.message( cy + message );	             
+                    break;
+                }				
+                case "CGMSG": {
+              command.message( cg + message );	             
+                    break;
+                }				
+                case "CDBMSG": {
+              command.message( cdb + message );	             
+                    break;
+                }				
+                case "CBMSG": {
+              command.message( cb + message );	             
+                    break;
+                }				
+                case "CVMSG": {
+              command.message( cv + message );	             
+                    break;
+                }				
+                case "CPMSG": {
+              command.message( cp + message );	             
+                    break;
+                }				
+                case "CLPMSG": {
+              command.message( clp + message );	             
+                    break;
+                }				
+                case "CLBMSG": {
+              command.message( clb + message );	             
+                    break;
+                }				
+                case "CBLMSG": {
+              command.message( cbl + message );	             
+                    break;
+                }				
+                case "CGRMSG": {
+              command.message( cgr + message );	             
+                    break;
+                }				
+                case "CWMSG": {
+              command.message( cw + message );	             
+                    break;
+                }
+                case "CRMSG": {
+              command.message( cr + message );	             
+                    break;
+                }					
+                case "PRMSG": {
+				  if(dispatch.settings.stream) return;	
+              command.message( dispatch.settings.cc + message );	             
+                    break;
+                }					
+                 //团队长通知				
                 case "notification": {
 					if(dispatch.settings.stream) return;
                     sending_event = {
@@ -803,7 +788,7 @@ class TeraGuide{
 
             // Start the timer for the function call
             timers[event['id'] || random_timer_id--] = setTimeout(event['func'], (event['delay'] || 0) / speed, function_event_handlers, event, ent, fake_dispatch);
-        }	
+        }
 	
     }
 }
