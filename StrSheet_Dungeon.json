@@ -2,79 +2,79 @@
   "String": [
     {
       "id": 9067,
-      "string": "Лаборатория Берна (сложно)"
+      "string": "Demokron Factory (Hard)"
     },
     {
       "id": 9970,
-      "string": "Руины Кошмарной Абнукты"
+      "string": "Ruinous Manor (Hard)"
     },
     {
       "id": 9981,
-      "string": "Разрушенное Святилище Велики"
+      "string": "Velik's Sanctuary (Hard)"
     },
     {
       "id": 9781,
-      "string": "Святилище Велики"
+      "string": "Velik's Sanctuary"
     },
     {
       "id": 9735,
-      "string": "Ангар RK-9"
+      "string": "RK-9 Kennel"
     },
     {
       "id": 9935,
-      "string": "Ангар совершенного RK-9"
+      "string": "RK-9 Kennel (Hard)"
     },
     {
       "id": 9920,
-      "string": "Омут Бездушного Антароса"
+      "string": "Antaroth's Abyss (Hard)"
     },
     {
       "id": 9720,
-      "string": "Омут Антароса"
+      "string": "Antaroth's Abyss"
     },
     {
       "id": 9783,
-      "string": "Крепость Тенебриса"
+      "string": "Dark Reach Citadel"
     },
     {
       "id": 9782,
-      "string": "Мастерская Леандра"
+      "string": "Grotto of Lost Souls"
     },
     {
       "id": 9982,
-      "string": "Заброшенная мастерская Леандра"
+      "string": "Grotto of Lost Souls (Hard)"
     },
     {
       "id": 9044,
-      "string": "Святилище Бахаара"
+      "string": "Bahaar's Sanctum"
     },
     {
       "id": 3101,
-      "string": "Гнездо Паркин"
+      "string": "Gossamer Vault"
     },
     {
       "id": 3201,
-      "string": "Гнездо сверкающей Паркин"
+      "string": "Gossamer Vault (Hard)"
     },
     {
       "id": 3023,
-      "string": "Секретное подземелье крепости Берарк"
+      "string": "Akalath Quarantine"
     },
     {
       "id": 3020,
-      "string": "Золотая чешуя"
+      "string": "Sea of Honor"
     },
     {
       "id": 3026,
-      "string": "Логово Келсаика"
+      "string": "Corrupted Skynest"
     },
     {
       "id": 3027,
-      "string": "Арена безумия"
+      "string": "Forbidden Arena"
     },
     {
       "id": 3126,
-      "string": "Логово Бессмертного Келсаика"
+      "string": "Corrupted Skynest (Hard)"
     }
   ]
 }
