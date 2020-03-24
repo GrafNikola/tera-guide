@@ -1,5 +1,9 @@
 {
     "files": {
+        "LICENSE": "7f2ae2125b491e75c546a5d538f82ad4431d5d6b1bbd4aea724864a21daeca63",
+        "README.md": "00fd0710585593368558a083d33f0c2d743996342670c81e5b672470f9cf967b",
+        "StrSheet_Dungeon.json": "5bb0cc2a82b69f25e0403a161ff08b4233ec6d0c7e3e58c1f0d118d58d68ccc7",
+        "StrSheet_RU_Dungeon.json": "52a25601283fa9caf11e4e4c464f7557d55e0a3b179492d074ea03a9dbb0c891",
         "dbg.json": "443a13a9da6c4f3139d2e85726ea9f6ea8f6b32cd16db3e38723de97117a9df6",
         "dispatch.js": "8550f756e05b171839867491a9f52385f1aef8bfbbed3c80e0afe6aff1d53902",
         "guides/3020.js": "d425d1ed277e0bddb5227ceb84137a500a4de488fca950beb41b8177aadd277e",
@@ -22,13 +26,8 @@
         "guides/9982.js": "1eb648f26492d67bd3a296eaa60e02decb94c0c11973f725e82fe33bcce014ac",
         "index.js": "1eb72bfd9cc8365b0b8a252f0bab4641b44688306d91cff6a3efed768cf1be9f",
         "lib.js": "513df666094c096340348f1c87acef9b7406c30f0873f267d207824c89193d40",
-        "LICENSE": "7f2ae2125b491e75c546a5d538f82ad4431d5d6b1bbd4aea724864a21daeca63",
         "module.json": "e0551a3fa5855739205f4f1d99a8c865add5439d886e57ba2be38faed04b5ec1",
-        "README.md": "00fd0710585593368558a083d33f0c2d743996342670c81e5b672470f9cf967b",
-        "settings_migrator.js": "29e462e4531a28800d82cb5b70ea6af64ebee072bb12c74efff3fae9278b4c6d",
-        "StrSheet_Dungeon.json": "5bb0cc2a82b69f25e0403a161ff08b4233ec6d0c7e3e58c1f0d118d58d68ccc7",
-        "StrSheet_RU_Dungeon.json": "52a25601283fa9caf11e4e4c464f7557d55e0a3b179492d074ea03a9dbb0c891"
-        
+        "settings_migrator.js": "29e462e4531a28800d82cb5b70ea6af64ebee072bb12c74efff3fae9278b4c6d"
     },
     "defs": {
         "S_ABNORMALITY_BEGIN": 4,
@@ -40,7 +39,6 @@
         "S_DESPAWN_BUILD_OBJECT": 2,
         "S_DESPAWN_COLLECTION": 2,
         "S_DESPAWN_DROPITEM": 4,
-        "S_DUNGEON_EVENT_GAGE": 1,
         "S_DUNGEON_EVENT_MESSAGE": 2,
         "S_LOAD_TOPO": 3,
         "S_PLAY_SOUND": 1,
