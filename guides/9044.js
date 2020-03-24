@@ -245,7 +245,7 @@ module.exports = {
 						  {"type": "func","func": Spawnitem1.bind(null,553,270,50,180,500,6000)},
 						  {"type": "text","sub_type": "message","delay": 60000,"message": 'Waves soon...',"message_RU": "Скоро волны"}
 	],
-	"s-444-1000-2131-0": [{"type": "text","sub_type": "message","message": 'Front -> Left Scratch',"message_RU": "1Удар в вперед -> левый черкаш"},
+	"s-444-1000-2131-0": [{"type": "text","sub_type": "message","message": 'Front -> Left Scratch',"message_RU": "Удар в вперед -> левый черкаш"},
 						  {"type": "func","func": Spawnitem2.bind(null,445,358,340,8,660,100,4000)}
 	],
 	"s-444-1000-2132-0": [

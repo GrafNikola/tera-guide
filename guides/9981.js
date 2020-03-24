@@ -27,8 +27,8 @@ for (let angle = -Math.PI; angle <= Math.PI; angle += 2 * Math.PI / 40) {
 }
 
 const SPAWN_CIRCLES = true;
-const stepone = 2 * Math.PI / 40; //40 
-const steptwo = 2 * Math.PI / 60; //72 flowers in total
+const stepone = 2 * Math.PI / 40; // 40 flowers in total if u think the flower is too many ,u can change the num to smaller.
+const steptwo = 2 * Math.PI / 50; // 50 flowers in total
 
 let SPAWNING_FIRST_CIRCLE_FLOWERS = [];
 let SPAWNING_SECOND_CIRCLE_FLOWERS = [];

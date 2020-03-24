@@ -1,6 +1,7 @@
 ﻿// Antaroth's Abyss
 //
 // made by Yuyuko
+// updated by HSDN
 
 let counter = 0;
 let timer;
@@ -27,45 +28,45 @@ function back_attack_NM(handlers) {
 
 module.exports = {
 	//1 BOSS
-	"s-720-1000-117-0": [{"type": "text","sub_type": "message","message": "stay in↑ + get out↓","message_RU": "Внутрь + Наружу"}],
-	"s-720-1000-116-0": [{"type": "text","sub_type": "message","message": "get out↓ + stay in↑","message_RU": "Наружу + Внутрь"}],
-	"s-720-1000-109-0": [{"type": "text","sub_type": "message","message": "back attack","message_RU": "Откид назад"}],
+	"s-720-1000-117-0": [{"type": "text","sub_type": "message","message": "Stay IN↑ + Get OUT↓","message_RU": "Внутрь + Наружу"}],
+	"s-720-1000-116-0": [{"type": "text","sub_type": "message","message": "Get OUT↓ + Stay IN↑","message_RU": "Наружу + Внутрь"}],
+	"s-720-1000-109-0": [{"type": "text","sub_type": "message","message": "Back attack","message_RU": "Откид назад"}],
 	"s-720-1000-300-0": [{"type": "text","sub_type": "message","delay": 600,"message": "Dodge!","message_RU": "Эвейд!"}],
 
 	// 2 BOSS
 	"s-720-2000-106-0": [{"type": "text","sub_type": "message","message": "Spin attack","message_RU": "Крутилка"}],
-	"s-720-2000-105-0": [{"type": "text","sub_type": "message","message": "back attack","message_RU": "Задняя"}],
-	"s-720-2000-104-0": [{"type": "text","sub_type": "message","message": "Random aggro jump","message_RU": "Прыжок (стан)"}],
-	"s-720-2000-112-0": [{"type": "text","sub_type": "message","message": "right hand","message_RU": "Правая полоса|"}],
-	"s-720-2000-111-0": [{"type": "text","sub_type": "message","message": "lrft hand","message_RU": "|Левая полоса"}],
-	"s-720-2000-110-0": [{"type": "text","sub_type": "message","message": "Stun attack","message_RU": "Стан"}],
-	"s-720-2000-119-0": [{"type": "text","sub_type": "message","message": "red: get out↓","message_RU": "Наружу (красный)"}],
-	"s-720-2000-220-0": [{"type": "text","sub_type": "message","message": "blue: stay in↑","message_RU": "Внутрь (синий)"}],
-	"s-720-2000-116-0": [{"type": "text","sub_type": "message","message": "dodge + stay in↑","message_RU": "Ивейд + к нему"}],
+	"s-720-2000-105-0": [{"type": "text","sub_type": "message","message": "Back attack","message_RU": "Удар назад"}],
+	"s-720-2000-104-0": [{"type": "text","sub_type": "message","message": "Random jump","message_RU": "Прыжок + Стан"}],
+	"s-720-2000-112-0": [{"type": "text","sub_type": "message","message": "Right hand","message_RU": "Правая полоса |"}],
+	"s-720-2000-111-0": [{"type": "text","sub_type": "message","message": "Left hand","message_RU": "| Левая полоса"}],
+	"s-720-2000-110-0": [{"type": "text","sub_type": "message","message": "Stun attack","message_RU": "Передний стан"}],
+	"s-720-2000-119-0": [{"type": "text","sub_type": "message","message": "Red: get OUT↓","message_RU": "Наружу (красный)"}],
+	"s-720-2000-220-0": [{"type": "text","sub_type": "message","message": "Blue: stay IN↑","message_RU": "Внутрь (синий)"}],
+	"s-720-2000-116-0": [{"type": "text","sub_type": "message","message": "Dodge + Stay IN↑","message_RU": "Круги + Крутилка"}],
 
 	// 3 BOSS
 	"s-720-3000-315-0": [{"type": "text","sub_type": "message","message": "Pushback","message_RU": "Откид (кайа)"}],
-	"s-720-3000-107-0": [{"type": "text","sub_type": "message","message": "Random jump","message_RU": "Прыжок (стан)"}],
-	"s-720-3000-204-0": [{"type": "text","sub_type": "message","message": "energy beam","message_RU": "Волна"}],
+	"s-720-3000-107-0": [{"type": "text","sub_type": "message","message": "Random jump","message_RU": "Прыжок + Стан"}],
+	"s-720-3000-204-0": [{"type": "text","sub_type": "message","message": "Energy beam","message_RU": "Волна"}],
 	// heart thrust+anticlockwise spin+right swipe
-	"s-720-3000-109-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "right→","message_RU": "Вправо >"},
-						 {"type": "text","class_position":"dps","sub_type": "message","message": "left←","message_RU": "< Влево"},
-						 {"type": "text","class_position":"heal","sub_type": "message","message": "left←","message_RU": "< Влево"},
+	"s-720-3000-109-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Right→","message_RU": "Вправо >"},
+						 {"type": "text","class_position":"dps","sub_type": "message","message": "Left←","message_RU": "< Влево"},
+						 {"type": "text","class_position":"heal","sub_type": "message","message": "Left←","message_RU": "< Влево"},
 						 {"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2500, "distance": 250, "offset": -1.5707, "ownerName": "SAFE SPOT", "message": "SAFE"},
 						 {"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2500, "distance": 250, "offset": -1.5707}
 	],
 	// heart thrust+clockwise spin+left swipe
-	"s-720-3000-111-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "left←","message_RU": "< Влево"},
-						 {"type": "text","class_position":"dps","sub_type": "message","message": "right→","message_RU": "Вправо >"},
-						 {"type": "text","class_position":"heal","sub_type": "message","message": "right→","message_RU": "Вправо >"},
+	"s-720-3000-111-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Left←","message_RU": "< Влево"},
+						 {"type": "text","class_position":"dps","sub_type": "message","message": "Right→","message_RU": "Вправо >"},
+						 {"type": "text","class_position":"heal","sub_type": "message","message": "Right→","message_RU": "Вправо >"},
 						 {"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2500, "distance": 250, "offset": 1.5707, "ownerName": "SAFE SPOT", "message": "SAFE"},
 						 {"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2500, "distance": 250, "offset": 1.5707}
 	],
-	"s-720-3000-113-0": [{"type": "text","sub_type": "message","message": "front, back slam","message_RU": "Передний | Задний"}],
-	"s-720-3000-115-0": [{"type": "text","sub_type": "message","message": "spinning attack","message_RU": "Круговая"}],
+	"s-720-3000-113-0": [{"type": "text","sub_type": "message","message": "Front | Back slam","message_RU": "Передний | Задний"}],
+	"s-720-3000-115-0": [{"type": "text","sub_type": "message","message": "Spinning attack","message_RU": "Круговая"}],
 	"s-720-3000-104-0": [{"type": "func","func": back_attack_NM}],
 	//"s-720-3000-202-0": [{"type": "text","sub_type": "message","message": "spin or front,back slam","message_RU": "Круговая | Задний"}],
 
-	"s-720-3000-400-0": [{"type": "text","sub_type": "message","message": "beam","message_RU": "Волны"}],
-	"s-720-3000-401-0": [{"type": "text","sub_type": "message","message": "spin","message_RU": "Круговые"}]
+	"s-720-3000-400-0": [{"type": "text","sub_type": "message","message": "Clones: beam","message_RU": "Копии: волны"}],
+	"s-720-3000-401-0": [{"type": "text","sub_type": "message","message": "Clones: spin","message_RU": "Копии: круговые"}]
 };

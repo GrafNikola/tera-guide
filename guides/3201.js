@@ -346,8 +346,8 @@ module.exports = {
 	{"type": "text","sub_type": "message","delay": 4000,"message": "pull","message_RU": "откид!"}],
 	"s-3201-1000-312-0": [{"type": "text","sub_type": "message","message_RU": "Мёд (фаст)!!!"},
 	{"type": "text","sub_type": "message","delay": 2000,"message": "pull","message_RU": "откид!!!"}],
-	"s-3201-1000-313-0": [{"type": "text","sub_type": "message","message": "Circles (Slow)","message_RU": "Кольцо"},{"type": "func","func": Spawnitem2.bind(null,553,0,75,15,300,6000)}],
-	"s-3201-1000-314-0": [{"type": "text","sub_type": "message","message": "Circles (Fast)","message_RU": "Кольцо (фаст)"},{"type": "func","func": Spawnitem2.bind(null,553,0,75,15,300,6000)}],
+	"s-3201-1000-313-0": [{"type": "text","sub_type": "message","message": "Circles (Slow)","message_RU": "Кольцо"},{"type": "func","func": Spawnitem2.bind(null,553,0,75,8,300,6000)}],
+	"s-3201-1000-314-0": [{"type": "text","sub_type": "message","message": "Circles (Fast)","message_RU": "Кольцо (фаст)"},{"type": "func","func": Spawnitem2.bind(null,553,0,75,8,300,6000)}],
 
 
 	// 2 BOSS
@@ -388,11 +388,11 @@ module.exports = {
 	"s-3201-2000-230-0": [{"type": "text","sub_type": "message","message": "AOE","message_RU": "AOE!!"}],
 
 	"s-3201-2000-231-0": [{"type": "text","sub_type": "message","message": "OUT safe ↓","message_RU": "ОТ НЕГО"},
-						  {"type": "func","func": Spawnitem2.bind(null,553,0,0,15,300,3000)}
+						  {"type": "func","func": Spawnitem2.bind(null,553,0,0,8,300,3000)}
 	],
 	"s-3201-2000-232-0": [{"type": "text","sub_type": "message","message": "IN safe ↑","message_RU": "К НЕМУ"},
-						  {"type": "func","func": Spawnitem2.bind(null,553,0,0,15,300,3000)},
-						  {"type": "func","func": Spawnitem2.bind(null,553,0,0,15,1000,3000)}	
+						  {"type": "func","func": Spawnitem2.bind(null,553,0,0,8,300,3000)},
+						  {"type": "func","func": Spawnitem2.bind(null,553,0,0,3,1000,3000)}	
 	],
 
 	//"s-3201-2000-233-0": [{"type": "text","sub_type": "message","message": "5","message_RU": "5 бомб" }],
