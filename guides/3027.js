@@ -156,7 +156,7 @@ module.exports = {
 	"s-3027-1000-350-0": [{"type": "text","sub_type": "message","message": "Donuts","message_RU": "Стяжка | Бублики"},{"type": "text","sub_type": "message","delay": 3750,"message":  'Waves',"message_RU": "Волны"},
 		{"type": "func","func": Spawnitem2.bind(null,445,0,0,12,240,200,5000)},
 		{"type": "func","func": Spawnitem2.bind(null,445,0,0,8,480,200,5000)},
-		{"type": "func","func": Spawnitem2.bind(null,445,0,0,8,975,200,5000)},
+		{"type": "func","func": Spawnitem2.bind(null,445,0,0,3,950,200,5000)},
 		{"type": "func","func": skilld_event.bind(null, 350)}
 	],
 	"s-3027-1000-357-0": [{"type": "text","sub_type": "message","message": "get out","message_RU": "Стяжка | От него"},{"type": "func","func": skilld_event.bind(null, 357)}],
