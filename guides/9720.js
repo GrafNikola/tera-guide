@@ -1,235 +1,71 @@
-﻿// AANM
-//made by Yuyuko
+﻿// Antaroth's Abyss
+//
+// made by Yuyuko
 
 let counter = 0;
 let timer;
 
-const TIMER_DELAY = 600;
-
-const ITEM_SPAWNED_ON_SWIPE_ID = 513;
-const ITEM_SPAWNED_ON_SWIPE_SUB_DELAY = 2500;
-const ITEM_SPAWNED_ON_SWIPE_DISTANCE = 150;
-
-//一王击飞躲避提示延迟推送
-// fistboss: Knock up mech, AKA 'Your flesh will be deleted' callout
+// 2 boss: Knock up mech, AKA 'Your flesh will be deleted' callout
 let notice_guide = true;
 let player, entity, library, effect;
-function guid_voice(handlers) {   
-if(notice_guide) {
-handlers['text']({
-"sub_type": "message",
-"delay": 2000,
-"message_TW": "获取更多信息 proxy频道输入:補助 help"
-});
 
-handlers['text']({
-"sub_type": "notification",
-"delay": 2000,
-"message_TW": "获取更多信息 proxy频道输入:補助 help"
-});
-}
-notice_guide = false;
-
-}	
-const EVENT_DELAY_FIRST_BOSS_NM = [
-{
-"type": "text",
-"sub_type": "message",
-"delay": TIMER_DELAY,
-"message": "Dodge!",
-"message_TW": "注意躲避",
-"message_RU": "Ивейд!"
-},
-];
-
-//三王后砸前置计数
-// thirdboss: counter of back attacks
-
+// 3 boss: counter of back attacks
 function back_attack_NM(handlers) {
-clearTimeout(timer);
-counter++;
-if(counter >= 2) {
-handlers['text']({
-"sub_type": "message",
-"message": "Back attack",
-"message_TW": "后砸",
-"message_RU": "Задняя"
-});
-}
-timer = setTimeout(()=>{
-counter = 0;
-}, 3000);
+	clearTimeout(timer);
+	counter++;
+	if (counter >= 2) {
+		handlers['text']({
+			"sub_type": "message",
+			"message": "Back attack",
+			"message_RU": "Задний"
+		});
+	}
+	timer = setTimeout(()=> {
+		counter = 0;
+	}, 3000);
 }
 
 module.exports = {
-// "h-720-1000-100": [{"type": "func","func": guid_voice}],
+	//1 BOSS
+	"s-720-1000-117-0": [{"type": "text","sub_type": "message","message": "stay in↑ + get out↓","message_RU": "Внутрь + Наружу"}],
+	"s-720-1000-116-0": [{"type": "text","sub_type": "message","message": "get out↓ + stay in↑","message_RU": "Наружу + Внутрь"}],
+	"s-720-1000-109-0": [{"type": "text","sub_type": "message","message": "back attack","message_RU": "Откид назад"}],
+	"s-720-1000-300-0": [{"type": "text","sub_type": "message","delay": 600,"message": "Dodge!","message_RU": "Эвейд!"}],
 
-//一王 
-//firstboss,
+	// 2 BOSS
+	"s-720-2000-106-0": [{"type": "text","sub_type": "message","message": "Spin attack","message_RU": "Крутилка"}],
+	"s-720-2000-105-0": [{"type": "text","sub_type": "message","message": "back attack","message_RU": "Задняя"}],
+	"s-720-2000-104-0": [{"type": "text","sub_type": "message","message": "Random aggro jump","message_RU": "Прыжок (стан)"}],
+	"s-720-2000-112-0": [{"type": "text","sub_type": "message","message": "right hand","message_RU": "Правая полоса|"}],
+	"s-720-2000-111-0": [{"type": "text","sub_type": "message","message": "lrft hand","message_RU": "|Левая полоса"}],
+	"s-720-2000-110-0": [{"type": "text","sub_type": "message","message": "Stun attack","message_RU": "Стан"}],
+	"s-720-2000-119-0": [{"type": "text","sub_type": "message","message": "red: get out↓","message_RU": "Наружу (красный)"}],
+	"s-720-2000-220-0": [{"type": "text","sub_type": "message","message": "blue: stay in↑","message_RU": "Внутрь (синий)"}],
+	"s-720-2000-116-0": [{"type": "text","sub_type": "message","message": "dodge + stay in↑","message_RU": "Ивейд + к нему"}],
 
-//后跳+内外圈,安全区域：站里面+站外面
-//Backstep+donuts, stay in, get out
+	// 3 BOSS
+	"s-720-3000-315-0": [{"type": "text","sub_type": "message","message": "Pushback","message_RU": "Откид (кайа)"}],
+	"s-720-3000-107-0": [{"type": "text","sub_type": "message","message": "Random jump","message_RU": "Прыжок (стан)"}],
+	"s-720-3000-204-0": [{"type": "text","sub_type": "message","message": "energy beam","message_RU": "Волна"}],
+	// heart thrust+anticlockwise spin+right swipe
+	"s-720-3000-109-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "right→","message_RU": "Вправо >"},
+						 {"type": "text","class_position":"dps","sub_type": "message","message": "left←","message_RU": "< Влево"},
+						 {"type": "text","class_position":"heal","sub_type": "message","message": "left←","message_RU": "< Влево"},
+						 {"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2500, "distance": 250, "offset": -1.5, "ownerName": "SAFE SPOT", "message": "SAFE"},
+						 {"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2500, "distance": 250, "offset": -1.5}
+	],
+	// heart thrust+clockwise spin+left swipe
+	"s-720-3000-111-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "left←","message_RU": "< Влево"},
+						 {"type": "text","class_position":"dps","sub_type": "message","message": "right→","message_RU": "Вправо >"},
+						 {"type": "text","class_position":"heal","sub_type": "message","message": "right→","message_RU": "Вправо >"},
+						 {"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2500, "distance": 250, "offset": 1.5, "ownerName": "SAFE SPOT", "message": "SAFE"},
+						 {"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2500, "distance": 250, "offset": 1.5}
+	],
+	"s-720-3000-113-0": [{"type": "text","sub_type": "message","message": "front, back slam","message_RU": "Передний | Задний"}],
+	"s-720-3000-115-0": [{"type": "text","sub_type": "message","message": "spinning attack","message_RU": "Круговая"}],
+	"s-720-3000-104-0": [{"type": "func","func": back_attack_NM}],
+	//"s-720-3000-202-0": [{"type": "text","sub_type": "message","message": "spin or front,back slam","message_RU": "Круговая | Задний"}],
 
-"s-720-1000-117-0": [{"type": "text","sub_type": "message","message": "stay in↑ + get out↓","message_TW": "站里面↑+站外面↓","message_RU": "Внутрь + Наружу"}],
-
-//原地抬腿+内外圈,安全区域：站外面+站里面
-//Stomp+donuts, get out, stay in
-
-"s-720-1000-116-0": [{"type": "text","sub_type": "message","message": "get out↓ + stay in↑","message_TW": "站外面↓+站里面↑","message_RU": "Наружу + Внутрь"}],
-
-//剑戳地2下+后方挥盾
-//ground thrust 2x+shield swing
-
-"s-720-1000-109-0": [{"type": "text","sub_type": "message","message": "back attack","message_TW": "后方攻击","message_RU": "Задняя"}],
-
-//一王特殊技能
-//firstboss special attack
-
-//击飞攻击
-//knockup attack
-
-"s-720-1000-300-0": EVENT_DELAY_FIRST_BOSS_NM,
-
-
-
-
-//二王
-//secondboss,
-
-//转圈攻击（2106）
-//Spin attack
-
-"s-720-2000-106-0": [{"type": "text","sub_type": "message","message": "Spin attack","message_TW": "转圈攻击","message_RU": "Крутилка"}], 
-
-//愤怒后方攻击（2105）
-//enraged back attack
-
-"s-720-2000-105-0": [{"type": "text","sub_type": "message","message": "back attack","message_TW": "后方攻击","message_RU": "Задняя"}], 
-
-//点名大跳晕人
-//Random aggro stun
-
-"s-720-2000-104-0": [{"type": "text","sub_type": "message","message": "Random aggro jump","message_TW": "点名大跳","message_RU": "Прыжок"}],	
-
-//BOSS右手边划刀,安全区域：坦右,打左
-//right hand side swing, tank goes to right, dps goes to left
-
-"s-720-2000-112-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "right→","message_TW": "右→","message_RU": "Право"},
-{"type": "text","class_position":"dps","sub_type": "message","message": "left←","message_TW": "左←","message_RU": "Лево"},
-{"type": "text","class_position":"heal","sub_type": "message","message": "left←","message_TW": "左←","message_RU": "Лево"}],
-
-//BOSS左手边划刀,安全区域：坦左,打右
-//left hand side swing, tank goes to left, dps goes to right
-
-"s-720-2000-111-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "left←","message_TW": "左←","message_RU": "Лево"},
-{"type": "text","class_position":"dps","sub_type": "message","message": "right→","message_TW": "右→","message_RU": "Право"},
-{"type": "text","class_position":"heal","sub_type": "message","message": "right→","message_TW": "右→","message_RU": "Право"}],
-
-//眩晕攻击
-//Stun attack
-
-"s-720-2000-110-0": [{"type": "text","sub_type": "message","message": "Stun attack","message_TW": "眩晕攻击","message_RU": "Стан"}],
-
-//二王特殊技能
-//secondboss, special attacks
-
-//红色鉴定,安全区域：15M外
-//Red, stay 15m away
-
-"s-720-2000-119-0": [{"type": "text","sub_type": "message","message": "red: get out↓","message_TW": "红色：外↓","message_RU": "Красный: наружу"}],
-
-//蓝色鉴定,安全区域：15M内（3220）
-//Blue, stay near within 15m
-
-"s-720-2000-220-0": [{"type": "text","sub_type": "message","message": "blue: stay in↑","message_TW": "蓝色：内↑","message_RU": "Синий: внутрь"}],
-
-//眩晕圈（3116）+外圈伤害（3118）
-//stun+donut
-
-"s-720-2000-116-0": [{"type": "text","sub_type": "message","message": "dodge + stay in↑","message_TW": "躲避+内↑","message_RU": "Ивейд + Внутрь"}],
-
-//点名喷长条毒（3107）
-
-
-//三王 
-
-//进场的推人红圈
-
-"s-720-3000-315-0": [{"type": "text","sub_type": "message","message": "Pushback","message_TW": "开场推人","message_RU": "Откид"}],
-
-//点名大跳晕人（1107）
-"s-720-3000-107-0": [{"type": "text","sub_type": "message","message": "Random jump","message_TW": "点名大跳","message_RU": "Прыжок"}],
-
-//点名出剑刃风暴,手里握篮球挥篮球（1120）,剑刃风暴（1121）
-
-"s-720-3000-204-0": [{"type": "text","sub_type": "message","message": "energy beam","message_TW": "点名剑气","message_RU": "Волна"}],
-
-//剑舞前戳+逆时针旋转+右手扇形攻击 注：坦右边安全,打左边安全请自行更改
-
-"s-720-3000-109-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "right→","message_TW": "右→","message_RU": "Право"},
-{"type": "text","class_position":"dps","sub_type": "message","message": "left←","message_TW": "左←","message_RU": "Лево"},
-{"type": "text","class_position":"heal","sub_type": "message","message": "left←","message_TW": "左←","message_RU": "Лево"},
-
-// Courtesy of Kasea ;)
-{
-"type": "spawn",
-"id": ITEM_SPAWNED_ON_SWIPE_ID,
-"sub_delay": ITEM_SPAWNED_ON_SWIPE_SUB_DELAY,
-"distance": ITEM_SPAWNED_ON_SWIPE_DISTANCE,
-"offset": -1
-},
-{
-"type": "spawn",
-"id": ITEM_SPAWNED_ON_SWIPE_ID,
-"sub_delay": ITEM_SPAWNED_ON_SWIPE_SUB_DELAY,
-"distance": ITEM_SPAWNED_ON_SWIPE_DISTANCE,
-"offset": -2.3
-}
-],
-
-//剑舞前戳+顺时针旋转+左手扇形攻击 注：坦左边安全,打右边安全请自行更改
-
-"s-720-3000-111-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "left←","message_TW": "左←","message_RU": "Лево"},
-{"type": "text","class_position":"dps","sub_type": "message","message": "right→","message_TW": "右→","message_RU": "Право"},
-{"type": "text","class_position":"heal","sub_type": "message","message": "right→","message_TW": "右→","message_RU": "Право"},
-
-// Courtesy of Kasea ;)
-{
-"type": "spawn",
-"id": ITEM_SPAWNED_ON_SWIPE_ID,
-"sub_delay": ITEM_SPAWNED_ON_SWIPE_SUB_DELAY,
-"distance": ITEM_SPAWNED_ON_SWIPE_DISTANCE,
-"offset": 1
-},
-{
-"type": "spawn",
-"id": ITEM_SPAWNED_ON_SWIPE_ID,
-"sub_delay": ITEM_SPAWNED_ON_SWIPE_SUB_DELAY,
-"distance": ITEM_SPAWNED_ON_SWIPE_DISTANCE,
-"offset": 2.3
-}
-],
-
-//前后砸
-"s-720-3000-113-0": [{"type": "text","sub_type": "message","message": "front, back slam","message_TW": "前后砸","message_RU": "Передний, задний"}],
-
-//旋转攻击
-
-"s-720-3000-115-0": [{"type": "text","sub_type": "message","message": "spinning attack","message_TW": "旋转攻击","message_RU": "Круговая"}],
-
-//2连斜上挥（1104）后接的后砸（1119）
-"s-720-3000-104-0": [{"type": "func","func": back_attack_NM}],
-
-//后闪+旋转or前后砸
-
-"s-720-3000-202-0": [{"type": "text","sub_type": "message","message": "spin or front,back slam","message_TW": "旋转or前后砸","message_RU": "Круговая или передний, задний"}],
-
-
-//三王特殊技能
-
-//召唤分身出点名剑气
-"s-720-3000-400-0": [{"type": "text","sub_type": "message","message": "beam","message_TW": "召咄分身：点名剑气","message_RU": "Волны"}],
-//召唤分身出旋转攻击
-"s-720-3000-401-0": [{"type": "text","sub_type": "message","message": "spin","message_TW": "召咄分身：旋转攻击","message_RU": "Круговые"}]
-
+	"s-720-3000-400-0": [{"type": "text","sub_type": "message","message": "beam","message_RU": "Волны"}],
+	"s-720-3000-401-0": [{"type": "text","sub_type": "message","message": "spin","message_RU": "Круговые"}]
 };

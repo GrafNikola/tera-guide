@@ -29,8 +29,7 @@ id | Dungeon Name | Название данжа
 9935 | RK-9 Kennel (Hard) | Ангар совершенного RK-9
 9920 | Antaroth's Abyss (Hard) | Омут Бездушного Антароса
 9720 | Antaroth's Abyss | Омут Антароса
-9783 | Dark Reach Citadel | Крепость Тенебриса *(не переведено)*
-9782 | Grotto of Lost Souls | Мастерская Леандра *(не переведено)*
+9782 | Grotto of Lost Souls | Мастерская Леандра
 9982 | Grotto of Lost Souls (Hard) | Заброшенная мастерская Леандра
 9044 | Bahaar's Sanctum | Святилище Бахаара
 3101 | Gossamer Vault | Гнездо Паркин

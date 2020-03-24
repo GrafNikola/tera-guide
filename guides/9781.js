@@ -1,25 +1,9 @@
-﻿// vs
-//made by michengs
+﻿// Velik's Sanctuary
+//
+// made by michengs
 
 let notice_guide = true;
 let player, entity, library, effect;
-function guid_voice(handlers) {   
-if(notice_guide) {
-handlers['text']({
-"sub_type": "message",
-"delay": 2000,
-"message_TW": "获取更多信息 proxy频道输入:補助 help"
-});
-
-handlers['text']({
-"sub_type": "notification",
-"delay": 2000,
-"message_TW": "获取更多信息 proxy频道输入:補助 help"
-});
-}
-notice_guide = false;
-
-}		
 
 // Helper Functions
 
@@ -229,7 +213,6 @@ module.exports = {
 		({ player, entity, library, effect } = dispatch.require.library);
 	},
 	
-  //  "h-781-1000-100": [{"type": "func","func": guid_voice}],
 	"s-781-1000-2401": [{"type": "text","sub_type": "message","message": "right","message_TW": "右劈"},{"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": -2.3, "ownerName": "SAFE SPOT", "message": "SAFE"},{"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": -1, "ownerName": "SAFE SPOT", "message": "SAFE"},{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": -2.3},{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": -1}],
 	"s-781-1000-2402": [{"type": "text","sub_type": "message","message": "left","message_TW": "左劈"},{"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": 2.3, "ownerName": "SAFE SPOT", "message": "SAFE"},{"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": 1, "ownerName": "SAFE SPOT", "message": "SAFE"},{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": 2.3},{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": 1}],
     "s-781-1000-2304-0": [{"type": "text","sub_type": "message","message_TW": "飞天"}].concat(SPAWNING_FIRST_CIRCLE_FLOWERS),
