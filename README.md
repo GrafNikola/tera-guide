@@ -23,8 +23,8 @@ id | Dungeon Name | Название данжа
 --- | --- | ---
 9067 | Demokron Factory (Hard) | Лаборатория Берна (сложно) *(не переведено)*
 9970 | Ruinous Manor (Hard) | Руины Кошмарной Абнукты
-9981 | Velik's Sanctuary (Hard) | Разрушенное Святилище Велики *(не переведено)*
-9781 | Velik's Sanctuary | Святилище Велики *(не переведено)*
+9981 | Velik's Sanctuary (Hard) | Разрушенное Святилище Велики
+9781 | Velik's Sanctuary | Святилище Велики
 9735 | RK-9 Kennel | Ангар RK-9
 9935 | RK-9 Kennel (Hard) | Ангар совершенного RK-9
 9920 | Antaroth's Abyss (Hard) | Омут Бездушного Антароса
