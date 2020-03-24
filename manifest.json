@@ -1,7 +1,7 @@
 {
     "files": {
         "LICENSE": "7f2ae2125b491e75c546a5d538f82ad4431d5d6b1bbd4aea724864a21daeca63",
-        "README.md": "184da69bc143be3d9e47272cb09fb49ea74309eec56621d04d06fd0cfdaafb73",
+        "README.md": "23b1b92720132e09715f0c71a569ed4972cd4c2f694fa9b96db494b19acd8de0",
         "StrSheet_Dungeon.json": "5bb0cc2a82b69f25e0403a161ff08b4233ec6d0c7e3e58c1f0d118d58d68ccc7",
         "StrSheet_RU_Dungeon.json": "52a25601283fa9caf11e4e4c464f7557d55e0a3b179492d074ea03a9dbb0c891",
         "dbg.json": "443a13a9da6c4f3139d2e85726ea9f6ea8f6b32cd16db3e38723de97117a9df6",
@@ -14,7 +14,7 @@
         "guides/3126.js": "0ad069b8290e2d815e0dbd2511645d1c09f2926e0d06ccba83e4a12aa958f476",
         "guides/3201.js": "d0107c8b19761d337998fa103f0c22fdcb8469329c02d70e257bce1b25c92a2b",
         "guides/9044.js": "c74e19b5f857b1aee8079ee0f12f84d76aa3926089d057578ec26e895f4e287b",
-        "guides/9067.js": "5a7d0926ad188e857571869e141783d89850840d819f18328af6870438597f3b",
+        "guides/9067.js": "a65a421bd51d0efd37cd38ad9de01722b6a3efc63da90168ea0b4af70946237c",
         "guides/9720.js": "76d489830df896d004d1e41559e556f2dbcababc58933714aaf4a181c2175b19",
         "guides/9735.js": "5176d8f912b627d0df16e58eccaf03938e3d817f6da570b573a7aad890749ac8",
         "guides/9781.js": "b1c41a3dc80ad97a7497120195e3b1554321a0eaf7ab805b8c423dcf0d4de10c",
