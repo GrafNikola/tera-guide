@@ -51,15 +51,15 @@ module.exports = {
 	"s-720-3000-109-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "right→","message_RU": "Вправо >"},
 						 {"type": "text","class_position":"dps","sub_type": "message","message": "left←","message_RU": "< Влево"},
 						 {"type": "text","class_position":"heal","sub_type": "message","message": "left←","message_RU": "< Влево"},
-						 {"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2500, "distance": 250, "offset": -1.5, "ownerName": "SAFE SPOT", "message": "SAFE"},
-						 {"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2500, "distance": 250, "offset": -1.5}
+						 {"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2500, "distance": 250, "offset": -1.5707, "ownerName": "SAFE SPOT", "message": "SAFE"},
+						 {"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2500, "distance": 250, "offset": -1.5707}
 	],
 	// heart thrust+clockwise spin+left swipe
 	"s-720-3000-111-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "left←","message_RU": "< Влево"},
 						 {"type": "text","class_position":"dps","sub_type": "message","message": "right→","message_RU": "Вправо >"},
 						 {"type": "text","class_position":"heal","sub_type": "message","message": "right→","message_RU": "Вправо >"},
-						 {"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2500, "distance": 250, "offset": 1.5, "ownerName": "SAFE SPOT", "message": "SAFE"},
-						 {"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2500, "distance": 250, "offset": 1.5}
+						 {"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2500, "distance": 250, "offset": 1.5707, "ownerName": "SAFE SPOT", "message": "SAFE"},
+						 {"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2500, "distance": 250, "offset": 1.5707}
 	],
 	"s-720-3000-113-0": [{"type": "text","sub_type": "message","message": "front, back slam","message_RU": "Передний | Задний"}],
 	"s-720-3000-115-0": [{"type": "text","sub_type": "message","message": "spinning attack","message_RU": "Круговая"}],

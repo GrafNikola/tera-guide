@@ -11,14 +11,14 @@
         "guides/3201.js": "d0107c8b19761d337998fa103f0c22fdcb8469329c02d70e257bce1b25c92a2b",
         "guides/9044.js": "c74e19b5f857b1aee8079ee0f12f84d76aa3926089d057578ec26e895f4e287b",
         "guides/9067.js": "5a7d0926ad188e857571869e141783d89850840d819f18328af6870438597f3b",
-        "guides/9720.js": "1ddaddcd62cb96362c37bccf9db0e82d9ca2f27f8293c67f7eb2825586bf8565",
+        "guides/9720.js": "76d489830df896d004d1e41559e556f2dbcababc58933714aaf4a181c2175b19",
         "guides/9735.js": "5176d8f912b627d0df16e58eccaf03938e3d817f6da570b573a7aad890749ac8",
-        "guides/9781.js": "879cfed90b3ed57d25c2d44b6615f53ad1ab1199d13dac6e5f0bd6552c8d3370",
+        "guides/9781.js": "100a5195de19630b9292da76113aa6ded96aea7e2e89b2b30d70d4bda12bca6f",
         "guides/9782.js": "243f857549c8f5b5066cd5d0f57a0a82dcd9ed9594cea0b0987fde8cfd06e4f8",
-        "guides/9920.js": "636908365157530a80321657607c7e86d2a23e9f9b31bbbc8643d238261da334",
+        "guides/9920.js": "138c9a6355162a6e20906d3fc2601750e800b488895d9ab093918edfaeb36793",
         "guides/9935.js": "6590b16340bc133f47e1842d40c41f0ded8cdd6a951662123052b9c3420dfec3",
         "guides/9970.js": "e53b0bb5e5adfabf87117975869380a53feb4162dab7609d304bb955d5a82d29",
-        "guides/9981.js": "1e6dec4706b9278651d663597244dd000ff3a188c4ffb6863d0d9ebe05f23ecf",
+        "guides/9981.js": "23630f026bf8a6222eda976f060df5476798ff1555c9b8f99796924ecf9c5ac3",
         "guides/9982.js": "1eb648f26492d67bd3a296eaa60e02decb94c0c11973f725e82fe33bcce014ac",
         "index.js": "1eb72bfd9cc8365b0b8a252f0bab4641b44688306d91cff6a3efed768cf1be9f",
         "lib.js": "513df666094c096340348f1c87acef9b7406c30f0873f267d207824c89193d40",
@@ -26,8 +26,8 @@
         "module.json": "e0551a3fa5855739205f4f1d99a8c865add5439d886e57ba2be38faed04b5ec1",
         "README.md": "00fd0710585593368558a083d33f0c2d743996342670c81e5b672470f9cf967b",
         "settings_migrator.js": "29e462e4531a28800d82cb5b70ea6af64ebee072bb12c74efff3fae9278b4c6d",
-        "StrSheet_Dungeon.json": "38b8738d972afa2dd05dda90bd246febe05960f8b0b3c09fd216cfdc31b1de11",
-        "StrSheet_RU_Dungeon.json": "453b6d96026fd255108dc22bab4d75dfa2d1f76778647e4cf95a9f5160fb858a"
+        "StrSheet_Dungeon.json": "5bb0cc2a82b69f25e0403a161ff08b4233ec6d0c7e3e58c1f0d118d58d68ccc7",
+        "StrSheet_RU_Dungeon.json": "52a25601283fa9caf11e4e4c464f7557d55e0a3b179492d074ea03a9dbb0c891"
         
     },
     "defs": {

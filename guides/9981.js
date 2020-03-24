@@ -132,14 +132,14 @@ for (let angle = -Math.PI; angle <= Math.PI; angle += steptwo) {
 	if (!SPAWN_CIRCLES) continue;
 	SPAWNING_FIRST_CIRCLE_FLOWERS.push({
 		"type": "spawn",
-		"id": 548,
+		"id": 553,
 		"sub_delay": 6000,
 		"distance": 300,
 		"offset": angle
 	});
 	SPAWNING_SECOND_CIRCLE_FLOWERS.push({
 		"type": "spawn",
-		"id": 548,
+		"id": 553,
 		"sub_delay": 6000,
 		"distance": 250,
 		"offset": angle
@@ -165,21 +165,21 @@ for (let angle = -Math.PI; angle <= Math.PI; angle += stepone) {
 }
 
 for (let distance = 350; distance <= 600; distance += 25) {
-	dlw_object.push( {	"type": "spawn","id": 548,"sub_delay": 18000,"distance": distance,"offset": 0 });
+	dlw_object.push({"type": "spawn","id": 548,"sub_delay": 18000,"distance": distance,"offset": 0 });
 	dlw_object.push({"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 18000, "distance": 350, "offset": 0, "ownerName": "杜利温", "message": "秒杀"});
- 	dlw_object.push( {	"type": "spawn","id": 548,"sub_delay": 18000,"distance": distance,"offset": 0.7853 });	
+ 	dlw_object.push({"type": "spawn","id": 548,"sub_delay": 18000,"distance": distance,"offset": 0.7853 });
 	dlw_object.push({"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 18000, "distance": 350, "offset": 0.7853, "ownerName": "杜利温", "message": "秒杀"});
-	dlw_object.push( {	"type": "spawn","id": 548,"sub_delay": 18000,"distance": distance,"offset": 1.5707 });	
+	dlw_object.push({"type": "spawn","id": 548,"sub_delay": 18000,"distance": distance,"offset": 1.5707 });
 	dlw_object.push({"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 18000, "distance": 350, "offset": 1.5707, "ownerName": "杜利温", "message": "秒杀"});
-	dlw_object.push( {	"type": "spawn","id": 548,"sub_delay": 18000,"distance": distance,"offset": 2.3561 });	
+	dlw_object.push({"type": "spawn","id": 548,"sub_delay": 18000,"distance": distance,"offset": 2.3561 });
 	dlw_object.push({"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 18000, "distance": 350, "offset": 2.3561, "ownerName": "杜利温", "message": "秒杀"});
-	dlw_object.push( {	"type": "spawn","id": 548,"sub_delay": 18000,"distance": distance,"offset": 3.1415 });	
-	dlw_object.push({"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 18000, "distance": 350, "offset": 3.1415, "ownerName": "杜利温", "message": "秒杀"});
-	dlw_object.push( {	"type": "spawn","id": 548,"sub_delay": 18000,"distance": distance,"offset": -0.7853 });	
+	dlw_object.push({"type": "spawn","id": 548,"sub_delay": 18000,"distance": distance,"offset": 3.1415 });
+	dlw_object.push({"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 18000, "distance": 350, "ofset": 3.1415, "ownerName": "杜利温", "message": "秒杀"});
+	dlw_object.push({"type": "spawn","id": 548,"sub_delay": 18000,"distance": distance,"offset": -0.7853 });
 	dlw_object.push({"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 18000, "distance": 350, "offset": -0.7853, "ownerName": "杜利温", "message": "秒杀"});
-	dlw_object.push( {	"type": "spawn","id": 548,"sub_delay": 18000,"distance": distance,"offset": -1.5707 });	
+	dlw_object.push({"type": "spawn","id": 548,"sub_delay": 18000,"distance": distance,"offset": -1.5707 });
 	dlw_object.push({"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 18000, "distance": 350, "offset": -1.5707, "ownerName": "杜利温", "message": "秒杀"});
-	dlw_object.push( {	"type": "spawn","id": 548,"sub_delay": 18000,"distance": distance,"offset": -2.3561 });	
+	dlw_object.push({"type": "spawn","id": 548,"sub_delay": 18000,"distance": distance,"offset": -2.3561 });
 	dlw_object.push({"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 18000, "distance": 350 , "offset": -2.3561, "ownerName": "杜利温", "message": "秒杀"});
 }
 
@@ -192,44 +192,44 @@ module.exports = {
 
 	"s-981-1000-2401": [
 		{"type": "text","sub_type": "message","message": "right","message_RU": "Вправо >"},
-		{"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": -2.3, "ownerName": "SAFE SPOT", "message": "SAFE"},
-		{"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": -1, "ownerName": "SAFE SPOT", "message": "SAFE"},
-		{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": -2.3},
-		{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": -1}
+		{"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 150, "offset": -2.3, "ownerName": "SAFE SPOT", "message": "SAFE"},
+		{"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 150, "offset": -1, "ownerName": "SAFE SPOT", "message": "SAFE"},
+		{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 150, "offset": -2.3},
+		{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 150, "offset": -1}
 	],
 	"s-981-1000-2402": [
 		{"type": "text","sub_type": "message","message": "left","message_RU": "< Влево"},
-		{"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": 2.3, "ownerName": "SAFE SPOT", "message": "SAFE"},
-		{"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": 1, "ownerName": "SAFE SPOT", "message": "SAFE"},
-		{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": 2.3},
-		{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": 1}
+		{"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 150, "offset": 2.3, "ownerName": "SAFE SPOT", "message": "SAFE"},
+		{"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 150, "offset": 1, "ownerName": "SAFE SPOT", "message": "SAFE"},
+		{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 150, "offset": 2.3},
+		{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 150, "offset": 1}
 	],
-	"s-981-1000-2304-0": [{"type": "text","sub_type": "message","message": "飞天","message_RU": "1 飞天"}].concat(SPAWNING_FIRST_CIRCLE_FLOWERS),
-	"s-981-1000-2303-0": [{"type": "text","sub_type": "message","message": "旋转攻击","message_RU": "2 旋转攻击"}],
-	"s-981-1000-2113-0": [{"type": "text","sub_type": "message","message": "Front + AoEs","message_RU": "3 前劈"}],
-	"s-981-1000-2308-0": [{"type": "text","sub_type": "message","message": "out","message_RU": "out"}],
-	"s-981-1000-2309-0": [{"type": "text","sub_type": "message","message": "in","message_RU": "in"}],
+	"s-981-1000-2304-0": [{"type": "text","sub_type": "message","message": "Flying","message_RU": "Взлет"}].concat(SPAWNING_FIRST_CIRCLE_FLOWERS),
+	"s-981-1000-2303-0": [{"type": "text","sub_type": "message","message": "Spin","message_RU": "Крутилка"}],
+	"s-981-1000-2113-0": [{"type": "text","sub_type": "message","message": "Front + AoEs","message_RU": "Передняя | AOE"}],
+	"s-981-1000-2308-0": [{"type": "text","sub_type": "message","message": "out","message_RU": "Наружу"}],
+	"s-981-1000-2309-0": [{"type": "text","sub_type": "message","message": "in","message_RU": "Внутрь"}],
 	"s-981-1000-1401": [
 		{"type": "text","sub_type": "message","message": "right","message_RU": "Вправо >"},
-		{"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": -2.3, "ownerName": "SAFE SPOT", "message": "SAFE"},
-		{"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": -1, "ownerName": "SAFE SPOT", "message": "SAFE"},
-		{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": -2.3},
-		{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": -1}
+		{"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 150, "offset": -2.3, "ownerName": "SAFE SPOT", "message": "SAFE"},
+		{"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 150, "offset": -1, "ownerName": "SAFE SPOT", "message": "SAFE"},
+		{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 150, "offset": -2.3},
+		{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 150, "offset": -1}
 	],
 	"s-981-1000-1402": [
 		{"type": "text","sub_type": "message","message": "left","message_RU": "< Влево"},
-		{"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": 2.3, "ownerName": "SAFE SPOT", "message": "SAFE"},
-		{"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": 1, "ownerName": "SAFE SPOT", "message": "SAFE"},
-		{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": 2.3},
-		{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": 1}
+		{"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 150, "offset": 2.3, "ownerName": "SAFE SPOT", "message": "SAFE"},
+		{"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 150, "offset": 1, "ownerName": "SAFE SPOT", "message": "SAFE"},
+		{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 150, "offset": 2.3},
+		{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 150, "offset": 1}
 	],
-    "s-981-1000-1304-0": [{"type": "text","sub_type": "message","message": "飞天","message_RU": "1 飞天"}].concat(SPAWNING_FIRST_CIRCLE_FLOWERS),
-	"s-981-1000-1303-0": [{"type": "text","sub_type": "message","message": "旋转攻击","message_RU": "2 旋转攻击"}],
-	"s-981-1000-1113-0": [{"type": "text","sub_type": "message","message": "Front + AoEs","message_RU": "3 前劈"}],
-	"s-981-1000-1308-0": [{"type": "text","sub_type": "message","message": "out","message_RU": "out"}],
-	"s-981-1000-1309-0": [{"type": "text","sub_type": "message","message": "in","message_RU": "in"}],
+	"s-981-1000-1304-0": [{"type": "text","sub_type": "message","message": "Flying","message_RU": "Взлет"}].concat(SPAWNING_FIRST_CIRCLE_FLOWERS),
+	"s-981-1000-1303-0": [{"type": "text","sub_type": "message","message": "Spin","message_RU": "Крутилка"}],
+	"s-981-1000-1113-0": [{"type": "text","sub_type": "message","message": "Front + AoEs","message_RU": "Передняя | AOE"}],
+	"s-981-1000-1308-0": [{"type": "text","sub_type": "message","message": "out","message_RU": "Наружу"}],
+	"s-981-1000-1309-0": [{"type": "text","sub_type": "message","message": "in","message_RU": "Внутрь"}],
 	"qb-981-1000-98103": [{"type": "text","sub_type": "message","message": "点名炸石柱","message_RU": "4 点名炸石柱"}],
-	"qb-981-1000-98102": [{"type": "text","sub_type": "message","message": "快跑远秒杀","message_RU": "5 快跑远秒杀"}],
+	"qb-981-1000-98102": [{"type": "text","sub_type": "message","message": "Run away","message_RU": "Уходи!"}],
 	"qb-981-1000-98106": [{"type": "text","sub_type": "message","message": "集体炸石柱","message_RU": "6 集体炸石柱"}],
 
 
@@ -237,13 +237,13 @@ module.exports = {
 
 	// Cage Mechanic
 	"s-981-2000-1503-0": [{"type": "text","sub_type": "message","message": "坦快跑远","message_RU": "1 坦快跑远"}],
-	"s-981-2000-1106-0": [{"type": "text","sub_type": "message","message": "back","message_RU": "back"}],
-	"s-981-2000-1108-0": [{"type": "text","sub_type": "message","message": "front","message_RU": "front"}],
-	"s-981-2000-1111-0": [{"type": "text","sub_type": "message","message": "360","message_RU": "360度攻击 "}],
+	"s-981-2000-1106-0": [{"type": "text","sub_type": "message","message": "back","message_RU": "Задний"}],
+	"s-981-2000-1108-0": [{"type": "text","sub_type": "message","message": "front","message_RU": "Передний"}],
+	"s-981-2000-1111-0": [{"type": "text","sub_type": "message","message": "360 attack","message_RU": "Атака на 360 град."}],
 	"s-981-2000-1302-0": [{"type": "text","sub_type": "message","message": "点名","message_RU": "2 点名"}],
 	"s-981-2000-1121-0": [{"type": "text","sub_type": "message","message": "召唤小怪快打","message_RU": "3 召唤小怪快打"}],
 	"s-981-2000-1501-0": [
-		{"type": "text","sub_type": "message","message": "封场鉴定开始","message_RU": "4 封场鉴定开始"},
+		{"type": "text","sub_type": "message","message": "Identification","message_RU": "Идентификация"},
 		{"type": "text","sub_type": "message","delay": 1000,"message": "3"},
 		{"type": "text","sub_type": "message","delay": 2000,"message": "2"},
 		{"type": "text","sub_type": "message","delay": 3000,"message": "1"}
@@ -265,14 +265,14 @@ module.exports = {
 	],
 	"s-981-2000-1134-0": [{"type": "func","func": single_stage_callout.bind(null, "5 吃注视")}],
 	"s-981-2000-1502-0": [{"type": "func","func": single_stage_callout.bind(null, "6 鉴定准备")}],
-
+	//
 	"s-981-2000-2503-0": [{"type": "text","sub_type": "message","message": "坦快跑远","message_RU": "1 坦快跑远"}],
-	"s-981-2000-2106-0": [{"type": "text","sub_type": "message","message": "back","message_RU": "back"}],
-	"s-981-2000-2108-0": [{"type": "text","sub_type": "message","message": "front","message_RU": "front"}],
-	"s-981-2000-2111-0": [{"type": "text","sub_type": "message","message": "360","message_RU": "360度攻击 "}],
-	"s-981-2000-2121-0": [{"type": "text","sub_type": "message","message_RU": "3 召唤小怪快打"}],
+	"s-981-2000-2106-0": [{"type": "text","sub_type": "message","message": "back","message_RU": "Задний"}],
+	"s-981-2000-2108-0": [{"type": "text","sub_type": "message","message": "front","message_RU": "Передний"}],
+	"s-981-2000-2111-0": [{"type": "text","sub_type": "message","message": "360 attack","message_RU": "Атака на 360 град."}],
+	"s-981-2000-2121-0": [{"type": "text","sub_type": "message","message": "召唤小怪快打","message_RU": "3 召唤小怪快打"}],
 	"s-981-2000-2501-0": [
-		{"type": "text","sub_type": "message","message": "封场鉴定开始","message_RU": "4 封场鉴定开始"},
+		{"type": "text","sub_type": "message","message": "Identification","message_RU": "Идентификация"},
 		{"type": "text","sub_type": "message","delay": 1000,"message": "3"},
 		{"type": "text","sub_type": "message","delay": 2000,"message": "2"},
 		{"type": "text","sub_type": "message","delay": 3000,"message": "1"}
@@ -294,11 +294,10 @@ module.exports = {
 	],
 	"s-981-2000-2134-0": [{"type": "func","func": single_stage_callout.bind(null, "5 吃注视")}],
 	"s-981-2000-2502-0": [{"type": "func","func": single_stage_callout.bind(null, "6 鉴定准备")}],
-	"s-981-2000-4000-0": [{"type": "text","sub_type": "alert","message_RU": "7 鉴定！！！！"}].concat(dlw_object),
+	"s-981-2000-4000-0": [{"type": "text","sub_type": "alert","message": "鉴定！！！！","message_RU": "7 鉴定！！！！"}].concat(dlw_object),
 
-
-	//"dm-0-0-9981022": [{"type": "text","sub_type": "alert","message_RU": "鉴定"}],
-	//"dm-0-0-9981023": [{"type": "text","sub_type": "message","message_RU": "全场鉴定"}],	
+	"dm-0-0-9981022": [{"type": "text","sub_type": "alert","message": "鉴定","message_RU": "8 鉴定"}],
+	"dm-0-0-9981023": [{"type": "text","sub_type": "message","message": "全场鉴定","message_RU": "8 全场鉴定"}],	
 	"dm-0-0-9981046": [{"type": "text","sub_type": "message","message": "(Debuffs) Closest","message_RU": "Первая: дебафф (ближние)"}],
 	"dm-0-0-9981047": [{"type": "text","sub_type": "message","message": "(Circles) Spread","message_RU": "Первая: круги (отдельно)"}],
 	"dm-0-0-9981048": [{"type": "text","sub_type": "message","message": "(Bombs) Gather + cleanse","message_RU": "Первая: бомбы (вместе + клинс)"}],
@@ -322,8 +321,8 @@ module.exports = {
 	"s-981-3000-2152-0": [{"type": "text","sub_type": "message","message": "Stun + Back","message_RU": "Стан + Назад"}],
 	"s-981-3000-2138-0": rings_inout_seventhfloor,// 召唤安全范围250
 	"s-981-3000-1138-0": rings_inout_seventhfloor,// 召唤安全范围250
-	"s-981-3000-1144-0": [{"type": "text","sub_type": "message","message": "out","message_RU": "От него"}],
-	"s-981-3000-1145-0": [{"type": "text","sub_type": "message","message": "in","message_RU": "К нему"}],
+	"s-981-3000-1144-0": [{"type": "text","sub_type": "message","message": "out","message_RU": "Наружу"}],
+	"s-981-3000-1145-0": [{"type": "text","sub_type": "message","message": "in","message_RU": "Внутрь"}],
 	"s-981-3000-1240-0": [{"type": "text","sub_type": "message","message": "Donuts","message_RU": "Бублики"}].concat(SPAWNING_THIRD_CIRCLE_FLOWERS),
 	"s-981-3000-1401-0": [{"type": "text","sub_type": "message","message": "Plague/Regress","message_RU": "Регресс!!"}],
 	"s-981-3000-1402-0": [{"type": "text","sub_type": "message","message": "Sleep","message_RU": "Слип!!"}]

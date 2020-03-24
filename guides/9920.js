@@ -55,14 +55,14 @@ for (let angle = -Math.PI; angle <= Math.PI; angle += steptwo) {
 SPAWNING_FIRST_CIRCLE_FLOWERS.push({"type": "text","class_position":"tank","sub_type": "message","message": "right→>out to in","message_RU": "Вправо > наружу + внутрь"});
 SPAWNING_FIRST_CIRCLE_FLOWERS.push({"type": "text","class_position":"dps","sub_type": "message","message": "left←>out to in","message_RU": "Влево > наружу + внутрь"});
 SPAWNING_FIRST_CIRCLE_FLOWERS.push({"type": "text","class_position":"heal","sub_type": "message","message": "left←>out to in","message_RU": "Влево > наружу + внутрь"});
-SPAWNING_SECOND_CIRCLE_FLOWERS.push({"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2500, "distance": 250, "offset": -1.5, "ownerName": "SAFE SPOT", "message": "SAFE"});
-SPAWNING_SECOND_CIRCLE_FLOWERS.push({"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2500, "distance": 250, "offset": -1.5});
+SPAWNING_SECOND_CIRCLE_FLOWERS.push({"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2500, "distance": 250, "offset": -1.5707, "ownerName": "SAFE SPOT", "message": "SAFE"});
+SPAWNING_SECOND_CIRCLE_FLOWERS.push({"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2500, "distance": 250, "offset": -1.5707});
 // heart thrust+clockwise spin+left swipe+AOEs from in to out
 SPAWNING_SECOND_CIRCLE_FLOWERS.push({"type": "text","class_position":"tank","sub_type": "message","message": "left←>in to out","message_RU": "Влево > внутрь + наружу"});
 SPAWNING_SECOND_CIRCLE_FLOWERS.push({"type": "text","class_position":"dps","sub_type": "message","message": "right→>in to out","message_RU": "Вправо > внутрь + наружу"});
 SPAWNING_SECOND_CIRCLE_FLOWERS.push({"type": "text","class_position":"heal","sub_type": "message","message": "right→>in to out","message_RU": "Вправо > внутрь + наружу"});
-SPAWNING_SECOND_CIRCLE_FLOWERS.push({"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2500, "distance": 250, "offset": 1.5, "ownerName": "SAFE SPOT", "message": "SAFE"});
-SPAWNING_SECOND_CIRCLE_FLOWERS.push({"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2500, "distance": 250, "offset": 1.5});
+SPAWNING_SECOND_CIRCLE_FLOWERS.push({"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2500, "distance": 250, "offset": 1.5707, "ownerName": "SAFE SPOT", "message": "SAFE"});
+SPAWNING_SECOND_CIRCLE_FLOWERS.push({"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2500, "distance": 250, "offset": 1.5707});
 
 // 2 boss Health tips
 function start_boss() {
