@@ -240,12 +240,12 @@ module.exports = {
 						   {"type": "func","func": Spawnitem2.bind(null,553,0,0,10,320,5000)}
 	],
 	"s-3023-1000-3119-0": [{"type": "func","func": skilld_event.bind(null, 3119)},
-						   {"type": "func","func": Spawnitem2.bind(null,553,0,0,10,270,5000)},
-						   {"type": "func","func": Spawnitem2.bind(null,553,0,0,8,575,5000)}
+						   {"type": "func","func": Spawnitem2.bind(null,553,0,0,10,270,4000)},
+						   {"type": "func","func": Spawnitem2.bind(null,553,0,0,8,575,4000)}
 	],
 	"s-3023-1000-3220-0": [{"type": "func","func": skilld_event.bind(null, 3220)},
-						   {"type": "func","func": Spawnitem2.bind(null,553,0,0,10,270,5000)},
-						   {"type": "func","func": Spawnitem2.bind(null,553,0,0,8,575,5000)}
+						   {"type": "func","func": Spawnitem2.bind(null,553,0,0,10,270,4000)},
+						   {"type": "func","func": Spawnitem2.bind(null,553,0,0,8,575,4000)}
 	],
 	//"s-3023-1000-3223-0": [{"type": "text","sub_type": "message","message_RU": "Красный дебаф"}],
 
@@ -264,8 +264,8 @@ module.exports = {
 						  {"type": "func","func": Spawnitem2.bind(null,553,0,0,10,500,6000)},
 						  {"type": "func","func": Spawnitem2.bind(null,553,0,0,8,750,6000)}
 	],
-	"s-3023-2000-202-0": [{"type": "text","sub_type": "message","message": 'BACKSTAB',"message_RU": "Назад + Вперед"}
-						  //{"type": "func","func": Spawnitem1.bind(null,553,0,-500,0,1000,3000)}
+	"s-3023-2000-202-0": [{"type": "text","sub_type": "message","message": 'BACKSTAB',"message_RU": "Назад + Вперед"},
+						  {"type": "func","func": Spawnitem1.bind(null,553,0,-500,0,1000,3000)}
 	],
 	"s-3023-2000-207-0": [{"type": "text","sub_type": "message","message": 'Phantom x5 (bleed)',"message_RU": "Прыжки x5 (Кровоток)"}],
 	"s-3023-2000-212-0": [{"type": "text","sub_type": "message","message": 'Flash (bleed)',"message_RU": "Байт (Кровоток)"}],
