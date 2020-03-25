@@ -5,6 +5,29 @@
 
 let player, entity, library, effect;
 
+function  applyDistance(loc, distance, degrees) {
+	let r = loc.w; //(loc.w / 0x8000) * Math.PI;
+	let rads = (degrees * Math.PI/180);
+	let finalrad = r - rads;
+	loc.x += Math.cos(finalrad) * distance;
+	loc.y += Math.sin(finalrad) * distance;
+	return loc;
+}
+
+function Spawnitem2(item,degrees,distance, intervalDegrees, radius, times, handlers, event, entity ) {
+	let shield_loc = entity['loc'].clone();
+	shield_loc.w = entity['loc'].w;
+	applyDistance(shield_loc, distance, degrees);
+	for (let angle = -Math.PI; angle <= Math.PI; angle +=  Math.PI * intervalDegrees / 180) {
+		handlers['spawn']({
+			"id": item,
+			"sub_delay": times,
+			"distance": radius,
+			"offset": angle
+		}, {loc: shield_loc});
+	}
+}
+
 function single_stage_callout(message, handlers, event, entity) {
 	//if (entity.stage == 0) {
 		handlers['text']({
@@ -14,67 +37,12 @@ function single_stage_callout(message, handlers, event, entity) {
 	//}
 }
 
-let rings_inout_seventhfloor = [];
-
-for (let angle = -Math.PI; angle <= Math.PI; angle += 2 * Math.PI / 40) {
-	rings_inout_seventhfloor.push({
-		"type": "spawn",
-		"id": 553,
-		"sub_delay": 6000,
-		"distance": 250,
-		"offset": angle
-	});
-}
-
-const SPAWN_CIRCLES = true;
-const stepone = 2 * Math.PI / 40; // 40 flowers in total if u think the flower is too many ,u can change the num to smaller.
-const steptwo = 2 * Math.PI / 50; // 50 flowers in total
-
-let SPAWNING_FIRST_CIRCLE_FLOWERS = [];
-let SPAWNING_SECOND_CIRCLE_FLOWERS = [];
-let SPAWNING_THIRD_CIRCLE_FLOWERS = [];
-
-for (let angle = -Math.PI; angle <= Math.PI; angle += steptwo) {
-	if (!SPAWN_CIRCLES) continue;
-	SPAWNING_FIRST_CIRCLE_FLOWERS.push({
-		"type": "spawn",
-		"id": 553,
-		"sub_delay": 6000,
-		"distance": 300,
-		"offset": angle
-	});
-	SPAWNING_SECOND_CIRCLE_FLOWERS.push({
-		"type": "spawn",
-		"id": 553,
-		"sub_delay": 6000,
-		"distance": 250,
-		"offset": angle
-	});
-	SPAWNING_THIRD_CIRCLE_FLOWERS.push({
-		"type": "spawn",
-		"id": 553,
-		"sub_delay": 6000,
-		"distance": 200,
-		"offset": angle
-	});
-}
-
-for (let angle = -Math.PI; angle <= Math.PI; angle += stepone) {
-	if (!SPAWN_CIRCLES) continue;
-	SPAWNING_THIRD_CIRCLE_FLOWERS.push({
-		"type": "spawn",
-		"id": 553,
-		"sub_delay": 6000,
-		"distance": 350,
-		"offset": angle
-	});
-}
-
 let thirdboss_h50 = false;
 
-function start_thirdboss_h50_event(skillid, handlers, event, ent, dispatch) {
+function start_thirdboss_h50_event() {
 	thirdboss_h50 = true;
 }
+
 function start_thirdboss_message_event(skillid, handlers, event, ent, dispatch) {
 	switch (skillid) {
 		// Lakan has noticed you.
@@ -149,7 +117,7 @@ module.exports = {
 		{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": 2.3},
 		{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": 1}
 	],
-	"s-981-1000-2304-0": [{"type": "text","sub_type": "message","message": "Flying","message_RU": "Взлет"}].concat(SPAWNING_FIRST_CIRCLE_FLOWERS),
+	"s-981-1000-2304-0": [{"type": "text","sub_type": "message","message": "Flying","message_RU": "Взлет"},{"type": "func","func": Spawnitem2.bind(null,553,0,0,10,300,6000)}], //.concat(SPAWNING_FIRST_CIRCLE_FLOWERS),
 	"s-981-1000-2303-0": [{"type": "text","sub_type": "message","message": "Spin","message_RU": "Крутилка"}],
 	"s-981-1000-2113-0": [{"type": "text","sub_type": "message","message": "Front + AoEs","message_RU": "Передняя | AOE"}],
 	"s-981-1000-2308-0": [{"type": "text","sub_type": "message","message": "out","message_RU": "Наружу"}],
@@ -168,7 +136,7 @@ module.exports = {
 		{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": 2.3},
 		{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": 1}
 	],
-	"s-981-1000-1304-0": [{"type": "text","sub_type": "message","message": "Flying","message_RU": "Взлет"}].concat(SPAWNING_FIRST_CIRCLE_FLOWERS),
+	"s-981-1000-1304-0": [{"type": "text","sub_type": "message","message": "Flying","message_RU": "Взлет"},{"type": "func","func": Spawnitem2.bind(null,553,0,0,10,300,6000)}], //.concat(SPAWNING_FIRST_CIRCLE_FLOWERS),
 	"s-981-1000-1303-0": [{"type": "text","sub_type": "message","message": "Spin","message_RU": "Крутилка"}],
 	"s-981-1000-1113-0": [{"type": "text","sub_type": "message","message": "Front + AoEs","message_RU": "Передняя | AOE"}],
 	"s-981-1000-1308-0": [{"type": "text","sub_type": "message","message": "out","message_RU": "Наружу"}],
@@ -270,11 +238,11 @@ module.exports = {
 	"s-981-3000-2113-0": [{"type": "text","sub_type": "message","message": "Bait","message_RU": "Байт"}],
 	"s-981-3000-1152-0": [{"type": "text","sub_type": "message","message": "Stun + Back","message_RU": "Стан + Откид назад"}],
 	"s-981-3000-2152-0": [{"type": "text","sub_type": "message","message": "Stun + Back","message_RU": "Стан + Откид назад"}],
-	"s-981-3000-2138-0": rings_inout_seventhfloor,
-	"s-981-3000-1138-0": rings_inout_seventhfloor,
+	"s-981-3000-2138-0": [{"type": "func","func": Spawnitem2.bind(null,553,0,0,10,250,6000)}], //rings_inout_seventhfloor,
+	"s-981-3000-1138-0": [{"type": "func","func": Spawnitem2.bind(null,553,0,0,10,250,6000)}], //rings_inout_seventhfloor,
 	"s-981-3000-1144-0": [{"type": "text","sub_type": "message","message": "Out","message_RU": "Наружу"}],
 	"s-981-3000-1145-0": [{"type": "text","sub_type": "message","message": "In","message_RU": "Внутрь"}],
-	"s-981-3000-1240-0": [{"type": "text","sub_type": "message","message": "Donuts","message_RU": "Бублики"}].concat(SPAWNING_THIRD_CIRCLE_FLOWERS),
+	"s-981-3000-1240-0": [{"type": "text","sub_type": "message","message": "Donuts","message_RU": "Бублики"},{"type": "func","func": Spawnitem2.bind(null,553,0,0,10,350,6000)}],//.concat(SPAWNING_THIRD_CIRCLE_FLOWERS),
 	"s-981-3000-1401-0": [{"type": "text","sub_type": "message","message": "Plague/Regress","message_RU": "Регресс!!"}],
 	"s-981-3000-1402-0": [{"type": "text","sub_type": "message","message": "Sleep","message_RU": "Слип!!"}]
 };
