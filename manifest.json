@@ -1,7 +1,7 @@
 {
     "files": {
         "LICENSE": "7f2ae2125b491e75c546a5d538f82ad4431d5d6b1bbd4aea724864a21daeca63",
-        "README.md": "23b1b92720132e09715f0c71a569ed4972cd4c2f694fa9b96db494b19acd8de0",
+        "README.md": "9c3947adb4f44e6824c856e29486715350f4b121a2448b9d873b07778d1cb067",
         "dbg.json": "443a13a9da6c4f3139d2e85726ea9f6ea8f6b32cd16db3e38723de97117a9df6",
         "dispatch.js": "8550f756e05b171839867491a9f52385f1aef8bfbbed3c80e0afe6aff1d53902",
         "guides/3020.js": "d425d1ed277e0bddb5227ceb84137a500a4de488fca950beb41b8177aadd277e",
@@ -22,7 +22,7 @@
         "guides/9970.js": "e53b0bb5e5adfabf87117975869380a53feb4162dab7609d304bb955d5a82d29",
         "guides/9981.js": "0df29b4e3af6deb09b834db0b2cf8f1c85a6882cb0567ed80b3fd2bfcc403d11",
         "guides/9982.js": "1eb648f26492d67bd3a296eaa60e02decb94c0c11973f725e82fe33bcce014ac",
-        "index.js": "5d0eae21ec8d60fc47fcab183b654987b72b3f8c89ab53c654590fc35f316bc1",
+        "index.js": "819e621754389d039836a38a15ed4f49a7c33c9d1c849c183927d274d2f12570",
         "lib.js": "513df666094c096340348f1c87acef9b7406c30f0873f267d207824c89193d40",
         "module.json": "046976158ece47dbece4be3cb0697adb21a3a289905a889d7210860f4e66ef66",
         "settings_migrator.js": "d171d215975f840cd28de0e666c3a2f81581f9bf638e2c08fcf3d647c86630d8"
