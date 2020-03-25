@@ -6,8 +6,6 @@ const dbg = require('./dbg');
 const TANK_CLASS_IDS = [1, 10];
 // Dps class ids(not counting warrior)
 const DPS_CLASS_IDS = [2, 3, 4, 5, 8, 9, 11, 12];
-const MapID_RU = require('./StrSheet_RU_Dungeon.json').String;
-const MapID = require('./StrSheet_Dungeon.json').String;
 // Healer class ids
 const HEALER_CLASS_IDS = [6, 7];
 // Warrior Defence stance abnormality ids
@@ -71,8 +69,9 @@ class TeraGuide{
         // All of the timers, where the key is the id
         let random_timer_id = 0xFFFFFFFA; // Used if no id is specified
         let timers = {};	
-		let StrSheet_Dungeon_String = [];
-		let StrSheet_RU_Dungeon_String = [];		
+		let entered_zone_data = {};
+		//let StrSheet_Dungeon_String = [];
+		//let StrSheet_RU_Dungeon_String = [];		
         /** HELPER FUNCTIONS **/
 
         // Write generic debug message used when creating guides
@@ -286,6 +285,17 @@ class TeraGuide{
             
             // Try loading a guide
             try {
+				// Find and load zone data from settings
+				for (const i of dispatch.settings.dungeons) {
+					if (i.id == e.zone) {
+						entered_zone_data = i;
+						break;
+					}
+				}
+				if (!entered_zone_data) {
+					throw "Guide not found in config";
+				}
+
                 active_guide = require('./guides/' + e.zone);
                    //奧盧卡                 暴風拉斯       
             if (3126 == e.zone ||   3026 == e.zone ||   9750 == e.zone ||   9066 == e.zone || 9050 == e.zone ||  9054 == e.zone || 9754 == e.zone || 9916 == e.zone || 9781 == e.zone || 3017 == e.zone || 9044 == e.zone || 9070 == e.zone || 9920 == e.zone || 9970 == e.zone || 9981 == e.zone) {
@@ -301,17 +311,17 @@ class TeraGuide{
 			   	  // 技能100-200 
             }
                 guide_found = true;
-		StrSheet_Dungeon_String = MapID.find(obj => obj.id === e.zone);
-		StrSheet_RU_Dungeon_String = MapID_RU.find(obj => obj.id === e.zone);		
-		if (StrSheet_RU_Dungeon_String) {
-        if( spguide ) {
-				 text_handler({"sub_type": "alert","delay": 8000,"message_RU": 'Вы вошли в ' +  cr +  StrSheet_RU_Dungeon_String.string, "message": ' Enter SP  Dungeon： ' +  cr + StrSheet_Dungeon_String.string});  
-            }else if( esguide ) {
-				 text_handler({"sub_type": "alert","delay": 8000,"message_RU": 'Вы вошли в ' +  cr + StrSheet_RU_Dungeon_String.string, "message": ' Enter ES  Dungeon： ' + cr +  StrSheet_Dungeon_String.string}); 
-            }else{
-				 text_handler({"sub_type": "alert","delay": 8000,"message_RU": 'Вы вошли в ' +  cr + StrSheet_RU_Dungeon_String.string, "message": ' Enter   Dungeon： ' +  cr + StrSheet_Dungeon_String.string}); 
-			}
-		} 
+
+				if (entered_zone_data.name_RU) {
+					if(spguide) {
+						 text_handler({"sub_type": "alert","delay": 8000,"message_RU": 'Вы вошли в ' +  cr +  entered_zone_data.name_RU, "message": ' Enter SP  Dungeon： ' +  cr + entered_zone_data.name});  
+					} else if (esguide) {
+						 text_handler({"sub_type": "alert","delay": 8000,"message_RU": 'Вы вошли в ' +  cr + entered_zone_data.name_RU, "message": ' Enter ES  Dungeon： ' + cr +  entered_zone_data.name}); 
+					} else {
+						 text_handler({"sub_type": "alert","delay": 8000,"message_RU": 'Вы вошли в ' +  cr + entered_zone_data.name_RU, "message": ' Enter   Dungeon： ' +  cr + entered_zone_data.name}); 
+					}
+				}
+
             }catch(e) {
                 active_guide = {};
                 guide_found = false;
@@ -448,7 +458,8 @@ class TeraGuide{
         // Spawn handler
         function spawn_handler(event, ent, speed=1.0) {
             if(dispatch.settings.stream) return;
-            if(!dispatch.settings.spawnObject) return;			
+            if(!dispatch.settings.spawnObject) return;
+            if(!entered_zone_data.spawnObject) return;
             // Make sure id is defined
             if(!event['id']) return debug_message(true, "Spawn handler needs a id");
             // Make sure sub_delay is defined
@@ -612,6 +623,7 @@ class TeraGuide{
 				//组队长通知
                 case "alert": {
 				  if(dispatch.settings.stream) return;
+				  if(!entered_zone_data.verbose) return;
                     sending_event = {
 					channel: 21,
 					authorName: 'guide',
@@ -621,6 +633,7 @@ class TeraGuide{
                 }
                 case "MSG": {
                  if(dispatch.settings.stream) return;
+				 if(!entered_zone_data.verbose) return;
 	                        timers[event['id'] || random_timer_id--] = setTimeout(()=> {
               command.message( cr + message );
               console.log( cr + message );			  
@@ -682,12 +695,14 @@ class TeraGuide{
                 }					
                 case "PRMSG": {
 				  if(dispatch.settings.stream) return;	
+				  if(!entered_zone_data.verbose) return;
               command.message( dispatch.settings.cc + message );	             
                     break;
                 }					
                  //团队长通知				
                 case "notification": {
 					if(dispatch.settings.stream) return;
+					if(!entered_zone_data.verbose) return;
                     sending_event = {
 					channel: 25,
 					authorName: 'guide',
@@ -719,6 +734,7 @@ class TeraGuide{
             }, (event['delay'] || 0 ) / speed);
         }
 	 function sendMessage(message) {
+		if(!entered_zone_data.verbose) return;
 	    if(dispatch.settings.stream){
 		command.message( dispatch.settings.cc +  message );	
 		return;	
@@ -745,6 +761,7 @@ class TeraGuide{
     }	
 	 function sendspMessage(message,spcc) {
              if(dispatch.settings.stream) return;
+			 if(!entered_zone_data.verbose) return;
             dispatch.toClient('S_DUNGEON_EVENT_MESSAGE', 2, {
                 type: 42,
                 chat: 0,
@@ -759,6 +776,7 @@ class TeraGuide{
             if(!event['id']) return debug_message(true, "Sound handler needs a id");
             // Ignore if dispatch.settings.streamer mode is enabled
             if(dispatch.settings.stream) return;
+			if(!entered_zone_data.verbose) return;
 
             // Create the timer
             timers[event['id']] = setTimeout(()=> {

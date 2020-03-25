@@ -2,14 +2,12 @@
     "files": {
         "LICENSE": "7f2ae2125b491e75c546a5d538f82ad4431d5d6b1bbd4aea724864a21daeca63",
         "README.md": "23b1b92720132e09715f0c71a569ed4972cd4c2f694fa9b96db494b19acd8de0",
-        "StrSheet_Dungeon.json": "5bb0cc2a82b69f25e0403a161ff08b4233ec6d0c7e3e58c1f0d118d58d68ccc7",
-        "StrSheet_RU_Dungeon.json": "52a25601283fa9caf11e4e4c464f7557d55e0a3b179492d074ea03a9dbb0c891",
         "dbg.json": "443a13a9da6c4f3139d2e85726ea9f6ea8f6b32cd16db3e38723de97117a9df6",
         "dispatch.js": "8550f756e05b171839867491a9f52385f1aef8bfbbed3c80e0afe6aff1d53902",
         "guides/3020.js": "d425d1ed277e0bddb5227ceb84137a500a4de488fca950beb41b8177aadd277e",
         "guides/3023.js": "7ffbf671c5f08ee427b59ba943ad304c42a60005f97501f949a0303de3b80ca9",
         "guides/3026.js": "84dbba816c82bd16c0b209575612503ece310aed3ee60f1f80b4182301601743",
-        "guides/3027.js": "9f1829ee9b5d6909369d6fd85c6da3e6d7369757533d1ca8d1f7ca1f1b656b2e",
+        "guides/3027.js": "6838192bafaced2a709012230244b7b9b577bdbe570f589241bbd9624e1d0a78",
         "guides/3101.js": "416b2fba479608459d84eefd71fca7aefd9ddaba99c46a942aa3be830dc6c547",
         "guides/3126.js": "0ad069b8290e2d815e0dbd2511645d1c09f2926e0d06ccba83e4a12aa958f476",
         "guides/3201.js": "7c0a6d3912f08494a18aa49a20615e4e747c3a66480a50b277c992f3ce20546d",
@@ -24,10 +22,10 @@
         "guides/9970.js": "e53b0bb5e5adfabf87117975869380a53feb4162dab7609d304bb955d5a82d29",
         "guides/9981.js": "0df29b4e3af6deb09b834db0b2cf8f1c85a6882cb0567ed80b3fd2bfcc403d11",
         "guides/9982.js": "1eb648f26492d67bd3a296eaa60e02decb94c0c11973f725e82fe33bcce014ac",
-        "index.js": "1eb72bfd9cc8365b0b8a252f0bab4641b44688306d91cff6a3efed768cf1be9f",
+        "index.js": "5d0eae21ec8d60fc47fcab183b654987b72b3f8c89ab53c654590fc35f316bc1",
         "lib.js": "513df666094c096340348f1c87acef9b7406c30f0873f267d207824c89193d40",
-        "module.json": "e0551a3fa5855739205f4f1d99a8c865add5439d886e57ba2be38faed04b5ec1",
-        "settings_migrator.js": "29e462e4531a28800d82cb5b70ea6af64ebee072bb12c74efff3fae9278b4c6d"
+        "module.json": "046976158ece47dbece4be3cb0697adb21a3a289905a889d7210860f4e66ef66",
+        "settings_migrator.js": "d171d215975f840cd28de0e666c3a2f81581f9bf638e2c08fcf3d647c86630d8"
     },
     "defs": {
         "S_ABNORMALITY_BEGIN": 4,
