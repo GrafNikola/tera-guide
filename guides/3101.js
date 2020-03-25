@@ -51,7 +51,7 @@ module.exports = {
 	"s-3101-1000-148-0": [{"type": "text","sub_type": "message","message": "Right hand (flying)","message_RU": "Правая рука (подлет)"}],
 	"s-3101-1000-149-0": [{"type": "text","sub_type": "message","message": "Left hand (flying)","message_RU": "Левая рука (подлет)"}],
 	"s-3101-1000-305-0": [{"type": "text","sub_type": "message","message": "Pizza","message_RU": "Pizza"}],
-	"s-3101-1000-313-0": [{"type": "text","sub_type": "message","message": "Circles (Slow)","message_RU": "Кольцо"},{"type": "func","func": Spawnitem2.bind(null,553,0,75,8,300,6000)}],
+	"s-3101-1000-313-0": [{"type": "text","sub_type": "message","message": "Circles (Slow)","message_RU": "Кольцо"},{"type": "func","func": Spawnitem2.bind(null,553,0,75,10,300,6000)}],
 
 
 	// 2 BOSS
@@ -80,10 +80,10 @@ module.exports = {
 	"s-3101-2000-230-0": [{"type": "text","sub_type": "message","message": "AOE","message_RU": "AOE"}],
 
 	"s-3101-2000-231-0": [{"type": "text","sub_type": "message","message": "OUT safe ↓","message_RU": "ОТ НЕГО"},
-						  {"type": "func","func": Spawnitem2.bind(null,553,0,0,8,300,3000)}
+						  {"type": "func","func": Spawnitem2.bind(null,553,0,0,10,300,3000)}
 	],
 	"s-3101-2000-232-0": [{"type": "text","sub_type": "message","message": "IN safe ↑","message_RU": "К НЕМУ"},
-						  {"type": "func","func": Spawnitem2.bind(null,553,0,0,8,300,3000)},
+						  {"type": "func","func": Spawnitem2.bind(null,553,0,0,10,300,3000)},
 						  {"type": "func","func": Spawnitem2.bind(null,553,0,0,3,875,3000)}
 	],
 
