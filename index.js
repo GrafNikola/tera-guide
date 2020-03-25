@@ -382,7 +382,7 @@ class TeraGuide{
 					}
 				} else {
 					dispatch.settings.spawnObject = !dispatch.settings.spawnObject;
-					text_handler({"sub_type": "PRMSG","message_RU": `Спавн объектов: ${dispatch.settings.spawnObject?"Выкл":"Вкл"}.`, "message": `Spawn objects ${dispatch.settings.spawnObject?"on":"off"}.` });
+					text_handler({"sub_type": "PRMSG","message_RU": `Спавн объектов: ${dispatch.settings.spawnObject?"Вкл":"Выкл"}.`, "message": `Spawn objects ${dispatch.settings.spawnObject?"on":"off"}.` });
 				}
 			},
 			verbose(arg1) {
