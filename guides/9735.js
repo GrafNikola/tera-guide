@@ -88,10 +88,10 @@ module.exports = {
 	"s-735-2000-301-0": [{"type": "text","sub_type": "message","message": "Throws","message_RU": "Бомба"}],
 	"s-735-2000-304-0": [{"type": "text","sub_type": "message","message": "OUT","message_RU": "ОТ НЕГО"}],
 	"s-735-2007-307-0": [
-		{"type": "func","func": Spawnitem1.bind(null,445,0,0,0,500,12000)},
-		{"type": "func","func": Spawnitem1.bind(null,445,0,0,90,500,12000)},
-		{"type": "func","func": Spawnitem1.bind(null,445,0,0,180,500,12000)},
-		{"type": "func","func": Spawnitem1.bind(null,445,0,0,270,500,12000)}
+		{"type": "func","func": Spawnitem1.bind(null,912,0,0,0,500,12000)},
+		{"type": "func","func": Spawnitem1.bind(null,912,0,0,90,500,12000)},
+		{"type": "func","func": Spawnitem1.bind(null,912,0,0,180,500,12000)},
+		{"type": "func","func": Spawnitem1.bind(null,912,0,0,270,500,12000)}
 	],
 
 	// 3 BOSS
