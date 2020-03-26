@@ -333,6 +333,7 @@ class TeraGuide{
 					}
 				}
 			} catch(e) {
+				entered_zone_data = {};
 				active_guide = {};
 				guide_found = false;
 				debug_message(debug.debug, e);
