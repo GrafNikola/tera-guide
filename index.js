@@ -108,7 +108,7 @@ class TeraGuide{
 			switch (class_position) {
 				case "tank": {
 					// if it's a warrior with dstance abnormality
-					if(player.job === 0) {
+					if (player.job === 0) {
 						// Loop thru tank abnormalities
 						for(let id of WARRIOR_TANK_IDS) {
 							// if we have the tank abnormality return true
@@ -210,7 +210,7 @@ class TeraGuide{
 			// If the guide module is active and a guide for the current dungeon is found
 			if (dispatch.settings.enabled && guide_found) {
 				// avoid errors ResidentSleeper (neede for abnormality refresh)
-				if(!e.source) e.source = 0n;
+				if (!e.source) e.source = 0n;
 
 				// If the boss/mob get's a abnormality applied to it
 				const target_ent = entity['mobs'][e.target.toString()];
@@ -228,7 +228,7 @@ class TeraGuide{
 				}, e.id, 'Abnormality', 'ae', debug.debug || debug.abnormal);
 
 				// If it's a mob/boss getting an abnormality applied to itself, it's plausible we want to act on it
-				if(target_ent) handle_event(target_ent, e.id, 'Abnormality', 'ab', debug.debug || debug.abnormal);
+				if (target_ent) handle_event(target_ent, e.id, 'Abnormality', 'ab', debug.debug || debug.abnormal);
 			}
 		}
 		dispatch.hook('S_ABNORMALITY_BEGIN', 4, {order: 15}, abnormality_triggered);
@@ -293,8 +293,6 @@ class TeraGuide{
 
 			// Try loading a guide
 			try {
-				entered_zone_data = {};
-
 				// Find and load zone data from settings
 				for (const i of dispatch.settings.dungeons) {
 					if (i.id == e.zone) {
@@ -302,20 +300,20 @@ class TeraGuide{
 						break;
 					}
 				}
-				if (!entered_zone_data) {
-					throw "Guide not found in config";
+				if (!entered_zone_data.id) {
+					throw 'Guide for zone ' + e.zone + ' not found in config';
 				}
 
 				active_guide = require('./guides/' + e.zone);
-				//奧盧卡                 暴風拉斯
+
+				//  奧盧卡               暴風拉斯
 				if (3126 == e.zone ||   3026 == e.zone ||   9750 == e.zone ||   9066 == e.zone || 9050 == e.zone ||  9054 == e.zone || 9754 == e.zone || 9916 == e.zone || 9781 == e.zone || 3017 == e.zone || 9044 == e.zone || 9070 == e.zone || 9920 == e.zone || 9970 == e.zone || 9981 == e.zone) {
 					spguide = true;
 					// 技能1000
 				} else if ( 9000 == e.zone ||   3023 == e.zone ||   9759 == e.zone  ) {
 					esguide = true;
 					// 技能100-200 + 3000
-				}
-				else {
+				} else {
 					spguide = false;
 					esguide = false;
 					// 技能100-200 
@@ -323,13 +321,13 @@ class TeraGuide{
 
 				guide_found = true;
 
-				if (entered_zone_data.name_RU) {
+				if (entered_zone_data.name) {
 					if (spguide) {
-						 text_handler({"sub_type": "alert","delay": 8000,"message_RU": 'Вы вошли в ' +  cr + entered_zone_data.name_RU + ' [' + e.zone + ']', "message": ' Enter SP  Dungeon： ' +  cr + entered_zone_data.name + ' [' + e.zone + ']'});  
+						 text_handler({"sub_type": "alert","delay": 8000,"message_RU": 'Вы вошли в ' + cr + entered_zone_data.name_RU + ' [' + e.zone + ']', "message": ' Enter SP  Dungeon： ' +  cr + entered_zone_data.name + ' [' + e.zone + ']'});  
 					} else if (esguide) {
-						 text_handler({"sub_type": "alert","delay": 8000,"message_RU": 'Вы вошли в ' +  cr + entered_zone_data.name_RU + ' [' + e.zone + ']', "message": ' Enter ES  Dungeon： ' + cr +  entered_zone_data.name + ' [' + e.zone + ']'}); 
+						 text_handler({"sub_type": "alert","delay": 8000,"message_RU": 'Вы вошли в ' + cr + entered_zone_data.name_RU + ' [' + e.zone + ']', "message": ' Enter ES  Dungeon： ' + cr + entered_zone_data.name + ' [' + e.zone + ']'}); 
 					} else {
-						 text_handler({"sub_type": "alert","delay": 8000,"message_RU": 'Вы вошли в ' +  cr + entered_zone_data.name_RU + ' [' + e.zone + ']', "message": ' Enter   Dungeon： ' +  cr + entered_zone_data.name + ' [' + e.zone + ']'}); 
+						 text_handler({"sub_type": "alert","delay": 8000,"message_RU": 'Вы вошли в ' + cr + entered_zone_data.name_RU + ' [' + e.zone + ']', "message": ' Enter   Dungeon： ' + cr + entered_zone_data.name + ' [' + e.zone + ']'}); 
 					}
 				}
 			} catch(e) {
@@ -339,10 +337,14 @@ class TeraGuide{
 				debug_message(debug.debug, e);
 			}
 
-			// Try calling the "load" function
-			try {
-				active_guide.load(fake_dispatch);
-			} catch(e) { debug_message(debug.debug, e); }
+			if (guide_found) {
+				// Try calling the "load" function
+				try {
+					active_guide.load(fake_dispatch);
+				} catch(e) {
+					debug_message(debug.debug, e);
+				}
+			}
 		});
 
 		// Guide command
@@ -368,7 +370,7 @@ class TeraGuide{
 			},
 			stream() {
 				dispatch.settings.stream = !dispatch.settings.stream;
-				text_handler({"sub_type": "PRMSG","message_RU": `Стрим, скрытие сообщений ${dispatch.settings.stream?"Вкл":"Выкл"}.`, "message": `Stream ${dispatch.settings.stream?"on":"off"}.` }); 				
+				text_handler({"sub_type": "PRMSG","message_RU": `Стрим, скрытие сообщений ${dispatch.settings.stream?"Вкл":"Выкл"}.`, "message": `Stream ${dispatch.settings.stream?"on":"off"}.`});
 			},
 			spawnObject(arg1) {
 				let sd_id;
@@ -438,40 +440,40 @@ class TeraGuide{
 				dispatch.settings.cc.splice(0,1, cr);
 			},
 			cb() {
-				text_handler({"sub_type": "CBMSG","message_RU": `Цвет системного сообщения: синий`, "message": `system message notification color is BLUE` });
+				text_handler({"sub_type": "CBMSG","message_RU": `Цвет системного сообщения: синий`, "message": `system message notification color is BLUE`});
 				dispatch.settings.cc.splice(0,1, cb);
 			},
 			cv() {
-				text_handler({"sub_type": "CVMSG","message_RU": `Цвет системного сообщения: фиолетовый`, "message": `system message notification color is VIOLET` });
+				text_handler({"sub_type": "CVMSG","message_RU": `Цвет системного сообщения: фиолетовый`, "message": `system message notification color is VIOLET`});
 				dispatch.settings.cc.splice(0,1, cv);
 			},
 			cp() {
-				text_handler({"sub_type": "CPMSG","message_RU": `Цвет системного сообщения: розовый`, "message": `system message notification color is PINK` });
+				text_handler({"sub_type": "CPMSG","message_RU": `Цвет системного сообщения: розовый`, "message": `system message notification color is PINK`});
 				dispatch.settings.cc.splice(0,1, cp);
 			},
 			clp() {
-				text_handler({"sub_type": "CLPMSG","message_RU": `Цвет системного сообщения: светло-розовый`, "message": `system message notification color is LIGHT PINK` });
+				text_handler({"sub_type": "CLPMSG","message_RU": `Цвет системного сообщения: светло-розовый`, "message": `system message notification color is LIGHT PINK`});
 				dispatch.settings.cc.splice(0,1, clp);
 			},
 			clb() {
-				text_handler({"sub_type": "CLBMSG","message_RU": `Цвет системного сообщения: светло-синий`, "message": `system message notification color is LIGHT BLUE` });
+				text_handler({"sub_type": "CLBMSG","message_RU": `Цвет системного сообщения: светло-синий`, "message": `system message notification color is LIGHT BLUE`});
 				dispatch.settings.cc.splice(0,1, clb);
 			},
 			cbl() {
-				text_handler({"sub_type": "CBLMSG","message_RU": `Цвет системного сообщения: черный`, "message": `system message notification color is  BLACK` });
+				text_handler({"sub_type": "CBLMSG","message_RU": `Цвет системного сообщения: черный`, "message": `system message notification color is  BLACK`});
 				dispatch.settings.cc.splice(0,1, cbl);
 			},
 			cgr() {
-				text_handler({"sub_type": "CGRMSG","message_RU": `Цвет системного сообщения: серый`, "message": `system message notification color is  GRAY` });
+				text_handler({"sub_type": "CGRMSG","message_RU": `Цвет системного сообщения: серый`, "message": `system message notification color is  GRAY`});
 				dispatch.settings.cc.splice(0,1, cgr);
 			},	
 			cw() {
-				text_handler({"sub_type": "CWMSG","message_RU": `Цвет системного сообщения: белый`, "message": `system message notification color is  WHITE` });
+				text_handler({"sub_type": "CWMSG","message_RU": `Цвет системного сообщения: белый`, "message": `system message notification color is  WHITE`});
 			   dispatch.settings.cc.splice(0,1, cw);
 			},
 			dungeons() {
 				for (const i of dispatch.settings.dungeons) {
-					text_handler({"sub_type": "CWMSG","message_RU": `${i.id} - ${i.name_RU}`, "message": `${i.id} - ${i.name}` });
+					text_handler({"sub_type": "CWMSG","message_RU": `${i.id} - ${i.name_RU}`, "message": `${i.id} - ${i.name}`});
 				}
 			},
 			help() {
@@ -503,7 +505,7 @@ class TeraGuide{
 				text_handler({"sub_type": "PRMSG","message_RU": `Модуль: ${dispatch.settings.enabled?"Вкл":"Выкл"}.`, "message": `guide ${dispatch.settings.enabled?"on":"off"}.`});
 			}
 		});
-		
+
 		/** Function/event handlers for types **/
 
 		// Spawn handler
@@ -649,26 +651,26 @@ class TeraGuide{
 				case "message": {
 					timers[event['id'] || random_timer_id--] = setTimeout(()=> {	
 						sendMessage(message);
-					}, (event['delay'] || 0 )   /speed);
+					}, (event['delay'] || 0) / speed);
 					break;
 				}
 				case "msgcp": {
 					timers[event['id'] || random_timer_id--] = setTimeout(()=> {	
-						sendspMessage(message,cp);		
-					}, (event['delay'] || 0 )   /speed);
+						sendspMessage(message,cp);
+					}, (event['delay'] || 0) / speed);
 					break;
 				}
 				case "msgcg": {
 					timers[event['id'] || random_timer_id--] = setTimeout(()=> {	
-						sendspMessage(message,cg);		
-					}, (event['delay'] || 0 )   /speed);
+						sendspMessage(message,cg);
+					}, (event['delay'] || 0) / speed);
 					break;
 				}
 				//组队长通知
 				case "alert": {
-				  if(dispatch.settings.stream) return;
-				  if(!entered_zone_data.verbose) return;
-						sending_event = {
+					if (dispatch.settings.stream) return;
+					if (!entered_zone_data.verbose) return;
+					sending_event = {
 						channel: 21,
 						authorName: 'guide',
 						message
@@ -676,68 +678,68 @@ class TeraGuide{
 					break;
 				}
 				case "MSG": {
-					if(dispatch.settings.stream) return;
-					if(!entered_zone_data.verbose) return;
+					if (dispatch.settings.stream) return;
+					if (!entered_zone_data.verbose) return;
 						timers[event['id'] || random_timer_id--] = setTimeout(()=> {
 						command.message( cr + message );
 						console.log( cr + message );
-					}, (event['delay'] || 0 ) - 600 /speed);
+					}, (event['delay'] || 0 ) - 600 / speed);
 					break;
 				}
 				case "COMSG": {
-					command.message( co + message );
+					command.message(co + message);
 					break;
 				}
 				case "CYMSG": {
-					command.message( cy + message );
+					command.message(cy + message);
 					break;
 				}
 				case "CGMSG": {
-					command.message( cg + message );
+					command.message(cg + message);
 					break;
 				}
 				case "CDBMSG": {
-					command.message( cdb + message );
+					command.message(cdb + message);
 					break;
 				}
 				case "CBMSG": {
-					command.message( cb + message );
+					command.message(cb + message);
 					break;
 				}
 				case "CVMSG": {
-					command.message( cv + message );
+					command.message(cv + message);
 					break;
 				}
 				case "CPMSG": {
-					command.message( cp + message );
+					command.message(cp + message);
 					break;
 				}
 				case "CLPMSG": {
-					command.message( clp + message );
+					command.message(clp + message);
 					break;
 				}
 				case "CLBMSG": {
-					command.message( clb + message );
+					command.message(clb + message);
 					break;
 				}
 				case "CBLMSG": {
-					command.message( cbl + message );
+					command.message(cbl + message);
 					break;
 				}
 				case "CGRMSG": {
-					command.message( cgr + message );
+					command.message(cgr + message);
 					break;
 				}
 				case "CWMSG": {
-					command.message( cw + message );
+					command.message(cw + message);
 					break;
 				}
 				case "CRMSG": {
-					command.message( cr + message );
+					command.message(cr + message);
 					break;
 				}
 				case "PRMSG": {
-					command.message( dispatch.settings.cc + message );
+					command.message(dispatch.settings.cc + message);
 					break;
 				}
 				//团队长通知
@@ -760,8 +762,7 @@ class TeraGuide{
 				switch(event['sub_type']) {
 				// case "message": return dispatch.toClient('S_DUNGEON_EVENT_MESSAGE', 2, sending_events);	
 					case "notification": return dispatch.toClient('S_CHAT', 3, sending_event);
-					case "alert": return dispatch.toClient('S_CHAT', 3, sending_event);						
-					
+					case "alert": return dispatch.toClient('S_CHAT', 3, sending_event);
 				}
 				/*
 				else {
@@ -773,7 +774,7 @@ class TeraGuide{
 		}
 		function sendMessage(message) {
 			if(dispatch.settings.stream || !entered_zone_data.verbose){
-				command.message( dispatch.settings.cc +  message );	
+				command.message(dispatch.settings.cc +  message);
 				return;
 			} 
 			if (dispatch.settings.notice) {
@@ -781,7 +782,7 @@ class TeraGuide{
 					channel: 21, //21 = p-notice, 1 = party, 2 = guild
 					message
 				});
-			} else if(dispatch.settings.systemNotice) {
+			} else if (dispatch.settings.systemNotice) {
 				dispatch.toClient('S_CHAT', 3, {
 					channel: 1, //21 = p-notice, 1 = party, 2 = guild
 					message
@@ -791,7 +792,7 @@ class TeraGuide{
 					type: 42,
 					chat: 0,
 					channel: 27,
-					message: ( dispatch.settings.cc +  message  ) //----------------------------------------------------------------------
+					message: (dispatch.settings.cc +  message)
 				});
 			}
 		}
@@ -802,7 +803,7 @@ class TeraGuide{
 				type: 42,
 				chat: 0,
 				channel: 27,
-				message: ( spcc +  message  )   //----------------------------------------------------------------------
+				message: (spcc +  message)
 			});
 		}
 		// Stop timer handler

@@ -217,8 +217,10 @@ module.exports = {
 						  {"type": "func","func": Spawnitem1.bind(null,553,180,500,90,200,2000)}
 	],
 	"s-3023-1000-115-0": [{"type": "text","sub_type": "message","message": 'Back attack',"message_RU": "Удар назад"},
-						  {"type": "func","func": Spawnitemsp2.bind(null,1,-2,553,0,0,20,150,100,2000)},
-						  {"type": "func","func": Spawnitemsp2.bind(null,-2,1,553,0,0,20,150,100,2000)},
+						  {"type": "func","func": Spawnitemsp2.bind(null,1,-2,553,0,0,20,160,100,2000)},
+						  {"type": "func","func": Spawnitemsp2.bind(null,-2,1,553,0,0,20,160,100,2000)},
+						  {"type": "func","func": Spawnitemsp2.bind(null,1,-2,553,0,0,12,220,100,2000)},
+						  {"type": "func","func": Spawnitemsp2.bind(null,-2,1,553,0,0,12,220,100,2000)},
 						  {"type": "func","func": Spawnitemsp2.bind(null,1,-2,553,0,0,10,300,100,2000)},
 						  {"type": "func","func": Spawnitemsp2.bind(null,-2,1,553,0,0,10,300,100,2000)}
 	],
@@ -231,7 +233,7 @@ module.exports = {
 	"ae-0-0-30231000": [{"type": "func","func": skilld_event.bind(null, 30231000)}], //开始红色
 	"ae-0-0-30231001": [{"type": "func","func": skilld_event.bind(null, 30231001)}], //开始蓝色
 	"s-3023-1000-3107-0": [{"type": "text","sub_type": "message","message": 'Smash',"message_RU": "Конус вперед"},
-						   {"type": "func","func": Spawnitem1.bind(null,553,90,80,10,1000,4000)},
+						   {"type": "func","func": Spawnitem1.bind(null,553,90,80,0,1000,4000)},
 						   {"type": "func","func": Spawnitem1.bind(null,553,270,80,350,1000,4000)}
 	],
 	"s-3023-1000-3115-0": [{"type": "text","sub_type": "message","message": 'Spin',"message_RU": "Крутилка"},
@@ -266,6 +268,9 @@ module.exports = {
 	],
 	"s-3023-2000-202-0": [{"type": "text","sub_type": "message","message": 'BACKSTAB',"message_RU": "Назад + Вперед"},
 						  {"type": "func","func": Spawnitem1.bind(null,553,0,-500,0,500,3000)}
+						   //{"type": "func","func": Spawnitem1.bind(null,553,90,-500,0,500,3000)},
+						   //{"type": "func","func": Spawnitem1.bind(null,553,270,-500,360,500,3000)}
+
 	],
 	"s-3023-2000-207-0": [{"type": "text","sub_type": "message","message": 'Phantom x5 (bleed)',"message_RU": "Прыжки x5 (Кровоток)"}],
 	"s-3023-2000-212-0": [{"type": "text","sub_type": "message","message": 'Flash (bleed)',"message_RU": "Байт (Кровоток)"}],
