@@ -268,8 +268,8 @@ module.exports = {
 	],
 	"s-3023-2000-202-0": [{"type": "text","sub_type": "message","message": 'BACKSTAB',"message_RU": "Назад + Вперед"},
 						  {"type": "func","func": Spawnitem1.bind(null,553,0,-500,0,500,3000)}
-						   //{"type": "func","func": Spawnitem1.bind(null,553,90,-500,0,500,3000)},
-						   //{"type": "func","func": Spawnitem1.bind(null,553,270,-500,360,500,3000)}
+						  //{"type": "func","func": Spawnitem1.bind(null,553,90,-500,0,500,3000)},
+						  //{"type": "func","func": Spawnitem1.bind(null,553,270,-500,360,500,3000)}
 
 	],
 	"s-3023-2000-207-0": [{"type": "text","sub_type": "message","message": 'Phantom x5 (bleed)',"message_RU": "Прыжки x5 (Кровоток)"}],
