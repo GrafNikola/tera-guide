@@ -11,12 +11,12 @@ let firstskill = 0,
 	MSG2 = null,
 	print = false,
 	tempskill = 0;
-let firstskill1 = '？',
-	secondskill1 = '？',
-	tempskill1 = '？';
-let firstskill2 = '？',
-	secondskill2 = '？',
-	tempskill2 = '？';
+let firstskill1 = '?',
+	secondskill1 = '?',
+	tempskill1 = '?';
+let firstskill2 = '?',
+	secondskill2 = '?',
+	tempskill2 = '?';
 let notice = true;
 
 function applyDistance(loc, distance, degrees) {
@@ -102,9 +102,9 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 		firstskill = tempskill;
 		secondskill = 0;
 		firstskill1 = tempskill1;
-		secondskill1 = '？';
+		secondskill1 = '?';
 		firstskill2 = tempskill2;
-		secondskill2 = '？';
+		secondskill2 = '?';
 		MSG =  'Next: ' + firstskill + ' + ' + secondskill;
 		MSG1 = 'Next: ' + firstskill1  + secondskill1;
 		MSG2 = 'Next: ' + firstskill2  + secondskill2;
@@ -122,9 +122,9 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 		secondskill = tempskill;
 		firstskill = 0;
 		secondskill1 = tempskill1;
-		firstskill1 = '？';
+		firstskill1 = '?';
 		secondskill2 = tempskill2;
-		firstskill2 = '？';
+		firstskill2 = '?';
 		MSG =  'Next: ' + firstskill + ' + ' + secondskill;
 		MSG1 = 'Next: ' + firstskill1 + secondskill1;
 		MSG2 = 'Next: ' + firstskill2 + secondskill2;
@@ -197,9 +197,9 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 		secondskill = tempskill;
 		firstskill = 0;
 		secondskill1 = tempskill1;
-		firstskill1 = '？';
+		firstskill1 = '?';
 		secondskill2 = tempskill2;
-		firstskill2 = '？';
+		firstskill2 = '?';
 		handlers['text']({
 			"sub_type": "alert",
 			"delay": 8000,
@@ -224,9 +224,9 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 		secondskill = tempskill;
 		firstskill = 0;
 		secondskill1 = tempskill1;
-		firstskill1 = '？';
+		firstskill1 = '?';
 		secondskill2 = tempskill2;
-		firstskill2 = '？';
+		firstskill2 = '?';
 		handlers['text']({
 			"sub_type": "alert",
 			"delay": 8000,
@@ -251,9 +251,9 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 		secondskill = tempskill;
 		firstskill = 0;
 		secondskill1 = tempskill1;
-		firstskill1 = '？';	
+		firstskill1 = '?';	
 		secondskill2 = tempskill2;
-		firstskill2 = '？';
+		firstskill2 = '?';
 		handlers['text']({
 			"sub_type": "alert",
 			"delay": 8000,
@@ -279,13 +279,13 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 		firstskill = tempskill;
 		secondskill = 0;
 		firstskill1 = tempskill1;
-		secondskill1 = '？';
+		secondskill1 = '?';
 		firstskill2 = tempskill2;
-		secondskill2 = '？';
+		secondskill2 = '?';
 		handlers['text']({
 			"sub_type": "alert",
 			"delay": 8000,
-			"message_RU":  "От",
+			"message_RU":  "ОТ НЕГО",
 			"message": "OUT"
 		});
 	} else if (secondskill === 0 && skillid === 935302) {
@@ -306,9 +306,9 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 		firstskill = tempskill;
 		secondskill = 0;
 		firstskill1 = tempskill1;
-		secondskill1 = '？';
+		secondskill1 = '?';
 		firstskill2 = tempskill2;
-		secondskill2 = '？';
+		secondskill2 = '?';
 		handlers['text']({
 			"sub_type": "alert",
 			"delay": 8000,
@@ -333,9 +333,9 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 		firstskill = tempskill;
 		secondskill = 0;
 		firstskill1 = tempskill1;
-		secondskill1 = '？';
+		secondskill1 = '?';
 		firstskill2 = tempskill2;
-		secondskill2 = '？';
+		secondskill2 = '?';
 		handlers['text']({
 			"sub_type": "alert",
 			"delay": 8000,

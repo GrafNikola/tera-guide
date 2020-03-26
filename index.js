@@ -293,6 +293,8 @@ class TeraGuide{
 
 			// Try loading a guide
 			try {
+				entered_zone_data = {};
+
 				// Find and load zone data from settings
 				for (const i of dispatch.settings.dungeons) {
 					if (i.id == e.zone) {
