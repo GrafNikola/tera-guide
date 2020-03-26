@@ -114,11 +114,11 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 		clearTimeout(timer1);
 		clearTimeout(timer2);
 		timer1 = setTimeout(()=> {
-			handlers['text']({
+			/*handlers['text']({
 				"sub_type": "message",
 				"message": "!",
 				"message_RU": "!"
-			});
+			});*/
 			debuff = 0;
 		}, 70000);
 	}
@@ -127,11 +127,11 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 		clearTimeout(timer2);
 		clearTimeout(timer1);
 		timer2 = setTimeout(()=> {
-			handlers['text']({
+			/*handlers['text']({
 				"sub_type": "message",
 				"message": "!",
 				"message_RU": "!"
-			});
+			});*/
 			debuff = 0;
 		}, 70000);
 	}

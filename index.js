@@ -67,10 +67,10 @@ class TeraGuide{
 		let active_guide = {};
 		// All of the timers, where the key is the id
 		let random_timer_id = 0xFFFFFFFA; // Used if no id is specified
-		let timers = {};	
+		let timers = {};
+		//
 		let entered_zone_data = {};
-		//let StrSheet_Dungeon_String = [];
-		//let StrSheet_RU_Dungeon_String = [];		
+
 		/** HELPER FUNCTIONS **/
 
 		// Find index for dungeons settings param
@@ -614,9 +614,10 @@ class TeraGuide{
 		function despawn_handler(event) {
 			// Make sure id is defined
 			if(!event['id']) return debug_message(true, "Spawn handler needs a id");
+			// 
+			if(!dispatch.settings.spawnObject) return;
 			// Ignore if dispatch.settings.streamer mode is enabled
 			if(dispatch.settings.stream) return;
-			if(!dispatch.settings.spawnObject) return;	
 			// Set sub_type to be collection as default for backward compatibility
 			const sub_type =  event['sub_type'] || 'collection';
 
@@ -649,27 +650,30 @@ class TeraGuide{
 				// If it's type message, it's S_DUNGEON_EVENT_MESSAGE with type 41
 				//混合通知
 				case "message": {
-					timers[event['id'] || random_timer_id--] = setTimeout(()=> {	
+					timers[event['id'] || random_timer_id--] = setTimeout(()=> {
 						sendMessage(message);
 					}, (event['delay'] || 0) / speed);
 					break;
 				}
 				case "msgcp": {
-					timers[event['id'] || random_timer_id--] = setTimeout(()=> {	
+					timers[event['id'] || random_timer_id--] = setTimeout(()=> {
 						sendspMessage(message,cp);
 					}, (event['delay'] || 0) / speed);
 					break;
 				}
 				case "msgcg": {
-					timers[event['id'] || random_timer_id--] = setTimeout(()=> {	
+					timers[event['id'] || random_timer_id--] = setTimeout(()=> {
 						sendspMessage(message,cg);
 					}, (event['delay'] || 0) / speed);
 					break;
 				}
 				//组队长通知
 				case "alert": {
-					if (dispatch.settings.stream) return;
 					if (!entered_zone_data.verbose) return;
+					if(dispatch.settings.stream){
+						command.message(dispatch.settings.cc +  message);
+						return;
+					}
 					sending_event = {
 						channel: 21,
 						authorName: 'guide',
@@ -678,8 +682,11 @@ class TeraGuide{
 					break;
 				}
 				case "MSG": {
-					if (dispatch.settings.stream) return;
 					if (!entered_zone_data.verbose) return;
+						if(dispatch.settings.stream){
+							command.message(dispatch.settings.cc +  message);
+							return;
+						}
 						timers[event['id'] || random_timer_id--] = setTimeout(()=> {
 						command.message( cr + message );
 						console.log( cr + message );
@@ -744,8 +751,11 @@ class TeraGuide{
 				}
 				//团队长通知
 				case "notification": {
-					if(dispatch.settings.stream) return;
 					if(!entered_zone_data.verbose) return;
+					if(dispatch.settings.stream){
+						command.message(dispatch.settings.cc +  message);
+						return;
+					}
 					sending_event = {
 						channel: 25,
 						authorName: 'guide',
@@ -773,7 +783,8 @@ class TeraGuide{
 			}, (event['delay'] || 0 ) / speed);
 		}
 		function sendMessage(message) {
-			if(dispatch.settings.stream || !entered_zone_data.verbose){
+			if(!entered_zone_data.verbose) return;
+			if(dispatch.settings.stream){
 				command.message(dispatch.settings.cc +  message);
 				return;
 			} 
@@ -797,8 +808,8 @@ class TeraGuide{
 			}
 		}
 		function sendspMessage(message,spcc) {
-			if(dispatch.settings.stream) return;
 			if(!entered_zone_data.verbose) return;
+			if(dispatch.settings.stream) return;
 			dispatch.toClient('S_DUNGEON_EVENT_MESSAGE', 2, {
 				type: 42,
 				chat: 0,
