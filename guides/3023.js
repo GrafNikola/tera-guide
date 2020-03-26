@@ -233,7 +233,7 @@ module.exports = {
 	"ae-0-0-30231000": [{"type": "func","func": skilld_event.bind(null, 30231000)}], //开始红色
 	"ae-0-0-30231001": [{"type": "func","func": skilld_event.bind(null, 30231001)}], //开始蓝色
 	"s-3023-1000-3107-0": [{"type": "text","sub_type": "message","message": 'Smash',"message_RU": "Конус вперед"},
-						   {"type": "func","func": Spawnitem1.bind(null,553,90,80,0,1000,4000)},
+						   {"type": "func","func": Spawnitem1.bind(null,553,90,80,10,1000,4000)},
 						   {"type": "func","func": Spawnitem1.bind(null,553,270,80,350,1000,4000)}
 	],
 	"s-3023-1000-3115-0": [{"type": "text","sub_type": "message","message": 'Spin',"message_RU": "Крутилка"},
