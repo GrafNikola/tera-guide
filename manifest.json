@@ -2,7 +2,10 @@
     "files": {
         "LICENSE": "7f2ae2125b491e75c546a5d538f82ad4431d5d6b1bbd4aea724864a21daeca63",
         "README.md": "2de0acbe889512429e72889bded2597ef8d4032f110812ae9c992e16a51d7c51",
-        "dbg.json": "443a13a9da6c4f3139d2e85726ea9f6ea8f6b32cd16db3e38723de97117a9df6",
+        "dbg.json": {
+            "hash": "443a13a9da6c4f3139d2e85726ea9f6ea8f6b32cd16db3e38723de97117a9df6",
+            "overwrite": false
+        },
         "dispatch.js": "8550f756e05b171839867491a9f52385f1aef8bfbbed3c80e0afe6aff1d53902",
         "guides/3020.js": "b14dcb472ded2911b84b7203913d99490387129a1305b8ef26a4f43dbbe49cbd",
         "guides/3023.js": "557112475a9e0d4739178e4e1a716a819e8d335c01ec08598b1a47d4d5b3caed",
