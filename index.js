@@ -294,6 +294,7 @@ class TeraGuide{
 			// Try loading a guide
 			try {
 				// Find and load zone data from settings
+				entered_zone_data = {};
 				for (const i of dispatch.settings.dungeons) {
 					if (i.id == e.zone) {
 						entered_zone_data = i;
