@@ -4,8 +4,8 @@
 
 let player, entity, library, effect;
 let green = false;
-let	purple = false;
-let	boss_thirty = false;
+let purple = false;
+let boss_thirty = false;
 let print = false;
 
 function  applyDistance(loc, distance, degrees) {
@@ -116,7 +116,7 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 		} else if (purple && boss_thirty) {
 			handlers['text']({"type": "text","sub_type": "message","message": "IN > OUT","message_RU": "К нему > От него"}); 
 			handlers['text']({"type": "text","sub_type": "message","delay": 6000,"message": "OUT","message_RU": "От него"});
-			setTimeout(() => purple = false, 2000);	
+			setTimeout(() => purple = false, 2000);
 		}
 	}
 }
@@ -129,11 +129,11 @@ function start_boss() {
 
 let debuff_tracker_started = false;
 let debuffs_targe = {
-	30209101: {name: "Молния (эвейд)"},
-	30209102: {name: "Ведьма (эвейд)"},
+	30209101: {msgt: 'Lightning', msg: 'Молния (эвейд)'},
+	30209102: {msgt: 'Witch',     msg: 'Ведьма (эвейд)'}
 };
-let debuff_call_event = null;
 
+let debuff_call_event = null;
 function start_Sailing_Instance(handlers, event, entity, dispatch) {
 	const abnormality_change = (added, event) => {
 		if ((player.isMe(event.target) || player.playersInParty.includes(event.target.toString())) && debuffs_targe[event.id]) {
@@ -144,13 +144,15 @@ function start_Sailing_Instance(handlers, event, entity, dispatch) {
 				debuff_call_event = setTimeout(() => {
 					handlers['text']({
 						"sub_type": "message",
-						"message": debuffs_targe[event.id].name
+						"message": debuffs_targe[event.id].msgt,
+						"message_RU": debuffs_targe[event.id].msg
 					});
 					debuff_call_event = null;
-				}, 2000);
+				}, 1500);
 			}
 		}
 	};
+
 	if (!debuff_tracker_started) {
 		dispatch.hook('S_ABNORMALITY_BEGIN', 4, abnormality_change.bind(null, true));
 		dispatch.hook('S_ABNORMALITY_END', 1, abnormality_change.bind(null, false));
@@ -163,67 +165,73 @@ module.exports = {
 		({ player, entity, library, effect } = dispatch.require.library);
 	},
 
+	// 1 BOSS
 	"s-3020-1900-104-0": [{"type": "text","sub_type": "message","message": "Suction (Dodge)","message_RU": "Высасывание (Выйти)"},
-						  {"type": "func","func": Spawnitem2.bind(null,445,0,0,15,300,200,3000)}
+						  {"type": "func","func": Spawnitem2.bind(null,553,0,0,15,300,200,3000)}
 	],
-	"s-3020-1200-103-0": [{"type": "text","sub_type": "message","message": "Suction (Dodge)","message_RU": "Высасывание (Выйти)"}],
-						  /*{"type": "func","func": Spawnitem2.bind(null,445,0,0,15,200,200,3000)}*/
-	"s-3020-2200-108-0": [{"type": "text","sub_type": "message","message": "Front stun","message_RU": "Стан"},
-						  {"type": "func","func": Spawnitem2.bind(null,445,0,170,20,120,200,2000)}
-	],
-	//121 123  前砸 旋转  大前砸     绿绿
-	//122 120  旋转  前砸  旋转     紫紫   前方走
-	//122 123  旋转  前砸  大前砸     紫绿  第二下前方移動
-	// 三连击 结束技能
-	"ae-0-0-4030": [ {"type": "func","func": start_Sailing_Instance}],
-	"ae-0-0-4020": [ {"type": "func","func": start_Sailing_Instance}],
-	"h-3020-2200-30": [ {"type": "func","func": start_boss}],
-	"h-3020-2200-29": [ {"type": "func","func": start_boss}],
-	"h-3020-2200-28": [ {"type": "func","func": start_boss}],
-	"h-3020-2200-27": [ {"type": "func","func": start_boss}],
-	"h-3020-2200-26": [ {"type": "func","func": start_boss}],
-	"h-3020-2200-25": [ {"type": "func","func": start_boss}],
-	"h-3020-2200-24": [ {"type": "func","func": start_boss}],
-	"h-3020-2200-23": [ {"type": "func","func": start_boss}],
-	"h-3020-2200-22": [ {"type": "func","func": start_boss}],
-	"h-3020-2200-21": [ {"type": "func","func": start_boss}],
-	"h-3020-2200-20": [ {"type": "func","func": start_boss}],
-	"h-3020-2200-19": [ {"type": "func","func": start_boss}],
-	"h-3020-2200-18": [ {"type": "func","func": start_boss}],
-	"h-3020-2200-17": [ {"type": "func","func": start_boss}],
-	"h-3020-2200-16": [ {"type": "func","func": start_boss}],
-	"h-3020-2200-15": [ {"type": "func","func": start_boss}],
-	"h-3020-2200-14": [ {"type": "func","func": start_boss}],
-	"h-3020-2200-13": [ {"type": "func","func": start_boss}],
-	"h-3020-2200-12": [ {"type": "func","func": start_boss}],
-	"h-3020-2200-11": [ {"type": "func","func": start_boss}],
-	"h-3020-2200-10": [ {"type": "func","func": start_boss}],
-	"h-3020-2200-9": [ {"type": "func","func": start_boss}],
-	"h-3020-2200-8": [ {"type": "func","func": start_boss}],
-	"h-3020-2200-7": [ {"type": "func","func": start_boss}],
-	"h-3020-2200-6": [ {"type": "func","func": start_boss}],
-	"h-3020-2200-5": [ {"type": "func","func": start_boss}],
-	"h-3020-2200-4": [ {"type": "func","func": start_boss}],
-	"h-3020-2200-3": [ {"type": "func","func": start_boss}],
-	"h-3020-2200-2": [ {"type": "func","func": start_boss}],
-	"h-3020-2200-1": [ {"type": "func","func": start_boss}],
 
-	"s-3020-2200-120-0": [{"type": "func","func": skilld_event.bind(null, 120)},
-						  {"type": "func","func": Spawnitem3.bind(null,445,0,150,8,280)}
+
+	// 2 BOSS
+	"s-3020-1200-103-0": [{"type": "text","sub_type": "message","message": "Suction (Dodge)","message_RU": "Высасывание (Выйти)"}],
+						  {"type": "func","func": Spawnitem2.bind(null,553,0,0,15,200,200,3000)}
+
+
+	// 3 BOSS
+	"s-3020-2200-108-0": [{"type": "text","sub_type": "message","message": "Front stun","message_RU": "Стан"},
+						  {"type": "func","func": Spawnitem2.bind(null,553,0,170,20,120,200,2000)}
 	],
-	"s-3020-2200-121-0": [{"type": "func","func": skilld_event.bind(null, 121)},
-						  {"type": "func","func": Spawnitem2.bind(null,445,0,170,8,290,200,3000)},  //绿色
-						  {"type": "func","func": Spawnitem2.bind(null,445,0,170,8,280,3000,5000)},  //绿色
-						  {"type": "func","func": Spawnitem2.bind(null,445,0,170,4,570,3000,5000)}
+	//121 123  Вперед, разбить, вращение, вперед, разбить, зеленый
+	//122 120  Вращение, вперед разбить, вращение, фиолетовый, вперед
+	//122 123  Вращение, удар вперед, большой удар вперед, фиолетовый -зеленый, второе движение вперед-вниз
+	//
+	"ae-0-0-4030": [{"type": "func","func": start_Sailing_Instance}],
+	"ae-0-0-4020": [{"type": "func","func": start_Sailing_Instance}],
+	"h-3020-2200-30": [{"type": "func","func": start_boss}],
+	"h-3020-2200-29": [{"type": "func","func": start_boss}],
+	"h-3020-2200-28": [{"type": "func","func": start_boss}],
+	"h-3020-2200-27": [{"type": "func","func": start_boss}],
+	"h-3020-2200-26": [{"type": "func","func": start_boss}],
+	"h-3020-2200-25": [{"type": "func","func": start_boss}],
+	"h-3020-2200-24": [{"type": "func","func": start_boss}],
+	"h-3020-2200-23": [{"type": "func","func": start_boss}],
+	"h-3020-2200-22": [{"type": "func","func": start_boss}],
+	"h-3020-2200-21": [{"type": "func","func": start_boss}],
+	"h-3020-2200-20": [{"type": "func","func": start_boss}],
+	"h-3020-2200-19": [{"type": "func","func": start_boss}],
+	"h-3020-2200-18": [{"type": "func","func": start_boss}],
+	"h-3020-2200-17": [{"type": "func","func": start_boss}],
+	"h-3020-2200-16": [{"type": "func","func": start_boss}],
+	"h-3020-2200-15": [{"type": "func","func": start_boss}],
+	"h-3020-2200-14": [{"type": "func","func": start_boss}],
+	"h-3020-2200-13": [{"type": "func","func": start_boss}],
+	"h-3020-2200-12": [{"type": "func","func": start_boss}],
+	"h-3020-2200-11": [{"type": "func","func": start_boss}],
+	"h-3020-2200-10": [{"type": "func","func": start_boss}],
+	"h-3020-2200-9": [{"type": "func","func": start_boss}],
+	"h-3020-2200-8": [{"type": "func","func": start_boss}],
+	"h-3020-2200-7": [{"type": "func","func": start_boss}],
+	"h-3020-2200-6": [{"type": "func","func": start_boss}],
+	"h-3020-2200-5": [{"type": "func","func": start_boss}],
+	"h-3020-2200-4": [{"type": "func","func": start_boss}],
+	"h-3020-2200-3": [{"type": "func","func": start_boss}],
+	"h-3020-2200-2": [{"type": "func","func": start_boss}],
+	"h-3020-2200-1": [{"type": "func","func": start_boss}],
+	// зеленый
+	"s-3020-2200-121-0": [{"type": "func","func": skilld_event.bind(null, 121)}],
+	"s-3020-2200-121-1": [{"type": "func","func": Spawnitem2.bind(null,553,0,170,8,290,200,3000)},
+						  {"type": "func","func": Spawnitem2.bind(null,553,0,170,8,280,3000,5000)},
+						  {"type": "func","func": Spawnitem2.bind(null,553,0,170,4,570,3000,5000)}
 	],
-	"s-3020-2200-122-0": [{"type": "func","func": skilld_event.bind(null, 122)}, //紫色
-						  {"type": "func","func": Spawnitem2.bind(null,445,0,0,8,280,200,3000)}, //紫色
-						  {"type": "func","func": Spawnitem2.bind(null,445,0,0,4,570,200,3000)},
-						  {"type": "func","func": Spawnitem2.bind(null,445,0,170,8,290,3000,5000)}
+	// фиолетовый
+	"s-3020-2200-122-0": [{"type": "func","func": skilld_event.bind(null, 122)}],
+	"s-3020-2200-122-1": [{"type": "func","func": Spawnitem2.bind(null,553,0,0,8,280,200,3000)},
+						  {"type": "func","func": Spawnitem2.bind(null,553,0,0,4,570,200,3000)},
+						  {"type": "func","func": Spawnitem2.bind(null,553,0,170,8,290,3000,5000)}
 	],
-	"s-3020-2200-123-0": [{"type": "func","func": skilld_event.bind(null, 123)},
-						  {"type": "func","func": Spawnitem3.bind(null,445,0,200,8,450)}
-	],
+	// комба
+	"s-3020-2200-120-0": [{"type": "func","func": skilld_event.bind(null, 120)},{"type": "func","func": Spawnitem3.bind(null,553,0,150,8,280)}],
+	"s-3020-2200-123-0": [{"type": "func","func": skilld_event.bind(null, 123)},{"type": "func","func": Spawnitem3.bind(null,553,0,200,8,450)}],
+	//
 	//"s-3020-9101-122-0": [{"type": "text","sub_type": "message","message": "Jump","message_TW": "强袭"}],
 	//"s-3020-9101-124-0": [{"type": "text","sub_type": "message","message": "Jump","message_TW": "前砸"}],
 	//"s-3020-9101-125-0": [{"type": "text","sub_type": "message","message": "Jump","message_TW": "转圈"}],
@@ -231,24 +239,24 @@ module.exports = {
 	// "s-3020-2201-121-0": [{"type": "text","sub_type": "message","message":  'Left swipe',"message_TW": "2201-121" },{"type": "func","func": SpawnThing.bind(null,0,0,100,2000)}], 
 	//"s-3020-2201-125-0": [{"type": "text","sub_type": "message","message":  'Left swipe',"message_TW": "2201-125" },{"type": "func","func": SpawnThing.bind(null,0,0,100,2000)}], 
 	// "s-3020-2201-126-0": [{"type": "text","sub_type": "message","message":  'Left swipe',"message_TW": "2201-126" },{"type": "func","func": SpawnThing.bind(null,0,0,100,2000)}], 
-	"s-3020-2201-201-0": [{"type": "func","func": SpawnThing.bind(null,0,0,100,2000)}],
+	//"s-3020-2201-201-0": [{"type": "func","func": SpawnThing.bind(null,0,0,100,2000)}],
 	// "s-3020-6103-203-0": [{"type": "text","sub_type": "message","message":  'Left swipe',"message_TW": "6103-203" },{"type": "func","func": SpawnThing.bind(null,0,0,100,2000)}], 
 	// "s-3020-6103-202-0": [{"type": "text","sub_type": "message","message":  'Left swipe',"message_TW": "6103-202" },{"type": "func","func": SpawnThing.bind(null,0,0,100,2000)}], 
 	// "s-3020-6103-201-0": [{"type": "text","sub_type": "message","message":  'Left swipe',"message_TW": "6103-201" },{"type": "func","func": SpawnThing.bind(null,0,0,100,2000)}],  
 	"s-3020-2200-127-0": [{"type": "text","sub_type": "message","message": "Jump","message_RU": "Прыжок | К нему"},
-						  {"type": "func","func": Spawnitem2.bind(null,445,0,0,15,200,250,1000)},
-						  {"type": "func","func": Spawnitem2.bind(null,445,0,0,10,300,1000,4000)}
+						  {"type": "func","func": Spawnitem2.bind(null,553,0,0,15,200,250,1000)},
+						  {"type": "func","func": Spawnitem2.bind(null,553,0,0,10,300,1000,4000)}
 	],
-	"s-3020-2200-128-0": [{"type": "text","sub_type": "message","message": "Upper cut (Knock up)","message_RU": "Черкаш + подлет"}],
+	"s-3020-2200-128-0": [{"type": "text","sub_type": "message","message": "Upper cut (Knock up)","message_RU": "Черкаш (подлет)"}],
 	"s-3020-2200-129-0": [{"type": "text","sub_type": "message","message": "Hammer Toss ~ Skull","message_RU": "Полоса в цель"},
-						  {"type": "func","func": Spawnitem1.bind(null,445,90,100,0,500,6000)},
-						  {"type": "func","func": Spawnitem1.bind(null,445,270,100,0,500,6000)}
+						  {"type": "func","func": Spawnitem1.bind(null,553,90,100,0,500,2000)},
+						  {"type": "func","func": Spawnitem1.bind(null,553,270,100,0,500,2000)}
 	],
 	"s-3020-2200-131-0": [{"type": "text","sub_type": "message","message": "Jump | OUT","message_RU": "Прыжок | От него"}],
-	"s-3020-2200-133-1": [{"type": "text","sub_type": "message","message": "Donuts","message_RU": "Бублики"},
-						  {"type": "func","func": Spawnitem2.bind(null,445,0,0,10,300,200,5000)},
-						  {"type": "func","func": Spawnitem2.bind(null,445,0,0,6,600,200,5000)},
-						  {"type": "func","func": Spawnitem2.bind(null,445,0,0,4,900,200,5000)}
+	"s-3020-2200-133-2": [{"type": "text","sub_type": "message","message": "Donuts","message_RU": "Бублики"},
+						  {"type": "func","func": Spawnitem2.bind(null,553,0,0,8,300,200,4000)},
+						  {"type": "func","func": Spawnitem2.bind(null,553,0,0,6,600,200,4000)},
+						  {"type": "func","func": Spawnitem2.bind(null,553,0,0,4,900,200,4000)}
 	],
 	"s-3020-2200-135-0": [{"type": "text","sub_type": "message","message": "Puddles Inc (Jump)","message_RU": "Волны х5"}],
 	"s-3020-2200-137-0": [{"type": "text","sub_type": "message","message": "Outward Pluse","message_RU": "Волна от"}],
