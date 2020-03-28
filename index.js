@@ -324,11 +324,11 @@ class TeraGuide{
 
 				if (entered_zone_data.name) {
 					if (spguide) {
-						 text_handler({"sub_type": "alert","delay": 8000,"message_RU": 'Вы вошли в ' + cr + entered_zone_data.name_RU + ' [' + e.zone + ']', "message": ' Enter SP  Dungeon： ' +  cr + entered_zone_data.name + ' [' + e.zone + ']'});  
+						 text_handler({"sub_type": "PRMSG","delay": 8000,"message_RU": 'Вы вошли в ' + cr + entered_zone_data.name_RU + cw + ' [' + e.zone + ']', "message": ' Enter SP  Dungeon： ' +  cr + entered_zone_data.name + cw + ' [' + e.zone + ']'});  
 					} else if (esguide) {
-						 text_handler({"sub_type": "alert","delay": 8000,"message_RU": 'Вы вошли в ' + cr + entered_zone_data.name_RU + ' [' + e.zone + ']', "message": ' Enter ES  Dungeon： ' + cr + entered_zone_data.name + ' [' + e.zone + ']'}); 
+						 text_handler({"sub_type": "PRMSG","delay": 8000,"message_RU": 'Вы вошли в ' + cr + entered_zone_data.name_RU + cw + ' [' + e.zone + ']', "message": ' Enter ES  Dungeon： ' + cr + entered_zone_data.name + cw + ' [' + e.zone + ']'}); 
 					} else {
-						 text_handler({"sub_type": "alert","delay": 8000,"message_RU": 'Вы вошли в ' + cr + entered_zone_data.name_RU + ' [' + e.zone + ']', "message": ' Enter   Dungeon： ' + cr + entered_zone_data.name + ' [' + e.zone + ']'}); 
+						 text_handler({"sub_type": "PRMSG","delay": 8000,"message_RU": 'Вы вошли в ' + cr + entered_zone_data.name_RU + cw + ' [' + e.zone + ']', "message": ' Enter   Dungeon： ' + cr + entered_zone_data.name + cw + ' [' + e.zone + ']'}); 
 					}
 				}
 			} catch(e) {
