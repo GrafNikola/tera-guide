@@ -154,13 +154,18 @@ module.exports = {
 	//"s-3027-1000-355-0": [{"type": "text","sub_type": "message","message": "Eviscerate","message_RU": "Потрошение"}],
 	"s-3027-1000-114-0": [{"type": "text","sub_type": "message","message": "Split strike","message_RU": "Разделяющий удар"}],
 
+	// стяжка -> бублики
 	"s-3027-1000-350-0": [{"type": "text","sub_type": "message","message": "Donuts","message_RU": "Стяжка | Бублики"},{"type": "text","sub_type": "message","delay": 3750,"message":  'Waves',"message_RU": "Волны"},
 		{"type": "func","func": Spawnitem2.bind(null,445,0,0,12,240,200,5000)},
 		{"type": "func","func": Spawnitem2.bind(null,445,0,0,8,480,200,5000)},
 		{"type": "func","func": Spawnitem2.bind(null,445,0,0,3,950,200,5000)},
 		{"type": "func","func": skilld_event.bind(null, 350)}
 	],
-	"s-3027-1000-357-0": [{"type": "text","sub_type": "message","message": "Get out","message_RU": "Стяжка | От него"},{"type": "func","func": skilld_event.bind(null, 357)}],
+	// стяжка -> волна
+	"s-3027-1000-357-0": [{"type": "text","sub_type": "message","message": "Get out","message_RU": "Стяжка | От него"},
+		{"type": "func","delay": 2000,"func": Spawnitem2.bind(null,553,0,0,20,500,200,5000)},
+		{"type": "func","func": skilld_event.bind(null, 357)}
+	],
 
 	"s-3027-1000-135-0": [{"type": "text","sub_type": "message","message": "Overhand Strike","message_RU": "Меч (медленный)"}],
 	"s-3027-1000-111-0": [{"type": "text","sub_type": "message","message": "Stun | Strike","message_RU": "Стан | Меч (медленный)"}],
@@ -172,7 +177,7 @@ module.exports = {
 
 	// 3 удара -> прыжок
 	"s-3027-1000-145-0": [{"type": "text","sub_type": "message","message": "3x360°","message_RU": "3 удара | Прыжок"}],
-	"s-3027-1000-139-0": [{"type": "text","sub_type": "message","message": "!","message_RU": "!"}],
+	"s-3027-1000-139-0": [{"type": "text","sub_type": "message","message": "!","message_RU": "!"},{"type": "func","delay": 1000,"func": Spawnitem2.bind(null,445,0,180,8,660,200,2000)}],
 	"s-3027-1000-140-0": [{"type": "text","sub_type": "message","message": "Jump","message_RU": "прыжок)"},{"type": "func","func": Spawnitem2.bind(null,912,0,180,8,460,200,3000)}],
 
 	"s-3027-1000-151-0": [{"type": "text","sub_type": "message","message": "Three chop","message_RU": "3 удара | Меч"}],
@@ -186,7 +191,7 @@ module.exports = {
 	"s-3027-1000-143-0": [{"type": "text","sub_type": "message","message": "Overhand Strike","message_RU": "Меч"}],
 
 	// прыжок
-	"s-3027-1000-116-0": [{"type": "text","sub_type": "message","message": "Jump","message_RU": "прыжок)"}],
+	"s-3027-1000-116-0": [{"type": "text","sub_type": "message","message": "Jump","message_RU": "прыжок)"},{"type": "func","func": Spawnitem2.bind(null,445,0,180,8,560,200,1000)}],
 	"s-3027-1000-116-1": [{"type": "text","sub_type": "message","message": "Dodge","message_RU": "Эвейд!"},{"type": "func","func": Spawnitem2.bind(null,912,0,180,8,460,200,3000)}],
 
 	"s-3027-1000-402-0": [{"type": "text","sub_type": "message","message": "Jump","message_RU": "Прыжок"}],
