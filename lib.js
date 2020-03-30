@@ -8,7 +8,7 @@ function SpawnMarker(degrees, radius, delay, times, marker, text, handlers, even
 	if (!text) text = ["SAFE SPOT", "SAFE"];
 
 	let shield_loc   = entity['loc'].clone();
-		shield_loc.w = entity['loc'].w;
+	    shield_loc.w = entity['loc'].w;
 
 	let angle =  Math.PI * degrees / 180;
 
@@ -41,7 +41,7 @@ function SpawnMarker(degrees, radius, delay, times, marker, text, handlers, even
 
 function SpawnItem(item, degrees, radius, delay, times, handlers, event, entity) {
 	let shield_loc   = entity['loc'].clone();
-		shield_loc.w = entity['loc'].w;
+	    shield_loc.w = entity['loc'].w;
 
 	let angle =  Math.PI * degrees / 180;
 
@@ -58,7 +58,7 @@ function SpawnItem(item, degrees, radius, delay, times, handlers, event, entity)
 
 function SpawnVector(item, degree, distance, angles, maxRadius, delay, times, handlers, event, entity) {
 	let shield_loc   = entity['loc'].clone();
-		shield_loc.w = entity['loc'].w;
+	    shield_loc.w = entity['loc'].w;
 	let degrees = 360 - degree;
 
 	applyDistance(shield_loc, distance, degrees);
@@ -80,7 +80,7 @@ function SpawnVector(item, degree, distance, angles, maxRadius, delay, times, ha
 
 function SpawnCircle(item, degree, distance, intervalDegrees, radius, delay, times, handlers, event, entity) {
 	let shield_loc   = entity['loc'].clone();
-		shield_loc.w = entity['loc'].w;
+	    shield_loc.w = entity['loc'].w;
 	let degrees = 360 - degree;
 
 	applyDistance(shield_loc, distance, degrees);
@@ -99,8 +99,8 @@ function SpawnCircle(item, degree, distance, intervalDegrees, radius, delay, tim
 }
 
 function SpawnSemicircle(d1, d2, item, degree, distance, intervalDegrees, radius, delay, times, handlers, event, entity) {
-	let shield_loc = entity['loc'].clone();
-		shield_loc.w = entity['loc'].w;
+	let shield_loc   = entity['loc'].clone();
+	    shield_loc.w = entity['loc'].w;
 	let degrees = 360 - degree;
 
 	applyDistance(shield_loc, distance, degrees);
