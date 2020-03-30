@@ -35,7 +35,7 @@ const boss_skill =
 };
 
 function skilld_event(skillid, handlers, event, ent, dispatch) {
-	if ([3026004,3126004,3026005,3126005].includes(skillid)) {   // гнев 0, страх 1
+	if ([3026004,3126004,3026005,3126005].includes(skillid)) {   // ярость 0, ужас 1
 		qbacting = skillid % 2;
 		//qbacting = null
 	}
@@ -280,10 +280,10 @@ module.exports = {
 	"s-3126-1000-1215-0": [{"type": "func","func": skilld_event.bind(null, 215)},{"type": "func","func": SpawnCircle.bind(null,445,0,0,8,425,200,6000)}],
 	"s-3126-1000-1213-0": [{"type": "func","func": skilld_event.bind(null, 213)},{"type": "func","func": SpawnCircle.bind(null,445,0,0,8,425,200,6000)}],
 	"s-3126-1000-1214-0": [{"type": "func","func": skilld_event.bind(null, 214)},{"type": "func","func": SpawnCircle.bind(null,445,0,0,8,425,200,6000)}],
-	"qb-3126-1000-3026005": [{"type": "func","func": skilld_event.bind(null, 3026005)}], // страх, одинаковые цвета
-	"qb-3126-1000-3026004": [{"type": "func","func": skilld_event.bind(null, 3026004)}], // гнев, разные цвета
-	"qb-3126-1000-3126005": [{"type": "func","func": skilld_event.bind(null, 3126005)}], // страх, одинаковые цвета
-	"qb-3126-1000-3126004": [{"type": "func","func": skilld_event.bind(null, 3126004)}], // гнев, разные цвета
+	"qb-3126-1000-3026005": [{"type": "func","func": skilld_event.bind(null, 3026005)}], // ужас, одинаковые цвета
+	"qb-3126-1000-3026004": [{"type": "func","func": skilld_event.bind(null, 3026004)}], // ярость, разные цвета
+	"qb-3126-1000-3126005": [{"type": "func","func": skilld_event.bind(null, 3126005)}], // ужас, одинаковые цвета
+	"qb-3126-1000-3126004": [{"type": "func","func": skilld_event.bind(null, 3126004)}], // ярость, разные цвета
 	"ae-0-0-99020020": [{"type": "func","func": skilld_event.bind(null, 99020020)}],
 	"am-3126-1000-30260001": [{"type": "func","func": skilld_event.bind(null, 3026001)}], // красный
 	"am-3126-1000-30260002": [{"type": "func","func": skilld_event.bind(null, 3026002)}], // синий
@@ -294,7 +294,7 @@ module.exports = {
 	"s-3126-1000-1107-0": [{"type": "text","sub_type": "message","message": "(Debuffs) Farthest","message_RU": "(Дебаффы) Дальние"}],
 
 	"am-3126-1000-31260068": [{"type": "text","sub_type": "message","message": "Layer 3","message_RU": "3 дебафф"},
-							  {"type": "text","sub_type": "message","delay": 145000,"message":  '2.5 minutes',"message_RU": "2.5 минуты"}],
+							  {"type": "text","sub_type": "message","delay": 145000,"message": '2.5 minutes',"message_RU": "2.5 минуты"}],
 	"am-3126-1000-31260067": [{"type": "text","sub_type": "message","message": "Layer 2","message_RU": "2 дебафф"}],
 	"am-3126-1000-31260251": [{"type": "text","sub_type": "message","message": "Layer 1","message_RU": "1 дебафф"}]
 };
