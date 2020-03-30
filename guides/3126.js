@@ -23,8 +23,8 @@ const CK_TipMsg =
 };
 const debuff_TipMsg =
 {
-	0: {msgt: 'Ready to get RED',  msg: 'Готовность к переключению на красный'},
-	1: {msgt: 'Ready to get BLUE', msg: 'Готовность к переключению на синий'}
+	0: {msgt: 'Ready to get Fire debuff',  msg: 'Готовность к переключению на огонь'},
+	1: {msgt: 'Ready to get Ice debuff', msg: 'Готовность к переключению на лед'}
 };
 const boss_skill =
 {
@@ -262,8 +262,8 @@ module.exports = {
 	"s-3126-1000-1154-0": [{"type": "text","sub_type": "message","message": "Ice storm","message_RU": "Ледяной шторм"},{"type": "func","func": SpawnCircle.bind(null,553,180,80,8,520,100,5000)}],
 	"s-3126-1000-2154-0": [{"type": "text","sub_type": "message","message": "Ice storm","message_RU": "Ледяной шторм"},{"type": "func","func": SpawnCircle.bind(null,553,180,80,8,520,100,5000)}],
 	// AOE огонь (малый)
-	"s-3126-1000-1155-0": [{"type": "text","sub_type": "message","message": "Knock down","message_RU": "Огненный столб (опрокид)"}],
-	"s-3126-1000-2155-0": [{"type": "text","sub_type": "message","message": "Knock down","message_RU": "Огненный столб (опрокид)"}],
+	"s-3126-1000-1155-0": [{"type": "text","sub_type": "message","message": "Fire (knock down)","message_RU": "Огненный столб (опрокид)"}],
+	"s-3126-1000-2155-0": [{"type": "text","sub_type": "message","message": "Fire (knock down)","message_RU": "Огненный столб (опрокид)"}],
 
 	"s-3126-1000-1137-0": [{"type": "text","sub_type": "message","message": "Knock down","message_RU": "Опрокидывание"},{"type": "func","func": SpawnCircle.bind(null,553,0,0,2,1275,200,13000)}],
 	"s-3126-1000-2137-0": [{"type": "text","sub_type": "message","message": "Knock down","message_RU": "Опрокидывание"},{"type": "func","func": SpawnCircle.bind(null,553,0,0,2,1275,200,13000)}],
