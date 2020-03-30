@@ -2,7 +2,7 @@
 //
 // made by michengs
 
-const {SpawnMarker, SpawnVector, SpawnCircle} = require("../lib");
+const {SpawnMarker, SpawnVector, SpawnCircle, applyDistance} = require("../lib");
 
 let player, entity, library, effect;
 let green = false;
@@ -82,6 +82,26 @@ function start_Sailing_Instance(handlers, event, entity, dispatch) {
 	}
 }
 
+function SpawnCircleD(item, degree, distance, intervalDegrees, radius, delay, times, handlers, event, entity) {
+	let shield_loc   = entity['dest'].clone();
+	    shield_loc.w = entity['loc'].w;
+	let degrees = 360 - degree;
+
+	applyDistance(shield_loc, distance, degrees);
+
+	for (let angle = -Math.PI; angle <= Math.PI; angle +=  Math.PI * intervalDegrees / 180) {
+		handlers['spawn']({
+			id: item,
+			delay: delay,
+			sub_delay: times,
+			distance: radius,
+			offset: angle
+		}, {
+			loc: shield_loc
+		});
+	}
+}
+
 module.exports = {
 	load(dispatch) {
 		({ player, entity, library, effect } = dispatch.require.library);
@@ -138,14 +158,14 @@ module.exports = {
 	"h-3020-2200-2": [{"type": "func","func": start_boss}],
 	"h-3020-2200-1": [{"type": "func","func": start_boss}],
 	// зеленый
-	"s-3020-2200-121-0": [{"type": "func","func": skilld_event.bind(null, 121)}],
-	"s-3020-2200-121-1": [{"type": "func","func": SpawnCircle.bind(null,553,0,170,8,290,200,3000)},
+	"s-3020-2200-121-0": [{"type": "func","func": skilld_event.bind(null, 121)},
+						  {"type": "func","func": SpawnCircle.bind(null,553,0,170,8,290,200,3000)},
 						  {"type": "func","func": SpawnCircle.bind(null,553,0,170,8,280,3000,5000)},
 						  {"type": "func","func": SpawnCircle.bind(null,553,0,170,4,570,3000,5000)}
 	],
 	// фиолетовый
-	"s-3020-2200-122-0": [{"type": "func","func": skilld_event.bind(null, 122)}],
-	"s-3020-2200-122-1": [{"type": "func","func": SpawnCircle.bind(null,553,0,0,8,280,200,3000)},
+	"s-3020-2200-122-0": [{"type": "func","func": skilld_event.bind(null, 122)},
+						  {"type": "func","func": SpawnCircle.bind(null,553,0,0,8,280,200,3000)},
 						  {"type": "func","func": SpawnCircle.bind(null,553,0,0,4,570,200,3000)},
 						  {"type": "func","func": SpawnCircle.bind(null,553,0,170,8,290,3000,5000)}
 	],
@@ -174,10 +194,10 @@ module.exports = {
 						  {"type": "func","func": SpawnVector.bind(null,553,270,100,0,500,100,2000)}
 	],
 	"s-3020-2200-131-0": [{"type": "text","sub_type": "message","message": "Jump | OUT","message_RU": "Прыжок | От него"}],
-	"s-3020-2200-133-2": [{"type": "text","sub_type": "message","message": "Donuts","message_RU": "Бублики"},
-						  {"type": "func","func": SpawnCircle.bind(null,553,0,0,8,300,200,4000)},
-						  {"type": "func","func": SpawnCircle.bind(null,553,0,0,6,600,200,4000)},
-						  {"type": "func","func": SpawnCircle.bind(null,553,0,0,4,900,200,4000)}
+	"s-3020-2200-133-1": [{"type": "text","sub_type": "message","message": "Donuts","message_RU": "Бублики"},
+						  {"type": "func","func": SpawnCircleD.bind(null,553,0,0,8,300,0,4000)},
+						  {"type": "func","func": SpawnCircleD.bind(null,553,0,0,6,600,0,4000)},
+						  {"type": "func","func": SpawnCircleD.bind(null,553,0,0,4,900,0,4000)}
 	],
 	"s-3020-2200-135-0": [{"type": "text","sub_type": "message","message": "Puddles Inc (Jump)","message_RU": "Волны х5"}],
 	"s-3020-2200-137-0": [{"type": "text","sub_type": "message","message": "Outward Pluse","message_RU": "Волна от"}],
