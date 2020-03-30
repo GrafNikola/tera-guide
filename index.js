@@ -65,6 +65,7 @@ class TeraGuide{
 		let timers = {};
 		//
 		let entered_zone_data = {};
+		let is_event = false;
 
 		/** HELPER FUNCTIONS **/
 
@@ -257,6 +258,7 @@ class TeraGuide{
 		/** S_LOAD_TOPO **/
 
 		function entry_zone(zone) {
+			is_event = false;
 			// Clear out the timers
 			for (let key in timers) clearTimeout(timers[key]);
 			timers = {};
@@ -350,6 +352,7 @@ class TeraGuide{
 			},
 			// Testing events
 			event(arg1, arg2) {
+				is_event = true;
 				// If arg1 is "load", load guide from arg2 specified
 				if (arg1 === "load") {
 					if (!arg2) return command.message(`Invalid values for sub command "event" ${arg1}`);
@@ -366,9 +369,16 @@ class TeraGuide{
 				if (arg1 === "trigger") {
 					start_events(active_guide[arg2], player);
 				} else {
-					// Call a function handler with the event we got from arg2 with yourself as the entity
-					function_event_handlers[arg1](JSON.parse(arg2), player);
+					try {
+						// Call a function handler with the event we got from arg2 with yourself as the entity
+						function_event_handlers[arg1](JSON.parse(arg2), player);
+					} catch(e) {
+						is_event = false;
+						debug_message(debug.debug, e);
+					}
 				}
+				// guide event text '{"sub_type":"message","message":"Сообщение"}'
+				// guide event spawn '{"type":"item","id":"1","sub_delay":"999999"}'
 			},
 			stream() {
 				dispatch.settings.stream = !dispatch.settings.stream;
@@ -514,7 +524,7 @@ class TeraGuide{
 		function spawn_handler(event, ent, speed=1.0) {
 			if (dispatch.settings.stream) return;
 			if (!dispatch.settings.spawnObject) return;
-			if (!entered_zone_data.spawnObject) return;
+			if (!entered_zone_data.spawnObject && !is_event) return;
 			// Make sure id is defined
 			if (!event['id']) return debug_message(true, "Spawn handler needs a id");
 			// Make sure sub_delay is defined
@@ -658,7 +668,7 @@ class TeraGuide{
 				}
 				//组队长通知
 				case "alert": {
-					if (!entered_zone_data.verbose) return;
+					if (!entered_zone_data.verbose && !is_event) return;
 					if (dispatch.settings.stream) {
 						command.message(dispatch.settings.cc + message);
 						return;
@@ -671,7 +681,7 @@ class TeraGuide{
 					break;
 				}
 				case "MSG": {
-					if (!entered_zone_data.verbose) return;
+					if (!entered_zone_data.verbose && !is_event) return;
 					if (dispatch.settings.stream) {
 						command.message(dispatch.settings.cc +  message);
 						return;
@@ -740,7 +750,7 @@ class TeraGuide{
 				}
 				//团队长通知
 				case "notification": {
-					if (!entered_zone_data.verbose) return;
+					if (!entered_zone_data.verbose && !is_event) return;
 					if (dispatch.settings.stream) {
 						command.message(dispatch.settings.cc + message);
 						return;
@@ -772,11 +782,11 @@ class TeraGuide{
 			}, (event['delay'] || 0 ) / speed);
 		}
 		function sendMessage(message) {
-			if (!entered_zone_data.verbose) return;
+			if (!entered_zone_data.verbose && !is_event) return;
 			if (dispatch.settings.stream) {
 				command.message(dispatch.settings.cc + message);
 				return;
-			} 
+			}
 			if (dispatch.settings.notice) {
 				dispatch.toClient('S_CHAT', 3, {
 					channel: 21, //21 = p-notice, 1 = party, 2 = guild
@@ -797,7 +807,7 @@ class TeraGuide{
 			}
 		}
 		function sendspMessage(message, spcc) {
-			if (!entered_zone_data.verbose) return;
+			if (!entered_zone_data.verbose && !is_event) return;
 			if (dispatch.settings.stream) return;
 			dispatch.toClient('S_DUNGEON_EVENT_MESSAGE', 2, {
 				type: 42,
