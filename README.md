@@ -40,8 +40,8 @@ id | Dungeon Name | Название данжа
 3023 | Akalath Quarantine | Секретное подземелье крепости Берарк
 3020 | Sea of Honor | Золотая чешуя
 3026 | Corrupted Skynest | Логово Келсаика
-3027 | Forbidden Arena | Арена безумия
 3126 | Corrupted Skynest (Hard) | Логово Бессмертного Келсаика
+3027 | Forbidden Arena | Арена безумия
 
 ## Примечания
-Основано на: https://github.com/michengs/tera-guide/
+Основано на https://github.com/michengs/tera-guide
