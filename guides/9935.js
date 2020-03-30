@@ -2,6 +2,8 @@
 //
 // made by michengs
 
+const {SpawnMarker, SpawnItem, SpawnVector, SpawnCircle} = require("../lib");
+
 let notice_guide = true;
 let player, entity, library, effect;
 let firstskill = 0,
@@ -18,84 +20,6 @@ let firstskill2 = '?',
 	secondskill2 = '?',
 	tempskill2 = '?';
 let notice = true;
-
-function applyDistance(loc, distance, degrees) {
-	let r = loc.w; //(loc.w / 0x8000) * Math.PI;
-	let rads = (degrees * Math.PI/180);
-	let finalrad = r - rads;
-	loc.x += Math.cos(finalrad) * distance;
-	loc.y += Math.sin(finalrad) * distance;
-	return loc;
-}
-
-function SpawnThing(degrees, radius, delay, times, handlers, event, entity) {
-	let shield_loc = entity['loc'].clone();
-	shield_loc.w = entity['loc'].w;
-	let angle =  Math.PI * degrees / 180;
-	handlers['spawn']({
-		"sub_type": "build_object",
-		"id": 1,
-		"delay": delay,
-		"sub_delay": times,
-		"distance": radius,
-		"offset": angle,
-		"ownerName": "SAFE SPOT",
-		"message": "SAFE"
-	}, {loc: shield_loc});
-	handlers['spawn']({
-		"sub_type": "item",
-		"id": 88850,
-		"delay": delay,
-		"sub_delay": times,
-		"distance": radius,
-		"offset": angle
-	}, {loc: shield_loc});
-}
-
-function Spawnitem(item,degrees, radius, delay, times, handlers, event, entity) {
-	let shield_loc = entity['loc'].clone();
-	shield_loc.w = entity['loc'].w;
-	let angle =  Math.PI * degrees / 180;
-	handlers['spawn']({
-		"id": item,
-		"delay": delay,
-		"sub_delay": times,
-		"distance": radius,
-		"offset": angle
-	}, {loc: shield_loc});
-}
-
-function Spawnitem1(item,degree,distance,angles, maxRadius, times, handlers, event, entity) {
-	let shield_loc = entity['loc'].clone();
-	shield_loc.w = entity['loc'].w;
-	let degrees = 360 - degree;
-	applyDistance(shield_loc, distance, degrees);
-	let angle = angles * Math.PI/180
-	for (let radius=50 ; radius<=maxRadius; radius+=50) {
-		handlers['spawn']({
-			"id": item,
-			"sub_delay": times,
-			"distance": radius,
-			"offset": angle
-		}, {loc: shield_loc});
-	}
-}
-
-function Spawnitem2(item,degree,distance, intervalDegrees, radius, delay, times, handlers, event, entity ) {
-	let shield_loc = entity['loc'].clone();
-	shield_loc.w = entity['loc'].w;
-	let degrees = 360 - degree;
-	applyDistance(shield_loc, distance, degrees);
-	for (let angle = -Math.PI; angle <= Math.PI; angle +=  Math.PI * intervalDegrees / 180) {
-		handlers['spawn']({
-			"id": item,
-			"delay": delay,
-			"sub_delay": times,
-			"distance": radius,
-			"offset": angle
-		}, {loc: shield_loc});
-	}
-}
 
 function skilld_event(skillid, handlers, event, ent, dispatch) {
 	if (skillid === 9935311 ) {
@@ -388,49 +312,49 @@ module.exports = {
 		{"type": "text","sub_type": "message","delay": 11000,"message": "1", "message_RU": "1"},
 		{"type": "text","sub_type": "message","delay": 12000,"message": "JUMP", "message_RU": "Прыгай！"}
 	],
-	"s-935-1000-311-0": [{"type": "text","sub_type": "message","message": "Safe right front →↗","message_RU": "Верхний правый"},{"type": "func","func": SpawnThing.bind(null,67,120,100,12000)}],
-	"s-935-1000-312-0": [{"type": "text","sub_type": "message","message": "Safe right back →↘","message_RU": "Справа внизу"},{"type": "func","func": SpawnThing.bind(null,112,120,100,12000)}],
-	"s-935-1000-313-0": [{"type": "text","sub_type": "message","message": "Safe back left ↓↙","message_RU": "Сзади слева"},{"type": "func","func": SpawnThing.bind(null,202,120,100,12000)}],
-	"s-935-1000-314-0": [{"type": "text","sub_type": "message","message": "Safe front left ↑↖","message_RU": "Передний левый"},{"type": "func","func": SpawnThing.bind(null,337,120,100,12000)}],
-	"s-935-1000-315-0": [{"type": "text","sub_type": "message","message": "Safe front right ↑↗","message_RU": "Справа спереди"},{"type": "func","func": SpawnThing.bind(null,22,120,100,12000)}],
-	"s-935-1000-316-0": [{"type": "text","sub_type": "message","message": "Safe back right ↓↘","message_RU": "Сзади справа"},{"type": "func","func": SpawnThing.bind(null,157,120,100,12000)}],
-	"s-935-1000-317-0": [{"type": "text","sub_type": "message","message": "Safe left back ←↙","message_RU": "Левый нижний"},{"type": "func","func": SpawnThing.bind(null,247,120,100,12000)}],
-	"s-935-1000-318-0": [{"type": "text","sub_type": "message","message": "Safe left front ←↖","message_RU": "Верхний левый"},{"type": "func","func": SpawnThing.bind(null,292,120,100,12000)}],
-	"s-935-1000-319-0": [{"type": "text","sub_type": "message","message": "Safe front right ↑↗","message_RU": "Справа спереди"},{"type": "func","func": SpawnThing.bind(null,22,120,100,12000)}],
-	"s-935-1000-320-0": [{"type": "text","sub_type": "message","message": "Safe back right ↓↘","message_RU": "Сзади справа"},{"type": "func","func": SpawnThing.bind(null,157,120,100,12000)}],
-	"s-935-1000-321-0": [{"type": "text","sub_type": "message","message": "Safe back left ↓↙","message_RU": "Сзади слева"},{"type": "func","func": SpawnThing.bind(null,202,120,100,12000)}],
-	"s-935-1000-322-0": [{"type": "text","sub_type": "message","message": "Safe left front ←↖","message_RU": "Верхний левый"},{"type": "func","func": SpawnThing.bind(null,292,120,100,12000)}],
-	"s-935-1000-323-0": [{"type": "text","sub_type": "message","message": "Safe right front →↗","message_RU": "Верхний правый"},{"type": "func","func": SpawnThing.bind(null,67,120,100,12000)}],
-	"s-935-1000-324-0": [{"type": "text","sub_type": "message","message": "Safe right back →↘","message_RU": "Справа внизу"},{"type": "func","func": SpawnThing.bind(null,112,120,100,12000)}],
-	"s-935-1000-325-0": [{"type": "text","sub_type": "message","message": "Safe left back ←↙","message_RU": "Левый нижний"},{"type": "func","func": SpawnThing.bind(null,247,120,100,12000)}],
-	"s-935-1000-326-0": [{"type": "text","sub_type": "message","message": "Safe front left ↑↖","message_RU": "Передний левый"},{"type": "func","func": SpawnThing.bind(null,337,120,100,12000)}],
+	"s-935-1000-311-0": [{"type": "text","sub_type": "message","message": "Safe right front →↗","message_RU": "Верхний правый"},{"type": "func","func": SpawnMarker.bind(null,67,120,100,12000,true,null)}],
+	"s-935-1000-312-0": [{"type": "text","sub_type": "message","message": "Safe right back →↘","message_RU": "Справа внизу"},{"type": "func","func": SpawnMarker.bind(null,112,120,100,12000,true,null)}],
+	"s-935-1000-313-0": [{"type": "text","sub_type": "message","message": "Safe back left ↓↙","message_RU": "Сзади слева"},{"type": "func","func": SpawnMarker.bind(null,202,120,100,12000,true,null)}],
+	"s-935-1000-314-0": [{"type": "text","sub_type": "message","message": "Safe front left ↑↖","message_RU": "Передний левый"},{"type": "func","func": SpawnMarker.bind(null,337,120,100,12000,true,null)}],
+	"s-935-1000-315-0": [{"type": "text","sub_type": "message","message": "Safe front right ↑↗","message_RU": "Справа спереди"},{"type": "func","func": SpawnMarker.bind(null,22,120,100,12000,true,null)}],
+	"s-935-1000-316-0": [{"type": "text","sub_type": "message","message": "Safe back right ↓↘","message_RU": "Сзади справа"},{"type": "func","func": SpawnMarker.bind(null,157,120,100,12000,true,null)}],
+	"s-935-1000-317-0": [{"type": "text","sub_type": "message","message": "Safe left back ←↙","message_RU": "Левый нижний"},{"type": "func","func": SpawnMarker.bind(null,247,120,100,12000,true,null)}],
+	"s-935-1000-318-0": [{"type": "text","sub_type": "message","message": "Safe left front ←↖","message_RU": "Верхний левый"},{"type": "func","func": SpawnMarker.bind(null,292,120,100,12000,true,null)}],
+	"s-935-1000-319-0": [{"type": "text","sub_type": "message","message": "Safe front right ↑↗","message_RU": "Справа спереди"},{"type": "func","func": SpawnMarker.bind(null,22,120,100,12000,true,null)}],
+	"s-935-1000-320-0": [{"type": "text","sub_type": "message","message": "Safe back right ↓↘","message_RU": "Сзади справа"},{"type": "func","func": SpawnMarker.bind(null,157,120,100,12000,true,null)}],
+	"s-935-1000-321-0": [{"type": "text","sub_type": "message","message": "Safe back left ↓↙","message_RU": "Сзади слева"},{"type": "func","func": SpawnMarker.bind(null,202,120,100,12000,true,null)}],
+	"s-935-1000-322-0": [{"type": "text","sub_type": "message","message": "Safe left front ←↖","message_RU": "Верхний левый"},{"type": "func","func": SpawnMarker.bind(null,292,120,100,12000,true,null)}],
+	"s-935-1000-323-0": [{"type": "text","sub_type": "message","message": "Safe right front →↗","message_RU": "Верхний правый"},{"type": "func","func": SpawnMarker.bind(null,67,120,100,12000,true,null)}],
+	"s-935-1000-324-0": [{"type": "text","sub_type": "message","message": "Safe right back →↘","message_RU": "Справа внизу"},{"type": "func","func": SpawnMarker.bind(null,112,120,100,12000,true,null)}],
+	"s-935-1000-325-0": [{"type": "text","sub_type": "message","message": "Safe left back ←↙","message_RU": "Левый нижний"},{"type": "func","func": SpawnMarker.bind(null,247,120,100,12000,true,null)}],
+	"s-935-1000-326-0": [{"type": "text","sub_type": "message","message": "Safe front left ↑↖","message_RU": "Передний левый"},{"type": "func","func": SpawnMarker.bind(null,337,120,100,12000,true,null)}],
 
 	// 2 BOSS
 	"s-935-2000-102-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Front","message_RU": "Пила (Эвейд)"}],
-	"s-935-2000-105-0": [{"type": "text","sub_type": "message","message": "360","message_RU": "Крутилка (откид)"},{"type": "func","func": Spawnitem2.bind(null,553,0,0,10,250,100,4000)}],
+	"s-935-2000-105-0": [{"type": "text","sub_type": "message","message": "360","message_RU": "Крутилка (откид)"},{"type": "func","func": SpawnCircle.bind(null,553,0,0,10,250,100,4000)}],
 	"s-935-2000-108-0": [{"type": "text","sub_type": "message","message": "Back","message_RU": "Откид назад"}],
 	"s-935-2000-301-0": [{"type": "func","func": skilld_event.bind(null, 301)}],
 	"s-935-2000-304-0": [{"type": "text","sub_type": "message","message": "OUT","message_RU": "ОТ НЕГО"}],
-	"s-935-2000-305-0": [{"type": "text","sub_type": "message","message": "IN","message_RU": "К НЕМУ | ОТ НЕГО"},{"type": "func","func": Spawnitem2.bind(null,553,0,0,10,225,100,4000)}],
+	"s-935-2000-305-0": [{"type": "text","sub_type": "message","message": "IN","message_RU": "К НЕМУ | ОТ НЕГО"},{"type": "func","func": SpawnCircle.bind(null,553,0,0,10,225,100,4000)}],
 	"s-935-2000-308-0": [{"type": "text","sub_type": "message","message": "Left←","message_RU": "< Влево"}],
 	"s-935-2000-309-0": [{"type": "text","sub_type": "message","message": "Right→","message_RU": "Вправо >"}],
 	"s-935-2007-201-0": [
-		{"type": "func","func": Spawnitem1.bind(null,912,0,0,0,500,8000)},
-		{"type": "func","func": Spawnitem1.bind(null,912,0,0,90,500,8000)},
-		{"type": "func","func": Spawnitem1.bind(null,912,0,0,180,500,8000)},
-		{"type": "func","func": Spawnitem1.bind(null,912,0,0,270,500,8000)}
+		{"type": "func","func": SpawnVector.bind(null,912,0,0,0,500,0,8000)},
+		{"type": "func","func": SpawnVector.bind(null,912,0,0,90,500,0,8000)},
+		{"type": "func","func": SpawnVector.bind(null,912,0,0,180,500,0,8000)},
+		{"type": "func","func": SpawnVector.bind(null,912,0,0,270,500,0,8000)}
 	],
 	"s-935-2007-306-0": [
-		{"type": "func","func": Spawnitem1.bind(null,912,0,0,0,500,4000)},
-		{"type": "func","func": Spawnitem1.bind(null,912,0,0,90,500,4000)},
-		{"type": "func","func": Spawnitem1.bind(null,912,0,0,180,500,4000)},
-		{"type": "func","func": Spawnitem1.bind(null,912,0,0,270,500,4000)}
+		{"type": "func","func": SpawnVector.bind(null,912,0,0,0,500,0,4000)},
+		{"type": "func","func": SpawnVector.bind(null,912,0,0,90,500,0,4000)},
+		{"type": "func","func": SpawnVector.bind(null,912,0,0,180,500,0,4000)},
+		{"type": "func","func": SpawnVector.bind(null,912,0,0,270,500,0,4000)}
 	],
 	"s-935-2007-307-0": [
-		{"type": "func","func": Spawnitem1.bind(null,912,0,0,0,500,12000)},
-		{"type": "func","func": Spawnitem1.bind(null,912,0,0,90,500,12000)},
-		{"type": "func","func": Spawnitem1.bind(null,912,0,0,180,500,12000)},
-		{"type": "func","func": Spawnitem1.bind(null,912,0,0,270,500,12000)}
+		{"type": "func","func": SpawnVector.bind(null,912,0,0,0,500,0,12000)},
+		{"type": "func","func": SpawnVector.bind(null,912,0,0,90,500,0,12000)},
+		{"type": "func","func": SpawnVector.bind(null,912,0,0,180,500,0,12000)},
+		{"type": "func","func": SpawnVector.bind(null,912,0,0,270,500,0,12000)}
 	],
 
 	// 3 BOSS
@@ -445,71 +369,71 @@ module.exports = {
 	"qb-935-3000-935302": [{"type": "func","func": skilld_event.bind(null, 935302)}],
 	"qb-935-3000-935303": [{"type": "func","func": skilld_event.bind(null, 935303)}],
 	"s-935-3000-116-0": [{"type": "text","sub_type": "message","message": "RIGHT →↘","message_RU": "Справа"},
-		{"type": "func","func": Spawnitem.bind(null,6,170,200,0,3000)},
-		{"type": "func","func": Spawnitem.bind(null,6,350,200,0,3000)},
-		{"type": "func","func": Spawnitem.bind(null,553,120,250,0,3000)},
-		{"type": "func","func": Spawnitem.bind(null,553,130,240,0,3000)},
-		{"type": "func","func": Spawnitem.bind(null,553,140,230,0,3000)},
-		{"type": "func","func": Spawnitem.bind(null,553,150,220,0,3000)},
-		{"type": "func","func": Spawnitem.bind(null,553,160,210,0,3000)},
-		{"type": "func","func": Spawnitem1.bind(null,553,170,210,180,290,3000)},
-		{"type": "func","func": Spawnitem.bind(null,553,300,250,0,3000)},
-		{"type": "func","func": Spawnitem.bind(null,553,310,240,0,3000)},
-		{"type": "func","func": Spawnitem.bind(null,553,320,230,0,3000)},
-		{"type": "func","func": Spawnitem.bind(null,553,330,220,0,3000)},
-		{"type": "func","func": Spawnitem.bind(null,553,340,210,0,3000)},
-		{"type": "func","func": Spawnitem1.bind(null,553,350,210,0,290,3000)}
+		{"type": "func","func": SpawnItem.bind(null,6,170,200,0,3000)},
+		{"type": "func","func": SpawnItem.bind(null,6,350,200,0,3000)},
+		{"type": "func","func": SpawnItem.bind(null,553,120,250,0,3000)},
+		{"type": "func","func": SpawnItem.bind(null,553,130,240,0,3000)},
+		{"type": "func","func": SpawnItem.bind(null,553,140,230,0,3000)},
+		{"type": "func","func": SpawnItem.bind(null,553,150,220,0,3000)},
+		{"type": "func","func": SpawnItem.bind(null,553,160,210,0,3000)},
+		{"type": "func","func": SpawnVector.bind(null,553,170,210,180,290,0,3000)},
+		{"type": "func","func": SpawnItem.bind(null,553,300,250,0,3000)},
+		{"type": "func","func": SpawnItem.bind(null,553,310,240,0,3000)},
+		{"type": "func","func": SpawnItem.bind(null,553,320,230,0,3000)},
+		{"type": "func","func": SpawnItem.bind(null,553,330,220,0,3000)},
+		{"type": "func","func": SpawnItem.bind(null,553,340,210,0,3000)},
+		{"type": "func","func": SpawnVector.bind(null,553,350,210,0,290,0,3000)}
 	],
 	"s-935-3000-117-0": [{"type": "text","sub_type": "message","message": "LEFT ←↙","message_RU": "Слева"},
-		{"type": "func","func": Spawnitem.bind(null,6,10,200,0,3000)},
-		{"type": "func","func": Spawnitem.bind(null,6,190,200,0,3000)},
-		{"type": "func","func": Spawnitem1.bind(null,553,10,210,0,290,3000)},
-		{"type": "func","func": Spawnitem.bind(null,553,20,210,0,3000)},
-		{"type": "func","func": Spawnitem.bind(null,553,30,220,0,3000)},
-		{"type": "func","func": Spawnitem.bind(null,553,40,230,0,3000)},
-		{"type": "func","func": Spawnitem.bind(null,553,50,240,0,3000)},
-		{"type": "func","func": Spawnitem.bind(null,553,60,250,0,3000)},
-		{"type": "func","func": Spawnitem.bind(null,553,240,250,0,3000)},
-		{"type": "func","func": Spawnitem.bind(null,553,230,240,0,3000)},
-		{"type": "func","func": Spawnitem.bind(null,553,220,230,0,3000)},
-		{"type": "func","func": Spawnitem.bind(null,553,210,220,0,3000)},
-		{"type": "func","func": Spawnitem.bind(null,553,200,210,0,3000)},
-		{"type": "func","func": Spawnitem1.bind(null,553,190,210,180,290,3000)}
+		{"type": "func","func": SpawnItem.bind(null,6,10,200,0,3000)},
+		{"type": "func","func": SpawnItem.bind(null,6,190,200,0,3000)},
+		{"type": "func","func": SpawnVector.bind(null,553,10,210,0,290,0,3000)},
+		{"type": "func","func": SpawnItem.bind(null,553,20,210,0,3000)},
+		{"type": "func","func": SpawnItem.bind(null,553,30,220,0,3000)},
+		{"type": "func","func": SpawnItem.bind(null,553,40,230,0,3000)},
+		{"type": "func","func": SpawnItem.bind(null,553,50,240,0,3000)},
+		{"type": "func","func": SpawnItem.bind(null,553,60,250,0,3000)},
+		{"type": "func","func": SpawnItem.bind(null,553,240,250,0,3000)},
+		{"type": "func","func": SpawnItem.bind(null,553,230,240,0,3000)},
+		{"type": "func","func": SpawnItem.bind(null,553,220,230,0,3000)},
+		{"type": "func","func": SpawnItem.bind(null,553,210,220,0,3000)},
+		{"type": "func","func": SpawnItem.bind(null,553,200,210,0,3000)},
+		{"type": "func","func": SpawnVector.bind(null,553,190,210,180,290,0,3000)}
 	],
 	"s-935-3000-118-0": [{"type": "text","sub_type": "message","message": "LEFT ←↙","message_RU": "Слева"},
-		{"type": "func","func": Spawnitem.bind(null,6,10,200,0,3000)},
-		{"type": "func","func": Spawnitem.bind(null,6,190,200,0,3000)},
-		{"type": "func","func": Spawnitem1.bind(null,553,10,210,0,290,3000)},
-		{"type": "func","func": Spawnitem.bind(null,553,20,210,0,3000)},
-		{"type": "func","func": Spawnitem.bind(null,553,30,220,0,3000)},
-		{"type": "func","func": Spawnitem.bind(null,553,40,230,0,3000)},
-		{"type": "func","func": Spawnitem.bind(null,553,50,240,0,3000)},
-		{"type": "func","func": Spawnitem.bind(null,553,60,250,0,3000)},
-		{"type": "func","func": Spawnitem.bind(null,553,240,250,0,3000)},
-		{"type": "func","func": Spawnitem.bind(null,553,230,240,0,3000)},
-		{"type": "func","func": Spawnitem.bind(null,553,220,230,0,3000)},
-		{"type": "func","func": Spawnitem.bind(null,553,210,220,0,3000)},
-		{"type": "func","func": Spawnitem.bind(null,553,200,210,0,3000)},
-		{"type": "func","func": Spawnitem1.bind(null,553,190,210,180,290,3000)}
+		{"type": "func","func": SpawnItem.bind(null,6,10,200,0,3000)},
+		{"type": "func","func": SpawnItem.bind(null,6,190,200,0,3000)},
+		{"type": "func","func": SpawnVector.bind(null,553,10,210,0,290,0,3000)},
+		{"type": "func","func": SpawnItem.bind(null,553,20,210,0,3000)},
+		{"type": "func","func": SpawnItem.bind(null,553,30,220,0,3000)},
+		{"type": "func","func": SpawnItem.bind(null,553,40,230,0,3000)},
+		{"type": "func","func": SpawnItem.bind(null,553,50,240,0,3000)},
+		{"type": "func","func": SpawnItem.bind(null,553,60,250,0,3000)},
+		{"type": "func","func": SpawnItem.bind(null,553,240,250,0,3000)},
+		{"type": "func","func": SpawnItem.bind(null,553,230,240,0,3000)},
+		{"type": "func","func": SpawnItem.bind(null,553,220,230,0,3000)},
+		{"type": "func","func": SpawnItem.bind(null,553,210,220,0,3000)},
+		{"type": "func","func": SpawnItem.bind(null,553,200,210,0,3000)},
+		{"type": "func","func": SpawnVector.bind(null,553,190,210,180,290,0,3000)}
 	],
 	"s-935-3000-119-0": [{"type": "text","sub_type": "message","message": "RIGHT →↘","message_RU": "Справа"},
-		{"type": "func","func": Spawnitem.bind(null,6,170,200,0,3000)},
-		{"type": "func","func": Spawnitem.bind(null,6,350,200,0,3000)},
-		{"type": "func","func": Spawnitem.bind(null,553,120,250,0,3000)},
-		{"type": "func","func": Spawnitem.bind(null,553,130,240,0,3000)},
-		{"type": "func","func": Spawnitem.bind(null,553,140,230,0,3000)},
-		{"type": "func","func": Spawnitem.bind(null,553,150,220,0,3000)},
-		{"type": "func","func": Spawnitem.bind(null,553,160,210,0,3000)},
-		{"type": "func","func": Spawnitem1.bind(null,553,170,210,180,290,3000)},
-		{"type": "func","func": Spawnitem.bind(null,553,300,250,0,3000)},
-		{"type": "func","func": Spawnitem.bind(null,553,310,240,0,3000)},
-		{"type": "func","func": Spawnitem.bind(null,553,320,230,0,3000)},
-		{"type": "func","func": Spawnitem.bind(null,553,330,220,0,3000)},
-		{"type": "func","func": Spawnitem.bind(null,553,340,210,0,3000)},
-		{"type": "func","func": Spawnitem1.bind(null,553,350,210,0,290,3000)}
+		{"type": "func","func": SpawnItem.bind(null,6,170,200,0,3000)},
+		{"type": "func","func": SpawnItem.bind(null,6,350,200,0,3000)},
+		{"type": "func","func": SpawnItem.bind(null,553,120,250,0,3000)},
+		{"type": "func","func": SpawnItem.bind(null,553,130,240,0,3000)},
+		{"type": "func","func": SpawnItem.bind(null,553,140,230,0,3000)},
+		{"type": "func","func": SpawnItem.bind(null,553,150,220,0,3000)},
+		{"type": "func","func": SpawnItem.bind(null,553,160,210,0,3000)},
+		{"type": "func","func": SpawnVector.bind(null,553,170,210,180,290,0,3000)},
+		{"type": "func","func": SpawnItem.bind(null,553,300,250,0,3000)},
+		{"type": "func","func": SpawnItem.bind(null,553,310,240,0,3000)},
+		{"type": "func","func": SpawnItem.bind(null,553,320,230,0,3000)},
+		{"type": "func","func": SpawnItem.bind(null,553,330,220,0,3000)},
+		{"type": "func","func": SpawnItem.bind(null,553,340,210,0,3000)},
+		{"type": "func","func": SpawnVector.bind(null,553,350,210,0,290,0,3000)}
 	],
 	"s-935-3000-129-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Dodge","message_RU": "Эвейд"}],
-	"s-935-3000-305-0": [{"type": "func","func": Spawnitem2.bind(null,553,0,0,8,300,100,7000)}],
+	"s-935-3000-305-0": [{"type": "func","func": SpawnCircle.bind(null,553,0,0,8,300,100,7000)}],
 	"s-935-3000-321-0": [
 		{"type": "text","sub_type": "message","message": "SHIELD!","message_RU": "ЩИТ!" },
 		{"type": "text","sub_type": "message","delay": 105000,"message": "After 10s SHIELD! ", "message_RU": "Через 10 сек. ЩИТ!!!"}

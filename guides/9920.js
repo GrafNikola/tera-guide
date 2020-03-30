@@ -3,54 +3,11 @@
 // made by Yuyuko
 // updated by HSDN
 
+const {SpawnMarker, SpawnCircle} = require("../lib");
+
 let counter = 0; // count for back attacks
 let timer; // reset time
 let print = true; // 2 boss Health
-
-function  applyDistance(loc, distance, degrees) {
-	let r = loc.w; //(loc.w / 0x8000) * Math.PI;
-	let rads = (degrees * Math.PI/180);
-	let finalrad = r - rads;
-	loc.x += Math.cos(finalrad) * distance;
-	loc.y += Math.sin(finalrad) * distance;
-	return loc;
-}
-
-function SpawnThing( degrees, radius, times, handlers, event, entity ) {
-	let shield_loc = entity['loc'].clone();
-	shield_loc.w = entity['loc'].w;
-	let angle =  Math.PI * degrees / 180;
-	handlers['spawn']({
-		"sub_type": "build_object",
-		"id": 1,
-		"sub_delay": times,
-		"distance": radius,
-		"offset": angle,
-		"ownerName": "SAFE SPOT",
-		"message": "SAFE"
-	}, {loc: shield_loc});
-	handlers['spawn']({
-		"sub_type": "item",
-		"id": 88850,
-		"sub_delay": times,
-		"distance": radius,
-		"offset": angle
-	}, {loc: shield_loc});
-}
-
-function Spawnitem2(item,degrees,distance, intervalDegrees, radius, times, handlers, event, entity ) {
-	let shield_loc = entity['loc'].clone();
-	shield_loc.w = entity['loc'].w;
-	applyDistance(shield_loc, distance, degrees);
-	for (let angle = -Math.PI; angle <= Math.PI; angle +=  Math.PI * intervalDegrees / 180) {
-		handlers['spawn']({
-			"id": item,
-			"sub_delay": times,
-			"distance": radius,
-			"offset": angle
-		}, {loc: shield_loc});
-	}
-}
 
 // 2 boss Health tips
 function start_boss() {
@@ -150,18 +107,18 @@ let SPAWNING_FIRST_CIRCLE_FLOWERS = [
 	{"type": "text","class_position":"tank","sub_type": "message","message": "Right→ > OUT to IN","message_RU": "Вправо > наружу + внутрь"},
 	{"type": "text","class_position":"dps","sub_type": "message","message": "Left← > OUT to IN","message_RU": "Влево > наружу + внутрь"},
 	{"type": "text","class_position":"heal","sub_type": "message","message": "Left← > OUT to IN","message_RU": "Влево > наружу + внутрь"},
-	{"type": "func","func": SpawnThing.bind(null,270,250,2500)},
-	{"type": "func","func": Spawnitem2.bind(null,553,0,0,18,143,6000)},
-	{"type": "func","func": Spawnitem2.bind(null,553,0,0,12,293,6000)}
+	{"type": "func","func": SpawnMarker.bind(null,270,250,0,2500,true,null)},
+	{"type": "func","func": SpawnCircle.bind(null,553,0,0,18,143,0,6000)},
+	{"type": "func","func": SpawnCircle.bind(null,553,0,0,12,293,0,6000)}
 ];
 // heart thrust+clockwise spin+left swipe+AOEs from in to out
 let SPAWNING_SECOND_CIRCLE_FLOWERS = [
 	{"type": "text","class_position":"tank","sub_type": "message","message": "Left← > IN to OUT","message_RU": "Влево > внутрь + наружу"},
 	{"type": "text","class_position":"dps","sub_type": "message","message": "Right→ > IN to OUT","message_RU": "Вправо > внутрь + наружу"},
 	{"type": "text","class_position":"heal","sub_type": "message","message": "Right→ > IN to OUT","message_RU": "Вправо > внутрь + наружу"},
-	{"type": "func","func": SpawnThing.bind(null,90,250,2500)},
-	{"type": "func","func": Spawnitem2.bind(null,553,0,0,18,157,6000)},
-	{"type": "func","func": Spawnitem2.bind(null,553,0,0,12,307,6000)}
+	{"type": "func","func": SpawnMarker.bind(null,90,250,0,2500,true,null)},
+	{"type": "func","func": SpawnCircle.bind(null,553,0,0,18,157,0,6000)},
+	{"type": "func","func": SpawnCircle.bind(null,553,0,0,12,307,0,6000)}
 ];
 
 module.exports = {

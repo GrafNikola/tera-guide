@@ -1,31 +1,8 @@
 // Ruinous Manor (Hard)
 
+const {SpawnCircle} = require("../lib");
+
 let player, entity, library, effect;
-
-function  applyDistance(loc, distance, degrees) {
-	let r = loc.w; //(loc.w / 0x8000) * Math.PI;
-	let rads = (degrees * Math.PI/180);
-	let finalrad = r - rads;
-	loc.x += Math.cos(finalrad) * distance;
-	loc.y += Math.sin(finalrad) * distance;
-	return loc;
-}
-
-function Spawnitem2(item,degree,distance, intervalDegrees, radius, delay,times, handlers, event, entity ) {
-	let shield_loc = entity['loc'].clone();
-	shield_loc.w = entity['loc'].w;
-	let degrees = 360 - degree;
-	applyDistance(shield_loc, distance, degrees);
-	for (let angle = -Math.PI; angle <= Math.PI; angle +=  Math.PI * intervalDegrees / 180) {
-		handlers['spawn']({
-			"id": item,
-			"delay": delay,
-			"sub_delay": times,
-			"distance": radius,
-			"offset": angle
-		}, {loc: shield_loc});
-	}
-}
 
 const FIRST_TIMER_DELAY = 40000;
 const SECOND_TIMER_DELAY = 55000;
@@ -91,12 +68,12 @@ module.exports = {
 	"s-970-3000-1303-0": [{"type": "text","sub_type": "message","message_RU": "Готовность!","message": "Get Ready! (for in out mechanic)"}],
 
 	// GO OUT then come in
-	"s-970-3000-2113-0": [{"type": "text","sub_type": "message","message_RU": "ОТ НЕГО > К НЕМУ","message": "OUT -> IN"},{"type": "func","func": Spawnitem2.bind(null,553,0,0,15,300,0,5000)}],
-	"s-970-3000-1113-0": [{"type": "text","sub_type": "message","message_RU": "ОТ НЕГО > К НЕМУ","message": "OUT -> IN"},{"type": "func","func": Spawnitem2.bind(null,553,0,0,15,300,0,5000)}],
+	"s-970-3000-2113-0": [{"type": "text","sub_type": "message","message_RU": "ОТ НЕГО > К НЕМУ","message": "OUT -> IN"},{"type": "func","func": SpawnCircle.bind(null,553,0,0,15,300,0,5000)}],
+	"s-970-3000-1113-0": [{"type": "text","sub_type": "message","message_RU": "ОТ НЕГО > К НЕМУ","message": "OUT -> IN"},{"type": "func","func": SpawnCircle.bind(null,553,0,0,15,300,0,5000)}],
 
 	// STAY IN then go out
-	"s-970-3000-2116-0": [{"type": "text","sub_type": "message","message_RU": "К НЕМУ > ОТ НЕГО","message": " IN -> OUT"},{"type": "func","func": Spawnitem2.bind(null,553,0,0,15,300,0,5000)}],
-	"s-970-3000-1116-0": [{"type": "text","sub_type": "message","message_RU": "К НЕМУ > ОТ НЕГО","message": " IN -> OUT"},{"type": "func","func": Spawnitem2.bind(null,553,0,0,15,300,0,5000)}],
+	"s-970-3000-2116-0": [{"type": "text","sub_type": "message","message_RU": "К НЕМУ > ОТ НЕГО","message": " IN -> OUT"},{"type": "func","func": SpawnCircle.bind(null,553,0,0,15,300,0,5000)}],
+	"s-970-3000-1116-0": [{"type": "text","sub_type": "message","message_RU": "К НЕМУ > ОТ НЕГО","message": " IN -> OUT"},{"type": "func","func": SpawnCircle.bind(null,553,0,0,15,300,0,5000)}],
 
 	// GET RED SKULL !!
 	"s-970-3000-1318-0": [{"type": "text","sub_type": "message","message_RU": "Взять красную голову!","message": "GET RED SKULL!!"}],
@@ -104,7 +81,7 @@ module.exports = {
 	"s-970-3000-1319-0": [{"type": "text","sub_type": "message","message_RU": "Взять красную голову!","message": "GET RED SKULL!!"}],
 
 	// DODGE the PATTERNS !
-	"s-970-3000-1322-0": [{"type": "text","sub_type": "message","message_RU": "Ивейд!","message": "DODGE the PATTERNS!"}],
+	"s-970-3000-1322-0": [{"type": "text","sub_type": "message","message_RU": "Эвейд!","message": "DODGE the PATTERNS!"}],
 
 	// GATHER FOR CLEANSE ! !
 	"s-970-3000-1311-0": [{"type": "text","sub_type": "message","message_RU": "Очищение","message": "GATHER FOR CLEANSE!"}]

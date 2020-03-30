@@ -1,30 +1,9 @@
 // Gossamer Vault
 
+const {SpawnCircle} = require("../lib");
+
 let notice_guide = true;
 let player, entity, library, effect;
-
-function  applyDistance(loc, distance, degrees) {
-	let r = loc.w; //(loc.w / 0x8000) * Math.PI;
-	let rads = (degrees * Math.PI/180);
-	let finalrad = r - rads;
-	loc.x += Math.cos(finalrad) * distance;
-	loc.y += Math.sin(finalrad) * distance;
-	return loc;
-}
-
-function Spawnitem2(item,degrees,distance, intervalDegrees, radius, times, handlers, event, entity) {
-	let shield_loc = entity['loc'].clone();
-	shield_loc.w = entity['loc'].w;
-	applyDistance(shield_loc, distance, degrees);
-	for (let angle = -Math.PI; angle <= Math.PI; angle +=  Math.PI * intervalDegrees / 180) {
-		handlers['spawn']({
-			"id": item,
-			"sub_delay": times,
-			"distance": radius,
-			"offset": angle
-		}, {loc: shield_loc});
-	}
-}
 
 module.exports = {
 	load(dispatch) {
@@ -51,7 +30,7 @@ module.exports = {
 	"s-3101-1000-148-0": [{"type": "text","sub_type": "message","message": "Right hand (flying)","message_RU": "Правая рука (подлет)"}],
 	"s-3101-1000-149-0": [{"type": "text","sub_type": "message","message": "Left hand (flying)","message_RU": "Левая рука (подлет)"}],
 	"s-3101-1000-305-0": [{"type": "text","sub_type": "message","message": "Pizza","message_RU": "Pizza"}],
-	"s-3101-1000-313-0": [{"type": "text","sub_type": "message","message": "Circles (Slow)","message_RU": "Кольцо"},{"type": "func","func": Spawnitem2.bind(null,553,0,75,10,300,6000)}],
+	"s-3101-1000-313-0": [{"type": "text","sub_type": "message","message": "Circles (Slow)","message_RU": "Кольцо"},{"type": "func","func": SpawnCircle.bind(null,553,0,75,10,300,0,6000)}],
 
 
 	// 2 BOSS
@@ -80,11 +59,11 @@ module.exports = {
 	"s-3101-2000-230-0": [{"type": "text","sub_type": "message","message": "AOE","message_RU": "AOE"}],
 
 	"s-3101-2000-231-0": [{"type": "text","sub_type": "message","message": "OUT safe ↓","message_RU": "ОТ НЕГО"},
-						  {"type": "func","func": Spawnitem2.bind(null,553,0,0,10,300,3000)}
+						  {"type": "func","func": SpawnCircle.bind(null,553,0,0,10,300,0,3000)}
 	],
 	"s-3101-2000-232-0": [{"type": "text","sub_type": "message","message": "IN safe ↑","message_RU": "К НЕМУ"},
-						  {"type": "func","func": Spawnitem2.bind(null,553,0,0,10,300,3000)},
-						  {"type": "func","func": Spawnitem2.bind(null,553,0,0,3,875,3000)}
+						  {"type": "func","func": SpawnCircle.bind(null,553,0,0,10,300,0,3000)},
+						  {"type": "func","func": SpawnCircle.bind(null,553,0,0,3,875,0,3000)}
 	],
 
 	"s-3101-2000-234-0": [{"type": "text","sub_type": "message","message": "Debuffs","message_RU": "Дебаффы"}],

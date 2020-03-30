@@ -3,52 +3,9 @@
 // made by Yuyuko
 // updated by HSDN
 
+const {SpawnMarker} = require("../lib");
+
 let player, entity, library, effect;
-
-function  applyDistance(loc, distance, degrees) {
-	let r = loc.w; //(loc.w / 0x8000) * Math.PI;
-	let rads = (degrees * Math.PI/180);
-	let finalrad = r - rads;
-	loc.x += Math.cos(finalrad) * distance;
-	loc.y += Math.sin(finalrad) * distance;
-	return loc;
-}
-
-function SpawnThing( degrees, radius, times, handlers, event, entity ) {
-	let shield_loc = entity['loc'].clone();
-	shield_loc.w = entity['loc'].w;
-	let angle =  Math.PI * degrees / 180;
-	handlers['spawn']({
-		"sub_type": "build_object",
-		"id": 1,
-		"sub_delay": times,
-		"distance": radius,
-		"offset": angle,
-		"ownerName": "SAFE SPOT",
-		"message": "SAFE"
-	}, {loc: shield_loc});
-	handlers['spawn']({
-		"sub_type": "item",
-		"id": 88850,
-		"sub_delay": times,
-		"distance": radius,
-		"offset": angle
-	}, {loc: shield_loc});
-}
-
-function Spawnitem2(item,degrees,distance, intervalDegrees, radius, times, handlers, event, entity ) {
-	let shield_loc = entity['loc'].clone();
-	shield_loc.w = entity['loc'].w;
-	applyDistance(shield_loc, distance, degrees);
-	for (let angle = -Math.PI; angle <= Math.PI; angle +=  Math.PI * intervalDegrees / 180) {
-		handlers['spawn']({
-			"id": item,
-			"sub_delay": times,
-			"distance": radius,
-			"offset": angle
-		}, {loc: shield_loc});
-	}
-}
 
 let counter = 0;
 let timer;
@@ -69,6 +26,10 @@ function back_attack_NM(handlers) {
 }
 
 module.exports = {
+	load(dispatch) {
+		({ player, entity, library, effect } = dispatch.require.library);
+	},
+
 	//1 BOSS
 	"s-720-1000-117-0": [{"type": "text","sub_type": "message","message": "Stay IN↑ + Get OUT↓","message_RU": "Внутрь + Наружу"}],
 	"s-720-1000-116-0": [{"type": "text","sub_type": "message","message": "Get OUT↓ + Stay IN↑","message_RU": "Наружу + Внутрь"}],
@@ -94,13 +55,13 @@ module.exports = {
 	"s-720-3000-109-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Right→","message_RU": "Вправо >"},
 						 {"type": "text","class_position":"dps","sub_type": "message","message": "Left←","message_RU": "< Влево"},
 						 {"type": "text","class_position":"heal","sub_type": "message","message": "Left←","message_RU": "< Влево"},
-						 {"type": "func","func": SpawnThing.bind(null,270,250,2500)}
+						 {"type": "func","func": SpawnMarker.bind(null,270,250,0,2500,true,null)}
 	],
 	// heart thrust+clockwise spin+left swipe
 	"s-720-3000-111-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Left←","message_RU": "< Влево"},
 						 {"type": "text","class_position":"dps","sub_type": "message","message": "Right→","message_RU": "Вправо >"},
 						 {"type": "text","class_position":"heal","sub_type": "message","message": "Right→","message_RU": "Вправо >"},
-						 {"type": "func","func": SpawnThing.bind(null,90,250,2500)}
+						 {"type": "func","func": SpawnMarker.bind(null,90,250,0,2500,true,null)}
 	],
 	"s-720-3000-113-0": [{"type": "text","sub_type": "message","message": "Front | Back slam","message_RU": "Передний | Задний"}],
 	"s-720-3000-115-0": [{"type": "text","sub_type": "message","message": "Spinning attack","message_RU": "Круговая"}],

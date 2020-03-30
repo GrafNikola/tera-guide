@@ -1,90 +1,13 @@
 // Gossamer Vault (Hard)
 
+const {SpawnMarker, SpawnVector, SpawnCircle} = require("../lib");
+
 let notice_guide = true;
+let player, entity, library, effect;
 let notice = true;
 let boss = 3;
 let lastboss = false;
-let player, entity, library, effect;
 let print = false;
-
-function SpawnThing5(degrees, radius, delay, times, handlers, event, entity) {
-	let shield_loc = entity['loc'].clone();
-	shield_loc.w = entity['loc'].w;
-	let angle =  Math.PI * degrees / 180;
-	handlers['spawn']({
-		"sub_type": "build_object",
-		"id": 1,
-		"delay": delay,
-		"sub_delay": times,
-		"distance": radius,
-		"offset": angle,
-		"ownerName": "Бомба замедленного действия",
-		"message": "Бомба замедленного действия"
-	}, {loc: shield_loc});
-}
-
-function SpawnThing6(degrees, radius, delay, times, handlers, event, entity) {
-	let shield_loc = entity['loc'].clone();
-	shield_loc.w = entity['loc'].w;
-	let angle =  Math.PI * degrees / 180;
-	handlers['spawn']({
-		"sub_type": "build_object",
-		"id": 1,
-		"delay": delay,
-		"sub_delay": times,
-		"distance": radius,
-		"offset": angle,
-		"ownerName": "Бомба",
-		"message": "Бомба"
-	}, {loc: shield_loc});
-}
-
-function  applyDistance(loc, distance, degrees) {
-	let r = loc.w; //(loc.w / 0x8000) * Math.PI;
-	let	rads = (degrees * Math.PI/180);
-	let	finalrad = r - rads;
-	loc.x += Math.cos(finalrad) * distance;
-	loc.y += Math.sin(finalrad) * distance;
-	return loc;
-}
-
-function SpawnThing( degrees, radius, delay, times, handlers, event, entity ) {
-	let shield_loc = entity['loc'].clone();
-	shield_loc.w = entity['loc'].w;
-	let angle =  Math.PI * degrees / 180;
-	handlers['spawn']({
-		"sub_type": "build_object",
-		"id": 1,
-		"delay": delay,			
-		"sub_delay": times,
-		"distance": radius,
-		"offset": angle,
-		"ownerName": "SAFE SPOT",
-		"message": "SAFE"
-	}, {loc: shield_loc});
-	handlers['spawn']({
-		"sub_type": "item",
-		"id": 88850,
-		"delay": delay,
-		"sub_delay": times,
-		"distance": radius,
-		"offset": angle
-	}, {loc: shield_loc});
-}
-
-function Spawnitem2(item,degrees,distance, intervalDegrees, radius, times, handlers, event, entity ) {
-	let shield_loc = entity['loc'].clone();
-	shield_loc.w = entity['loc'].w;
-	applyDistance(shield_loc, distance, degrees);
-	for (let angle = -Math.PI; angle <= Math.PI; angle +=  Math.PI * intervalDegrees / 180) {
-		handlers['spawn']({
-			"id": item,
-			"sub_delay": times,
-			"distance": radius,
-			"offset": angle
-		}, {loc: shield_loc});
-	}
-}
 
 function start_boss() {
 	lastboss = true;
@@ -92,9 +15,11 @@ function start_boss() {
 	boss = 3;
 	print = true;
 }
+
 function start_boss1() {
 	print = true;
 }
+
 function skilld_event(skillid, handlers, event, ent, dispatch) {
 	if (skillid === 203 || skillid === 204) {
 			notice = false;
@@ -270,6 +195,7 @@ function print_eighty(handlers) {
 	}
 	print = false;
 }
+
 function print_seventyfive(handlers) {
 	if (print) {
 		handlers['text']({
@@ -325,18 +251,18 @@ module.exports = {
 	"s-3201-1000-143-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "left→right","message_RU": "слева > справа"},
 						  {"type": "text","class_position":"dps","sub_type": "message","message": "right←left","message_RU": "справа < слева"},
 						  {"type": "text","class_position":"heal","sub_type": "message","message": "right←left","message_RU": "справа < слева"},
-						  {"type": "func","func": SpawnThing.bind(null,150,300,100,2715)},	//1
-						  {"type": "func","func": SpawnThing.bind(null,225,300,2800,4175)}, //6
-						  {"type": "func","func": SpawnThing.bind(null,30,300,100,1000)},	//1
-						  {"type": "func","func": SpawnThing.bind(null,330,300,1100,5000)}  //7
+						  {"type": "func","func": SpawnMarker.bind(null,150,300,100,2715,true,null)},	//1
+						  {"type": "func","func": SpawnMarker.bind(null,225,300,2800,4175,true,null)}, //6
+						  {"type": "func","func": SpawnMarker.bind(null,30,300,100,1000,true,null)},	//1
+						  {"type": "func","func": SpawnMarker.bind(null,330,300,1100,5000,true,null)}  //7
 	],
 	"s-3201-1000-145-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "left→right","message_RU": "слева > справа"},
 						  {"type": "text","class_position":"dps","sub_type": "message","message": "right←left","message_RU": "справа < слева"},
 						  {"type": "text","class_position":"heal","sub_type": "message","message": "right←left","message_RU": "справа < слева"},
-						  {"type": "func","func": SpawnThing.bind(null,30,300,100,1000)},	//1
-						  {"type": "func","func": SpawnThing.bind(null,330,300,1100,5000)}, //7
-						  {"type": "func","func": SpawnThing.bind(null,150,300,100,2000)},	//1
-						  {"type": "func","func": SpawnThing.bind(null,225,300,2500,5000)}	//6
+						  {"type": "func","func": SpawnMarker.bind(null,30,300,100,1000,true,null)},	//1
+						  {"type": "func","func": SpawnMarker.bind(null,330,300,1100,5000,true,null)}, //7
+						  {"type": "func","func": SpawnMarker.bind(null,150,300,100,2000,true,null)},	//1
+						  {"type": "func","func": SpawnMarker.bind(null,225,300,2500,5000,true,null)}	//6
 	],
 	"s-3201-1000-148-0": [{"type": "text","sub_type": "message","message": "Right hand (flying)","message_RU": "Правая рука(подлет)" }],
 	"s-3201-1000-149-0": [{"type": "text","sub_type": "message","message": "Left hand (flying)","message_RU": "Левая рука(подлет)" }],
@@ -346,8 +272,8 @@ module.exports = {
 	{"type": "text","sub_type": "message","delay": 4000,"message": "pull","message_RU": "откид!"}],
 	"s-3201-1000-312-0": [{"type": "text","sub_type": "message","message_RU": "Мёд (фаст)!!!"},
 	{"type": "text","sub_type": "message","delay": 2000,"message": "pull","message_RU": "откид!!!"}],
-	"s-3201-1000-313-0": [{"type": "text","sub_type": "message","message": "Circles (Slow)","message_RU": "Кольцо"},{"type": "func","func": Spawnitem2.bind(null,553,0,75,10,300,6000)}],
-	"s-3201-1000-314-0": [{"type": "text","sub_type": "message","message": "Circles (Fast)","message_RU": "Кольцо (фаст)"},{"type": "func","func": Spawnitem2.bind(null,553,0,75,10,300,6000)}],
+	"s-3201-1000-313-0": [{"type": "text","sub_type": "message","message": "Circles (Slow)","message_RU": "Кольцо"},{"type": "func","func": SpawnCircle.bind(null,553,0,75,10,300,0,6000)}],
+	"s-3201-1000-314-0": [{"type": "text","sub_type": "message","message": "Circles (Fast)","message_RU": "Кольцо (фаст)"},{"type": "func","func": SpawnCircle.bind(null,553,0,75,10,300,0,6000)}],
 
 
 	// 2 BOSS
@@ -388,11 +314,11 @@ module.exports = {
 	"s-3201-2000-230-0": [{"type": "text","sub_type": "message","message": "AOE","message_RU": "AOE!!"}],
 
 	"s-3201-2000-231-0": [{"type": "text","sub_type": "message","message": "OUT safe ↓","message_RU": "ОТ НЕГО"},
-						  {"type": "func","func": Spawnitem2.bind(null,553,0,0,10,300,3000)}
+						  {"type": "func","func": SpawnCircle.bind(null,553,0,0,10,300,0,3000)}
 	],
 	"s-3201-2000-232-0": [{"type": "text","sub_type": "message","message": "IN safe ↑","message_RU": "К НЕМУ"},
-						  {"type": "func","func": Spawnitem2.bind(null,553,0,0,10,300,3000)},
-						  {"type": "func","func": Spawnitem2.bind(null,553,0,0,3,1000,3000)}	
+						  {"type": "func","func": SpawnCircle.bind(null,553,0,0,10,300,0,3000)},
+						  {"type": "func","func": SpawnCircle.bind(null,553,0,0,3,1000,0,3000)}	
 	],
 
 	//"s-3201-2000-233-0": [{"type": "text","sub_type": "message","message": "5","message_RU": "5 бомб" }],
@@ -405,14 +331,14 @@ module.exports = {
 	//"s-3201-2000-235-0": [{"type": "text","sub_type": "message","message": "Debuffs","message_RU": "注视2人吃鉴定" }]
 	"s-3201-2000-236-0": [{"type": "text","sub_type": "message","message": "counter","message_RU": "Конус вперед (байт)" }],
 
-	/*"s-3201-320115-203": [{"type": "func","func": SpawnThing.bind(null,0, 0, 100, 3000)},
-						  {"type": "func","func": Spawnitem2.bind(null,445,0,0,15,125,3000)}
+	/*"s-3201-320115-203": [{"type": "func","func": SpawnMarker.bind(null,0, 0, 100, 3000,true,null)},
+						  {"type": "func","func": SpawnCircle.bind(null,445,0,0,15,125,0,3000)}
 	],	// 	1王水晶位 */
 
 	//320124-------------302 301
-   /*"s-3201-320120-204": [{"type": "func","func": SpawnThing5.bind(null,0, 0, 10, 1100)},   //炸弹慢
-					  {"type": "func","func": Spawnitem2.bind(null,445,0,0,15,150,1100)}],
+   /*"s-3201-320120-204": [{"type": "func","func": SpawnMarker.bind(null,0, 0, 10, 1100,false,["Бомба замедленного действия","Бомба замедленного действия"])},   //炸弹慢
+					  {"type": "func","func": SpawnCircle.bind(null,445,0,0,15,150,0,1100)}],
    
-   "s-3201-320120-205": [{"type": "func","func": SpawnThing6.bind(null,0, 0, 10, 1100)},   //炸弹
-					  {"type": "func","func": Spawnitem2.bind(null,445,0,0,15,150,1100)}]*/			
+   "s-3201-320120-205": [{"type": "func","func": SpawnMarker.bind(null,0, 0, 10, 1100,false,["Бомба","Бомба"])},   //炸弹
+					  {"type": "func","func": SpawnCircle.bind(null,445,0,0,15,150,0,1100)}]*/			
 };

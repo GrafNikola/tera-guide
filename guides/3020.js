@@ -2,92 +2,14 @@
 //
 // made by michengs
 
+const {SpawnMarker, SpawnVector, SpawnCircle} = require("../lib");
+
 let player, entity, library, effect;
 let green = false;
 let purple = false;
 let boss_thirty = false;
 let print = false;
 
-function  applyDistance(loc, distance, degrees) {
-	let r = loc.w; //(loc.w / 0x8000) * Math.PI;
-	let rads = (degrees * Math.PI/180);
-	let finalrad = r - rads;
-	loc.x += Math.cos(finalrad) * distance;
-	loc.y += Math.sin(finalrad) * distance;
-	return loc;
-}
-
-function SpawnThing( degrees, radius, delay, times, handlers, event, entity ) {
-	let shield_loc = entity['loc'].clone();
-	shield_loc.w = entity['loc'].w;
-	let angle =  Math.PI * degrees / 180;
-	handlers['spawn']({
-		"sub_type": "build_object",
-		"id": 1,
-		"delay": delay,
-		"sub_delay": times,
-		"distance": radius,
-		"offset": angle,
-		"ownerName": "SAFE SPOT",
-		"message": "SAFE"
-	}, {loc: shield_loc});
-	handlers['spawn']({
-		"sub_type": "item",
-		"id": 88850,
-		"delay": delay,
-		"sub_delay": times,
-		"distance": radius,
-		"offset": angle
-	}, {loc: shield_loc});
-}
-
-function Spawnitem2(item,degree,distance, intervalDegrees, radius, delay, times, handlers, event, entity ) {
-	let shield_loc = entity['loc'].clone();
-	shield_loc.w = entity['loc'].w;
-	let degrees = 360 - degree;
-	applyDistance(shield_loc, distance, degrees);
-	for (let angle = -Math.PI; angle <= Math.PI; angle +=  Math.PI * intervalDegrees / 180) {
-		handlers['spawn']({
-			"id": item,
-			"delay": delay,
-			"sub_delay": times,
-			"distance": radius,
-			"offset": angle
-		}, {loc: shield_loc});
-	}
-}
-
-function Spawnitem3(item,degree,distance, intervalDegrees, radius, handlers, event, entity ) {
-	let shield_loc = entity['loc'].clone();
-	shield_loc.w = entity['loc'].w;
-	let degrees = 360 - degree;
-	applyDistance(shield_loc, distance, degrees);
-	for (let angle = -Math.PI; angle <= Math.PI; angle +=  Math.PI * intervalDegrees / 180) {
-		handlers['spawn']({
-			"id": item,
-			"delay": (boss_thirty ? 7000:5000),
-			"sub_delay": (boss_thirty ? 9000:7000),
-			"distance": radius,
-			"offset": angle
-		}, {loc: shield_loc});
-	}
-}
-
-function Spawnitem1(item,degree,distance,angles, maxRadius, times, handlers, event, entity) {
-	let shield_loc = entity['loc'].clone();
-	shield_loc.w = entity['loc'].w;
-	let degrees = 360 - degree;	
-	applyDistance(shield_loc, distance, degrees);
-	let angle = angles * Math.PI/180
-	for (let radius=50 ; radius<=maxRadius; radius+=50) {
-		handlers['spawn']({
-			"id": item,
-			"sub_delay": times,
-			"distance": radius,
-			"offset": angle
-		}, {loc: shield_loc});
-	}
-}
 function skilld_event(skillid, handlers, event, ent, dispatch) {
 	if (skillid == 121) green = true;
 	if (skillid == 122) purple = true;
@@ -167,18 +89,17 @@ module.exports = {
 
 	// 1 BOSS
 	"s-3020-1900-104-0": [{"type": "text","sub_type": "message","message": "Suction (Dodge)","message_RU": "Высасывание (Выйти)"},
-						  {"type": "func","func": Spawnitem2.bind(null,553,0,0,15,300,200,3000)}
+						  {"type": "func","func": SpawnCircle.bind(null,553,0,0,15,300,200,3000)}
 	],
 
-
 	// 2 BOSS
-	"s-3020-1200-103-0": [{"type": "text","sub_type": "message","message": "Suction (Dodge)","message_RU": "Высасывание (Выйти)"}],
-						  {"type": "func","func": Spawnitem2.bind(null,553,0,0,15,200,200,3000)}
-
+	"s-3020-1200-103-0": [{"type": "text","sub_type": "message","message": "Suction (Dodge)","message_RU": "Высасывание (Выйти)"},
+						  {"type": "func","func": SpawnCircle.bind(null,553,0,0,15,200,200,3000)}
+	],
 
 	// 3 BOSS
 	"s-3020-2200-108-0": [{"type": "text","sub_type": "message","message": "Front stun","message_RU": "Стан"},
-						  {"type": "func","func": Spawnitem2.bind(null,553,0,170,20,120,200,2000)}
+						  {"type": "func","func": SpawnCircle.bind(null,553,0,170,20,120,200,2000)}
 	],
 	//121 123  Вперед, разбить, вращение, вперед, разбить, зеленый
 	//122 120  Вращение, вперед разбить, вращение, фиолетовый, вперед
@@ -218,45 +139,45 @@ module.exports = {
 	"h-3020-2200-1": [{"type": "func","func": start_boss}],
 	// зеленый
 	"s-3020-2200-121-0": [{"type": "func","func": skilld_event.bind(null, 121)}],
-	"s-3020-2200-121-1": [{"type": "func","func": Spawnitem2.bind(null,553,0,170,8,290,200,3000)},
-						  {"type": "func","func": Spawnitem2.bind(null,553,0,170,8,280,3000,5000)},
-						  {"type": "func","func": Spawnitem2.bind(null,553,0,170,4,570,3000,5000)}
+	"s-3020-2200-121-1": [{"type": "func","func": SpawnCircle.bind(null,553,0,170,8,290,200,3000)},
+						  {"type": "func","func": SpawnCircle.bind(null,553,0,170,8,280,3000,5000)},
+						  {"type": "func","func": SpawnCircle.bind(null,553,0,170,4,570,3000,5000)}
 	],
 	// фиолетовый
 	"s-3020-2200-122-0": [{"type": "func","func": skilld_event.bind(null, 122)}],
-	"s-3020-2200-122-1": [{"type": "func","func": Spawnitem2.bind(null,553,0,0,8,280,200,3000)},
-						  {"type": "func","func": Spawnitem2.bind(null,553,0,0,4,570,200,3000)},
-						  {"type": "func","func": Spawnitem2.bind(null,553,0,170,8,290,3000,5000)}
+	"s-3020-2200-122-1": [{"type": "func","func": SpawnCircle.bind(null,553,0,0,8,280,200,3000)},
+						  {"type": "func","func": SpawnCircle.bind(null,553,0,0,4,570,200,3000)},
+						  {"type": "func","func": SpawnCircle.bind(null,553,0,170,8,290,3000,5000)}
 	],
 	// комба
-	"s-3020-2200-120-0": [{"type": "func","func": skilld_event.bind(null, 120)},{"type": "func","func": Spawnitem3.bind(null,553,0,150,8,280)}],
-	"s-3020-2200-123-0": [{"type": "func","func": skilld_event.bind(null, 123)},{"type": "func","func": Spawnitem3.bind(null,553,0,200,8,450)}],
+	"s-3020-2200-120-0": [{"type": "func","func": skilld_event.bind(null, 120)},{"type": "func","func": SpawnCircle.bind(null,553,0,150,8,280,(boss_thirty ? 7000:5000),(boss_thirty ? 9000:7000))}],
+	"s-3020-2200-123-0": [{"type": "func","func": skilld_event.bind(null, 123)},{"type": "func","func": SpawnCircle.bind(null,553,0,200,8,450,(boss_thirty ? 7000:5000),(boss_thirty ? 9000:7000))}],
 	//
 	//"s-3020-9101-122-0": [{"type": "text","sub_type": "message","message": "Jump","message_TW": "强袭"}],
 	//"s-3020-9101-124-0": [{"type": "text","sub_type": "message","message": "Jump","message_TW": "前砸"}],
 	//"s-3020-9101-125-0": [{"type": "text","sub_type": "message","message": "Jump","message_TW": "转圈"}],
 	//"s-3020-9101-126-0": [{"type": "text","sub_type": "message","message": "Jump","message_TW": "大前砸"}],
-	// "s-3020-2201-121-0": [{"type": "text","sub_type": "message","message":  'Left swipe',"message_TW": "2201-121" },{"type": "func","func": SpawnThing.bind(null,0,0,100,2000)}], 
-	//"s-3020-2201-125-0": [{"type": "text","sub_type": "message","message":  'Left swipe',"message_TW": "2201-125" },{"type": "func","func": SpawnThing.bind(null,0,0,100,2000)}], 
-	// "s-3020-2201-126-0": [{"type": "text","sub_type": "message","message":  'Left swipe',"message_TW": "2201-126" },{"type": "func","func": SpawnThing.bind(null,0,0,100,2000)}], 
-	//"s-3020-2201-201-0": [{"type": "func","func": SpawnThing.bind(null,0,0,100,2000)}],
-	// "s-3020-6103-203-0": [{"type": "text","sub_type": "message","message":  'Left swipe',"message_TW": "6103-203" },{"type": "func","func": SpawnThing.bind(null,0,0,100,2000)}], 
-	// "s-3020-6103-202-0": [{"type": "text","sub_type": "message","message":  'Left swipe',"message_TW": "6103-202" },{"type": "func","func": SpawnThing.bind(null,0,0,100,2000)}], 
-	// "s-3020-6103-201-0": [{"type": "text","sub_type": "message","message":  'Left swipe',"message_TW": "6103-201" },{"type": "func","func": SpawnThing.bind(null,0,0,100,2000)}],  
+	// "s-3020-2201-121-0": [{"type": "text","sub_type": "message","message":  'Left swipe',"message_TW": "2201-121" },{"type": "func","func": SpawnMarker.bind(null,0,0,100,2000,true,null)}], 
+	//"s-3020-2201-125-0": [{"type": "text","sub_type": "message","message":  'Left swipe',"message_TW": "2201-125" },{"type": "func","func": SpawnMarker.bind(null,0,0,100,2000,true,null)}], 
+	// "s-3020-2201-126-0": [{"type": "text","sub_type": "message","message":  'Left swipe',"message_TW": "2201-126" },{"type": "func","func": SpawnMarker.bind(null,0,0,100,2000,true,null)}], 
+	//"s-3020-2201-201-0": [{"type": "func","func": SpawnMarker.bind(null,0,0,100,2000,true,null)}],
+	// "s-3020-6103-203-0": [{"type": "text","sub_type": "message","message":  'Left swipe',"message_TW": "6103-203" },{"type": "func","func": SpawnMarker.bind(null,0,0,100,2000,true,null)}], 
+	// "s-3020-6103-202-0": [{"type": "text","sub_type": "message","message":  'Left swipe',"message_TW": "6103-202" },{"type": "func","func": SpawnMarker.bind(null,0,0,100,2000,true,null)}], 
+	// "s-3020-6103-201-0": [{"type": "text","sub_type": "message","message":  'Left swipe',"message_TW": "6103-201" },{"type": "func","func": SpawnMarker.bind(null,0,0,100,2000,true,null)}],  
 	"s-3020-2200-127-0": [{"type": "text","sub_type": "message","message": "Jump","message_RU": "Прыжок | К нему"},
-						  {"type": "func","func": Spawnitem2.bind(null,553,0,0,15,200,250,1000)},
-						  {"type": "func","func": Spawnitem2.bind(null,553,0,0,10,300,1000,4000)}
+						  {"type": "func","func": SpawnCircle.bind(null,553,0,0,15,200,250,1000)},
+						  {"type": "func","func": SpawnCircle.bind(null,553,0,0,10,300,1000,4000)}
 	],
 	"s-3020-2200-128-0": [{"type": "text","sub_type": "message","message": "Upper cut (Knock up)","message_RU": "Черкаш (подлет)"}],
 	"s-3020-2200-129-0": [{"type": "text","sub_type": "message","message": "Hammer Toss ~ Skull","message_RU": "Полоса в цель"},
-						  {"type": "func","func": Spawnitem1.bind(null,553,90,100,0,500,2000)},
-						  {"type": "func","func": Spawnitem1.bind(null,553,270,100,0,500,2000)}
+						  {"type": "func","func": SpawnVector.bind(null,553,90,100,0,500,100,2000)},
+						  {"type": "func","func": SpawnVector.bind(null,553,270,100,0,500,100,2000)}
 	],
 	"s-3020-2200-131-0": [{"type": "text","sub_type": "message","message": "Jump | OUT","message_RU": "Прыжок | От него"}],
 	"s-3020-2200-133-2": [{"type": "text","sub_type": "message","message": "Donuts","message_RU": "Бублики"},
-						  {"type": "func","func": Spawnitem2.bind(null,553,0,0,8,300,200,4000)},
-						  {"type": "func","func": Spawnitem2.bind(null,553,0,0,6,600,200,4000)},
-						  {"type": "func","func": Spawnitem2.bind(null,553,0,0,4,900,200,4000)}
+						  {"type": "func","func": SpawnCircle.bind(null,553,0,0,8,300,200,4000)},
+						  {"type": "func","func": SpawnCircle.bind(null,553,0,0,6,600,200,4000)},
+						  {"type": "func","func": SpawnCircle.bind(null,553,0,0,4,900,200,4000)}
 	],
 	"s-3020-2200-135-0": [{"type": "text","sub_type": "message","message": "Puddles Inc (Jump)","message_RU": "Волны х5"}],
 	"s-3020-2200-137-0": [{"type": "text","sub_type": "message","message": "Outward Pluse","message_RU": "Волна от"}],
