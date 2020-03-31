@@ -280,6 +280,9 @@ class TeraGuide{
 						break;
 					}
 				}
+				if (zone == "test") {
+					entered_zone_data = {"id": "test", "name": "Test Guide", "name_RU": "Test Guide", "verbose": true, "spawnObject": true};
+				}
 				if (!entered_zone_data.id) {
 					throw 'Guide for zone ' + zone + ' not found in config';
 				}
@@ -353,6 +356,10 @@ class TeraGuide{
 			// Testing events
 			event(arg1, arg2) {
 				is_event = true;
+				// Clear library cache
+				try {
+					delete require.cache[require.resolve('./lib')];
+				} catch(e) {}
 				// If arg1 is "load", load guide from arg2 specified
 				if (arg1 === "load") {
 					if (!arg2) return command.message(`Invalid values for sub command "event" ${arg1}`);

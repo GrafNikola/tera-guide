@@ -82,18 +82,17 @@ function start_Sailing_Instance(handlers, event, entity, dispatch) {
 	}
 }
 
-function SpawnCircleD(item, degree, distance, intervalDegrees, radius, delay, times, handlers, event, entity) {
+function SpawnCircleD(item, offsetAngle, offsetDistance, interval, radius, delay, duration, handlers, event, entity) {
 	let shield_loc   = entity['dest'].clone();
 	    shield_loc.w = entity['loc'].w;
-	let degrees = 360 - degree;
 
-	applyDistance(shield_loc, distance, degrees);
+	applyDistance(shield_loc, offsetDistance, 360 - offsetAngle);
 
-	for (let angle = -Math.PI; angle <= Math.PI; angle +=  Math.PI * intervalDegrees / 180) {
+	for (let angle = -Math.PI; angle <= Math.PI; angle +=  Math.PI * interval / 180) {
 		handlers['spawn']({
 			id: item,
 			delay: delay,
-			sub_delay: times,
+			sub_delay: duration,
 			distance: radius,
 			offset: angle
 		}, {
