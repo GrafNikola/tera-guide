@@ -36,7 +36,6 @@ function SpawnItem(item, angle, distance, delay, duration, handlers, event, enti
 }
 
 function SpawnVector(item, offsetAngle, offsetDistance, angle, length, delay, duration, handlers, event, entity) {
-	offsetAngle = 360 - offsetAngle;
 	angle = angle * Math.PI / 180;
 
 	for (let radius = 50; radius <= length; radius += 50) {
@@ -51,8 +50,6 @@ function SpawnVector(item, offsetAngle, offsetDistance, angle, length, delay, du
 }
 
 function SpawnCircle(item, offsetAngle, offsetDistance, interval, radius, delay, duration, handlers, event, entity) {
-	offsetAngle = 360 - offsetAngle;
-
 	for (let angle = -Math.PI; angle <= Math.PI; angle +=  Math.PI * interval / 180) {
 		SpawnObject("collection", item,
 			offsetAngle, offsetDistance,
@@ -65,8 +62,6 @@ function SpawnCircle(item, offsetAngle, offsetDistance, interval, radius, delay,
 }
 
 function SpawnSemicircle(degree1, degree2, item, offsetAngle, offsetDistance, interval, radius, delay, duration, handlers, event, entity) {
-	offsetAngle = 360 - offsetAngle;
-
 	if (degree1 == 0 || degree2 == 0) return;
 
 	for (let angle = -Math.PI / degree1; angle <= Math.PI / degree2; angle +=  Math.PI * interval / 180) {
@@ -85,7 +80,7 @@ function SpawnObject(type, item, offsetAngle, offsetDistance, angle, distance, d
 	    shield_loc.w = entity['loc'].w;
 
 	if (offsetDistance != 0 || offsetAngle != 0) {
-		applyDistance(shield_loc, offsetDistance, offsetAngle);
+		applyDistance(shield_loc, offsetDistance, 360 - offsetAngle);
 	}
 
 	switch (type) {
