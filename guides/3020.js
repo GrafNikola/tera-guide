@@ -35,11 +35,11 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 	// "Упади в бездну"
 	if (skillid == 120) {
 		// Проваливай! - Упади в бездну
-		// к нему (бублик вокруг босса) -> от него (круг перед боссом) -> к нему (бублик вокруг босса)
+		// к нему (бублик вокруг босса) -> от него (круг перед боссом) -> к нему (бублик перед боссом)
 		if (purple && !boss_thirty) {
 			handlers['text']({"type": "text","sub_type": "message","message": "IN > OUT > IN","message_RU": "К нему > От него > К нему"});
 
-			// бублик вокруг босса
+			// бублик перед боссом
 			SpawnCircleD(553,0,150,8,280,5000,7000,handlers,event,entity);
 			SpawnCircleD(553,0,150,4,570,5000,7000,handlers,event,entity);
 
@@ -47,12 +47,12 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 
 		// < 30%
 		// Проваливай! - Упади в бездну
-		// к нему (бублик вокруг босса) -> от него (круг перед боссом) -> [волны] -> к нему (бублик вокруг босса)
+		// к нему (бублик вокруг босса) -> от него (круг перед боссом) -> [волны] -> к нему (бублик перед боссом)
 		} else if (purple && boss_thirty) { 
 			handlers['text']({"type": "text","sub_type": "message","message": "IN > OUT","message_RU": "К нему > От него"});
 			handlers['text']({"type": "text","sub_type": "message","delay": 6000,"message": "IN","message_RU": "К нему"});
 
-			// бублик вокруг босса
+			// бублик перед боссом
 			SpawnCircleD(553,0,150,8,280,7000,9000,handlers,event,entity);
 			SpawnCircleD(553,0,150,4,570,7000,9000,handlers,event,entity);
 
@@ -240,14 +240,14 @@ module.exports = {
 	],
 	"s-3020-2200-128-0": [{"type": "text","sub_type": "message","message": "Upper cut (Knock up)","message_RU": "Черкаш (подлет)"}],
 	"s-3020-2200-129-0": [{"type": "text","sub_type": "message","message": "Hammer Toss ~ Skull","message_RU": "Полоса в цель"},
-						  {"type": "func","func": SpawnVector.bind(null,553,90,100,0,500,0,6000)},
-						  {"type": "func","func": SpawnVector.bind(null,553,270,100,0,500,0,6000)}
+						  {"type": "func","func": SpawnVector.bind(null,553,90,100,0,500,200,6000)},
+						  {"type": "func","func": SpawnVector.bind(null,553,270,100,0,500,200,6000)}
 	],
 	"s-3020-2200-131-0": [{"type": "text","sub_type": "message","message": "Jump | OUT","message_RU": "Прыжок | От него"}],
 	"s-3020-2200-133-1": [{"type": "text","sub_type": "message","message": "Donuts","message_RU": "Бублики"},
-						  {"type": "func","func": SpawnCircleD.bind(null,553,0,0,8,300,0,5000)},
-						  {"type": "func","func": SpawnCircleD.bind(null,553,0,0,6,600,0,5000)},
-						  {"type": "func","func": SpawnCircleD.bind(null,553,0,0,4,900,0,5000)}
+						  {"type": "func","func": SpawnCircleD.bind(null,553,0,0,8,300,200,5000)},
+						  {"type": "func","func": SpawnCircleD.bind(null,553,0,0,6,600,200,5000)},
+						  {"type": "func","func": SpawnCircleD.bind(null,553,0,0,4,900,200,5000)}
 	],
 	"s-3020-2200-135-0": [{"type": "text","sub_type": "message","message": "Puddles Inc (Jump)","message_RU": "Волны х5"}],
 	"s-3020-2200-137-0": [{"type": "text","sub_type": "message","message": "Outward Pluse","message_RU": "Волна от"}],
