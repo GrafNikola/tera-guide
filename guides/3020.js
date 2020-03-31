@@ -16,20 +16,20 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 	if (skillid == 121) {
 		green  = true;
 		// круг перед боссом
-		SpawnCircleD(553,0,170,8,290,200,3000,handlers,event,entity);
+		SpawnCircleD(553,0,170,8,290,200,2000,handlers,event,entity);
 		// бублик вокруг босса
-		SpawnCircleD(553,0,0,8,280,3200,5000,handlers,event,entity);
-		SpawnCircleD(553,0,0,4,570,3200,5000,handlers,event,entity);
+		SpawnCircleD(553,0,0,8,280,3000,5000,handlers,event,entity);
+		SpawnCircleD(553,0,0,4,570,3000,5000,handlers,event,entity);
 	}
 
 	// (фиолетовый) "Проваливай!"
 	if (skillid == 122) {
 		purple = true;
 		// бублик вокруг босса
-		SpawnCircleD(553,0,0,8,280,200,3000,handlers,event,entity);
-		SpawnCircleD(553,0,0,4,570,200,3000,handlers,event,entity);
+		SpawnCircleD(553,0,0,8,280,200,2000,handlers,event,entity);
+		SpawnCircleD(553,0,0,4,570,200,2000,handlers,event,entity);
 		// круг перед боссом
-		SpawnCircleD(553,0,170,8,290,3200,5000,handlers,event,entity);
+		SpawnCircleD(553,0,170,8,290,3000,5000,handlers,event,entity);
 	}
 
 	// "Упади в бездну"
@@ -245,9 +245,9 @@ module.exports = {
 	],
 	"s-3020-2200-131-0": [{"type": "text","sub_type": "message","message": "Jump | OUT","message_RU": "Прыжок | От него"}],
 	"s-3020-2200-133-1": [{"type": "text","sub_type": "message","message": "Donuts","message_RU": "Бублики"},
-						  {"type": "func","func": SpawnCircleD.bind(null,553,0,0,8,300,200,5000)},
-						  {"type": "func","func": SpawnCircleD.bind(null,553,0,0,6,600,200,5000)},
-						  {"type": "func","func": SpawnCircleD.bind(null,553,0,0,4,900,200,5000)}
+						  {"type": "func","func": SpawnCircleD.bind(null,445,0,0,10,300,200,5000)},
+						  {"type": "func","func": SpawnCircleD.bind(null,445,0,0,6,600,200,5000)},
+						  {"type": "func","func": SpawnCircleD.bind(null,445,0,0,4,900,200,5000)}
 	],
 	"s-3020-2200-135-0": [{"type": "text","sub_type": "message","message": "Puddles Inc (Jump)","message_RU": "Волны х5"}],
 	"s-3020-2200-137-0": [{"type": "text","sub_type": "message","message": "Outward Pluse","message_RU": "Волна от"}],
