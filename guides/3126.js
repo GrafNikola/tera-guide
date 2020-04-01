@@ -147,7 +147,7 @@ let debuffs_targe = {
 	31260002: "Ледяной дебафф"   // Ice debuff
 };
 function start_debuff(handlers, event, entity, dispatch) {
-	const abnormality_change = (added, event) => {
+	const abnormality_change = (added, handlers, event) => {
 		if ((player.isMe(event.target) || player.playersInParty.includes(event.target.toString())) && debuffs_targe[event.id]) {
 			if (added) {
 				debuff = event.id;
@@ -165,7 +165,7 @@ function start_debuff(handlers, event, entity, dispatch) {
 					});
 				}
 			} else {
-				debuff = null
+				debuff = null;
 			}
 		}
 	};
@@ -186,29 +186,29 @@ module.exports = {
 	"s-3126-1000-2112-0": [{"type": "text","sub_type": "message","message": "Ice DOT","message_RU": "Лед (полоса)"}],
 	"s-3126-1000-2110-0": [{"type": "text","sub_type": "message","message": "Fire DOT","message_RU": "Огонь (лужа)"}],
 
-	"s-3126-1000-1108-0": [{"type": "text","sub_type": "message","message": "Turn right (repel!!)","message_RU": "Повернуть направо (откид!!)"},{"type": "func","func": SpawnCircle.bind(null,false,912,0,0,8,440,100,2000)}],
-	"s-3126-1000-2108-0": [{"type": "text","sub_type": "message","message": "Turn right (repel!!)","message_RU": "Повернуть направо (откид!!)"},{"type": "func","func": SpawnCircle.bind(null,false,912,0,0,8,440,100,2000)}],
-	"s-3126-1000-1158-0": [{"type": "text","sub_type": "message","message": "Turn right (repel!!)","message_RU": "Повернуть направо (откид!!)"},{"type": "func","func": SpawnCircle.bind(null,false,912,0,0,8,440,100,2000)}],
-	"s-3126-1000-2158-0": [{"type": "text","sub_type": "message","message": "Turn right (repel!!)","message_RU": "Повернуть направо (откид!!)"},{"type": "func","func": SpawnCircle.bind(null,false,912,0,0,8,440,100,2000)}],
+	"s-3126-1000-1108-0": [{"type": "text","sub_type": "message","message": "Turn right (repel!!)","message_RU": "Повернуть направо (откид!!)"},{"type": "func","func": SpawnCircle.bind(null,false,912,0,0,8,440,0,2000)}],
+	"s-3126-1000-2108-0": [{"type": "text","sub_type": "message","message": "Turn right (repel!!)","message_RU": "Повернуть направо (откид!!)"},{"type": "func","func": SpawnCircle.bind(null,false,912,0,0,8,440,0,2000)}],
+	"s-3126-1000-1158-0": [{"type": "text","sub_type": "message","message": "Turn right (repel!!)","message_RU": "Повернуть направо (откид!!)"},{"type": "func","func": SpawnCircle.bind(null,false,912,0,0,8,440,0,2000)}],
+	"s-3126-1000-2158-0": [{"type": "text","sub_type": "message","message": "Turn right (repel!!)","message_RU": "Повернуть направо (откид!!)"},{"type": "func","func": SpawnCircle.bind(null,false,912,0,0,8,440,0,2000)}],
 
-	"s-3126-1000-1109-0": [{"type": "text","sub_type": "message","message": "Turn left (repel!!)","message_RU": "Повернуть налево (откид!!)"},{"type": "func","func": SpawnCircle.bind(null,false,912,0,0,8,440,100,2000)}],
-	"s-3126-1000-2109-0": [{"type": "text","sub_type": "message","message": "Turn left (repel!!)","message_RU": "Повернуть налево (откид!!)"},{"type": "func","func": SpawnCircle.bind(null,false,912,0,0,8,440,100,2000)}],
-	"s-3126-1000-1159-0": [{"type": "text","sub_type": "message","message": "Turn left (repel!!)","message_RU": "Повернуть налево (откид!!)"},{"type": "func","func": SpawnCircle.bind(null,false,912,0,0,8,440,100,2000)}],
-	"s-3126-1000-2159-0": [{"type": "text","sub_type": "message","message": "Turn left (repel!!)","message_RU": "Повернуть налево (откид!!)"},{"type": "func","func": SpawnCircle.bind(null,false,912,0,0,8,440,100,2000)}],
+	"s-3126-1000-1109-0": [{"type": "text","sub_type": "message","message": "Turn left (repel!!)","message_RU": "Повернуть налево (откид!!)"},{"type": "func","func": SpawnCircle.bind(null,false,912,0,0,8,440,0,2000)}],
+	"s-3126-1000-2109-0": [{"type": "text","sub_type": "message","message": "Turn left (repel!!)","message_RU": "Повернуть налево (откид!!)"},{"type": "func","func": SpawnCircle.bind(null,false,912,0,0,8,440,0,2000)}],
+	"s-3126-1000-1159-0": [{"type": "text","sub_type": "message","message": "Turn left (repel!!)","message_RU": "Повернуть налево (откид!!)"},{"type": "func","func": SpawnCircle.bind(null,false,912,0,0,8,440,0,2000)}],
+	"s-3126-1000-2159-0": [{"type": "text","sub_type": "message","message": "Turn left (repel!!)","message_RU": "Повернуть налево (откид!!)"},{"type": "func","func": SpawnCircle.bind(null,false,912,0,0,8,440,0,2000)}],
 
 	"s-3126-1000-1120-0": [{"type": "text","sub_type": "message","message": "Together","message_RU": "Яростный рев"}],
 	"s-3126-1000-2120-0": [{"type": "text","sub_type": "message","message": "Together","message_RU": "Яростный рев"}],
 	"s-3126-1000-1157-0": [{"type": "text","sub_type": "message","message": "Change","message_RU": "Смена"},{"type": "func","func": start_debuff}],
 	"s-3126-1000-2157-0": [{"type": "text","sub_type": "message","message": "Change","message_RU": "Смена"},{"type": "func","func": start_debuff}],
 	"s-3126-1000-1103-0": [{"type": "text","sub_type": "message","message": "Tail (Flying!!)","message_RU": "Хвост (полет!!)"},
-						   {"type": "func","func": SpawnSemicircle.bind(null,140,260,912,0,0,10,500,100,1500)},
-						   {"type": "func","func": SpawnVector.bind(null,912,0,0,135,500,100,1500)},
-						   {"type": "func","func": SpawnVector.bind(null,912,0,0,260,500,100,1500)}
+						   {"type": "func","func": SpawnSemicircle.bind(null,140,260,912,0,0,10,500,0,1500)},
+						   {"type": "func","func": SpawnVector.bind(null,912,0,0,135,500,0,1500)},
+						   {"type": "func","func": SpawnVector.bind(null,912,0,0,260,500,0,1500)}
 	],
 	"s-3126-1000-2103-0": [{"type": "text","sub_type": "message","message": "Tail (Flying!!)","message_RU": "Хвост (полет!!)"},
-						   {"type": "func","func": SpawnSemicircle.bind(null,140,260,912,0,0,10,500,100,1500)},
-						   {"type": "func","func": SpawnVector.bind(null,912,0,0,135,500,100,1500)},
-						   {"type": "func","func": SpawnVector.bind(null,912,0,0,260,500,100,1500)}
+						   {"type": "func","func": SpawnSemicircle.bind(null,140,260,912,0,0,10,500,0,1500)},
+						   {"type": "func","func": SpawnVector.bind(null,912,0,0,135,500,0,1500)},
+						   {"type": "func","func": SpawnVector.bind(null,912,0,0,260,500,0,1500)}
 	],
 	"s-3126-1000-1118-0": [{"type": "text","sub_type": "message","message": "Jump","message_RU": "Прыжок"}],
 	"s-3126-1000-1118-1": [{"type": "text","sub_type": "message","message": "Dodge","message_RU": "Эвейд!"}],
@@ -224,14 +224,14 @@ module.exports = {
 	"s-3126-1000-1206-2": [{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,15,350,200,3000)}],
 	"s-3126-1000-2206-2": [{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,15,350,200,3000)}],
 	"s-3126-1000-1153-0": [{"type": "text","sub_type": "message","message": "Tail (Flying!!)","message_RU": "Хвост (полет!!)"},
-						   {"type": "func","func": SpawnSemicircle.bind(null,140,260,912,0,0,10,500,100,1500)},
-						   {"type": "func","func": SpawnVector.bind(null,912,0,0,135,500,1500)},
-						   {"type": "func","func": SpawnVector.bind(null,912,0,0,260,500,1500)}
+						   {"type": "func","func": SpawnSemicircle.bind(null,140,260,912,0,0,10,500,0,1500)},
+						   {"type": "func","func": SpawnVector.bind(null,912,0,0,135,500,0,1500)},
+						   {"type": "func","func": SpawnVector.bind(null,912,0,0,260,500,0,1500)}
 	],
 	"s-3126-1000-2153-0": [{"type": "text","sub_type": "message","message": "Tail (Flying!!)","message_RU": "Хвост (полет!!)"},
-						   {"type": "func","func": SpawnSemicircle.bind(null,140,260,912,0,0,10,500,100,1500)},
-						   {"type": "func","func": SpawnVector.bind(null,912,0,0,135,500,100,1500)},
-						   {"type": "func","func": SpawnVector.bind(null,912,0,0,260,500,100,1500)}
+						   {"type": "func","func": SpawnSemicircle.bind(null,140,260,912,0,0,10,500,0,1500)},
+						   {"type": "func","func": SpawnVector.bind(null,912,0,0,135,500,0,1500)},
+						   {"type": "func","func": SpawnVector.bind(null,912,0,0,260,500,0,1500)}
 	],
 	// AOE лед (большой)
 	"s-3126-1000-1104-0": [{"type": "text","sub_type": "message","message": "Ice storm DOTs","message_RU": "Ледяные лужи"},{"type": "func","func": SpawnCircle.bind(null,false,553,180,80,8,520,100,5000)}],
