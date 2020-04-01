@@ -193,12 +193,12 @@ module.exports = {
 	"s-3026-1000-1157-0": [{"type": "text","sub_type": "message","message": "Change","message_RU": "Смена"},{"type": "func","func": start_debuff}],
 	"s-3026-1000-2157-0": [{"type": "text","sub_type": "message","message": "Change","message_RU": "Смена"},{"type": "func","func": start_debuff}],
 	"s-3026-1000-1103-0": [{"type": "text","sub_type": "message","message": "Tail (Flying!!)","message_RU": "Хвост (полет!!)"},
-						   {"type": "func","func": SpawnSemicircle.bind(null,140,260,912,0,0,10,500,100,5000)},
+						   {"type": "func","func": SpawnSemicircle.bind(null,140,260,912,0,0,10,500,100,1500)},
 						   {"type": "func","func": SpawnVector.bind(null,912,0,0,135,500,100,1500)},
 						   {"type": "func","func": SpawnVector.bind(null,912,0,0,260,500,100,1500)}
 	],
 	"s-3026-1000-2103-0": [{"type": "text","sub_type": "message","message": "Tail (Flying!!)","message_RU": "Хвост (полет!!)"},
-						   {"type": "func","func": SpawnSemicircle.bind(null,140,260,912,0,0,10,500,100,5000)},
+						   {"type": "func","func": SpawnSemicircle.bind(null,140,260,912,0,0,10,500,100,1500)},
 						   {"type": "func","func": SpawnVector.bind(null,912,0,0,135,500,100,1500)},
 						   {"type": "func","func": SpawnVector.bind(null,912,0,0,260,500,100,1500)}
 	],
@@ -246,12 +246,12 @@ module.exports = {
 	"s-3026-1000-1206-2": [{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,15,350,200,3000)}],
 	"s-3026-1000-2206-2": [{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,15,350,200,3000)}],
 	"s-3026-1000-1153-0": [{"type": "text","sub_type": "message","message": "Tail (Flying!!)","message_RU": "Хвост (полет!!)"},
-						   {"type": "func","func": SpawnSemicircle.bind(null,140,260,912,0,0,10,500,100,5000)},
+						   {"type": "func","func": SpawnSemicircle.bind(null,140,260,912,0,0,10,500,100,1500)},
 						   {"type": "func","func": SpawnVector.bind(null,912,0,0,135,500,100,1500)},
 						   {"type": "func","func": SpawnVector.bind(null,912,0,0,260,500,100,1500)}
 	],
 	"s-3026-1000-2153-0": [{"type": "text","sub_type": "message","message": "Tail (Flying!!)","message_RU": "Хвост (полет!!)"},
-						   {"type": "func","func": SpawnSemicircle.bind(null,140,260,912,0,0,10,500,100,5000)},
+						   {"type": "func","func": SpawnSemicircle.bind(null,140,260,912,0,0,10,500,100,1500)},
 						   {"type": "func","func": SpawnVector.bind(null,912,0,0,135,500,100,1500)},
 						   {"type": "func","func": SpawnVector.bind(null,912,0,0,260,500,100,1500)}
 	],
