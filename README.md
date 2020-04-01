@@ -1,27 +1,29 @@
 # tera-guide
-Подсказки по данжам (русская локализация). TERA-Guide Russian version.
+A generic guide module for TERA with English and Russian translations (detects automaticly). Supports of all actual dungeons.
 
-## Зависимости
+Модуль подсказок по данжам TERA (вывод подсказок в чат и отрисовка зон атак боссов и механик), русская локализация. Поддерживаются все актуальные данжи.
+
+## Зависимости / Dependencies
 https://github.com/tera-toolbox-mods/library
 
-Распаковать в директорию "mods" в вашей Tera-Proxy.
+Распаковать в директорию "mods" в вашей Tera-Proxy. НЕ РАСПАКОВЫВАТЬ КАК "library-master", ДИРЕКТОРИЯ ДОЛЖНА НАЗЫВАТЬСЯ "library".
 
-НЕ РАСПАКОВЫВАТЬ КАК "library-master", ДИРЕКТОРИЯ ДОЛЖНА НАЗЫВАТЬСЯ "library".
+Extract to "mods" directory in your Tera-Proxy. DO NOT INSTALLED IT AS "library-master" MAKE SURE IT'S NAMED "library".
 
-## Команды
-/toolbox | Описание команды
+## Команды / Commands
+Toolbox(/8) | Описание команды<br>Command Description
 --- | ---
-guide| вкл./выкл. модуля (по-умолчанию: включено)
-guide alert | вкл./выкл. сообщений в чате (по-умолчанию: включено)
-guide systemNotice | вкл./выкл. сообщений в группе (по-умолчанию: выключено)
-guide spawnObject | вкл./выкл. спавна объектов (по-умолчанию: включено)
-guide stream | вкл./выкл. режима скрытия сообщений (по-умолчанию: включено)
-guide dungeons | список всех поддерживаемых данжей и их id
-guide verbose `id` | вкл./выкл. всех сообщений для данжа, где `id` - идентификатор данжа
-guide spawnObject `id` | вкл./выкл. спавна объектов для данжа, где `id` - идентификатор данжа
-guide help | вывод всех поддерживаемых команд
+guide | - вкл./выкл. модуля (по-умолчанию: включено)<br> - on/off, default system notification, notification color yellow
+guide alert | - вкл./выкл. сообщений в чате (по-умолчанию: включено)<br> - chat notice on/off
+guide systemNotice | - вкл./выкл. сообщений в группе (по-умолчанию: выключено)<br> - party chat notice on/off
+guide spawnObject | - вкл./выкл. спавна объектов (по-умолчанию: включено)<br> - spawn area marker objects on/off
+guide stream | - вкл./выкл. режима скрытия сообщений (по-умолчанию: включено)<br> - streamer mode (hide all messages and objects) on/off
+guide dungeons | - список всех поддерживаемых данжей и их id<br> - list of all supported dungeons and its ids
+guide verbose `id` | - вкл./выкл. всех сообщений для данжа, где `id` - идентификатор данжа<br> - messaging for specified by `id` dungeon on/off
+guide spawnObject `id` | - вкл./выкл. спавна объектов для данжа, где `id` - идентификатор данжа<br> - spawn area marker objects for specified by `id` dungeon on/off
+guide help | - вывод поддерживаемых команд<br> - list of supported commands
 
-## Поддерживаемые данжи
+## Поддерживаемые данжи / Supported Dungeons
 id | Dungeon Name | Название данжа
 --- | --- | ---
 9067 | Demokron Factory (Hard) | Лаборатория Берна (сложно)
@@ -43,5 +45,7 @@ id | Dungeon Name | Название данжа
 3126 | Corrupted Skynest (Hard) | Логово Бессмертного Келсаика
 3027 | Forbidden Arena | Арена безумия
 
-## Примечания
-Основано на https://github.com/michengs/tera-guide
+## Misc
+Based on https://github.com/michengs/tera-guide and https://github.com/tera-mod/TERA-Guide-Area
+
+More info available on project wiki https://github.com/hsdn/tera-guide/wiki
