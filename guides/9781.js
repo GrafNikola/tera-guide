@@ -96,7 +96,7 @@ module.exports = {
 		{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": 2.3},
 		{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": 1}
 	],
-	"s-781-1000-2304-0": [{"type": "text","sub_type": "message","message": "Flying","message_RU": "Взлет"},{"type": "func","func": SpawnCircle.bind(null,553,0,0,10,300,0,6000)}],
+	"s-781-1000-2304-0": [{"type": "text","sub_type": "message","message": "Flying","message_RU": "Взлет"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,10,300,0,6000)}],
 	"s-781-1000-2303-0": [{"type": "text","sub_type": "message","message": "Spin","message_RU": "Крутилка"}],
 	"s-781-1000-2113-0": [{"type": "text","sub_type": "message","message": "Front + AoEs","message_RU": "Передняя | AOE"}],
 	"s-781-1000-2308-0": [{"type": "text","sub_type": "message","message": "out","message_RU": "Наружу"}],
@@ -115,7 +115,7 @@ module.exports = {
 		{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": 2.3},
 		{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": 1}
 	],
-	"s-781-1000-1304-0": [{"type": "text","sub_type": "message","message": "Flying","message_RU": "Взлет"},{"type": "func","func": SpawnCircle.bind(null,553,0,0,10,300,0,6000)}],
+	"s-781-1000-1304-0": [{"type": "text","sub_type": "message","message": "Flying","message_RU": "Взлет"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,10,300,0,6000)}],
 	"s-781-1000-1303-0": [{"type": "text","sub_type": "message","message": "Spin","message_RU": "Крутилка"}],
 	"s-781-1000-1113-0": [{"type": "text","sub_type": "message","message": "Front + AoEs","message_RU": "Передняя | AOE"}],
 	"s-781-1000-1308-0": [{"type": "text","sub_type": "message","message": "out","message_RU": "Наружу"}],
@@ -215,11 +215,11 @@ module.exports = {
 	"s-781-3000-2113-0": [{"type": "text","sub_type": "message","message": "Bait","message_RU": "Байт"}],
 	"s-781-3000-1152-0": [{"type": "text","sub_type": "message","message": "Stun + Back","message_RU": "Стан + Откид назад"}],
 	"s-781-3000-2152-0": [{"type": "text","sub_type": "message","message": "Stun + Back","message_RU": "Стан + Откид назад"}],
-	"s-781-3000-2138-0": [{"type": "func","func": SpawnCircle.bind(null,553,0,0,10,250,0,6000)}],
-	"s-781-3000-1138-0": [{"type": "func","func": SpawnCircle.bind(null,553,0,0,10,250,0,6000)}],
+	"s-781-3000-2138-0": [{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,10,250,0,6000)}],
+	"s-781-3000-1138-0": [{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,10,250,0,6000)}],
 	"s-781-3000-1144-0": [{"type": "text","sub_type": "message","message": "Out","message_RU": "Наружу"}],
 	"s-781-3000-1145-0": [{"type": "text","sub_type": "message","message": "In","message_RU": "Внутрь"}],
-	"s-781-3000-1240-0": [{"type": "text","sub_type": "message","message": "Donuts","message_RU": "Бублики"},{"type": "func","func": SpawnCircle.bind(null,553,0,0,10,350,0,6000)}],
+	"s-781-3000-1240-0": [{"type": "text","sub_type": "message","message": "Donuts","message_RU": "Бублики"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,10,350,0,6000)}],
 	"s-781-3000-1401-0": [{"type": "text","sub_type": "message","message": "Plague/Regress","message_RU": "Регресс!!"}],
 	"s-781-3000-1402-0": [{"type": "text","sub_type": "message","message": "Sleep","message_RU": "Слип!!"}]
 };

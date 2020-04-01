@@ -68,12 +68,12 @@ module.exports = {
 	"s-970-3000-1303-0": [{"type": "text","sub_type": "message","message_RU": "Готовность!","message": "Get Ready! (for in out mechanic)"}],
 
 	// GO OUT then come in
-	"s-970-3000-2113-0": [{"type": "text","sub_type": "message","message_RU": "ОТ НЕГО > К НЕМУ","message": "OUT -> IN"},{"type": "func","func": SpawnCircle.bind(null,553,0,0,15,300,0,5000)}],
-	"s-970-3000-1113-0": [{"type": "text","sub_type": "message","message_RU": "ОТ НЕГО > К НЕМУ","message": "OUT -> IN"},{"type": "func","func": SpawnCircle.bind(null,553,0,0,15,300,0,5000)}],
+	"s-970-3000-2113-0": [{"type": "text","sub_type": "message","message_RU": "ОТ НЕГО > К НЕМУ","message": "OUT -> IN"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,15,300,0,5000)}],
+	"s-970-3000-1113-0": [{"type": "text","sub_type": "message","message_RU": "ОТ НЕГО > К НЕМУ","message": "OUT -> IN"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,15,300,0,5000)}],
 
 	// STAY IN then go out
-	"s-970-3000-2116-0": [{"type": "text","sub_type": "message","message_RU": "К НЕМУ > ОТ НЕГО","message": " IN -> OUT"},{"type": "func","func": SpawnCircle.bind(null,553,0,0,15,300,0,5000)}],
-	"s-970-3000-1116-0": [{"type": "text","sub_type": "message","message_RU": "К НЕМУ > ОТ НЕГО","message": " IN -> OUT"},{"type": "func","func": SpawnCircle.bind(null,553,0,0,15,300,0,5000)}],
+	"s-970-3000-2116-0": [{"type": "text","sub_type": "message","message_RU": "К НЕМУ > ОТ НЕГО","message": " IN -> OUT"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,15,300,0,5000)}],
+	"s-970-3000-1116-0": [{"type": "text","sub_type": "message","message_RU": "К НЕМУ > ОТ НЕГО","message": " IN -> OUT"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,15,300,0,5000)}],
 
 	// GET RED SKULL !!
 	"s-970-3000-1318-0": [{"type": "text","sub_type": "message","message_RU": "Взять красную голову!","message": "GET RED SKULL!!"}],

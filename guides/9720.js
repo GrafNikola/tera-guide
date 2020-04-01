@@ -55,13 +55,13 @@ module.exports = {
 	"s-720-3000-109-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Right→","message_RU": "Вправо >"},
 						 {"type": "text","class_position":"dps","sub_type": "message","message": "Left←","message_RU": "< Влево"},
 						 {"type": "text","class_position":"heal","sub_type": "message","message": "Left←","message_RU": "< Влево"},
-						 {"type": "func","func": SpawnMarker.bind(null,270,250,0,2500,true,null)}
+						 {"type": "func","func": SpawnMarker.bind(null,false,270,250,0,2500,true,null)}
 	],
 	// heart thrust+clockwise spin+left swipe
 	"s-720-3000-111-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Left←","message_RU": "< Влево"},
 						 {"type": "text","class_position":"dps","sub_type": "message","message": "Right→","message_RU": "Вправо >"},
 						 {"type": "text","class_position":"heal","sub_type": "message","message": "Right→","message_RU": "Вправо >"},
-						 {"type": "func","func": SpawnMarker.bind(null,90,250,0,2500,true,null)}
+						 {"type": "func","func": SpawnMarker.bind(null,false,90,250,0,2500,true,null)}
 	],
 	"s-720-3000-113-0": [{"type": "text","sub_type": "message","message": "Front | Back slam","message_RU": "Передний | Задний"}],
 	"s-720-3000-115-0": [{"type": "text","sub_type": "message","message": "Spinning attack","message_RU": "Круговая"}],

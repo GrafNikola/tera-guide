@@ -31,7 +31,7 @@ module.exports = {
 
 	// 2 BOSS
 	"s-735-2000-102-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Front","message_RU": "Пила (Эвейд)"}],
-	"s-735-2000-105-0": [{"type": "text","sub_type": "message","message": "360","message_RU": "Крутилка (откид)"},{"type": "func","func": SpawnCircle.bind(null,553,0,0,10,250,100,4000)}],
+	"s-735-2000-105-0": [{"type": "text","sub_type": "message","message": "360","message_RU": "Крутилка (откид)"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,10,250,100,4000)}],
 	"s-735-2000-108-0": [{"type": "text","sub_type": "message","message": "Back","message_RU": "Откид назад"}],
 	"s-735-2000-301-0": [{"type": "text","sub_type": "message","message": "Throws","message_RU": "Бомба"}],
 	"s-735-2000-304-0": [{"type": "text","sub_type": "message","message": "OUT","message_RU": "ОТ НЕГО"}],
@@ -112,7 +112,7 @@ module.exports = {
 		{"type": "func","func": SpawnVector.bind(null,553,350,210,0,290,0,3000)}
 	],
 	"s-735-3000-129-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Dodge","message_RU": "Эвейд"}],
-	"s-735-3000-305-0": [{"type": "func","func": SpawnCircle.bind(null,553,0,0,8,300,100,7000)}],
+	"s-735-3000-305-0": [{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,8,300,100,7000)}],
 	"s-735-3000-321-0": [
 		{"type": "text","sub_type": "message","message": "SHIELD!","message_RU": "ЩИТ!!!" },
 		{"type": "text","sub_type": "message","delay": 90000,"message": "After 10s SHIELD! ", "message_RU": "Через 10 сек. ЩИТ!!"}

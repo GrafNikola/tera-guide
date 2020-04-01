@@ -115,7 +115,7 @@ module.exports = {
 	"h-444-2000-100": [
 		//{"type": "func","func": SpawnVector.bind(null,542,0,0,0,3000,0,6000000)},
 		//{"type": "func","func": SpawnVector.bind(null,542,0,0,180,3000,0,6000000)}
-		{"type": "func","func": SpawnMarker.bind(null,0,-700,100,60000000,false,["Throne","Throne direction"])}, {
+		{"type": "func","func": SpawnMarker.bind(null,false,0,-700,100,60000000,false,["Throne","Throne direction"])}, {
 			"type": "spawn",
 			"id": 513,
 			"sub_delay": 99999999,
@@ -134,19 +134,19 @@ module.exports = {
 	//"s-444-2000-2134-0": [{"type": "func","func": skillds_event.bind(null, 134)}],
 
 	"s-444-1000-2103-0": [{"type": "text","sub_type": "message","message": "Front (Dodge)","message_RU": "Удар вперед (эвейд)"},
-						  {"type": "func","func": SpawnCircle.bind(null,445,356,400,8,350,100,3000)}
+						  {"type": "func","func": SpawnCircle.bind(null,false,445,356,400,8,350,100,3000)}
 	],
 	"s-444-1000-2108-0": [{"type": "text","sub_type": "message","message": 'Back Throw -> Front',"message_RU": "Стан назад -> Черенок"}],
 	"s-444-1000-2111-0": [{"type": "text","sub_type": "message","message": 'Back',"message_RU": "Удар назад --"},
-						  {"type": "func","func": SpawnCircle.bind(null,445,180,500,8,480,100,2000)}
+						  {"type": "func","func": SpawnCircle.bind(null,false,445,180,500,8,480,100,2000)}
 	],
 	"s-444-1000-2113-0": [{"type": "text","sub_type": "message","message": 'Throw',"message_RU": "Молот (байт)"}],
 	"s-444-1000-2114-0": [{"type": "text","sub_type": "message","message": 'Front Slam',"message_RU": "Удар назад"},
-						  {"type": "func","func": SpawnCircle.bind(null,445,356,260,10,320,100,4000)}
+						  {"type": "func","func": SpawnCircle.bind(null,false,445,356,260,10,320,100,4000)}
 	],
 	"s-444-1000-2115-0": [{"type": "text","sub_type": "message","message": 'Knockup',"message_RU": "Черкаш (полет)"}],
 	"s-444-1000-2116-0": [{"type": "text","sub_type": "message","message": 'Donuts',"message_RU": "Бублики"},
-		{"type": "func","func": SpawnCircle.bind(null,445,0,0,8,290,100,6000)}
+		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,8,290,100,6000)}
 	],
 	"s-444-1000-2117-0": [{"type": "text","sub_type": "message","message": 'Jump (Bait)',"message_RU": "Прыжок (байт)"}],
 	"s-444-1000-2118-0": [{"type": "text","sub_type": "message","message": 'Jump (Tank)',"message_RU": "Прыжок (танк)"}
@@ -160,7 +160,7 @@ module.exports = {
 						  {"type": "text","sub_type": "message","delay": 60000,"message": 'Waves soon...',"message_RU": "Скоро волны"}
 	],
 	"s-444-1000-2131-0": [{"type": "text","sub_type": "message","message": 'Front -> Left Scratch',"message_RU": "Удар в вперед -> левый черкаш"},
-						  {"type": "func","func": SpawnCircle.bind(null,445,358,340,8,660,100,4000)}
+						  {"type": "func","func": SpawnCircle.bind(null,false,445,358,340,8,660,100,4000)}
 	],
 	"s-444-1000-2132-0": [
 						  {"type": "func","func": SpawnVector.bind(null,553,270,200,0,500,0,2000)},
@@ -168,7 +168,7 @@ module.exports = {
 	],
 	"s-444-1000-2137-0": [
 						  {"type": "text","sub_type": "message","message": 'Hammer back ',"message_RU": "Удар назад"},
-						  {"type": "func","func": SpawnCircle.bind(null,445,180,500,8,480,100,2000)}
+						  {"type": "func","func": SpawnCircle.bind(null,false,445,180,500,8,480,100,2000)}
 	],
 	"s-444-1000-2138-0": [{"type": "text","sub_type": "message","message": 'Knockup (Bait)',"message_RU": "Черкаш (полет)"}],
 	"s-444-1000-2139-0": [{"type": "text","sub_type": "message","message": 'Dodge!!',"message_RU": "Эвейд!!!"}],
@@ -181,19 +181,19 @@ module.exports = {
 	],
 	//-----------------------------------------------------------------------------------------------------
 	"s-444-1000-1103-0": [{"type": "text","sub_type": "message","message": 'Front (Dodge)',"message_RU": "Удар вперед (эвейд)"},
-						  {"type": "func","func": SpawnCircle.bind(null,445,356,400,8,350,100,3000)}
+						  {"type": "func","func": SpawnCircle.bind(null,false,445,356,400,8,350,100,3000)}
 	],
 	"s-444-1000-1108-0": [{"type": "text","sub_type": "message","message": 'Back Throw -> Front',"message_RU": "Стан назад -> Черенок"}],
 	"s-444-1000-1111-0": [{"type": "text","sub_type": "message","message": 'Back',"message_RU": "Удар назад --"},
-						  {"type": "func","func": SpawnCircle.bind(null,445,180,500,8,480,100,2000)}
+						  {"type": "func","func": SpawnCircle.bind(null,false,445,180,500,8,480,100,2000)}
 	],
 	"s-444-1000-1113-0": [{"type": "text","sub_type": "message","message": 'Throw',"message_RU": "Молот (байт)"}],
 	"s-444-1000-1114-0": [{"type": "text","sub_type": "message","message": 'Front Slam',"message_RU": "Удар назад"},
-						  {"type": "func","func": SpawnCircle.bind(null,445,356,260,10,320,100,4000)}
+						  {"type": "func","func": SpawnCircle.bind(null,false,445,356,260,10,320,100,4000)}
 	],
 	"s-444-1000-1115-0": [{"type": "text","sub_type": "message","message": 'Knockup',"message_RU": "Черкаш (полет)"}],
 	"s-444-1000-1116-0": [{"type": "text","sub_type": "message","message": 'Donuts',"message_RU": "Бублики"},
-						  {"type": "func","func": SpawnCircle.bind(null,445,0,0,8,290,100,6000)}
+						  {"type": "func","func": SpawnCircle.bind(null,false,445,0,0,8,290,100,6000)}
 	],
 	"s-444-1000-1117-0": [{"type": "text","sub_type": "message","message": 'Jump (Bait)',"message_RU": "Прыжок (байт)"}],
 	"s-444-1000-1118-0": [{"type": "text","sub_type": "message","message": 'Jump (Tank)',"message_RU": "Прыжок (танк)"}
@@ -207,7 +207,7 @@ module.exports = {
 						  {"type": "text","sub_type": "message","delay": 60000,"message": 'Waves soon...',"message_RU": "Скоро волны"}
 	],
 	"s-444-1000-1131-0": [{"type": "text","sub_type": "message","message": 'Front -> Left Scratch',"message_RU": "Удар вперед -> левый черкаш"},
-						  {"type": "func","func": SpawnCircle.bind(null,445,358,340,8,660,100,4000)},
+						  {"type": "func","func": SpawnCircle.bind(null,false,445,358,340,8,660,100,4000)},
 						  {"type": "func","func": SpawnVector.bind(null,553,358,340,180,500,100,4000)},
 						  {"type": "func","func": SpawnVector.bind(null,553,358,340,0,500,100,4000)}
 	],
@@ -217,7 +217,7 @@ module.exports = {
 	],
 	"s-444-1000-1137-0": [
 						  {"type": "text","sub_type": "message","message": 'Hammer back ',"message_RU": "Удар назад"},
-						  {"type": "func","func": SpawnCircle.bind(null,445,180,500,8,480,100,2000)}
+						  {"type": "func","func": SpawnCircle.bind(null,false,445,180,500,8,480,100,2000)}
 	],
 	"s-444-1000-1138-0": [{"type": "text","sub_type": "message","message": 'Knockup (Bait)',"message_RU": "Черкаш (полет)"}],
 	"s-444-1000-1139-0": [{"type": "text","sub_type": "message","message": 'Dodge!!',"message_RU": "Эвейд!!!"}],
@@ -248,36 +248,36 @@ module.exports = {
 						  {"type": "func","func": SpawnVector.bind(null,553,0,0,270,500,0,3000)}
 	],
 	"s-444-2000-1103-0": [{"type": "text","sub_type": "message","message": 'Front (Dodge)',"message_RU": "Удар вперед (эвейд)"},
-						  {"type": "func","func": SpawnCircle.bind(null,445,356,400,8,350,100,3000)}
+						  {"type": "func","func": SpawnCircle.bind(null,false,445,356,400,8,350,100,3000)}
 	],
 	"s-444-2000-1107-0": [{"type": "text","sub_type": "message","message": '4 Hit (3)',"message_RU": "4"}],
 	"s-444-2000-1108-0": [{"type": "text","sub_type": "message","message": 'Back Throw -> Front',"message_RU": "Стан назад -> удар вперед"}],
 	"s-444-2000-1111-0": [{"type": "text","sub_type": "message","message": 'Back',"message_RU": "Удар назад"},
-						  {"type": "func","func": SpawnCircle.bind(null,445,180,500,8,480,100,2000)}
+						  {"type": "func","func": SpawnCircle.bind(null,false,445,180,500,8,480,100,2000)}
 	],
 	"s-444-2000-1112-0": [
 						  //{"type": "text","sub_type": "message","message_RU": "完美格挡"},
 						  {"type": "text","sub_type": "message","delay": 1240,"message": 'Perfect Defense',"message_RU": "Идеальный блок"},
 						  //  {"type": "text","sub_type": "message","delay": 2040,"message": "1"},
-						  {"type": "func","func": SpawnCircle.bind(null,445,356,220,12,210,100,4000)}
+						  {"type": "func","func": SpawnCircle.bind(null,false,445,356,220,12,210,100,4000)}
 	],
 	"s-444-2000-1113-0": [{"type": "text","sub_type": "message","message": 'Throw',"message_RU": "Молот (байт)"}],
 	"s-444-2000-1114-0": [{"type": "text","sub_type": "message","message": 'Front Slam',"message_RU": "Удар назад"},
-						  {"type": "func","func": SpawnCircle.bind(null,445,356,260,10,320,100,4000)}
+						  {"type": "func","func": SpawnCircle.bind(null,false,445,356,260,10,320,100,4000)}
 	],
 	"s-444-2000-1115-0": [{"type": "text","sub_type": "message","message": 'Knockup',"message_RU": "Черкаш (полет)"}],
 	"s-444-2000-1116-0": [{"type": "text","sub_type": "message","message": 'Donuts',"message_RU": "Бублики"},
-						  {"type": "func","func": SpawnCircle.bind(null,445,0,0,8,290,100,6000)}
+						  {"type": "func","func": SpawnCircle.bind(null,false,445,0,0,8,290,100,6000)}
 	],
 	"s-444-2000-1117-0": [{"type": "text","sub_type": "message","message": 'Jump (Bait)',"message_RU": "Прыжок (байт)"}],
 	"s-444-2000-1118-0": [{"type": "text","sub_type": "message","message": 'Jump (Tank)',"message_RU": "Прыжок (танк)"}
 						  //{"type": "func","func": skillds_event.bind(null, 118)}
 	],
 	"s-444-2000-1119-0": [{"type": "text","sub_type": "message","message": 'Left swipe',"message_RU": "Слева"},
-						  {"type": "func","func": SpawnMarker.bind(null,270,300,100,2000,true,null)}
+						  {"type": "func","func": SpawnMarker.bind(null,false,270,300,100,2000,true,null)}
 	],
 	"s-444-2000-120-0": [{"type": "text","sub_type": "message","message": 'Right swipe',"message_RU": "Справа"},
-						 {"type": "func","func": SpawnMarker.bind(null,90,300,100,2000,true,null)}
+						 {"type": "func","func": SpawnMarker.bind(null,false,90,300,100,2000,true,null)}
 	],
 	"s-444-2000-1121-0": [{"type": "text","sub_type": "message","message": 'Waves (Left)',"message_RU": "Волны (левая)"},
 						  {"type": "func","func": SpawnVector.bind(null,553,90,50,0,500,0,6000)},
@@ -301,7 +301,7 @@ module.exports = {
 						  {"type": "text","sub_type": "message","delay": 60000,"message": 'Waves soon...',"message_RU": "Скоро волны"}
 	],
 	"s-444-2000-1125-0": [{"type": "text","sub_type": "message","message": 'Front -> Right Scratch',"message_RU": "Удар вперед -> правый черкаш"}, 
-						  {"type": "func","func": SpawnCircle.bind(null,445,356,400,8,350,100,3000)},
+						  {"type": "func","func": SpawnCircle.bind(null,false,445,356,400,8,350,100,3000)},
 						  {"type": "func","func": SpawnVector.bind(null,553,356,400,180,500,100,3000)},
 						  {"type": "func","func": SpawnVector.bind(null,553,356,400,0,500,100,3000)}
 	],
@@ -310,7 +310,7 @@ module.exports = {
 						  {"type": "func","func": SpawnVector.bind(null,553,90,200,180,500,0,2000)}
 	],
 	"s-444-2000-1131-0": [{"type": "text","sub_type": "message","message": 'Front -> Left Scratch',"message_RU": "Удар вперед -> левый черкаш"},
-						  {"type": "func","func": SpawnCircle.bind(null,445,358,340,8,660,100,4000)},
+						  {"type": "func","func": SpawnCircle.bind(null,false,445,358,340,8,660,100,4000)},
 						  {"type": "func","func": SpawnVector.bind(null,553,358,340,180,500,100,4000)},
 						  {"type": "func","func": SpawnVector.bind(null,553,358,340,0,500,100,4000)}
 	],
@@ -321,12 +321,12 @@ module.exports = {
 						  //{"type": "text","sub_type": "message","message_RU": "完美格挡"},
 						  {"type": "text","sub_type": "message","delay": 200,"message": 'Perfect Defense',"message_RU": "Идеальный блок"},//------------------------------------------------------
 						  //{"type": "text","sub_type": "message","delay": 1535,"message": "1"},
-						  {"type": "func","func": SpawnCircle.bind(null,445,356,220,12,210,100,4000)}
+						  {"type": "func","func": SpawnCircle.bind(null,false,445,356,220,12,210,100,4000)}
 	],
 	"s-444-2000-1137-0": [
 						  //{"type": "func","func": skilld_event.bind(null, 137)},
 						  {"type": "text","sub_type": "message","message": 'Hammer back ',"message_RU": "Удар назад"},
-						  {"type": "func","func": SpawnCircle.bind(null,445,180,500,8,480,100,2000)}
+						  {"type": "func","func": SpawnCircle.bind(null,false,445,180,500,8,480,100,2000)}
 	],
 	"s-444-2000-1138-0": [{"type": "text","sub_type": "message","message": 'Knockup (Bait)',"message_RU": "Черкаш (полет)"}],  
 	"s-444-2000-1139-0": [{"type": "text","sub_type": "message","message": 'Dodge!!',"message_RU": "Эвейд!!!"}],
@@ -370,12 +370,12 @@ module.exports = {
 						  {"type": "func","func": SpawnVector.bind(null,553,0,0,270,500,0,3000)}
 	],
 	"s-444-2000-2103-0": [{"type": "text","sub_type": "message","message": 'Front (Dodge)',"message_RU": "Удар вперед (эвейд)"},
-						  {"type": "func","func": SpawnCircle.bind(null,445,356,400,8,350,100,3000)}
+						  {"type": "func","func": SpawnCircle.bind(null,false,445,356,400,8,350,100,3000)}
 	],
 	"s-444-2000-2107-0": [{"type": "text","sub_type": "message","message": '4 Hit (3)',"message_RU": "4"}], 
 	"s-444-2000-2108-0": [{"type": "text","sub_type": "message","message": 'Back Throw -> Front',"message_RU": "Стан назад -> удар вперед"}], 
 	"s-444-2000-2111-0": [{"type": "text","sub_type": "message","message": 'Back',"message_RU": "Удар назад"},
-						  {"type": "func","func": SpawnCircle.bind(null,445,180,500,8,480,100,2000)}
+						  {"type": "func","func": SpawnCircle.bind(null,false,445,180,500,8,480,100,2000)}
 	],
 	"s-444-2000-2112-0": [
 						  //{"type": "text","sub_type": "message","message_RU": "完美格挡"},
@@ -383,25 +383,25 @@ module.exports = {
 						  {"type": "text","sub_type": "message","delay": 2700,"message": "2"},
 						  //{"type": "text","sub_type": "message","delay": 2800,"message": "1"},
 						  //{"type": "text","sub_type": "message","delay": 3690,"message": "2"},
-						  {"type": "func","func": SpawnCircle.bind(null,445,356,220,12,210,100,4000)}
+						  {"type": "func","func": SpawnCircle.bind(null,false,445,356,220,12,210,100,4000)}
 	],
 	"s-444-2000-2113-0": [{"type": "text","sub_type": "message","message": 'Throw',"message_RU": "Молот (байт)"}],
 	"s-444-2000-2114-0": [{"type": "text","sub_type": "message","message": 'Front Slam',"message_RU": "Удар назад"},
-						  {"type": "func","func": SpawnCircle.bind(null,445,356,260,10,320,100,4000)}
+						  {"type": "func","func": SpawnCircle.bind(null,false,445,356,260,10,320,100,4000)}
 	],
 	"s-444-2000-2115-0": [{"type": "text","sub_type": "message","message": 'Knockup',"message_RU": "Черкаш (полет)"}],
 	"s-444-2000-2116-0": [{"type": "text","sub_type": "message","message": 'Donuts',"message_RU": "Бублики"},
-						  {"type": "func","func": SpawnCircle.bind(null,445,0,0,8,290,100,6000)}
+						  {"type": "func","func": SpawnCircle.bind(null,false,445,0,0,8,290,100,6000)}
 	],
 	"s-444-2000-2117-0": [{"type": "text","sub_type": "message","message": 'Jump (Bait)',"message_RU": "Прыжок (байт)"}],
 	"s-444-2000-2118-0": [{"type": "text","sub_type": "message","message": 'Jump (Tank)',"message_RU": "Прыжок (танк)"}
 						  //{"type": "func","func": skillds_event.bind(null, 118)}
 	],
 	 "s-444-2000-2119-0": [{"type": "text","sub_type": "message","message": 'Left swipe',"message_RU": "Слева"},
-						  {"type": "func","func": SpawnMarker.bind(null,270,300,100,2000,true,null)}
+						  {"type": "func","func": SpawnMarker.bind(null,false,270,300,100,2000,true,null)}
 	],
 	 "s-444-2000-2120-0": [{"type": "text","sub_type": "message","message": 'Right swipe',"message_RU": "Справа"},
-						  {"type": "func","func": SpawnMarker.bind(null,90,300,100,2000,true,null)}
+						  {"type": "func","func": SpawnMarker.bind(null,false,90,300,100,2000,true,null)}
 	],
 	"s-444-2000-2121-0": [{"type": "text","sub_type": "message","message": 'Waves (Left)',"message_RU": "Волны (слева)"},
 						  {"type": "func","func": SpawnVector.bind(null,553,90,50,0,500,0,6000)},
@@ -425,7 +425,7 @@ module.exports = {
 						  {"type": "text","sub_type": "message","delay": 60000,"message": 'Waves soon...',"message_RU": "Скоро волны"}
 	],
 	 "s-444-2000-2125-0": [{"type": "text","sub_type": "message","message": 'Front -> Right Scratch',"message_RU": "Удар вперед -> правый черкаш"},
-						  {"type": "func","func": SpawnCircle.bind(null,445,356,400,8,350,100,3000)},
+						  {"type": "func","func": SpawnCircle.bind(null,false,445,356,400,8,350,100,3000)},
 						  {"type": "func","func": SpawnVector.bind(null,553,356,400,180,500,3000)},
 						  {"type": "func","func": SpawnVector.bind(null,553,356,400,0,500,3000)}
 	],
@@ -434,7 +434,7 @@ module.exports = {
 						  {"type": "func","func": SpawnVector.bind(null,553,90,200,180,500,2000)}
 	],
 	"s-444-2000-2131-0": [{"type": "text","sub_type": "message","message": 'Front -> Left Scratch',"message_RU": "Удар вперед -> левый черкаш"},
-						  {"type": "func","func": SpawnCircle.bind(null,445,358,340,8,660,100,4000)},
+						  {"type": "func","func": SpawnCircle.bind(null,false,445,358,340,8,660,100,4000)},
 						  {"type": "func","func": SpawnVector.bind(null,553,358,340,180,500,100,4000)},
 						  {"type": "func","func": SpawnVector.bind(null,553,358,340,0,500,100,4000)}
 	],
@@ -448,12 +448,12 @@ module.exports = {
 						  {"type": "text","sub_type": "message","delay": 1535,"message": "2"},
 						  //{"type": "text","sub_type": "message","delay": 1535,"message": "1"},
 						  //{"type": "text","sub_type": "message","delay": 2535,"message": "2"},
-						  {"type": "func","func": SpawnCircle.bind(null,445,356,220,12,210,100,4000)}
+						  {"type": "func","func": SpawnCircle.bind(null,false,445,356,220,12,210,100,4000)}
 	],
 	"s-444-2000-2137-0": [
 						  //{"type": "func","func": skilld_event.bind(null, 137)},
 						  {"type": "text","sub_type": "message","message": 'Hammer back ',"message_RU": "Удар назад"},
-						  {"type": "func","func": SpawnCircle.bind(null,445,180,500,8,480,100,2000)}
+						  {"type": "func","func": SpawnCircle.bind(null,false,445,180,500,8,480,100,2000)}
 	],
 	"s-444-2000-2138-0": [{"type": "text","sub_type": "message","message": 'Knockup (Bait)',"message_RU": "Черкаш (полет)"}],
 	"s-444-2000-2139-0": [{"type": "text","sub_type": "message","message": 'Dodge!!',"message_RU": "Эвейд!!!"}],

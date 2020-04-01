@@ -100,51 +100,51 @@ module.exports = {
 	// 2 BOSS
 	"s-782-2000-105-0": [{"type": "text","sub_type": "message","message": "Spin","message_RU": "Кувырок"}],
 	"s-782-2000-113-0": [{"type": "text","sub_type": "message","message": "Stun inc","message_RU": "Стан"}],
-	"s-782-2000-114-0": [{"type": "text","sub_type": "message","message": "Get IN","message_RU": "К нему"},{"type": "func","func": SpawnCircle.bind(null,553,0,0,15,260,0,3000)}],
+	"s-782-2000-114-0": [{"type": "text","sub_type": "message","message": "Get IN","message_RU": "К нему"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,15,260,0,3000)}],
 	"s-782-2000-116-0": [{"type": "text","sub_type": "message","message": "Front then Back","message_RU": "Вперед | Назад"},
 						 {"type": "func","func": SpawnVector.bind(null,553,0,0,270,500,0,5000)},
 						 {"type": "func","func": SpawnVector.bind(null,553,180,0,90,500,0,5000)}
 	],
-	"s-782-2000-301-0": [{"type": "text","sub_type": "message","message": "↓ Get OUT + dodge","message_RU": "ОТ НЕГО | Эвейд"},{"type": "func","func": SpawnCircle.bind(null,553,0,0,15,260,0,3000)}],
-	"s-782-2000-302-0": [{"type": "text","sub_type": "message","message": "↑ Get IN + dodge","message_RU": "К НЕМУ | Эвейд" },{"type": "func","func": SpawnCircle.bind(null,553,0,0,15,260,0,3000)}],
+	"s-782-2000-301-0": [{"type": "text","sub_type": "message","message": "↓ Get OUT + dodge","message_RU": "ОТ НЕГО | Эвейд"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,15,260,0,3000)}],
+	"s-782-2000-302-0": [{"type": "text","sub_type": "message","message": "↑ Get IN + dodge","message_RU": "К НЕМУ | Эвейд" },{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,15,260,0,3000)}],
 
 	// 3 BOSS
 	"s-782-3000-118-0": [{"type": "text","sub_type": "message","message": "Front triple","message_RU": "Передняя комба"}],
 	"s-782-3000-143-0": [{"type": "text","sub_type": "message","message": "←← Left rear ←←","message_RU": "Слева сзади"}],
 	"s-782-3000-145-0": [{"type": "text","sub_type": "message","message": "←← Left rear ←←","message_RU": "Слева сзади"}],
 	"s-782-3000-146-0": [{"type": "text","sub_type": "message","message": "←← Left rear ←← (pulses)","message_RU": "Слева сзади (бублик)"},
-						 {"type": "func","func": SpawnMarker.bind(null,215,370,0,8000,true,null)},
-						 {"type": "func","func": SpawnCircle.bind(null,445,215,370,15,160,2500,8000)},
-						 {"type": "func","func": SpawnCircle.bind(null,445,215,370,12,320,2500,8000)},
-						 {"type": "func","func": SpawnCircle.bind(null,445,215,370,10,480,2500,8000)},
-						 {"type": "func","func": SpawnCircle.bind(null,445,215,370,8,640,2500,8000)},
-						 {"type": "func","func": SpawnCircle.bind(null,445,215,370,6,800,2500,8000)}
+						 {"type": "func","func": SpawnMarker.bind(null,false,215,370,0,8000,true,null)},
+						 {"type": "func","func": SpawnCircle.bind(null,false,445,215,370,15,160,2500,8000)},
+						 {"type": "func","func": SpawnCircle.bind(null,false,445,215,370,12,320,2500,8000)},
+						 {"type": "func","func": SpawnCircle.bind(null,false,445,215,370,10,480,2500,8000)},
+						 {"type": "func","func": SpawnCircle.bind(null,false,445,215,370,8,640,2500,8000)},
+						 {"type": "func","func": SpawnCircle.bind(null,false,445,215,370,6,800,2500,8000)}
 	],
 	"s-782-3000-154-0": [{"type": "text","sub_type": "message","message": "←← Left rear ←← (pulses)","message_RU": "Слева сзади (бублик)"},
-						 {"type": "func","func": SpawnMarker.bind(null,215,370,0,8000,true,null)},
-						 {"type": "func","func": SpawnCircle.bind(null,445,215,370,15,160,2500,8000)},
-						 {"type": "func","func": SpawnCircle.bind(null,445,215,370,12,320,2500,8000)},
-						 {"type": "func","func": SpawnCircle.bind(null,445,215,370,10,480,2500,8000)},
-						 {"type": "func","func": SpawnCircle.bind(null,445,215,370,8,640,2500,8000)},
-						 {"type": "func","func": SpawnCircle.bind(null,445,215,370,6,800,2500,8000)}
+						 {"type": "func","func": SpawnMarker.bind(null,false,215,370,0,8000,true,null)},
+						 {"type": "func","func": SpawnCircle.bind(null,false,445,215,370,15,160,2500,8000)},
+						 {"type": "func","func": SpawnCircle.bind(null,false,445,215,370,12,320,2500,8000)},
+						 {"type": "func","func": SpawnCircle.bind(null,false,445,215,370,10,480,2500,8000)},
+						 {"type": "func","func": SpawnCircle.bind(null,false,445,215,370,8,640,2500,8000)},
+						 {"type": "func","func": SpawnCircle.bind(null,false,445,215,370,6,800,2500,8000)}
 	],
 	"s-782-3000-144-0": [{"type": "text","sub_type": "message","message": "→→ Right rear →→","message_RU": "Справа сзади"}],
 	"s-782-3000-147-0": [{"type": "text","sub_type": "message","message": "→→ Right rear →→","message_RU": "Справа сзади"}],
 	"s-782-3000-148-0": [{"type": "text","sub_type": "message","message": "→→ Right rear →→ (pulses)","message_RU": "Справа сзади (бублик)"},
-						 {"type": "func","func": SpawnMarker.bind(null,155,388,8000)}, 
-						 {"type": "func","func": SpawnCircle.bind(null,445,155,388,15,160,2500,8000)},
-						 {"type": "func","func": SpawnCircle.bind(null,445,155,388,12,320,2500,8000)},
-						 {"type": "func","func": SpawnCircle.bind(null,445,155,388,10,480,2500,8000)},
-						 {"type": "func","func": SpawnCircle.bind(null,445,155,388,8,640,2500,8000)},
-						 {"type": "func","func": SpawnCircle.bind(null,445,155,388,6,800,2500,8000)}
+						 {"type": "func","func": SpawnMarker.bind(null,false,155,388,8000)}, 
+						 {"type": "func","func": SpawnCircle.bind(null,false,445,155,388,15,160,2500,8000)},
+						 {"type": "func","func": SpawnCircle.bind(null,false,445,155,388,12,320,2500,8000)},
+						 {"type": "func","func": SpawnCircle.bind(null,false,445,155,388,10,480,2500,8000)},
+						 {"type": "func","func": SpawnCircle.bind(null,false,445,155,388,8,640,2500,8000)},
+						 {"type": "func","func": SpawnCircle.bind(null,false,445,155,388,6,800,2500,8000)}
 	],
 	"s-782-3000-155-0": [{"type": "text","sub_type": "message","message": "→→ Right rear →→ (pulses)","message_RU": "Справа сзади (бублик)" },
-						 {"type": "func","func": SpawnMarker.bind(null,155,388,0,8000,true,null)},
-						 {"type": "func","func": SpawnCircle.bind(null,445,155,388,15,160,2500,8000)},
-						 {"type": "func","func": SpawnCircle.bind(null,445,155,388,12,320,2500,8000)},
-						 {"type": "func","func": SpawnCircle.bind(null,445,155,388,10,480,2500,8000)},
-						 {"type": "func","func": SpawnCircle.bind(null,445,155,388,8,640,2500,8000)},
-						 {"type": "func","func": SpawnCircle.bind(null,445,155,388,6,800,2500,8000)}
+						 {"type": "func","func": SpawnMarker.bind(null,false,155,388,0,8000,true,null)},
+						 {"type": "func","func": SpawnCircle.bind(null,false,445,155,388,15,160,2500,8000)},
+						 {"type": "func","func": SpawnCircle.bind(null,false,445,155,388,12,320,2500,8000)},
+						 {"type": "func","func": SpawnCircle.bind(null,false,445,155,388,10,480,2500,8000)},
+						 {"type": "func","func": SpawnCircle.bind(null,false,445,155,388,8,640,2500,8000)},
+						 {"type": "func","func": SpawnCircle.bind(null,false,445,155,388,6,800,2500,8000)}
 	],
 	"s-782-3000-161-0": [{"type": "text","sub_type": "message","message": "Back then Front","message_RU": "Назад | Вперед"}],
 	"s-782-3000-162-0": [{"type": "text","sub_type": "message","message": "Back then Front","message_RU": "Назад | Вперед"}],
@@ -153,22 +153,22 @@ module.exports = {
 	"s-782-3000-139-0": [{"type": "text","sub_type": "message","message": "Left safe","message_RU": "ЛЕВО сейф"},
 						 {"type": "func","func": SpawnVector.bind(null,912,90,0,0,500,0,5000)},
 						 {"type": "func","func": SpawnVector.bind(null,912,270,0,180,500,0,5000)},
-						 {"type": "func","func": SpawnMarker.bind(null,270,200,0,8000,true,null)}
+						 {"type": "func","func": SpawnMarker.bind(null,false,270,200,0,8000,true,null)}
 	],
 	"s-782-3000-150-0": [{"type": "text","sub_type": "message","message": "Left safe","message_RU": "ЛЕВО сейф"},
 						 {"type": "func","func": SpawnVector.bind(null,912,90,0,0,500,0,5000)},
 						 {"type": "func","func": SpawnVector.bind(null,912,270,0,180,500,0,5000)},
-						 {"type": "func","func": SpawnMarker.bind(null,270,200,0,8000,true,null)}
+						 {"type": "func","func": SpawnMarker.bind(null,false,270,200,0,8000,true,null)}
 	],
 	"s-782-3000-141-0": [{"type": "text","sub_type": "message","message": "Right safe","message_RU": "ПРАВО сейф"},
 						 {"type": "func","func": SpawnVector.bind(null,912,90,0,0,500,0,5000)},
 						 {"type": "func","func": SpawnVector.bind(null,912,270,0,180,500,0,5000)},
-						 {"type": "func","func": SpawnMarker.bind(null,90,200,8000)}
+						 {"type": "func","func": SpawnMarker.bind(null,false,90,200,8000)}
 	], 
 	"s-782-3000-152-0": [{"type": "text","sub_type": "message","message": "Right safe","message_RU": "ПРАВО сейф"},
 						 {"type": "func","func": SpawnVector.bind(null,912,90,0,0,500,0,5000)},
 						 {"type": "func","func": SpawnVector.bind(null,912,270,0,180,500,0,5000)},
-						 {"type": "func","func": SpawnMarker.bind(null,90,200,0,8000,true,null)}
+						 {"type": "func","func": SpawnMarker.bind(null,false,90,200,0,8000,true,null)}
 	],
 	"s-782-3000-300-0": [{"type": "text","sub_type": "message","message": "Dodge!! (Awakening 1)","message_RU": "Эвейд!! (пробуждение 1)"}],
 	"s-782-3000-399-0": [{"type": "text","sub_type": "message","message": "Dodge!! (Awakening 2)","message_RU": "Эвейд!! (пробуждение 2)"}],

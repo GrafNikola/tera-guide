@@ -127,7 +127,7 @@ module.exports = {
 	"s-3023-1000-104-0": [{"type": "text","sub_type": "message","message": 'Jump',"message_RU": "Прыжок + Стан"}],
 	"s-3023-1000-105-0": [{"type": "text","sub_type": "message","message": 'Back',"message_RU": "Удар назад"}],
 	"s-3023-1000-110-0": [{"type": "text","sub_type": "message","message": 'Stun',"message_RU": "Передний стан"},
-						  {"type": "func","func": SpawnCircle.bind(null,553,0,175,10,225,0,6000)}
+						  {"type": "func","func": SpawnCircle.bind(null,false,553,0,175,10,225,0,6000)}
 	],
 	"s-3023-1000-111-0": [{"type": "text","sub_type": "message","message": '↓ Left pull',"message_RU": "| Левая полоса"},
 						  {"type": "func","func": SpawnVector.bind(null,553,270,200,180,500,0,2000)},
@@ -164,15 +164,12 @@ module.exports = {
 						  {"type": "func","func": SpawnVector.bind(null,553,180,500,90,200,0,2000)}
 	],
 	"s-3023-1000-115-0": [{"type": "text","sub_type": "message","message": 'Back attack',"message_RU": "Удар назад"},
-						  {"type": "func","func": SpawnSemicircle.bind(null,1,-2,553,0,0,20,160,100,2000)},
-						  {"type": "func","func": SpawnSemicircle.bind(null,-2,1,553,0,0,20,160,100,2000)},
-						  {"type": "func","func": SpawnSemicircle.bind(null,1,-2,553,0,0,12,220,100,2000)},
-						  {"type": "func","func": SpawnSemicircle.bind(null,-2,1,553,0,0,12,220,100,2000)},
-						  {"type": "func","func": SpawnSemicircle.bind(null,1,-2,553,0,0,10,300,100,2000)},
-						  {"type": "func","func": SpawnSemicircle.bind(null,-2,1,553,0,0,10,300,100,2000)}
+						  {"type": "func","func": SpawnSemicircle.bind(null,90,270,553,0,0,20,160,100,2000)},
+						  {"type": "func","func": SpawnSemicircle.bind(null,90,270,553,0,0,12,220,100,2000)},
+						  {"type": "func","func": SpawnSemicircle.bind(null,90,270,553,0,0,10,300,100,2000)}
 	],
 	"s-3023-1000-116-0": [{"type": "text","sub_type": "message","message": 'Get out',"message_RU": "Взрыв (Кайя)!!!"},
-						  {"type": "func","func": SpawnCircle.bind(null,553,0,0,8,500,0,6000)}
+						  {"type": "func","func": SpawnCircle.bind(null,false,553,0,0,8,500,0,6000)}
 	],
 	"am-3023-1000-30231001": [{"type": "func","func": skilld_event.bind(null, 1001)}],
 	"am-3023-1000-30231000": [{"type": "func","func": skilld_event.bind(null, 1000)}],
@@ -184,17 +181,17 @@ module.exports = {
 						   {"type": "func","func": SpawnVector.bind(null,553,270,80,350,1000,0,4000)}
 	],
 	"s-3023-1000-3115-0": [{"type": "text","sub_type": "message","message": 'Spin',"message_RU": "Крутилка"},
-						   {"type": "func","func": SpawnCircle.bind(null,553,0,0,10,320,0,3500)}],
+						   {"type": "func","func": SpawnCircle.bind(null,false,553,0,0,10,320,0,3500)}],
 	"s-3023-1000-3116-0": [{"type": "text","sub_type": "message","message": 'Spin',"message_RU": "Круги + Крутилка"},
-						   {"type": "func","func": SpawnCircle.bind(null,553,0,0,10,320,0,5000)}
+						   {"type": "func","func": SpawnCircle.bind(null,false,553,0,0,10,320,0,5000)}
 	],
 	"s-3023-1000-3119-0": [{"type": "func","func": skilld_event.bind(null, 3119)},
-						   {"type": "func","func": SpawnCircle.bind(null,553,0,0,10,270,0,4000)},
-						   {"type": "func","func": SpawnCircle.bind(null,553,0,0,8,575,0,4000)}
+						   {"type": "func","func": SpawnCircle.bind(null,false,553,0,0,10,270,0,4000)},
+						   {"type": "func","func": SpawnCircle.bind(null,false,553,0,0,8,575,0,4000)}
 	],
 	"s-3023-1000-3220-0": [{"type": "func","func": skilld_event.bind(null, 3220)},
-						   {"type": "func","func": SpawnCircle.bind(null,553,0,0,10,270,0,4000)},
-						   {"type": "func","func": SpawnCircle.bind(null,553,0,0,8,575,0,4000)}
+						   {"type": "func","func": SpawnCircle.bind(null,false,553,0,0,10,270,0,4000)},
+						   {"type": "func","func": SpawnCircle.bind(null,false,553,0,0,8,575,0,4000)}
 	],
 	//"s-3023-1000-3223-0": [{"type": "text","sub_type": "message","message_RU": "Красный дебаф"}],
 
@@ -210,8 +207,8 @@ module.exports = {
 	"s-3023-2000-182-0": [{"type": "text","sub_type": "message","message": 'Knock down',"message_RU": "Опрокид"}],
 	"s-3023-2000-185-0": [{"type": "text","sub_type": "message","message": 'Big jump',"message_RU": "Взрыв (Кайя)!!!"},
 						  {"type": "func","func": skilld_event.bind(null, 185)},
-						  {"type": "func","func": SpawnCircle.bind(null,553,0,0,10,500,0,6000)},
-						  {"type": "func","func": SpawnCircle.bind(null,553,0,0,8,750,0,6000)}
+						  {"type": "func","func": SpawnCircle.bind(null,false,553,0,0,10,500,0,6000)},
+						  {"type": "func","func": SpawnCircle.bind(null,false,553,0,0,8,750,0,6000)}
 	],
 	"s-3023-2000-202-0": [{"type": "text","sub_type": "message","message": 'BACKSTAB',"message_RU": "Назад + Вперед"},
 						  {"type": "func","func": SpawnVector.bind(null,553,90,80,180,500,0,3000)},
