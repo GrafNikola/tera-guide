@@ -109,19 +109,19 @@ function SpawnSemicircle(d1, d2, item, offsetAngle, offsetDistance, interval, ra
 }
 
 function SpawnObject(type, target, item, offsetAngle, offsetDistance, angle, distance, delay, duration, label, handlers, event, entity) {
+	let shield_loc;
+
+	if (target && entity.dest !== undefined) {
+		shield_loc = entity['dest'].clone();
+	} else {
+		shield_loc = entity['loc'].clone();
+	}
+
+	shield_loc.w = entity['loc'].w;
+
+	applyDistance(shield_loc, offsetDistance, 360 - offsetAngle);
+
 	setTimeout(() => { // use local delay
-		let shield_loc;
-
-		if (target && entity.dest !== undefined) {
-			shield_loc = entity['dest'].clone();
-		} else {
-			shield_loc = entity['loc'].clone();
-		}
-
-		shield_loc.w = entity['loc'].w;
-
-		applyDistance(shield_loc, offsetDistance, 360 - offsetAngle);
-
 		switch (type) {
 			// S_SPAWN_COLLECTION
 			case "collection":
