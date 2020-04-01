@@ -338,10 +338,10 @@ module.exports = {
 						  {"type": "text","sub_type": "message","delay": 60000,"message": 'Waves soon...',"message_RU": "Скоро волны"}
 	],
 	 "s-444-2000-1141-0": [{"type": "text","sub_type": "message","message": 'Waves (Right) 3nd fast',"message_RU": "Волны (правая) 3 быстрая"},
-						  {"type": "func","func": SpawnVector.bind(null,553,90,50,0,500,6000)},
-						  {"type": "func","func": SpawnVector.bind(null,553,90,50,180,500,6000)},
-						  {"type": "func","func": SpawnVector.bind(null,553,270,50,0,500,6000)},
-						  {"type": "func","func": SpawnVector.bind(null,553,270,50,180,500,6000)},
+						  {"type": "func","func": SpawnVector.bind(null,553,90,50,0,500,0,6000)},
+						  {"type": "func","func": SpawnVector.bind(null,553,90,50,180,500,0,6000)},
+						  {"type": "func","func": SpawnVector.bind(null,553,270,50,0,500,0,6000)},
+						  {"type": "func","func": SpawnVector.bind(null,553,270,50,180,500,0,6000)},
 						  {"type": "text","sub_type": "message","delay": 60000,"message": 'Waves soon...',"message_RU": "Скоро волны"}
 	],
 	 "s-444-2000-1142-0": [{"type": "text","sub_type": "message","message": 'Waves (Right) 2nd fast',"message_RU": "Волны (правая) 2 быстрая"},
@@ -426,8 +426,8 @@ module.exports = {
 	],
 	 "s-444-2000-2125-0": [{"type": "text","sub_type": "message","message": 'Front -> Right Scratch',"message_RU": "Удар вперед -> правый черкаш"},
 						  {"type": "func","func": SpawnCircle.bind(null,false,445,356,400,8,350,100,3000)},
-						  {"type": "func","func": SpawnVector.bind(null,553,356,400,180,500,3000)},
-						  {"type": "func","func": SpawnVector.bind(null,553,356,400,0,500,3000)}
+						  {"type": "func","func": SpawnVector.bind(null,553,356,400,180,500,100,3000)},
+						  {"type": "func","func": SpawnVector.bind(null,553,356,400,0,500,100,3000)}
 	],
 	 "s-444-2000-2126-0": [
 						  {"type": "func","func": SpawnVector.bind(null,553,90,200,0,500,2000)},
