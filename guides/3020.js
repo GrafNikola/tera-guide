@@ -124,7 +124,7 @@ let debuffs_targe = {
 
 let debuff_call_event = null;
 function start_Sailing_Instance(handlers, event, entity, dispatch) {
-	const abnormality_change = (added, handlers, event) => {
+	const abnormality_change = (added, event) => {
 		if ((player.isMe(event.target) || player.playersInParty.includes(event.target.toString())) && debuffs_targe[event.id]) {
 			if (added) {
 				if (debuff_call_event) {

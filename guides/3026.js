@@ -139,7 +139,7 @@ let debuffs_targe = {
 	31260002: "Ледяной дебафф"   // Ice debuff
 };
 function start_debuff(handlers, event, entity, dispatch) {
-	const abnormality_change = (added, handlers, event) => {
+	const abnormality_change = (added, event) => {
 		if ((player.isMe(event.target) || player.playersInParty.includes(event.target.toString())) && debuffs_targe[event.id]) {
 			if (added) {
 				debuff = event.id;
