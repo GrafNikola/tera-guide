@@ -93,7 +93,7 @@ module.exports = {
 	"s-3027-1000-108-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Strike (slow)","message_RU": "Меч (медленный)"}],
 
 	"s-3027-1000-112-0": [{"type": "text","sub_type": "message","message": "Back | Strike","message_RU": "Прыжок назад | Меч"}],
-	//"s-3027-1000-112-1": [{"type": "func","func": SpawnVector.bind(null,445,90,0,0,500,100,2000)}],
+"s-3027-1000-112-1": [{"type": "func","func": SpawnVector.bind(null,445,90,0,0,500,100,2000)}],
 
 	//"s-3027-1000-130-0": [{"type": "text","sub_type": "message","message": "random aggro","message_RU": "Таргет"}],
 	"s-3027-1000-134-0": [{"type": "text","sub_type": "message","message": "Turn around","message_RU": "Поворот | Удар назад"}],
@@ -120,8 +120,6 @@ module.exports = {
 	"s-3027-1000-111-0": [{"type": "text","sub_type": "message","message": "Stun | Strike","message_RU": "Стан | Меч (медленный)"}],
 
 	"s-3027-1000-136-0": [{"type": "text","sub_type": "message","message": "2x360°","message_RU": "2 удара | Меч (медленный)"}],
-	//"s-3027-1000-136-1": [{"type": "func","func": SpawnVector.bind(null,445,90,0,0,500,100,2000)}],
-
 	"s-3027-1000-144-0": [{"type": "text","sub_type": "message","message": "Sword","message_RU": "Меч"}],
 
 	"s-3027-1000-356-0": [{"type": "text","sub_type": "message","message": "Teleport","message_RU": "Телепорт (таргет)"}],
@@ -133,7 +131,6 @@ module.exports = {
 	"s-3027-1000-140-0": [{"type": "text","sub_type": "message","message": "Dodge","message_RU": "Эвейд!"},{"type": "func","func": SpawnCircle.bind(null,false,912,0,180,8,460,0,3000)}],
 
 	"s-3027-1000-151-0": [{"type": "text","sub_type": "message","message": "Three chop | Strike","message_RU": "3 удара | Меч"}],
-	//"s-3027-1000-151-1": [{"type": "func","func": SpawnVector.bind(null,445,90,0,0,500,100,2000)}],
 
 	//"s-3027-1000-149-0": [{"type": "text","sub_type": "message","message": "Random aggro","message_RU": "Таргет"}],
 	"s-3027-1000-149-1": [{"type": "text","sub_type": "message","message": "Back teleport","message_RU": "Телепорт назад"}],
@@ -153,7 +150,6 @@ module.exports = {
 	"s-3027-1000-109-0": [{"type": "text","sub_type": "message","message": "Forward Jump","message_RU": "Прыжок вперед"}],
 
 	"s-3027-1000-351-0": [{"type": "text","sub_type": "message","message": "SHIELD!","message_RU": "Щит!!"},
-		//{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,15,800,1000,9000)},
 		{"type": "func","func": skilld_event.bind(null, 351)}
 	],
 	"s-3027-1000-401-0": [{"type": "text","sub_type": "message","message": "AOE","message_RU": "АОЕ!!!!"}]
