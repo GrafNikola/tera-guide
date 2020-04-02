@@ -11,25 +11,26 @@ let purple = false;
 let boss_thirty = false;
 let print = false;
 
+// 2000 => 4000 => 6000
 function skilld_event(skillid, handlers, event, entity, dispatch) {
 	// (зеленый) "Ближе!"
 	if (skillid == 121) {
 		green  = true;
 		// круг перед боссом
-		SpawnCircle(true, 553,0,170,8,290,200,2000,handlers,event,entity);
+		SpawnCircle(true, 553,0,170,8,290,2000,2000,handlers,event,entity); // 1
 		// бублик вокруг босса
-		SpawnCircle(true, 553,0,0,8,280,3000,5000,handlers,event,entity);
-		SpawnCircle(true, 553,0,0,4,570,3000,5000,handlers,event,entity);
+		SpawnCircle(true, 445,0,0,8,280,4000,2000,handlers,event,entity); // 2
+		SpawnCircle(true, 445,0,0,4,570,4000,2000,handlers,event,entity); // 2
 	}
 
 	// (фиолетовый) "Проваливай!"
 	if (skillid == 122) {
 		purple = true;
 		// бублик вокруг босса
-		SpawnCircle(true, 553,0,0,8,280,200,2000,handlers,event,entity);
-		SpawnCircle(true, 553,0,0,4,570,200,2000,handlers,event,entity);
+		SpawnCircle(true, 553,0,0,8,280,2000,2000,handlers,event,entity); // 1
+		SpawnCircle(true, 553,0,0,4,570,2000,2000,handlers,event,entity); // 1
 		// круг перед боссом
-		SpawnCircle(true, 553,0,170,8,290,3000,5000,handlers,event,entity);
+		SpawnCircle(true, 445,0,170,8,290,4000,2000,handlers,event,entity); // 2
 	}
 
 	// "Упади в бездну"
@@ -40,8 +41,8 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 			handlers['text']({"type": "text","sub_type": "message","message": "IN > OUT > IN","message_RU": "К нему > От него > К нему"});
 
 			// бублик перед боссом
-			SpawnCircle(true, 553,0,150,8,280,5000,7000,handlers,event,entity);
-			SpawnCircle(true, 553,0,150,4,570,5000,7000,handlers,event,entity);
+			SpawnCircle(true, 912,0,150,8,280,6000,3000,handlers,event,entity); // 3
+			SpawnCircle(true, 912,0,150,4,570,6000,3000,handlers,event,entity); // 3
 
 			setTimeout(() => purple = false, 2000);
 
@@ -53,8 +54,8 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 			handlers['text']({"type": "text","sub_type": "message","delay": 6000,"message": "IN","message_RU": "К нему"});
 
 			// бублик перед боссом
-			SpawnCircle(true, 553,0,150,8,280,7000,9000,handlers,event,entity);
-			SpawnCircle(true, 553,0,150,4,570,7000,9000,handlers,event,entity);
+			SpawnCircle(true, 912,0,150,8,280,7000,5000,handlers,event,entity); // 3
+			SpawnCircle(true, 912,0,150,4,570,7000,5000,handlers,event,entity); // 3
 
 			setTimeout(() => purple = false, 2000);
 		}
@@ -68,7 +69,7 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 			handlers['text']({"type": "text","sub_type": "message","message": "OUT > IN > OUT","message_RU": "От него > К нему > От него"});
 
 			// большой круг перед боссом
-			SpawnCircle(true, 553,0,200,8,450,5000,7000,handlers,event,entity);
+			SpawnCircle(true, 912,0,200,8,450,6000,3000,handlers,event,entity); // 3
 
 			setTimeout(() => green = false, 2000);
 
@@ -78,7 +79,7 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 			handlers['text']({"type": "text","sub_type": "message","message": "IN > OUT > OUT","message_RU": "К нему > От него > От него"});
 			
 			// большой круг перед боссом
-			SpawnCircle(true, 553,0,200,8,450,5000,7000,handlers,event,entity);
+			SpawnCircle(true, 912,0,200,8,450,6000,3000,handlers,event,entity); // 3
 
 			setTimeout(() => purple = false, 2000);
 
@@ -87,10 +88,10 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 		// от него (круг перед боссом) -> к нему (бублик вокруг босса) -> [волны] -> от него (большой круг перед боссом)
 		} else if (green && boss_thirty) {
 			handlers['text']({"type": "text","sub_type": "message","message": "OUT > IN","message_RU": "От него > К нему"});
-			handlers['text']({"type": "text","sub_type": "message","delay":6000,"message": "OUT","message_RU": "От него"});
+			handlers['text']({"type": "text","sub_type": "message","delay": 6000,"message": "OUT","message_RU": "От него"});
 
 			// большой круг перед боссом
-			SpawnCircle(true, 553,0,200,8,450,7000,9000,handlers,event,entity);
+			SpawnCircle(true, 912,0,200,8,450,7000,5000,handlers,event,entity); // 3
 
 			setTimeout(() => purple = false, 2000);
 
@@ -102,7 +103,7 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 			handlers['text']({"type": "text","sub_type": "message","delay": 6000,"message": "OUT","message_RU": "От него"});
 
 			// большой круг перед боссом
-			SpawnCircle(true, 553,0,200,8,450,7000,9000,handlers,event,entity);
+			SpawnCircle(true, 912,0,200,8,450,7000,5000,handlers,event,entity); // 3
 
 			setTimeout(() => purple = false, 2000);
 		}
@@ -124,7 +125,7 @@ let debuffs_targe = {
 
 let debuff_call_event = null;
 function start_Sailing_Instance(handlers, event, entity, dispatch) {
-	const abnormality_change = (added, event) => {
+	const abnormality_change = (added, handlers, event) => {
 		if ((player.isMe(event.target) || player.playersInParty.includes(event.target.toString())) && debuffs_targe[event.id]) {
 			if (added) {
 				if (debuff_call_event) {
@@ -155,7 +156,7 @@ module.exports = {
 	},
 
 	// 1 BOSS
-	"s-3020-1900-104-0": [{"type": "text","sub_type": "message","message": "Suction (Dodge)","message_RU": "Высасывание (Выйти)"},{"type": "func","func": SpawnCircle.bind(null,true,553,0,0,15,350,200,3000)}],
+	"s-3020-1900-104-0": [{"type": "text","sub_type": "message","message": "Suction (Dodge)","message_RU": "Высасывание (Выйти)"},{"type": "func","func": SpawnCircle.bind(null,true,553,0,0,15,450,200,3000)}],
 
 	// 2 BOSS
 	"s-3020-1200-103-0": [{"type": "text","sub_type": "message","message": "Suction (Dodge)","message_RU": "Высасывание"}],
