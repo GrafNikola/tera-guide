@@ -79,21 +79,20 @@ module.exports = {
 		({ player, entity, library, effect } = dispatch.require.library);
 	},
 
-	"h-3027-1000-90": [{"type": "func","func": skilld_event.bind(null, 90)}],
-	"h-3027-1000-60": [{"type": "func","func": skilld_event.bind(null, 60)}],
-	"h-3027-1000-30": [{"type": "func","func": skilld_event.bind(null, 30)}],
+	"h-3027-1000-89": [{"type": "func","func": skilld_event.bind(null, 90)}],
+	"h-3027-1000-59": [{"type": "func","func": skilld_event.bind(null, 60)}],
+	"h-3027-1000-29": [{"type": "func","func": skilld_event.bind(null, 30)}],
 	"h-3027-1000-69": [{"type": "func","func": skilld_event.bind(null, 69)}],
 	"h-3027-1000-39": [{"type": "func","func": skilld_event.bind(null, 39)}],
 
-	"s-3027-1001-255-0": [{"type": "func","func": SpawnVector.bind(null,553,0,0,0,3000,0,5000)}], //0
-	"s-3027-1002-256-0": [{"type": "func","func": SpawnVector.bind(null,553,0,0,0,3000,0,5000)}], //60
-	"s-3027-1003-257-0": [{"type": "func","func": SpawnVector.bind(null,553,0,0,0,3000,0,5000)}], //0
-	"s-3027-1004-258-0": [{"type": "func","func": SpawnVector.bind(null,553,0,0,0,3000,0,5000)}], //60
+	//"s-3027-1001-255-0": [{"type": "func","func": SpawnVector.bind(null,553,0,0,0,3000,0,5000)}], //0
+	//"s-3027-1002-256-0": [{"type": "func","func": SpawnVector.bind(null,553,0,0,0,3000,0,5000)}], //60
+	//"s-3027-1003-257-0": [{"type": "func","func": SpawnVector.bind(null,553,0,0,0,3000,0,5000)}], //0
+	//"s-3027-1004-258-0": [{"type": "func","func": SpawnVector.bind(null,553,0,0,0,3000,0,5000)}], //60
 
 	"s-3027-1000-108-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Strike (slow)","message_RU": "Меч (медленный)"}],
 
 	"s-3027-1000-112-0": [{"type": "text","sub_type": "message","message": "Back | Strike","message_RU": "Прыжок назад | Меч"}],
-"s-3027-1000-112-1": [{"type": "func","func": SpawnVector.bind(null,445,90,0,0,500,100,2000)}],
 
 	//"s-3027-1000-130-0": [{"type": "text","sub_type": "message","message": "random aggro","message_RU": "Таргет"}],
 	"s-3027-1000-134-0": [{"type": "text","sub_type": "message","message": "Turn around","message_RU": "Поворот | Удар назад"}],
