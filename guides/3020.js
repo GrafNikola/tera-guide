@@ -11,7 +11,8 @@ let purple = false;
 let boss_thirty = false;
 let print = false;
 
-// 2000 => 4000 => 6000
+//   1       2      волны      3
+// 2000 => 4000 => [6000] => 6000+2000
 function skilld_event(skillid, handlers, event, entity, dispatch) {
 	// (зеленый) "Ближе!"
 	if (skillid == 121) {
@@ -125,7 +126,7 @@ let debuffs_targe = {
 
 let debuff_call_event = null;
 function start_Sailing_Instance(handlers, event, entity, dispatch) {
-	const abnormality_change = (added, handlers, event) => {
+	const abnormality_change = (added, event) => {
 		if ((player.isMe(event.target) || player.playersInParty.includes(event.target.toString())) && debuffs_targe[event.id]) {
 			if (added) {
 				if (debuff_call_event) {
