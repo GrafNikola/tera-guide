@@ -101,8 +101,8 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 		if (debuff != null) {
 			handlers['text']({
 				"sub_type": "message",
-				"message": (`${boss_skill[skillid].msgt} | ${CK_TipMsg[(qbacting + debuff +1) %2].msgt}`),
-				"message_RU": (`${boss_skill[skillid].msg} | ${CK_TipMsg[(qbacting + debuff +1) %2].msg}`)
+				"message": (`Ice inside | ${boss_skill[skillid].msgt} | ${CK_TipMsg[(qbacting + debuff +1) %2].msgt}`),
+				"message_RU": (`Внутри лед | ${boss_skill[skillid].msg} | ${CK_TipMsg[(qbacting + debuff +1) %2].msg}`)
 			});
 			blue = true;
 			red  = false;
@@ -117,8 +117,8 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 		if (debuff != null) {
 			handlers['text']({
 				"sub_type": "message",
-				"message": (`${boss_skill[skillid].msgt} | ${CK_TipMsg[(qbacting + debuff) %2].msgt}`),
-				"message_RU": (`${boss_skill[skillid].msg} | ${CK_TipMsg[(qbacting + debuff) %2].msg}`)
+				"message": (`Fire inside | ${boss_skill[skillid].msgt} | ${CK_TipMsg[(qbacting + debuff) %2].msgt}`),
+				"message_RU": (`Внутри огонь | ${boss_skill[skillid].msg} | ${CK_TipMsg[(qbacting + debuff) %2].msg}`)
 			});
 			blue = false;
 			red  = true;
@@ -154,13 +154,13 @@ function start_debuff(handlers, event, entity, dispatch) {
 				if (blue) {
 					handlers['text']({
 						"sub_type": "message",
-						"message": (` ${CK_TipMsg[(qbacting + debuff +1) %2].msgt}`),
-						"message_RU": (` ${CK_TipMsg[(qbacting + debuff +1) %2].msg}`)
+						"message": (`${CK_TipMsg[(qbacting + debuff +1) %2].msgt}`),
+						"message_RU": (`${CK_TipMsg[(qbacting + debuff +1) %2].msg}`)
 					});
 				} else if (red) {
 					handlers['text']({
 						"sub_type": "message",
-						"message": (` ${CK_TipMsg[(qbacting + debuff) %2].msgt}`),
+						"message": (`${CK_TipMsg[(qbacting + debuff) %2].msgt}`),
 						"message_RU": (`${CK_TipMsg[(qbacting + debuff) %2].msg}`)
 					});
 				}
@@ -201,14 +201,14 @@ module.exports = {
 	"s-3126-1000-1157-0": [{"type": "text","sub_type": "message","message": "Change","message_RU": "Смена"},{"type": "func","func": start_debuff}],
 	"s-3126-1000-2157-0": [{"type": "text","sub_type": "message","message": "Change","message_RU": "Смена"},{"type": "func","func": start_debuff}],
 	"s-3126-1000-1103-0": [{"type": "text","sub_type": "message","message": "Tail (Flying!!)","message_RU": "Хвост (полет!!)"},
-						   {"type": "func","func": SpawnSemicircle.bind(null,140,260,912,0,0,10,500,0,1500)},
-						   {"type": "func","func": SpawnVector.bind(null,912,0,0,135,500,0,1500)},
-						   {"type": "func","func": SpawnVector.bind(null,912,0,0,260,500,0,1500)}
+						   {"type": "func","func": SpawnSemicircle.bind(null,140,260,912,0,0,10,500,0,2000)},
+						   {"type": "func","func": SpawnVector.bind(null,912,0,0,135,500,0,2000)},
+						   {"type": "func","func": SpawnVector.bind(null,912,0,0,260,500,0,2000)}
 	],
 	"s-3126-1000-2103-0": [{"type": "text","sub_type": "message","message": "Tail (Flying!!)","message_RU": "Хвост (полет!!)"},
-						   {"type": "func","func": SpawnSemicircle.bind(null,140,260,912,0,0,10,500,0,1500)},
-						   {"type": "func","func": SpawnVector.bind(null,912,0,0,135,500,0,1500)},
-						   {"type": "func","func": SpawnVector.bind(null,912,0,0,260,500,0,1500)}
+						   {"type": "func","func": SpawnSemicircle.bind(null,140,260,912,0,0,10,500,0,2000)},
+						   {"type": "func","func": SpawnVector.bind(null,912,0,0,135,500,0,2000)},
+						   {"type": "func","func": SpawnVector.bind(null,912,0,0,260,500,0,2000)}
 	],
 	"s-3126-1000-1118-0": [{"type": "text","sub_type": "message","message": "Jump","message_RU": "Прыжок"}],
 	"s-3126-1000-1118-1": [{"type": "text","sub_type": "message","message": "Dodge","message_RU": "Эвейд!"}],
@@ -224,14 +224,14 @@ module.exports = {
 	"s-3126-1000-1206-2": [{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,15,350,200,3000)}],
 	"s-3126-1000-2206-2": [{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,15,350,200,3000)}],
 	"s-3126-1000-1153-0": [{"type": "text","sub_type": "message","message": "Tail (Flying!!)","message_RU": "Хвост (полет!!)"},
-						   {"type": "func","func": SpawnSemicircle.bind(null,140,260,912,0,0,10,500,0,1500)},
-						   {"type": "func","func": SpawnVector.bind(null,912,0,0,135,500,0,1500)},
-						   {"type": "func","func": SpawnVector.bind(null,912,0,0,260,500,0,1500)}
+						   {"type": "func","func": SpawnSemicircle.bind(null,140,260,912,0,0,10,500,0,2000)},
+						   {"type": "func","func": SpawnVector.bind(null,912,0,0,135,500,0,2000)},
+						   {"type": "func","func": SpawnVector.bind(null,912,0,0,260,500,0,2000)}
 	],
 	"s-3126-1000-2153-0": [{"type": "text","sub_type": "message","message": "Tail (Flying!!)","message_RU": "Хвост (полет!!)"},
-						   {"type": "func","func": SpawnSemicircle.bind(null,140,260,912,0,0,10,500,0,1500)},
-						   {"type": "func","func": SpawnVector.bind(null,912,0,0,135,500,0,1500)},
-						   {"type": "func","func": SpawnVector.bind(null,912,0,0,260,500,0,1500)}
+						   {"type": "func","func": SpawnSemicircle.bind(null,140,260,912,0,0,10,500,0,2000)},
+						   {"type": "func","func": SpawnVector.bind(null,912,0,0,135,500,0,2000)},
+						   {"type": "func","func": SpawnVector.bind(null,912,0,0,260,500,0,2000)}
 	],
 	// AOE лед (большой)
 	"s-3126-1000-1104-0": [{"type": "text","sub_type": "message","message": "Ice storm DOTs","message_RU": "Ледяные лужи"},{"type": "func","func": SpawnCircle.bind(null,false,553,180,80,8,520,100,5000)}],
