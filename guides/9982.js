@@ -85,23 +85,23 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 			handlers['text']({
 				"sub_type": "message",
 				"message_RU": "Полностью заряжен!!!",
-				"message": "fully charged!!"
+				"message": "Fully charged!!"
 			});
 			handlers['text']({
 				"sub_type": "notification",
 				"message_RU": "Полностью заряжен!!!",
-				"message": "fully charged!!"
+				"message": "Fully charged!!"
 			});
 		} else if (Level== 2 && stepRUo) {
 			handlers['text']({
 				"sub_type": "message",
 				"message_RU": "Полностью заряжен!!!",
-				"message": "fully charged!!"
+				"message": "Fully charged!!"
 			});	
 			handlers['text']({
 				"sub_type": "notification",
 				"message_RU": "Полностью заряжен!!!",
-				"message": "fully charged!!"
+				"message": "Fully charged!!"
 			});
 		}
 		if (powerMsg !== null &&  skillid !== 399) {
@@ -178,15 +178,15 @@ module.exports = {
 						 {"type": "func","func": SpawnVector.bind(null,553,0,0,270,500,0,5000)},
 						 {"type": "func","func": SpawnVector.bind(null,553,180,0,90,500,0,5000)}
 	],
-	"s-982-2000-301-0": [{"type": "text","sub_type": "message","message": "↓ Get OUT + dodge","message_RU": "ОТ НЕГО | Эвейд"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,15,260,0,3000)}],
-	"s-982-2000-302-0": [{"type": "text","sub_type": "message","message": "↑ Get IN + dodge","message_RU": "К НЕМУ | Эвейд"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,15,260,0,3000)}],
+	"s-982-2000-301-0": [{"type": "text","sub_type": "message","message": "Get OUT + dodge","message_RU": "ОТ НЕГО | Эвейд"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,15,260,0,3000)}],
+	"s-982-2000-302-0": [{"type": "text","sub_type": "message","message": "Get IN + dodge","message_RU": "К НЕМУ | Эвейд"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,15,260,0,3000)}],
 
 	// 3 БОСС
 	"h-982-3000-99": [{"type": "func","func": start_boss}],
 	"s-982-3000-118-0": [{"type": "text","sub_type": "message","message": "Front triple","message_RU": "Передняя комба"},{"type": "func","func": skilld_event.bind(null, 118)}],
-	"s-982-3000-143-0": [{"type": "text","sub_type": "message","message": "←← Left rear ←←","message_RU": "Слева сзади"},{"type": "func","func": skilld_event.bind(null, 143)}],
-	"s-982-3000-145-0": [{"type": "text","sub_type": "message","message": "←← Left rear ←←","message_RU": "Слева сзади"},{"type": "func","func": skilld_event.bind(null, 145)}],
-	"s-982-3000-146-0": [{"type": "text","sub_type": "message","message": "←← Left rear ←← (pulses)","message_RU": "Слева сзади (бублик)"},
+	"s-982-3000-143-0": [{"type": "text","sub_type": "message","message": "Left rear","message_RU": "Слева сзади"},{"type": "func","func": skilld_event.bind(null, 143)}],
+	"s-982-3000-145-0": [{"type": "text","sub_type": "message","message": "Left rear","message_RU": "Слева сзади"},{"type": "func","func": skilld_event.bind(null, 145)}],
+	"s-982-3000-146-0": [{"type": "text","sub_type": "message","message": "Left rear (pulses)","message_RU": "Слева сзади (бублик)"},
 						 {"type": "func","func": SpawnMarker.bind(null,false,215,370,0,8000,true,null)},
 						 {"type": "func","func": SpawnCircle.bind(null,false,445,215,370,15,160,2500,8000)},
 						 {"type": "func","func": SpawnCircle.bind(null,false,445,215,370,12,320,2500,8000)},
@@ -195,7 +195,7 @@ module.exports = {
 						 {"type": "func","func": SpawnCircle.bind(null,false,445,215,370,6,800,2500,8000)},
 						 {"type": "func","func": skilld_event.bind(null, 146)}
 	],
-	"s-982-3000-154-0": [{"type": "text","sub_type": "message","message": "←← Left rear ←← (pulses)","message_RU": "Слева сзади (бублик)"},
+	"s-982-3000-154-0": [{"type": "text","sub_type": "message","message": "Left rear (pulses)","message_RU": "Слева сзади (бублик)"},
 						 {"type": "func","func": SpawnMarker.bind(null,false,215,370,0,8000,true,null)},
 						 {"type": "func","func": SpawnCircle.bind(null,false,445,215,370,15,160,2500,8000)},
 						 {"type": "func","func": SpawnCircle.bind(null,false,445,215,370,12,320,2500,8000)},
@@ -204,9 +204,9 @@ module.exports = {
 						 {"type": "func","func": SpawnCircle.bind(null,false,445,215,370,6,800,2500,8000)},
 					 	{"type": "func","func": skilld_event.bind(null, 154)}  
 	],
-	"s-982-3000-144-0": [{"type": "text","sub_type": "message","message": "→→ Right rear →→","message_RU": "Справа сзади"},{"type": "func","func": skilld_event.bind(null, 144)}],
-	"s-982-3000-147-0": [{"type": "text","sub_type": "message","message": "→→ Right rear →→","message_RU": "Справа сзади"},{"type": "func","func": skilld_event.bind(null, 147)}],
-	"s-982-3000-148-0": [{"type": "text","sub_type": "message","message": "→→ Right rear →→ (pulses)","message_RU": "Справа сзади (бублик)"},
+	"s-982-3000-144-0": [{"type": "text","sub_type": "message","message": "Right rear","message_RU": "Справа сзади"},{"type": "func","func": skilld_event.bind(null, 144)}],
+	"s-982-3000-147-0": [{"type": "text","sub_type": "message","message": "Right rear","message_RU": "Справа сзади"},{"type": "func","func": skilld_event.bind(null, 147)}],
+	"s-982-3000-148-0": [{"type": "text","sub_type": "message","message": "Right rear (pulses)","message_RU": "Справа сзади (бублик)"},
 						 {"type": "func","func": SpawnMarker.bind(null,false,155,388,0,8000,true,null)}, 
 						 {"type": "func","func": SpawnCircle.bind(null,false,445,155,388,15,160,2500,8000)},
 						 {"type": "func","func": SpawnCircle.bind(null,false,445,155,388,12,320,2500,8000)},
@@ -215,7 +215,7 @@ module.exports = {
 						 {"type": "func","func": SpawnCircle.bind(null,false,445,155,388,6,800,2500,8000)},
 						 {"type": "func","func": skilld_event.bind(null, 148)}
 	],
-	"s-982-3000-155-0": [{"type": "text","sub_type": "message","message": "→→ Right rear →→ (pulses)","message_RU": "Справа сзади (бублик)"},
+	"s-982-3000-155-0": [{"type": "text","sub_type": "message","message": "Right rear (pulses)","message_RU": "Справа сзади (бублик)"},
 						 {"type": "func","func": SpawnMarker.bind(null,false,155,388,0,8000,true,null)}, 
 						 {"type": "func","func": SpawnCircle.bind(null,false,445,155,388,15,160,2500,8000)},
 						 {"type": "func","func": SpawnCircle.bind(null,false,445,155,388,12,320,2500,8000)},

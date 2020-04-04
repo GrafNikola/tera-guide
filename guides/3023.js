@@ -129,7 +129,7 @@ module.exports = {
 	"s-3023-1000-110-0": [{"type": "text","sub_type": "message","message": 'Stun',"message_RU": "Передний стан"},
 						  {"type": "func","func": SpawnCircle.bind(null,false,553,0,175,10,225,0,6000)}
 	],
-	"s-3023-1000-111-0": [{"type": "text","sub_type": "message","message": '↓ Left pull',"message_RU": "| Левая полоса"},
+	"s-3023-1000-111-0": [{"type": "text","sub_type": "message","message": '| Left pull',"message_RU": "| Левая полоса"},
 						  {"type": "func","func": SpawnVector.bind(null,553,270,200,180,500,0,2000)},
 						  {"type": "func","func": SpawnVector.bind(null,553,270,200,0,300,0,2000)},
 						  {"type": "func","func": SpawnVector.bind(null,553,0,0,180,500,0,2000)},
@@ -137,7 +137,7 @@ module.exports = {
 						  {"type": "func","func": SpawnVector.bind(null,553,0,300,270,200,0,2000)},
 						  {"type": "func","func": SpawnVector.bind(null,553,180,500,270,200,0,2000)}
 	],
-	"s-3023-1000-112-0": [{"type": "text","sub_type": "message","message": 'Right pull ↓',"message_RU": "Правая полоса |"},
+	"s-3023-1000-112-0": [{"type": "text","sub_type": "message","message": 'Right pull |',"message_RU": "Правая полоса |"},
 						  {"type": "func","func": SpawnVector.bind(null,553,90,200,180,500,0,2000)},
 						  {"type": "func","func": SpawnVector.bind(null,553,90,200,0,300,0,2000)},
 						  {"type": "func","func": SpawnVector.bind(null,553,0,0,180,500,0,2000)},
@@ -145,7 +145,7 @@ module.exports = {
 						  {"type": "func","func": SpawnVector.bind(null,553,0,300,90,200,0,2000)},
 						  {"type": "func","func": SpawnVector.bind(null,553,180,500,90,200,0,2000)}
 	],
-	"s-3023-1000-113-0": [{"type": "text","sub_type": "message","message": '↓ Left pull',"message_RU": "| Левая полоса"},
+	"s-3023-1000-113-0": [{"type": "text","sub_type": "message","message": '| Left pull',"message_RU": "| Левая полоса"},
 						  {"type": "func","func": skilld_event.bind(null, 1113)},
 						  {"type": "func","func": SpawnVector.bind(null,553,270,200,180,500,0,2000)},
 						  {"type": "func","func": SpawnVector.bind(null,553,270,200,0,300,0,2000)},
@@ -154,7 +154,7 @@ module.exports = {
 						  {"type": "func","func": SpawnVector.bind(null,553,0,300,270,200,0,2000)},
 						  {"type": "func","func": SpawnVector.bind(null,553,180,500,270,200,0,2000)}
 	],
-	"s-3023-1000-114-0": [{"type": "text","sub_type": "message","message": 'Right pull ↓',"message_RU": "Правая полоса |"},
+	"s-3023-1000-114-0": [{"type": "text","sub_type": "message","message": 'Right pull |',"message_RU": "Правая полоса |"},
 						  {"type": "func","func": skilld_event.bind(null, 1114)},
 						  {"type": "func","func": SpawnVector.bind(null,553,90,200,180,500,0,2000)},
 						  {"type": "func","func": SpawnVector.bind(null,553,90,200,0,300,0,2000)},

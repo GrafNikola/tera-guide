@@ -15,8 +15,8 @@ module.exports = {
 	//"s-3101-1000-121-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "right","message_RU": "право"}],
 	//"s-3101-1000-122-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "left","message_RU": "лево"}],
 	"s-3101-1000-124-0": [{"type": "text","class_position":"tank","sub_type": "msgcg","message": "Stun attack","message_RU": "Стан (фаст)"}],
-	"s-3101-1000-127-0": [{"type": "text","class_position":"dps","sub_type": "message","message": "back","message_RU": "|Полоса| (фаст)"},
-						  {"type": "text","class_position":"heal","sub_type": "message","message": "back","message_RU": "|Полоса| (фаст)"}],
+	"s-3101-1000-127-0": [{"type": "text","class_position":"dps","sub_type": "message","message": "Back","message_RU": "|Полоса| (фаст)"},
+						  {"type": "text","class_position":"heal","sub_type": "message","message": "Back","message_RU": "|Полоса| (фаст)"}],
 	//"s-3101-1000-128-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Triple Attack","message_RU": "Комба"}],
 	"s-3101-1000-131-0": [{"type": "text","class_position":"dps","sub_type": "message","message": "Ranged DPS attention","message_RU": "Волна назад (фаст)"},
 						  {"type": "text","class_position":"heal","sub_type": "message","message": "Ranged DPS attention","message_RU": "Волна назад (фаст)"}
@@ -58,10 +58,10 @@ module.exports = {
 	"s-3101-2000-228-0": [{"type": "text","sub_type": "message","message": "Team up","message_RU": "Камни (вместе)!!!"}],
 	"s-3101-2000-230-0": [{"type": "text","sub_type": "message","message": "AOE","message_RU": "AOE"}],
 
-	"s-3101-2000-231-0": [{"type": "text","sub_type": "message","message": "OUT safe ↓","message_RU": "ОТ НЕГО"},
+	"s-3101-2000-231-0": [{"type": "text","sub_type": "message","message": "OUT safe","message_RU": "ОТ НЕГО"},
 						  {"type": "func","func": SpawnCircle.bind(null,false,553,0,0,10,300,0,3000)}
 	],
-	"s-3101-2000-232-0": [{"type": "text","sub_type": "message","message": "IN safe ↑","message_RU": "К НЕМУ"},
+	"s-3101-2000-232-0": [{"type": "text","sub_type": "message","message": "IN safe","message_RU": "К НЕМУ"},
 						  {"type": "func","func": SpawnCircle.bind(null,false,553,0,0,10,300,0,3000)},
 						  {"type": "func","func": SpawnCircle.bind(null,false,553,0,0,3,875,0,3000)}
 	],

@@ -104,18 +104,18 @@ function change_colour(colour) {
 
 // heart thrust+anticlockwise spin+right swipe+AOEs from out to in
 let SPAWNING_FIRST_CIRCLE_FLOWERS = [
-	{"type": "text","class_position":"tank","sub_type": "message","message": "Right→ > OUT to IN","message_RU": "Вправо > наружу + внутрь"},
-	{"type": "text","class_position":"dps","sub_type": "message","message": "Left← > OUT to IN","message_RU": "Влево > наружу + внутрь"},
-	{"type": "text","class_position":"heal","sub_type": "message","message": "Left← > OUT to IN","message_RU": "Влево > наружу + внутрь"},
+	{"type": "text","class_position":"tank","sub_type": "message","message": "Right > OUT to IN","message_RU": "Вправо > наружу + внутрь"},
+	{"type": "text","class_position":"dps","sub_type": "message","message": "Left > OUT to IN","message_RU": "Влево > наружу + внутрь"},
+	{"type": "text","class_position":"heal","sub_type": "message","message": "Left > OUT to IN","message_RU": "Влево > наружу + внутрь"},
 	{"type": "func","func": SpawnMarker.bind(null,false,270,250,0,2500,true,null)},
 	{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,18,143,0,6000)},
 	{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,12,293,0,6000)}
 ];
 // heart thrust+clockwise spin+left swipe+AOEs from in to out
 let SPAWNING_SECOND_CIRCLE_FLOWERS = [
-	{"type": "text","class_position":"tank","sub_type": "message","message": "Left← > IN to OUT","message_RU": "Влево > внутрь + наружу"},
-	{"type": "text","class_position":"dps","sub_type": "message","message": "Right→ > IN to OUT","message_RU": "Вправо > внутрь + наружу"},
-	{"type": "text","class_position":"heal","sub_type": "message","message": "Right→ > IN to OUT","message_RU": "Вправо > внутрь + наружу"},
+	{"type": "text","class_position":"tank","sub_type": "message","message": "Left > IN to OUT","message_RU": "Влево > внутрь + наружу"},
+	{"type": "text","class_position":"dps","sub_type": "message","message": "Right > IN to OUT","message_RU": "Вправо > внутрь + наружу"},
+	{"type": "text","class_position":"heal","sub_type": "message","message": "Right > IN to OUT","message_RU": "Вправо > внутрь + наружу"},
 	{"type": "func","func": SpawnMarker.bind(null,false,90,250,0,2500,true,null)},
 	{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,18,157,0,6000)},
 	{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,12,307,0,6000)}
@@ -123,14 +123,14 @@ let SPAWNING_SECOND_CIRCLE_FLOWERS = [
 
 module.exports = {
 	// 1 BOSS, NOT ENRAGED
-	"s-920-1000-1117-0": [{"type": "text","sub_type": "message","message": "Stay IN↑ + Get OUT↓","message_RU": "Внутрь + Наружу"}],
-	"s-920-1000-1116-0": [{"type": "text","sub_type": "message","message": "Get OUT↓ + Stay IN↑","message_RU": "Наружу + Внутрь"}],
+	"s-920-1000-1117-0": [{"type": "text","sub_type": "message","message": "Stay IN + Get OUT","message_RU": "Внутрь + Наружу"}],
+	"s-920-1000-1116-0": [{"type": "text","sub_type": "message","message": "Get OUT + Stay IN","message_RU": "Наружу + Внутрь"}],
 	"s-920-1000-1109-0": [{"type": "text","sub_type": "message","message": "Back attack","message_RU": "Откид назад"}],
 	"s-920-1000-1130-0": [{"type": "text","sub_type": "message","message": "Full > Outer > Inner","message_RU": "Общий > Внешний > Внутренний"}],
 
 	// 1 BOSS, ENRAGED
-	"s-920-1000-2117-0": [{"type": "text","sub_type": "message","message": "Stay IN↑ + Get OUT↓","message_RU": "Внутрь + Наружу"}],
-	"s-920-1000-2116-0": [{"type": "text","sub_type": "message","message": "Get OUT↓ + Stay IN↑","message_RU": "Наружу + Внутрь"}],
+	"s-920-1000-2117-0": [{"type": "text","sub_type": "message","message": "Stay IN + Get OUT","message_RU": "Внутрь + Наружу"}],
+	"s-920-1000-2116-0": [{"type": "text","sub_type": "message","message": "Get OUT + Stay IN","message_RU": "Наружу + Внутрь"}],
 	"s-920-1000-2109-0": [{"type": "text","sub_type": "message","message": "Back attack","message_RU": "Задняя"}],
 	"s-920-1000-2130-0": [{"type": "text","sub_type": "message","message": "Full > Inner > Outer","message_RU": "Общий > Внутренний > Внешний"}],
 
@@ -157,12 +157,12 @@ module.exports = {
 	"s-920-2000-2110-0": [{"type": "text","sub_type": "message","message": "Stun attack","message_RU": "Передний стан"}],
 	"s-920-2000-2108-0": [{"type": "text","sub_type": "message","message": "Target swing","message_RU": "Таргет"}],
 	"s-920-2000-2113-0": [{"type": "text","sub_type": "message","message": "Right hand swing","message_RU": "Правый"}],
-	"s-920-2000-2114-0": [{"type": "text","sub_type": "message","message": "left hand swing","message_RU": "Левый"}],
+	"s-920-2000-2114-0": [{"type": "text","sub_type": "message","message": "Left hand swing","message_RU": "Левый"}],
 
 	// 2 BOSS, SPECIAL ATTACKS
-	"s-920-2000-3119-0": [{"type": "text","sub_type": "message","message": "Red: Get OUT↓","message_RU": "Наружу (красный)"}],
-	"s-920-2000-3220-0": [{"type": "text","sub_type": "message","message": "Blue: Stay IN↑","message_RU": "Внутрь (синий)"}],
-	"s-920-2000-3116-0": [{"type": "text","sub_type": "message","message": "Dodge + Stay IN↑","message_RU": "Круги + Крутилка"}],
+	"s-920-2000-3119-0": [{"type": "text","sub_type": "message","message": "Red: Get OUT","message_RU": "Наружу (красный)"}],
+	"s-920-2000-3220-0": [{"type": "text","sub_type": "message","message": "Blue: Stay IN","message_RU": "Внутрь (синий)"}],
+	"s-920-2000-3116-0": [{"type": "text","sub_type": "message","message": "Dodge + Stay IN","message_RU": "Круги + Крутилка"}],
 	"h-920-2000-99": [{"type": "func","func": start_boss}],
 	"h-920-2000-50": [{"type": "func","func": print_fifty}],  // 50%
 	"h-920-2000-21": [{"type": "func","func": start_boss}],

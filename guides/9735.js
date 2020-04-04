@@ -55,7 +55,7 @@ module.exports = {
 	],
 
 	// 3 BOSS
-	"s-735-3000-116-0": [{"type": "text","sub_type": "message","message": "RIGHT →↘","message_RU": "Справа"},
+	"s-735-3000-116-0": [{"type": "text","sub_type": "message","message": "RIGHT","message_RU": "Справа"},
 		{"type": "func","func": SpawnItem.bind(null,553,120,250,0,3000)},
 		{"type": "func","func": SpawnItem.bind(null,553,130,240,0,3000)},
 		{"type": "func","func": SpawnItem.bind(null,553,140,230,0,3000)},
@@ -69,7 +69,7 @@ module.exports = {
 		{"type": "func","func": SpawnItem.bind(null,553,340,210,0,3000)},
 		{"type": "func","func": SpawnVector.bind(null,553,350,210,0,290,0,3000)}
 	],
-	"s-735-3000-117-0": [{"type": "text","sub_type": "message","message": "LEFT ←↙","message_RU": "Слева"},
+	"s-735-3000-117-0": [{"type": "text","sub_type": "message","message": "LEFT","message_RU": "Слева"},
 		{"type": "func","func": SpawnVector.bind(null,553,10,210,0,290,0,3000)},
 		{"type": "func","func": SpawnItem.bind(null,553,20,210,0,3000)},
 		{"type": "func","func": SpawnItem.bind(null,553,30,220,0,3000)},
@@ -83,7 +83,7 @@ module.exports = {
 		{"type": "func","func": SpawnItem.bind(null,553,200,210,0,3000)},
 		{"type": "func","func": SpawnVector.bind(null,553,190,210,180,290,0,3000)}
 	],
-	"s-735-3000-118-0": [{"type": "text","sub_type": "message","message": "LEFT ←↙","message_RU": "Слева"},
+	"s-735-3000-118-0": [{"type": "text","sub_type": "message","message": "LEFT","message_RU": "Слева"},
 		{"type": "func","func": SpawnVector.bind(null,553,10,210,0,290,0,3000)},
 		{"type": "func","func": SpawnItem.bind(null,553,20,210,0,3000)},
 		{"type": "func","func": SpawnItem.bind(null,553,30,220,0,3000)},
@@ -97,7 +97,7 @@ module.exports = {
 		{"type": "func","func": SpawnItem.bind(null,553,200,210,0,3000)},
 		{"type": "func","func": SpawnVector.bind(null,553,190,210,180,290,0,3000)}
 	],
-	"s-735-3000-119-0": [{"type": "text","sub_type": "message","message": "RIGHT →↘","message_RU": "Справа"},
+	"s-735-3000-119-0": [{"type": "text","sub_type": "message","message": "RIGHT","message_RU": "Справа"},
 		{"type": "func","func": SpawnItem.bind(null,553,120,250,0,3000)},
 		{"type": "func","func": SpawnItem.bind(null,553,130,240,0,3000)},
 		{"type": "func","func": SpawnItem.bind(null,553,140,230,0,3000)},
@@ -117,5 +117,5 @@ module.exports = {
 		{"type": "text","sub_type": "message","message": "SHIELD!","message_RU": "ЩИТ!!!" },
 		{"type": "text","sub_type": "message","delay": 90000,"message": "After 10s SHIELD! ", "message_RU": "Через 10 сек. ЩИТ!!"}
 	],
-	"s-735-3000-324-0": [{"type": "text","sub_type": "message","message": "Get OUT↓","message_RU": "Эвейд"}]
+	"s-735-3000-324-0": [{"type": "text","sub_type": "message","message": "Get OUT","message_RU": "Эвейд"}]
 };

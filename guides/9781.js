@@ -83,14 +83,14 @@ module.exports = {
 	// 1 BOSS
 	
 	"s-781-1000-2401": [
-		{"type": "text","sub_type": "message","message": "right","message_RU": "Откид вправо"},
+		{"type": "text","sub_type": "message","message": "Right","message_RU": "Откид вправо"},
 		{"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": -2.3, "ownerName": "SAFE SPOT", "message": "SAFE"},
 		{"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": -1, "ownerName": "SAFE SPOT", "message": "SAFE"},
 		{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": -2.3},
 		{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": -1}
 	],
 	"s-781-1000-2402": [
-		{"type": "text","sub_type": "message","message": "left","message_RU": "Откид влево"},
+		{"type": "text","sub_type": "message","message": "Left","message_RU": "Откид влево"},
 		{"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": 2.3, "ownerName": "SAFE SPOT", "message": "SAFE"},
 		{"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": 1, "ownerName": "SAFE SPOT", "message": "SAFE"},
 		{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": 2.3},
@@ -99,17 +99,17 @@ module.exports = {
 	"s-781-1000-2304-0": [{"type": "text","sub_type": "message","message": "Flying","message_RU": "Взлет"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,10,300,0,6000)}],
 	"s-781-1000-2303-0": [{"type": "text","sub_type": "message","message": "Spin","message_RU": "Крутилка"}],
 	"s-781-1000-2113-0": [{"type": "text","sub_type": "message","message": "Front + AoEs","message_RU": "Передняя | AOE"}],
-	"s-781-1000-2308-0": [{"type": "text","sub_type": "message","message": "out","message_RU": "Наружу"}],
-	"s-781-1000-2309-0": [{"type": "text","sub_type": "message","message": "in","message_RU": "Внутрь"}],
+	"s-781-1000-2308-0": [{"type": "text","sub_type": "message","message": "OUT","message_RU": "Наружу"}],
+	"s-781-1000-2309-0": [{"type": "text","sub_type": "message","message": "IN","message_RU": "Внутрь"}],
 	"s-781-1000-1401": [
-		{"type": "text","sub_type": "message","message": "right","message_RU": "Откид вправо"},
+		{"type": "text","sub_type": "message","message": "Right","message_RU": "Откид вправо"},
 		{"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": -2.3, "ownerName": "SAFE SPOT", "message": "SAFE"},
 		{"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": -1, "ownerName": "SAFE SPOT", "message": "SAFE"},
 		{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": -2.3},
 		{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": -1}
 	],
 	"s-781-1000-1402": [
-		{"type": "text","sub_type": "message","message": "left","message_RU": "Откид влево"},
+		{"type": "text","sub_type": "message","message": "Left","message_RU": "Откид влево"},
 		{"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": 2.3, "ownerName": "SAFE SPOT", "message": "SAFE"},
 		{"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": 1, "ownerName": "SAFE SPOT", "message": "SAFE"},
 		{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": 2.3},
@@ -118,8 +118,8 @@ module.exports = {
 	"s-781-1000-1304-0": [{"type": "text","sub_type": "message","message": "Flying","message_RU": "Взлет"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,10,300,0,6000)}],
 	"s-781-1000-1303-0": [{"type": "text","sub_type": "message","message": "Spin","message_RU": "Крутилка"}],
 	"s-781-1000-1113-0": [{"type": "text","sub_type": "message","message": "Front + AoEs","message_RU": "Передняя | AOE"}],
-	"s-781-1000-1308-0": [{"type": "text","sub_type": "message","message": "out","message_RU": "Наружу"}],
-	"s-781-1000-1309-0": [{"type": "text","sub_type": "message","message": "in","message_RU": "Внутрь"}],
+	"s-781-1000-1308-0": [{"type": "text","sub_type": "message","message": "OUT","message_RU": "Наружу"}],
+	"s-781-1000-1309-0": [{"type": "text","sub_type": "message","message": "IN","message_RU": "Внутрь"}],
 	//"qb-781-1000-78102": [{"type": "text","sub_type": "message","message": "Run away","message_RU": "Уходи!"}],
 	//"qb-781-1000-78103": [{"type": "text","sub_type": "message","message": "点名炸石柱","message_RU": "点名炸石柱"}], // круг на одного
 	//"qb-781-1000-78106": [{"type": "text","sub_type": "message","message": "集体炸石柱","message_RU": "集体炸石柱"}], // круги на всех
@@ -129,8 +129,8 @@ module.exports = {
 
 	// Cage Mechanic
 	//"s-781-2000-1503-0": [{"type": "text","sub_type": "message","message": "坦快跑远","message_RU": "坦快跑远"}], // наткнул
-	"s-781-2000-1106-0": [{"type": "text","sub_type": "message","message": "back","message_RU": "Задний"}],
-	"s-781-2000-1108-0": [{"type": "text","sub_type": "message","message": "front","message_RU": "Передний"}],
+	"s-781-2000-1106-0": [{"type": "text","sub_type": "message","message": "Back","message_RU": "Задний"}],
+	"s-781-2000-1108-0": [{"type": "text","sub_type": "message","message": "Front","message_RU": "Передний"}],
 	"s-781-2000-1111-0": [{"type": "text","sub_type": "message","message": "360 attack","message_RU": "Круговая"}],
 	"s-781-2000-1302-0": [{"type": "text","sub_type": "message","message": "Bait","message_RU": "Байт"}],
 	//"s-781-2000-1121-0": [{"type": "text","sub_type": "message","message": "Summon Mobs","message_RU": "Призыв мобов"}],
@@ -142,14 +142,14 @@ module.exports = {
 	],
 	//"s-781-2000-1112-0": [{"type": "func","func": single_stage_callout.bind(null, "STAB + KNOCKUP")}],
 	"s-781-2000-1130-0": [
-		{"type": "text","sub_type": "message","message": "left","message_RU": "Откид влево"},
+		{"type": "text","sub_type": "message","message": "Left","message_RU": "Откид влево"},
 		{"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": 2.3, "ownerName": "SAFE SPOT", "message": "SAFE"},
 		{"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": 1, "ownerName": "SAFE SPOT", "message": "SAFE"},
 		{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": 2.3},
 		{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": 1}
 	],
 	"s-781-2000-1131-0": [
-		{"type": "text","sub_type": "message","message": "right","message_RU": "Откид вправо"},
+		{"type": "text","sub_type": "message","message": "Right","message_RU": "Откид вправо"},
 		{"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": -2.3, "ownerName": "SAFE SPOT", "message": "SAFE"},
 		{"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": -1, "ownerName": "SAFE SPOT", "message": "SAFE"},
 		{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": -2.3},
@@ -159,8 +159,8 @@ module.exports = {
 	//"s-781-2000-1502-0": [{"type": "func","func": single_stage_callout.bind(null, "鉴定准备")}], // ?
 	//"s-781-2000-2503-0": [{"type": "text","sub_type": "message","message": "坦快跑远","message_RU": "坦快跑远"}], // дурион выбрал цель
 
-	"s-781-2000-2106-0": [{"type": "text","sub_type": "message","message": "back","message_RU": "Задний"}],
-	"s-781-2000-2108-0": [{"type": "text","sub_type": "message","message": "front","message_RU": "Передний"}],
+	"s-781-2000-2106-0": [{"type": "text","sub_type": "message","message": "Back","message_RU": "Задний"}],
+	"s-781-2000-2108-0": [{"type": "text","sub_type": "message","message": "Front","message_RU": "Передний"}],
 	"s-781-2000-2111-0": [{"type": "text","sub_type": "message","message": "360 attack","message_RU": "Круговая"}],
 	//"s-781-2000-2121-0": [{"type": "text","sub_type": "message","message": "Summon Mobs","message_RU": "Призыв мобов"}],
 	"s-781-2000-2501-0": [
@@ -170,13 +170,13 @@ module.exports = {
 		{"type": "text","sub_type": "message","delay": 3000,"message": "1"}
 	],
 	//"s-781-2000-2112-0": [{"type": "func","func": single_stage_callout.bind(null, "STAB + KNOCKUP")}], // ?
-	"s-781-2000-2130-0": [{"type": "text","sub_type": "message","message": "left","message_RU": "Откид влево"},
+	"s-781-2000-2130-0": [{"type": "text","sub_type": "message","message": "Left","message_RU": "Откид влево"},
 		{"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": 2.3, "ownerName": "SAFE SPOT", "message": "SAFE"},
 		{"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": 1, "ownerName": "SAFE SPOT", "message": "SAFE"},
 		{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": 2.3},
 		{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": 1}
 	],
-	"s-781-2000-2131-0": [{"type": "text","sub_type": "message","message": "right","message_RU": "Откид вправо"},
+	"s-781-2000-2131-0": [{"type": "text","sub_type": "message","message": "Right","message_RU": "Откид вправо"},
 		{"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": -2.3, "ownerName": "SAFE SPOT", "message": "SAFE"},
 		{"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": -1, "ownerName": "SAFE SPOT", "message": "SAFE"},
 		{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": -2.3},
@@ -217,8 +217,8 @@ module.exports = {
 	"s-781-3000-2152-0": [{"type": "text","sub_type": "message","message": "Stun + Back","message_RU": "Стан + Откид назад"}],
 	"s-781-3000-2138-0": [{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,10,250,0,6000)}],
 	"s-781-3000-1138-0": [{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,10,250,0,6000)}],
-	"s-781-3000-1144-0": [{"type": "text","sub_type": "message","message": "Out","message_RU": "Наружу"}],
-	"s-781-3000-1145-0": [{"type": "text","sub_type": "message","message": "In","message_RU": "Внутрь"}],
+	"s-781-3000-1144-0": [{"type": "text","sub_type": "message","message": "OUT","message_RU": "Наружу"}],
+	"s-781-3000-1145-0": [{"type": "text","sub_type": "message","message": "IN","message_RU": "Внутрь"}],
 	"s-781-3000-1240-0": [{"type": "text","sub_type": "message","message": "Donuts","message_RU": "Бублики"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,10,350,0,6000)}],
 	"s-781-3000-1401-0": [{"type": "text","sub_type": "message","message": "Plague/Regress","message_RU": "Регресс!!"}],
 	"s-781-3000-1402-0": [{"type": "text","sub_type": "message","message": "Sleep","message_RU": "Слип!!"}]
