@@ -1,7 +1,7 @@
 # tera-guide
-A generic guide module for TERA with English and Russian translations (detects automaticly). Supports of all actual dungeons.
+Основной модуль подсказок по данжам TERA с поддержкой русского и английского языков. Вывод подсказок в чат или на экран, а также отрисовка зон атак боссов и механик. Поддерживаются все актуальные данжи.
 
-Модуль подсказок по данжам TERA (вывод подсказок в чат и отрисовка зон атак боссов и механик), русская локализация. Поддерживаются все актуальные данжи.
+A generic guide module for TERA with English and Russian translations (detects automaticly). Display hints on screen and drawing zones of bosses attacks and mechanics. Supports of all actual dungeons.
 
 ## Зависимости / Dependencies
 https://github.com/tera-toolbox-mods/library
