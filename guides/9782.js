@@ -70,13 +70,13 @@ module.exports = {
 		({ player, entity, library, effect } = dispatch.require.library);
 	},
 
-	//"h-782-3000-30": [{"type": "func","func": start_3boss40}],
-	//"s-782-3022-101-0": [{"type": "func","func": SpawnVector2.bind(null,912,0,420,8000)},
-						 //{"type": "func","func": SpawnMarker2.bind(null,0,105,8000)},
-						 //{"type": "func","func": SpawnMarker2.bind(null,0,210,8000)},
-						 //{"type": "func","func": SpawnMarker2.bind(null,0,315,8000)},
-						 //{"type": "func","func": SpawnMarker2.bind(null,0,420,8000)}
-	],
+	/*"h-782-3000-30": [{"type": "func","func": start_3boss40}],
+	"s-782-3022-101-0": [{"type": "func","func": SpawnVector2.bind(null,912,0,420,8000)},
+						 {"type": "func","func": SpawnMarker2.bind(null,0,105,8000)},
+						 {"type": "func","func": SpawnMarker2.bind(null,0,210,8000)},
+						 {"type": "func","func": SpawnMarker2.bind(null,0,315,8000)},
+						 {"type": "func","func": SpawnMarker2.bind(null,0,420,8000)}
+	],*/
 
 	// 1 BOSS
 	"s-782-1000-106-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Heavy","message_RU": "Тяжелый удар"}],
