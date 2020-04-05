@@ -7,7 +7,7 @@
             "overwrite": false
         },
         "dispatch.js": "8550f756e05b171839867491a9f52385f1aef8bfbbed3c80e0afe6aff1d53902",
-        "guides/3020.js": "acc4610ae2c93e58dbc0169af875dde2fd14386138a1bf00f3fc4af897688ca2",
+        "guides/3020.js": "eb1790753d33145214675a0b400e3d1ecc47933f2ae72915cd3ded10a71db3ae",
         "guides/3023.js": "325281cbed7cb1991e31f417e12a27b9e397358e77ea55e5ee0d6a1f8d579694",
         "guides/3026.js": "a1304d9bc09dd65744ccb38ae097c36c3573f312c1ac32ba85bfd4445fb99dd7",
         "guides/3027.js": "e61be8ccbb9667c09120e8541dcefbb773d5ffc3420d98ea32eb6e2380e96445",
@@ -43,6 +43,7 @@
         "S_DUNGEON_EVENT_GAGE": 1,
         "S_DUNGEON_EVENT_MESSAGE": 2,
         "S_LOAD_TOPO": 3,
+        "S_PARTY_MARKER": 1,
         "S_QUEST_BALLOON": 1,
         "S_SPAWN_BUILD_OBJECT": 2,
         "S_SPAWN_COLLECTION": 4,
