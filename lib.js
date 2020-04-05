@@ -1,13 +1,30 @@
 
-const HIGHLIGHT_ITEM_ID = 88850; // 88850 - Keen Bahaar's Mask; 98260 - Vergos's Head; 209904 - Skill Advancement Tome IV
+const HIGHLIGHT_ITEM_ID = 88850; //  88850 - Keen Bahaar's Mask 
+                                 //  98260 - Vergos's Head
+                                 // 110684 - Tier 21 Superior Twin Swords
+                                 // 209904 - Skill Advancement Tome IV
+
+function SpawnItem(item, angle, distance, delay, duration, handlers, event, entity) {
+	angle =  Math.PI * angle / 180;
+
+	SpawnObject("item", false, item,
+		0, 0,
+		angle, distance,
+		delay, duration,
+		null,
+		handlers, event, entity
+	);
+}
 
 function SpawnMarker(target, angle, distance, delay, duration, highlight, label, handlers, event, entity) {
-	if (!label)
+	if (!label) {
 		label = ["SAFE SPOT", "SAFE"];
+	}
 
 	angle =  Math.PI * angle / 180;
 
-	SpawnObject("object", target, 1, 0, 0,
+	SpawnObject("build_object", target, 1,
+		0, 0,
 		angle, distance,
 		delay, duration,
 		label,
@@ -15,7 +32,8 @@ function SpawnMarker(target, angle, distance, delay, duration, highlight, label,
 	);
 
 	if (highlight) {
-		SpawnObject("item", target, HIGHLIGHT_ITEM_ID, 0, 0,
+		SpawnObject("item", target, HIGHLIGHT_ITEM_ID,
+			0, 0,
 			angle, distance,
 			delay, duration,
 			null,
@@ -24,10 +42,11 @@ function SpawnMarker(target, angle, distance, delay, duration, highlight, label,
 	}
 }
 
-function SpawnItem(item, angle, distance, delay, duration, handlers, event, entity) {
+function SpawnPoint(item, angle, distance, delay, duration, handlers, event, entity) {
 	angle =  Math.PI * angle / 180;
 
-	SpawnObject("collection", false, item, 0, 0,
+	SpawnObject("collection", false, item,
+		0, 0,
 		angle, distance,
 		delay, duration,
 		null,
@@ -61,18 +80,18 @@ function SpawnCircle(target, item, offsetAngle, offsetDistance, interval, radius
 	}
 }
 
-function SpawnSemicircle(d1, d2, item, offsetAngle, offsetDistance, interval, radius, delay, duration, handlers, event, entity) {
+function SpawnSemicircle(degree1, degree2, item, offsetAngle, offsetDistance, interval, radius, delay, duration, handlers, event, entity) {
 	let db, dg;
 
-	if (d1 <= 180 && d2 <= 180) {
-		db = -d1 / 180;
-		dg = d2 / 180;
-	} else if (d1 > 180 && d2 > 180) {
-		db = -d1 / 180;
-		dg = d2 / 180;
+	if (degree1 <= 180 && degree2 <= 180) {
+		db = -degree1 / 180;
+		dg =  degree2 / 180;
+	} else if (degree1 > 180 && degree2 > 180) {
+		db = -degree1 / 180;
+		dg =  degree2 / 180;
 	} else {
-		db = -d1 / 180;
-		dg = d2 / 180;
+		db = -degree1 / 180;
+		dg =  degree2 / 180;
 
 		for (let angle = -Math.PI * db; angle <= Math.PI; angle +=  Math.PI * interval / 180) {
 			SpawnObject("collection", false, item,
@@ -152,7 +171,7 @@ function SpawnObject(type, target, item, offsetAngle, offsetDistance, angle, dis
 				break;
 
 			// S_SPAWN_BUILD_OBJECT
-			case "object":
+			case "build_object":
 				handlers['spawn']({
 					sub_type: "build_object",
 					id: item,
@@ -181,8 +200,9 @@ function applyDistance(loc, offsetDistance, offsetAngle) {
 }
 
 module.exports = {
-	SpawnMarker,
 	SpawnItem,
+	SpawnMarker,
+	SpawnPoint,
 	SpawnVector,
 	SpawnCircle,
 	SpawnSemicircle,

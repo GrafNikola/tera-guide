@@ -11,7 +11,7 @@
     "author": "HSDN / ZC / ITunk / michengs / Kasea",
     "description": "Советы по данжам",
     "servers": ["https://raw.githubusercontent.com/hsdn/tera-guide/master/"],
-    "supportUrl": "https://github.com/hsdn/tera-guide/pulls",
+    "supportUrl": "https://github.com/hsdn/tera-guide/issues",
     "dependencies": {
         "library": "https://raw.githubusercontent.com/tera-toolbox-mods/library/master/module.json"
     },
