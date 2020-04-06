@@ -326,14 +326,14 @@ class TeraGuide{
 				entered_zone_data = {};
 				active_guide = {};
 				guide_found = false;
-				debug_message(debug.debug, e);
+				debug_message(true, e);
 			}
 			if (guide_found) {
 				// Try calling the "load" function
 				try {
 					active_guide.load(fake_dispatch);
 				} catch(e) {
-					debug_message(debug.debug, e);
+					debug_message(true, e);
 				}
 			}
 		}
@@ -383,7 +383,7 @@ class TeraGuide{
 						function_event_handlers[arg1](JSON.parse(arg2), player);
 					} catch(e) {
 						is_event = false;
-						debug_message(debug.debug, e);
+						debug_message(true, e);
 					}
 				}
 				// guide event text '{"sub_type":"message","message":"Сообщение"}'
