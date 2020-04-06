@@ -29,7 +29,7 @@ id | Dungeon Name | Название данжа
 9067 | Demokron Factory (Hard) | Лаборатория Берна (сложно)*
 9970 | Ruinous Manor (Hard) | Руины Кошмарной Абнукты*
 9781 | Velik's Sanctuary | Святилище Велики
-9981 | Velik's Sanctuary (Hard) | Разрушенное Святилище Велики
+9981 | Velik's Sanctuary (Hard) | Разрушенное Святилище Велики*
 9735 | RK-9 Kennel | Ангар RK-9
 9935 | RK-9 Kennel (Hard) | Ангар совершенного RK-9*
 9720 | Antaroth's Abyss | Омут Антароса*
@@ -45,7 +45,7 @@ id | Dungeon Name | Название данжа
 3126 | Corrupted Skynest (Hard) | Логово Бессмертного Келсаика
 3027 | Forbidden Arena | Арена безумия
 
-&#x002A; - закрыты на RU с обновлением от 8 апреля.
+&#x002A; - закрыты в патче 92.
 
 ## Misc
 Based on https://github.com/michengs/tera-guide and https://github.com/tera-mod/TERA-Guide-Area
