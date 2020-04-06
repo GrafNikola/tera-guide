@@ -1,5 +1,6 @@
 
 const HIGHLIGHT_ITEM_ID = 88850; //  88850 - Keen Bahaar's Mask 
+                                 //  88704 - Velika Banquet Coin
                                  //  98260 - Vergos's Head
                                  // 110684 - Tier 21 Superior Twin Swords
                                  // 209904 - Skill Advancement Tome IV

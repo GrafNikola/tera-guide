@@ -140,7 +140,7 @@ let debuffs_targe = {
 };
 function start_debuff(handlers, event, entity, dispatch) {
 	const abnormality_change = (added, event) => {
-		if ((player.isMe(event.target) || player.playersInParty.includes(event.target.toString())) && debuffs_targe[event.id]) {
+		if ((player.isMe(event.target.toString()) || player.playersInParty.includes(event.target.toString())) && debuffs_targe[event.id]) {
 			if (added) {
 				debuff = event.id;
 				if (blue) {
@@ -267,26 +267,26 @@ module.exports = {
 	"s-3026-1000-1212-0": [
 		{"type": "func","func": skilld_event.bind(null, 212)},
 		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,8,440,200,6000)},
-		{"type": "func","func": SpawnVector.bind(null,553,0,0,180,720,0,6000)},
-		{"type": "func","func": SpawnVector.bind(null,553,0,0,0,720,0,6000)}
+		{"type": "func","func": SpawnVector.bind(null,553,0,0,180,720,200,6000)},
+		{"type": "func","func": SpawnVector.bind(null,553,0,0,0,720,200,6000)}
 	],
 	"s-3026-1000-1215-0": [
 		{"type": "func","func": skilld_event.bind(null, 215)},
 		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,8,440,200,6000)},
-		{"type": "func","func": SpawnVector.bind(null,553,0,0,180,720,0,6000)},
-		{"type": "func","func": SpawnVector.bind(null,553,0,0,0,720,0,6000)}
+		{"type": "func","func": SpawnVector.bind(null,553,0,0,180,720,200,6000)},
+		{"type": "func","func": SpawnVector.bind(null,553,0,0,0,720,200,6000)}
 	],
 	"s-3026-1000-1213-0": [
 		{"type": "func","func": skilld_event.bind(null, 213)},
 		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,8,440,200,6000)},
-		{"type": "func","func": SpawnVector.bind(null,553,0,0,180,720,0,6000)},
-		{"type": "func","func": SpawnVector.bind(null,553,0,0,0,720,0,6000)}
+		{"type": "func","func": SpawnVector.bind(null,553,0,0,180,720,200,6000)},
+		{"type": "func","func": SpawnVector.bind(null,553,0,0,0,720,200,6000)}
 	],
 	"s-3026-1000-1214-0": [
 		{"type": "func","func": skilld_event.bind(null, 214)},
 		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,8,440,200,6000)},
-		{"type": "func","func": SpawnVector.bind(null,553,0,0,180,720,0,6000)},
-		{"type": "func","func": SpawnVector.bind(null,553,0,0,0,720,0,6000)}
+		{"type": "func","func": SpawnVector.bind(null,553,0,0,180,720,200,6000)},
+		{"type": "func","func": SpawnVector.bind(null,553,0,0,0,720,200,6000)}
 	],
 	"qb-3026-1000-3026005": [{"type": "func","func": skilld_event.bind(null, 3026005)}], // ужас, одинаковые цвета
 	"qb-3026-1000-3026004": [{"type": "func","func": skilld_event.bind(null, 3026004)}], // ярость, разные цвета
