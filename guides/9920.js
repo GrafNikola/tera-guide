@@ -122,6 +122,10 @@ let SPAWNING_SECOND_CIRCLE_FLOWERS = [
 ];
 
 module.exports = {
+	load(dispatch) {
+		({ player, entity, library, effect } = dispatch.require.library);
+	},
+
 	// 1 BOSS, NOT ENRAGED
 	"s-920-1000-1117-0": [{"type": "text","sub_type": "message","message": "Stay IN + Get OUT","message_RU": "Внутрь + Наружу"}],
 	"s-920-1000-1116-0": [{"type": "text","sub_type": "message","message": "Get OUT + Stay IN","message_RU": "Наружу + Внутрь"}],
