@@ -63,8 +63,9 @@ class TeraGuide{
 		// All of the timers, where the key is the id
 		let random_timer_id = 0xFFFFFFFA; // Used if no id is specified
 		let timers = {};
-		//
+		// Entered zone guide data
 		let entered_zone_data = {};
+		// Trigger event flag
 		let is_event = false;
 
 		/** HELPER FUNCTIONS **/
@@ -258,6 +259,9 @@ class TeraGuide{
 		/** S_LOAD_TOPO **/
 
 		function entry_zone(zone) {
+			// Enable errors debug
+			let debug_errors = true;
+			// Disable trigger event flag
 			is_event = false;
 			// Clear out the timers
 			for (let key in timers) clearTimeout(timers[key]);
@@ -284,6 +288,7 @@ class TeraGuide{
 					entered_zone_data = {"id": "test", "name": "Test Guide", "name_RU": "Test Guide", "verbose": true, "spawnObject": true};
 				}
 				if (!entered_zone_data.id) {
+					debug_errors = debug.debug;
 					throw 'Guide for zone ' + zone + ' not found in config';
 				}
 				active_guide = require('./guides/' + zone);
@@ -326,14 +331,14 @@ class TeraGuide{
 				entered_zone_data = {};
 				active_guide = {};
 				guide_found = false;
-				debug_message(true, e);
+				debug_message(debug_errors, e);
 			}
 			if (guide_found) {
 				// Try calling the "load" function
 				try {
 					active_guide.load(fake_dispatch);
 				} catch(e) {
-					debug_message(true, e);
+					debug_message(debug_errors, e);
 				}
 			}
 		}
@@ -349,6 +354,11 @@ class TeraGuide{
 			debug(arg1) {
 				if (!arg1) {
 					arg1 = 'debug';
+				} else if (arg1 === 'status') {
+					for (let [key, value] of Object.entries(debug)) {
+						command.message(`debug(${key}): ${value ? "enabled" : "disabled"}.`);
+					}
+					return;
 				} else if (debug[arg1] === undefined) {
 					return command.message(`Invalid sub command for debug mode. ${arg1}`);
 				}
@@ -357,6 +367,7 @@ class TeraGuide{
 			},
 			// Testing events
 			event(arg1, arg2) {
+				// Enable trigger event flag
 				is_event = true;
 				// Clear library cache
 				try {
@@ -382,6 +393,7 @@ class TeraGuide{
 						// Call a function handler with the event we got from arg2 with yourself as the entity
 						function_event_handlers[arg1](JSON.parse(arg2), player);
 					} catch(e) {
+						// Disable trigger event flag
 						is_event = false;
 						debug_message(true, e);
 					}
