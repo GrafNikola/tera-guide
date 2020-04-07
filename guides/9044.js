@@ -2,7 +2,7 @@
 //
 // made by michengs
 
-const {SpawnMarker, SpawnVector, SpawnCircle} = require("../lib");
+const {SpawnMarker, SpawnPoint, SpawnVector, SpawnCircle} = require("../lib");
 
 let player, entity, library, effect;
 let notice_guide = true;
@@ -115,16 +115,8 @@ module.exports = {
 	"h-444-2000-100": [
 		//{"type": "func","func": SpawnVector.bind(null,542,0,0,0,3000,0,6000000)},
 		//{"type": "func","func": SpawnVector.bind(null,542,0,0,180,3000,0,6000000)}
-		{"type": "func","func": SpawnMarker.bind(null,false,0,-700,100,60000000,false,["Throne","Throne direction"])}, {
-			"type": "spawn",
-			"id": 513,
-			"sub_delay": 99999999,
-			"pos": {
-				x: -116268,
-				y: 115070,
-				z: 4022
-			}
-		}
+		{"type": "func","func": SpawnMarker.bind(null,false,0,-700,100,60000000,false,["Throne","Throne direction"])},
+		{"type": "func","func": SpawnPoint.bind(null,513,0,700,100,60000000)}
 	],
 	//构建直线（提示标志 偏移角度 偏移距离  角度 最远距离   时间）
 

@@ -107,7 +107,7 @@ let SPAWNING_FIRST_CIRCLE_FLOWERS = [
 	{"type": "text","class_position":"tank","sub_type": "message","message": "Right > OUT to IN","message_RU": "Вправо > наружу + внутрь"},
 	{"type": "text","class_position":"dps","sub_type": "message","message": "Left > OUT to IN","message_RU": "Влево > наружу + внутрь"},
 	{"type": "text","class_position":"heal","sub_type": "message","message": "Left > OUT to IN","message_RU": "Влево > наружу + внутрь"},
-	{"type": "func","func": SpawnMarker.bind(null,false,270,250,0,2500,true,null)},
+	{"type": "func","func": SpawnMarker.bind(null,false,90,-250,0,2500,true,null)},
 	{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,18,143,0,6000)},
 	{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,12,293,0,6000)}
 ];
@@ -116,7 +116,7 @@ let SPAWNING_SECOND_CIRCLE_FLOWERS = [
 	{"type": "text","class_position":"tank","sub_type": "message","message": "Left > IN to OUT","message_RU": "Влево > внутрь + наружу"},
 	{"type": "text","class_position":"dps","sub_type": "message","message": "Right > IN to OUT","message_RU": "Вправо > внутрь + наружу"},
 	{"type": "text","class_position":"heal","sub_type": "message","message": "Right > IN to OUT","message_RU": "Вправо > внутрь + наружу"},
-	{"type": "func","func": SpawnMarker.bind(null,false,90,250,0,2500,true,null)},
+	{"type": "func","func": SpawnMarker.bind(null,false,270,-250,0,2500,true,null)},
 	{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,18,157,0,6000)},
 	{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,12,307,0,6000)}
 ];
