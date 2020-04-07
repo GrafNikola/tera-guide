@@ -45,13 +45,14 @@ id | Dungeon Name | Название данжа
 3126 | Corrupted Skynest (Hard) | Логово Бессмертного Келсаика
 3027 | Forbidden Arena | Арена безумия
 
-&#x002A; - закрыты в патче 92.
+&#x002A; - закрыты в патче 92.03.
 
-## Misc
-Based on:
+## Разработка и отладка / Development and debugging
+Подробнее на https://github.com/hsdn/tera-guide/wiki
+
+## Credits
 - https://github.com/michengs/tera-guide
 - https://github.com/tera-mod/TERA-Guide
 - https://github.com/tera-mod/TERA-Guide-Area
+- https://github.com/tera-toolbox-mods/tera-guide
 - https://github.com/Owyn/aaguide
-
-More info available on project wiki https://github.com/hsdn/tera-guide/wiki
