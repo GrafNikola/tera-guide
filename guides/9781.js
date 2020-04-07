@@ -3,7 +3,7 @@
 // made by michengs
 // updated by HSDN
 
-const {SpawnCircle} = require("../lib");
+const {SpawnMarker, SpawnCircle} = require("../lib");
 
 let player, entity, library, effect;
 
@@ -84,17 +84,13 @@ module.exports = {
 	
 	"s-781-1000-2401": [
 		{"type": "text","sub_type": "message","message": "Right","message_RU": "Откид вправо"},
-		{"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": -2.3, "ownerName": "SAFE SPOT", "message": "SAFE"},
-		{"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": -1, "ownerName": "SAFE SPOT", "message": "SAFE"},
-		{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": -2.3},
-		{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": -1}
+		{"type": "func","func": SpawnMarker.bind(null,false,300,100,0,2000,true,null)},
+		{"type": "func","func": SpawnMarker.bind(null,false,230,100,0,2000,true,null)}
 	],
 	"s-781-1000-2402": [
 		{"type": "text","sub_type": "message","message": "Left","message_RU": "Откид влево"},
-		{"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": 2.3, "ownerName": "SAFE SPOT", "message": "SAFE"},
-		{"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": 1, "ownerName": "SAFE SPOT", "message": "SAFE"},
-		{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": 2.3},
-		{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": 1}
+		{"type": "func","func": SpawnMarker.bind(null,false,60,100,0,2000,true,null)},
+		{"type": "func","func": SpawnMarker.bind(null,false,130,100,0,2000,true,null)}
 	],
 	"s-781-1000-2304-0": [{"type": "text","sub_type": "message","message": "Flying","message_RU": "Взлет"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,10,300,0,6000)}],
 	"s-781-1000-2303-0": [{"type": "text","sub_type": "message","message": "Spin","message_RU": "Крутилка"}],
@@ -103,17 +99,13 @@ module.exports = {
 	"s-781-1000-2309-0": [{"type": "text","sub_type": "message","message": "IN","message_RU": "Внутрь"}],
 	"s-781-1000-1401": [
 		{"type": "text","sub_type": "message","message": "Right","message_RU": "Откид вправо"},
-		{"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": -2.3, "ownerName": "SAFE SPOT", "message": "SAFE"},
-		{"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": -1, "ownerName": "SAFE SPOT", "message": "SAFE"},
-		{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": -2.3},
-		{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": -1}
+		{"type": "func","func": SpawnMarker.bind(null,false,300,100,0,2000,true,null)},
+		{"type": "func","func": SpawnMarker.bind(null,false,230,100,0,2000,true,null)}
 	],
 	"s-781-1000-1402": [
 		{"type": "text","sub_type": "message","message": "Left","message_RU": "Откид влево"},
-		{"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": 2.3, "ownerName": "SAFE SPOT", "message": "SAFE"},
-		{"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": 1, "ownerName": "SAFE SPOT", "message": "SAFE"},
-		{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": 2.3},
-		{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": 1}
+		{"type": "func","func": SpawnMarker.bind(null,false,60,100,0,2000,true,null)},
+		{"type": "func","func": SpawnMarker.bind(null,false,130,100,0,2000,true,null)}
 	],
 	"s-781-1000-1304-0": [{"type": "text","sub_type": "message","message": "Flying","message_RU": "Взлет"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,10,300,0,6000)}],
 	"s-781-1000-1303-0": [{"type": "text","sub_type": "message","message": "Spin","message_RU": "Крутилка"}],
@@ -143,17 +135,13 @@ module.exports = {
 	//"s-781-2000-1112-0": [{"type": "func","func": single_stage_callout.bind(null, "STAB + KNOCKUP")}],
 	"s-781-2000-1130-0": [
 		{"type": "text","sub_type": "message","message": "Left","message_RU": "Откид влево"},
-		{"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": 2.3, "ownerName": "SAFE SPOT", "message": "SAFE"},
-		{"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": 1, "ownerName": "SAFE SPOT", "message": "SAFE"},
-		{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": 2.3},
-		{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": 1}
+		{"type": "func","func": SpawnMarker.bind(null,false,60,100,0,2000,true,null)},
+		{"type": "func","func": SpawnMarker.bind(null,false,130,100,0,2000,true,null)}
 	],
 	"s-781-2000-1131-0": [
 		{"type": "text","sub_type": "message","message": "Right","message_RU": "Откид вправо"},
-		{"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": -2.3, "ownerName": "SAFE SPOT", "message": "SAFE"},
-		{"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": -1, "ownerName": "SAFE SPOT", "message": "SAFE"},
-		{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": -2.3},
-		{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": -1}
+		{"type": "func","func": SpawnMarker.bind(null,false,300,100,0,2000,true,null)},
+		{"type": "func","func": SpawnMarker.bind(null,false,230,100,0,2000,true,null)}
 	],
 	//"s-781-2000-1134-0": [{"type": "func","func": single_stage_callout.bind(null, "吃注视")}], // удар черенком
 	//"s-781-2000-1502-0": [{"type": "func","func": single_stage_callout.bind(null, "鉴定准备")}], // ?
@@ -171,16 +159,12 @@ module.exports = {
 	],
 	//"s-781-2000-2112-0": [{"type": "func","func": single_stage_callout.bind(null, "STAB + KNOCKUP")}], // ?
 	"s-781-2000-2130-0": [{"type": "text","sub_type": "message","message": "Left","message_RU": "Откид влево"},
-		{"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": 2.3, "ownerName": "SAFE SPOT", "message": "SAFE"},
-		{"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": 1, "ownerName": "SAFE SPOT", "message": "SAFE"},
-		{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": 2.3},
-		{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": 1}
+		{"type": "func","func": SpawnMarker.bind(null,false,60,100,0,2000,true,null)},
+		{"type": "func","func": SpawnMarker.bind(null,false,130,100,0,2000,true,null)}
 	],
 	"s-781-2000-2131-0": [{"type": "text","sub_type": "message","message": "Right","message_RU": "Откид вправо"},
-		{"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": -2.3, "ownerName": "SAFE SPOT", "message": "SAFE"},
-		{"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": -1, "ownerName": "SAFE SPOT", "message": "SAFE"},
-		{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": -2.3},
-		{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": -1}
+		{"type": "func","func": SpawnMarker.bind(null,false,300,100,0,2000,true,null)},
+		{"type": "func","func": SpawnMarker.bind(null,false,230,100,0,2000,true,null)}
 	],
 	//"s-781-2000-2134-0": [{"type": "func","func": single_stage_callout.bind(null, "吃注视")}], // удар черенком
 	//"s-781-2000-2502-0": [{"type": "func","func": single_stage_callout.bind(null, "鉴定准备")}], // ?
