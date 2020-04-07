@@ -48,6 +48,10 @@ id | Dungeon Name | Название данжа
 &#x002A; - закрыты в патче 92.
 
 ## Misc
-Based on https://github.com/michengs/tera-guide and https://github.com/tera-mod/TERA-Guide-Area
+Based on:
+- https://github.com/michengs/tera-guide
+- https://github.com/tera-mod/TERA-Guide
+- https://github.com/tera-mod/TERA-Guide-Area
+- https://github.com/Owyn/aaguide
 
 More info available on project wiki https://github.com/hsdn/tera-guide/wiki
