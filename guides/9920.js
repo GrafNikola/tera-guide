@@ -3,7 +3,9 @@
 // made by Yuyuko
 // updated by HSDN
 
-const {SpawnMarker, SpawnCircle} = require("../lib");
+const {SpawnMarker, SpawnVector, SpawnCircle} = require("../lib");
+
+let player, entity, library, effect;
 
 let counter = 0; // count for back attacks
 let timer; // reset time
@@ -108,8 +110,10 @@ let SPAWNING_FIRST_CIRCLE_FLOWERS = [
 	{"type": "text","class_position":"dps","sub_type": "message","message": "Left > OUT to IN","message_RU": "Влево > наружу + внутрь"},
 	{"type": "text","class_position":"heal","sub_type": "message","message": "Left > OUT to IN","message_RU": "Влево > наружу + внутрь"},
 	{"type": "func","func": SpawnMarker.bind(null,false,90,-250,0,2500,true,null)},
-	{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,18,143,0,6000)},
-	{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,12,293,0,6000)}
+	{"type": "func","func": SpawnVector.bind(null,553,0,0,180,500,0,2500)},
+	{"type": "func","func": SpawnVector.bind(null,553,0,0,0,500,0,1500)},
+	{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,18,143,1500,5000)},
+	{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,12,293,1500,5000)}
 ];
 // heart thrust+clockwise spin+left swipe+AOEs from in to out
 let SPAWNING_SECOND_CIRCLE_FLOWERS = [
@@ -117,8 +121,10 @@ let SPAWNING_SECOND_CIRCLE_FLOWERS = [
 	{"type": "text","class_position":"dps","sub_type": "message","message": "Right > IN to OUT","message_RU": "Вправо > внутрь + наружу"},
 	{"type": "text","class_position":"heal","sub_type": "message","message": "Right > IN to OUT","message_RU": "Вправо > внутрь + наружу"},
 	{"type": "func","func": SpawnMarker.bind(null,false,270,-250,0,2500,true,null)},
-	{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,18,157,0,6000)},
-	{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,12,307,0,6000)}
+	{"type": "func","func": SpawnVector.bind(null,553,0,0,180,500,0,2500)},
+	{"type": "func","func": SpawnVector.bind(null,553,0,0,0,500,0,1500)},
+	{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,18,157,1500,5000)},
+	{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,12,307,1500,5000)}
 ];
 
 module.exports = {

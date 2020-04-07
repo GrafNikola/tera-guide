@@ -3,7 +3,7 @@
 // made by Yuyuko
 // updated by HSDN
 
-const {SpawnMarker} = require("../lib");
+const {SpawnMarker, SpawnVector} = require("../lib");
 
 let player, entity, library, effect;
 
@@ -55,13 +55,17 @@ module.exports = {
 	"s-720-3000-109-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Right","message_RU": "Вправо >"},
 						 {"type": "text","class_position":"dps","sub_type": "message","message": "Left","message_RU": "< Влево"},
 						 {"type": "text","class_position":"heal","sub_type": "message","message": "Left","message_RU": "< Влево"},
-						 {"type": "func","func": SpawnMarker.bind(null,false,90,-250,0,2500,true,null)}
+						 {"type": "func","func": SpawnMarker.bind(null,false,90,-250,0,2500,true,null)},
+						 {"type": "func","func": SpawnVector.bind(null,553,0,0,180,500,0,2500)},
+						 {"type": "func","func": SpawnVector.bind(null,553,0,0,0,500,0,2500)}
 	],
 	// heart thrust+clockwise spin+left swipe
 	"s-720-3000-111-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Left","message_RU": "< Влево"},
 						 {"type": "text","class_position":"dps","sub_type": "message","message": "Right","message_RU": "Вправо >"},
 						 {"type": "text","class_position":"heal","sub_type": "message","message": "Right","message_RU": "Вправо >"},
-						 {"type": "func","func": SpawnMarker.bind(null,false,270,-250,0,2500,true,null)}
+						 {"type": "func","func": SpawnMarker.bind(null,false,270,-250,0,2500,true,null)},
+						 {"type": "func","func": SpawnVector.bind(null,553,0,0,180,500,0,2500)},
+						 {"type": "func","func": SpawnVector.bind(null,553,0,0,0,500,0,2500)}
 	],
 	"s-720-3000-113-0": [{"type": "text","sub_type": "message","message": "Front | Back slam","message_RU": "Передний | Задний"}],
 	"s-720-3000-115-0": [{"type": "text","sub_type": "message","message": "Spinning attack","message_RU": "Круговая"}],
