@@ -4,79 +4,12 @@
 
 const {SpawnMarker, SpawnVector, SpawnCircle} = require("../lib");
 
-let rad = 600;
-let print = true;
-let notice_guide = true;
 let player, entity, library, effect;
-
-function start_3boss40(handlers) {
-	if (print) {
-		handlers['text']({
-			"sub_type": "message",
-			"message": "-------- 30% --------",
-			"message_RU": "-------- 30% --------"
-		});
-	}
-	print = false;
-	setTimeout(() => print = true, 10000);	
-}
-
-/*function SpawnVector2(item,degrees, maxRadius, times, handlers, event, entity) {
-	let shield = entity['loc'].clone();
-		shield.w = entity['loc'].w;
-		let X = Math.pow((-95703 - shield.x), 2),
-			Y = Math.pow((144980 - shield.y), 2),
-			C = Math.pow(X+Y, 0.5);
-
-	if (C < 500) return;
-
-	let angle = degrees * Math.PI/180;
-	for (let radius=50 ; radius<=maxRadius; radius+=50) {
-		handlers['spawn']({
-			"id": item,
-			"sub_delay": times,
-			"distance": radius,
-			"offset": angle
-		}, entity);
-	}
-}
-
-function SpawnMarker2(degrees, radius, times, handlers, event, entity) {
-	let shield_loc = entity['loc'].clone();
-	let shield = entity['loc'].clone();
-		shield_loc.w  = entity['loc'].w;
-		shield.w = entity['loc'].w;
-
-		let X = Math.pow((-95703 - shield.x), 2),
-			Y = Math.pow((144980 - shield.y), 2),
-			C = Math.pow(X+Y, 0.5);
-
-	if (C < 500) return;
-
-	let angle =  Math.PI * degrees / 180;
-	handlers['spawn']({
-		"sub_type": "build_object",
-		"id": 1,
-		"sub_delay": times,
-		"distance": radius,
-		"offset": angle,
-		"ownerName": "Position",
-		"message": "Position"
-	}, {loc: shield_loc});
-}*/
 
 module.exports = {
 	load(dispatch) {
 		({ player, entity, library, effect } = dispatch.require.library);
 	},
-
-	/*"h-782-3000-30": [{"type": "func","func": start_3boss40}],
-	"s-782-3022-101-0": [{"type": "func","func": SpawnVector2.bind(null,912,0,420,8000)},
-						 {"type": "func","func": SpawnMarker2.bind(null,0,105,8000)},
-						 {"type": "func","func": SpawnMarker2.bind(null,0,210,8000)},
-						 {"type": "func","func": SpawnMarker2.bind(null,0,315,8000)},
-						 {"type": "func","func": SpawnMarker2.bind(null,0,420,8000)}
-	],*/
 
 	// 1 BOSS
 	"s-782-1000-106-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Heavy","message_RU": "Тяжелый удар"}],
@@ -131,7 +64,7 @@ module.exports = {
 	"s-782-3000-144-0": [{"type": "text","sub_type": "message","message": "Right rear","message_RU": "Справа сзади"}],
 	"s-782-3000-147-0": [{"type": "text","sub_type": "message","message": "Right rear","message_RU": "Справа сзади"}],
 	"s-782-3000-148-0": [{"type": "text","sub_type": "message","message": "Right rear (pulses)","message_RU": "Справа сзади (бублик)"},
-						 {"type": "func","func": SpawnMarker.bind(null,false,155,388,8000)}, 
+						 {"type": "func","func": SpawnMarker.bind(null,false,155,388,0,8000,true,null)}, 
 						 {"type": "func","func": SpawnCircle.bind(null,false,445,155,388,15,160,2500,8000)},
 						 {"type": "func","func": SpawnCircle.bind(null,false,445,155,388,12,320,2500,8000)},
 						 {"type": "func","func": SpawnCircle.bind(null,false,445,155,388,10,480,2500,8000)},
@@ -163,7 +96,7 @@ module.exports = {
 	"s-782-3000-141-0": [{"type": "text","sub_type": "message","message": "Right safe","message_RU": "ПРАВО сейф"},
 						 {"type": "func","func": SpawnVector.bind(null,912,90,0,0,500,0,5000)},
 						 {"type": "func","func": SpawnVector.bind(null,912,270,0,180,500,0,5000)},
-						 {"type": "func","func": SpawnMarker.bind(null,false,90,200,8000)}
+						 {"type": "func","func": SpawnMarker.bind(null,false,90,200,0,8000,true,null)}
 	], 
 	"s-782-3000-152-0": [{"type": "text","sub_type": "message","message": "Right safe","message_RU": "ПРАВО сейф"},
 						 {"type": "func","func": SpawnVector.bind(null,912,90,0,0,500,0,5000)},

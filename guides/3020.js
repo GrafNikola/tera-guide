@@ -138,21 +138,21 @@ function start_Sailing_Instance(handlers, event, entity, dispatch) {
 				partyMakers = [];
 				updateMarkers(dispatch);
 			}, 3500);
-		}
 
-		if ((player.isMe(event.target.toString()) || player.playersInParty.includes(event.target.toString())) && debuffs_targe[event.id]) {
-			if (added) {
-				if (debuff_call_event) {
-					clearTimeout(debuff_call_event);
+			if (player.isMe(event.target.toString()) || player.playersInParty.includes(event.target.toString())) {
+				if (added) {
+					if (debuff_call_event) {
+						clearTimeout(debuff_call_event);
+					}
+					debuff_call_event = setTimeout(() => {
+						handlers['text']({
+							"sub_type": "notification",
+							"message": debuffs_targe[event.id].msgt,
+							"message_RU": debuffs_targe[event.id].msg
+						});
+						debuff_call_event = null;
+					}, 1500);
 				}
-				debuff_call_event = setTimeout(() => {
-					handlers['text']({
-						"sub_type": "message",
-						"message": debuffs_targe[event.id].msgt,
-						"message_RU": debuffs_targe[event.id].msg
-					});
-					debuff_call_event = null;
-				}, 1500);
 			}
 		}
 	};
@@ -165,8 +165,7 @@ function start_Sailing_Instance(handlers, event, entity, dispatch) {
 }
 
 function updateMarkers(dispatch) {
-	if (dispatch.settings.stream) return;
-	if (!dispatch.settings.spawnObject) return;
+	if (!dispatch.settings.spawnObject || dispatch.settings.stream) return;
 
 	dispatch.send('S_PARTY_MARKER', 1, {
 		markers: partyMakers
