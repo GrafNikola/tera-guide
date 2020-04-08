@@ -125,7 +125,7 @@ module.exports = {
 	"h-3023-1000-99": [{"type": "func","func": start_boss}],
 	"h-3023-1000-80": [{"type": "func","func": start_1boss80}],
 	"s-3023-1000-104-0": [{"type": "text","sub_type": "message","message": 'Jump',"message_RU": "Прыжок + Стан"}],
-	"s-3023-1000-105-0": [{"type": "text","sub_type": "message","message": 'Back',"message_RU": "Удар назад"}],
+	"s-3023-1000-105-0": [{"type": "text","sub_type": "message","message": 'Back',"message_RU": "Поворот назад"}],
 	"s-3023-1000-110-0": [{"type": "text","sub_type": "message","message": 'Stun',"message_RU": "Передний стан"},
 						  {"type": "func","func": SpawnCircle.bind(null,false,553,0,175,10,225,0,6000)}
 	],
