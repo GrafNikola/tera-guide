@@ -26,26 +26,17 @@ guide help | - вывод поддерживаемых команд<br> - list o
 ## Поддерживаемые данжи / Supported Dungeons
 id | Dungeon Name | Название данжа
 --- | --- | ---
-9067 | Demokron Factory (Hard) | Лаборатория Берна (сложно)*
-9970 | Ruinous Manor (Hard) | Руины Кошмарной Абнукты*
 9781 | Velik's Sanctuary | Святилище Велики
-9981 | Velik's Sanctuary (Hard) | Разрушенное Святилище Велики*
 9735 | RK-9 Kennel | Ангар RK-9
-9935 | RK-9 Kennel (Hard) | Ангар совершенного RK-9*
-9720 | Antaroth's Abyss | Омут Антароса*
 9920 | Antaroth's Abyss (Hard) | Омут Бездушного Антароса
-9782 | Grotto of Lost Souls | Мастерская Леандра*
 9982 | Grotto of Lost Souls (Hard) | Заброшенная мастерская Леандра
 9044 | Bahaar's Sanctum | Святилище Бахаара
-3101 | Gossamer Vault | Гнездо Паркин*
 3201 | Gossamer Vault (Hard) | Гнездо сверкающей Паркин
 3023 | Akalath Quarantine | Секретное подземелье крепости Берарк
 3020 | Sea of Honor | Золотая чешуя
 3026 | Corrupted Skynest | Логово Келсаика
 3126 | Corrupted Skynest (Hard) | Логово Бессмертного Келсаика
 3027 | Forbidden Arena | Арена безумия
-
-&#x002A; - закрыты в патче 92.03.
 
 ## Разработка и отладка / Development and debugging
 Подробнее на https://github.com/hsdn/tera-guide/wiki
