@@ -126,7 +126,7 @@ module.exports = {
 
 	// 3 удара -> прыжок
 	"s-3027-1000-145-0": [{"type": "text","sub_type": "message","message": "3x360°","message_RU": "3 удара | Прыжок"}],
-	"s-3027-1000-139-0": [{"type": "text","sub_type": "message","message": "Jump","message_RU": "прыжок)"},{"type": "func","func": SpawnCircle.bind(null,true,413,0,180,8,660,1000,2000)}],
+	"s-3027-1000-139-0": [{"type": "text","sub_type": "message","delay": 1000,"message": "Jump","message_RU": "прыжок)"},{"type": "func","func": SpawnCircle.bind(null,true,413,0,180,8,660,1000,1000)}],
 	"s-3027-1000-140-0": [{"type": "text","sub_type": "message","message": "Dodge","message_RU": "Эвейд!"},{"type": "func","func": SpawnCircle.bind(null,true,912,0,180,8,460,0,3000)}],
 
 	"s-3027-1000-151-0": [{"type": "text","sub_type": "message","message": "Three chop | Strike","message_RU": "3 удара | Меч"}],
