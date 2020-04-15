@@ -165,7 +165,7 @@ function start_Sailing_Instance(handlers, event, entity, dispatch) {
 }
 
 function updateMarkers(dispatch) {
-	if (!dispatch.settings.spawnObject || dispatch.settings.stream) return;
+	if (dispatch.settings.stream) return;
 
 	dispatch.send('S_PARTY_MARKER', 1, {
 		markers: partyMakers
