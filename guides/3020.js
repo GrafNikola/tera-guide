@@ -50,12 +50,12 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 		// Проваливай! - Упади в бездну
 		// к нему (бублик вокруг босса) -> от него (круг перед боссом) -> [волны] -> к нему (бублик перед боссом)
 		} else if (purple && boss_thirty) { 
-			handlers['text']({"type": "text","sub_type": "message","message": "IN > OUT","message_RU": "К нему > От него"});
-			handlers['text']({"type": "text","sub_type": "message","delay": 6000,"message": "IN","message_RU": "К нему"});
+			handlers['text']({"type": "text","sub_type": "message","message": "IN > OUT","message_RU": "К нему > От него > К нему"});
+			handlers['text']({"type": "text","sub_type": "message","delay": 5000,"message": "IN","message_RU": "К нему"});
 
 			// бублик перед боссом
-			SpawnCircle(true, 553,0,150,8,280,6000,5000,handlers,event,entity); // 3
-			SpawnCircle(true, 553,0,150,4,570,6000,5000,handlers,event,entity); // 3
+			SpawnCircle(true, 553,0,150,8,280,5000,5000,handlers,event,entity); // 3
+			SpawnCircle(true, 553,0,150,4,570,5000,5000,handlers,event,entity); // 3
 
 			setTimeout(() => purple = false, 2000);
 		}
@@ -87,11 +87,11 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 		// Ближе! - Ощути силу взрыва
 		// от него (круг перед боссом) -> к нему (бублик вокруг босса) -> [волны] -> от него (большой круг перед боссом)
 		} else if (green && boss_thirty) {
-			handlers['text']({"type": "text","sub_type": "message","message": "OUT > IN","message_RU": "От него > К нему"});
-			handlers['text']({"type": "text","sub_type": "message","delay": 6000,"message": "OUT","message_RU": "От него"});
+			handlers['text']({"type": "text","sub_type": "message","message": "OUT > IN","message_RU": "От него > К нему > От него"});
+			handlers['text']({"type": "text","sub_type": "message","delay": 5000,"message": "OUT","message_RU": "От него"});
 
 			// большой круг перед боссом
-			SpawnCircle(true, 553,0,200,8,450,6000,5000,handlers,event,entity); // 3
+			SpawnCircle(true, 553,0,200,8,450,5000,5000,handlers,event,entity); // 3
 
 			setTimeout(() => purple = false, 2000);
 
@@ -99,11 +99,11 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 		// Проваливай! - Ощути силу взрыва
 		// к нему (бублик вокруг босса) -> от него (круг перед боссом) -> [волны] -> от него (большой круг перед боссом)
 		} else if (purple && boss_thirty) {
-			handlers['text']({"type": "text","sub_type": "message","message": "IN > OUT","message_RU": "К нему > От него"});
-			handlers['text']({"type": "text","sub_type": "message","delay": 6000,"message": "OUT","message_RU": "От него"});
+			handlers['text']({"type": "text","sub_type": "message","message": "IN > OUT","message_RU": "К нему > От него > От него"});
+			handlers['text']({"type": "text","sub_type": "message","delay": 5000,"message": "OUT","message_RU": "От него"});
 
 			// большой круг перед боссом
-			SpawnCircle(true, 553,0,200,8,450,6000,5000,handlers,event,entity); // 3
+			SpawnCircle(true, 553,0,200,8,450,5000,5000,handlers,event,entity); // 3
 
 			setTimeout(() => purple = false, 2000);
 		}
@@ -165,7 +165,7 @@ function start_Sailing_Instance(handlers, event, entity, dispatch) {
 }
 
 function updateMarkers(dispatch) {
-	if (dispatch.settings.stream) return;
+	if (dispatch._dispatch.settings.stream) return;
 
 	dispatch.send('S_PARTY_MARKER', 1, {
 		markers: partyMakers
@@ -177,6 +177,9 @@ module.exports = {
 		({ player, entity, library, effect } = dispatch.require.library);
 	},
 
+	"dm-0-0-30209203": [{"type": "func","func": start_Sailing_Instance}],
+	"dm-0-0-30209204": [{"type": "func","func": start_Sailing_Instance}],
+
 	// 1 BOSS
 	"s-3020-1900-104-0": [{"type": "text","sub_type": "message","message": "Suction (Dodge)","message_RU": "Высасывание (Выйти)"},{"type": "func","func": SpawnCircle.bind(null,true,553,0,0,15,450,200,6000)}],
 
@@ -185,9 +188,6 @@ module.exports = {
 
 	// 3 BOSS
 	"s-3020-2200-108-0": [{"type": "text","sub_type": "message","message": "Front stun","message_RU": "Стан"},{"type": "func","func": SpawnCircle.bind(null,true,553,0,170,20,120,200,2000)}],
-
-	"ae-0-0-4030": [{"type": "func","func": start_Sailing_Instance}],
-	"ae-0-0-4020": [{"type": "func","func": start_Sailing_Instance}],
 	"h-3020-2200-30": [{"type": "func","func": start_boss}],
 	"h-3020-2200-29": [{"type": "func","func": start_boss}],
 	"h-3020-2200-28": [{"type": "func","func": start_boss}],
