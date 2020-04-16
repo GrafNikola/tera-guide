@@ -62,6 +62,7 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 	if ([350,357].includes(skillid)) { // до стяжки
 		if (printMech) {
 			clearTimeout(timer3);
+			printMech = false;
 			setTimeout(() => printMech = true, 15000);
 			timer3 = setTimeout(()=> {
 				handlers['text']({
