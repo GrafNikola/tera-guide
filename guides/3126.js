@@ -140,15 +140,10 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 // 0 % 2 =0
 // 2 % 2 =0 
 let debuff_tracker_started = false;
-let debuffs_targe = {
-	30260001: "Огненный дебафф", // Fire debuff
-	30260002: "Ледяной дебафф",  // Ice debuff
-	31260001: "Огненный дебафф", // Fire debuff
-	31260002: "Ледяной дебафф"   // Ice debuff
-};
 function start_debuff(handlers, event, entity, dispatch) {
 	const abnormality_change = (added, event) => {
-		if ((player.isMe(event.target.toString()) || player.playersInParty.includes(event.target.toString())) && debuffs_targe[event.id]) {
+		// Fire/Ice debuff
+		if (player.isMe(event.target.toString()) && [30260001,30260002,31260001,31260002].includes(event.id)) {
 			if (added) {
 				debuff = event.id;
 				if (blue) {
@@ -166,6 +161,25 @@ function start_debuff(handlers, event, entity, dispatch) {
 				}
 			} else {
 				debuff = null;
+			}
+		}
+		// Argon Priest Essence buff
+		if (player.isMe(event.target.toString()) && [30261701,31261701].includes(event.id)) {
+			if (added) {
+				let shield_loc = entity['loc'].clone();
+				shield_loc.w = entity['loc'].w;
+				handlers['spawn']({ // spawn teleport mark
+					"sub_type": "item",
+					"id": 88704,
+					"sub_delay": 50000,
+					"pos": {
+						x: 53192,
+						y: 100761,
+						z: 14833
+					}
+				}, {
+					loc: shield_loc
+				});
 			}
 		}
 	};
@@ -234,8 +248,8 @@ module.exports = {
 		{"type": "func","func": SpawnVector.bind(null,912,0,0,260,500,0,2000)}
 	],
 	// AOE лед (большой)
-	"s-3126-1000-1104-0": [{"type": "text","sub_type": "message","message": "Ice storm DOTs","message_RU": "Ледяные лужи"},{"type": "func","func": SpawnCircle.bind(null,false,553,180,80,8,520,100,5000)}],
-	"s-3126-1000-2104-0": [{"type": "text","sub_type": "message","message": "Ice storm DOTs","message_RU": "Ледяные лужи"},{"type": "func","func": SpawnCircle.bind(null,false,553,180,80,8,520,100,5000)}],
+	"s-3126-1000-1104-0": [{"type": "text","sub_type": "message","message": "Ice storm DOTs","message_RU": "Ледяные лужи"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,8,520,100,5000)}],
+	"s-3126-1000-2104-0": [{"type": "text","sub_type": "message","message": "Ice storm DOTs","message_RU": "Ледяные лужи"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,8,520,100,5000)}],
 	// AOE огонь (большой)
 	"s-3126-1000-1105-0": [{"type": "text","sub_type": "message","message": "Fire bombs","message_RU": "Огненные бомбы"},
 		{"type": "func","func": SpawnCircle.bind(null,false,553,135,500,10,270,100,3000)},
@@ -258,8 +272,8 @@ module.exports = {
 		{"type": "func","func": SpawnCircle.bind(null,false,553,180,500,10,270,100,4750)}
 	],
 	// AOE лед (малый)
-	"s-3126-1000-1154-0": [{"type": "text","sub_type": "message","message": "Ice storm","message_RU": "Ледяной шторм"},{"type": "func","func": SpawnCircle.bind(null,false,553,180,80,8,520,100,5000)}],
-	"s-3126-1000-2154-0": [{"type": "text","sub_type": "message","message": "Ice storm","message_RU": "Ледяной шторм"},{"type": "func","func": SpawnCircle.bind(null,false,553,180,80,8,520,100,5000)}],
+	"s-3126-1000-1154-0": [{"type": "text","sub_type": "message","message": "Ice storm","message_RU": "Ледяной шторм"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,8,520,100,5000)}],
+	"s-3126-1000-2154-0": [{"type": "text","sub_type": "message","message": "Ice storm","message_RU": "Ледяной шторм"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,8,520,100,5000)}],
 	// AOE огонь (малый)
 	"s-3126-1000-1155-0": [{"type": "text","sub_type": "message","message": "Fire (knock down)","message_RU": "Огненный столб (опрокид)"}],
 	"s-3126-1000-2155-0": [{"type": "text","sub_type": "message","message": "Fire (knock down)","message_RU": "Огненный столб (опрокид)"}],
@@ -312,5 +326,5 @@ module.exports = {
 	"am-3126-1000-31260068": [{"type": "text","sub_type": "message","message": "Layer 3","message_RU": "3 дебафф"},
 							  {"type": "text","sub_type": "message","delay": 145000,"message": '2.5 minutes',"message_RU": "2.5 минуты"}],
 	"am-3126-1000-31260067": [{"type": "text","sub_type": "message","message": "Layer 2","message_RU": "2 дебафф"}],
-	"am-3126-1000-31260251": [{"type": "text","sub_type": "message","message": "Layer 1","message_RU": "1 дебафф"}]
+	"am-3126-1000-31260251": [{"type": "text","sub_type": "message","message": "Layer 1","message_RU": "1 дебафф"}],
 };

@@ -34,7 +34,7 @@ const boss_skill =
 	215: {msg: 'Лево',  msgt: 'Left'}
 };
 
-function skilld_event(skillid, handlers, event, ent, dispatch) {
+function skilld_event(skillid, handlers, event, entity, dispatch) {
 	if ([3026004,3126004,3026005,3126005].includes(skillid)) {   // ярость 0, ужас 1
 		qbacting = skillid % 2;
 		//qbacting = null   
@@ -127,20 +127,40 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 		clearTimeout(timer2);
 	}
 }
+
+/*let spawnMark = true;
+function dmessage_event(messageid, handlers, event, entity, dispatch) {
+	if ([3026005,3126005].includes(messageid)) {
+		if (spawnMark) {
+			spawnMark = false;
+			setTimeout(() => spawnMark = true, 120000);
+			let shield_loc = entity['loc'].clone();
+			shield_loc.w = entity['loc'].w;
+			handlers['spawn']({
+				"sub_type": "item",
+				"id": 88704,
+				"sub_delay": 120000,
+				"pos": {
+					x: 53192,
+					y: 100761,
+					z: 14833
+				}
+			}, {
+				loc: shield_loc
+			});
+		}
+	}
+}*/
+
 // NULL % 2 =0
 // 1 % 2 =1
 // 0 % 2 =0
 // 2 % 2 =0
 let debuff_tracker_started = false;
-let debuffs_targe = {
-	30260001: "Огненный дебафф", // Fire debuff
-	30260002: "Ледяной дебафф",  // Ice debuff
-	31260001: "Огненный дебафф", // Fire debuff
-	31260002: "Ледяной дебафф"   // Ice debuff
-};
 function start_debuff(handlers, event, entity, dispatch) {
 	const abnormality_change = (added, event) => {
-		if ((player.isMe(event.target.toString()) || player.playersInParty.includes(event.target.toString())) && debuffs_targe[event.id]) {
+		// Fire/Ice debuff
+		if (player.isMe(event.target.toString()) && [30260001,30260002,31260001,31260002].includes(event.id)) {
 			if (added) {
 				debuff = event.id;
 				if (blue) {
@@ -158,6 +178,25 @@ function start_debuff(handlers, event, entity, dispatch) {
 				}
 			} else {
 				debuff = null;
+			}
+		}
+		// Argon Priest Essence buff
+		if (player.isMe(event.target.toString()) && [30261701,31261701].includes(event.id)) {
+			if (added) {
+				let shield_loc = entity['loc'].clone();
+				shield_loc.w = entity['loc'].w;
+				handlers['spawn']({ // spawn teleport mark
+					"sub_type": "item",
+					"id": 88704,
+					"sub_delay": 50000,
+					"pos": {
+						x: 53192,
+						y: 100761,
+						z: 14833
+					}
+				}, {
+					loc: shield_loc
+				});
 			}
 		}
 	};
@@ -211,8 +250,8 @@ module.exports = {
 	"s-3026-1000-2145-0": [{"type": "text","sub_type": "message","message": "stun","message_RU": "Стан"}],
 
 	// AOE лед (большой)
-	"s-3026-1000-1104-0": [{"type": "text","sub_type": "message","message": "Ice storm DOTs","message_RU": "Ледяные лужи"},{"type": "func","func": SpawnCircle.bind(null,false,553,180,80,8,520,100,5000)}],
-	"s-3026-1000-2104-0": [{"type": "text","sub_type": "message","message": "Ice storm DOTs","message_RU": "Ледяные лужи"},{"type": "func","func": SpawnCircle.bind(null,false,553,180,80,8,520,100,5000)}],
+	"s-3026-1000-1104-0": [{"type": "text","sub_type": "message","message": "Ice storm DOTs","message_RU": "Ледяные лужи"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,8,520,100,5000)}],
+	"s-3026-1000-2104-0": [{"type": "text","sub_type": "message","message": "Ice storm DOTs","message_RU": "Ледяные лужи"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,8,520,100,5000)}],
 	// AOE огонь (большой)
 	"s-3026-1000-1105-0": [{"type": "text","sub_type": "message","message": "Fire bombs","message_RU": "Огненные бомбы"},
 		{"type": "func","func": SpawnCircle.bind(null,false,553,135,500,10,270,100,3000)},
@@ -235,8 +274,8 @@ module.exports = {
 		{"type": "func","func": SpawnCircle.bind(null,false,553,180,500,10,270,100,4750)}
 	],
 	// AOE лед (малый)
-	"s-3026-1000-1154-0": [{"type": "text","sub_type": "message","message": "Ice storm","message_RU": "Ледяной шторм"},{"type": "func","func": SpawnCircle.bind(null,false,553,180,80,8,520,100,5000)}],
-	"s-3026-1000-2154-0": [{"type": "text","sub_type": "message","message": "Ice storm","message_RU": "Ледяной шторм"},{"type": "func","func": SpawnCircle.bind(null,false,553,180,80,8,520,100,5000)}],
+	"s-3026-1000-1154-0": [{"type": "text","sub_type": "message","message": "Ice storm","message_RU": "Ледяной шторм"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,8,520,100,5000)}],
+	"s-3026-1000-2154-0": [{"type": "text","sub_type": "message","message": "Ice storm","message_RU": "Ледяной шторм"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,8,520,100,5000)}],
 	// AOE огонь (малый)
 	"s-3026-1000-1155-0": [{"type": "text","sub_type": "message","message": "Fire (knock down)","message_RU": "Огненный столб (опрокид)"}],
 	"s-3026-1000-2155-0": [{"type": "text","sub_type": "message","message": "Fire (knock down)","message_RU": "Огненный столб (опрокид)"}],
@@ -296,5 +335,8 @@ module.exports = {
 	"am-3026-1000-30260001": [{"type": "func","func": skilld_event.bind(null, 3026001)}], // красный
 	"am-3026-1000-30260002": [{"type": "func","func": skilld_event.bind(null, 3026002)}], // синий
 	"am-3026-1000-31260001": [{"type": "func","func": skilld_event.bind(null, 3126001)}], // красный
-	"am-3026-1000-31260002": [{"type": "func","func": skilld_event.bind(null, 3126002)}] // синий
+	"am-3026-1000-31260002": [{"type": "func","func": skilld_event.bind(null, 3126002)}], // синий
+
+	//"dm-0-0-3026005": [{"type": "func","func": dmessage_event.bind(null, 3026005)}],
+	//"dm-0-0-3126005": [{"type": "func","func": dmessage_event.bind(null, 3126005)}]
 };
