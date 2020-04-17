@@ -127,31 +127,6 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 		clearTimeout(timer2);
 	}
 }
-
-/*let spawnMark = true;
-function dmessage_event(messageid, handlers, event, entity, dispatch) {
-	if ([3026005,3126005].includes(messageid)) {
-		if (spawnMark) {
-			spawnMark = false;
-			setTimeout(() => spawnMark = true, 120000);
-			let shield_loc = entity['loc'].clone();
-			shield_loc.w = entity['loc'].w;
-			handlers['spawn']({
-				"sub_type": "item",
-				"id": 88704,
-				"sub_delay": 120000,
-				"pos": {
-					x: 53192,
-					y: 100761,
-					z: 14833
-				}
-			}, {
-				loc: shield_loc
-			});
-		}
-	}
-}*/
-
 // NULL % 2 =0
 // 1 % 2 =1
 // 0 % 2 =0
@@ -336,7 +311,4 @@ module.exports = {
 	"am-3026-1000-30260002": [{"type": "func","func": skilld_event.bind(null, 3026002)}], // синий
 	"am-3026-1000-31260001": [{"type": "func","func": skilld_event.bind(null, 3126001)}], // красный
 	"am-3026-1000-31260002": [{"type": "func","func": skilld_event.bind(null, 3126002)}], // синий
-
-	//"dm-0-0-3026005": [{"type": "func","func": dmessage_event.bind(null, 3026005)}],
-	//"dm-0-0-3126005": [{"type": "func","func": dmessage_event.bind(null, 3126005)}]
 };
