@@ -47,7 +47,7 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 			setTimeout(() => printHP = true, 15000);
 		}
 	}
-	if ([90,60,30].includes(skillid)) { // до щита
+	if ([89,59,29].includes(skillid)) { // до щита
 		if (print) {
 			print = false;
 			isHP_69_39 = false;
@@ -80,9 +80,9 @@ module.exports = {
 		({ player, entity, library, effect } = dispatch.require.library);
 	},
 
-	"h-3027-1000-89": [{"type": "func","func": skilld_event.bind(null, 90)}],
-	"h-3027-1000-59": [{"type": "func","func": skilld_event.bind(null, 60)}],
-	"h-3027-1000-29": [{"type": "func","func": skilld_event.bind(null, 30)}],
+	"h-3027-1000-89": [{"type": "func","func": skilld_event.bind(null, 89)}],
+	"h-3027-1000-59": [{"type": "func","func": skilld_event.bind(null, 59)}],
+	"h-3027-1000-29": [{"type": "func","func": skilld_event.bind(null, 29)}],
 	"h-3027-1000-69": [{"type": "func","func": skilld_event.bind(null, 69)}],
 	"h-3027-1000-39": [{"type": "func","func": skilld_event.bind(null, 39)}],
 
@@ -119,16 +119,16 @@ module.exports = {
 	"s-3027-1000-135-0": [{"type": "text","sub_type": "message","message": "Overhand Strike","message_RU": "Меч (медленный)"}],
 	"s-3027-1000-111-0": [{"type": "text","sub_type": "message","message": "Stun | Strike","message_RU": "Стан | Меч (медленный)"}],
 
-	"s-3027-1000-136-0": [{"type": "text","sub_type": "message","message": "2x360","message_RU": "2 оборота | Меч (медленный)"}],
+	"s-3027-1000-136-0": [{"type": "text","sub_type": "message","message": "2x360 | Sword","message_RU": "2 оборота | Меч (медленный)"}],
 	"s-3027-1000-144-0": [{"type": "text","sub_type": "message","message": "Sword","message_RU": "Меч"}],
 
 	"s-3027-1000-356-0": [{"type": "text","sub_type": "message","message": "Teleport","message_RU": "Телепорт (таргет)"}],
 	"s-3027-1000-117-0": [{"type": "text","sub_type": "message","message": "Teleport","message_RU": "Телепорт (таргет)"}],
 
 	// 3 оборота -> прыжок
-	"s-3027-1000-145-0": [{"type": "text","sub_type": "message","message": "3x360","message_RU": "3 оборота | Прыжок"}],
+	"s-3027-1000-145-0": [{"type": "text","sub_type": "message","message": "3x360 | Jump","message_RU": "3 оборота | Прыжок"}],
 	"s-3027-1000-139-0": [{"type": "text","sub_type": "message","delay": 1000,"message": "Jump","message_RU": "прыжок)"},{"type": "func","func": SpawnCircle.bind(null,true,413,0,180,8,660,1000,1000)}],
-	"s-3027-1000-140-0": [{"type": "text","sub_type": "message","message": "Dodge","message_RU": "Эвейд!"},{"type": "func","func": SpawnCircle.bind(null,true,912,0,180,8,460,0,3000)}],
+	"s-3027-1000-140-0": [{"type": "text","sub_type": "message","message": "Dodge","message_RU": "Эвейд!"},{"type": "func","func": SpawnCircle.bind(null,true,912,0,180,8,480,0,3000)}], // 460
 
 	"s-3027-1000-151-0": [{"type": "text","sub_type": "message","message": "Three chop | Strike","message_RU": "Тройной замах | Меч"}],
 
@@ -137,19 +137,19 @@ module.exports = {
 	//"s-3027-1000-148-0": [{"type": "text","sub_type": "message","message": "Random aggro","message_RU": "Таргет"}],
 	"s-3027-1000-148-1": [{"type": "text","sub_type": "message","message": "Teleport","message_RU": "Телепорт"}],
 
-	"s-3027-1000-141-0": [{"type": "text","sub_type": "message","message": "Round | Strike ","message_RU": "Круговая | Меч"}],
+	"s-3027-1000-141-0": [{"type": "text","sub_type": "message","message": "2x360 | Strike","message_RU": "2 оборота | Меч"}],
 	"s-3027-1000-146-0": [{"type": "text","sub_type": "message","message": "Eviscerate | Strike","message_RU": "Потрошение | Меч"}],
 	"s-3027-1000-142-0": [{"type": "text","sub_type": "message","message": "Eviscerate | Strike","message_RU": "Потрошение | Меч"}],
 	"s-3027-1000-143-0": [{"type": "text","sub_type": "message","message": "Overhand Strike","message_RU": "Меч"}],
 
 	// прыжок
 	"s-3027-1000-116-0": [{"type": "text","sub_type": "message","message": "Jump","message_RU": "прыжок)"},{"type": "func","func": SpawnCircle.bind(null,true,413,0,180,8,560,0,1000)}],
-	"s-3027-1000-116-1": [{"type": "text","sub_type": "message","message": "Dodge","message_RU": "Эвейд!"},{"type": "func","func": SpawnCircle.bind(null,true,912,0,180,8,460,0,3000)}],
+	"s-3027-1000-116-1": [{"type": "text","sub_type": "message","message": "Dodge","message_RU": "Эвейд!"},{"type": "func","func": SpawnCircle.bind(null,true,912,0,180,8,480,0,3000)}], // 460
 
 	"s-3027-1000-402-0": [{"type": "text","sub_type": "message","message": "Jump","message_RU": "Прыжок"}],
 	"s-3027-1000-109-0": [{"type": "text","sub_type": "message","message": "Forward Jump","message_RU": "Прыжок вперед"}],
 
-	"s-3027-1000-351-0": [{"type": "text","sub_type": "message","message": "SHIELD!","message_RU": "Щит!!"},
+	"s-3027-1000-351-0": [{"type": "text","sub_type": "message","message": "SHIELD!","message_RU": "ЩИТ!!"},
 		{"type": "func","func": skilld_event.bind(null, 351)}
 	],
 	"s-3027-1000-401-0": [{"type": "text","sub_type": "message","message": "AOE","message_RU": "АОЕ!!!!"}]
