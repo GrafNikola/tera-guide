@@ -182,63 +182,27 @@ function start_debuff(handlers, event, entity, dispatch) {
 	}
 }
 
-module.exports = {
-	load(dispatch) {
-		({ player, entity, library, effect } = dispatch.require.library);
-	},
-
-	"s-3026-1000-1112-0": [{"type": "text","sub_type": "message","message": "Ice DOT","message_RU": "Лед (полоса)"}],
-	"s-3026-1000-1110-0": [{"type": "text","sub_type": "message","message": "Fire DOT","message_RU": "Огонь (лужа)"}],
-	"s-3026-1000-2112-0": [{"type": "text","sub_type": "message","message": "Ice DOT","message_RU": "Лед (полоса)"}],
-	"s-3026-1000-2110-0": [{"type": "text","sub_type": "message","message": "Fire DOT","message_RU": "Огонь (лужа)"}],
-
-	"s-3026-1000-1108-0": [{"type": "text","sub_type": "message","message": "Turn right (repel!!)","message_RU": "Повернуть вправо (откид!!)"},{"type": "func","func": SpawnCircle.bind(null,false,912,0,0,8,440,0,2000)}],
-	"s-3026-1000-2108-0": [{"type": "text","sub_type": "message","message": "Turn right (repel!!)","message_RU": "Повернуть вправо (откид!!)"},{"type": "func","func": SpawnCircle.bind(null,false,912,0,0,8,440,0,2000)}],
-	"s-3026-1000-1158-0": [{"type": "text","sub_type": "message","message": "Turn right (repel!!)","message_RU": "Повернуть вправо (откид!!)"},{"type": "func","func": SpawnCircle.bind(null,false,912,0,0,8,440,0,2000)}],
-	"s-3026-1000-2158-0": [{"type": "text","sub_type": "message","message": "Turn right (repel!!)","message_RU": "Повернуть вправо (откид!!)"},{"type": "func","func": SpawnCircle.bind(null,false,912,0,0,8,440,0,2000)}],
-
-	"s-3026-1000-1109-0": [{"type": "text","sub_type": "message","message": "Turn left (repel!!)","message_RU": "Повернуть влево (откид!!)"},{"type": "func","func": SpawnCircle.bind(null,false,912,0,0,8,440,0,2000)}],
-	"s-3026-1000-2109-0": [{"type": "text","sub_type": "message","message": "Turn left (repel!!)","message_RU": "Повернуть влево (откид!!)"},{"type": "func","func": SpawnCircle.bind(null,false,912,0,0,8,440,0,2000)}],
-	"s-3026-1000-1159-0": [{"type": "text","sub_type": "message","message": "Turn left (repel!!)","message_RU": "Повернуть влево (откид!!)"},{"type": "func","func": SpawnCircle.bind(null,false,912,0,0,8,440,0,2000)}],
-	"s-3026-1000-2159-0": [{"type": "text","sub_type": "message","message": "Turn left (repel!!)","message_RU": "Повернуть влево (откид!!)"},{"type": "func","func": SpawnCircle.bind(null,false,912,0,0,8,440,0,2000)}],
-
-	"s-3026-1000-1120-0": [{"type": "text","sub_type": "message","message": "Together","message_RU": "Яростный рев"}],
-	"s-3026-1000-2120-0": [{"type": "text","sub_type": "message","message": "Together","message_RU": "Яростный рев"}],
-	"s-3026-1000-1157-0": [{"type": "text","sub_type": "message","message": "Change","message_RU": "Смена"},{"type": "func","func": start_debuff}],
-	"s-3026-1000-2157-0": [{"type": "text","sub_type": "message","message": "Change","message_RU": "Смена"},{"type": "func","func": start_debuff}],
-	"s-3026-1000-1103-0": [{"type": "text","sub_type": "message","message": "Tail (Flying!!)","message_RU": "Хвост (полет!!)"},
+let skills = {
+	"112-0": [{"type": "text","sub_type": "message","message": "Ice DOT","message_RU": "Лед (полоса)"}],
+	"110-0": [{"type": "text","sub_type": "message","message": "Fire DOT","message_RU": "Огонь (лужа)"}],
+	"108-0": [{"type": "text","sub_type": "message","message": "Turn right (repel!!)","message_RU": "Повернуть вправо (откид!!)"},{"type": "func","func": SpawnCircle.bind(null,false,912,0,0,8,440,0,2000)}],
+	"158-0": [{"type": "text","sub_type": "message","message": "Turn right (repel!!)","message_RU": "Повернуть вправо (откид!!)"},{"type": "func","func": SpawnCircle.bind(null,false,912,0,0,8,440,0,2000)}],
+	"109-0": [{"type": "text","sub_type": "message","message": "Turn left (repel!!)","message_RU": "Повернуть влево (откид!!)"},{"type": "func","func": SpawnCircle.bind(null,false,912,0,0,8,440,0,2000)}],
+	"159-0": [{"type": "text","sub_type": "message","message": "Turn left (repel!!)","message_RU": "Повернуть влево (откид!!)"},{"type": "func","func": SpawnCircle.bind(null,false,912,0,0,8,440,0,2000)}],
+	"120-0": [{"type": "text","sub_type": "message","message": "Together","message_RU": "Яростный рев"}],
+	"157-0": [{"type": "text","sub_type": "message","message": "Change","message_RU": "Смена"},{"type": "func","func": start_debuff}],
+	"103-0": [{"type": "text","sub_type": "message","message": "Tail (Flying!!)","message_RU": "Хвост (полет!!)"},
 		{"type": "func","func": SpawnSemicircle.bind(null,140,260,912,0,0,10,500,0,2000)},
 		{"type": "func","func": SpawnVector.bind(null,912,0,0,135,500,0,2000)},
 		{"type": "func","func": SpawnVector.bind(null,912,0,0,260,500,0,2000)}
 	],
-	"s-3026-1000-2103-0": [{"type": "text","sub_type": "message","message": "Tail (Flying!!)","message_RU": "Хвост (полет!!)"},
-		{"type": "func","func": SpawnSemicircle.bind(null,140,260,912,0,0,10,500,0,2000)},
-		{"type": "func","func": SpawnVector.bind(null,912,0,0,135,500,0,2000)},
-		{"type": "func","func": SpawnVector.bind(null,912,0,0,260,500,0,2000)}
-	],
-	"s-3026-1000-1118-0": [{"type": "text","sub_type": "message","message": "Jump","message_RU": "Прыжок"}],
-	"s-3026-1000-1118-1": [{"type": "text","sub_type": "message","message": "Dodge","message_RU": "Эвейд!"}],
-	"s-3026-1000-2118-0": [{"type": "text","sub_type": "message","message": "Jump","message_RU": "Прыжок"}],
-	"s-3026-1000-2118-1": [{"type": "text","sub_type": "message","message": "Dodge","message_RU": "Эвейд!"}],
-
-	"s-3026-1000-1145-0": [{"type": "text","sub_type": "message","message": "stun","message_RU": "Стан"}],
-	"s-3026-1000-2145-0": [{"type": "text","sub_type": "message","message": "stun","message_RU": "Стан"}],
-
+	"118-0": [{"type": "text","sub_type": "message","message": "Jump","message_RU": "Прыжок"}],
+	"118-1": [{"type": "text","sub_type": "message","message": "Dodge","message_RU": "Эвейд!"}],
+	"145-0": [{"type": "text","sub_type": "message","message": "stun","message_RU": "Стан"}],
 	// AOE лед (большой)
-	"s-3026-1000-1104-0": [{"type": "text","sub_type": "message","message": "Ice storm DOTs","message_RU": "Ледяные лужи"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,8,520,100,5000)}],
-	"s-3026-1000-2104-0": [{"type": "text","sub_type": "message","message": "Ice storm DOTs","message_RU": "Ледяные лужи"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,8,520,100,5000)}],
+	"104-0": [{"type": "text","sub_type": "message","message": "Ice storm DOTs","message_RU": "Ледяные лужи"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,8,520,100,5000)}],
 	// AOE огонь (большой)
-	"s-3026-1000-1105-0": [{"type": "text","sub_type": "message","message": "Fire bombs","message_RU": "Огненные бомбы"},
-		{"type": "func","func": SpawnCircle.bind(null,false,553,135,500,10,270,100,3000)},
-		{"type": "func","func": SpawnCircle.bind(null,false,553,315,500,10,270,100,3250)},
-		{"type": "func","func": SpawnCircle.bind(null,false,553,45,500,10,270,100,3500)},
-		{"type": "func","func": SpawnCircle.bind(null,false,553,235,500,10,270,100,3750)},
-		{"type": "func","func": SpawnCircle.bind(null,false,553,90,500,10,270,100,4000)},
-		{"type": "func","func": SpawnCircle.bind(null,false,553,270,500,10,270,100,4250)},
-		{"type": "func","func": SpawnCircle.bind(null,false,553,0,500,10,270,100,4500)},
-		{"type": "func","func": SpawnCircle.bind(null,false,553,180,500,10,270,100,4750)}
-	],
-	"s-3026-1000-2105-0": [{"type": "text","sub_type": "message","message": "Fire bombs","message_RU": "Огненные бомбы"},
+	"105-0": [{"type": "text","sub_type": "message","message": "Fire bombs","message_RU": "Огненные бомбы"},
 		{"type": "func","func": SpawnCircle.bind(null,false,553,135,500,10,270,100,3000)},
 		{"type": "func","func": SpawnCircle.bind(null,false,553,315,500,10,270,100,3250)},
 		{"type": "func","func": SpawnCircle.bind(null,false,553,45,500,10,270,100,3500)},
@@ -249,35 +213,22 @@ module.exports = {
 		{"type": "func","func": SpawnCircle.bind(null,false,553,180,500,10,270,100,4750)}
 	],
 	// AOE лед (малый)
-	"s-3026-1000-1154-0": [{"type": "text","sub_type": "message","message": "Ice storm","message_RU": "Ледяной шторм"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,8,520,100,5000)}],
-	"s-3026-1000-2154-0": [{"type": "text","sub_type": "message","message": "Ice storm","message_RU": "Ледяной шторм"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,8,520,100,5000)}],
+	"154-0": [{"type": "text","sub_type": "message","message": "Ice storm","message_RU": "Ледяной шторм"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,8,520,100,5000)}],
 	// AOE огонь (малый)
-	"s-3026-1000-1155-0": [{"type": "text","sub_type": "message","message": "Fire (knock down)","message_RU": "Огненный столб (опрокид)"}],
-	"s-3026-1000-2155-0": [{"type": "text","sub_type": "message","message": "Fire (knock down)","message_RU": "Огненный столб (опрокид)"}],
-
-	"s-3026-1000-1206-0": [{"type": "text","sub_type": "message","message": "Jump back","message_RU": "Прыжок назад"}],
-	"s-3026-1000-2206-0": [{"type": "text","sub_type": "message","message": "Jump back","message_RU": "Прыжок назад"}],
-	"s-3026-1000-1206-2": [{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,15,350,200,3000)}],
-	"s-3026-1000-2206-2": [{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,15,350,200,3000)}],
-	"s-3026-1000-1153-0": [{"type": "text","sub_type": "message","message": "Tail (Flying!!)","message_RU": "Хвост (полет!!)"},
-		{"type": "func","func": SpawnSemicircle.bind(null,140,260,912,0,0,10,500,0,2000)},
-		{"type": "func","func": SpawnVector.bind(null,912,0,0,135,500,0,2000)},
-		{"type": "func","func": SpawnVector.bind(null,912,0,0,260,500,0,2000)}
-	],
-	"s-3026-1000-2153-0": [{"type": "text","sub_type": "message","message": "Tail (Flying!!)","message_RU": "Хвост (полет!!)"},
-		{"type": "func","func": SpawnSemicircle.bind(null,140,260,912,0,0,10,500,0,2000)},
-		{"type": "func","func": SpawnVector.bind(null,912,0,0,135,500,0,2000)},
-		{"type": "func","func": SpawnVector.bind(null,912,0,0,260,500,0,2000)}
-	],
+	"155-0": [{"type": "text","sub_type": "message","message": "Fire (knock down)","message_RU": "Огненный столб (опрокид)"},{"type": "text","sub_type": "message","delay": 1200,"message": "Dodge","message_RU": "Эвейд"}],
 	//
-	"s-3026-1000-1137-0": [{"type": "text","sub_type": "message","message": "Knock down","message_RU": "Опрокидывание"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,2,1275,200,13000)}],
-	"s-3026-1000-2137-0": [{"type": "text","sub_type": "message","message": "Knock down","message_RU": "Опрокидывание"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,2,1275,200,13000)}],
-	"s-3026-1000-1138-0": [{"type": "text","sub_type": "message","message": "AOE","message_RU": "AOE"}],
-	"s-3026-1000-2138-0": [{"type": "text","sub_type": "message","message": "AOE","message_RU": "AOE"}],
-	"s-3026-1000-1139-0": [{"type": "text","sub_type": "message","message": "60 degrees (Fire)","message_RU": "60° всем (Огонь)"}],
-	"s-3026-1000-2139-0": [{"type": "text","sub_type": "message","message": "60 degrees (Fire)","message_RU": "60° всем (Огонь)"}],
-	"s-3026-1000-1140-0": [{"type": "text","sub_type": "message","message": "40 degrees (Ice)","message_RU":  "40° всем (Лед)"}],
-	"s-3026-1000-2140-0": [{"type": "text","sub_type": "message","message": "40 degrees (Ice)","message_RU":  "40° всем (Лед)"}],
+	"206-0": [{"type": "text","sub_type": "message","message": "Jump back","message_RU": "Прыжок назад"}],
+	"206-2": [{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,15,350,200,3000)}],
+	"153-0": [{"type": "text","sub_type": "message","message": "Tail (Flying!!)","message_RU": "Хвост (полет!!)"},
+		{"type": "func","func": SpawnSemicircle.bind(null,140,260,912,0,0,10,500,0,2000)},
+		{"type": "func","func": SpawnVector.bind(null,912,0,0,135,500,0,2000)},
+		{"type": "func","func": SpawnVector.bind(null,912,0,0,260,500,0,2000)}
+	],
+	"137-0": [{"type": "text","sub_type": "message","message": "Knock down","message_RU": "Опрокидывание"}],
+	"138-0": [{"type": "text","sub_type": "message","message": "AOE","message_RU": "AOE"}],
+	"139-0": [{"type": "text","sub_type": "message","message": "60 degrees (Fire)","message_RU": "60° всем (Огонь)"}],
+	"140-0": [{"type": "text","sub_type": "message","message": "40 degrees (Ice)","message_RU":  "40° всем (Лед)"}],
+	//
 	"s-3026-1000-1212-0": [
 		{"type": "func","func": skilld_event.bind(null, 212)},
 		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,8,440,200,6000)},
@@ -312,3 +263,18 @@ module.exports = {
 	"am-3026-1000-31260001": [{"type": "func","func": skilld_event.bind(null, 3126001)}], // красный
 	"am-3026-1000-31260002": [{"type": "func","func": skilld_event.bind(null, 3126002)}], // синий
 };
+
+module.exports = {
+	load(dispatch) {
+		({ player, entity, library, effect } = dispatch.require.library);
+	}
+};
+
+for (let [key, value] of Object.entries(skills)) {
+	if (key.length === 5) {
+		module.exports['s-3026-1000-1' + key] = value;
+		module.exports['s-3026-1000-2' + key] = value;
+	} else {
+		module.exports[key] = value;
+	}
+}

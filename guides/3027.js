@@ -3,7 +3,7 @@
 // made by michengs
 // updated by HSDN
 
-const {SpawnVector, SpawnCircle} = require("../lib");
+const {SpawnMarker, SpawnVector, SpawnCircle} = require("../lib");
 
 let player, entity, library, effect;
 let timer1;
@@ -13,9 +13,9 @@ let notices = true;
 let print = true;
 let printHP = true;
 let printMech = true;
-let isHP_69_39 = false;
+let isHP_74_39 = false;
 
-function skilld_event(skillid, handlers, event, ent, dispatch) {
+function skilld_event(skillid, handlers, event, entity, dispatch) {
 	if ([351].includes(skillid)) { // щит
 		if (notices) {
 			clearTimeout(timer1);
@@ -25,32 +25,32 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 				timer1 = setTimeout(()=> {
 				handlers['text']({
 					"sub_type": "message",
-					"message": isHP_69_39 ? "!" : "After 5s SHIELD!!!!",
-					"message_RU": isHP_69_39 ? "!" : "Через 5 сек. ЩИТ!!!"
+					"message": isHP_74_39 ? "!" : "After 5s SHIELD!!!",
+					"message_RU": isHP_74_39 ? "!" : "Через 5 сек. ЩИТ!!!"
 				});
 			}, 85000);
 			timer2 = setTimeout(()=> {
 				handlers['text']({
 					"sub_type": "message",
-					"message": isHP_69_39 ? "!" : "After 15s SHIELD!!!!",
-					"message_RU": isHP_69_39 ? "!" : "Через 15 сек. ЩИТ!!!"
+					"message": isHP_74_39 ? "!" : "After 15s SHIELD!!!",
+					"message_RU": isHP_74_39 ? "!" : "Через 15 сек. ЩИТ!!!"
 				});
 			}, 75000);
 		}
 	}
-	if ([69,39].includes(skillid)) {
+	if ([74,39].includes(skillid)) {
 		if (printHP) {
 			clearTimeout(timer1);
 			clearTimeout(timer2);
 			printHP = false;
-			isHP_69_39 = true;
+			isHP_74_39 = true;
 			setTimeout(() => printHP = true, 15000);
 		}
 	}
 	if ([89,59,29].includes(skillid)) { // до щита
 		if (print) {
 			print = false;
-			isHP_69_39 = false;
+			isHP_74_39 = false;
 			setTimeout(() => print = true, 15000);
 			handlers['text']({
 				"sub_type": "notification",
@@ -83,7 +83,7 @@ module.exports = {
 	"h-3027-1000-89": [{"type": "func","func": skilld_event.bind(null, 89)}],
 	"h-3027-1000-59": [{"type": "func","func": skilld_event.bind(null, 59)}],
 	"h-3027-1000-29": [{"type": "func","func": skilld_event.bind(null, 29)}],
-	"h-3027-1000-69": [{"type": "func","func": skilld_event.bind(null, 69)}],
+	"h-3027-1000-74": [{"type": "func","func": skilld_event.bind(null, 74)}],
 	"h-3027-1000-39": [{"type": "func","func": skilld_event.bind(null, 39)}],
 
 	//"s-3027-1001-255-0": [{"type": "func","func": SpawnVector.bind(null,553,0,0,0,3000,0,5000)}], //0
@@ -104,10 +104,13 @@ module.exports = {
 
 	// стяжка -> бублики
 	"s-3027-1000-350-0": [{"type": "text","sub_type": "message","message": "Donuts","message_RU": "Стяжка | Бублики"},
-		{"type": "text","sub_type": "message","delay": 3750,"message":  'Waves',"message_RU": "Волны"},
-		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,12,240,100,5000)},
-		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,8,480,100,5000)},
-		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,3,950,100,5000)},
+		//{"type": "func","func": SpawnMarker.bind(null,false,180,100,3800,1000,false,["CENTER","IN"])},
+		//{"type": "func","func": SpawnMarker.bind(null,false,0,100,3800,1000,false,["CENTER","IN"])},
+		//{"type": "func","func": SpawnMarker.bind(null,false,90,100,3800,1000,false,["CENTER","IN"])},
+		//{"type": "func","func": SpawnMarker.bind(null,false,270,100,3800,1000,false,["CENTER","IN"])},
+		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,12,240,0,5000)},
+		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,8,480,0,5000)},
+		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,3,950,0,5000)},
 		{"type": "func","func": skilld_event.bind(null, 350)}
 	],
 	// стяжка -> волна
@@ -149,8 +152,6 @@ module.exports = {
 	"s-3027-1000-402-0": [{"type": "text","sub_type": "message","message": "Jump","message_RU": "Прыжок"}],
 	"s-3027-1000-109-0": [{"type": "text","sub_type": "message","message": "Forward Jump","message_RU": "Прыжок вперед"}],
 
-	"s-3027-1000-351-0": [{"type": "text","sub_type": "message","message": "SHIELD!","message_RU": "ЩИТ!!"},
-		{"type": "func","func": skilld_event.bind(null, 351)}
-	],
+	"s-3027-1000-351-0": [{"type": "text","sub_type": "message","message": "SHIELD!","message_RU": "ЩИТ!!"},{"type": "func","func": skilld_event.bind(null, 351)}],
 	"s-3027-1000-401-0": [{"type": "text","sub_type": "message","message": "AOE","message_RU": "АОЕ!!!!"}]
 };
