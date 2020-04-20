@@ -4,6 +4,8 @@
 
 const {SpawnVector, SpawnCircle, SpawnSemicircle} = require("../lib");
 
+const MARKER_ITEM_ID = 88704; // 88704 - Velika Banquet Coin
+
 let player, entity, library, effect;
 let print = true;
 let debuff = null;
@@ -37,10 +39,8 @@ const boss_skill =
 function skilld_event(skillid, handlers, event, ent, dispatch) {
 	if ([3026004,3126004,3026005,3126005].includes(skillid)) {   // ярость 0, ужас 1
 		qbacting = skillid % 2;
-		//qbacting = null
 	}
 	if ([3026001,3126001,3026002,3126002].includes(skillid)) {   // синий 0, красный 1
-		//debuff = skillid % 2;
 		clearTimeout(timer1);
 		clearTimeout(timer2);
 		clearTimeout(timer3);
@@ -59,8 +59,8 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 			if (debuff != null) {
 				handlers['text']({
 					"sub_type": "notification",
-					"message": (`${debuff_TipMsg[debuff % 2].msgt} `),
-					"message_RU": (`${debuff_TipMsg[debuff % 2].msg} `)
+					"message": (`${debuff_TipMsg[debuff % 2].msgt}`),
+					"message_RU": (`${debuff_TipMsg[debuff % 2].msg}`)
 				});
 				handlers['text']({
 					"sub_type": "message",
@@ -148,13 +148,13 @@ function start_debuff(handlers, event, entity, dispatch) {
 				debuff = event.id;
 				if (blue) {
 					handlers['text']({
-						"sub_type": "message",
+						"sub_type": "notification",
 						"message": (`${CK_TipMsg[(qbacting + debuff +1) %2].msgt}`),
 						"message_RU": (`${CK_TipMsg[(qbacting + debuff +1) %2].msg}`)
 					});
 				} else if (red) {
 					handlers['text']({
-						"sub_type": "message",
+						"sub_type": "notification",
 						"message": (`${CK_TipMsg[(qbacting + debuff) %2].msgt}`),
 						"message_RU": (`${CK_TipMsg[(qbacting + debuff) %2].msg}`)
 					});
@@ -170,7 +170,7 @@ function start_debuff(handlers, event, entity, dispatch) {
 				shield_loc.w = entity['loc'].w;
 				handlers['spawn']({ // spawn teleport mark
 					"sub_type": "item",
-					"id": 88704,
+					"id": MARKER_ITEM_ID,
 					"sub_delay": 50000,
 					"pos": {
 						x: 53192,
@@ -204,19 +204,19 @@ let skills = {
 		{"type": "func","func": SpawnVector.bind(null,912,0,0,135,500,0,2000)},
 		{"type": "func","func": SpawnVector.bind(null,912,0,0,260,500,0,2000)}
 	],
+	"153-0": [{"type": "text","sub_type": "message","message": "Tail (Flying!!)","message_RU": "Хвост (полет!!)"},
+		{"type": "func","func": SpawnSemicircle.bind(null,140,260,912,0,0,10,500,0,2000)},
+		{"type": "func","func": SpawnVector.bind(null,912,0,0,135,500,0,2000)},
+		{"type": "func","func": SpawnVector.bind(null,912,0,0,260,500,0,2000)}
+	],
 	"118-0": [{"type": "text","sub_type": "message","message": "Jump","message_RU": "Прыжок"}],
 	"118-1": [{"type": "text","sub_type": "message","message": "Dodge","message_RU": "Эвейд!"}],
 	"114-0": [{"type": "text","sub_type": "message","message": "Front fire","message_RU": "Огонь впереди"}],
 	"145-0": [{"type": "text","sub_type": "message","message": "Stun","message_RU": "Стан"}],
 	"206-0": [{"type": "text","sub_type": "message","message": "Jump back","message_RU": "Прыжок назад"}],
 	"206-2": [{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,15,350,200,3000)}],
-	"153-0": [{"type": "text","sub_type": "message","message": "Tail (Flying!!)","message_RU": "Хвост (полет!!)"},
-		{"type": "func","func": SpawnSemicircle.bind(null,140,260,912,0,0,10,500,0,2000)},
-		{"type": "func","func": SpawnVector.bind(null,912,0,0,135,500,0,2000)},
-		{"type": "func","func": SpawnVector.bind(null,912,0,0,260,500,0,2000)}
-	],
 	// AOE лед (большой)
-	"104-0": [{"type": "text","sub_type": "message","message": "Ice storm DOTs","message_RU": "Ледяные лужи"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,8,520,100,5000)}],
+	"104-0": [{"type": "text","sub_type": "message","message": "Ice storm DOTs","message_RU": "Ледяные лужи"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,8,500,0,5000)}],
 	// AOE огонь (большой)
 	"105-0": [{"type": "text","sub_type": "message","message": "Fire bombs","message_RU": "Огненные бомбы"},
 		{"type": "func","func": SpawnCircle.bind(null,false,553,135,500,10,270,100,3000)},
@@ -229,7 +229,7 @@ let skills = {
 		{"type": "func","func": SpawnCircle.bind(null,false,553,180,500,10,270,100,4750)}
 	],
 	// AOE лед (малый)
-	"154-0": [{"type": "text","sub_type": "message","message": "Ice storm","message_RU": "Ледяной шторм"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,8,520,100,5000)}],
+	"154-0": [{"type": "text","sub_type": "message","message": "Ice storm","message_RU": "Ледяной шторм"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,8,500,0,5000)}],
 	// AOE огонь (малый)
 	"155-0": [{"type": "text","sub_type": "message","message": "Fire (knock down)","message_RU": "Огненный столб (опрокид)"},{"type": "text","sub_type": "message","delay": 1200,"message": "Dodge","message_RU": "Эвейд"}],
 	//
