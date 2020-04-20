@@ -1,5 +1,6 @@
 
-const HIGHLIGHT_ITEM_ID = 110684; // 88704 - Velika Banquet Coin; 110684 - Tier 21 Superior Twin Swords
+const HIGHLIGHT_ITEM = 110684; // Tier 21 Superior Twin Swords
+const MARKER_ITEM    = 88704;  // Velika Banquet Coin
 
 function SpawnItem(item, angle, distance, delay, duration, handlers, event, entity) {
 	angle =  Math.PI * angle / 180;
@@ -29,7 +30,7 @@ function SpawnMarker(target, angle, distance, delay, duration, highlight, label,
 	);
 
 	if (highlight) {
-		SpawnObject("item", target, HIGHLIGHT_ITEM_ID,
+		SpawnObject("item", target, HIGHLIGHT_ITEM,
 			0, 0,
 			angle, distance,
 			delay, duration,
@@ -197,6 +198,8 @@ function applyDistance(loc, offsetDistance, offsetAngle) {
 }
 
 module.exports = {
+	HIGHLIGHT_ITEM,
+	MARKER_ITEM,
 	SpawnItem,
 	SpawnMarker,
 	SpawnPoint,

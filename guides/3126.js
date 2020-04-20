@@ -2,9 +2,7 @@
 //
 // made by michengs
 
-const {SpawnVector, SpawnCircle, SpawnSemicircle} = require("../lib");
-
-const MARKER_ITEM_ID = 88704; // 88704 - Velika Banquet Coin
+const {MARKER_ITEM, SpawnVector, SpawnCircle, SpawnSemicircle} = require("../lib");
 
 let player, entity, library, effect;
 let print = true;
@@ -170,7 +168,7 @@ function start_debuff(handlers, event, entity, dispatch) {
 				shield_loc.w = entity['loc'].w;
 				handlers['spawn']({ // spawn teleport mark
 					"sub_type": "item",
-					"id": MARKER_ITEM_ID,
+					"id": MARKER_ITEM,
 					"sub_delay": 50000,
 					"pos": {
 						x: 53192,
