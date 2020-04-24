@@ -173,7 +173,7 @@ function start_debuff(handlers, event, entity, dispatch) {
 					"pos": {
 						x: 53192,
 						y: 100761,
-						z: 14833
+						z: 14233
 					}
 				}, {
 					loc: shield_loc
