@@ -106,9 +106,13 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 			red  = false;
 			setTimeout(() => blue  = false, 6500); //6700
 		}
+		SpawnCircle(false,445,0,0,8,440,200,6000,handlers,event,entity);
+		SpawnCircle(false,445,0,0,4,840,200,6000,handlers,event,entity);
+		SpawnVector(553,0,0,180,840,200,6000,handlers,event,entity);
+		SpawnVector(553,0,0,0,840,200,6000,handlers,event,entity);
 	}
 	if ([212,215].includes(skillid)) {   // Red inside
-		if  (debuff != null) {
+		if (debuff != null) {
 			handlers['text']({
 				"sub_type": "message",
 				"message": (`Fire inside | ${boss_skill[skillid].msgt} | ${CK_TipMsg[(qbacting + debuff) %2].msgt}`),
@@ -118,6 +122,10 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 			red  = true; 
 			setTimeout(() => red  = false, 6500);
 		}
+		SpawnCircle(false,445,0,0,8,440,200,6000,handlers,event,entity);
+		SpawnCircle(false,445,0,0,4,840,200,6000,handlers,event,entity);
+		SpawnVector(553,0,0,180,840,200,6000,handlers,event,entity);
+		SpawnVector(553,0,0,0,840,200,6000,handlers,event,entity);
 	}
 	if (skillid === 99020020) {   // Death release debuff
 		//debuff = null;
@@ -227,30 +235,10 @@ let skills = {
 	"139-0": [{"type": "text","sub_type": "message","message": "60 degrees (Fire)","message_RU": "60° всем (Огонь)"}],
 	"140-0": [{"type": "text","sub_type": "message","message": "40 degrees (Ice)","message_RU":  "40° всем (Лед)"}],
 	//
-	"s-3026-1000-1212-0": [
-		{"type": "func","func": skilld_event.bind(null, 212)},
-		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,8,440,200,6000)},
-		{"type": "func","func": SpawnVector.bind(null,553,0,0,180,720,200,6000)},
-		{"type": "func","func": SpawnVector.bind(null,553,0,0,0,720,200,6000)}
-	],
-	"s-3026-1000-1215-0": [
-		{"type": "func","func": skilld_event.bind(null, 215)},
-		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,8,440,200,6000)},
-		{"type": "func","func": SpawnVector.bind(null,553,0,0,180,720,200,6000)},
-		{"type": "func","func": SpawnVector.bind(null,553,0,0,0,720,200,6000)}
-	],
-	"s-3026-1000-1213-0": [
-		{"type": "func","func": skilld_event.bind(null, 213)},
-		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,8,440,200,6000)},
-		{"type": "func","func": SpawnVector.bind(null,553,0,0,180,720,200,6000)},
-		{"type": "func","func": SpawnVector.bind(null,553,0,0,0,720,200,6000)}
-	],
-	"s-3026-1000-1214-0": [
-		{"type": "func","func": skilld_event.bind(null, 214)},
-		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,8,440,200,6000)},
-		{"type": "func","func": SpawnVector.bind(null,553,0,0,180,720,200,6000)},
-		{"type": "func","func": SpawnVector.bind(null,553,0,0,0,720,200,6000)}
-	],
+	"s-3026-1000-1212-0": [{"type": "func","func": skilld_event.bind(null, 212)}],
+	"s-3026-1000-1215-0": [{"type": "func","func": skilld_event.bind(null, 215)}],
+	"s-3026-1000-1213-0": [{"type": "func","func": skilld_event.bind(null, 213)}],
+	"s-3026-1000-1214-0": [{"type": "func","func": skilld_event.bind(null, 214)}],
 	"qb-3026-1000-3026005": [{"type": "func","func": skilld_event.bind(null, 3026005)}], // ужас, одинаковые цвета
 	"qb-3026-1000-3026004": [{"type": "func","func": skilld_event.bind(null, 3026004)}], // ярость, разные цвета
 	"qb-3026-1000-3126005": [{"type": "func","func": skilld_event.bind(null, 3126005)}], // ужас, одинаковые цвета

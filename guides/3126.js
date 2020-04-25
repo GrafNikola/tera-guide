@@ -110,6 +110,10 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 			}, 6600);
 			setTimeout(() => red  = false, 9400);
 		}
+		SpawnCircle(false,445,0,0,8,440,200,6000,handlers,event,entity);
+		SpawnCircle(false,445,0,0,4,840,200,6000,handlers,event,entity);
+		SpawnVector(553,0,0,180,840,200,6000,handlers,event,entity);
+		SpawnVector(553,0,0,0,840,200,6000,handlers,event,entity);
 	}
 	if ([212,215].includes(skillid)) {   // Red inside
 		if (debuff != null) {
@@ -126,6 +130,10 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 			}, 6600);
 			setTimeout(() => blue  = false, 9400);
 		}
+		SpawnCircle(false,445,0,0,8,440,200,6000,handlers,event,entity);
+		SpawnCircle(false,445,0,0,4,840,200,6000,handlers,event,entity);
+		SpawnVector(553,0,0,180,840,200,6000,handlers,event,entity);
+		SpawnVector(553,0,0,0,840,200,6000,handlers,event,entity);
 	}
 	if (skillid === 99020020) {  // Death release debuff
 		//debuff = null;
@@ -239,30 +247,10 @@ let skills = {
 	"s-3126-1000-1107-0": [{"type": "text","sub_type": "message","message": "(Debuffs) Farthest","message_RU": "(Дебаффы) Дальние"}],
 	"s-3126-1000-2107-0": [{"type": "text","sub_type": "message","message": "(Debuffs) Closest","message_RU": "(Дебаффы) Ближайшие"}],
 	//
-	"s-3126-1000-1212-0": [
-		{"type": "func","func": skilld_event.bind(null, 212)},
-		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,8,425,200,6000)},
-		{"type": "func","func": SpawnVector.bind(null,553,0,0,180,720,200,6000)},
-		{"type": "func","func": SpawnVector.bind(null,553,0,0,0,720,200,6000)}
-	],
-	"s-3126-1000-1215-0": [
-		{"type": "func","func": skilld_event.bind(null, 215)},
-		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,8,425,200,6000)},
-		{"type": "func","func": SpawnVector.bind(null,553,0,0,180,720,200,6000)},
-		{"type": "func","func": SpawnVector.bind(null,553,0,0,0,720,200,6000)}
-	],
-	"s-3126-1000-1213-0": [
-		{"type": "func","func": skilld_event.bind(null, 213)},
-		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,8,425,200,6000)},
-		{"type": "func","func": SpawnVector.bind(null,553,0,0,180,720,200,6000)},
-		{"type": "func","func": SpawnVector.bind(null,553,0,0,0,720,200,6000)}
-	],
-	"s-3126-1000-1214-0": [
-		{"type": "func","func": skilld_event.bind(null, 214)},
-		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,8,425,200,6000)},
-		{"type": "func","func": SpawnVector.bind(null,553,0,0,180,720,200,6000)},
-		{"type": "func","func": SpawnVector.bind(null,553,0,0,0,720,200,6000)}
-	],
+	"s-3126-1000-1212-0": [{"type": "func","func": skilld_event.bind(null, 212)}],
+	"s-3126-1000-1215-0": [{"type": "func","func": skilld_event.bind(null, 215)}],
+	"s-3126-1000-1213-0": [{"type": "func","func": skilld_event.bind(null, 213)}],
+	"s-3126-1000-1214-0": [{"type": "func","func": skilld_event.bind(null, 214)}],
 	"qb-3126-1000-3026005": [{"type": "func","func": skilld_event.bind(null, 3026005)}], // ужас, одинаковые цвета
 	"qb-3126-1000-3026004": [{"type": "func","func": skilld_event.bind(null, 3026004)}], // ярость, разные цвета
 	"qb-3126-1000-3126005": [{"type": "func","func": skilld_event.bind(null, 3126005)}], // ужас, одинаковые цвета
