@@ -34,7 +34,7 @@ const boss_skill =
 	215: {msg: 'Лево',  msgt: 'Left'}
 };
 
-function skilld_event(skillid, handlers, event, ent, dispatch) {
+function skilld_event(skillid, handlers, event, entity, dispatch) {
 	if ([3026004,3126004,3026005,3126005].includes(skillid)) {   // ярость 0, ужас 1
 		qbacting = skillid % 2;
 	}
@@ -95,7 +95,20 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 			}
 		}, 65000);
 	}
-	if ([213,214].includes(skillid)) {   // Blue inside
+	// In-Out identification
+	if ([212,213,214,215].includes(skillid)) {
+		SpawnCircle(false,445,0,0,8,440,200,8000,handlers,event,entity);
+		SpawnCircle(false,445,0,0,4,840,200,8000,handlers,event,entity);
+	}
+	if ([212,214].includes(skillid)) {   // Fire claw (141, 142)
+		SpawnVector(553,0,0,190,840,200,8000,handlers,event,entity);
+		SpawnVector(553,0,0, 10,840,200,8000,handlers,event,entity);
+	}
+	if ([213,215].includes(skillid)) {   // Ice claw (143, 144)
+		SpawnVector(553,0,0,170,840,200,8000,handlers,event,entity);
+		SpawnVector(553,0,0,350,840,200,8000,handlers,event,entity);
+	}
+	if ([213,214].includes(skillid)) {   // Ice inside
 		if (debuff != null) {
 			handlers['text']({
 				"sub_type": "message",
@@ -110,12 +123,8 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 			}, 6600);
 			setTimeout(() => red  = false, 9400);
 		}
-		SpawnCircle(false,445,0,0,8,440,200,6000,handlers,event,entity);
-		SpawnCircle(false,445,0,0,4,840,200,6000,handlers,event,entity);
-		SpawnVector(553,0,0,180,840,200,6000,handlers,event,entity);
-		SpawnVector(553,0,0,0,840,200,6000,handlers,event,entity);
 	}
-	if ([212,215].includes(skillid)) {   // Red inside
+	if ([212,215].includes(skillid)) {   // Fire inside
 		if (debuff != null) {
 			handlers['text']({
 				"sub_type": "message",
@@ -130,10 +139,6 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 			}, 6600);
 			setTimeout(() => blue  = false, 9400);
 		}
-		SpawnCircle(false,445,0,0,8,440,200,6000,handlers,event,entity);
-		SpawnCircle(false,445,0,0,4,840,200,6000,handlers,event,entity);
-		SpawnVector(553,0,0,180,840,200,6000,handlers,event,entity);
-		SpawnVector(553,0,0,0,840,200,6000,handlers,event,entity);
 	}
 	if (skillid === 99020020) {  // Death release debuff
 		//debuff = null;
