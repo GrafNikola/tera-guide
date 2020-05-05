@@ -97,16 +97,16 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 	}
 	// In-Out identification
 	if ([212,213,214,215].includes(skillid)) {
-		SpawnCircle(false,445,0,0,8,440,200,8000,handlers,event,entity);
-		SpawnCircle(false,445,0,0,4,840,200,8000,handlers,event,entity);
+		SpawnCircle(false,445,0,0,8,440,200,11000,handlers,event,entity);
+		SpawnCircle(false,445,0,0,4,840,200,11000,handlers,event,entity);
 	}
 	if ([212,214].includes(skillid)) {   // Fire claw (141, 142)
-		SpawnVector(553,0,0,190,840,200,8000,handlers,event,entity);
-		SpawnVector(553,0,0, 10,840,200,8000,handlers,event,entity);
+		SpawnVector(553,0,0,190,840,200,11000,handlers,event,entity);
+		SpawnVector(553,0,0, 10,840,200,11000,handlers,event,entity);
 	}
 	if ([213,215].includes(skillid)) {   // Ice claw (143, 144)
-		SpawnVector(553,0,0,170,840,200,8000,handlers,event,entity);
-		SpawnVector(553,0,0,350,840,200,8000,handlers,event,entity);
+		SpawnVector(553,0,0,170,840,200,11000,handlers,event,entity);
+		SpawnVector(553,0,0,350,840,200,11000,handlers,event,entity);
 	}
 	if ([213,214].includes(skillid)) {   // Ice inside
 		if (debuff != null) {
@@ -240,7 +240,7 @@ let skills = {
 		{"type": "func","func": SpawnCircle.bind(null,false,553,180,500,10,270,100,4750)}
 	],
 	// AOE лед (малый)
-	"154-0": [{"type": "text","sub_type": "message","message": "Ice storm","message_RU": "Ледяной шторм"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,8,500,0,5000)}],
+	"154-0": [{"type": "text","sub_type": "message","message": "Ice storm","message_RU": "Ледяной шторм"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,8,500,0,6000)}],
 	// AOE огонь (малый)
 	"155-0": [{"type": "text","sub_type": "message","message": "Fire (knock down)","message_RU": "Огненный столб (опрокид)"},{"type": "text","sub_type": "message","delay": 1200,"message": "Dodge","message_RU": "Эвейд"}],
 	//
