@@ -5,7 +5,6 @@
 const {MARKER_ITEM, SpawnVector, SpawnCircle, SpawnSemicircle} = require("../lib");
 
 let player, entity, library, effect;
-let print = true;
 let debuff = null;
 let timer1;
 let timer2;
@@ -18,20 +17,15 @@ let red = false;
 
 const CK_TipMsg =
 {
-	0: {msgt: 'IN',  msg: 'К НЕМУ'},
-	1: {msgt: 'OUT', msg: 'ОТ НЕГО'}
+	0: {msgt: 'IN',    msg: 'К НЕМУ'},
+	1: {msgt: 'OUT',   msg: 'ОТ НЕГО'},
+	2: {msgt: 'Left',  msg: 'Лево'},
+	3: {msgt: 'Right', msg: 'Право'}
 };
 const debuff_TipMsg =
 {
 	0: {msgt: 'Ready to get Fire debuff', msg: 'Готовность к переключению на Огонь'},
 	1: {msgt: 'Ready to get Ice debuff',  msg: 'Готовность к переключению на Лед'}
-};
-const boss_skill =
-{
-	213: {msg: 'Лево',  msgt: 'Left'},
-	214: {msg: 'Право', msgt: 'Right'},
-	212: {msg: 'Право', msgt: 'Right'},
-	215: {msg: 'Лево',  msgt: 'Left'}
 };
 
 function skilld_event(skillid, handlers, event, entity, dispatch) {
@@ -39,6 +33,7 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 		qbacting = skillid % 2;
 	}
 	if ([3026001,3126001,3026002,3126002].includes(skillid)) {   // синий 0, красный 1
+		start_debuff(handlers, event, entity, dispatch);
 		clearTimeout(timer1);
 		clearTimeout(timer2);
 		clearTimeout(timer3);
@@ -48,7 +43,7 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 			if (debuff != null) {
 				handlers['text']({
 					"sub_type": "message",
-					"message": "Debuff 50s",
+					"message": "Debuff 20s",
 					"message_RU": "Дебафф 20 сек."
 				});
 			}
@@ -88,9 +83,9 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 		timer5 = setTimeout(()=> {
 			if (debuff != null) {
 				handlers['text']({
-				"sub_type": "message",
-				"message": "Warning! Debuff 5s",
-				"message_RU": "Дебафф 5 сек."
+					"sub_type": "message",
+					"message": "Warning! Debuff 5s",
+					"message_RU": "Дебафф 5 сек."
 				});
 			}
 		}, 65000);
@@ -112,8 +107,8 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 		if (debuff != null) {
 			handlers['text']({
 				"sub_type": "message",
-				"message": (`Ice inside | ${boss_skill[skillid].msgt} | ${CK_TipMsg[(qbacting + debuff +1) %2].msgt}`),
-				"message_RU": (`Внутри лед | ${boss_skill[skillid].msg} | ${CK_TipMsg[(qbacting + debuff +1) %2].msg}`)
+				"message": (`Ice inside | ${CK_TipMsg[(qbacting + 1) % 2 + 2].msgt} | ${CK_TipMsg[(qbacting + debuff + 1) % 2].msgt}`),
+				"message_RU": (`Внутри лед | ${CK_TipMsg[(qbacting + 1) % 2 + 2].msg} | ${CK_TipMsg[(qbacting + debuff + 1) % 2].msg}`)
 			});
 			blue = true;
 			red  = false;
@@ -121,35 +116,34 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 				blue = false;
 				red  = true;
 			}, 6600);
-			setTimeout(() => red  = false, 9400);
+			setTimeout(() => red = false, 9400);
 		}
 	}
 	if ([212,215].includes(skillid)) {   // Fire inside
 		if (debuff != null) {
 			handlers['text']({
 				"sub_type": "message",
-				"message": (`Fire inside | ${boss_skill[skillid].msgt} | ${CK_TipMsg[(qbacting + debuff) %2].msgt}`),
-				"message_RU": (`Внутри огонь | ${boss_skill[skillid].msg} | ${CK_TipMsg[(qbacting + debuff) %2].msg}`)
+				"message": (`Fire inside | ${CK_TipMsg[qbacting % 2 + 2].msgt} | ${CK_TipMsg[(qbacting + debuff) % 2].msgt}`),
+				"message_RU": (`Внутри огонь | ${CK_TipMsg[qbacting % 2 + 2].msg} | ${CK_TipMsg[(qbacting + debuff) % 2].msg}`)
 			});
 			blue = false;
 			red  = true;
-			setTimeout(()=>{
+			setTimeout(()=> {
 				blue = true;
 				red  = false;
 			}, 6600);
-			setTimeout(() => blue  = false, 9400);
+			setTimeout(() => blue = false, 9400);
 		}
 	}
-	if (skillid === 99020020) {  // Death release debuff
-		//debuff = null;
+	if (skillid === 99020020) {   // Death release debuff
 		clearTimeout(timer1);
 		clearTimeout(timer2);
 	}
 }
-// NULL % 2 =0
-// 1 % 2 =1
-// 0 % 2 =0
-// 2 % 2 =0
+// NULL % 2 = 0
+//    1 % 2 = 1
+//    0 % 2 = 0
+//    2 % 2 = 0
 let debuff_tracker_started = false;
 function start_debuff(handlers, event, entity, dispatch) {
 	const abnormality_change = (added, event) => {
@@ -160,14 +154,14 @@ function start_debuff(handlers, event, entity, dispatch) {
 				if (blue) {
 					handlers['text']({
 						"sub_type": "notification",
-						"message": (`${CK_TipMsg[(qbacting + debuff +1) %2].msgt}`),
-						"message_RU": (`${CK_TipMsg[(qbacting + debuff +1) %2].msg}`)
+						"message": (`${CK_TipMsg[(qbacting + debuff + 1) % 2].msgt}`),
+						"message_RU": (`${CK_TipMsg[(qbacting + debuff + 1) % 2].msg}`)
 					});
 				} else if (red) {
 					handlers['text']({
 						"sub_type": "notification",
-						"message": (`${CK_TipMsg[(qbacting + debuff) %2].msgt}`),
-						"message_RU": (`${CK_TipMsg[(qbacting + debuff) %2].msg}`)
+						"message": (`${CK_TipMsg[(qbacting + debuff) % 2].msgt}`),
+						"message_RU": (`${CK_TipMsg[(qbacting + debuff) % 2].msg}`)
 					});
 				}
 			} else {
@@ -204,11 +198,12 @@ function start_debuff(handlers, event, entity, dispatch) {
 let skills = {
 	"112-0": [{"type": "text","sub_type": "message","message": "Ice DOT","message_RU": "Лед (полоса)"}],
 	"110-0": [{"type": "text","sub_type": "message","message": "Fire DOT","message_RU": "Огонь (лужа)"}],
-	"108-0": [{"type": "text","sub_type": "message","message": "Turn right (repel!!)","message_RU": "Повернуть направо (откид!!)"},{"type": "func","func": SpawnCircle.bind(null,false,912,0,0,8,440,0,2000)}],
-	"158-0": [{"type": "text","sub_type": "message","message": "Turn right (repel!!)","message_RU": "Повернуть направо (откид!!)"},{"type": "func","func": SpawnCircle.bind(null,false,912,0,0,8,440,0,2000)}],
-	"109-0": [{"type": "text","sub_type": "message","message": "Turn left (repel!!)","message_RU": "Повернуть налево (откид!!)"},{"type": "func","func": SpawnCircle.bind(null,false,912,0,0,8,440,0,2000)}],
-	"159-0": [{"type": "text","sub_type": "message","message": "Turn left (repel!!)","message_RU": "Повернуть налево (откид!!)"},{"type": "func","func": SpawnCircle.bind(null,false,912,0,0,8,440,0,2000)}],
+	"108-0": [{"type": "text","sub_type": "message","message": "Turn right (repel!!)","message_RU": "Поворот вправо (откид!!)"},{"type": "func","func": SpawnCircle.bind(null,false,912,0,0,8,440,0,2000)}],
+	"158-0": [{"type": "text","sub_type": "message","message": "Turn right (repel!!)","message_RU": "Поворот вправо (откид!!)"},{"type": "func","func": SpawnCircle.bind(null,false,912,0,0,8,440,0,2000)}],
+	"109-0": [{"type": "text","sub_type": "message","message": "Turn left (repel!!)","message_RU": "Поворот влево (откид!!)"},{"type": "func","func": SpawnCircle.bind(null,false,912,0,0,8,440,0,2000)}],
+	"159-0": [{"type": "text","sub_type": "message","message": "Turn left (repel!!)","message_RU": "Поворот влево (откид!!)"},{"type": "func","func": SpawnCircle.bind(null,false,912,0,0,8,440,0,2000)}],
 	"120-0": [{"type": "text","sub_type": "message","message": "Together","message_RU": "Яростный рев"}],
+	"145-0": [{"type": "text","sub_type": "message","message": "Stun","message_RU": "Стан"},{"type": "func","func": start_debuff}],
 	"157-0": [{"type": "text","sub_type": "message","message": "Change","message_RU": "Смена"},{"type": "func","func": start_debuff}],
 	"103-0": [{"type": "text","sub_type": "message","message": "Tail (Flying!!)","message_RU": "Хвост (полет!!)"},
 		{"type": "func","func": SpawnSemicircle.bind(null,140,260,912,0,0,10,500,0,2000)},
@@ -220,37 +215,35 @@ let skills = {
 		{"type": "func","func": SpawnVector.bind(null,912,0,0,135,500,0,2000)},
 		{"type": "func","func": SpawnVector.bind(null,912,0,0,260,500,0,2000)}
 	],
+	"114-0": [{"type": "text","sub_type": "message","message": "Front fire","message_RU": "Огонь впереди"}],
 	"118-0": [{"type": "text","sub_type": "message","message": "Jump","message_RU": "Прыжок"}],
 	"118-1": [{"type": "text","sub_type": "message","message": "Dodge","message_RU": "Эвейд!"}],
-	"114-0": [{"type": "text","sub_type": "message","message": "Front fire","message_RU": "Огонь впереди"}],
-	"145-0": [{"type": "text","sub_type": "message","message": "Stun","message_RU": "Стан"}],
-	"206-0": [{"type": "text","sub_type": "message","message": "Jump back","message_RU": "Прыжок назад"}],
-	"206-2": [{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,15,350,200,3000)}],
 	// AOE лед (большой)
 	"104-0": [{"type": "text","sub_type": "message","message": "Ice storm DOTs","message_RU": "Ледяные лужи"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,8,500,0,5000)}],
 	// AOE огонь (большой)
 	"105-0": [{"type": "text","sub_type": "message","message": "Fire bombs","message_RU": "Огненные бомбы"},
-		{"type": "func","func": SpawnCircle.bind(null,false,553,135,500,10,270,100,3000)},
-		{"type": "func","func": SpawnCircle.bind(null,false,553,315,500,10,270,100,3250)},
-		{"type": "func","func": SpawnCircle.bind(null,false,553,45,500,10,270,100,3500)},
-		{"type": "func","func": SpawnCircle.bind(null,false,553,235,500,10,270,100,3750)},
-		{"type": "func","func": SpawnCircle.bind(null,false,553,90,500,10,270,100,4000)},
-		{"type": "func","func": SpawnCircle.bind(null,false,553,270,500,10,270,100,4250)},
-		{"type": "func","func": SpawnCircle.bind(null,false,553,0,500,10,270,100,4500)},
-		{"type": "func","func": SpawnCircle.bind(null,false,553,180,500,10,270,100,4750)}
+		{"type": "func","func": SpawnCircle.bind(null,false,553,135,500,10,270,0,3000)},
+		{"type": "func","func": SpawnCircle.bind(null,false,553,315,500,10,270,0,3250)},
+		{"type": "func","func": SpawnCircle.bind(null,false,553,45,500,10,270,0,3500)},
+		{"type": "func","func": SpawnCircle.bind(null,false,553,235,500,10,270,0,3750)},
+		{"type": "func","func": SpawnCircle.bind(null,false,553,90,500,10,270,0,4000)},
+		{"type": "func","func": SpawnCircle.bind(null,false,553,270,500,10,270,0,4250)},
+		{"type": "func","func": SpawnCircle.bind(null,false,553,0,500,10,270,0,4500)},
+		{"type": "func","func": SpawnCircle.bind(null,false,553,180,500,10,270,0,4750)}
 	],
 	// AOE лед (малый)
 	"154-0": [{"type": "text","sub_type": "message","message": "Ice storm","message_RU": "Ледяной шторм"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,8,500,0,6000)}],
 	// AOE огонь (малый)
-	"155-0": [{"type": "text","sub_type": "message","message": "Fire (knock down)","message_RU": "Огненный столб (опрокид)"},{"type": "text","sub_type": "message","delay": 1200,"message": "Dodge","message_RU": "Эвейд"}],
+	"155-0": [{"type": "text","sub_type": "message","message": "Fire (knock down)","message_RU": "Огненный столб (опрокид)"},
+		{"type": "text","sub_type": "message","delay": 1200,"message": "Dodge","message_RU": "Эвейд"}
+	],
 	//
+	"206-0": [{"type": "text","sub_type": "message","message": "Jump back","message_RU": "Прыжок назад"}],
+	"206-2": [{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,15,350,0,3000)}],
 	"137-0": [{"type": "text","sub_type": "message","message": "Knock down","message_RU": "Опрокидывание"}],
 	"138-0": [{"type": "text","sub_type": "message","message": "AOE","message_RU": "AOE"}],
-	"139-0": [{"type": "text","sub_type": "message","message": "60 degrees (Fire)","message_RU": "60° всем (Огонь)"}],
-	"140-0": [{"type": "text","sub_type": "message","message": "40 degrees (Ice)","message_RU": "40° всем (Лед)"}],
-	//
-	"s-3126-1000-1107-0": [{"type": "text","sub_type": "message","message": "(Debuffs) Farthest","message_RU": "(Дебаффы) Дальние"}],
-	"s-3126-1000-2107-0": [{"type": "text","sub_type": "message","message": "(Debuffs) Closest","message_RU": "(Дебаффы) Ближайшие"}],
+	"139-0": [{"type": "text","sub_type": "message","message": "60 degrees (Fire)","message_RU": "60° (Огонь всем)"}],
+	"140-0": [{"type": "text","sub_type": "message","message": "40 degrees (Ice)","message_RU": "40° (Лед всем)"}],
 	//
 	"s-3126-1000-1212-0": [{"type": "func","func": skilld_event.bind(null, 212)}],
 	"s-3126-1000-1215-0": [{"type": "func","func": skilld_event.bind(null, 215)}],
@@ -265,12 +258,14 @@ let skills = {
 	"am-3126-1000-30260002": [{"type": "func","func": skilld_event.bind(null, 3026002)}], // синий
 	"am-3126-1000-31260001": [{"type": "func","func": skilld_event.bind(null, 3126001)}], // красный
 	"am-3126-1000-31260002": [{"type": "func","func": skilld_event.bind(null, 3126002)}], // синий
-	"am-3126-1000-31260068": [
-		{"type": "text","sub_type": "message","message": "Layer 3","message_RU": "3 дебафф"},
-		{"type": "text","sub_type": "message","delay": 145000,"message": '2.5 minutes',"message_RU": "2.5 минуты"}
+	//
+	"s-3126-1000-1107-0": [{"type": "text","sub_type": "message","message": "[Debuff] Farthest","message_RU": "[Дебафф] Дальние"}],
+	"s-3126-1000-2107-0": [{"type": "text","sub_type": "message","message": "[Debuff] Closest","message_RU": "[Дебафф] Ближние"}],
+	"am-3126-1000-31260251": [{"type": "text","sub_type": "message","message": "[Debuff] Layer 1","message_RU": "[Дебафф] 1 стак"}],
+	"am-3126-1000-31260067": [{"type": "text","sub_type": "message","message": "[Debuff] Layer 2","message_RU": "[Дебафф] 2 стак"}],
+	"am-3126-1000-31260068": [{"type": "text","sub_type": "message","message": "[Debuff] Layer 3","message_RU": "[Дебафф] 3 стак"},
+		{"type": "text","sub_type": "message","delay": 145000,"message": '[Debuff] 2.5 minutes passed',"message_RU": "[Дебафф] Прошло 2.5 минуты (стаки удалены)"}
 	],
-	"am-3126-1000-31260067": [{"type": "text","sub_type": "message","message": "Layer 2","message_RU": "2 дебафф"}],
-	"am-3126-1000-31260251": [{"type": "text","sub_type": "message","message": "Layer 1","message_RU": "1 дебафф"}],
 };
 
 module.exports = {
