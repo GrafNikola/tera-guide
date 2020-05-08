@@ -9,7 +9,7 @@
         "settingsVersion": "1.03"
     },
     "author": "HSDN / ZC / ITunk / michengs / Kasea",
-    "description": "Советы по данжам",
+    "description": "A generic guide module for TERA. Display hints on screen and drawing zones of bosses attacks and mechanics.",
     "servers": ["https://raw.githubusercontent.com/hsdn/tera-guide/master/"],
     "supportUrl": "https://github.com/hsdn/tera-guide/issues",
     "dependencies": {
