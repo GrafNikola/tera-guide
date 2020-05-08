@@ -210,6 +210,9 @@ function applyDistance(loc, offsetDistance, offsetAngle) {
 
 module.exports = {
 	HIGHLIGHT_ITEM,
+	HIGHLIGHT_ITEM_BLUE,
+	HIGHLIGHT_ITEM_PURPLE,
+	HIGHLIGHT_ITEM_RED,
 	MARKER_ITEM,
 	SpawnItem,
 	SpawnMarker,
