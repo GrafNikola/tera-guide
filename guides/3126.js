@@ -22,7 +22,7 @@ const CK_TipMsg =
 	0: {msgt: 'IN',    msg: 'К НЕМУ'},
 	1: {msgt: 'OUT',   msg: 'ОТ НЕГО'},
 	2: {msgt: 'Left',  msg: 'Лево'},
-	3: {msgt: 'Right', msg: 'Право'},
+	3: {msgt: 'Right', msg: 'Право'}
 };
 const debuff_TipMsg =
 {
