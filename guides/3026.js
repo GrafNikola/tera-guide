@@ -36,10 +36,10 @@ function spawn_marker(out, handlers) {
 		distance = 620;
 		caption  = "OUT";
 	}
-	SpawnMarker(false,  45 + boss_offset, distance, 0, 4000, [caption, "SAFE"], handlers, null, boss_entity);
-	SpawnMarker(false, 135 + boss_offset, distance, 0, 4000, [caption, "SAFE"], handlers, null, boss_entity);
-	SpawnMarker(false, 225 + boss_offset, distance, 0, 4000, [caption, "SAFE"], handlers, null, boss_entity);
-	SpawnMarker(false, 315 + boss_offset, distance, 0, 4000, [caption, "SAFE"], handlers, null, boss_entity);
+	SpawnMarker(false,  45 + boss_offset, distance, 0, 4000, true, [caption, "SAFE"], handlers, null, boss_entity);
+	SpawnMarker(false, 135 + boss_offset, distance, 0, 4000, true, [caption, "SAFE"], handlers, null, boss_entity);
+	SpawnMarker(false, 225 + boss_offset, distance, 0, 4000, true, [caption, "SAFE"], handlers, null, boss_entity);
+	SpawnMarker(false, 315 + boss_offset, distance, 0, 4000, true, [caption, "SAFE"], handlers, null, boss_entity);
 }
 
 function skilld_event(skillid, handlers, event, entity, dispatch) {
