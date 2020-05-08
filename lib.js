@@ -1,6 +1,9 @@
 
-const HIGHLIGHT_ITEM = 110684; // Tier 21 Superior Twin Swords
-const MARKER_ITEM    = 88704;  // Velika Banquet Coin
+const HIGHLIGHT_ITEM        = 110684; // Tier 21 Superior Twin Swords
+const HIGHLIGHT_ITEM_BLUE   = 89542;  // Annihilation Disc (x1 effect)
+const HIGHLIGHT_ITEM_PURPLE = 89543;  // Annihilation Disc (x2 effect)
+const HIGHLIGHT_ITEM_RED    = 89544;  // Annihilation Disc (x3 effect)
+const MARKER_ITEM           = 88704;  // Velika Banquet Coin
 
 function SpawnItem(item, angle, distance, delay, duration, handlers, event, entity) {
 	angle =  Math.PI * angle / 180;
@@ -30,7 +33,15 @@ function SpawnMarker(target, angle, distance, delay, duration, highlight, label,
 	);
 
 	if (highlight) {
-		SpawnObject("item", target, HIGHLIGHT_ITEM,
+		let item = HIGHLIGHT_ITEM;
+
+		switch (highlight) {
+			case "blue":   item = HIGHLIGHT_ITEM_BLUE;   break;
+			case "purple": item = HIGHLIGHT_ITEM_PURPLE; break;
+			case "red":    item = HIGHLIGHT_ITEM_RED;    break;
+		}
+
+		SpawnObject("item", target, item,
 			0, 0,
 			angle, distance,
 			delay, duration,

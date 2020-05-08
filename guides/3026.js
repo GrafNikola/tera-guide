@@ -15,7 +15,7 @@ let boss_entity;
 let boss_offset = 0;
 let qbacting = null;
 let blue = false;
-let red = false;
+let red  = false;
 
 const CK_TipMsg =
 {
@@ -31,15 +31,15 @@ const debuff_TipMsg =
 function spawn_marker(out, handlers) {
 	if (!boss_entity) return;
 	let distance = 220;
-	let caption = "IN";
+	let caption  = "IN";
 	if (out) {
 		distance = 620;
-		caption = "OUT";
+		caption  = "OUT";
 	}
-	SpawnMarker(false,  45 + boss_offset, distance, 0, 4000, true, [caption, "SAFE"], handlers, null, boss_entity);
-	SpawnMarker(false, 135 + boss_offset, distance, 0, 4000, true, [caption, "SAFE"], handlers, null, boss_entity);
-	SpawnMarker(false, 225 + boss_offset, distance, 0, 4000, true, [caption, "SAFE"], handlers, null, boss_entity);
-	SpawnMarker(false, 315 + boss_offset, distance, 0, 4000, true, [caption, "SAFE"], handlers, null, boss_entity);
+	SpawnMarker(false,  45 + boss_offset, distance, 0, 4000, [caption, "SAFE"], handlers, null, boss_entity);
+	SpawnMarker(false, 135 + boss_offset, distance, 0, 4000, [caption, "SAFE"], handlers, null, boss_entity);
+	SpawnMarker(false, 225 + boss_offset, distance, 0, 4000, [caption, "SAFE"], handlers, null, boss_entity);
+	SpawnMarker(false, 315 + boss_offset, distance, 0, 4000, [caption, "SAFE"], handlers, null, boss_entity);
 }
 
 function skilld_event(skillid, handlers, event, entity, dispatch) {
@@ -53,7 +53,7 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 		clearTimeout(timer3);
 		clearTimeout(timer4);
 		clearTimeout(timer5);
-		timer1 = setTimeout(()=> {
+		timer1 = setTimeout(() => {
 			if (debuff != null) {
 				handlers['text']({
 					"sub_type": "message",
@@ -62,7 +62,7 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 				});
 			}
 		}, 70000);
-		timer2 = setTimeout(()=> {
+		timer2 = setTimeout(() => {
 			if (debuff != null) {
 				handlers['text']({
 					"sub_type": "notification",
@@ -76,7 +76,7 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 				});
 			}
 		}, 40000);
-		timer3 = setTimeout(()=> {
+		timer3 = setTimeout(() => {
 			if (debuff != null) {
 				handlers['text']({
 					"sub_type": "message",
@@ -85,7 +85,7 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 				});
 			}
 		}, 75000);
-		timer4 = setTimeout(()=> {
+		timer4 = setTimeout(() => {
 			if (debuff != null) {
 				handlers['text']({
 					"sub_type": "message",
@@ -94,7 +94,7 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 				});
 			}
 		}, 80000);
-		timer5 = setTimeout(()=> {
+		timer5 = setTimeout(() => {
 			if (debuff != null) {
 				handlers['text']({
 					"sub_type": "message",
