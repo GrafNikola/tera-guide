@@ -19,8 +19,8 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 		// круг перед боссом
 		SpawnCircle(true, 553,0,170,8,290,3000,2000,handlers,event,entity); // 1
 		// бублик вокруг босса
-		SpawnCircle(true, 553,0,0,8,280,5000,2000,handlers,event,entity); // 2
-		SpawnCircle(true, 553,0,0,4,570,5000,2000,handlers,event,entity); // 2
+		SpawnCircle(true, 553,0,0,8,280,4000,3000,handlers,event,entity); // 2
+		SpawnCircle(true, 553,0,0,4,570,4000,3000,handlers,event,entity); // 2
 	}
 
 	// (фиолетовый) "Проваливай!"
@@ -30,7 +30,7 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 		SpawnCircle(true, 553,0,0,8,280,3000,2000,handlers,event,entity); // 1
 		SpawnCircle(true, 553,0,0,4,570,3000,2000,handlers,event,entity); // 1
 		// круг перед боссом
-		SpawnCircle(true, 553,0,170,8,290,5000,2000,handlers,event,entity); // 2
+		SpawnCircle(true, 553,0,170,8,290,4000,3000,handlers,event,entity); // 2
 	}
 
 	// "Упади в бездну"
