@@ -1,6 +1,6 @@
 // Corrupted Skynest (Hard)
 //
-// made by michengs
+// made by michengs / HSDN / ZC
 
 const {MARKER_ITEM, SpawnMarker, SpawnVector, SpawnCircle, SpawnSemicircle} = require("../lib");
 
@@ -16,19 +16,25 @@ let boss_offset = 0;
 let qbacting = null;
 let blue = false;
 let red  = false;
+let debuff_tracker_started = false;
 
 const CK_TipMsg =
 {
 	0: {msgt: 'IN',    msg: 'К НЕМУ'},
 	1: {msgt: 'OUT',   msg: 'ОТ НЕГО'},
 	2: {msgt: 'Left',  msg: 'Лево'},
-	3: {msgt: 'Right', msg: 'Право'}
+	3: {msgt: 'Right', msg: 'Право'},
 };
 const debuff_TipMsg =
 {
 	0: {msgt: 'Ready to get Fire debuff', msg: 'Готовность к переключению на Огонь'},
 	1: {msgt: 'Ready to get Ice debuff',  msg: 'Готовность к переключению на Лед'}
 };
+
+// NULL % 2 = 0
+//    1 % 2 = 1
+//    0 % 2 = 0
+//    2 % 2 = 0
 
 function spawn_marker(out, handlers) {
 	if (!boss_entity) return;
@@ -43,68 +49,117 @@ function spawn_marker(out, handlers) {
 	SpawnMarker(false, 225 + boss_offset, distance, 0, 4000, true, [caption, "SAFE"], handlers, null, boss_entity);
 	SpawnMarker(false, 315 + boss_offset, distance, 0, 4000, true, [caption, "SAFE"], handlers, null, boss_entity);
 }
-
+function debuff_added(id, handlers) {
+	debuff = id; // debuff event id
+	clearTimeout(timer1);
+	clearTimeout(timer2);
+	clearTimeout(timer3);
+	clearTimeout(timer4);
+	clearTimeout(timer5);
+	timer1 = setTimeout(() => {
+		if (debuff != null) {
+			handlers['text']({
+				"sub_type": "message",
+				"message": "Debuff 20s",
+				"message_RU": "Дебафф 20 сек."
+			});
+		}
+	}, 50000);
+	timer2 = setTimeout(() => {
+		if (debuff != null) {
+			handlers['text']({
+				"sub_type": "notification",
+				"message": (`${debuff_TipMsg[debuff % 2].msgt}`),
+				"message_RU": (`${debuff_TipMsg[debuff % 2].msg}`)
+			});
+			handlers['text']({
+				"sub_type": "message",
+				"message": "Debuff 50s",
+				"message_RU": "Дебафф 50 сек."
+			});
+		}
+	}, 70000);
+	timer3 = setTimeout(() => {
+		if (debuff != null) {
+			handlers['text']({
+				"sub_type": "message",
+				"message": "Warning! Debuff 15s",
+				"message_RU": "Дебафф 15 сек."
+			});
+		}
+	}, 55000);
+	timer4 = setTimeout(() => {
+		if (debuff != null) {
+			handlers['text']({
+				"sub_type": "message",
+				"message": "Warning! Debuff 10s",
+				"message_RU": "Дебафф 10 сек."
+			});
+		}
+	}, 60000);
+	timer5 = setTimeout(() => {
+		if (debuff != null) {
+			handlers['text']({
+				"sub_type": "message",
+				"message": "Warning! Debuff 5s",
+				"message_RU": "Дебафф 5 сек."
+			});
+		}
+	}, 65000);
+	//
+	if (blue) {
+		handlers['text']({
+			"sub_type": "message",
+			"message": (`${CK_TipMsg[(qbacting + debuff + 1) % 2].msgt}`),
+			"message_RU": (`${CK_TipMsg[(qbacting + debuff + 1) % 2].msg}`)
+		});
+		spawn_marker((qbacting + debuff + 1) % 2, handlers);
+	} else if (red) {
+		handlers['text']({
+			"sub_type": "message",
+			"message": (`${CK_TipMsg[(qbacting + debuff) % 2].msgt}`),
+			"message_RU": (`${CK_TipMsg[(qbacting + debuff) % 2].msg}`)
+		});
+		spawn_marker((qbacting + debuff) % 2, handlers);
+	}
+}
 function skilld_event(skillid, handlers, event, entity, dispatch) {
-	if ([3026004,3126004,3026005,3126005].includes(skillid)) {   // ярость 0, ужас 1
+	const abnormality_change = (added, event) => {
+		// Fire/Ice debuff
+		if (player.isMe(event.target.toString()) && [30260001,30260002,31260001,31260002].includes(event.id)) {
+			if (added) {
+				debuff_added(event.id, handlers);
+			} else {
+				debuff = null;
+			}
+		}
+		// Argon Priest Essence buff
+		if (player.isMe(event.target.toString()) && [30261701,31261701].includes(event.id)) {
+			if (added && boss_entity) {
+				let shield_loc = boss_entity['loc'].clone();
+				shield_loc.w = boss_entity['loc'].w;
+				handlers['spawn']({ // spawn teleport mark
+					"sub_type": "item",
+					"id": MARKER_ITEM,
+					"sub_delay": 50000,
+					"pos": {
+						x: 53192,
+						y: 100761,
+						z: 14233
+					}
+				}, {
+					loc: shield_loc
+				});
+			}
+		}
+	};
+	// In-Out quest balloons (qbacting => ярость 0, ужас 1)
+	if ([3026004,3126004,3026005,3126005].includes(skillid)) {
 		qbacting = skillid % 2;
 	}
-	if ([3026001,3126001,3026002,3126002].includes(skillid)) {   // синий 0, красный 1
-		start_debuff(handlers, event, entity, dispatch);
-		clearTimeout(timer1);
-		clearTimeout(timer2);
-		clearTimeout(timer3);
-		clearTimeout(timer4);
-		clearTimeout(timer5);
-		timer1 = setTimeout(() => {
-			if (debuff != null) {
-				handlers['text']({
-					"sub_type": "message",
-					"message": "Debuff 20s",
-					"message_RU": "Дебафф 20 сек."
-				});
-			}
-		}, 50000);
-		timer2 = setTimeout(() => {
-			if (debuff != null) {
-				handlers['text']({
-					"sub_type": "notification",
-					"message": (`${debuff_TipMsg[debuff % 2].msgt}`),
-					"message_RU": (`${debuff_TipMsg[debuff % 2].msg}`)
-				});
-				handlers['text']({
-					"sub_type": "message",
-					"message": "Debuff 50s",
-					"message_RU": "Дебафф 50 сек."
-				});
-			}
-		}, 70000);
-		timer3 = setTimeout(() => {
-			if (debuff != null) {
-				handlers['text']({
-					"sub_type": "message",
-					"message": "Warning! Debuff 15s",
-					"message_RU": "Дебафф 15 сек."
-				});
-			}
-		}, 55000);
-		timer4 = setTimeout(() => {
-			if (debuff != null) {
-				handlers['text']({
-					"sub_type": "message",
-					"message": "Warning! Debuff 10s",
-					"message_RU": "Дебафф 10 сек."
-				});
-			}
-		}, 60000);
-		timer5 = setTimeout(() => {
-			if (debuff != null) {
-				handlers['text']({
-					"sub_type": "message",
-					"message": "Warning! Debuff 5s",
-					"message_RU": "Дебафф 5 сек."
-				});
-			}
-		}, 65000);
+	// Fire/Ice debuff (debuff % 2 => синий 0, красный 1)
+	if ([30260001,31260001,30260002,31260002].includes(skillid) && !debuff_tracker_started) {
+		debuff_added(skillid, handlers);
 	}
 	// In-Out identification
 	if ([212,213,214,215].includes(skillid)) {
@@ -137,6 +192,12 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 				red  = true;
 			}, 6600);
 			setTimeout(() => red = false, 9400);
+		} else {
+			handlers['text']({
+				"sub_type": "message",
+				"message": "Ice inside",
+				"message_RU": "Внутри лед"
+			});
 		}
 	}
 	if ([212,215].includes(skillid)) {   // Fire inside
@@ -154,63 +215,18 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 				red  = false;
 			}, 6600);
 			setTimeout(() => blue = false, 9400);
+		} else {
+			handlers['text']({
+				"sub_type": "message",
+				"message": "Fire inside",
+				"message_RU": "Внутри огонь"
+			});
 		}
 	}
 	if (skillid === 99020020) {   // Death release debuff
 		clearTimeout(timer1);
 		clearTimeout(timer2);
 	}
-}
-// NULL % 2 = 0
-//    1 % 2 = 1
-//    0 % 2 = 0
-//    2 % 2 = 0
-let debuff_tracker_started = false;
-function start_debuff(handlers, event, entity, dispatch) {
-	const abnormality_change = (added, event) => {
-		// Fire/Ice debuff
-		if (player.isMe(event.target.toString()) && [30260001,30260002,31260001,31260002].includes(event.id)) {
-			if (added) {
-				debuff = event.id;
-				if (blue) {
-					handlers['text']({
-						"sub_type": "message",
-						"message": (`${CK_TipMsg[(qbacting + debuff + 1) % 2].msgt}`),
-						"message_RU": (`${CK_TipMsg[(qbacting + debuff + 1) % 2].msg}`)
-					});
-					spawn_marker((qbacting + debuff + 1) % 2, handlers);
-				} else if (red) {
-					handlers['text']({
-						"sub_type": "message",
-						"message": (`${CK_TipMsg[(qbacting + debuff) % 2].msgt}`),
-						"message_RU": (`${CK_TipMsg[(qbacting + debuff) % 2].msg}`)
-					});
-					spawn_marker((qbacting + debuff) % 2, handlers);
-				}
-			} else {
-				debuff = null;
-			}
-		}
-		// Argon Priest Essence buff
-		if (player.isMe(event.target.toString()) && [30261701,31261701].includes(event.id)) {
-			if (added) {
-				let shield_loc = entity['loc'].clone();
-				shield_loc.w = entity['loc'].w;
-				handlers['spawn']({ // spawn teleport mark
-					"sub_type": "item",
-					"id": MARKER_ITEM,
-					"sub_delay": 50000,
-					"pos": {
-						x: 53192,
-						y: 100761,
-						z: 14233
-					}
-				}, {
-					loc: shield_loc
-				});
-			}
-		}
-	};
 	if (!debuff_tracker_started) {
 		dispatch.hook('S_ABNORMALITY_BEGIN', 4, abnormality_change.bind(null, true));
 		dispatch.hook('S_ABNORMALITY_END', 1, abnormality_change.bind(null, false));
@@ -226,8 +242,8 @@ let skills = {
 	"109-0": [{"type": "text","sub_type": "message","message": "Turn left (repel!!)","message_RU": "Поворот влево (откид!!)"},{"type": "func","func": SpawnCircle.bind(null,false,912,0,0,8,440,0,2000)}],
 	"159-0": [{"type": "text","sub_type": "message","message": "Turn left (repel!!)","message_RU": "Поворот влево (откид!!)"},{"type": "func","func": SpawnCircle.bind(null,false,912,0,0,8,440,0,2000)}],
 	"120-0": [{"type": "text","sub_type": "message","message": "Together","message_RU": "Яростный рев"}],
-	"145-0": [{"type": "text","sub_type": "message","message": "Stun","message_RU": "Стан"},{"type": "func","func": start_debuff}],
-	"157-0": [{"type": "text","sub_type": "message","message": "Change","message_RU": "Смена"},{"type": "func","func": start_debuff}],
+	"145-0": [{"type": "text","sub_type": "message","message": "Stun","message_RU": "Стан"}],
+	"157-0": [{"type": "text","sub_type": "message","message": "Change","message_RU": "Смена"}],
 	"103-0": [{"type": "text","sub_type": "message","message": "Tail (Flying!!)","message_RU": "Хвост (полет!!)"},
 		{"type": "func","func": SpawnSemicircle.bind(null,140,260,912,0,0,10,500,0,2000)},
 		{"type": "func","func": SpawnVector.bind(null,912,0,0,135,500,0,2000)},
@@ -277,10 +293,10 @@ let skills = {
 	"qb-3126-1000-3126005": [{"type": "func","func": skilld_event.bind(null, 3126005)}], // ужас, одинаковые цвета
 	"qb-3126-1000-3126004": [{"type": "func","func": skilld_event.bind(null, 3126004)}], // ярость, разные цвета
 	"ae-0-0-99020020": [{"type": "func","func": skilld_event.bind(null, 99020020)}],
-	"am-3126-1000-30260001": [{"type": "func","func": skilld_event.bind(null, 3026001)}], // красный
-	"am-3126-1000-30260002": [{"type": "func","func": skilld_event.bind(null, 3026002)}], // синий
-	"am-3126-1000-31260001": [{"type": "func","func": skilld_event.bind(null, 3126001)}], // красный
-	"am-3126-1000-31260002": [{"type": "func","func": skilld_event.bind(null, 3126002)}], // синий
+	"am-3126-1000-30260001": [{"type": "func","func": skilld_event.bind(null, 30260001)}], // красный
+	"am-3126-1000-30260002": [{"type": "func","func": skilld_event.bind(null, 30260002)}], // синий
+	"am-3126-1000-31260001": [{"type": "func","func": skilld_event.bind(null, 31260001)}], // красный
+	"am-3126-1000-31260002": [{"type": "func","func": skilld_event.bind(null, 31260002)}], // синий
 	//
 	"s-3126-1000-1107-0": [{"type": "text","sub_type": "message","message": "[Debuff] Farthest","message_RU": "[Дебафф] Дальние"}],
 	"s-3126-1000-2107-0": [{"type": "text","sub_type": "message","message": "[Debuff] Closest","message_RU": "[Дебафф] Ближние"}],
