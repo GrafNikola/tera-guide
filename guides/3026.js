@@ -23,6 +23,11 @@ const CK_TipMsg =
 	0: {msgt: 'IN',  msg: 'К НЕМУ'},
 	1: {msgt: 'OUT', msg: 'ОТ НЕГО'}
 };
+const qbacting_TipMsg =
+{
+	0: {msgt: 'different', msg: 'разные'},
+	1: {msgt: 'same',      msg: 'одинаковые'}
+};
 const debuff_TipMsg =
 {
 	0: {msgt: 'Ready to get Fire debuff', msg: 'Готовность к переключению на Огонь'},
@@ -179,8 +184,8 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 		if (debuff != null) {
 			handlers['text']({
 				"sub_type": "message",
-				"message": (`Ice inside | ${CK_TipMsg[(qbacting + debuff + 1) % 2].msgt}`),
-				"message_RU": (`Внутри лед | ${CK_TipMsg[(qbacting + debuff + 1) % 2].msg}`)
+				"message": (`Ice inside (${qbacting_TipMsg[qbacting].msgt}) | ${CK_TipMsg[(qbacting + debuff + 1) % 2].msgt}`),
+				"message_RU": (`Внутри лед (${qbacting_TipMsg[qbacting].msg}) | ${CK_TipMsg[(qbacting + debuff + 1) % 2].msg}`)
 			});
 			spawn_marker((qbacting + debuff + 1) % 2, handlers);
 			blue = true;
@@ -189,8 +194,8 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 		} else {
 			handlers['text']({
 				"sub_type": "message",
-				"message": "Ice inside",
-				"message_RU": "Внутри лед"
+				"message": (`Ice inside (${qbacting_TipMsg[qbacting].msgt})`),
+				"message_RU": (`Внутри лед (${qbacting_TipMsg[qbacting].msg})`)
 			});
 		}
 	}
@@ -198,8 +203,8 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 		if (debuff != null) {
 			handlers['text']({
 				"sub_type": "message",
-				"message": (`Fire inside | ${CK_TipMsg[(qbacting + debuff) % 2].msgt}`),
-				"message_RU": (`Внутри огонь | ${CK_TipMsg[(qbacting + debuff) % 2].msg}`)
+				"message": (`Fire inside (${qbacting_TipMsg[qbacting].msgt}) | ${CK_TipMsg[(qbacting + debuff) % 2].msgt}`),
+				"message_RU": (`Внутри огонь (${qbacting_TipMsg[qbacting].msg}) | ${CK_TipMsg[(qbacting + debuff) % 2].msg}`)
 			});
 			spawn_marker((qbacting + debuff) % 2, handlers);
 			blue = false;
@@ -208,8 +213,8 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 		} else {
 			handlers['text']({
 				"sub_type": "message",
-				"message": "Fire inside",
-				"message_RU": "Внутри огонь"
+				"message": (`Fire inside (${qbacting_TipMsg[qbacting].msgt})`),
+				"message_RU": (`Внутри огонь (${qbacting_TipMsg[qbacting].msg})`)
 			});
 		}
 	}
