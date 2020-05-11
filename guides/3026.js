@@ -53,12 +53,8 @@ function spawn_marker(out, handlers) {
 	SpawnMarker(false, 315 + boss_offset, distance, 0, 4000, true, [caption, "SAFE"], handlers, null, boss_entity);
 }
 function debuff_added(id, handlers) {
+	debuff_removed();
 	debuff = id; // debuff event id
-	clearTimeout(timer1);
-	clearTimeout(timer2);
-	clearTimeout(timer3);
-	clearTimeout(timer4);
-	clearTimeout(timer5);
 	timer1 = setTimeout(() => {
 		if (debuff != null) {
 			handlers['text']({
@@ -126,6 +122,14 @@ function debuff_added(id, handlers) {
 		spawn_marker((qbacting + debuff) % 2, handlers);
 	}
 }
+function debuff_removed() {
+	debuff = null;
+	clearTimeout(timer1);
+	clearTimeout(timer2);
+	clearTimeout(timer3);
+	clearTimeout(timer4);
+	clearTimeout(timer5);
+}
 function skilld_event(skillid, handlers, event, entity, dispatch) {
 	const abnormality_change = (added, event) => {
 		// Fire/Ice debuff
@@ -133,7 +137,7 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 			if (added) {
 				debuff_added(event.id, handlers);
 			} else {
-				debuff = null;
+				debuff_removed();
 			}
 		}
 		// Argon Priest Essence buff
