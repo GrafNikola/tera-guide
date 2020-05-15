@@ -192,9 +192,6 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 				"message_RU": (`Внутри лед (${qbacting_TipMsg[qbacting].msg}) | ${CK_TipMsg[(qbacting + debuff + 1) % 2].msg}`)
 			});
 			spawn_marker((qbacting + debuff + 1) % 2, handlers);
-			blue = true;
-			red  = false;
-			setTimeout(() => blue = false, 6500); //6700
 		} else {
 			handlers['text']({
 				"sub_type": "message",
@@ -202,6 +199,9 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 				"message_RU": (`Внутри лед (${qbacting_TipMsg[qbacting].msg})`)
 			});
 		}
+		blue = true;
+		red  = false;
+		setTimeout(() => blue = false, 6500); //6700
 	}
 	if ([212,215].includes(skillid)) {   // Fire inside
 		if (debuff != null) {
@@ -211,9 +211,6 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 				"message_RU": (`Внутри огонь (${qbacting_TipMsg[qbacting].msg}) | ${CK_TipMsg[(qbacting + debuff) % 2].msg}`)
 			});
 			spawn_marker((qbacting + debuff) % 2, handlers);
-			blue = false;
-			red  = true;
-			setTimeout(() => red = false, 6500);
 		} else {
 			handlers['text']({
 				"sub_type": "message",
@@ -221,6 +218,9 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 				"message_RU": (`Внутри огонь (${qbacting_TipMsg[qbacting].msg})`)
 			});
 		}
+		blue = false;
+		red  = true;
+		setTimeout(() => red = false, 6500);
 	}
 	if (skillid === 99020020) {   // Death release debuff
 		clearTimeout(timer1);
