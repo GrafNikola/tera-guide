@@ -51,6 +51,8 @@ class TeraGuide{
 		}
 		// export functionality for 3rd party modules
 		this.handlers = function_event_handlers;
+		// Region Language
+		let language = 'EN';
 		// A boolean for the debugging settings
 		let debug = dbg['debug'];
 		// A boolean indicating if a guide was found
@@ -67,6 +69,18 @@ class TeraGuide{
 		let entered_zone_data = {};
 		// Trigger event flag
 		let is_event = false;
+
+		// Set region language
+		dispatch.hook('C_LOGIN_ARBITER', 2, event => {
+			// 0 = INT, 1 = KOR, 2 = USA, 3 = JPN, 4 = GER, 5 = FRA, 6 = EUR, 7 = TW, 8 = RUS
+			switch(event.language) {
+				case 8:
+					language = 'RU';
+					break;
+				default:
+					language = 'EN';
+			}
+		});
 
 		/** HELPER FUNCTIONS **/
 
@@ -309,21 +323,21 @@ class TeraGuide{
 							"sub_type": "PRMSG",
 							"delay": 8000,
 							"message_RU": 'Вы вошли в ' + cr + entered_zone_data.name_RU + cw + ' [' + zone + ']', 
-							"message": ' Enter SP  Dungeon： ' +  cr + entered_zone_data.name + cw + ' [' + zone + ']'
+							"message": ' Enter SP Dungeon: ' +  cr + entered_zone_data.name + cw + ' [' + zone + ']'
 						});
 					} else if (esguide) {
 						text_handler({
 							"sub_type": "PRMSG",
 							"delay": 8000,
 							"message_RU": 'Вы вошли в ' + cr + entered_zone_data.name_RU + cw + ' [' + zone + ']',
-							"message": ' Enter ES  Dungeon： ' + cr + entered_zone_data.name + cw + ' [' + zone + ']'
+							"message": ' Enter ES Dungeon: ' + cr + entered_zone_data.name + cw + ' [' + zone + ']'
 						 });
 					} else {
 						text_handler({
 							"sub_type": "PRMSG",
 							"delay": 8000,
 							"message_RU": 'Вы вошли в ' + cr + entered_zone_data.name_RU + cw + ' [' + zone + ']',
-							"message": ' Enter   Dungeon： ' + cr + entered_zone_data.name + cw + ' [' + zone + ']'
+							"message": ' Enter Dungeon: ' + cr + entered_zone_data.name + cw + ' [' + zone + ']'
 						});
 					}
 				}
@@ -657,8 +671,8 @@ class TeraGuide{
 		}
 		// Text handler
 		function text_handler(event, ent, speed = 1.0) {
-			// Fetch the message(with region tag)
-			const message = event[`message_${dispatch.region}`] || event[`message_${dispatch.region.toUpperCase()}`] || event['message'];
+			// Fetch the message
+			const message = event[`message_${language}`] || event['message'];
 			// Make sure sub_type is defined
 			if (!event['sub_type']) return debug_message(true, "Text handler needs a sub_type");
 			// Make sure message is defined
