@@ -14,6 +14,7 @@ Extract to "mods" directory in your Tera-Proxy. DO NOT INSTALLED IT AS "library-
 Toolbox(/8) | Описание команды<br>Command Description
 --- | ---
 guide | - вкл./выкл. модуля (по-умолчанию: включено)<br> - on/off, default system notification, notification color yellow
+guide voice | - вкл./выкл. голосовые сообщения (по-умолчанию: выключено)<br> - text-to-speech on/off
 guide alert | - вкл./выкл. сообщений в чате (по-умолчанию: включено)<br> - chat notice on/off
 guide systemNotice | - вкл./выкл. сообщений в группе (по-умолчанию: выключено)<br> - party chat notice on/off
 guide spawnObject | - вкл./выкл. спавна объектов (по-умолчанию: включено)<br> - spawn area marker objects on/off

@@ -5,6 +5,10 @@ const DefaultSettings = {
 	"notice": true,
 	"stream": false,
 	"spawnObject": true,
+	"speaks": false,
+	"rate": [
+		2
+	],
 	"dungeons": [
 		{"id": 3020, "name": "Sea of Honor", "name_RU": "Золотая чешуя", "verbose": true, "spawnObject": true},
 		{"id": 3023, "name": "Akalath Quarantine", "name_RU": "Секретное подземелье крепости Берарк", "verbose": true, "spawnObject": true},

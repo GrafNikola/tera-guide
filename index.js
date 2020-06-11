@@ -2,6 +2,9 @@ const DispatchWrapper = require('./dispatch');
 const fs = require('fs');
 const path = require('path');
 const dbg = require('./dbg');
+let voice = null;
+try { voice = require('./voice') }
+catch(e) { voice = null; }
 // Tank class ids(brawler + lancer)
 const TANK_CLASS_IDS = [1, 10];
 // Dps class ids(not counting warrior)
@@ -22,7 +25,7 @@ const clp = '</font><font color="#ff77ff">';//LIGHT PINK 浅粉色
 const clb = '</font><font color="#00ffff">';//LIGHT BLUE 浅蓝色
 const cbl = '</font><font color="#000000">';//BLACK 黑色
 const cgr = '</font><font color="#777777">';//GRAY 灰色
-const cw = '</font><font color="#ffffff">';//WHITE 白色	
+const cw = '</font><font color="#ffffff">';//WHITE 白色
 
 class TeraGuide{
 	constructor(dispatch) {
@@ -412,6 +415,10 @@ class TeraGuide{
 				// guide event text '{"sub_type":"message","message":"Сообщение"}'
 				// guide event spawn '{"type":"item","id":"1","sub_delay":"999999"}'
 			},
+			voice() {
+				dispatch.settings.speaks = !dispatch.settings.speaks;
+				text_handler({"sub_type": "PRMSG","message_RU": `Голосовое сообщение ${dispatch.settings.speaks?"Вкл":"Выкл"}.`, "message": `Text-to-speech ${dispatch.settings.speaks?"on":"off"}.` });
+			},
 			stream() {
 				dispatch.settings.stream = !dispatch.settings.stream;
 				text_handler({"sub_type": "PRMSG","message_RU": `Стрим, скрытие сообщений ${dispatch.settings.stream?"Вкл":"Выкл"}.`, "message": `Stream ${dispatch.settings.stream?"on":"off"}.`});
@@ -439,10 +446,10 @@ class TeraGuide{
 				if (arg1) {
 					sd_id = find_dungeon_index(arg1);
 					if (sd_id) {
-						dispatch.settings.dungeons[sd_id].spawnObject = !dispatch.settings.dungeons[sd_id].spawnObject;
+						dispatch.settings.dungeons[sd_id].verbose = !dispatch.settings.dungeons[sd_id].verbose;
 						text_handler({"sub_type": "PRMSG",
-							"message_RU": `Показ сообщений для данжа ${dispatch.settings.dungeons[sd_id].name_RU} [${dispatch.settings.dungeons[sd_id].id}]: ${dispatch.settings.dungeons[sd_id].spawnObject?"Вкл":"Выкл"}.`,
-							"message": `Messaging for dungeon ${dispatch.settings.dungeons[sd_id].name_RU} [${dispatch.settings.dungeons[sd_id].id}] has been ${dispatch.settings.dungeons[sd_id].spawnObject?"on":"off"}.`
+							"message_RU": `Показ сообщений для данжа ${dispatch.settings.dungeons[sd_id].name_RU} [${dispatch.settings.dungeons[sd_id].id}]: ${dispatch.settings.dungeons[sd_id].verbose?"Вкл":"Выкл"}.`,
+							"message": `Messaging for dungeon ${dispatch.settings.dungeons[sd_id].name_RU} [${dispatch.settings.dungeons[sd_id].id}] has been ${dispatch.settings.dungeons[sd_id].verbose?"on":"off"}.`
 						});
 					} else {
 						text_handler({"sub_type": "PRMSG","message_RU": `Данж с таким id не найден.`, "message": `Dungeon not found.`});
@@ -522,9 +529,10 @@ class TeraGuide{
 			},
 			help() {
 				text_handler({"sub_type": "PRMSG","message_RU": 'guide, вкл./выкл. модуля', "message": 'guide,  on/off, default system notification, notification color yellow'});
-				text_handler({"sub_type": "PRMSG","message_RU": 'guide systemNotice, вкл./выкл. сообщений в группе', "message": 'guide systemNotice,system Notice on/off'});
+				text_handler({"sub_type": "PRMSG","message_RU": 'guide voice, вкл./выкл. голосовые сообщения', "message": 'guide voice, text-to-speech on/off'});
+				text_handler({"sub_type": "PRMSG","message_RU": 'guide systemNotice, вкл./выкл. сообщений в группе', "message": 'guide systemNotice, system Notice on/off'});
 				text_handler({"sub_type": "PRMSG","message_RU": 'guide alert, вкл./выкл. сообщений в чате', "message": 'guide alert, Virtual captain  notifie on/off'});
-				text_handler({"sub_type": "PRMSG","message_RU": 'guide spawnObject, вкл./выкл. спавна объектов', "message": 'guide spawnObject,spawn Object on/off'}); 
+				text_handler({"sub_type": "PRMSG","message_RU": 'guide spawnObject, вкл./выкл. спавна объектов', "message": 'guide spawnObject, spawn Object on/off'}); 
 				text_handler({"sub_type": "PRMSG","message_RU": 'guide stream, вкл./выкл. режима стрима (скрытие сообщений)', "message": 'guide stream,(stream)on/off'});
 				text_handler({"sub_type": "PRMSG","message_RU": 'guide dungeons, список всех поддерживаемых данжей и их id', "message": 'guide dungeons, list of all supported dungeons'}); 
 				text_handler({"sub_type": "PRMSG","message_RU": 'guide verbose id, вкл./выкл. всех сообщений для данжа, где id - идентификатор данжа', "message": 'verbose id, messaging for dungeon on/off'});
@@ -681,18 +689,33 @@ class TeraGuide{
 				// If it's type message, it's S_DUNGEON_EVENT_MESSAGE with type 41
 				//混合通知
 				case "message": {
+					if (voice && dispatch.settings.speaks) {
+						timers[event['id'] || random_timer_id--] = setTimeout(()=> {
+								voice.speak(message, dispatch.settings.rate);
+						}, (event['delay'] || 0 ) - 600 /speed);
+					}
 					timers[event['id'] || random_timer_id--] = setTimeout(()=> {
 						sendMessage(message);
 					}, (event['delay'] || 0) / speed);
 					break;
 				}
 				case "msgcp": {
+					if (voice && dispatch.settings.speaks) {
+						timers[event['id'] || random_timer_id--] = setTimeout(()=> {
+								voice.speak(message, dispatch.settings.rate);
+						}, (event['delay'] || 0 ) - 600 /speed);
+					}
 					timers[event['id'] || random_timer_id--] = setTimeout(()=> {
 						sendspMessage(message, cp);
 					}, (event['delay'] || 0) / speed);
 					break;
 				}
 				case "msgcg": {
+					if (voice && dispatch.settings.speaks) {
+						timers[event['id'] || random_timer_id--] = setTimeout(()=> {
+								voice.speak(message, dispatch.settings.rate);
+						}, (event['delay'] || 0 ) - 600 /speed);
+					}
 					timers[event['id'] || random_timer_id--] = setTimeout(()=> {
 						sendspMessage(message, cg);
 					}, (event['delay'] || 0) / speed);
@@ -780,6 +803,15 @@ class TeraGuide{
 					command.message(dispatch.settings.cc + message);
 					break;
 				}
+				//语音通知
+				case "speech": {
+					if (voice && dispatch.settings.speaks) {
+						timers[event['id'] || random_timer_id--] = setTimeout(()=> {
+							voice.speak(message, dispatch.settings.rate);
+						}, (event['delay'] || 0 ) - 600 / speed);
+					};
+					break;
+				}
 				//团队长通知
 				case "notification": {
 					if (!entered_zone_data.verbose && !is_event) return;
@@ -857,7 +889,6 @@ class TeraGuide{
 			// clearout the timer
 			clearTimeout(timers[event['id']]);
 		}
-
 		// Func handler
 		function func_handler(event, ent, speed = 1.0) {
 			// Make sure func is defined
