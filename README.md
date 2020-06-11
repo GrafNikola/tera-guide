@@ -42,7 +42,7 @@ id | Dungeon Name | Название данжа
 Подробнее на https://github.com/hsdn/tera-guide/wiki
 
 ## Credits
-- michengs - https://github.com/michengs/tera-guide
+- michengs - https://github.com/michengs/Dungeon-guide and https://github.com/michengs/tera-guide
 - ZC - https://github.com/tera-mod/TERA-Guide and https://github.com/tera-mod/TERA-Guide-Area
 - Kasea - https://github.com/tera-toolbox-mods/tera-guide
 - ITunk - https://github.com/GrafNikola

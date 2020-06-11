@@ -187,20 +187,22 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 		SpawnVector(553,0,0,350,840,200,11000,handlers,event,entity);
 	}
 	if ([213,214].includes(skillid)) {   // Ice inside
-		if (debuff != null) {
-			handlers['text']({
-				"sub_type": "message",
-				"message": (`Ice inside (${qbacting_TipMsg[qbacting].msgt}) | ${CK_TipMsg[debuff % 2 + 2].msgt} | ${CK_TipMsg[(qbacting + debuff + 1) % 2].msgt}`),
-				"message_RU": (`Внутри лед (${qbacting_TipMsg[qbacting].msg}) | ${CK_TipMsg[debuff % 2 + 2].msg} | ${CK_TipMsg[(qbacting + debuff + 1) % 2].msg}`),
-			});
-			spawn_marker((qbacting + debuff + 1) % 2, handlers);
-		} else {
-			handlers['text']({
-				"sub_type": "message",
-				"message": (`Ice inside (${qbacting_TipMsg[qbacting].msgt})`),
-				"message_RU": (`Внутри лед (${qbacting_TipMsg[qbacting].msg})`)
-			});
-		}
+		setTimeout(() => {
+			if (debuff != null) {
+				handlers['text']({
+					"sub_type": "message",
+					"message": (`Ice inside (${qbacting_TipMsg[qbacting].msgt}) | ${CK_TipMsg[debuff % 2 + 2].msgt} | ${CK_TipMsg[(qbacting + debuff + 1) % 2].msgt}`),
+					"message_RU": (`Внутри лед (${qbacting_TipMsg[qbacting].msg}) | ${CK_TipMsg[debuff % 2 + 2].msg} | ${CK_TipMsg[(qbacting + debuff + 1) % 2].msg}`),
+				});
+				spawn_marker((qbacting + debuff + 1) % 2, handlers);
+			} else {
+				handlers['text']({
+					"sub_type": "message",
+					"message": (`Ice inside (${qbacting_TipMsg[qbacting].msgt})`),
+					"message_RU": (`Внутри лед (${qbacting_TipMsg[qbacting].msg})`)
+				});
+			}
+		}, 500);
 		blue = true;
 		red  = false;
 		setTimeout(() => {
@@ -210,20 +212,22 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 		setTimeout(() => red = false, 9400);
 	}
 	if ([212,215].includes(skillid)) {   // Fire inside
-		if (debuff != null) {
-			handlers['text']({
-				"sub_type": "message",
-				"message": (`Fire inside (${qbacting_TipMsg[qbacting].msgt}) | ${CK_TipMsg[debuff % 2 + 2].msgt} | ${CK_TipMsg[(qbacting + debuff) % 2].msgt}`),
-				"message_RU": (`Внутри огонь (${qbacting_TipMsg[qbacting].msg}) | ${CK_TipMsg[debuff % 2 + 2].msg} | ${CK_TipMsg[(qbacting + debuff) % 2].msg}`)
-			});
-			spawn_marker((qbacting + debuff) % 2, handlers);
-		} else {
-			handlers['text']({
-				"sub_type": "message",
-				"message": (`Fire inside (${qbacting_TipMsg[qbacting].msgt})`),
-				"message_RU": (`Внутри огонь (${qbacting_TipMsg[qbacting].msg})`)
-			});
-		}
+		setTimeout(() => {
+			if (debuff != null) {
+				handlers['text']({
+					"sub_type": "message",
+					"message": (`Fire inside (${qbacting_TipMsg[qbacting].msgt}) | ${CK_TipMsg[debuff % 2 + 2].msgt} | ${CK_TipMsg[(qbacting + debuff) % 2].msgt}`),
+					"message_RU": (`Внутри огонь (${qbacting_TipMsg[qbacting].msg}) | ${CK_TipMsg[debuff % 2 + 2].msg} | ${CK_TipMsg[(qbacting + debuff) % 2].msg}`)
+				});
+				spawn_marker((qbacting + debuff) % 2, handlers);
+			} else {
+				handlers['text']({
+					"sub_type": "message",
+					"message": (`Fire inside (${qbacting_TipMsg[qbacting].msgt})`),
+					"message_RU": (`Внутри огонь (${qbacting_TipMsg[qbacting].msg})`)
+				});
+			}
+		}, 500);
 		blue = false;
 		red  = true;
 		setTimeout(() => {
