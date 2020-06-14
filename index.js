@@ -13,19 +13,20 @@ const DPS_CLASS_IDS = [2, 3, 4, 5, 8, 9, 11, 12];
 const HEALER_CLASS_IDS = [6, 7];
 // Warrior Defence stance abnormality ids
 const WARRIOR_TANK_IDS = [100200, 100201];
-const cr = '</font><font color="#ff0000">';//RED 红色
-const co = '</font><font color="#ff7700">';//ORANGE 橘色
-const cy = '</font><font color="#ffff00">';//YELLOW 黄色
-const cg = '</font><font color="#00ff00">';//GREEN 绿色
-const cdb = '</font><font color="#2727ff">';//DARK BLUE 深蓝
-const cb = '</font><font color="#0077ff">';//BLUE  蓝色
-const cv = '</font><font color="#7700ff">';//VIOLET 紫色
-const cp = '</font><font color="#ff00ff">';//PINK   粉红
-const clp = '</font><font color="#ff77ff">';//LIGHT PINK 浅粉色
-const clb = '</font><font color="#00ffff">';//LIGHT BLUE 浅蓝色
-const cbl = '</font><font color="#000000">';//BLACK 黑色
-const cgr = '</font><font color="#777777">';//GRAY 灰色
-const cw = '</font><font color="#ffffff">';//WHITE 白色
+// Messages colors
+const cr  = '</font><font color="#ff0000">'; // red
+const co  = '</font><font color="#ff7700">'; // orange
+const cy  = '</font><font color="#ffff00">'; // yellow
+const cg  = '</font><font color="#00ff00">'; // green
+const cdb = '</font><font color="#2727ff">'; // dark blue
+const cb  = '</font><font color="#0077ff">'; // blue
+const cv  = '</font><font color="#7700ff">'; // violet
+const cp  = '</font><font color="#ff00ff">'; // pink
+const clp = '</font><font color="#ff77ff">'; // light pink
+const clb = '</font><font color="#00ffff">'; // light blue
+const cbl = '</font><font color="#000000">'; // black
+const cgr = '</font><font color="#777777">'; // gray
+const cw  = '</font><font color="#ffffff">'; // white
 
 class TeraGuide{
 	constructor(dispatch) {
@@ -683,47 +684,54 @@ class TeraGuide{
 			// Make sure message is defined
 			if (!message) return debug_message(true, "Text handler needs a message");
 			let sending_event = {};
-			let sending_events = {};
 			// Create the sending event
 			switch(event['sub_type']) {
-				// If it's type message, it's S_DUNGEON_EVENT_MESSAGE with type 41
-				//混合通知
+				// Mixed notice
 				case "message": {
+					if (!entered_zone_data.verbose && !is_event) return;
 					if (voice && dispatch.settings.speaks) {
 						timers[event['id'] || random_timer_id--] = setTimeout(()=> {
-								voice.speak(message, dispatch.settings.rate);
-						}, (event['delay'] || 0 ) - 600 /speed);
+							voice.speak(message, dispatch.settings.rate);
+						}, (event['delay'] || 0 ) - 600 / speed);
 					}
 					timers[event['id'] || random_timer_id--] = setTimeout(()=> {
 						sendMessage(message);
 					}, (event['delay'] || 0) / speed);
 					break;
 				}
+				// Pink dungeon event message
 				case "msgcp": {
 					if (voice && dispatch.settings.speaks) {
 						timers[event['id'] || random_timer_id--] = setTimeout(()=> {
-								voice.speak(message, dispatch.settings.rate);
-						}, (event['delay'] || 0 ) - 600 /speed);
+							voice.speak(message, dispatch.settings.rate);
+						}, (event['delay'] || 0 ) - 600 / speed);
 					}
 					timers[event['id'] || random_timer_id--] = setTimeout(()=> {
 						sendspMessage(message, cp);
 					}, (event['delay'] || 0) / speed);
 					break;
 				}
+				// Green dungeon event message
 				case "msgcg": {
+					if (!entered_zone_data.verbose && !is_event) return;
 					if (voice && dispatch.settings.speaks) {
 						timers[event['id'] || random_timer_id--] = setTimeout(()=> {
-								voice.speak(message, dispatch.settings.rate);
-						}, (event['delay'] || 0 ) - 600 /speed);
+							voice.speak(message, dispatch.settings.rate);
+						}, (event['delay'] || 0 ) - 600 / speed);
 					}
 					timers[event['id'] || random_timer_id--] = setTimeout(()=> {
 						sendspMessage(message, cg);
 					}, (event['delay'] || 0) / speed);
 					break;
 				}
-				//组队长通知
+				// Team leader notice
 				case "alert": {
 					if (!entered_zone_data.verbose && !is_event) return;
+					if (voice && dispatch.settings.speaks) {
+						timers[event['id'] || random_timer_id--] = setTimeout(()=> {
+							voice.speak(message, dispatch.settings.rate);
+						}, (event['delay'] || 0 ) - 600 / speed);
+					}
 					if (dispatch.settings.stream) {
 						command.message(dispatch.settings.cc + message);
 						return;
@@ -735,8 +743,42 @@ class TeraGuide{
 					};
 					break;
 				}
+				// Raid leader notice
+				case "notification": {
+					if (!entered_zone_data.verbose && !is_event) return;
+					if (voice && dispatch.settings.speaks) {
+						timers[event['id'] || random_timer_id--] = setTimeout(()=> {
+							voice.speak(message, dispatch.settings.rate);
+						}, (event['delay'] || 0 ) - 600 / speed);
+					}
+					if (dispatch.settings.stream) {
+						command.message(dispatch.settings.cc + message);
+						return;
+					}
+					sending_event = {
+						channel: 25,
+						authorName: 'guide',
+						message
+					};
+					break;
+				}
+				// Voice announcement
+				case "speech": {
+					if (!entered_zone_data.verbose && !is_event) return;
+					if (voice && dispatch.settings.speaks) {
+						timers[event['id'] || random_timer_id--] = setTimeout(()=> {
+							voice.speak(message, dispatch.settings.rate);
+						}, (event['delay'] || 0 ) - 600 / speed);
+					}
+					break;
+				}
 				case "MSG": {
 					if (!entered_zone_data.verbose && !is_event) return;
+					if (voice && dispatch.settings.speaks) {
+						timers[event['id'] || random_timer_id--] = setTimeout(()=> {
+							voice.speak(message, dispatch.settings.rate);
+						}, (event['delay'] || 0 ) - 600 / speed);
+					}
 					if (dispatch.settings.stream) {
 						command.message(dispatch.settings.cc +  message);
 						return;
@@ -747,6 +789,7 @@ class TeraGuide{
 					}, (event['delay'] || 0 ) - 600 / speed);
 					break;
 				}
+				// Color-specified proxy channel messages
 				case "COMSG": {
 					command.message(co + message);
 					break;
@@ -799,31 +842,9 @@ class TeraGuide{
 					command.message(cr + message);
 					break;
 				}
+				// Default color proxy channel message
 				case "PRMSG": {
 					command.message(dispatch.settings.cc + message);
-					break;
-				}
-				//语音通知
-				case "speech": {
-					if (voice && dispatch.settings.speaks) {
-						timers[event['id'] || random_timer_id--] = setTimeout(()=> {
-							voice.speak(message, dispatch.settings.rate);
-						}, (event['delay'] || 0 ) - 600 / speed);
-					};
-					break;
-				}
-				//团队长通知
-				case "notification": {
-					if (!entered_zone_data.verbose && !is_event) return;
-					if (dispatch.settings.stream) {
-						command.message(dispatch.settings.cc + message);
-						return;
-					}
-					sending_event = {
-						channel: 25,
-						authorName: 'guide',
-						message
-					};
 					break;
 				}
 				default: {
@@ -833,46 +854,40 @@ class TeraGuide{
 			// Create the timer
 			timers[event['id'] || random_timer_id--] = setTimeout(()=> {
 				switch(event['sub_type']) {
-				// case "message": return dispatch.toClient('S_DUNGEON_EVENT_MESSAGE', 2, sending_events);	
 					case "notification": return dispatch.toClient('S_CHAT', 3, sending_event);
 					case "alert": return dispatch.toClient('S_CHAT', 3, sending_event);
 				}
-				/*
-				else {
-					// If dispatch.settings.streamer mode is enabled, send message all messages to party chat instead
-				//	return dispatch.toClient('S_CHAT', 2, { channel: 1, authorName: config['chat-name'], message });
-				}
-				*/
 			}, (event['delay'] || 0 ) / speed);
 		}
+		// Mixed notice message
 		function sendMessage(message) {
-			if (!entered_zone_data.verbose && !is_event) return;
 			if (dispatch.settings.stream) {
 				command.message(dispatch.settings.cc + message);
 				return;
 			}
+			// Team leader notice
 			if (dispatch.settings.notice) {
 				dispatch.toClient('S_CHAT', 3, {
 					channel: 21, //21 = p-notice, 1 = party, 2 = guild
 					message
 				});
+			// Party notice
 			} else if (dispatch.settings.systemNotice) {
 				dispatch.toClient('S_CHAT', 3, {
 					channel: 1, //21 = p-notice, 1 = party, 2 = guild
 					message
 				});
+			// Dungeon event message
 			} else {
-				dispatch.toClient('S_DUNGEON_EVENT_MESSAGE', 2, {
-					type: 42,
-					chat: 0,
-					channel: 27,
-					message: (dispatch.settings.cc + message)
-				});
+				sendspMessage(message, dispatch.settings.cc);
 			}
 		}
+		// Dungeon event message
 		function sendspMessage(message, spcc) {
-			if (!entered_zone_data.verbose && !is_event) return;
-			if (dispatch.settings.stream) return;
+			if (dispatch.settings.stream) {
+				command.message(dispatch.settings.cc + message);
+				return;
+			}
 			dispatch.toClient('S_DUNGEON_EVENT_MESSAGE', 2, {
 				type: 42,
 				chat: 0,
