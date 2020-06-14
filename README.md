@@ -1,30 +1,30 @@
 # tera-guide
-Основной модуль подсказок по данжам TERA с поддержкой русского и английского языков. Вывод подсказок в чат или на экран, а также отрисовка зон атак боссов и механик. Поддерживаются все актуальные данжи.
-
 A generic guide module for TERA with English and Russian translations (detects automaticly). Display hints on screen and drawing zones of bosses attacks and mechanics. Supports of all actual dungeons.
 
-## Зависимости / Dependencies
-https://github.com/tera-toolbox-mods/library
+Основной модуль подсказок по данжам TERA с поддержкой русского и английского языков. Вывод подсказок в чат или на экран, а также отрисовка зон атак боссов и механик. Поддерживаются все актуальные данжи.
 
-Распаковать в директорию "mods" в вашей Tera-Proxy. НЕ РАСПАКОВЫВАТЬ КАК "library-master", ДИРЕКТОРИЯ ДОЛЖНА НАЗЫВАТЬСЯ "library".
+## Dependencies / Зависимости
+https://github.com/tera-toolbox-mods/library
 
 Extract to "mods" directory in your Tera-Proxy. DO NOT INSTALLED IT AS "library-master" MAKE SURE IT'S NAMED "library".
 
-## Команды / Commands
-Toolbox(/8) | Описание команды<br>Command Description
---- | ---
-guide | - вкл./выкл. модуля (по-умолчанию: включено)<br> - on/off, default system notification, notification color yellow
-guide voice | - вкл./выкл. голосовые сообщения (по-умолчанию: выключено)<br> - text-to-speech on/off
-guide alert | - вкл./выкл. сообщений в чате (по-умолчанию: включено)<br> - chat notice on/off
-guide systemNotice | - вкл./выкл. сообщений в группе (по-умолчанию: выключено)<br> - party chat notice on/off
-guide spawnObject | - вкл./выкл. спавна объектов (по-умолчанию: включено)<br> - spawn area marker objects on/off
-guide stream | - вкл./выкл. режима скрытия сообщений (по-умолчанию: включено)<br> - streamer mode (hide all messages and objects) on/off
-guide dungeons | - список всех поддерживаемых данжей и их id<br> - list of all supported dungeons and its ids
-guide verbose `id` | - вкл./выкл. всех сообщений для данжа, где `id` - идентификатор данжа<br> - messaging for specified by `id` dungeon on/off
-guide spawnObject `id` | - вкл./выкл. спавна объектов для данжа, где `id` - идентификатор данжа<br> - spawn area marker objects for specified by `id` dungeon on/off
-guide help | - вывод поддерживаемых команд<br> - list of supported commands
+Распаковать в директорию "mods" в вашей Tera-Proxy. НЕ РАСПАКОВЫВАТЬ КАК "library-master", ДИРЕКТОРИЯ ДОЛЖНА НАЗЫВАТЬСЯ "library".
 
-## Поддерживаемые данжи / Supported Dungeons
+## Commands / Команды
+Toolbox(/8) | Command description | Описание команды
+--- | --- | ---
+guide | Module on/off | Вкл./выкл. модуля
+guide&nbsp;voice | Text-to-speech TTS notices on/off (played in streamer mode) | Вкл./выкл. голосовых уведомлений TTS (проигрываться в режиме стримера)
+guide&nbsp;alert | Send notices to chat channel "Notice" instead of on-screen messages on/off (notices for the "Raid Notice" channel work regardless of this setting) | Вкл./выкл. отправки уведомлений в канал чата "Важно" вместо показа экранных сообщений (уведомления для канала "Сообщения рейда" работают не зависимо от данной настройки)
+guide&nbsp;systemNotice | Send notices to party chat channel on/off (will be visible for all party members) | Вкл./выкл. отправки уведомлений в чат группы (уведомления будут видеть все члены группы)
+guide&nbsp;spawnObject | Spawn area marker objects on/off | Вкл./выкл. спавна маркировочных объектов
+guide&nbsp;stream | Streamer mode on/off (hide all notices and objects, TTS will played) | Вкл./выкл. режима стримера (скрывает все уведомления и маркеры, TTS будет проигрываться)
+guide&nbsp;dungeons | List of all supported dungeons and its ids | Список всех поддерживаемых данжей и их id
+guide&nbsp;verbose&nbsp;`id` | Messaging for specified by `id` dungeon on/off | Вкл./выкл. всех уведомлений для данжа, где `id` - идентификатор данжа
+guide&nbsp;spawnObject&nbsp;`id` | Spawn area marker objects for specified by `id` dungeon on/off | Вкл./выкл. спавна объектов для данжа, где `id` - идентификатор данжа
+guide&nbsp;help | List of supported commands | Вывод поддерживаемых команд
+
+## Supported Dungeons / Поддерживаемые данжи
 id | Dungeon Name | Название данжа
 --- | --- | ---
 9781 | Velik's Sanctuary | Святилище Велики
@@ -39,7 +39,7 @@ id | Dungeon Name | Название данжа
 3126 | Corrupted Skynest (Hard) | Логово Бессмертного Келсаика
 3027 | Forbidden Arena | Арена безумия
 
-## Разработка и отладка / Development and debugging
+## Development and debugging / Разработка и отладка
 Подробнее на https://github.com/hsdn/tera-guide/wiki
 
 ## Credits
