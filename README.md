@@ -38,6 +38,9 @@ id | Dungeon name | Название данжа
 3026 | Corrupted Skynest | Логово Келсаика
 3126 | Corrupted Skynest (Hard) | Логово Бессмертного Келсаика
 3027 | Forbidden Arena | Арена безумия
+3202 | Draakon Arena (Hard)&#42; | Командный центр (сложно)&#42;
+
+&#42; - This guide is testing and may not work / Этот гайд тестируется и может не работать
 
 ## Development and debugging / Разработка и отладка
 Подробнее на https://github.com/hsdn/tera-guide/wiki
@@ -45,6 +48,6 @@ id | Dungeon name | Название данжа
 ## Credits
 - **[Kasea](https://github.com/tera-toolbox-mods)** - Original developer of Tera-Guide module
 - **[michengs](https://github.com/michengs)** - Author of base code for most guides and module core
-- **[ZC](https://github.com/tera-mod)** - Provided coordinates for rendering attack areas and mechanic
+- **[ZC](https://github.com/tera-mod)** - Provided coordinates for rendering attack areas and mechanics
 - **[Owyn](https://github.com/Owyn)** - Developer of great guides for RK-9, AA and GV, whose code was used
 - **[ITunk](https://github.com/GrafNikola)** - Author of initial Russian translation
