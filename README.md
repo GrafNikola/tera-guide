@@ -43,8 +43,8 @@ id | Dungeon name | Название данжа
 Подробнее на https://github.com/hsdn/tera-guide/wiki
 
 ## Credits
-- michengs - https://github.com/michengs
-- ZC - https://github.com/tera-mod
-- Kasea - https://github.com/tera-toolbox-mods
-- ITunk - https://github.com/GrafNikola
-- Owyn - https://github.com/Owyn
+- **[Kasea](https://github.com/tera-toolbox-mods)** - Original developer of Tera-Guide module
+- **[michengs](https://github.com/michengs)** - Author of base code for most guides and module core
+- **[ZC](https://github.com/tera-mod)** - Provided coordinates for rendering attack areas and mechanic
+- **[Owyn](https://github.com/Owyn)** - Developer of great guides for RK-9, AA and GV, whose code was used
+- **[ITunk](https://github.com/GrafNikola)** - Author of initial Russian translation
