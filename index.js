@@ -553,9 +553,13 @@ class TeraGuide{
 				text_handler({"sub_type": "CGRMSG","message_RU": 'guide cgr, установить цвет сообщения: серый', "message": 'guide cgr,message color is GRAY'});
 				text_handler({"sub_type": "CWMSG","message_RU": 'guide cw, установить цвет сообщения: белый', "message": 'guide cw,message color is WHITE'});
 			},
-			$default() {
-				dispatch.settings.enabled = !dispatch.settings.enabled;
-				text_handler({"sub_type": "PRMSG","message_RU": `Модуль: ${dispatch.settings.enabled?"Вкл":"Выкл"}.`, "message": `guide ${dispatch.settings.enabled?"on":"off"}.`});
+			$default(arg1) {
+				if (arg1 === undefined) {
+					dispatch.settings.enabled = !dispatch.settings.enabled;
+					text_handler({"sub_type": "PRMSG","message_RU": `Модуль: ${dispatch.settings.enabled?"Вкл":"Выкл"}.`, "message": `guide ${dispatch.settings.enabled?"on":"off"}.`});
+				} else {
+					text_handler({"sub_type": "PRMSG","message_RU": 'Невереная команда, введите guide help', "message": 'Unknown command, type "guide help"'});
+				}
 			}
 		});
 
