@@ -459,14 +459,14 @@ class TeraGuide{
 					text_handler({"sub_type": "PRMSG","message_RU": `Не указан id данжа.`, "message": `Dungeon id not specified.`});
 				}
 			},
-			alert() {
-				dispatch.settings.notice = !dispatch.settings.notice;
-				text_handler({"sub_type": "PRMSG","message_RU": `Сообщения в чат: ${dispatch.settings.notice?"Вкл":"Выкл"}.`, "message": `Virtual captain has been ${dispatch.settings.notice?"on":"off"}.`});
+			lNotice() {
+				dispatch.settings.lNotice = !dispatch.settings.lNotice;
+				text_handler({"sub_type": "PRMSG","message_RU": `Сообщения в чат: ${dispatch.settings.lNotice?"Вкл":"Выкл"}.`, "message": `Virtual captain has been ${dispatch.settings.lNotice?"on":"off"}.`});
 			},
-			systemNotice() {
-				dispatch.settings.systemNotice = !dispatch.settings.systemNotice;
-				command.message(`system Notice ${dispatch.settings.systemNotice?"on":"off"}.`);
-				text_handler({"sub_type": "PRMSG","message_RU": `сообщения в группе: ${dispatch.settings.systemNotice?"Вкл":"Выкл"}.`, "message": `system Notice ${dispatch.settings.systemNotice?"on":"off"}.`});
+			gNotice() {
+				dispatch.settings.gNotice = !dispatch.settings.gNotice;
+				command.message(`system Notice ${dispatch.settings.gNotice?"on":"off"}.`);
+				text_handler({"sub_type": "PRMSG","message_RU": `сообщения в группе: ${dispatch.settings.gNotice?"Вкл":"Выкл"}.`, "message": `system Notice ${dispatch.settings.gNotice?"on":"off"}.`});
 			},
 			cr() {
 				text_handler({"sub_type": "CRMSG","message_RU": `Цвет системного сообщения: красный`, "message": `system message notification color is red`});
@@ -529,17 +529,17 @@ class TeraGuide{
 				}
 			},
 			help() {
-				text_handler({"sub_type": "PRMSG","message_RU": 'guide, вкл./выкл. модуля', "message": 'guide,  on/off, default system notification, notification color yellow'});
-				text_handler({"sub_type": "PRMSG","message_RU": 'guide voice, вкл./выкл. голосовые сообщения', "message": 'guide voice, text-to-speech on/off'});
-				text_handler({"sub_type": "PRMSG","message_RU": 'guide systemNotice, вкл./выкл. сообщений в группе', "message": 'guide systemNotice, system Notice on/off'});
-				text_handler({"sub_type": "PRMSG","message_RU": 'guide alert, вкл./выкл. сообщений в чате', "message": 'guide alert, Virtual captain  notifie on/off'});
-				text_handler({"sub_type": "PRMSG","message_RU": 'guide spawnObject, вкл./выкл. спавна объектов', "message": 'guide spawnObject, spawn Object on/off'}); 
-				text_handler({"sub_type": "PRMSG","message_RU": 'guide stream, вкл./выкл. режима стрима (скрытие сообщений)', "message": 'guide stream,(stream)on/off'});
-				text_handler({"sub_type": "PRMSG","message_RU": 'guide dungeons, список всех поддерживаемых данжей и их id', "message": 'guide dungeons, list of all supported dungeons'}); 
-				text_handler({"sub_type": "PRMSG","message_RU": 'guide verbose id, вкл./выкл. всех сообщений для данжа, где id - идентификатор данжа', "message": 'verbose id, messaging for dungeon on/off'});
-				text_handler({"sub_type": "PRMSG","message_RU": 'guide spawnObject id, вкл./выкл. спавна объектов для данжа, где id - идентификатор данжа', "message": 'guide spawnObject id, spawn objects for dungeon on/off'});
-				text_handler({"sub_type": "PRMSG","message_RU": 'guide cc, отобразить текущий цвет системного сообщения', "message": 'guide cc,View the current system message notification color'});
-				text_handler({"sub_type": "CRMSG","message_RU": 'guide cr, установить цвет сообщения: красный', "message": 'guide cr,message color is red'});
+				text_handler({"sub_type": "PRMSG","message_RU": 'guide, вкл./выкл. модуля', "message": 'guide, module on/off'});
+				text_handler({"sub_type": "PRMSG","message_RU": 'guide voice, вкл./выкл. голосовые сообщения', "message": 'guide voice, text-to-speech (TTS) notices on/off'});
+				text_handler({"sub_type": "PRMSG","message_RU": 'guide lNotice, вкл./выкл. отправки уведомлений в канал чата', "message": 'guide lNotice, send notices to chat on/off'});
+				text_handler({"sub_type": "PRMSG","message_RU": 'guide gNotice, вкл./выкл. отправки уведомлений в чат группы', "message": 'guide gNotice, send notices to party chat channel on/off'});
+				text_handler({"sub_type": "PRMSG","message_RU": 'guide spawnObject, вкл./выкл. спавна маркировочных объектов', "message": 'guide spawnObject, spawn marker objects on/off'});
+				text_handler({"sub_type": "PRMSG","message_RU": 'guide stream, вкл./выкл. режима стрима (скрытие уведомлений и объектов)', "message": 'guide stream, streamer mode on/off'});
+				text_handler({"sub_type": "PRMSG","message_RU": 'guide dungeons, список всех поддерживаемых данжей и их id', "message": 'guide dungeons, list of all supported dungeons'});
+				text_handler({"sub_type": "PRMSG","message_RU": 'guide verbose id, вкл./выкл. всех сообщений для данжа, где id - идентификатор данжа', "message": 'verbose id, send notices for specified dungeon on/off'});
+				text_handler({"sub_type": "PRMSG","message_RU": 'guide spawnObject id, вкл./выкл. спавна объектов для данжа, где id - идентификатор данжа', "message": 'guide spawnObject id, spawn marker objects for specified dungeon on/off'});
+				text_handler({"sub_type": "PRMSG","message_RU": 'guide cc, отобразить текущий цвет системного сообщения', "message": 'guide cc, view the current system message notification color'});
+				text_handler({"sub_type": "CRMSG","message_RU": 'guide cr, установить цвет сообщения: красный', "message": 'guide cr,message color is RED'});
 				text_handler({"sub_type": "COMSG","message_RU": 'guide c, установить цвет сообщения: оранжевый', "message": 'guide co,message color is ORANGE'});
 				text_handler({"sub_type": "CYMSG","message_RU": 'guide cy, установить цвет сообщения: желтый', "message": 'guide cy,message color is YELLOW'});
 				text_handler({"sub_type": "CGMSG","message_RU": 'guide cg, установить цвет сообщения: зеленый', "message": 'guide cg,message color is GREEN'});
@@ -866,13 +866,13 @@ class TeraGuide{
 				return;
 			}
 			// Team leader notice
-			if (dispatch.settings.notice) {
+			if (dispatch.settings.lNotice) {
 				dispatch.toClient('S_CHAT', 3, {
 					channel: 21, //21 = p-notice, 1 = party, 2 = guild
 					message
 				});
 			// Party notice
-			} else if (dispatch.settings.systemNotice) {
+			} else if (dispatch.settings.gNotice) {
 				dispatch.toClient('S_CHAT', 3, {
 					channel: 1, //21 = p-notice, 1 = party, 2 = guild
 					message

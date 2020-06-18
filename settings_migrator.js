@@ -1,8 +1,8 @@
 "use strict"
 const DefaultSettings = {
 	"enabled": true,
-	"systemNotice": false,
-	"notice": true,
+	"lNotice": true,
+	"gNotice": false,
 	"stream": false,
 	"spawnObject": true,
 	"speaks": false,
@@ -78,6 +78,8 @@ module.exports = function MigrateSettings(from_ver, to_ver, settings) {
 						}
 						settings[option] = optionobj;
 					}
+					if (option == "lNotice" && oldsettings["notice"]) settings[option] = oldsettings["notice"];
+					if (option == "gNotice" && oldsettings["systemNotice"]) settings[option] = oldsettings["systemNotice"];
 				}
 				for (let option in oldsettings) {
 					if (option == "dungeons") continue;
