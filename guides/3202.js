@@ -4,7 +4,7 @@
 
 let player, entity, library, effect;
 
-const {SpawnItem, SpawnVector, SpawnCircle} = require("../lib");
+const {HIGHLIGHT_ITEM_RED, SpawnItem, SpawnVector, SpawnCircle} = require("../lib");
 
 module.exports = {
 	load(dispatch) {
@@ -51,7 +51,7 @@ module.exports = {
 						 {"type": "func","func": SpawnVector.bind(null,912,0,0,125,400,0,4000)},
 						 {"type": "text","sub_type": "message","delay": 1900,"message": 'Dodge!',"message_RU": "Эвейд!"}],
 	"s-3202-1000-122-0": [{"type": "text","sub_type": "message","message": 'Front-back pizza',"message_RU": "Пицца спереди назад"},
-						 {"type": "func","func": SpawnItem.bind(null,89544,0,200,100,4000)}],
+						 {"type": "func","func": SpawnItem.bind(null,HIGHLIGHT_ITEM_RED,0,200,100,4000)}],
 	"s-3202-1000-123-0": [{"type": "text","sub_type": "message","message": 'Back pizza',"message_RU": "Задняя пицца"},
 						 {"type": "text","sub_type": "message","delay":100,"message": 'IN > OUT WAVES',"message_RU": "К НЕМУ > Волны ОТ"}],
 
@@ -69,7 +69,7 @@ module.exports = {
 						{"type": "func","func": SpawnVector.bind(null,912,0,0,125,400,0,4000)},
 						{"type": "text","sub_type": "message","delay": 1900,"message": 'Dodge!',"message_RU": "Эвейд!"}],
 	"s-3202-1000-125-0": [{"type": "text","sub_type": "message","message": 'Front-back pizza',"message_RU": "Пицца спереди назад"},
-	  					 {"type": "func","func": SpawnItem.bind(null,89544,0,200,100,4000)}],
+	  					 {"type": "func","func": SpawnItem.bind(null,HIGHLIGHT_ITEM_RED,0,200,100,4000)}],
 	"s-3202-1000-126-0": [{"type": "text","sub_type": "message","message": 'Back pizza',"message_RU": "Задняя пицца"},
 						{"type": "text","sub_type": "message","delay":100,"message": 'OUT > IN WAVES',"message_RU": "ОТ НЕГО > Волны К"}],
 						//128
