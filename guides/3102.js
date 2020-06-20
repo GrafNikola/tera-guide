@@ -15,12 +15,12 @@ module.exports = {
 	"s-3102-1000-107-0": [{"type": "text","sub_type": "message","message": 'Spectral Throw',"message_RU": "Спектральный бросок"}],
 
 	// Basic Attacks
-	"s-3102-1000-103-0": [{"type": "text","sub_type": "message","message": '2 Hits > Bleed',"message_RU": "2 удара > Кровоток"}],
+	"s-3102-1000-103-0": [{"type": "text","sub_type": "message","message": '2 Hits | Bleed',"message_RU": "2 удара | Кровоток"}],
 	"s-3102-1000-113-0": [{"type": "text","sub_type": "message","message": '4 Hits Combo',"message_RU": "4 удара комба"}],
-	"s-3102-1000-105-0": [{"type": "text","sub_type": "message","message": 'Uppercut > Stun (INC)',"message_RU": "Передний стан"}],
+	"s-3102-1000-105-0": [{"type": "text","sub_type": "message","message": 'Uppercut | Stun (INC)',"message_RU": "Передний стан"}],
 	"s-3102-1000-106-0": [{"type": "text","sub_type": "message","message": 'Stun',"message_RU": "Стан"}],
 
-	"s-3102-1000-120-0": [{"type": "text","sub_type": "message","message": 'Many Pokes > Stun',"message_RU": "Несколько ударов > Стан"}],
+	"s-3102-1000-120-0": [{"type": "text","sub_type": "message","message": 'Many Pokes | Stun',"message_RU": "Несколько ударов | Стан"}],
 	"s-3102-1000-114-0": [{"type": "text","sub_type": "message","message": 'Stun (AOE)',"message_RU": "Стан (AOE)"}],
 
 	// Leap
