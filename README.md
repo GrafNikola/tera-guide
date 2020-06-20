@@ -41,7 +41,7 @@ id | Dungeon name | Название данжа
 3102 | Draakon Arena&#42; | Командный центр&#42;
 3202 | Draakon Arena (Hard)&#42; | Командный центр (сложно)&#42;
 
-&#42; - Dungeon is testing and may not work / Данж тестируется и может не работать
+&#42; - Dungeon on testing, possibly mistakes / Данж тестируется, возможны ошибки
 
 ## Development and debugging / Разработка и отладка
 Подробнее на https://github.com/hsdn/tera-guide/wiki
