@@ -1,11 +1,11 @@
 "use strict"
 const DefaultSettings = {
 	"enabled": true,
-	"lNotice": true,
+	"lNotice": false,
 	"gNotice": false,
 	"stream": false,
 	"spawnObject": true,
-	"speaks": false,
+	"speaks": true,
 	"rate": [
 		2
 	],
