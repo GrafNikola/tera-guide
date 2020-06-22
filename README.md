@@ -13,16 +13,16 @@ Extract to "mods" directory in your Tera-Proxy. DO NOT INSTALLED IT AS "library-
 ## Commands / Команды
 Toolbox(/8) | Command description | Описание команды
 --- | --- | ---
-guide | Module on/off | Вкл./выкл. модуля
-guide&nbsp;voice | Text-to-speech (TTS) notices on/off, speech rate is set in the `rate` param in `config.json` | Вкл./выкл. голосовых уведомлений (TTS), скорость чтения задается в параметре `rate` в файле `config.json`
-guide&nbsp;lNotice | Send notices to chat channel "Notice" instead of on-screen messages on/off (notices for the "Raid Notice" channel work regardless of this setting) | Вкл./выкл. отправки уведомлений в канал чата "Важно" вместо показа экранных сообщений (уведомления для канала "Сообщения рейда" работают не зависимо от данной настройки)
-guide&nbsp;gNotice | Send notices to party chat channel on/off (will be visible for all party members) | Вкл./выкл. отправки уведомлений в чат группы (уведомления будут видеть все члены группы)
-guide&nbsp;spawnObject | Spawn marker objects on/off | Вкл./выкл. спавна маркировочных объектов
-guide&nbsp;stream | Streamer mode on/off (hide all notices and objects, TTS will played) | Вкл./выкл. режима стримера (скрывает все уведомления и маркеры, TTS будет проигрываться)
-guide&nbsp;dungeons | List of all supported dungeons and its ids | Список всех поддерживаемых данжей и их id
-guide&nbsp;verbose&nbsp;`id` | Send notices for specified by `id` dungeon on/off | Вкл./выкл. всех уведомлений для данжа, где `id` - идентификатор данжа
-guide&nbsp;spawnObject&nbsp;`id` | Spawn marker objects for specified by `id` dungeon on/off | Вкл./выкл. спавна объектов для данжа, где `id` - идентификатор данжа
-guide&nbsp;help | List of supported commands | Вывод поддерживаемых команд
+**guide** | Module on/off | Вкл./выкл. модуля
+**guide&nbsp;voice**<br>(default: on) | Text-to-speech (TTS) notices on/off, speech rate is set in the `rate` param in `config.json` | Вкл./выкл. голосовых уведомлений (TTS), скорость чтения задается в параметре `rate` в файле `config.json`
+**guide&nbsp;lNotice**<br>(default: off) | Send notices to chat channel "Notice" instead of on-screen messages on/off (notices for the "Raid Notice" channel work regardless of this setting) | Вкл./выкл. отправки уведомлений в канал чата "Важно" вместо показа экранных сообщений (уведомления для канала "Сообщения рейда" работают не зависимо от данной настройки)
+**guide&nbsp;gNotice**<br>(default: off) | Send notices to party chat channel on/off (will be visible for all party members) | Вкл./выкл. отправки уведомлений в чат группы (уведомления будут видеть все члены группы)
+**guide&nbsp;spawnObject**<br>(default: on) | Spawn marker objects on/off | Вкл./выкл. спавна маркировочных объектов
+**guide&nbsp;stream**<br>(default: off) | Streamer mode on/off (hide all notices and objects, TTS will played) | Вкл./выкл. режима стримера (скрывает все уведомления и маркеры, TTS будет проигрываться)
+**guide&nbsp;dungeons** | List of all supported dungeons and its ids | Список всех поддерживаемых данжей и их id
+**guide&nbsp;verbose&nbsp;`id`**<br>(default: on for all) | Send notices for specified by `id` dungeon on/off | Вкл./выкл. всех уведомлений для данжа, где `id` - идентификатор данжа
+**guide&nbsp;spawnObject&nbsp;`id`**<br>(default: on for all) | Spawn marker objects for specified by `id` dungeon on/off | Вкл./выкл. спавна объектов для данжа, где `id` - идентификатор данжа
+**guide&nbsp;help** | List of supported commands | Вывод поддерживаемых команд
 
 ## Supported dungeons / Поддерживаемые данжи
 id | Dungeon name | Название данжа
@@ -47,9 +47,7 @@ id | Dungeon name | Название данжа
 
 * On screen (on bottom side) and chat notices, if **lNotice** parameter is *on*. Notices visible for you only.   
   Уведомления на экране (в нижней части), а также в чате, если параметр **lNotice** - *включен*. Видны только вам.   
-  ![](https://i.imgur.com/BPlK58M.png)   
-  чат группы / party chat:   
-  ![](https://i.imgur.com/jZNQzQX.png)
+  ![](https://i.imgur.com/BPlK58M.png)
 
 * When **gNotice** parameter is *on*, notices will also be sent to all party members.   
   Если параметр **gNotice** был *включен*, уведомления также будут отправляться всем членам группы.
