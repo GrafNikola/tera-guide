@@ -24,6 +24,23 @@ guide&nbsp;verbose&nbsp;`id` | Send notices for specified by `id` dungeon on/off
 guide&nbsp;spawnObject&nbsp;`id` | Spawn marker objects for specified by `id` dungeon on/off | Вкл./выкл. спавна объектов для данжа, где `id` - идентификатор данжа
 guide&nbsp;help | List of supported commands | Вывод поддерживаемых команд
 
+## Notices display modes / Режимы отображения уведомлений
+* The message on top side of the screen, if **lNotice** parameter is *off*. Notices visible for you only.   
+  Сообщение в верхней части экрана, если параметр **lNotice** - *выключен*. Видны только вам.   
+  ![](https://i.imgur.com/r2bb8Wc.png)
+
+* On screen (on bottom side) and chat notices, if **lNotice** parameter is *on*. Notices visible for you only.   
+  Уведомления на экране (в нижней части), а также в чате, если параметр **lNotice** - *включен*. Видны только вам.   
+  ![](https://i.imgur.com/BPlK58M.png)   
+  чат группы / party chat:   
+  ![](https://i.imgur.com/jZNQzQX.png)
+
+* When **gNotice** parameter is *on*, notices will also be sent to all party members.   
+  Если параметр **gNotice** был *включен*, уведомления также будут отправляться всем членам группы.
+
+* When streamer mode is *on* (**stream** parameter), notices ONLY sent to Toolbox(/8) chat channel.   
+  Если включен режим стримера (парам. **stream**), уведомления будут отправляться ТОЛЬКО в канал чата Toolbox(/8).
+
 ## Supported dungeons / Поддерживаемые данжи
 id | Dungeon name | Название данжа
 --- | --- | ---
