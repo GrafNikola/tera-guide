@@ -341,6 +341,18 @@ class TeraGuide{
 							"message": 'Enter Dungeon: ' + cr + entered_zone_data.name + cw + ' [' + zone + ']'
 						});
 					}
+					text_handler({
+						"sub_type": "CGMSG",
+						"delay": 8000,
+						"message_RU": 
+							`Введите "guide help" для вывода справки\n` + 
+							`Состояние режима стрима: ${dispatch.settings.stream?"Вкл":"Выкл"}.\n` + 
+							`Состояние голосовых сообщений: ${dispatch.settings.speaks?"Вкл":"Выкл"}.`,
+						"message": 
+							`'Enter "guide help" for more information\n` + 
+							`The current stream mode ${dispatch.settings.stream?"on":"off"}.\n` + 
+							`The current guide voice ${dispatch.settings.speaks?"on":"off"}.`
+					});
 				}
 			} catch(e) {
 				entered_zone_data = {};
@@ -539,19 +551,19 @@ class TeraGuide{
 				text_handler({"sub_type": "PRMSG","message_RU": 'guide verbose id, вкл./выкл. всех сообщений для данжа, где id - идентификатор данжа', "message": 'verbose id, send notices for specified dungeon on/off'});
 				text_handler({"sub_type": "PRMSG","message_RU": 'guide spawnObject id, вкл./выкл. спавна объектов для данжа, где id - идентификатор данжа', "message": 'guide spawnObject id, spawn marker objects for specified dungeon on/off'});
 				text_handler({"sub_type": "PRMSG","message_RU": 'guide cc, отобразить текущий цвет системного сообщения', "message": 'guide cc, view the current system message notification color'});
-				text_handler({"sub_type": "CRMSG","message_RU": 'guide cr, установить цвет сообщения: красный', "message": 'guide cr,message color is RED'});
-				text_handler({"sub_type": "COMSG","message_RU": 'guide c, установить цвет сообщения: оранжевый', "message": 'guide co,message color is ORANGE'});
-				text_handler({"sub_type": "CYMSG","message_RU": 'guide cy, установить цвет сообщения: желтый', "message": 'guide cy,message color is YELLOW'});
-				text_handler({"sub_type": "CGMSG","message_RU": 'guide cg, установить цвет сообщения: зеленый', "message": 'guide cg,message color is GREEN'});
-				text_handler({"sub_type": "CDBMSG","message_RU": 'guide cdb, установить цвет сообщения: темно-синий', "message": 'guide cdb,message color is DARK BLUE'});
-				text_handler({"sub_type": "CBMSG","message_RU": 'guide cb, установить цвет сообщения: синий', "message": 'guide cb,message color is BLUE' });
-				text_handler({"sub_type": "CVMSG","message_RU": 'guide cv, установить цвет сообщения: фиолетовый', "message": 'guide cv,message color is VIOLET'});
-				text_handler({"sub_type": "CPMSG","message_RU": 'guide cp, установить цвет сообщения: розовый', "message": 'guide cp,message color is PINK' });
-				text_handler({"sub_type": "CLPMSG","message_RU": 'guide clp, установить цвет сообщения: светло-розовый', "message": 'guide clp,message color is LIGHT PINK'});
-				text_handler({"sub_type": "CLBMSG","message_RU": 'guide clb, установить цвет сообщения: светло-синий', "message": 'guide clb,message color is LIGHT BLUE'});
-				text_handler({"sub_type": "CBLMSG","message_RU": 'guide cbl, установить цвет сообщения: черный', "message": 'guide cbl,message color is BLACK'});
-				text_handler({"sub_type": "CGRMSG","message_RU": 'guide cgr, установить цвет сообщения: серый', "message": 'guide cgr,message color is GRAY'});
-				text_handler({"sub_type": "CWMSG","message_RU": 'guide cw, установить цвет сообщения: белый', "message": 'guide cw,message color is WHITE'});
+				text_handler({"sub_type": "CRMSG","message_RU": 'guide cr, установить цвет сообщения: красный', "message": 'guide cr, message color is RED'});
+				text_handler({"sub_type": "COMSG","message_RU": 'guide c, установить цвет сообщения: оранжевый', "message": 'guide co, message color is ORANGE'});
+				text_handler({"sub_type": "CYMSG","message_RU": 'guide cy, установить цвет сообщения: желтый', "message": 'guide cy, message color is YELLOW'});
+				text_handler({"sub_type": "CGMSG","message_RU": 'guide cg, установить цвет сообщения: зеленый', "message": 'guide cg, message color is GREEN'});
+				text_handler({"sub_type": "CDBMSG","message_RU": 'guide cdb, установить цвет сообщения: темно-синий', "message": 'guide cdb, message color is DARK BLUE'});
+				text_handler({"sub_type": "CBMSG","message_RU": 'guide cb, установить цвет сообщения: синий', "message": 'guide cb, message color is BLUE' });
+				text_handler({"sub_type": "CVMSG","message_RU": 'guide cv, установить цвет сообщения: фиолетовый', "message": 'guide cv, message color is VIOLET'});
+				text_handler({"sub_type": "CPMSG","message_RU": 'guide cp, установить цвет сообщения: розовый', "message": 'guide cp, message color is PINK' });
+				text_handler({"sub_type": "CLPMSG","message_RU": 'guide clp, установить цвет сообщения: светло-розовый', "message": 'guide clp, message color is LIGHT PINK'});
+				text_handler({"sub_type": "CLBMSG","message_RU": 'guide clb, установить цвет сообщения: светло-синий', "message": 'guide clb, message color is LIGHT BLUE'});
+				text_handler({"sub_type": "CBLMSG","message_RU": 'guide cbl, установить цвет сообщения: черный', "message": 'guide cbl, message color is BLACK'});
+				text_handler({"sub_type": "CGRMSG","message_RU": 'guide cgr, установить цвет сообщения: серый', "message": 'guide cgr, message color is GRAY'});
+				text_handler({"sub_type": "CWMSG","message_RU": 'guide cw, установить цвет сообщения: белый', "message": 'guide cw, message color is WHITE'});
 			},
 			$default(arg1) {
 				if (arg1 === undefined) {
