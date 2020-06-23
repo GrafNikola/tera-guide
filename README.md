@@ -14,9 +14,10 @@ Extract to "mods" directory in your Tera-Proxy. DO NOT INSTALLED IT AS "library-
 Toolbox(/8) | Command description | Описание команды
 --- | --- | ---
 **guide** | Module on/off | Вкл./выкл. модуля
-**guide&nbsp;voice**<br>(default: on) | Text-to-speech (TTS) notices on/off, speech rate is set in the `rate` param in `config.json` | Вкл./выкл. голосовых уведомлений (TTS), скорость чтения задается в параметре `rate` в файле `config.json`
+**guide&nbsp;voice**<br>(default: on) | Text-to-speech (TTS) notices on/off, speech rate is set by command **guide `1`~`10`** | Вкл./выкл. голосовых уведомлений (TTS), скорость чтения задается командой **guide `1`~`10`**
 **guide&nbsp;lNotice**<br>(default: off) | Send notices to chat channel "Notice" instead of on-screen messages on/off (notices for the "Raid Notice" channel work regardless of this setting) | Вкл./выкл. отправки уведомлений в канал чата "Важно" вместо показа экранных сообщений (уведомления для канала "Сообщения рейда" работают не зависимо от данной настройки)
 **guide&nbsp;gNotice**<br>(default: off) | Send notices to party chat channel on/off (will be visible for all party members) | Вкл./выкл. отправки уведомлений в чат группы (уведомления будут видеть все члены группы)
+**guide&nbsp;`1`~`10`**<br>(default: 2) | Set TTS speech rate | Регулировка скорости чтения голосовых сообщений
 **guide&nbsp;spawnObject**<br>(default: on) | Spawn marker objects on/off | Вкл./выкл. спавна маркировочных объектов
 **guide&nbsp;stream**<br>(default: off) | Streamer mode on/off (hide all notices and objects, TTS will played) | Вкл./выкл. режима стримера (скрывает все уведомления и маркеры, TTS будет проигрываться)
 **guide&nbsp;dungeons** | List of all supported dungeons and its ids | Список всех поддерживаемых данжей и их id
@@ -43,7 +44,7 @@ id | Dungeon name | Название данжа
 
 &#42; - Dungeon on testing, possibly mistakes / Данж тестируется, возможны ошибки
 
-## Notices display modes / Режимы отображения уведомлений
+## Notices settings / Настройка уведомлений
 
 * On screen (on bottom side) and chat notices, if **lNotice** parameter is *on*. Notices visible for you only.   
   Уведомления на экране (в нижней части), а также в чате, если параметр **lNotice** - *включен*. Видны только вам.   

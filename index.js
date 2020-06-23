@@ -27,6 +27,16 @@ const clb = '</font><font color="#00ffff">'; // light blue
 const cbl = '</font><font color="#000000">'; // black
 const cgr = '</font><font color="#777777">'; // gray
 const cw  = '</font><font color="#ffffff">'; // white
+const rate1 = 1;
+const rate2 = 2;
+const rate3 = 3;
+const rate4 = 4;
+const rate5 = 5;
+const rate6 = 6;
+const rate7 = 7;
+const rate8 = 8;
+const rate9 = 9;
+const rate10 = 10;
 
 class TeraGuide{
 	constructor(dispatch) {
@@ -480,6 +490,46 @@ class TeraGuide{
 				command.message(`system Notice ${dispatch.settings.gNotice?"on":"off"}.`);
 				text_handler({"sub_type": "PRMSG","message_RU": `сообщения в группе: ${dispatch.settings.gNotice?"Вкл":"Выкл"}.`, "message": `system Notice ${dispatch.settings.gNotice?"on":"off"}.`});
 			},
+			1() {
+				text_handler({"sub_type": "PRMSG","message_RU": `Скорость речи 1`, "message": `Voice speed 1` });
+				dispatch.settings.rate.splice(0,1, rate1);
+			},
+			2() {
+			   text_handler({"sub_type": "PRMSG","message_RU": `Скорость речи 2`, "message": `Voice speed 2` });
+			   dispatch.settings.rate.splice(0,1, rate2);
+			},
+			3() {
+				text_handler({"sub_type": "PRMSG","message_RU": `Скорость речи 3`, "message": `Voice speed 3` });
+				dispatch.settings.rate.splice(0,1, rate3);
+			},	
+			4() {
+				text_handler({"sub_type": "PRMSG","message_RU": `Скорость речи 4`, "message": `Voice speed 4` });
+				dispatch.settings.rate.splice(0,1, rate4);
+			},
+			5() {
+				text_handler({"sub_type": "PRMSG","message_RU": `Скорость речи 5`, "message": `Voice speed 5` });
+				dispatch.settings.rate.splice(0,1, rate5);
+			},
+			6() {
+				text_handler({"sub_type": "PRMSG","message_RU": `Скорость речи 6`, "message": `Voice speed 6` });
+				dispatch.settings.rate.splice(0,1, rate6);
+			},
+			7() {
+				text_handler({"sub_type": "PRMSG","message_RU": `Скорость речи 7`, "message": `Voice speed 7` });
+				dispatch.settings.rate.splice(0,1, rate7);
+			},
+			8() {
+				text_handler({"sub_type": "PRMSG","message_RU": `Скорость речи 8`, "message": `Voice speed 8` });
+				dispatch.settings.rate.splice(0,1, rate8);
+			},	
+			9() {
+				text_handler({"sub_type": "PRMSG","message_RU": `Скорость речи 9`, "message": `Voice speed 9` });
+				dispatch.settings.rate.splice(0,1, rate9);
+			},
+			10() {
+				text_handler({"sub_type": "PRMSG","message_RU": `Скорость речи 10`, "message": `Voice speed 10` });
+				dispatch.settings.rate.splice(0,1, rate10);
+			},
 			cr() {
 				text_handler({"sub_type": "CRMSG","message_RU": `Цвет системного сообщения: красный`, "message": `system message notification color is red`});
 				dispatch.settings.cc.splice(0,1, cr );
@@ -545,6 +595,7 @@ class TeraGuide{
 				text_handler({"sub_type": "PRMSG","message_RU": 'guide voice, вкл./выкл. голосовые сообщения', "message": 'guide voice, text-to-speech (TTS) notices on/off'});
 				text_handler({"sub_type": "PRMSG","message_RU": 'guide lNotice, вкл./выкл. отправки уведомлений в канал чата', "message": 'guide lNotice, send notices to chat on/off'});
 				text_handler({"sub_type": "PRMSG","message_RU": 'guide gNotice, вкл./выкл. отправки уведомлений в чат группы', "message": 'guide gNotice, send notices to party chat channel on/off'});
+				text_handler({"sub_type": "PRMSG","message_RU": 'guide 1~10, регулировка скорости чтения голосовых сообщений',"message": 'guide 1~10, to settings TTS speech rate'});
 				text_handler({"sub_type": "PRMSG","message_RU": 'guide spawnObject, вкл./выкл. спавна маркировочных объектов', "message": 'guide spawnObject, spawn marker objects on/off'});
 				text_handler({"sub_type": "PRMSG","message_RU": 'guide stream, вкл./выкл. режима стрима (скрытие уведомлений и объектов)', "message": 'guide stream, streamer mode on/off'});
 				text_handler({"sub_type": "PRMSG","message_RU": 'guide dungeons, список всех поддерживаемых данжей и их id', "message": 'guide dungeons, list of all supported dungeons'});
