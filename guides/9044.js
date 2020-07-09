@@ -13,7 +13,7 @@ let notice = true;
 let notices = true;
 let printend = false;
 
-function skillds_event(skillids, handlers, event, ent, dispatch) {
+function skillds_event(skillids, handlers, event, entity, dispatch) {
 	if (skillids === 104) {
 		skill = 104;
 		//setTimeout(() => skill = 0, 500);
@@ -27,7 +27,7 @@ function skillds_event(skillids, handlers, event, ent, dispatch) {
 	}
 }
 
-function skilld_event(skillid, handlers, event, ent, dispatch) {
+function skilld_event(skillid, handlers, event, entity, dispatch) {
 	if (skillid == 90442000) shining = true;
 	if (skillid == 90442001) shining = false;
 	if (skillid == 90442304) {
@@ -76,6 +76,86 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 	}
 	if (notices && skillid == 137) {
 		handlers['text']({"sub_type": "message","message": "back","message_RU": "Удар назад"});
+	}
+
+	if ([1121,2121].includes(skillid)) {
+		SpawnMarker(false,37,125,0,2533,false,["safe","safe"],handlers,event,entity);
+		SpawnMarker(false,143,125,0,2533,false,["safe","safe"],handlers,event,entity);
+
+		SpawnVector(553,90,50,0,500,0,6000,handlers,event,entity);//右前直线	
+		SpawnVector(553,270,50,0,500,0,6000,handlers,event,entity);//左前直线	
+		SpawnVector(553,90,50,180,500,0,6000,handlers,event,entity);//右后直线	
+		SpawnVector(553,270,50,180,500,0,6000,handlers,event,entity);//左后直线	
+		SpawnCircle(false,445,0,0,6,400,0,6000,handlers,event,entity);
+
+		handlers['text']({"type": "text","sub_type": "notification","delay": 60000,"message":  'Waves soon...',"message_RU": "Скоро волны"});
+	}
+	//右邊
+	if ([1140,2140].includes(skillid)) {
+		SpawnMarker(false,323,125,0,2533,false,["safe","safe"],handlers,event,entity);
+		SpawnMarker(false,217,125,0,2533,false,["safe","safe"],handlers,event,entity);
+
+		SpawnVector(553,90,50,0,500,0,6000,handlers,event,entity);//右前直线	
+		SpawnVector(553,270,50,0,500,0,6000,handlers,event,entity);//左前直线	
+		SpawnVector(553,90,50,180,500,0,6000,handlers,event,entity);//右后直线	
+		SpawnVector(553,270,50,180,500,0,6000,handlers,event,entity);//左后直线		
+		SpawnCircle(false,445,0,0,6,400,0,6000,handlers,event,entity);
+
+		handlers['text']({"type": "text","sub_type": "notification","delay": 60000,"message":  'Waves soon...',"message_RU": "Скоро волны"});
+	}
+	//2加速 123 142
+	//左邊
+	if ([1123,2123].includes(skillid)) {
+		SpawnMarker(false,37,125,0,2500,false,["safe","safe"],handlers,event,entity);
+		SpawnMarker(false,143,125,0,2500,false,["safe","safe"],handlers,event,entity);
+
+		SpawnVector(553,90,50,0,500,0,6000,handlers,event,entity);//右前直线	
+		SpawnVector(553,270,50,0,500,0,6000,handlers,event,entity);//左前直线	
+		SpawnVector(553,90,50,180,500,0,6000,handlers,event,entity);//右后直线	
+		SpawnVector(553,270,50,180,500,0,6000,handlers,event,entity);//左后直线	
+		SpawnCircle(false,445,0,0,6,400,0,6000,handlers,event,entity);
+
+		handlers['text']({"type": "text","sub_type": "notification","delay": 60000,"message":  'Waves soon...',"message_RU": "Скоро волны"});
+	}
+	//右邊
+	if ([1142,2142].includes(skillid)) {
+		SpawnMarker(false,323,125,0,2500,false,["safe","safe"],handlers,event,entity);
+		SpawnMarker(false,217,125,0,2500,false,["safe","safe"],handlers,event,entity);
+
+		SpawnVector(553,90,50,0,500,0,6000,handlers,event,entity);//右前直线	
+		SpawnVector(553,270,50,0,500,0,6000,handlers,event,entity);//左前直线	
+		SpawnVector(553,90,50,180,500,0,6000,handlers,event,entity);//右后直线	
+		SpawnVector(553,270,50,180,500,0,6000,handlers,event,entity);//左后直线		
+		SpawnCircle(false,445,0,0,6,400,0,6000,handlers,event,entity);
+
+		handlers['text']({"type": "text","sub_type": "notification","delay": 60000,"message":  'Waves soon...',"message_RU": "Скоро волны"});
+	}
+	//3加速 122 141
+	//左邊
+	if ([1122,2122].includes(skillid)) {
+		SpawnMarker(false,37,125,0,2533,false,["safe","safe"],handlers,event,entity);
+		SpawnMarker(false,143,125,0,2533,false,["safe","safe"],handlers,event,entity);
+
+		SpawnVector(553,90,50,0,500,0,6000,handlers,event,entity);//右前直线	
+		SpawnVector(553,270,50,0,500,0,6000,handlers,event,entity);//左前直线	
+		SpawnVector(553,90,50,180,500,0,6000,handlers,event,entity);//右后直线	
+		SpawnVector(553,270,50,180,500,0,6000,handlers,event,entity);//左后直线	
+		SpawnCircle(false,445,0,0,6,400,0,6000,handlers,event,entity);
+
+		handlers['text']({"type": "text","sub_type": "notification","delay": 60000,"message":  'Waves soon...',"message_RU": "Скоро волны"});
+	}
+	//右邊
+	if ([1141,2141].includes(skillid)) {
+		SpawnMarker(false,323,125,0,2533,false,["safe","safe"],handlers,event,entity);
+		SpawnMarker(false,217,125,0,2533,false,["safe","safe"],handlers,event,entity);
+
+		SpawnVector(553,90,50,0,500,0,6000,handlers,event,entity);//右前直线	
+		SpawnVector(553,270,50,0,500,0,6000,handlers,event,entity);//左前直线	
+		SpawnVector(553,90,50,180,500,0,6000,handlers,event,entity);//右后直线	
+		SpawnVector(553,270,50,180,500,0,6000,handlers,event,entity);//左后直线		
+		SpawnCircle(false,445,0,0,6,400,0,6000,handlers,event,entity);
+
+		handlers['text']({"type": "text","sub_type": "notification","delay": 60000,"message":  'Waves soon...',"message_RU": "Скоро волны"});
 	}
 }
 
@@ -129,10 +209,12 @@ module.exports = {
 	//"s-444-2000-1134-0": [{"type": "func","func": skillds_event.bind(null, 134)}],
 	//"s-444-2000-2134-0": [{"type": "func","func": skillds_event.bind(null, 134)}],
 
+	// PHASE 1
+
 	"s-444-1000-2103-0": [{"type": "text","sub_type": "message","message": "Front (Dodge)","message_RU": "Удар вперед (эвейд)"},
 						  {"type": "func","func": SpawnCircle.bind(null,false,445,356,400,8,350,100,3000)}
 	],
-	"s-444-1000-2108-0": [{"type": "text","sub_type": "message","message": 'Back Throw -> Front',"message_RU": "Стан назад -> Черенок"}],
+	"s-444-1000-2108-0": [{"type": "text","sub_type": "message","message": 'Back Throw | Front',"message_RU": "Стан назад | Черенок"}],
 	"s-444-1000-2111-0": [{"type": "text","sub_type": "message","message": 'Back',"message_RU": "Удар назад --"},
 						  {"type": "func","func": SpawnCircle.bind(null,false,445,180,500,8,480,100,2000)}
 	],
@@ -148,14 +230,8 @@ module.exports = {
 	"s-444-1000-2118-0": [{"type": "text","sub_type": "message","message": 'Jump (Tank)',"message_RU": "Прыжок (танк)"}
 						  //{"type": "func","func": skillds_event.bind(null, 118)}
 	],
-	"s-444-1000-2121-0": [{"type": "text","sub_type": "message","message": 'Waves (Left)',"message_RU": "Волны (левая)"},
-						  {"type": "func","func": SpawnVector.bind(null,553,90,50,0,500,0,6000)},
-						  {"type": "func","func": SpawnVector.bind(null,553,90,50,180,500,0,6000)},
-						  {"type": "func","func": SpawnVector.bind(null,553,270,50,0,500,0,6000)},
-						  {"type": "func","func": SpawnVector.bind(null,553,270,50,180,500,0,6000)},
-						  {"type": "text","sub_type": "message","delay": 60000,"message": 'Waves soon...',"message_RU": "Скоро волны"}
-	],
-	"s-444-1000-2131-0": [{"type": "text","sub_type": "message","message": 'Front -> Left Scratch',"message_RU": "Удар в вперед -> левый черкаш"},
+	"s-444-1000-2121-0": [{"type": "text","sub_type": "message","message": 'Waves (Left)',"message_RU": "Волны (левая)"},{"type": "func","func":skilld_event.bind(null, 2121)}],
+	"s-444-1000-2131-0": [{"type": "text","sub_type": "message","message": 'Front | Left Scratch',"message_RU": "Удар в вперед | Левый черкаш"},
 						  {"type": "func","func": SpawnCircle.bind(null,false,445,358,340,8,660,100,4000)}
 	],
 	"s-444-1000-2132-0": [
@@ -168,18 +244,12 @@ module.exports = {
 	],
 	"s-444-1000-2138-0": [{"type": "text","sub_type": "message","message": 'Knockup (Bait)',"message_RU": "Черкаш (полет)"}],
 	"s-444-1000-2139-0": [{"type": "text","sub_type": "message","message": 'Dodge!!',"message_RU": "Эвейд!!!"}],
-	"s-444-1000-2140-0": [{"type": "text","sub_type": "message","message": 'Waves (Right)',"message_RU": "Волны (правая)"},
-						  {"type": "func","func": SpawnVector.bind(null,553,90,50,0,500,0,6000)},
-						  {"type": "func","func": SpawnVector.bind(null,553,90,50,180,500,0,6000)},
-						  {"type": "func","func": SpawnVector.bind(null,553,270,50,0,500,0,6000)},
-						  {"type": "func","func": SpawnVector.bind(null,553,270,50,180,500,0,6000)},
-						  {"type": "text","sub_type": "message","delay": 60000,"message": 'Waves soon...',"message_RU": "Скоро волны"}
-	],
+	"s-444-1000-2140-0": [{"type": "text","sub_type": "message","message": 'Waves (Right)',"message_RU": "Волны (правая)"},{"type": "func","func":skilld_event.bind(null, 2140)}],
 	//-----------------------------------------------------------------------------------------------------
 	"s-444-1000-1103-0": [{"type": "text","sub_type": "message","message": 'Front (Dodge)',"message_RU": "Удар вперед (эвейд)"},
 						  {"type": "func","func": SpawnCircle.bind(null,false,445,356,400,8,350,100,3000)}
 	],
-	"s-444-1000-1108-0": [{"type": "text","sub_type": "message","message": 'Back Throw -> Front',"message_RU": "Стан назад -> Черенок"}],
+	"s-444-1000-1108-0": [{"type": "text","sub_type": "message","message": 'Back Throw | Front',"message_RU": "Стан назад | Черенок"}],
 	"s-444-1000-1111-0": [{"type": "text","sub_type": "message","message": 'Back',"message_RU": "Удар назад --"},
 						  {"type": "func","func": SpawnCircle.bind(null,false,445,180,500,8,480,100,2000)}
 	],
@@ -195,14 +265,8 @@ module.exports = {
 	"s-444-1000-1118-0": [{"type": "text","sub_type": "message","message": 'Jump (Tank)',"message_RU": "Прыжок (танк)"}
 						  //{"type": "func","func": skillds_event.bind(null, 118)}
 	],
-	"s-444-1000-1121-0": [{"type": "text","sub_type": "message","message": 'Waves (Left)',"message_RU": "Волны (левая)"},
-						  {"type": "func","func": SpawnVector.bind(null,553,90,50,0,500,0,6000)},
-						  {"type": "func","func": SpawnVector.bind(null,553,90,50,180,500,0,6000)},
-						  {"type": "func","func": SpawnVector.bind(null,553,270,50,0,500,0,6000)},
-						  {"type": "func","func": SpawnVector.bind(null,553,270,50,180,500,0,6000)},
-						  {"type": "text","sub_type": "message","delay": 60000,"message": 'Waves soon...',"message_RU": "Скоро волны"}
-	],
-	"s-444-1000-1131-0": [{"type": "text","sub_type": "message","message": 'Front -> Left Scratch',"message_RU": "Удар вперед -> левый черкаш"},
+	"s-444-1000-1121-0": [{"type": "text","sub_type": "message","message": 'Waves (Left)',"message_RU": "Волны (левая)"},{"type": "func","func":skilld_event.bind(null, 1121)}],
+	"s-444-1000-1131-0": [{"type": "text","sub_type": "message","message": 'Front | Left Scratch',"message_RU": "Удар вперед | Левый черкаш"},
 						  {"type": "func","func": SpawnCircle.bind(null,false,445,358,340,8,660,100,4000)},
 						  {"type": "func","func": SpawnVector.bind(null,553,358,340,180,500,100,4000)},
 						  {"type": "func","func": SpawnVector.bind(null,553,358,340,0,500,100,4000)}
@@ -217,14 +281,12 @@ module.exports = {
 	],
 	"s-444-1000-1138-0": [{"type": "text","sub_type": "message","message": 'Knockup (Bait)',"message_RU": "Черкаш (полет)"}],
 	"s-444-1000-1139-0": [{"type": "text","sub_type": "message","message": 'Dodge!!',"message_RU": "Эвейд!!!"}],
-	"s-444-1000-1140-0": [{"type": "text","sub_type": "message","message": 'Waves (Right)',"message_RU": "Волны (правая)"},
-						  {"type": "func","func": SpawnVector.bind(null,553,90,50,0,500,0,6000)},
-						  {"type": "func","func": SpawnVector.bind(null,553,90,50,180,500,0,6000)},
-						  {"type": "func","func": SpawnVector.bind(null,553,270,50,0,500,0,6000)},
-						  {"type": "func","func": SpawnVector.bind(null,553,270,50,180,500,0,6000)},
-						  {"type": "text","sub_type": "message","delay": 60000,"message": 'Waves soon...',"message_RU": "Скоро волны"}
-	],
+	"s-444-1000-1140-0": [{"type": "text","sub_type": "message","message": 'Waves (Right)',"message_RU": "Волны (правая)"},{"type": "func","func":skilld_event.bind(null, 1140)}],
 	//-------------------------------------------------------------------------------------------------
+
+
+	// PHASE 2
+
 	/*
 	"h-444-2000-99": [{"type": "func","func": start_boss},
 	{
@@ -247,7 +309,7 @@ module.exports = {
 						  {"type": "func","func": SpawnCircle.bind(null,false,445,356,400,8,350,100,3000)}
 	],
 	"s-444-2000-1107-0": [{"type": "text","sub_type": "message","message": '4 Hit (3)',"message_RU": "4"}],
-	"s-444-2000-1108-0": [{"type": "text","sub_type": "message","message": 'Back Throw -> Front',"message_RU": "Стан назад -> удар вперед"}],
+	"s-444-2000-1108-0": [{"type": "text","sub_type": "message","message": 'Back Throw | Front',"message_RU": "Стан назад | Удар вперед"}],
 	"s-444-2000-1111-0": [{"type": "text","sub_type": "message","message": 'Back',"message_RU": "Удар назад"},
 						  {"type": "func","func": SpawnCircle.bind(null,false,445,180,500,8,480,100,2000)}
 	],
@@ -275,28 +337,10 @@ module.exports = {
 	"s-444-2000-120-0": [{"type": "text","sub_type": "message","message": 'Right swipe',"message_RU": "Справа"},
 						 {"type": "func","func": SpawnMarker.bind(null,false,90,300,100,2000,true,null)}
 	],
-	"s-444-2000-1121-0": [{"type": "text","sub_type": "message","message": 'Waves (Left)',"message_RU": "Волны (левая)"},
-						  {"type": "func","func": SpawnVector.bind(null,553,90,50,0,500,0,6000)},
-						  {"type": "func","func": SpawnVector.bind(null,553,90,50,180,500,0,6000)},
-						  {"type": "func","func": SpawnVector.bind(null,553,270,50,0,500,0,6000)},
-						  {"type": "func","func": SpawnVector.bind(null,553,270,50,180,500,0,6000)},
-						  {"type": "text","sub_type": "message","delay": 60000,"message": 'Waves soon...',"message_RU": "Скоро волны"}
-	],
-	"s-444-2000-1122-0": [{"type": "text","sub_type": "message","message": 'Waves (Left) 3nd fast',"message_RU": "Волны(левая) 3 быстрая"},
-						  {"type": "func","func": SpawnVector.bind(null,553,90,50,0,500,0,6000)},
-						  {"type": "func","func": SpawnVector.bind(null,553,90,50,180,500,0,6000)},
-						  {"type": "func","func": SpawnVector.bind(null,553,270,50,0,500,0,6000)},
-						  {"type": "func","func": SpawnVector.bind(null,553,270,50,180,500,0,6000)},
-						  {"type": "text","sub_type": "message","delay": 60000,"message": 'Waves soon...',"message_RU": "Скоро волны"}
-	],
-	"s-444-2000-1123-0": [{"type": "text","sub_type": "message","message": 'Waves (Left) 2nd fast',"message_RU": "Волны (левая) 2 быстрая"},
-						  {"type": "func","func": SpawnVector.bind(null,553,90,50,0,500,0,6000)},
-						  {"type": "func","func": SpawnVector.bind(null,553,90,50,180,500,0,6000)},
-						  {"type": "func","func": SpawnVector.bind(null,553,270,50,0,500,0,6000)},
-						  {"type": "func","func": SpawnVector.bind(null,553,270,50,180,500,0,6000)},
-						  {"type": "text","sub_type": "message","delay": 60000,"message": 'Waves soon...',"message_RU": "Скоро волны"}
-	],
-	"s-444-2000-1125-0": [{"type": "text","sub_type": "message","message": 'Front -> Right Scratch',"message_RU": "Удар вперед -> правый черкаш"}, 
+	"s-444-2000-1121-0": [{"type": "text","sub_type": "message","message": 'Waves (Left)',"message_RU": "Волны (левая)"},{"type": "func","func":skilld_event.bind(null, 1121)}],
+	"s-444-2000-1122-0": [{"type": "text","sub_type": "message","message": 'Waves (Left) 3nd fast',"message_RU": "Волны (левая) 3-я быстрая"},{"type": "func","func":skilld_event.bind(null, 1122)}],
+	"s-444-2000-1123-0": [{"type": "text","sub_type": "message","message": 'Waves (Left) 2nd fast',"message_RU": "Волны (левая) 2-я быстрая"},{"type": "func","func":skilld_event.bind(null, 1123)}],
+	"s-444-2000-1125-0": [{"type": "text","sub_type": "message","message": 'Front | Right Scratch',"message_RU": "Удар вперед | Правый черкаш"}, 
 						  {"type": "func","func": SpawnCircle.bind(null,false,445,356,400,8,350,100,3000)},
 						  {"type": "func","func": SpawnVector.bind(null,553,356,400,180,500,100,3000)},
 						  {"type": "func","func": SpawnVector.bind(null,553,356,400,0,500,100,3000)}
@@ -305,7 +349,7 @@ module.exports = {
 						  {"type": "func","func": SpawnVector.bind(null,553,90,200,0,500,0,2000)},
 						  {"type": "func","func": SpawnVector.bind(null,553,90,200,180,500,0,2000)}
 	],
-	"s-444-2000-1131-0": [{"type": "text","sub_type": "message","message": 'Front -> Left Scratch',"message_RU": "Удар вперед -> левый черкаш"},
+	"s-444-2000-1131-0": [{"type": "text","sub_type": "message","message": 'Front | Left Scratch',"message_RU": "Удар вперед | Левый черкаш"},
 						  {"type": "func","func": SpawnCircle.bind(null,false,445,358,340,8,660,100,4000)},
 						  {"type": "func","func": SpawnVector.bind(null,553,358,340,180,500,100,4000)},
 						  {"type": "func","func": SpawnVector.bind(null,553,358,340,0,500,100,4000)}
@@ -326,27 +370,9 @@ module.exports = {
 	],
 	"s-444-2000-1138-0": [{"type": "text","sub_type": "message","message": 'Knockup (Bait)',"message_RU": "Черкаш (полет)"}],
 	"s-444-2000-1139-0": [{"type": "text","sub_type": "message","message": 'Dodge!!',"message_RU": "Эвейд!!!"}],
-	"s-444-2000-1140-0": [{"type": "text","sub_type": "message","message": 'Waves (Right)',"message_RU": "Волны (правая)"},
-						  {"type": "func","func": SpawnVector.bind(null,553,90,50,0,500,0,6000)},
-						  {"type": "func","func": SpawnVector.bind(null,553,90,50,180,500,0,6000)},
-						  {"type": "func","func": SpawnVector.bind(null,553,270,50,0,500,0,6000)},
-						  {"type": "func","func": SpawnVector.bind(null,553,270,50,180,500,0,6000)},
-						  {"type": "text","sub_type": "message","delay": 60000,"message": 'Waves soon...',"message_RU": "Скоро волны"}
-	],
-	 "s-444-2000-1141-0": [{"type": "text","sub_type": "message","message": 'Waves (Right) 3nd fast',"message_RU": "Волны (правая) 3 быстрая"},
-						  {"type": "func","func": SpawnVector.bind(null,553,90,50,0,500,0,6000)},
-						  {"type": "func","func": SpawnVector.bind(null,553,90,50,180,500,0,6000)},
-						  {"type": "func","func": SpawnVector.bind(null,553,270,50,0,500,0,6000)},
-						  {"type": "func","func": SpawnVector.bind(null,553,270,50,180,500,0,6000)},
-						  {"type": "text","sub_type": "message","delay": 60000,"message": 'Waves soon...',"message_RU": "Скоро волны"}
-	],
-	 "s-444-2000-1142-0": [{"type": "text","sub_type": "message","message": 'Waves (Right) 2nd fast',"message_RU": "Волны (правая) 2 быстрая"},
-						  {"type": "func","func": SpawnVector.bind(null,553,90,50,0,500,0,6000)},
-						  {"type": "func","func": SpawnVector.bind(null,553,90,50,180,500,0,6000)},
-						  {"type": "func","func": SpawnVector.bind(null,553,270,50,0,500,0,6000)},
-						  {"type": "func","func": SpawnVector.bind(null,553,270,50,180,500,0,6000)},
-						  {"type": "text","sub_type": "message","delay": 60000,"message": 'Waves soon...',"message_RU": "Скоро волны"}
-	],
+	"s-444-2000-1140-0": [{"type": "text","sub_type": "message","message": 'Waves (Right)',"message_RU": "Волны (правая)"},{"type": "func","func":skilld_event.bind(null, 1140)}],
+	 "s-444-2000-1141-0": [{"type": "text","sub_type": "message","message": 'Waves (Right) 3nd fast',"message_RU": "Волны (правая) 3-я быстрая"},{"type": "func","func":skilld_event.bind(null, 1141)}],
+	 "s-444-2000-1142-0": [{"type": "text","sub_type": "message","message": 'Waves (Right) 2nd fast',"message_RU": "Волны (правая) 2-я быстрая"},{"type": "func","func":skilld_event.bind(null, 1142)}],
 	"s-444-2000-1307-0": [{"type": "text","sub_type": "message","message": '!',"message_RU": "!"},
 						  {"type": "text","sub_type": "message","delay": 20000,"message": 'last aerolite',"message_RU": "последний"}
 	],
@@ -369,7 +395,7 @@ module.exports = {
 						  {"type": "func","func": SpawnCircle.bind(null,false,445,356,400,8,350,100,3000)}
 	],
 	"s-444-2000-2107-0": [{"type": "text","sub_type": "message","message": '4 Hit (3)',"message_RU": "4"}], 
-	"s-444-2000-2108-0": [{"type": "text","sub_type": "message","message": 'Back Throw -> Front',"message_RU": "Стан назад -> удар вперед"}], 
+	"s-444-2000-2108-0": [{"type": "text","sub_type": "message","message": 'Back Throw | Front',"message_RU": "Стан назад | Удар вперед"}], 
 	"s-444-2000-2111-0": [{"type": "text","sub_type": "message","message": 'Back',"message_RU": "Удар назад"},
 						  {"type": "func","func": SpawnCircle.bind(null,false,445,180,500,8,480,100,2000)}
 	],
@@ -399,28 +425,10 @@ module.exports = {
 	 "s-444-2000-2120-0": [{"type": "text","sub_type": "message","message": 'Right swipe',"message_RU": "Справа"},
 						  {"type": "func","func": SpawnMarker.bind(null,false,90,300,100,2000,true,null)}
 	],
-	"s-444-2000-2121-0": [{"type": "text","sub_type": "message","message": 'Waves (Left)',"message_RU": "Волны (слева)"},
-						  {"type": "func","func": SpawnVector.bind(null,553,90,50,0,500,0,6000)},
-						  {"type": "func","func": SpawnVector.bind(null,553,90,50,180,500,0,6000)},
-						  {"type": "func","func": SpawnVector.bind(null,553,270,50,0,500,0,6000)},
-						  {"type": "func","func": SpawnVector.bind(null,553,270,50,180,500,0,6000)},
-						  {"type": "text","sub_type": "message","delay": 60000,"message": 'Waves soon...',"message_RU": "Скоро волны"}
-	],
-	"s-444-2000-2122-0": [{"type": "text","sub_type": "message","message": 'Waves (Left) 3nd fast',"message_RU": "Волны (левая) 3 быстрая"},
-						  {"type": "func","func": SpawnVector.bind(null,553,90,50,0,500,0,6000)},
-						  {"type": "func","func": SpawnVector.bind(null,553,90,50,180,500,0,6000)},
-						  {"type": "func","func": SpawnVector.bind(null,553,270,50,0,500,0,6000)},
-						  {"type": "func","func": SpawnVector.bind(null,553,270,50,180,500,0,6000)},
-						  {"type": "text","sub_type": "message","delay": 60000,"message": 'Waves soon...',"message_RU": "Скоро волны"}
-	],
-	 "s-444-2000-2123-0": [{"type": "text","sub_type": "message","message": 'Waves (Left) 2nd fast',"message_RU": "Волны (левая) 2 быстрая"},
-						  {"type": "func","func": SpawnVector.bind(null,553,90,50,0,500,0,6000)},
-						  {"type": "func","func": SpawnVector.bind(null,553,90,50,180,500,0,6000)},
-						  {"type": "func","func": SpawnVector.bind(null,553,270,50,0,500,0,6000)},
-						  {"type": "func","func": SpawnVector.bind(null,553,270,50,180,500,0,6000)},
-						  {"type": "text","sub_type": "message","delay": 60000,"message": 'Waves soon...',"message_RU": "Скоро волны"}
-	],
-	 "s-444-2000-2125-0": [{"type": "text","sub_type": "message","message": 'Front -> Right Scratch',"message_RU": "Удар вперед -> правый черкаш"},
+	"s-444-2000-2121-0": [{"type": "text","sub_type": "message","message": 'Waves (Left)',"message_RU": "Волны (левая)"},{"type": "func","func":skilld_event.bind(null, 2121)}],
+	"s-444-2000-2122-0": [{"type": "text","sub_type": "message","message": 'Waves (Left) 3nd fast',"message_RU": "Волны (левая) 3-я быстрая"},{"type": "func","func":skilld_event.bind(null, 2122)}],
+	 "s-444-2000-2123-0": [{"type": "text","sub_type": "message","message": 'Waves (Left) 2nd fast',"message_RU": "Волны (левая) 2-я быстрая"},{"type": "func","func":skilld_event.bind(null, 2123)}],
+	 "s-444-2000-2125-0": [{"type": "text","sub_type": "message","message": 'Front | Right Scratch',"message_RU": "Удар вперед | Правый черкаш"},
 						  {"type": "func","func": SpawnCircle.bind(null,false,445,356,400,8,350,100,3000)},
 						  {"type": "func","func": SpawnVector.bind(null,553,356,400,180,500,100,3000)},
 						  {"type": "func","func": SpawnVector.bind(null,553,356,400,0,500,100,3000)}
@@ -429,7 +437,7 @@ module.exports = {
 						  {"type": "func","func": SpawnVector.bind(null,553,90,200,0,500,2000)},
 						  {"type": "func","func": SpawnVector.bind(null,553,90,200,180,500,2000)}
 	],
-	"s-444-2000-2131-0": [{"type": "text","sub_type": "message","message": 'Front -> Left Scratch',"message_RU": "Удар вперед -> левый черкаш"},
+	"s-444-2000-2131-0": [{"type": "text","sub_type": "message","message": 'Front | Left Scratch',"message_RU": "Удар вперед | Левый черкаш"},
 						  {"type": "func","func": SpawnCircle.bind(null,false,445,358,340,8,660,100,4000)},
 						  {"type": "func","func": SpawnVector.bind(null,553,358,340,180,500,100,4000)},
 						  {"type": "func","func": SpawnVector.bind(null,553,358,340,0,500,100,4000)}
@@ -453,27 +461,9 @@ module.exports = {
 	],
 	"s-444-2000-2138-0": [{"type": "text","sub_type": "message","message": 'Knockup (Bait)',"message_RU": "Черкаш (полет)"}],
 	"s-444-2000-2139-0": [{"type": "text","sub_type": "message","message": 'Dodge!!',"message_RU": "Эвейд!!!"}],
-	"s-444-2000-2140-0": [{"type": "text","sub_type": "message","message": 'Waves (Right)',"message_RU": "Волны (левая)"},
-						  {"type": "func","func": SpawnVector.bind(null,553,90,50,0,500,0,6000)},
-						  {"type": "func","func": SpawnVector.bind(null,553,90,50,180,500,0,6000)},
-						  {"type": "func","func": SpawnVector.bind(null,553,270,50,0,500,0,6000)},
-						  {"type": "func","func": SpawnVector.bind(null,553,270,50,180,500,0,6000)},
-						  {"type": "text","sub_type": "message","delay": 60000,"message": 'Waves soon...',"message_RU": "Скоро волны"}
-	],
-	"s-444-2000-2141-0": [{"type": "text","sub_type": "message","message": 'Waves (Right) 3nd fast',"message_RU": "Волны (правая) 3 быстрая"},
-						  {"type": "func","func": SpawnVector.bind(null,553,90,50,0,500,0,6000)},
-						  {"type": "func","func": SpawnVector.bind(null,553,90,50,180,500,0,6000)},
-						  {"type": "func","func": SpawnVector.bind(null,553,270,50,0,500,0,6000)},
-						  {"type": "func","func": SpawnVector.bind(null,553,270,50,180,500,0,6000)},
-						  {"type": "text","sub_type": "message","delay": 60000,"message": 'Waves soon...',"message_RU": "Скоро волны"}
-	],
-	 "s-444-2000-2142-0": [{"type": "text","sub_type": "message","message": 'Waves (Right) 2nd fast',"message_RU": "Волны (правая) 2 быстрая"},
-						  {"type": "func","func": SpawnVector.bind(null,553,90,50,0,500,0,6000)},
-						  {"type": "func","func": SpawnVector.bind(null,553,90,50,180,500,0,6000)},
-						  {"type": "func","func": SpawnVector.bind(null,553,270,50,0,500,0,6000)},
-						  {"type": "func","func": SpawnVector.bind(null,553,270,50,180,500,0,6000)},
-						  {"type": "text","sub_type": "message","delay": 60000,"message": 'Waves soon...',"message_RU": "Скоро волны"}
-	],
+	"s-444-2000-2140-0": [{"type": "text","sub_type": "message","message": 'Waves (Right)',"message_RU": "Волны (правая)"},{"type": "func","func":skilld_event.bind(null, 2140)}],
+	"s-444-2000-2141-0": [{"type": "text","sub_type": "message","message": 'Waves (Right) 3nd fast',"message_RU": "Волны (правая) 3-я быстрая"},{"type": "func","func":skilld_event.bind(null, 2141)}],
+	 "s-444-2000-2142-0": [{"type": "text","sub_type": "message","message": 'Waves (Right) 2nd fast',"message_RU": "Волны (правая) 2-я быстрая"},{"type": "func","func":skilld_event.bind(null, 2142)}],
 	"ab-444-2000-90442000": [{"type": "func","func": skilld_event.bind(null, 90442000)}],
 	"ab-444-2000-90442001": [{"type": "func","func": skilld_event.bind(null, 90442001)}],
 	"ab-444-2000-90442304": [{"type": "func","func": skilld_event.bind(null, 90442304)}],

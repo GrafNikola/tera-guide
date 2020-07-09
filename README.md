@@ -40,9 +40,7 @@ id | Dungeon name | Название данжа
 3126 | Corrupted Skynest (Hard) | Логово Бессмертного Келсаика
 3027 | Forbidden Arena | Арена безумия
 3102 | Draakon Arena | Командный центр
-3202 | Draakon Arena (Hard)&#42; | Командный центр (сложно)&#42;
-
-&#42; - Dungeon on testing, possibly mistakes / Данж тестируется, возможны ошибки
+3202 | Draakon Arena (Hard) | Командный центр (сложно)
 
 ## Notices settings / Настройка уведомлений
 
