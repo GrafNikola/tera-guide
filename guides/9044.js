@@ -243,7 +243,12 @@ module.exports = {
 						  {"type": "func","func": SpawnCircle.bind(null,false,445,180,500,8,480,100,2000)}
 	],
 	"s-444-1000-2138-0": [{"type": "text","sub_type": "message","message": 'Knockup (Bait)',"message_RU": "Черкаш (полет)"}],
-	"s-444-1000-2139-0": [{"type": "text","sub_type": "message","message": 'Dodge!!',"message_RU": "Эвейд!!!"}],
+	"s-444-1000-2139-0": [{"type": "text","sub_type": "message","message": 'Dodge!!',"message_RU": "Эвейд!!!"},
+						  {"type": "func","func": SpawnCircle.bind(null,false,912,0,0,20,160,0,2000)},
+						  {"type": "func","func": SpawnCircle.bind(null,false,912,0,0,12,220,0,2000)},
+						  {"type": "func","func": SpawnCircle.bind(null,false,912,0,0,10,300,0,2000)},
+						  {"type": "func","func": SpawnCircle.bind(null,false,912,0,0,8,360,0,2000)}
+	],
 	"s-444-1000-2140-0": [{"type": "text","sub_type": "message","message": 'Waves (Right)',"message_RU": "Волны (правая)"},{"type": "func","func":skilld_event.bind(null, 2140)}],
 	//-----------------------------------------------------------------------------------------------------
 	"s-444-1000-1103-0": [{"type": "text","sub_type": "message","message": 'Front (Dodge)',"message_RU": "Удар вперед (эвейд)"},
@@ -280,7 +285,12 @@ module.exports = {
 						  {"type": "func","func": SpawnCircle.bind(null,false,445,180,500,8,480,100,2000)}
 	],
 	"s-444-1000-1138-0": [{"type": "text","sub_type": "message","message": 'Knockup (Bait)',"message_RU": "Черкаш (полет)"}],
-	"s-444-1000-1139-0": [{"type": "text","sub_type": "message","message": 'Dodge!!',"message_RU": "Эвейд!!!"}],
+	"s-444-1000-1139-0": [{"type": "text","sub_type": "message","message": 'Dodge!!',"message_RU": "Эвейд!!!"},
+						  {"type": "func","func": SpawnCircle.bind(null,false,912,0,0,20,160,0,2000)},
+						  {"type": "func","func": SpawnCircle.bind(null,false,912,0,0,12,220,0,2000)},
+						  {"type": "func","func": SpawnCircle.bind(null,false,912,0,0,10,300,0,2000)},
+						  {"type": "func","func": SpawnCircle.bind(null,false,912,0,0,8,360,0,2000)}
+	],
 	"s-444-1000-1140-0": [{"type": "text","sub_type": "message","message": 'Waves (Right)',"message_RU": "Волны (правая)"},{"type": "func","func":skilld_event.bind(null, 1140)}],
 	//-------------------------------------------------------------------------------------------------
 
