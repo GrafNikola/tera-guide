@@ -31,9 +31,9 @@ module.exports = {
 
 	"s-3202-1000-112-0": [{"type": "text","sub_type": "message","message": 'Front-Back Kick',"message_RU": "Удар спереди"}],
 
-	"s-3202-1000-110-0": [{"type": "text","sub_type": "message","message": 'Jump (In-out-wave)',"message_RU": "Прыжок (к-от волна)"}],
+	"s-3202-1000-110-0": [{"type": "text","sub_type": "message","message": 'Jump (In-out-wave)',"message_RU": "Прыжок | Волна"}],
 
-	"s-3202-1000-109-0": [{"type": "text","sub_type": "message","message": 'Knockdown-Spin',"message_RU": "Удар - Крутилка"},
+	"s-3202-1000-109-0": [{"type": "text","sub_type": "message","message": 'Knockdown-Spin',"message_RU": "Удар | Крутилка"},
 						 {"type": "func","func": SpawnCircle.bind(null,false,445,0,0,12,457,0,5000)}],
 	
 	"s-3202-1000-304-0": [{"type": "text","sub_type": "message","message": 'Shield!',"message_RU": "ЩИТ!"}],
@@ -49,7 +49,7 @@ module.exports = {
 						 {"type": "func","func": SpawnVector.bind(null,912,0,0,65,400,0,4000)},
 						 {"type": "func","func": SpawnVector.bind(null,912,0,0,125,400,0,4000)},
 						 {"type": "text","sub_type": "message","delay": 1900,"message": 'Dodge!',"message_RU": "Эвейд!"}],
-	"s-3202-1000-122-0": [{"type": "text","sub_type": "message","message": 'Front-back pizza',"message_RU": "Пицца спереди назад"},
+	"s-3202-1000-122-0": [{"type": "text","sub_type": "message","message": 'Front-back pizza',"message_RU": "Передняя-задняя пицца"},
 						 {"type": "func","func": SpawnItem.bind(null,HIGHLIGHT_ITEM_RED,0,200,100,4000)}],
 	"s-3202-1000-123-0": [{"type": "text","sub_type": "message","message": 'Back pizza',"message_RU": "Задняя пицца"},
 						 {"type": "text","sub_type": "message","delay":100,"message": 'IN (OUT waves)',"message_RU": "К НЕМУ (волны ОТ)"}],
@@ -67,7 +67,7 @@ module.exports = {
 						{"type": "func","func": SpawnVector.bind(null,912,0,0,65,400,0,4000)},
 						{"type": "func","func": SpawnVector.bind(null,912,0,0,125,400,0,4000)},
 						{"type": "text","sub_type": "message","delay": 1900,"message": 'Dodge!',"message_RU": "Эвейд!"}],
-	"s-3202-1000-125-0": [{"type": "text","sub_type": "message","message": 'Front-back pizza',"message_RU": "Пицца спереди назад"},
+	"s-3202-1000-125-0": [{"type": "text","sub_type": "message","message": 'Front-back pizza',"message_RU": "Передняя-задняя пицца"},
 	  					 {"type": "func","func": SpawnItem.bind(null,HIGHLIGHT_ITEM_RED,0,200,100,4000)}],
 	"s-3202-1000-126-0": [{"type": "text","sub_type": "message","message": 'Back pizza',"message_RU": "Задняя пицца"},
 						{"type": "text","sub_type": "message","delay":100,"message": 'OUT (IN waves)',"message_RU": "ОТ НЕГО (волны К)"}],
