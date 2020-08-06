@@ -53,7 +53,7 @@ class TeraGuide{
 			"func": func_handler,
 			"lib": require('./lib')
 		};
-		if (dispatch.proxyAuthor !== 'caali') {
+		/*if (dispatch.proxyAuthor !== 'caali') {
 			const options = require('./module').options;
 			if (options) {
 				const settingsVersion = options.settingsVersion;
@@ -62,7 +62,7 @@ class TeraGuide{
 					dispatch.settings._version = settingsVersion;
 				}
 			}
-		}
+		}*/
 		// export functionality for 3rd party modules
 		this.handlers = function_event_handlers;
 		// Supported languages by client

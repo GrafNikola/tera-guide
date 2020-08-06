@@ -1,7 +1,7 @@
 {
     "files": {
         "LICENSE": "7f2ae2125b491e75c546a5d538f82ad4431d5d6b1bbd4aea724864a21daeca63",
-        "README.md": "aac9355e3c888411872a1f55f41629ad31017724e02a239ca6b1a8526c12d002",
+        "README.md": "438797f7da4792fc8037a5f89f3f4dd4638c8b78182387d6b9c50761454c49c9",
         "dbg.json": {
             "hash": "629638b8d5c9f3e359bfad1795298babfe23a44a3ff6bd0afc0275d8bf4e4be8",
             "overwrite": false
@@ -11,6 +11,7 @@
         "guides/3023.js": "d66f1e57ffc0327db8afe06c6365b7dc1b77de3fa19e2e8bc2bcef74bafe4201",
         "guides/3026.js": "cef97ff8b694d1498cc3a8b3a67cfd76a2059dc7394ca87c9c16e787e01732d9",
         "guides/3027.js": "9af685e1b49fabf3367560da4dace7f990558d9cbe484fd057d89942005987cc",
+        "guides/3034.js": "a2d8ef16a7899e1abdf65b592a635b543e36dbbe63c5f8d176921f075000f5db",
         "guides/3101.js": "b300aeaabbe45fd26063ac83cbbc056deca4ca684a765eccc84b7b7b7a0015a9",
         "guides/3102.js": "e505560879563f5fc705e0ef9d246cf3106ae29e00e39cf5216a4f52585621b2",
         "guides/3126.js": "462dda9da7210235f905f5bf007c00c783472a40e9d40be35aae1b86c0b16305",
@@ -23,14 +24,13 @@
         "guides/9781.js": "7c7ff0507938869fca35c11682e39978b06cbc9b109581577e1edfb6a6ca0f6f",
         "guides/9782.js": "86e0aca8d291a5f717973ac1f2c60129174ad534f921694291f3c3c46fcbc554",
         "guides/9920.js": "e7d8c94ed6d250be4b8b2ec33d7134a5a99695245472192cad59d76251691fc3",
-        "guides/9935.js": "398b53739c1593ef343990e153815e3a6f3d274282d4dde3a719d590d73c7de2",
         "guides/9970.js": "d6a6309417ec398c580e869f1ece2469b5301e6bd37f8d4cca05bea019661f6b",
         "guides/9981.js": "f205d6b701353109ba392d0b988d4d6b1b1fc6f9b2261f16718f83740835c069",
         "guides/9982.js": "5f0d7cfee6d24c360e886a5a2b2206ec04224b7a16041b46afe081abf65066a5",
-        "index.js": "d1c17482e84437c902b9aa278138b6666bf6dfed7b36541cd54f91cf5ab46740",
+        "index.js": "440b26880e4bb9fd2bd16ffd44bdbc3c98e17db7de67b32dbd4d6c26d6151717",
         "lib.js": "79e369a4c94e335b1fc8e303a31cd8fb655f3d6f5d9905c9d2580cafe63ba39a",
-        "module.json": "57022b66c8f754291640fed73af73b5d6525ee99deae76c36ce4ec1dfdbfd73e",
-        "settings_migrator.js": "49adf6f1f1d95bc670a7a18aeea8d2449367a9f8997c8733d3e284cfe94b85ed",
+        "module.json": "08ec5525efca22015176700cbd0f985dfe33af2a823243de2d8251447cef3af4",
+        "settings_migrator.js": "311face71fe98affabbe2fac24781518398d226e752173950751348cb1531c18",
         "voice/index.js": "fc90fbb3d3883b967e967e2f19dd7f4832e114b8ff5176e332f50c1aee4cb71e"
     },
     "defs": {

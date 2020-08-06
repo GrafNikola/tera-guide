@@ -1,11 +1,11 @@
 "use strict"
 const DefaultSettings = {
 	"enabled": true,
-	"lNotice": false,
+	"lNotice": true,
 	"gNotice": false,
 	"stream": false,
 	"spawnObject": true,
-	"speaks": true,
+	"speaks": false,
 	"rate": [
 		2
 	],
@@ -14,6 +14,7 @@ const DefaultSettings = {
 		{"id": 3023, "name": "Akalath Quarantine", "name_RU": "Секретное подземелье крепости Берарк", "verbose": true, "spawnObject": true},
 		{"id": 3026, "name": "Corrupted Skynest", "name_RU": "Логово Келсаика", "verbose": true, "spawnObject": true},
 		{"id": 3027, "name": "Forbidden Arena", "name_RU": "Арена безумия", "verbose": true, "spawnObject": true},
+		{"id": 3034, "name": "RK-9 Kennel (Hard)", "name_RU": "Ангар RK-9 (сложно)", "verbose": true, "spawnObject": true},
 		{"id": 3101, "name": "Gossamer Vault", "name_RU": "Гнездо Паркин", "verbose": true, "spawnObject": true},
 		{"id": 3102, "name": "Draakon Arena", "name_RU": "Командный центр", "verbose": true, "spawnObject": true},
 		{"id": 3126, "name": "Corrupted Skynest (Hard)", "name_RU": "Логово Бессмертного Келсаика", "verbose": true, "spawnObject": true},
@@ -26,7 +27,6 @@ const DefaultSettings = {
 		{"id": 9781, "name": "Velik's Sanctuary", "name_RU": "Святилище Велики", "verbose": true, "spawnObject": true},
 		{"id": 9782, "name": "Grotto of Lost Souls", "name_RU": "Мастерская Леандра", "verbose": true, "spawnObject": true},
 		{"id": 9920, "name": "Antaroth's Abyss (Hard)", "name_RU": "Омут Бездушного Антароса", "verbose": true, "spawnObject": true},
-		{"id": 9935, "name": "RK-9 Kennel (Hard)", "name_RU": "Ангар совершенного RK-9", "verbose": true, "spawnObject": true},
 		{"id": 9970, "name": "Ruinous Manor (Hard)", "name_RU": "Руины Кошмарной Абнукты", "verbose": true, "spawnObject": true},
 		{"id": 9981, "name": "Velik's Sanctuary (Hard)", "name_RU": "Разрушенное Святилище Велики", "verbose": true, "spawnObject": true},
 		{"id": 9982, "name": "Grotto of Lost Souls (Hard)", "name_RU": "Заброшенная мастерская Леандра", "verbose": true, "spawnObject": true}
