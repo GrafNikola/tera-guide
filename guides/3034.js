@@ -1,6 +1,6 @@
 // RK-9 Kennel (Hard)
 //
-// made by michengs
+// made by michengs / HSDN
 
 const {SpawnMarker, SpawnPoint, SpawnVector, SpawnCircle} = require("../lib");
 
@@ -30,7 +30,7 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 		firstskill2 = tempskill2;
 		secondskill2 = '?';
 		MSG =  'Next: ' + firstskill + ' + ' + secondskill;
-		MSG1 = 'Next: ' + firstskill1  + secondskill1;
+		MSG1 = 'След.: ' + firstskill1  + secondskill1;
 		MSG2 = 'Next: ' + firstskill2  + secondskill2;
 		handlers['text']({
 			"sub_type": "message",
@@ -50,7 +50,7 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 		secondskill2 = tempskill2;
 		firstskill2 = '?';
 		MSG =  'Next: ' + firstskill + ' + ' + secondskill;
-		MSG1 = 'Next: ' + firstskill1 + secondskill1;
+		MSG1 = 'След.: ' + firstskill1 + secondskill1;
 		MSG2 = 'Next: ' + firstskill2 + secondskill2;
 		handlers['text']({
 			"sub_type": "message",
@@ -63,11 +63,11 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 			"message": MSG2
 		});
 	}
-	if (skillid === 3034302 ) {
+	if (skillid === 3034302) {
 		firstskill = 'ОТ НЕГО';
 		tempskill = 'ОТ НЕГО';
-		firstskill1 = 'ОТ НЕГО';
-		tempskill1 = 'ОТ НЕГО';
+		firstskill1 = 'К НЕМУ';
+		tempskill1 = 'К НЕМУ';
 		firstskill2 = 'OUT';
 		tempskill2 = 'OUT';
 		handlers['text']({
@@ -79,8 +79,8 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 	} else if (skillid === 3034303) {
 		firstskill = 'К НЕМУ';
 		tempskill = 'К НЕМУ';
-		firstskill1 = 'К НЕМУ';
-		tempskill1 = 'К НЕМУ';
+		firstskill1 = 'ОТ НЕГО';
+		tempskill1 = 'ОТ НЕГО';
 		firstskill2 = 'IN';
 		tempskill2 = 'IN';
 		handlers['text']({
@@ -106,8 +106,8 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 	if (firstskill === 0 && skillid === 3034301) {
 		firstskill = 'ОТ НЕГО';
 		tempskill = 'ОТ НЕГО';
-		firstskill1 = 'ОТ НЕГО';
-		tempskill1 = 'ОТ НЕГО';
+		firstskill1 = 'К НЕМУ';
+		tempskill1 = 'К НЕМУ';
 		firstskill2 = 'OUT';
 		tempskill2 = 'OUT';
 		MSG = firstskill + ' + ' + secondskill;
@@ -133,8 +133,8 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 	} else if (firstskill === 0 && skillid === 3034302) {
 		firstskill = 'К НЕМУ';
 		tempskill = 'К НЕМУ';
-		firstskill1 = 'К НЕМУ';
-		tempskill1 = 'К НЕМУ';
+		firstskill1 = 'ОТ НЕГО';
+		tempskill1 = 'ОТ НЕГО';
 		firstskill2 = 'IN';
 		tempskill2 = 'IN';
 		MSG = firstskill + ' + ' + secondskill;
@@ -188,16 +188,16 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 	if (secondskill === 0 && skillid === 3034301) {
 		secondskill = 'ОТ НЕГО';
 		tempskill = 'ОТ НЕГО';
-		secondskill1 = 'ОТ НЕГО';
-		tempskill1 = 'ОТ НЕГО';
+		secondskill1 = 'К НЕМУ';
+		tempskill1 = 'К НЕМУ';
 		secondskill2 = 'OUT';
 		tempskill2 = 'OUT';
-		 MSG = firstskill + ' + ' + secondskill;
-		 MSG1 = firstskill1 + ' + ' + secondskill1;
-		 MSG2 = firstskill2 + ' + ' + secondskill2;
+		MSG = firstskill + ' + ' + secondskill;
+		MSG1 = firstskill1 + ' + ' + secondskill1;
+		MSG2 = firstskill2 + ' + ' + secondskill2;
 		handlers['text']({
 			"sub_type": "message",
-			"message_RU":  MSG,
+			"message_RU": MSG,
 			"message": MSG2
 		});	
 		firstskill = tempskill;
@@ -209,14 +209,14 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 		handlers['text']({
 			"sub_type": "alert",
 			"delay": 8000,
-			"message_RU":  "ОТ НЕГО",
+			"message_RU": "ОТ НЕГО",
 			"message": "OUT"
 		});
 	} else if (secondskill === 0 && skillid === 3034302) {
 		secondskill = 'К НЕМУ';
 		tempskill = 'К НЕМУ';
-		secondskill1 = 'К НЕМУ';
-		tempskill1 = 'К НЕМУ';
+		secondskill1 = 'ОТ НЕГО';
+		tempskill1 = 'ОТ НЕГО';
 		secondskill2 = 'IN';
 		tempskill2 = 'IN';
 		MSG = firstskill + ' + ' + secondskill;
@@ -263,13 +263,13 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 		handlers['text']({
 			"sub_type": "alert",
 			"delay": 8000,
-			"message_RU":  "Волны",
+			"message_RU": "Волны",
 			"message": "Waves"
 		});
 	}
 	if (notice && skillid == 301 ) {
 		notice = false;
-		handlers['text']({"sub_type": "message","message": "throws","message_RU": "Бомба"});
+		handlers['text']({"sub_type": "message","message": "Throws","message_RU": "Бомба"});
 		setTimeout(() => notice = true, 13000);
 	}
 }
@@ -338,8 +338,8 @@ module.exports = {
 	"s-3034-2000-301-0": [{"type": "func","func": skilld_event.bind(null, 301)}],
 	"s-3034-2000-304-0": [{"type": "text","sub_type": "message","message": "OUT","message_RU": "ОТ НЕГО"}],
 	"s-3034-2000-305-0": [{"type": "text","sub_type": "message","message": "IN","message_RU": "К НЕМУ | ОТ НЕГО"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,10,225,100,4000)}],
-	"s-3034-2000-310-0": [{"type": "text","sub_type": "message","message": "Left","message_RU": "Влево"}],
-	"s-3034-2000-311-0": [{"type": "text","sub_type": "message","message": "Right","message_RU": "Вправо"}],
+	"s-3034-2000-310-0": [{"type": "text","sub_type": "message","message": "2 - 1 - 3"}], // Safe: |||2|2||| > ||||1|||| > ||3|||3||
+	"s-3034-2000-311-0": [{"type": "text","sub_type": "message","message": "1 - 3 - 2"}], // Safe: ||||1|||| > ||3|||3|| > |||2|2|||
 	"s-3034-2007-201-0": [
 		{"type": "func","func": SpawnVector.bind(null,912,0,0,0,500,0,8000)},
 		{"type": "func","func": SpawnVector.bind(null,912,0,0,90,500,0,8000)},
