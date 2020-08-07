@@ -360,7 +360,7 @@ module.exports = {
 	],
 
 	// 3 BOSS
-	"h-3034-3000-99": [{"type": "func","func": start_boss}],
+	/*"h-3034-3000-99": [{"type": "func","func": start_boss}],
 	"h-3034-3000-70": [{"type": "func","func": print_seventy}],
 	"dm-0-0-3034311": [{"type": "func","func": skilld_event.bind(null, 3034311)}],
 	"dm-0-0-3034312": [{"type": "func","func": skilld_event.bind(null, 3034312)}],
@@ -440,5 +440,5 @@ module.exports = {
 		{"type": "text","sub_type": "message","message": "SHIELD!","message_RU": "ЩИТ!" },
 		{"type": "text","sub_type": "message","delay": 105000,"message": "After 10s SHIELD! ", "message_RU": "Через 10 сек. ЩИТ!!!"}
 	],
-	"s-3034-3000-324-0": [{"type": "text","sub_type": "message","message": "OUT","message_RU": "Эвейд"}]
+	"s-3034-3000-324-0": [{"type": "text","sub_type": "message","message": "OUT","message_RU": "Эвейд"}]*/
 };
