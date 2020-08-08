@@ -79,6 +79,7 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 			);
 		}
 		msg_a = msg_b;
+		msg_b = 3;
 	}
 }
 
