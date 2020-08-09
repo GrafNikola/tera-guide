@@ -55,49 +55,39 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 	// 3 BOSS
 
 	// Core mechanics
-	switch (skillid) {
-		// DM
-		case 3034302: // Out
-			msg_a = 0;
-			handlers['text']({
-				"sub_type": "notification",
-				"message_RU": 'Далее: ' + RK_TipMsg[msg_a].msg,
-				"message":    'Next: '  + RK_TipMsg[msg_a].msgt
-			});
-			break;
-		case 3034303: // In
-			msg_a = 1;
-			handlers['text']({
-				"sub_type": "notification",
-				"message_RU": 'Далее: ' + RK_TipMsg[msg_a].msg,
-				"message":    'Next: '  + RK_TipMsg[msg_a].msgt
-			});
-			break;
-		case 3034304: // Wave
-			msg_a = 2;
-			handlers['text']({
-				"sub_type": "notification",
-				"message_RU": 'Далее: ' + RK_TipMsg[msg_a].msg,
-				"message":    'Next: '  + RK_TipMsg[msg_a].msgt
-			});
-			break;
-		// QB
-		case 3034311: // STANDARD (1)
-			mech_reverse = false;
-			handlers['text']({
-				"sub_type": "notification",
-				"message_RU": 'Далее: ' + RK_TipMsg[msg_a].msg  + ' + ' + RK_TipMsg[msg_b].msg,
-				"message":    'Next: '  + RK_TipMsg[msg_a].msgt + ' + ' + RK_TipMsg[msg_b].msgt
-			});
-			break;
-		case 3034312: // REVERSE (0)
-			mech_reverse = true;
+	if ([3034302,3034303,3034304,3034311,3034312].includes(skillid)) {
+		switch (skillid) {
+			// DM
+			case 3034302: // Out
+				msg_a = 0;
+				break;
+			case 3034303: // In
+				msg_a = 1;
+				break;
+			case 3034304: // Wave
+				msg_a = 2;
+				break;
+			// QB
+			case 3034311: // STANDARD (1)
+				mech_reverse = false;
+				break;
+			case 3034312: // REVERSE (0)
+				mech_reverse = true;
+				break;
+		}
+		if (mech_reverse) {
 			handlers['text']({
 				"sub_type": "notification",
 				"message_RU": 'Далее: ' + RK_TipMsg[msg_b].msg  + ' + ' + RK_TipMsg[msg_a].msg,
 				"message":    'Next: '  + RK_TipMsg[msg_b].msgt + ' + ' + RK_TipMsg[msg_a].msgt
 			});
-			break;
+		} else {
+			handlers['text']({
+				"sub_type": "notification",
+				"message_RU": 'Далее: ' + RK_TipMsg[msg_a].msg  + ' + ' + RK_TipMsg[msg_b].msg,
+				"message":    'Next: '  + RK_TipMsg[msg_a].msgt + ' + ' + RK_TipMsg[msg_b].msgt
+			});
+		}
 	}
 	// QB
 	// 0: Out  3034301
@@ -196,7 +186,7 @@ module.exports = {
 
 	// 1 BOSS
 	"qb-3034-1000-3034101": [{"type": "text","sub_type": "message","message": "Pizza", "message_RU": "Пицца"}],
-	"qb-3034-1000-3034102": [{"type": "text","sub_type": "message","message": "AOE! JUMP", "message_RU": "AOE! ПРЫГАЙ!!！"}],
+	"qb-3034-1000-3034102": [{"type": "text","sub_type": "message","message": "AOE! JUMP", "message_RU": "AOE! Прыгай!!！"}],
 	"s-3034-1000-108-0": [{"type": "text","sub_type": "message","message": "OUT","message_RU": "ОТ НЕГО"}],
 	"s-3034-1000-111-0": [{"type": "text","sub_type": "message","message": "BACK ATTACK","message_RU": "Удар назад"}],
 	"s-3034-1000-112-0": [{"type": "text","sub_type": "message","message": "BACK ATTACK","message_RU": "Удар назад"}],
@@ -302,7 +292,7 @@ module.exports = {
 	"s-3034-3000-117-0": [{"type": "func","func": skilld_event.bind(null, 117)}], // left S
 	"s-3034-3000-118-0": [{"type": "func","func": skilld_event.bind(null, 118)}], // left S
 	"s-3034-3000-119-0": [{"type": "func","func": skilld_event.bind(null, 119)}], // right S
-	//"s-3034-3000-127-0": [{"type": "text","sub_type": "message","message": "Back","message_RU": "Удар назад"}],
+	"s-3034-3000-127-0": [{"type": "text","sub_type": "message","message": "Back","message_RU": "Удар назад"}],
 	"s-3034-3000-128-0": [{"type": "text","sub_type": "message","message": "Rocket | Back attack","message_RU": "Комба | Конус назад"}],
 	"s-3034-3000-129-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Dodge","message_RU": "Эвейд"}],
 	"s-3034-3000-305-0": [{"type": "func","func": SpawnCircle.bind(null,false,912,0,0,10,300,0,5000)}], // Проверка
@@ -312,13 +302,11 @@ module.exports = {
 	],
 	"s-3034-3001-308-0": [
 		{"type": "text","sub_type": "message","message": "Bait!","message_RU": "Байт!" },
-		{"type": "func","func": SpawnVector.bind(null,912,0,0,0,300,0,3000)},
-		{"type": "func","func": SpawnVector.bind(null,912,0,0,90,300,0,3000)},
-		{"type": "func","func": SpawnVector.bind(null,912,0,0,180,300,0,3000)},
-		{"type": "func","func": SpawnVector.bind(null,912,0,0,270,300,0,3000)}
+		{"type": "func","func": SpawnVector.bind(null,912,0,0,0,300,0,2000)},
+		{"type": "func","func": SpawnVector.bind(null,912,0,0,90,300,0,2000)},
+		{"type": "func","func": SpawnVector.bind(null,912,0,0,180,300,0,2000)},
+		{"type": "func","func": SpawnVector.bind(null,912,0,0,270,300,0,2000)}
 	],
-		// Проверка внешней области (к нему)
-		// Невозможно проверить внешнюю область (от него)
-	"s-3034-3000-323-0": [{"type": "text","sub_type": "message","message": "Check","message_RU": "Проверка"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,10,300,0,5000)}],
-	"s-3034-3000-324-0": [{"type": "text","sub_type": "message","message": "Dodge","message_RU": "Эвейд (стан)"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,10,300,0,5000)}]
+	"s-3034-3000-323-0": [{"type": "text","sub_type": "message","message": "IN","message_RU": "К НЕМУ"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,10,300,0,5000)}],
+	"s-3034-3000-324-0": [{"type": "text","sub_type": "message","message": "OUT","message_RU": "ОТ НЕГО"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,10,300,0,5000)}]
 };
