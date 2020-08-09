@@ -186,7 +186,7 @@ module.exports = {
 	"s-3034-1000-108-0": [{"type": "text","sub_type": "message","message": "OUT","message_RU": "ОТ НЕГО"}],
 	"s-3034-1000-111-0": [{"type": "text","sub_type": "message","message": "BACK ATTACK","message_RU": "Удар назад"}],
 	"s-3034-1000-112-0": [{"type": "text","sub_type": "message","message": "BACK ATTACK","message_RU": "Удар назад"}],
-	"s-3034-1000-205-0": [{"type": "text","sub_type": "message","message": "Wind","message_RU": "Ветер (кайя)!!!"}],
+	"s-3034-1003-205-0": [{"type": "text","sub_type": "message","message": "Wind","message_RU": "Ветер (кайя)!!!"}],
 	"s-3034-1000-304-0": [{"type": "text","sub_type": "message","message": "OUT","message_RU": "ОТ НЕГО"}],
 	"s-3034-1000-305-0": [{"type": "text","sub_type": "message","message": "IN","message_RU": "К НЕМУ"}],
 	"s-3034-1000-306-0": [{"type": "text","sub_type": "message","message": "Incoming Summon","message_RU": "Бомбы !!!"}],
@@ -293,11 +293,11 @@ module.exports = {
 	"s-3034-3000-129-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Dodge","message_RU": "Эвейд"}],
 	"s-3034-3000-305-0": [{"type": "func","func": SpawnCircle.bind(null,false,912,0,0,10,300,0,6000)}], // Проверка
 	"s-3034-3000-321-0": [
-		{"type": "text","sub_type": "message","message": "SHIELD!","message_RU": "ЩИТ!" },
+		{"type": "text","sub_type": "message","message": "SHIELD!","message_RU": "ЩИТ!"},
 		{"type": "text","sub_type": "message","delay": 105000,"message": "After 10s SHIELD! ", "message_RU": "Через 10 сек. ЩИТ!!!"}
 	],
 	"s-3034-3001-308-0": [
-		{"type": "text","sub_type": "message","message": "Bait!","message_RU": "Байт!" },
+		{"type": "text","sub_type": "message","message": "Bait!","message_RU": "Байт!"},
 		{"type": "func","func": SpawnVector.bind(null,912,0,0,0,300,0,2000)},
 		{"type": "func","func": SpawnVector.bind(null,912,0,0,90,300,0,2000)},
 		{"type": "func","func": SpawnVector.bind(null,912,0,0,180,300,0,2000)},
