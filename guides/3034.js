@@ -17,18 +17,31 @@ const RK_TipMsg =
 	0: {msgt: 'Out',   msg: 'От него'},
 	1: {msgt: 'In',    msg: 'К нему'},
 	2: {msgt: 'Wave',  msg: 'Волна'},
-	3: {msgt: '',      msg: ''},
+	3: {msgt: '?',     msg: '?'},
 };
 
-//test
-//"dm-0-0-3034302"         out
-//"dm-0-0-3034311"         1
-//"qb-3034-3000-3034303"   wave
-
-//"dm-0-0-3034312"         0
-//"qb-3034-3000-3034302"   in
-//"dm-0-0-3034312"         0
-//"qb-3034-3000-3034301"   out
+/* tests
+	"dm-0-0-3034302" out
+	"dm-0-0-3034312" ? + out
+	"dm-0-0-3034311" out + ?
+	"qb-3034-3000-3034303" wave
+		> out + wave
+	"dm-0-0-3034302" out
+	"dm-0-0-3034312" ? + out
+	"qb-3034-3000-3034303" wave
+		> wave + out
+	"dm-0-0-3034303" in
+	"dm-0-0-3034312" ? + in
+	"qb-3034-3000-3034301" out
+		> out + in
+	"qb-3034-3000-3034303" wave
+		> wave + out
+	"dm-0-0-3034311" wave + ?
+	"qb-3034-3000-3034302" in
+		> wave + in
+	"qb-3034-3000-3034301"
+		> in + out
+*/
 
 function skilld_event(skillid, handlers, event, ent, dispatch) {
 	if (notice && skillid == 301) {
@@ -36,27 +49,48 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 		handlers['text']({"sub_type": "message","message": "Throws","message_RU": "Бомба"});
 		setTimeout(() => notice = true, 13000);
 	}
-	// DM
 	switch (skillid) {
+		// DM
 		case 3034302: // Out
 			msg_a = 0;
-			print_message(handlers, `[${RK_TipMsg[msg_a].msgt}]`, `[${RK_TipMsg[msg_a].msg}]`, "notification");
+			handlers['text']({
+				"sub_type": "notification",
+				"message_RU": RK_TipMsg[msg_a].msg,
+				"message":    RK_TipMsg[msg_a].msgt
+			});
 			break;
 		case 3034303: // In
 			msg_a = 1;
-			print_message(handlers, `[${RK_TipMsg[msg_a].msgt}]`, `[${RK_TipMsg[msg_a].msg}]`, "notification");
+			handlers['text']({
+				"sub_type": "notification",
+				"message_RU": RK_TipMsg[msg_a].msg,
+				"message":    RK_TipMsg[msg_a].msgt
+			});
 			break;
 		case 3034304: // Wave
 			msg_a = 2;
-			print_message(handlers, `[${RK_TipMsg[msg_a].msgt}]`, `[${RK_TipMsg[msg_a].msg}]`, "notification");
+			handlers['text']({
+				"sub_type": "notification",
+				"message_RU": RK_TipMsg[msg_a].msg,
+				"message":    RK_TipMsg[msg_a].msgt
+			});
 			break;
+		// QB
 		case 3034311: // STANDARD (1)
 			mech_reverse = false;
-			print_message(handlers, '[Code: 1]', '[Код: 1]', "notification");
+			handlers['text']({
+				"sub_type": "notification",
+				"message_RU": RK_TipMsg[msg_a].msg  + ' + ' + RK_TipMsg[msg_b].msg,
+				"message":    RK_TipMsg[msg_a].msgt + ' + ' + RK_TipMsg[msg_b].msgt
+			});
 			break;
 		case 3034312: // REVERSE (0)
 			mech_reverse = true;
-			print_message(handlers, '[Code: 0 (reverse)]', '[Код: 0 (наоборот)]', "notification");
+			handlers['text']({
+				"sub_type": "notification",
+				"message_RU": RK_TipMsg[msg_b].msg  + ' + ' + RK_TipMsg[msg_a].msg,
+				"message":    RK_TipMsg[msg_b].msgt + ' + ' + RK_TipMsg[msg_a].msgt
+			});
 			break;
 	}
 	// QB
@@ -66,29 +100,21 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 	if (0 <= skillid && skillid < 3) {
 		msg_b = skillid;
 		if (mech_reverse) {
-			print_message(handlers, 
-				RK_TipMsg[msg_b].msgt + ' + ' + RK_TipMsg[msg_a].msgt,
-				RK_TipMsg[msg_b].msg  + ' + ' + RK_TipMsg[msg_a].msg,
-				"message"
-			);
+			handlers['text']({
+				"sub_type": "message",
+				"message_RU": RK_TipMsg[msg_b].msg  + ' + ' + RK_TipMsg[msg_a].msg,
+				"message":    RK_TipMsg[msg_b].msgt + ' + ' + RK_TipMsg[msg_a].msgt
+			});
 		} else {
-			print_message(handlers, 
-				RK_TipMsg[msg_a].msgt + ' + ' + RK_TipMsg[msg_b].msgt,
-				RK_TipMsg[msg_a].msg  + ' + ' + RK_TipMsg[msg_b].msg,
-				"message"
-			);
+			handlers['text']({
+				"sub_type": "message",
+				"message_RU": RK_TipMsg[msg_a].msg  + ' + ' + RK_TipMsg[msg_b].msg,
+				"message":    RK_TipMsg[msg_a].msgt + ' + ' + RK_TipMsg[msg_b].msgt
+			});
 		}
 		msg_a = msg_b;
 		msg_b = 3;
 	}
-}
-
-function print_message(handlers, message, message_RU, sub_type) {
-	handlers['text']({
-		"sub_type": sub_type,
-		"message_RU": message_RU.replace(/[0\s\+]+$/,'').replace(/^[0\s\+]+/, ''),
-		"message": message.replace(/[0\s\+]+$/,'').replace(/^[0\s\+]+/, '')
-	});
 }
 
 function start_boss() {
