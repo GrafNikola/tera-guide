@@ -107,17 +107,17 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 			handlers['text']({"sub_type": "message","message": "Triple-S | IN","message_RU": "Трипл-эска | К НЕМУ"});
 		}
 		SpawnCircle(false,445,0,0,10,300,5000,3000,handlers,event,entity);
-		//return;
+		duration = 3000;
 	}
 	if ([116,119,2220,2222,2231].includes(skillid)) { // right
 		SpawnItem(HIGHLIGHT_ITEM,170,200,0,duration,handlers,event,entity);
 		SpawnItem(HIGHLIGHT_ITEM,350,200,0,duration,handlers,event,entity);
+		SpawnVector(553,170,210,180,290,0,duration,handlers,event,entity);
 		SpawnPoint(553,120,250,0,duration,handlers,event,entity);
 		SpawnPoint(553,130,240,0,duration,handlers,event,entity);
 		SpawnPoint(553,140,230,0,duration,handlers,event,entity);
 		SpawnPoint(553,150,220,0,duration,handlers,event,entity);
 		SpawnPoint(553,160,210,0,duration,handlers,event,entity);
-		SpawnVector(553,170,210,180,290,0,duration,handlers,event,entity);
 		SpawnPoint(553,300,250,0,duration,handlers,event,entity);
 		SpawnPoint(553,310,240,0,duration,handlers,event,entity);
 		SpawnPoint(553,320,230,0,duration,handlers,event,entity);
@@ -215,7 +215,7 @@ module.exports = {
 		{"type": "spawn","id": 576,"sub_delay": 10000,"pos": {x: -32372,y: 58520,z: 0}},
 		{"type": "spawn","id": 576,"sub_delay": 10000,"pos": {x: -31842,y: 58833,z: 0}},
 		{"type": "spawn","id": 576,"sub_delay": 10000,"pos": {x: -31846,y: 59444,z: 0}},
-		{"type": "spawn","id": 576,"sub_delay": 10000,"pos": {x: -32379,y: 59750,z: 0}},
+		{"type": "spawn","id": 576,"sub_delay": 10000,"pos": {x: -32379,y: 59750,z: 0}}
 	],
 	// Safe: |||2|2||| > ||||1|||| > ||3|||3||
 	"s-3034-2000-310-0": [{"type": "text","sub_type": "message","message": "2 - 1 - 3"},
@@ -300,8 +300,6 @@ module.exports = {
 		{"type": "func","func": SpawnVector.bind(null,912,0,0,180,300,0,2000)},
 		{"type": "func","func": SpawnVector.bind(null,912,0,0,270,300,0,2000)}
 	],
-	"qb-3034-3000-3034313": [{"type": "text","sub_type": "message","message": "OUT","message_RU": "ОТ НЕГО"}], // 313 > 324
-	"qb-3034-3000-3034314": [{"type": "text","sub_type": "message","message": "IN","message_RU": "К НЕМУ"}],   // 314 > 325
-	"s-3034-3000-324-0": [{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,10,250,0,5000)}],
-	"s-3034-3000-325-0": [{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,10,300,0,5000)}]
+	"s-3034-3000-324-0": [{"type": "text","sub_type": "message","message": "OUT","message_RU": "ОТ НЕГО"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,10,250,0,5000)}],
+	"s-3034-3000-325-0": [{"type": "text","sub_type": "message","message": "IN","message_RU": "К НЕМУ"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,10,300,0,5000)}]
 };
