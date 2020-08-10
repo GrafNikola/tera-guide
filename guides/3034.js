@@ -167,14 +167,14 @@ module.exports = {
 
 	// 1 BOSS
 	"qb-3034-1000-3034101": [{"type": "text","sub_type": "message","message": "Pizza", "message_RU": "Пицца"}],
-	"qb-3034-1000-3034102": [{"type": "text","sub_type": "message","message": "AOE! JUMP", "message_RU": "AOE! Прыгай!!！"}],
+	"qb-3034-1000-3034102": [{"type": "text","sub_type": "message","message": "AOE! JUMP", "message_RU": "AOE! Прыгай!!!"}],
 	"s-3034-1000-108-0": [{"type": "text","sub_type": "message","message": "OUT","message_RU": "ОТ НЕГО"}],
 	"s-3034-1000-111-0": [{"type": "text","sub_type": "message","message": "BACK ATTACK","message_RU": "Удар назад"}],
 	"s-3034-1000-112-0": [{"type": "text","sub_type": "message","message": "BACK ATTACK","message_RU": "Удар назад"}],
 	"s-3034-1003-205-0": [{"type": "text","sub_type": "message","message": "Wind","message_RU": "Ветер (кайя)!!!"}],
 	"s-3034-1000-304-0": [{"type": "text","sub_type": "message","message": "OUT","message_RU": "ОТ НЕГО"}],
 	"s-3034-1000-305-0": [{"type": "text","sub_type": "message","message": "IN","message_RU": "К НЕМУ"}],
-	"s-3034-1000-306-0": [{"type": "text","sub_type": "message","message": "Incoming Summon","message_RU": "Бомбы !!!"}],
+	"s-3034-1000-306-0": [{"type": "text","sub_type": "message","message": "Incoming Summon","message_RU": "Бомбы!!!"}],
 	"s-3034-1000-307-0": [{"type": "text","sub_type": "message","message": "PULL","message_RU": "Стяжка!!!"}],
 	"s-3034-1000-309-0": [
 		{"type": "text","sub_type": "message","message": "Four missile launches were initiated","message_RU": "Запуск 4 ракет!!!"},
@@ -183,7 +183,7 @@ module.exports = {
 		{"type": "text","sub_type": "message","delay": 8000,"message": "3", "message_RU": "3"},
 		{"type": "text","sub_type": "message","delay": 9000,"message": "2", "message_RU": "2"},
 		{"type": "text","sub_type": "message","delay": 10000,"message": "1", "message_RU": "1"},
-		{"type": "text","sub_type": "message","delay": 11000,"message": "JUMP", "message_RU": "Прыгай！"}
+		{"type": "text","sub_type": "message","delay": 11000,"message": "JUMP", "message_RU": "Прыгай!"}
 	],
 	"s-3034-1000-311-0": [{"type": "text","sub_type": "message","message": "Safe right front","message_RU": "Верхний правый"},{"type": "func","func": SpawnMarker.bind(null,false,67,120,100,12000,true,null)}],
 	"s-3034-1000-312-0": [{"type": "text","sub_type": "message","message": "Safe right back","message_RU": "Справа внизу"},{"type": "func","func": SpawnMarker.bind(null,false,112,120,100,12000,true,null)}],
@@ -284,8 +284,8 @@ module.exports = {
 	"s-3034-3000-127-0": [{"type": "text","sub_type": "message","message": "Back","message_RU": "Удар назад"}],
 	"s-3034-3000-128-0": [
 		{"type": "text","sub_type": "message","message": "Rocket | Back attack","message_RU": "Комба | Конус назад"},
-		{"type": "func","func": SpawnVector.bind(null,553,90,40,120,1200,2000,3000)},
-		{"type": "func","func": SpawnVector.bind(null,553,270,40,240,1200,2000,3000)}
+		{"type": "func","func": SpawnVector.bind(null,553,180,40,120,1200,2000,3000)},
+		{"type": "func","func": SpawnVector.bind(null,553,180,40,240,1200,2000,3000)}
 	],
 	"s-3034-3000-129-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Dodge","message_RU": "Эвейд"}],
 	"s-3034-3000-305-0": [{"type": "func","func": SpawnCircle.bind(null,false,912,0,0,10,300,0,6000)}], // Проверка
