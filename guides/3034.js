@@ -2,7 +2,7 @@
 //
 // made by michengs / HSDN
 
-const {HIGHLIGHT_ITEM_RED, SpawnItem, SpawnMarker, SpawnPoint, SpawnVector, SpawnCircle} = require("../lib");
+const {HIGHLIGHT_ITEM, SpawnItem, SpawnMarker, SpawnPoint, SpawnVector, SpawnCircle} = require("../lib");
 
 let player, entity, library, effect;
 
@@ -107,13 +107,11 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 			handlers['text']({"sub_type": "message","message": "Triple-S | IN","message_RU": "Трипл-эска | К НЕМУ"});
 		}
 		SpawnCircle(false,445,0,0,10,300,5000,3000,handlers,event,entity);
-		//SpawnItem(HIGHLIGHT_ITEM_RED,90,350,0,8000,handlers,event,entity);
-		//SpawnItem(HIGHLIGHT_ITEM_RED,270,350,0,8000,handlers,event,entity);
-		return;
+		//return;
 	}
 	if ([116,119,2220,2222,2231].includes(skillid)) { // right
-		SpawnPoint(6,170,200,0,duration,handlers,event,entity);
-		SpawnPoint(6,350,200,0,duration,handlers,event,entity);
+		SpawnItem(HIGHLIGHT_ITEM,170,200,0,duration,handlers,event,entity);
+		SpawnItem(HIGHLIGHT_ITEM,350,200,0,duration,handlers,event,entity);
 		SpawnPoint(553,120,250,0,duration,handlers,event,entity);
 		SpawnPoint(553,130,240,0,duration,handlers,event,entity);
 		SpawnPoint(553,140,230,0,duration,handlers,event,entity);
@@ -128,8 +126,8 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 		SpawnVector(553,350,210,0,290,0,duration,handlers,event,entity);
 	}
 	if ([117,118,2230,2232,2221].includes(skillid)) { // left
-		SpawnPoint(6,10,200,0,duration,handlers,event,entity);
-		SpawnPoint(6,190,200,0,duration,handlers,event,entity);
+		SpawnItem(HIGHLIGHT_ITEM,10,200,0,duration,handlers,event,entity);
+		SpawnItem(HIGHLIGHT_ITEM,190,200,0,duration,handlers,event,entity);
 		SpawnVector(553,10,210,0,290,0,duration,handlers,event,entity);
 		SpawnPoint(553,20,210,0,duration,handlers,event,entity);
 		SpawnPoint(553,30,220,0,duration,handlers,event,entity);
@@ -221,8 +219,8 @@ module.exports = {
 	],
 	// Safe: |||2|2||| > ||||1|||| > ||3|||3||
 	"s-3034-2000-310-0": [{"type": "text","sub_type": "message","message": "2 - 1 - 3"},
-		//{"type": "func","func": SpawnItem.bind(null,HIGHLIGHT_ITEM_RED,95,310,0,5000)},
-		//{"type": "func","func": SpawnItem.bind(null,HIGHLIGHT_ITEM_RED,265,310,0,5000)},
+		//{"type": "func","func": SpawnItem.bind(null,HIGHLIGHT_ITEM,95,310,0,5000)},
+		//{"type": "func","func": SpawnItem.bind(null,HIGHLIGHT_ITEM,265,310,0,5000)},
 		{"type": "func","func": SpawnMarker.bind(null,false,40,220,0,1500,true,null)},     // 2
 		{"type": "func","func": SpawnMarker.bind(null,false,-40,220,0,1500,true,null)},    // 2
 		{"type": "func","func": SpawnMarker.bind(null,false,0,150,1600,1500,true,null)},   // 1
@@ -231,8 +229,8 @@ module.exports = {
 	],
 	// Safe: ||||1|||| > ||3|||3|| > |||2|2|||
 	"s-3034-2000-311-0": [{"type": "text","sub_type": "message","message": "1 - 3 - 2"},
-		//{"type": "func","func": SpawnItem.bind(null,HIGHLIGHT_ITEM_RED,95,310,0,5000)},
-		//{"type": "func","func": SpawnItem.bind(null,HIGHLIGHT_ITEM_RED,265,310,0,5000)},
+		//{"type": "func","func": SpawnItem.bind(null,HIGHLIGHT_ITEM,95,310,0,5000)},
+		//{"type": "func","func": SpawnItem.bind(null,HIGHLIGHT_ITEM,265,310,0,5000)},
 		{"type": "func","func": SpawnMarker.bind(null,false,0,150,0,1500,true,null)},      // 1
 		{"type": "func","func": SpawnMarker.bind(null,false,60,300,1600,1500,true,null)},  // 3
 		{"type": "func","func": SpawnMarker.bind(null,false,-60,300,1600,1500,true,null)}, // 3
@@ -302,8 +300,8 @@ module.exports = {
 		{"type": "func","func": SpawnVector.bind(null,912,0,0,180,300,0,2000)},
 		{"type": "func","func": SpawnVector.bind(null,912,0,0,270,300,0,2000)}
 	],
-	"qb-3034-3000-3034313": [{"type": "text","sub_type": "message","message": "OUT","message_RU": "ОТ НЕГО"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,10,250,0,5000)}], // 313 > 324
-	"qb-3034-3000-3034314": [{"type": "text","sub_type": "message","message": "IN","message_RU": "К НЕМУ"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,10,300,0,5000)}],   // 314 > 325
+	"qb-3034-3000-3034313": [{"type": "text","sub_type": "message","message": "OUT","message_RU": "ОТ НЕГО"}], // 313 > 324
+	"qb-3034-3000-3034314": [{"type": "text","sub_type": "message","message": "IN","message_RU": "К НЕМУ"}],   // 314 > 325
 	"s-3034-3000-324-0": [{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,10,250,0,5000)}],
 	"s-3034-3000-325-0": [{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,10,300,0,5000)}]
 };
