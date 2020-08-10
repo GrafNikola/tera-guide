@@ -111,51 +111,88 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 		msg_a = msg_b;
 		msg_b = 3;
 	}
+
 	// S-attacks
-	if ([116,117,118,119].includes(skillid)) {
-		if (boss_seventy) { // 119 + 222-0 > 222-1 > 222-2 > 326
-			if (mech_reverse) {
-				handlers['text']({"sub_type": "message","message": "Triple-S | OUT","message_RU": "Трипл-эска | ОТ НЕГО"});
-			} else {
-				handlers['text']({"sub_type": "message","message": "Triple-S | IN","message_RU": "Трипл-эска | К НЕМУ"});
-			}
-			SpawnCircle(false,553,0,0,10,300,4000,3000,handlers,event,entity);
-		}
-		if ([116,119].includes(skillid)) { // right
-			handlers['text']({"sub_type": "message","delay": 2000,"message": "Right","message_RU": "Справа"});
-			SpawnPoint(6,170,200,0,5000,handlers,event,entity);
-			SpawnPoint(6,350,200,0,5000,handlers,event,entity);
-			SpawnPoint(553,120,250,0,5000,handlers,event,entity);
-			SpawnPoint(553,130,240,0,5000,handlers,event,entity);
-			SpawnPoint(553,140,230,0,5000,handlers,event,entity);
-			SpawnPoint(553,150,220,0,5000,handlers,event,entity);
-			SpawnPoint(553,160,210,0,5000,handlers,event,entity);
-			SpawnVector(553,170,210,180,290,0,5000,handlers,event,entity);
-			SpawnPoint(553,300,250,0,5000,handlers,event,entity);
-			SpawnPoint(553,310,240,0,5000,handlers,event,entity);
-			SpawnPoint(553,320,230,0,5000,handlers,event,entity);
-			SpawnPoint(553,330,220,0,5000,handlers,event,entity);
-			SpawnPoint(553,340,210,0,5000,handlers,event,entity);
-			SpawnVector(553,350,210,0,290,0,5000,handlers,event,entity);
-		}
-		if ([117,118].includes(skillid)) { // left
-			handlers['text']({"sub_type": "message","delay": 2000,"message": "Left","message_RU": "Слева"});
-			SpawnPoint(6,10,200,0,5000,handlers,event,entity);
-			SpawnPoint(6,190,200,0,5000,handlers,event,entity);
-			SpawnVector(553,10,210,0,290,0,5000,handlers,event,entity);
-			SpawnPoint(553,20,210,0,5000,handlers,event,entity);
-			SpawnPoint(553,30,220,0,5000,handlers,event,entity);
-			SpawnPoint(553,40,230,0,5000,handlers,event,entity);
-			SpawnPoint(553,50,240,0,5000,handlers,event,entity);
-			SpawnPoint(553,60,250,0,5000,handlers,event,entity);
-			SpawnPoint(553,240,250,0,5000,handlers,event,entity);
-			SpawnPoint(553,230,240,0,5000,handlers,event,entity);
-			SpawnPoint(553,220,230,0,5000,handlers,event,entity);
-			SpawnPoint(553,210,220,0,5000,handlers,event,entity);
-			SpawnPoint(553,200,210,0,5000,handlers,event,entity);
-			SpawnVector(553,190,210,180,290,0,5000,handlers,event,entity);
-		}
+	if ([116,119].includes(skillid)) { // right
+		handlers['text']({"sub_type": "message","delay": 2000,"message": "Right","message_RU": "Справа"});
+		if (boss_seventy) return;
+		SpawnPoint(6,170,200,0,4000,handlers,event,entity);
+		SpawnPoint(6,350,200,0,4000,handlers,event,entity);
+		SpawnPoint(553,120,250,0,4000,handlers,event,entity);
+		SpawnPoint(553,130,240,0,4000,handlers,event,entity);
+		SpawnPoint(553,140,230,0,4000,handlers,event,entity);
+		SpawnPoint(553,150,220,0,4000,handlers,event,entity);
+		SpawnPoint(553,160,210,0,4000,handlers,event,entity);
+		SpawnVector(553,170,210,180,290,0,4000,handlers,event,entity);
+		SpawnPoint(553,300,250,0,4000,handlers,event,entity);
+		SpawnPoint(553,310,240,0,4000,handlers,event,entity);
+		SpawnPoint(553,320,230,0,4000,handlers,event,entity);
+		SpawnPoint(553,330,220,0,4000,handlers,event,entity);
+		SpawnPoint(553,340,210,0,4000,handlers,event,entity);
+		SpawnVector(553,350,210,0,290,0,4000,handlers,event,entity);
 	}
+	if ([117,118].includes(skillid)) { // left
+		handlers['text']({"sub_type": "message","delay": 2000,"message": "Left","message_RU": "Слева"});
+		if (boss_seventy) return;
+		SpawnPoint(6,10,200,0,4000,handlers,event,entity);
+		SpawnPoint(6,190,200,0,4000,handlers,event,entity);
+		SpawnVector(553,10,210,0,290,0,4000,handlers,event,entity);
+		SpawnPoint(553,20,210,0,4000,handlers,event,entity);
+		SpawnPoint(553,30,220,0,4000,handlers,event,entity);
+		SpawnPoint(553,40,230,0,4000,handlers,event,entity);
+		SpawnPoint(553,50,240,0,4000,handlers,event,entity);
+		SpawnPoint(553,60,250,0,4000,handlers,event,entity);
+		SpawnPoint(553,240,250,0,4000,handlers,event,entity);
+		SpawnPoint(553,230,240,0,4000,handlers,event,entity);
+		SpawnPoint(553,220,230,0,4000,handlers,event,entity);
+		SpawnPoint(553,210,220,0,4000,handlers,event,entity);
+		SpawnPoint(553,200,210,0,4000,handlers,event,entity);
+		SpawnVector(553,190,210,180,290,0,4000,handlers,event,entity);
+	}
+	if ([116,117,118,119].includes(skillid) && boss_seventy) {
+		// 116/119 [r] + 222-0 [r] > 222-1 [l] > 222-2 [r] > 326 [in]
+		// 117/118 [l] + 223-0 [l] > 223-1 [r] > 223-2 [l] > 327 [out]
+		if (mech_reverse) {
+			handlers['text']({"sub_type": "message","message": "Triple-S | OUT","message_RU": "Трипл-эска | ОТ НЕГО"});
+		} else {
+			handlers['text']({"sub_type": "message","message": "Triple-S | IN","message_RU": "Трипл-эска | К НЕМУ"});
+		}
+		SpawnCircle(false,553,0,0,10,300,5000,3000,handlers,event,entity);
+		return;
+	}
+	if ([2220,2222,2231].includes(skillid)) { // right
+		SpawnPoint(6,170,200,0,1000,handlers,event,entity);
+		SpawnPoint(6,350,200,0,1000,handlers,event,entity);
+		SpawnPoint(553,120,250,0,1000,handlers,event,entity);
+		SpawnPoint(553,130,240,0,1000,handlers,event,entity);
+		SpawnPoint(553,140,230,0,1000,handlers,event,entity);
+		SpawnPoint(553,150,220,0,1000,handlers,event,entity);
+		SpawnPoint(553,160,210,0,1000,handlers,event,entity);
+		SpawnVector(553,170,210,180,290,0,1000,handlers,event,entity);
+		SpawnPoint(553,300,250,0,1000,handlers,event,entity);
+		SpawnPoint(553,310,240,0,1000,handlers,event,entity);
+		SpawnPoint(553,320,230,0,1000,handlers,event,entity);
+		SpawnPoint(553,330,220,0,1000,handlers,event,entity);
+		SpawnPoint(553,340,210,0,1000,handlers,event,entity);
+		SpawnVector(553,350,210,0,290,0,1000,handlers,event,entity);
+	}
+	if ([2230,2232,2221].includes(skillid)) { // left
+		SpawnPoint(6,10,200,0,1000,handlers,event,entity);
+		SpawnPoint(6,190,200,0,1000,handlers,event,entity);
+		SpawnVector(553,10,210,0,290,0,1000,handlers,event,entity);
+		SpawnPoint(553,20,210,0,1000,handlers,event,entity);
+		SpawnPoint(553,30,220,0,1000,handlers,event,entity);
+		SpawnPoint(553,40,230,0,1000,handlers,event,entity);
+		SpawnPoint(553,50,240,0,1000,handlers,event,entity);
+		SpawnPoint(553,60,250,0,1000,handlers,event,entity);
+		SpawnPoint(553,240,250,0,1000,handlers,event,entity);
+		SpawnPoint(553,230,240,0,1000,handlers,event,entity);
+		SpawnPoint(553,220,230,0,1000,handlers,event,entity);
+		SpawnPoint(553,210,220,0,1000,handlers,event,entity);
+		SpawnPoint(553,200,210,0,1000,handlers,event,entity);
+		SpawnVector(553,190,210,180,290,0,1000,handlers,event,entity);
+	}
+
 }
 
 function start_boss() {
@@ -283,11 +320,19 @@ module.exports = {
 	"qb-3034-3000-3034301": [{"type": "func","func": skilld_event.bind(null, 0)}], // out
 	"qb-3034-3000-3034302": [{"type": "func","func": skilld_event.bind(null, 1)}], // in
 	"qb-3034-3000-3034303": [{"type": "func","func": skilld_event.bind(null, 2)}], // wave
+	 // right S
+	"s-3034-3000-116-0": [{"type": "func","func": skilld_event.bind(null, 116)}],
+	"s-3034-3000-119-0": [{"type": "func","func": skilld_event.bind(null, 119)}],
+	"s-3034-3000-223-1": [{"type": "func","func": skilld_event.bind(null, 2231)}],
+	"s-3034-3000-222-0": [{"type": "func","func": skilld_event.bind(null, 2220)}],
+	"s-3034-3000-222-2": [{"type": "func","func": skilld_event.bind(null, 2222)}],
+	 // left S
+	"s-3034-3000-117-0": [{"type": "func","func": skilld_event.bind(null, 117)}],
+	"s-3034-3000-118-0": [{"type": "func","func": skilld_event.bind(null, 118)}],
+	"s-3034-3000-222-1": [{"type": "func","func": skilld_event.bind(null, 2221)}],
+	"s-3034-3000-223-0": [{"type": "func","func": skilld_event.bind(null, 2230)}],
+	"s-3034-3000-223-2": [{"type": "func","func": skilld_event.bind(null, 2232)}],
 	//
-	"s-3034-3000-116-0": [{"type": "func","func": skilld_event.bind(null, 116)}], // right S
-	"s-3034-3000-117-0": [{"type": "func","func": skilld_event.bind(null, 117)}], // left S
-	"s-3034-3000-118-0": [{"type": "func","func": skilld_event.bind(null, 118)}], // left S
-	"s-3034-3000-119-0": [{"type": "func","func": skilld_event.bind(null, 119)}], // right S
 	"s-3034-3000-127-0": [{"type": "text","sub_type": "message","message": "Back","message_RU": "Удар назад"}],
 	"s-3034-3000-128-0": [{"type": "text","sub_type": "message","message": "Rocket | Back attack","message_RU": "Комба | Конус назад"}],
 	"s-3034-3000-129-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Dodge","message_RU": "Эвейд"}],
@@ -303,6 +348,8 @@ module.exports = {
 		{"type": "func","func": SpawnVector.bind(null,912,0,0,180,300,0,2000)},
 		{"type": "func","func": SpawnVector.bind(null,912,0,0,270,300,0,2000)}
 	],
-	"s-3034-3000-323-0": [{"type": "text","sub_type": "message","message": "IN","message_RU": "К НЕМУ"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,10,300,0,5000)}],
-	"s-3034-3000-324-0": [{"type": "text","sub_type": "message","message": "OUT","message_RU": "ОТ НЕГО"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,10,300,0,5000)}]
+	"qb-3034-3000-3034313": [{"type": "text","sub_type": "message","message": "OUT","message_RU": "ОТ НЕГО"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,10,250,0,5000)}], // 313 > 324
+	"qb-3034-3000-3034314": [{"type": "text","sub_type": "message","message": "IN","message_RU": "К НЕМУ"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,10,300,0,5000)}],   // 314 > 325
+	"s-3034-3000-324-0": [{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,10,250,0,5000)}],
+	"s-3034-3000-325-0": [{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,10,300,0,5000)}]
 };
