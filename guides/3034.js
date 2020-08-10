@@ -21,29 +21,6 @@ const RK_TipMsg =
 	3: {msgt: '?',     msg: '?'},
 };
 
-/* tests
-	"dm-0-0-3034302" out
-	"dm-0-0-3034312" ? + out
-	"dm-0-0-3034311" out + ?
-	"qb-3034-3000-3034303" wave
-		> out + wave
-	"dm-0-0-3034302" out
-	"dm-0-0-3034312" ? + out
-	"qb-3034-3000-3034303" wave
-		> wave + out
-	"dm-0-0-3034303" in
-	"dm-0-0-3034312" ? + in
-	"qb-3034-3000-3034301" out
-		> out + in
-	"qb-3034-3000-3034303" wave
-		> wave + out
-	"dm-0-0-3034311" wave + ?
-	"qb-3034-3000-3034302" in
-		> wave + in
-	"qb-3034-3000-3034301"
-		> in + out
-*/
-
 function skilld_event(skillid, handlers, event, entity, dispatch) {
 	// 2 BOSS
 	if (notice && skillid == 301) {
@@ -309,8 +286,8 @@ module.exports = {
 	"s-3034-3000-127-0": [{"type": "text","sub_type": "message","message": "Back","message_RU": "Удар назад"}],
 	"s-3034-3000-128-0": [
 		{"type": "text","sub_type": "message","message": "Rocket | Back attack","message_RU": "Комба | Конус назад"},
-		{"type": "func","func": SpawnVector.bind(null,553,60,40,120,1200,2000,3000)},
-		{"type": "func","func": SpawnVector.bind(null,553,300,40,240,1200,2000,3000)}
+		{"type": "func","func": SpawnVector.bind(null,553,90,40,120,1200,2000,3000)},
+		{"type": "func","func": SpawnVector.bind(null,553,270,40,240,1200,2000,3000)}
 	],
 	"s-3034-3000-129-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Dodge","message_RU": "Эвейд"}],
 	"s-3034-3000-305-0": [{"type": "func","func": SpawnCircle.bind(null,false,912,0,0,10,300,0,6000)}], // Проверка

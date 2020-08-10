@@ -2,7 +2,7 @@
 const HIGHLIGHT_ITEM        = 110684; // Tier 21 Superior Twin Swords
 const HIGHLIGHT_ITEM_BLUE   = 89542;  // Annihilation Disc (x1 effect)
 const HIGHLIGHT_ITEM_PURPLE = 89543;  // Annihilation Disc (x2 effect)
-const HIGHLIGHT_ITEM_RED    = 89544;  // Annihilation Disc (x3 effect)
+const HIGHLIGHT_ITEM_RED    = 206960; // Zenobia's Breeze Crate
 const MARKER_ITEM           = 88704;  // Velika Banquet Coin
 
 function SpawnItem(item, angle, distance, delay, duration, handlers, event, entity) {
