@@ -93,7 +93,7 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 	// 116/119 [r] + 222-0 [r] > 222-1 [l] > 222-2 [r] > 326 [in]
 	// 117/118 [l] + 223-0 [l] > 223-1 [r] > 223-2 [l] > 327 [out]
 	let delay    = boss_seventy ? 2000 : 0,
-		duration = boss_seventy ? 1000 : 4000;
+		duration = boss_seventy ? 800 : 4000;
 	if ([116,119].includes(skillid)) {
 		handlers['text']({"sub_type": "message","delay": delay,"message": "Right","message_RU": "Справа"});
 	}
