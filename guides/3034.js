@@ -102,15 +102,11 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 	}
 	if ([116,117,118,119].includes(skillid) && boss_seventy) { // <70%
 		if (mech_reverse) {
-			handlers['text'](
-				{"sub_type": "message","message": "Triple-S | OUT","message_RU": "Трипл-эска | ОТ НЕГО"},
-				{"sub_type": "message","delay": 5000,"message": "OUT","message_RU": "ОТ НЕГО"}
-			);
+			handlers['text']({"sub_type": "message","message": "Triple-S | OUT","message_RU": "Трипл-эска | ОТ НЕГО"});
+			handlers['text']({"sub_type": "message","delay": 5000,"message": "OUT","message_RU": "ОТ НЕГО"});
 		} else {
-			handlers['text'](
-				{"sub_type": "message","message": "Triple-S | IN","message_RU": "Трипл-эска | К НЕМУ"},
-				{"sub_type": "message","delay": 5000,"message": "IN","message_RU": "К НЕМУ"}
-			);
+			handlers['text']({"sub_type": "message","message": "Triple-S | IN","message_RU": "Трипл-эска | К НЕМУ"});
+			handlers['text']({"sub_type": "message","delay": 5000,"message": "IN","message_RU": "К НЕМУ"});
 		}
 		SpawnCircle(false,445,0,0,10,300,5000,3000,handlers,event,entity);
 		duration = 3000;
