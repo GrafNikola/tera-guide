@@ -90,15 +90,15 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 	}
 
 	// S-attacks
-	// 116/119 [r] + 222-0 [r] > 222-1 [l] > 222-2 [r] > 326 [in]
-	// 117/118 [l] + 223-0 [l] > 223-1 [r] > 223-2 [l] > 327 [out]
+	// Safe: 116/119 [R] + 222-0 [R] > 222-1 [L] > 222-2 [R] > 326 [IN]
+	// Safe: 117/118 [L] + 223-0 [L] > 223-1 [R] > 223-2 [L] > 327 [OUT]
 	let delay    = boss_seventy ? 2000 : 0,
 		duration = boss_seventy ? 800 : 4000;
 	if ([116,119].includes(skillid)) {
-		handlers['text']({"sub_type": "message","delay": delay,"message": "Right","message_RU": "Справа"});
+		handlers['text']({"sub_type": "message","delay": delay,"message": "Right safe","message_RU": "Справа сейф"});
 	}
 	if ([117,118].includes(skillid)) {
-		handlers['text']({"sub_type": "message","delay": delay,"message": "Left","message_RU": "Слева"});
+		handlers['text']({"sub_type": "message","delay": delay,"message": "Left safe","message_RU": "Слева сейф"});
 	}
 	if ([116,117,118,119].includes(skillid) && boss_seventy) { // <70%
 		if (mech_reverse) {
@@ -111,7 +111,7 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 		SpawnCircle(false,445,0,0,10,300,5000,3000,handlers,event,entity);
 		duration = 3000;
 	}
-	if ([116,119,2220,2222,2231].includes(skillid)) { // right
+	if ([116,119,2220,2222,2231].includes(skillid)) { // right safe
 		SpawnItem(HIGHLIGHT_ITEM,170,200,0,duration,handlers,event,entity);
 		SpawnItem(HIGHLIGHT_ITEM,350,200,0,duration,handlers,event,entity);
 		SpawnVector(912,170,210,180,290,0,duration,handlers,event,entity);
@@ -127,7 +127,7 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 		SpawnPoint(912,340,210,0,duration,handlers,event,entity);
 		SpawnVector(912,350,210,0,290,0,duration,handlers,event,entity);
 	}
-	if ([117,118,2230,2232,2221].includes(skillid)) { // left
+	if ([117,118,2230,2232,2221].includes(skillid)) { // left safe
 		SpawnItem(HIGHLIGHT_ITEM,10,200,0,duration,handlers,event,entity);
 		SpawnItem(HIGHLIGHT_ITEM,190,200,0,duration,handlers,event,entity);
 		SpawnVector(912,10,210,0,290,0,duration,handlers,event,entity);
@@ -170,9 +170,10 @@ module.exports = {
 	// 1 BOSS
 	"qb-3034-1000-3034101": [{"type": "text","sub_type": "message","message": "Pizza", "message_RU": "Пицца"}],
 	"qb-3034-1000-3034102": [{"type": "text","sub_type": "message","message": "AOE! JUMP", "message_RU": "AOE! Прыгай!!!"}],
-	"s-3034-1000-108-0": [{"type": "text","sub_type": "message","message": "OUT","message_RU": "ОТ НЕГО"}],
-	"s-3034-1000-111-0": [{"type": "text","sub_type": "message","message": "BACK ATTACK","message_RU": "Удар назад"}],
-	"s-3034-1000-112-0": [{"type": "text","sub_type": "message","message": "BACK ATTACK","message_RU": "Удар назад"}],
+	"s-3034-1000-104-0": [{"type": "text","sub_type": "message","message": "Front clip","message_RU": "Передний зажим"}],
+	"s-3034-1000-108-0": [{"type": "text","sub_type": "message","message": "OUT","message_RU": "ОТ НЕГО"}], // крутилка
+	"s-3034-1000-111-0": [{"type": "text","sub_type": "message","message": "Back + front attack","message_RU": "Удар назад + вперед"}],
+	"s-3034-1000-112-0": [{"type": "text","sub_type": "message","message": "Back attack","message_RU": "Удар назад"}],
 	"s-3034-1003-205-0": [{"type": "text","sub_type": "message","message": "Wind","message_RU": "Ветер (кайя)!!!"}],
 	"s-3034-1000-304-0": [{"type": "text","sub_type": "message","message": "OUT","message_RU": "ОТ НЕГО"}],
 	"s-3034-1000-305-0": [{"type": "text","sub_type": "message","message": "IN","message_RU": "К НЕМУ"}],
@@ -187,22 +188,22 @@ module.exports = {
 		{"type": "text","sub_type": "message","delay": 10000,"message": "1", "message_RU": "1"},
 		{"type": "text","sub_type": "message","delay": 11000,"message": "JUMP", "message_RU": "Прыгай!"}
 	],
-	"s-3034-1000-311-0": [{"type": "text","sub_type": "message","message": "Safe right front","message_RU": "Верхний правый"},{"type": "func","func": SpawnMarker.bind(null,false,67,120,100,12000,true,null)}],
-	"s-3034-1000-312-0": [{"type": "text","sub_type": "message","message": "Safe right back","message_RU": "Справа внизу"},{"type": "func","func": SpawnMarker.bind(null,false,112,120,100,12000,true,null)}],
-	"s-3034-1000-313-0": [{"type": "text","sub_type": "message","message": "Safe back left","message_RU": "Сзади слева"},{"type": "func","func": SpawnMarker.bind(null,false,202,120,100,12000,true,null)}],
-	"s-3034-1000-314-0": [{"type": "text","sub_type": "message","message": "Safe front left","message_RU": "Передний левый"},{"type": "func","func": SpawnMarker.bind(null,false,337,120,100,12000,true,null)}],
-	"s-3034-1000-315-0": [{"type": "text","sub_type": "message","message": "Safe front right","message_RU": "Справа спереди"},{"type": "func","func": SpawnMarker.bind(null,false,22,120,100,12000,true,null)}],
-	"s-3034-1000-316-0": [{"type": "text","sub_type": "message","message": "Safe back right","message_RU": "Сзади справа"},{"type": "func","func": SpawnMarker.bind(null,false,157,120,100,12000,true,null)}],
-	"s-3034-1000-317-0": [{"type": "text","sub_type": "message","message": "Safe left back","message_RU": "Левый нижний"},{"type": "func","func": SpawnMarker.bind(null,false,247,120,100,12000,true,null)}],
-	"s-3034-1000-318-0": [{"type": "text","sub_type": "message","message": "Safe left front","message_RU": "Верхний левый"},{"type": "func","func": SpawnMarker.bind(null,false,292,120,100,12000,true,null)}],
-	"s-3034-1000-319-0": [{"type": "text","sub_type": "message","message": "Safe front right","message_RU": "Справа спереди"},{"type": "func","func": SpawnMarker.bind(null,false,22,120,100,12000,true,null)}],
-	"s-3034-1000-320-0": [{"type": "text","sub_type": "message","message": "Safe back right","message_RU": "Сзади справа"},{"type": "func","func": SpawnMarker.bind(null,false,157,120,100,12000,true,null)}],
-	"s-3034-1000-321-0": [{"type": "text","sub_type": "message","message": "Safe back left","message_RU": "Сзади слева"},{"type": "func","func": SpawnMarker.bind(null,false,202,120,100,12000,true,null)}],
-	"s-3034-1000-322-0": [{"type": "text","sub_type": "message","message": "Safe left front","message_RU": "Верхний левый"},{"type": "func","func": SpawnMarker.bind(null,false,292,120,100,12000,true,null)}],
-	"s-3034-1000-323-0": [{"type": "text","sub_type": "message","message": "Safe right front","message_RU": "Верхний правый"},{"type": "func","func": SpawnMarker.bind(null,false,67,120,100,12000,true,null)}],
-	"s-3034-1000-324-0": [{"type": "text","sub_type": "message","message": "Safe right back","message_RU": "Справа внизу"},{"type": "func","func": SpawnMarker.bind(null,false,112,120,100,12000,true,null)}],
-	"s-3034-1000-325-0": [{"type": "text","sub_type": "message","message": "Safe left back","message_RU": "Левый нижний"},{"type": "func","func": SpawnMarker.bind(null,false,247,120,100,12000,true,null)}],
-	"s-3034-1000-326-0": [{"type": "text","sub_type": "message","message": "Safe front left","message_RU": "Передний левый"},{"type": "func","func": SpawnMarker.bind(null,false,337,120,100,12000,true,null)}],
+	"s-3034-1000-311-0": [{"type": "text","sub_type": "message","message": "Safe right front","message_RU": "Справа спереди сейф"},{"type": "func","func": SpawnMarker.bind(null,false,67,120,100,12000,true,null)}],
+	"s-3034-1000-312-0": [{"type": "text","sub_type": "message","message": "Safe right back","message_RU": "Справа сзади сейф"},{"type": "func","func": SpawnMarker.bind(null,false,112,120,100,12000,true,null)}],
+	"s-3034-1000-313-0": [{"type": "text","sub_type": "message","message": "Safe back left","message_RU": "Сзади слева сейф"},{"type": "func","func": SpawnMarker.bind(null,false,202,120,100,12000,true,null)}],
+	"s-3034-1000-314-0": [{"type": "text","sub_type": "message","message": "Safe front left","message_RU": "Спереди слева сейф"},{"type": "func","func": SpawnMarker.bind(null,false,337,120,100,12000,true,null)}],
+	"s-3034-1000-315-0": [{"type": "text","sub_type": "message","message": "Safe front right","message_RU": "Спереди справа сейф"},{"type": "func","func": SpawnMarker.bind(null,false,22,120,100,12000,true,null)}],
+	"s-3034-1000-316-0": [{"type": "text","sub_type": "message","message": "Safe back right","message_RU": "Сзади справа сейф"},{"type": "func","func": SpawnMarker.bind(null,false,157,120,100,12000,true,null)}],
+	"s-3034-1000-317-0": [{"type": "text","sub_type": "message","message": "Safe left back","message_RU": "Слева сзади сейф"},{"type": "func","func": SpawnMarker.bind(null,false,247,120,100,12000,true,null)}],
+	"s-3034-1000-318-0": [{"type": "text","sub_type": "message","message": "Safe left front","message_RU": "Слева спереди сейф"},{"type": "func","func": SpawnMarker.bind(null,false,292,120,100,12000,true,null)}],
+	"s-3034-1000-319-0": [{"type": "text","sub_type": "message","message": "Safe front right","message_RU": "Спереди справа сейф"},{"type": "func","func": SpawnMarker.bind(null,false,22,120,100,12000,true,null)}],
+	"s-3034-1000-320-0": [{"type": "text","sub_type": "message","message": "Safe back right","message_RU": "Сзади справа сейф"},{"type": "func","func": SpawnMarker.bind(null,false,157,120,100,12000,true,null)}],
+	"s-3034-1000-321-0": [{"type": "text","sub_type": "message","message": "Safe back left","message_RU": "Сзади слева сейф"},{"type": "func","func": SpawnMarker.bind(null,false,202,120,100,12000,true,null)}],
+	"s-3034-1000-322-0": [{"type": "text","sub_type": "message","message": "Safe left front","message_RU": "Слева спереди сейф"},{"type": "func","func": SpawnMarker.bind(null,false,292,120,100,12000,true,null)}],
+	"s-3034-1000-323-0": [{"type": "text","sub_type": "message","message": "Safe right front","message_RU": "Справа спереди сейф"},{"type": "func","func": SpawnMarker.bind(null,false,67,120,100,12000,true,null)}],
+	"s-3034-1000-324-0": [{"type": "text","sub_type": "message","message": "Safe right back","message_RU": "Справа сзади сейф"},{"type": "func","func": SpawnMarker.bind(null,false,112,120,100,12000,true,null)}],
+	"s-3034-1000-325-0": [{"type": "text","sub_type": "message","message": "Safe left back","message_RU": "Слева сзади сейф"},{"type": "func","func": SpawnMarker.bind(null,false,247,120,100,12000,true,null)}],
+	"s-3034-1000-326-0": [{"type": "text","sub_type": "message","message": "Safe front left","message_RU": "Спереди слева сейф"},{"type": "func","func": SpawnMarker.bind(null,false,337,120,100,12000,true,null)}],
 
 	// 2 BOSS
 	"s-3034-2000-102-0": [{"type": "text","sub_type": "message","message": "Front","message_RU": "Пила"}],
@@ -270,22 +271,24 @@ module.exports = {
 	"qb-3034-3000-3034301": [{"type": "func","func": skilld_event.bind(null, 0)}], // out
 	"qb-3034-3000-3034302": [{"type": "func","func": skilld_event.bind(null, 1)}], // in
 	"qb-3034-3000-3034303": [{"type": "func","func": skilld_event.bind(null, 2)}], // wave
-	 // right S
+	 // right safe S
 	"s-3034-3000-116-0": [{"type": "func","func": skilld_event.bind(null, 116)}],
 	"s-3034-3000-119-0": [{"type": "func","func": skilld_event.bind(null, 119)}],
 	"s-3034-3000-223-1": [{"type": "func","func": skilld_event.bind(null, 2231)}],
 	"s-3034-3000-222-0": [{"type": "func","func": skilld_event.bind(null, 2220)}],
 	"s-3034-3000-222-2": [{"type": "func","func": skilld_event.bind(null, 2222)}],
-	 // left S
+	 // left safe S
 	"s-3034-3000-117-0": [{"type": "func","func": skilld_event.bind(null, 117)}],
 	"s-3034-3000-118-0": [{"type": "func","func": skilld_event.bind(null, 118)}],
 	"s-3034-3000-222-1": [{"type": "func","func": skilld_event.bind(null, 2221)}],
 	"s-3034-3000-223-0": [{"type": "func","func": skilld_event.bind(null, 2230)}],
 	"s-3034-3000-223-2": [{"type": "func","func": skilld_event.bind(null, 2232)}],
 	//
+	"s-3034-3000-125-0": [{"type": "text","sub_type": "message","message": "Front","message_RU": "Удар вперед"}],
+	"s-3034-3000-126-0": [{"type": "text","sub_type": "message","message": "Front | Back","message_RU": "Удар вперед | Удар назад"}],
 	"s-3034-3000-127-0": [{"type": "text","sub_type": "message","message": "Back","message_RU": "Удар назад"}],
 	"s-3034-3000-128-0": [
-		{"type": "text","sub_type": "message","message": "Rocket | Back attack","message_RU": "Комба | Конус назад"},
+		{"type": "text","sub_type": "message","message": "Combo | Back attack","message_RU": "Комба | Конус назад"},
 		{"type": "func","func": SpawnVector.bind(null,553,180,40,120,1200,2000,3000)},
 		{"type": "func","func": SpawnVector.bind(null,553,180,40,240,1200,2000,3000)}
 	],
