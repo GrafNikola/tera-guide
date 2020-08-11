@@ -2,7 +2,7 @@
 //
 // made by michengs / HSDN
 
-const {HIGHLIGHT_ITEM, SpawnItem, SpawnMarker, SpawnPoint, SpawnVector, SpawnCircle} = require("../lib");
+const {HIGHLIGHT_ITEM, HIGHLIGHT_ITEM_RED, SpawnItem, SpawnMarker, SpawnPoint, SpawnVector, SpawnCircle} = require("../lib");
 
 let player, entity, library, effect;
 
@@ -93,14 +93,14 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 	// Safe: 116/119 [R] + 222-0 [R] > 222-1 [L] > 222-2 [R] > 326 [IN]
 	// Safe: 117/118 [L] + 223-0 [L] > 223-1 [R] > 223-2 [L] > 327 [OUT]
 	let delay    = boss_seventy ? 2000 : 0,
-		duration = boss_seventy ? 800 : 4000;
-	if ([116,119].includes(skillid)) {
+		duration = boss_seventy ? 800 : 900;
+	if ([1160,1190].includes(skillid)) {
 		handlers['text']({"sub_type": "message","delay": delay,"message": "Right safe","message_RU": "Справа сейф"});
 	}
-	if ([117,118].includes(skillid)) {
+	if ([1170,1180].includes(skillid)) {
 		handlers['text']({"sub_type": "message","delay": delay,"message": "Left safe","message_RU": "Слева сейф"});
 	}
-	if ([116,117,118,119].includes(skillid) && boss_seventy) { // <70%
+	if ([1160,1170,1180,1190].includes(skillid) && boss_seventy) { // <70%
 		if (mech_reverse) {
 			handlers['text']({"sub_type": "message","message": "Triple-S | OUT","message_RU": "Трипл-эска | ОТ НЕГО"});
 			handlers['text']({"sub_type": "message","delay": 5000,"message": "OUT","message_RU": "ОТ НЕГО"});
@@ -109,11 +109,13 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 			handlers['text']({"sub_type": "message","delay": 5000,"message": "IN","message_RU": "К НЕМУ"});
 		}
 		SpawnCircle(false,445,0,0,10,300,5000,3000,handlers,event,entity);
-		duration = 3000;
+		duration = 2000;
 	}
-	if ([116,119,2220,2222,2231].includes(skillid)) { // right safe
-		SpawnItem(HIGHLIGHT_ITEM,170,200,0,duration,handlers,event,entity);
-		SpawnItem(HIGHLIGHT_ITEM,350,200,0,duration,handlers,event,entity);
+	if ([1160,1161,1162,1163,1190,1191,1192,1193,2220,2222,2231].includes(skillid)) { // right safe
+		SpawnMarker(false,160,300,0,duration,true,null,handlers,event,entity);
+		SpawnMarker(false,340,300,0,duration,true,null,handlers,event,entity);
+		SpawnPoint(202,170,200,0,duration,handlers,event,entity);
+		SpawnPoint(202,350,200,0,duration,handlers,event,entity);
 		SpawnVector(912,170,210,180,290,0,duration,handlers,event,entity);
 		SpawnPoint(912,120,250,0,duration,handlers,event,entity);
 		SpawnPoint(912,130,240,0,duration,handlers,event,entity);
@@ -127,9 +129,11 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 		SpawnPoint(912,340,210,0,duration,handlers,event,entity);
 		SpawnVector(912,350,210,0,290,0,duration,handlers,event,entity);
 	}
-	if ([117,118,2230,2232,2221].includes(skillid)) { // left safe
-		SpawnItem(HIGHLIGHT_ITEM,10,200,0,duration,handlers,event,entity);
-		SpawnItem(HIGHLIGHT_ITEM,190,200,0,duration,handlers,event,entity);
+	if ([1170,1171,1172,1173,1180,1181,1182,1183,2230,2232,2221].includes(skillid)) { // left safe
+		SpawnMarker(false,20,300,0,duration,true,null,handlers,event,entity);
+		SpawnMarker(false,200,300,0,duration,true,null,handlers,event,entity);
+		SpawnPoint(202,10,200,0,duration,handlers,event,entity);
+		SpawnPoint(202,190,200,0,duration,handlers,event,entity);
 		SpawnVector(912,10,210,0,290,0,duration,handlers,event,entity);
 		SpawnPoint(912,20,210,0,duration,handlers,event,entity);
 		SpawnPoint(912,30,220,0,duration,handlers,event,entity);
@@ -213,12 +217,12 @@ module.exports = {
 	"s-3034-2000-304-0": [{"type": "text","sub_type": "message","message": "OUT","message_RU": "ОТ НЕГО"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,8,400,0,4000)}],
 	"s-3034-2000-305-0": [{"type": "text","sub_type": "message","message": "IN | OUT","message_RU": "К НЕМУ | ОТ НЕГО"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,10,200,0,3000)}],
 	"qb-3034-2000-3034201": [
-		{"type": "spawn","id": 576,"sub_delay": 10000,"pos": {x: -32904,y: 59440,z: 0}},
-		{"type": "spawn","id": 576,"sub_delay": 10000,"pos": {x: -32900,y: 58824,z: 0}},
-		{"type": "spawn","id": 576,"sub_delay": 10000,"pos": {x: -32372,y: 58520,z: 0}},
-		{"type": "spawn","id": 576,"sub_delay": 10000,"pos": {x: -31842,y: 58833,z: 0}},
-		{"type": "spawn","id": 576,"sub_delay": 10000,"pos": {x: -31846,y: 59444,z: 0}},
-		{"type": "spawn","id": 576,"sub_delay": 10000,"pos": {x: -32379,y: 59750,z: 0}}
+		{"type": "spawn","id": 476,"sub_delay": 10000,"pos": {x: -32904,y: 59440,z: 0}},
+		{"type": "spawn","id": 476,"sub_delay": 10000,"pos": {x: -32900,y: 58824,z: 0}},
+		{"type": "spawn","id": 476,"sub_delay": 10000,"pos": {x: -32372,y: 58520,z: 0}},
+		{"type": "spawn","id": 476,"sub_delay": 10000,"pos": {x: -31842,y: 58833,z: 0}},
+		{"type": "spawn","id": 476,"sub_delay": 10000,"pos": {x: -31846,y: 59444,z: 0}},
+		{"type": "spawn","id": 476,"sub_delay": 10000,"pos": {x: -32379,y: 59750,z: 0}}
 	],
 	// Safe: |||2|2||| > ||||1|||| > ||3|||3||
 	"s-3034-2000-310-0": [{"type": "text","sub_type": "message","message": "2 - 1 - 3"},
@@ -272,14 +276,26 @@ module.exports = {
 	"qb-3034-3000-3034302": [{"type": "func","func": skilld_event.bind(null, 1)}], // in
 	"qb-3034-3000-3034303": [{"type": "func","func": skilld_event.bind(null, 2)}], // wave
 	 // right safe S
-	"s-3034-3000-116-0": [{"type": "func","func": skilld_event.bind(null, 116)}],
-	"s-3034-3000-119-0": [{"type": "func","func": skilld_event.bind(null, 119)}],
+	"s-3034-3000-116-0": [{"type": "func","func": skilld_event.bind(null, 1160)}],
+	"s-3034-3000-116-1": [{"type": "func","func": skilld_event.bind(null, 1161)}],
+	"s-3034-3000-116-2": [{"type": "func","func": skilld_event.bind(null, 1162)}],
+	"s-3034-3000-116-3": [{"type": "func","func": skilld_event.bind(null, 1163)}],
+	"s-3034-3000-119-0": [{"type": "func","func": skilld_event.bind(null, 1190)}],
+	"s-3034-3000-119-1": [{"type": "func","func": skilld_event.bind(null, 1191)}],
+	"s-3034-3000-119-2": [{"type": "func","func": skilld_event.bind(null, 1192)}],
+	"s-3034-3000-119-3": [{"type": "func","func": skilld_event.bind(null, 1193)}],
 	"s-3034-3000-223-1": [{"type": "func","func": skilld_event.bind(null, 2231)}],
 	"s-3034-3000-222-0": [{"type": "func","func": skilld_event.bind(null, 2220)}],
 	"s-3034-3000-222-2": [{"type": "func","func": skilld_event.bind(null, 2222)}],
 	 // left safe S
-	"s-3034-3000-117-0": [{"type": "func","func": skilld_event.bind(null, 117)}],
-	"s-3034-3000-118-0": [{"type": "func","func": skilld_event.bind(null, 118)}],
+	"s-3034-3000-117-0": [{"type": "func","func": skilld_event.bind(null, 1170)}],
+	"s-3034-3000-117-1": [{"type": "func","func": skilld_event.bind(null, 1171)}],
+	"s-3034-3000-117-2": [{"type": "func","func": skilld_event.bind(null, 1172)}],
+	"s-3034-3000-117-3": [{"type": "func","func": skilld_event.bind(null, 1173)}],
+	"s-3034-3000-118-0": [{"type": "func","func": skilld_event.bind(null, 1180)}],
+	"s-3034-3000-118-1": [{"type": "func","func": skilld_event.bind(null, 1181)}],
+	"s-3034-3000-118-2": [{"type": "func","func": skilld_event.bind(null, 1182)}],
+	"s-3034-3000-118-3": [{"type": "func","func": skilld_event.bind(null, 1182)}],
 	"s-3034-3000-222-1": [{"type": "func","func": skilld_event.bind(null, 2221)}],
 	"s-3034-3000-223-0": [{"type": "func","func": skilld_event.bind(null, 2230)}],
 	"s-3034-3000-223-2": [{"type": "func","func": skilld_event.bind(null, 2232)}],
