@@ -2,7 +2,7 @@
 //
 // made by michengs / HSDN
 
-const {HIGHLIGHT_ITEM, HIGHLIGHT_ITEM_RED, SpawnItem, SpawnMarker, SpawnPoint, SpawnVector, SpawnCircle} = require("../lib");
+const {HIGHLIGHT_ITEM, SpawnItem, SpawnMarker, SpawnPoint, SpawnVector, SpawnCircle} = require("../lib");
 
 let player, entity, library, effect;
 
@@ -210,20 +210,20 @@ module.exports = {
 	"s-3034-1000-326-0": [{"type": "text","sub_type": "message","message": "Safe front left","message_RU": "Спереди слева сейф"},{"type": "func","func": SpawnMarker.bind(null,false,337,120,100,12000,true,null)}],
 
 	// 2 BOSS
+	"h-3034-2000-99": [
+		{"type": "spawn","id": 476,"sub_delay": 99999999,"pos": {x: -32904,y: 59440,z: 0}},
+		{"type": "spawn","id": 476,"sub_delay": 99999999,"pos": {x: -32900,y: 58824,z: 0}},
+		{"type": "spawn","id": 476,"sub_delay": 99999999,"pos": {x: -32372,y: 58520,z: 0}},
+		{"type": "spawn","id": 476,"sub_delay": 99999999,"pos": {x: -31842,y: 58833,z: 0}},
+		{"type": "spawn","id": 476,"sub_delay": 99999999,"pos": {x: -31846,y: 59444,z: 0}},
+		{"type": "spawn","id": 476,"sub_delay": 99999999,"pos": {x: -32379,y: 59750,z: 0}}
+	],
 	"s-3034-2000-102-0": [{"type": "text","sub_type": "message","message": "Front","message_RU": "Пила"}],
 	"s-3034-2000-105-0": [{"type": "text","sub_type": "message","message": "360","message_RU": "Крутилка (откид)"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,10,250,0,5000)}],
 	"s-3034-2000-108-0": [{"type": "text","sub_type": "message","message": "Back","message_RU": "Откид назад"}],
 	"s-3034-2000-301-0": [{"type": "func","func": skilld_event.bind(null, 301)}],
 	"s-3034-2000-304-0": [{"type": "text","sub_type": "message","message": "OUT","message_RU": "ОТ НЕГО"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,8,400,0,4000)}],
 	"s-3034-2000-305-0": [{"type": "text","sub_type": "message","message": "IN | OUT","message_RU": "К НЕМУ | ОТ НЕГО"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,10,200,0,3000)}],
-	"qb-3034-2000-3034201": [
-		{"type": "spawn","id": 476,"sub_delay": 10000,"pos": {x: -32904,y: 59440,z: 0}},
-		{"type": "spawn","id": 476,"sub_delay": 10000,"pos": {x: -32900,y: 58824,z: 0}},
-		{"type": "spawn","id": 476,"sub_delay": 10000,"pos": {x: -32372,y: 58520,z: 0}},
-		{"type": "spawn","id": 476,"sub_delay": 10000,"pos": {x: -31842,y: 58833,z: 0}},
-		{"type": "spawn","id": 476,"sub_delay": 10000,"pos": {x: -31846,y: 59444,z: 0}},
-		{"type": "spawn","id": 476,"sub_delay": 10000,"pos": {x: -32379,y: 59750,z: 0}}
-	],
 	// Safe: |||2|2||| > ||||1|||| > ||3|||3||
 	"s-3034-2000-310-0": [{"type": "text","sub_type": "message","message": "2 - 1 - 3"},
 		//{"type": "func","func": SpawnItem.bind(null,HIGHLIGHT_ITEM,95,310,0,5000)},
