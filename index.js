@@ -13,6 +13,8 @@ const DPS_CLASS_IDS = [2, 3, 4, 5, 8, 9, 11, 12];
 const HEALER_CLASS_IDS = [6, 7];
 // Warrior Defence stance abnormality ids
 const WARRIOR_TANK_IDS = [100200, 100201];
+// Supported languages by client
+const languages = {0: 'en', 1: 'kr', 3: 'jp', 4: 'de', 5: 'fr', 7: 'tw', 8: 'ru'};
 // Messages colors
 const cr  = '</font><font color="#ff0000">'; // red
 const co  = '</font><font color="#ff7700">'; // orange
@@ -65,8 +67,6 @@ class TeraGuide{
 		}*/
 		// export functionality for 3rd party modules
 		this.handlers = function_event_handlers;
-		// Supported languages by client
-		let languages = {0: 'en', 1: 'kr', 3: 'jp', 4: 'de', 5: 'fr', 7: 'tw', 8: 'ru'};
 		// Detected language
 		let language = languages[0];
 		// A boolean for the debugging settings
@@ -78,6 +78,8 @@ class TeraGuide{
 		//let cc = cg;
 		// The guide settings for the current zone
 		let active_guide = {};
+		// Hp values of mobs in the current zone
+		let mobs_hp = {};
 		// All of the timers, where the key is the id
 		let random_timer_id = 0xFFFFFFFA; // Used if no id is specified
 		let timers = {};
@@ -248,10 +250,15 @@ class TeraGuide{
 		// Boss health bar triggered
 		dispatch.hook('S_BOSS_GAGE_INFO', 3, e => {
 			// If the guide module is active and a guide for the current dungeon is found
-			if(dispatch.settings.enabled && guide_found) {
+			if(dispatch.settings.enabled/* && guide_found*/) {
 				const ent = entity['mobs'][e.id.toString()];
-				// We've confirmed it's a mob, so it's plausible we want to act on this
-				if (ent) return handle_event(ent, Math.floor(Number(e.curHp) / Number(e.maxHp) * 100), 'Health', 'h', debug.debug || debug.hp);
+				let hp = Math.floor(Number(e.curHp) / Number(e.maxHp) * 100);
+				// Check mob's hp of existing value for single call the event
+				if (ent && (!mobs_hp[e.id.toString()] || mobs_hp[e.id.toString()] != hp)) {
+					mobs_hp[e.id.toString()] = hp;
+					// We've confirmed it's a mob, so it's plausible we want to act on this
+					return handle_event(ent, hp, 'Health', 'h', debug.debug || debug.hp);
+				}
 			}
 		});
 
@@ -288,6 +295,8 @@ class TeraGuide{
 			let debug_errors = true;
 			// Disable trigger event flag
 			is_event = false;
+			// Clear current hp values for all zone mobs
+			mobs_hp = {};
 			// Clear out the timers
 			for (let key in timers) clearTimeout(timers[key]);
 			timers = {};
