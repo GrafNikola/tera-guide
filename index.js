@@ -250,7 +250,7 @@ class TeraGuide{
 		// Boss health bar triggered
 		dispatch.hook('S_BOSS_GAGE_INFO', 3, e => {
 			// If the guide module is active and a guide for the current dungeon is found
-			if(dispatch.settings.enabled/* && guide_found*/) {
+			if(dispatch.settings.enabled && guide_found) {
 				const ent = entity['mobs'][e.id.toString()];
 				let hp = Math.floor(Number(e.curHp) / Number(e.maxHp) * 100);
 				// Check mob's hp of existing value for single call the event
