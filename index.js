@@ -254,7 +254,7 @@ class TeraGuide{
 				const ent = entity['mobs'][e.id.toString()];
 				let hp = Math.floor(Number(e.curHp) / Number(e.maxHp) * 100);
 				// Check mob's hp of existing value for single call the event
-				if (ent && (!mobs_hp[e.id.toString()] || mobs_hp[e.id.toString()] != hp)) {
+				if (ent && mobs_hp[e.id.toString()] != hp) {
 					mobs_hp[e.id.toString()] = hp;
 					// We've confirmed it's a mob, so it's plausible we want to act on this
 					return handle_event(ent, hp, 'Health', 'h', debug.debug || debug.hp);

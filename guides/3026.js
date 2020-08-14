@@ -285,8 +285,12 @@ let skills = {
 	"206-2": [{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,15,350,0,3000)}],
 	"137-0": [{"type": "text","sub_type": "message","message": "Knock down","message_RU": "Опрокидывание"}],
 	"138-0": [{"type": "text","sub_type": "message","message": "AOE","message_RU": "AOE"}],
-	"139-0": [{"type": "text","sub_type": "message","message": "60 degrees (Fire)","message_RU": "60° (Огонь всем)"}],
-	"140-0": [{"type": "text","sub_type": "message","message": "40 degrees (Ice)","message_RU": "40° (Лед всем)"}],
+	"139-0": [{"type": "text","sub_type": "message","message": "60 degrees (Fire to all)","message_RU": "60° (Огонь всем)"},
+		{"type": "text","sub_type": "message","delay": 4000,"message": "Lower the temp","message_RU": "Снизить температуру"}
+	],
+	"140-0": [{"type": "text","sub_type": "message","message": "40 degrees (Ice to all)","message_RU": "40° (Лед всем)"},
+		{"type": "text","sub_type": "message","delay": 4000,"message": "Raise the temp","message_RU": "Повысить температуру"}
+	],
 	//
 	"s-3026-1000-1212-0": [{"type": "func","func": skilld_event.bind(null, 212)}],
 	"s-3026-1000-1215-0": [{"type": "func","func": skilld_event.bind(null, 215)}],
