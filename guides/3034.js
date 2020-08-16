@@ -321,6 +321,18 @@ module.exports = {
 		{"type": "func","func": SpawnVector.bind(null,912,0,0,180,300,0,2000)},
 		{"type": "func","func": SpawnVector.bind(null,912,0,0,270,300,0,2000)}
 	],
-	"s-3034-3000-324-0": [{"type": "text","sub_type": "message","message": "OUT","message_RU": "ОТ НЕГО"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,10,250,0,5000)}],
-	"s-3034-3000-325-0": [{"type": "text","sub_type": "message","message": "IN","message_RU": "К НЕМУ"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,10,300,0,5000)}]
+	// Radar
+	"qb-3034-3000-3034312": [{"type": "text","sub_type": "message","message": "!!! Radar !!!","message_RU": "!!! Радар !!!"}],
+	"s-3034-3000-324-0": [
+		{"type": "text","sub_type": "message","message": "OUT","message_RU": "ОТ НЕГО"},
+		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,10,250,0,3000)},
+		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,12,200,0,3000)},
+		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,14,150,0,3000)},
+		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,18,100,0,3000)},
+		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,50,50,0,3000)}
+	],
+	"s-3034-3000-325-0": [
+		{"type": "text","sub_type": "message","message": "IN","message_RU": "К НЕМУ"},
+		{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,10,300,0,3000)}
+	]
 };
