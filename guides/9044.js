@@ -211,7 +211,9 @@ module.exports = {
 	"s-444-1000-2121-0": [{"type": "text","sub_type": "message","message": 'Waves (Left)',"message_RU": "Волны (левая)"},{"type": "func","func": skilld_event.bind(null, 2121)}],
 	//
 	"s-444-1000-2131-0": [{"type": "text","sub_type": "message","message": 'Front | Left Scratch',"message_RU": "Удар в вперед | Левый черкаш"},
-		{"type": "func","func": SpawnCircle.bind(null,false,445,358,340,8,660,100,4000)}
+		{"type": "func","func": SpawnCircle.bind(null,false,445,358,340,8,660,100,4000)},
+		{"type": "func","func": SpawnVector.bind(null,553,358,340,180,500,100,4000)},
+		{"type": "func","func": SpawnVector.bind(null,553,358,340,0,500,100,4000)}
 	],
 	"s-444-1000-2132-0": [
 		{"type": "func","func": SpawnVector.bind(null,553,270,200,0,500,0,2000)},
@@ -276,14 +278,13 @@ module.exports = {
 
 
 	// PHASE 2
-
-	"h-444-2000-99": [
-		{"type": "func","func": start_boss},
+	"h-444-2000-100": [
 		//{"type": "func","func": SpawnVector.bind(null,542,0,0,0,3000,0,6000000)},
 		//{"type": "func","func": SpawnVector.bind(null,542,0,0,180,3000,0,6000000)},
 		{"type": "func","func": SpawnMarker.bind(null,false,0,-700,100,60000000,false,["Throne","Throne direction"])},
 		{"type": "func","func": SpawnPoint.bind(null,513,0,800,100,60000000)}
 	],
+	"h-444-2000-99": [{"type": "func","func": start_boss}],
 	"h-444-2000-0": [{"type": "func","func": print_end}],
 
 	// ---------------------------------------- Not enraged ----------------------------------------
