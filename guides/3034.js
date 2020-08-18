@@ -52,19 +52,7 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 				mech_reverse = true;
 				break;
 		}
-		if (mech_reverse) {
-			handlers['text']({
-				"sub_type": "notification",
-				"message_RU": 'Далее: ' + RK_TipMsg[msg_b].msg  + ' + ' + RK_TipMsg[msg_a].msg,
-				"message":    'Next: '  + RK_TipMsg[msg_b].msgt + ' + ' + RK_TipMsg[msg_a].msgt
-			});
-		} else {
-			handlers['text']({
-				"sub_type": "notification",
-				"message_RU": 'Далее: ' + RK_TipMsg[msg_a].msg  + ' + ' + RK_TipMsg[msg_b].msg,
-				"message":    'Next: '  + RK_TipMsg[msg_a].msgt + ' + ' + RK_TipMsg[msg_b].msgt
-			});
-		}
+		print_mech(true, handlers);
 	}
 	// QB
 	// 0: Out  3034301
@@ -72,19 +60,10 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 	// 2: Wave 3034303
 	if (0 <= skillid && skillid < 3) {
 		msg_b = skillid;
-		if (mech_reverse) {
-			handlers['text']({
-				"sub_type": "message",
-				"message_RU": RK_TipMsg[msg_b].msg  + ' + ' + RK_TipMsg[msg_a].msg,
-				"message":    RK_TipMsg[msg_b].msgt + ' + ' + RK_TipMsg[msg_a].msgt
-			});
-		} else {
-			handlers['text']({
-				"sub_type": "message",
-				"message_RU": RK_TipMsg[msg_a].msg  + ' + ' + RK_TipMsg[msg_b].msg,
-				"message":    RK_TipMsg[msg_a].msgt + ' + ' + RK_TipMsg[msg_b].msgt
-			});
-		}
+		print_mech(false, handlers);
+		setTimeout(() => {
+			print_mech(true, handlers);
+		}, 8000);
 		msg_a = msg_b;
 		msg_b = 3;
 	}
@@ -146,6 +125,22 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 		SpawnPoint(912,210,220,0,duration,handlers,event,entity);
 		SpawnPoint(912,200,210,0,duration,handlers,event,entity);
 		SpawnVector(912,190,210,180,290,0,duration,handlers,event,entity);
+	}
+}
+
+function print_mech(next, handlers) {
+	if (mech_reverse) {
+		handlers['text']({
+			"sub_type": (next ? 'notification' : 'message'),
+			"message_RU": (next ? 'Далее: ' : '') + RK_TipMsg[msg_b].msg  + ' + ' + RK_TipMsg[msg_a].msg,
+			"message":    (next ? 'Next: ' : '')  + RK_TipMsg[msg_b].msgt + ' + ' + RK_TipMsg[msg_a].msgt
+		});
+	} else {
+		handlers['text']({
+			"sub_type": (next ? 'notification' : 'message'),
+			"message_RU": (next ? 'Далее: ' : '') + RK_TipMsg[msg_a].msg  + ' + ' + RK_TipMsg[msg_b].msg,
+			"message":    (next ? 'Next: ' : '')  + RK_TipMsg[msg_a].msgt + ' + ' + RK_TipMsg[msg_b].msgt
+		});
 	}
 }
 
