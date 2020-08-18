@@ -304,7 +304,7 @@ module.exports = {
 	"s-3034-3000-126-0": [{"type": "text","sub_type": "message","message": "Front | Back","message_RU": "Удар вперед | Удар назад"}],
 	"s-3034-3000-127-0": [{"type": "text","sub_type": "message","message": "Back","message_RU": "Удар назад"}],
 	"s-3034-3000-128-0": [
-		{"type": "text","sub_type": "message","message": "Combo | Back attack","message_RU": "Комба | Конус назад"},
+		{"type": "text","sub_type": "message","message": "Combo | Back wave","message_RU": "Комба | Конус назад"},
 		{"type": "func","func": SpawnVector.bind(null,553,180,40,120,1200,2000,3000)},
 		{"type": "func","func": SpawnVector.bind(null,553,180,40,240,1200,2000,3000)}
 	],
@@ -325,11 +325,11 @@ module.exports = {
 	"qb-3034-3000-3034312": [{"type": "text","sub_type": "message","message": "!!! Radar !!!","message_RU": "!!! Радар !!!"}],
 	"s-3034-3000-324-0": [
 		{"type": "text","sub_type": "message","message": "OUT","message_RU": "ОТ НЕГО"},
-		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,10,250,0,3000)},
-		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,12,200,0,3000)},
-		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,14,150,0,3000)},
-		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,18,100,0,3000)},
-		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,50,50,0,3000)}
+		{"type": "func","func": SpawnCircle.bind(null,false,912,0,0,10,250,0,3000)},
+		{"type": "func","func": SpawnCircle.bind(null,false,912,0,0,12,200,0,3000)},
+		{"type": "func","func": SpawnCircle.bind(null,false,912,0,0,14,150,0,3000)},
+		{"type": "func","func": SpawnCircle.bind(null,false,912,0,0,18,100,0,3000)},
+		{"type": "func","func": SpawnCircle.bind(null,false,912,0,0,50,50,0,3000)}
 	],
 	"s-3034-3000-325-0": [
 		{"type": "text","sub_type": "message","message": "IN","message_RU": "К НЕМУ"},

@@ -26,30 +26,30 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 		timer5 = setTimeout(()=> {
 			handlers['text']({
 				"sub_type": "message",
-				"message": "Big jump coming soon！",
+				"message": "Big jump coming soon!",
 				"message_RU": "Скоро прыжок!"
 			});
 		}, 110000);
 	}
-	if (skillid === 3119 && debuff === 1 ) {    //紅色气息判断
+	if (skillid === 3119 && debuff === 1) {    //紅色气息判断
 		handlers['text']({
 			"sub_type": "message",
 			"message": "OUT",
 			"message_RU": "ОТ НЕГО"
 		});
-	} else if (skillid === 3119 && debuff === 2 ) {    //紅色气息判断
+	} else if (skillid === 3119 && debuff === 2) {    //紅色气息判断
 		handlers['text']({
 			"sub_type": "message",
 			"message": "IN",
 			"message_RU": "К НЕМУ"
 		});
-	} else if (skillid === 3220 && debuff === 1 ) {    //蓝色气息判断
+	} else if (skillid === 3220 && debuff === 1) {    //蓝色气息判断
 		handlers['text']({
 			"sub_type": "message",
 			"message": "IN",
 			"message_RU": "К НЕМУ"
 		});
-	} else if (skillid === 3220 && debuff === 2 ) {    //蓝色气息判断
+	} else if (skillid === 3220 && debuff === 2) {    //蓝色气息判断
 		handlers['text']({
 			"sub_type": "message",
 			"message": "OUT",
@@ -199,7 +199,7 @@ module.exports = {
 	"s-3023-2000-164-0": [{"type": "text","sub_type": "message","message": 'Counter attack (bleeding)',"message_RU": "Отпрыжка (Кровоток)"}],
 	"s-3023-2000-166-0": [{"type": "text","sub_type": "message","message": 'Turn-back',"message_RU": "Оборот назад"}],
 	"s-3023-2000-175-0": [{"type": "text","sub_type": "message","message": 'Debuff',"message_RU": "Рёв (Эвейд)!!!"}],
-	"s-3023-2000-178-0": [{"type": "text","sub_type": "message","message": 'Scratching',"message_RU": "Крутилка (Кровоток)"}],
+	"s-3023-2000-178-0": [{"type": "text","sub_type": "message","message": 'Scratching (bleed)',"message_RU": "Крутилка (Кровоток)"}],
 	"s-3023-2000-181-0": [{"type": "text","sub_type": "message","message": 'Insert the floor',"message_RU": "Полоса вперед"},
 						  {"type": "func","func": SpawnVector.bind(null,553,90,80,10,1000,0,4000)},
 						  {"type": "func","func": SpawnVector.bind(null,553,270,80,350,1000,0,4000)}
