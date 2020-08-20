@@ -19,15 +19,15 @@ module.exports = {
 	"s-3102-1000-113-0": [{"type": "text","sub_type": "message","message": '4 Hits Combo',"message_RU": "4 удара комба"}],
 	"s-3102-1000-105-0": [{"type": "text","sub_type": "message","message": 'Uppercut | Stun',"message_RU": "Удар снизу | Стан"}],
 	"s-3102-1000-106-0": [{"type": "text","sub_type": "message","message": 'Stun',"message_RU": "Стан"},
-		{"type": "func","func": SpawnCircle.bind(null,true,553,0,20,8,200,100,2000)}
+		//{"type": "func","func": SpawnCircle.bind(null,true,553,0,20,24,200,100,2000)}
 	],
 	// 120 > 114
 	"s-3102-1000-120-0": [{"type": "text","sub_type": "message","message": 'Many Pokes | Stun',"message_RU": "Несколько ударов | Стан"}],
 	"s-3102-1000-114-0": [{"type": "text","sub_type": "message","message": 'Stun (AOE)',"message_RU": "Стан (AOE)"},
-		{"type": "func","func": SpawnCircle.bind(null,true,553,0,0,12,420,0,3000)}
+		{"type": "func","func": SpawnCircle.bind(null,true,553,0,0,16,420,100,3000)}
 	],
 	"s-3102-1000-111-0": [{"type": "text","sub_type": "message","message": 'Leap (Stun)',"message_RU": "Прыжок (стан)"},
-		//{"type": "func","func": SpawnCircle.bind(null,true,553,0,0,12,300,0,2000)}
+		//{"type": "func","func": SpawnCircle.bind(null,true,553,0,0,16,300,0,2000)}
 	],
 	"s-3102-1000-115-0": [{"type": "text","sub_type": "message","message": 'AOE Bombs (gather)',"message_RU": "AOE бомбы (вместе)"},
 		{"type": "text","sub_type": "message","delay": 3000,"message": 'Gather!',"message_RU": "Собраться!"}
