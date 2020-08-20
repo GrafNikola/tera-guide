@@ -22,7 +22,7 @@ module.exports = {
 		//{"type": "func","func": SpawnCircle.bind(null,true,553,0,20,24,200,100,2000)}
 	],
 	// 120 > 114
-	"s-3102-1000-120-0": [{"type": "text","sub_type": "message","message": 'Many Pokes | Stun',"message_RU": "Несколько ударов | Стан"}],
+	"s-3102-1000-120-0": [{"type": "text","sub_type": "message","message": 'Many Pokes | Stun (AOE)',"message_RU": "Несколько ударов | Стан (AOE)"}],
 	"s-3102-1000-114-0": [{"type": "text","sub_type": "message","message": 'Stun (AOE)',"message_RU": "Стан (AOE)"},
 		{"type": "func","func": SpawnCircle.bind(null,true,553,0,0,16,420,100,3000)}
 	],
@@ -32,7 +32,7 @@ module.exports = {
 	"s-3102-1000-115-0": [{"type": "text","sub_type": "message","message": 'AOE Bombs (gather)',"message_RU": "AOE бомбы (вместе)"},
 		{"type": "text","sub_type": "message","delay": 3000,"message": 'Gather!',"message_RU": "Собраться!"}
 	],
-	"s-3102-1000-112-0": [{"type": "text","sub_type": "message","message": 'Front-Back Kick',"message_RU": "Разворот | Удар назад"},
+	"s-3102-1000-112-0": [{"type": "text","sub_type": "message","message": 'Front-Back Kick',"message_RU": "Разворот | Откид назад"},
 		{"type": "func","func": SpawnVector.bind(null,553,90,120,160,300,0,3000)},
 		{"type": "func","func": SpawnVector.bind(null,553,270,120,-160,300,0,3000)}
 	],
@@ -48,38 +48,40 @@ module.exports = {
 
 	// Pizza boi
 	"s-3102-1000-121-0": [{"type": "text","sub_type": "message","message": 'Right Foot',"message_RU": "Правая нога"},
-		{"type": "func","func": SpawnCircle.bind(null,false,553,0,50,8,550,0,5000)},
-		{"type": "func","func": SpawnSemicircle.bind(null,130,250,912,0,50,8,450,0,3900)},
-		{"type": "func","func": SpawnSemicircle.bind(null,-50,65,912,0,50,8,450,0,3900)},
-		{"type": "func","func": SpawnVector.bind(null,912,0,50,245,450,0,3900)},
-		{"type": "func","func": SpawnVector.bind(null,912,0,50,305,450,0,3900)},
-		{"type": "func","func": SpawnVector.bind(null,912,0,50,65,450,0,3900)},
-		{"type": "func","func": SpawnVector.bind(null,912,0,50,125,450,0,3900)},
+		{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,8,550,0,3000)},
+		{"type": "func","func": SpawnSemicircle.bind(null,130,250,912,0,20,8,450,0,4000)},
+		{"type": "func","func": SpawnSemicircle.bind(null,-50,65,912,0,20,8,450,0,4000)},
+		{"type": "func","func": SpawnVector.bind(null,912,0,20,245,450,0,4000)},
+		{"type": "func","func": SpawnVector.bind(null,912,0,20,305,450,0,4000)},
+		{"type": "func","func": SpawnVector.bind(null,912,0,20,65,450,0,4000)},
+		{"type": "func","func": SpawnVector.bind(null,912,0,20,125,450,0,4000)},
 		{"type": "text","sub_type": "message","delay": 1900,"message": 'Dodge!',"message_RU": "Эвейд!"}
 	],
 	"s-3102-1000-122-0": [{"type": "text","sub_type": "message","message": 'Front + Back',"message_RU": "Передняя + задняя"},
-		{"type": "func","func": SpawnMarker.bind(null,false,0,200,500,3000,true,null)},
-		{"type": "func","func": SpawnVector.bind(null,912,0,50,295,550,500,2500)},
-		{"type": "func","func": SpawnVector.bind(null,912,0,50,85,550,500,2500)},
-		{"type": "func","func": SpawnSemicircle.bind(null,85,295,912,0,50,6,550,500,2500)}
+		{"type": "func","func": SpawnMarker.bind(null,false,0,200,500,2000,true,null)}
 	],
-	"s-3102-1000-123-0": [{"type": "text","sub_type": "message","message": 'Back',"message_RU": "Задняя"}],
+	"s-3102-1000-123-0": [{"type": "text","sub_type": "message","message": 'Back',"message_RU": "Задняя"},
+		{"type": "func","func": SpawnVector.bind(null,912,0,0,295,550,0,2000)},
+		{"type": "func","func": SpawnVector.bind(null,912,0,0,85,550,0,2000)},
+		{"type": "func","func": SpawnSemicircle.bind(null,85,295,912,0,0,6,550,0,2000)}
+	],
 	//
 	"s-3102-1000-124-0": [{"type": "text","sub_type": "message","message": 'Left Foot',"message_RU": "Левая нога"},
-		{"type": "func","func": SpawnCircle.bind(null,false,553,0,50,8,550,0,5000)},
-		{"type": "func","func": SpawnSemicircle.bind(null,130,250,912,0,50,8,450,0,3900)},
-		{"type": "func","func": SpawnSemicircle.bind(null,-50,65,912,0,50,8,450,0,3900)},
-		{"type": "func","func": SpawnVector.bind(null,912,0,50,245,450,0,3900)},
-		{"type": "func","func": SpawnVector.bind(null,912,0,50,305,450,0,3900)},
-		{"type": "func","func": SpawnVector.bind(null,912,0,50,65,450,0,3900)},
-		{"type": "func","func": SpawnVector.bind(null,912,0,50,125,450,0,3900)},
+		{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,8,550,0,3000)},
+		{"type": "func","func": SpawnSemicircle.bind(null,130,250,912,0,20,8,450,0,4000)},
+		{"type": "func","func": SpawnSemicircle.bind(null,-50,65,912,0,20,8,450,0,4000)},
+		{"type": "func","func": SpawnVector.bind(null,912,0,20,245,450,0,4000)},
+		{"type": "func","func": SpawnVector.bind(null,912,0,20,305,450,0,4000)},
+		{"type": "func","func": SpawnVector.bind(null,912,0,20,65,450,0,4000)},
+		{"type": "func","func": SpawnVector.bind(null,912,0,20,125,450,0,4000)},
 		{"type": "text","sub_type": "message","delay": 1900,"message": 'Dodge!',"message_RU": "Эвейд!"}
 	],
 	"s-3102-1000-125-0": [{"type": "text","sub_type": "message","message": 'Front + Back',"message_RU": "Передняя + задняя"},
-		{"type": "func","func": SpawnMarker.bind(null,false,0,200,500,3000,true,null)},
-		{"type": "func","func": SpawnVector.bind(null,912,0,50,295,550,500,2500)},
-		{"type": "func","func": SpawnVector.bind(null,912,0,50,85,550,500,2500)},
-		{"type": "func","func": SpawnSemicircle.bind(null,85,295,912,0,50,6,550,500,2500)}
+		{"type": "func","func": SpawnMarker.bind(null,false,0,200,500,3000,true,null)}
 	],
-	"s-3102-1000-126-0": [{"type": "text","sub_type": "message","message": 'Back',"message_RU": "Задняя"}]
+	"s-3102-1000-126-0": [{"type": "text","sub_type": "message","message": 'Back',"message_RU": "Задняя"},
+		{"type": "func","func": SpawnVector.bind(null,912,0,0,295,550,0,2000)},
+		{"type": "func","func": SpawnVector.bind(null,912,0,0,85,550,0,2000)},
+		{"type": "func","func": SpawnSemicircle.bind(null,85,295,912,0,0,6,550,0,2000)}
+	]
 };
