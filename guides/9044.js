@@ -30,7 +30,8 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 	if (skillid == 90442000) shining = true;
 	if (skillid == 90442001) shining = false;
 	if (skillid == 90442304) {
-		handlers['text']({"sub_type": "notification","message": "Stun","message_RU": "Стан!!!"});
+		handlers['text']({"sub_type": "message","notification": "Stun","message_RU": "Стан!!!"});
+		handlers['text']({"sub_type": "message","message": "Stun","message_RU": "Стан!!!"});
 	}
 	if (skillid == 90444001 && skill == 104) {
 		setTimeout(() => {
@@ -61,6 +62,7 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 	if (notice && skillid == 305) {
 		notice = false;
 		handlers['text']({"sub_type": "notification","message": "Laser","message_RU": "Лазер !!!"});
+		handlers['text']({"sub_type": "message","message": "Laser","message_RU": "Лазер !!!"});
 		setTimeout(() => notice = true, 4000);
 	}
 	if (notices && skillid == 137) {
@@ -376,6 +378,7 @@ module.exports = {
 	"s-444-2000-1307-0": [{"type": "text","sub_type": "message","message": '!',"message_RU": "!"},
 		{"type": "text","sub_type": "message","delay": 20000,"message": 'Last aerolite',"message_RU": "Последний метеор"}
 	],
+	"ab-444-2000-90442303": [{"type": "text","sub_type": "message","message": 'Plague/Regress',"message_RU": "Регресс"}],
 	"s-444-2000-1308-0": [{"type": "text","sub_type": "message","message": 'Stun (1)',"message_RU": "Стан (1)"}],
 	"s-444-2000-1309-0": [{"type": "text","sub_type": "message","message": 'Stun (2)',"message_RU": "Стан (2)"}],
 	"s-444-2000-1310-0": [{"type": "text","sub_type": "message","message": 'Stun (3)',"message_RU": "Стан (3)"}],
