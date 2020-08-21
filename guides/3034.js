@@ -176,7 +176,7 @@ module.exports = {
 	"s-3034-1003-205-0": [{"type": "text","sub_type": "message","message": "Wind","message_RU": "Ветер (кайя)!!!"}],
 	"s-3034-1000-304-0": [{"type": "text","sub_type": "message","message": "OUT","message_RU": "ОТ НЕГО"}],
 	"s-3034-1000-305-0": [{"type": "text","sub_type": "message","message": "IN","message_RU": "К НЕМУ"}],
-	"s-3034-1000-306-0": [{"type": "text","sub_type": "message","message": "Incoming Summon","message_RU": "Бомбы!!!"}],
+	"s-3034-1000-306-0": [{"type": "text","sub_type": "message","message": "Bombs","message_RU": "Бомбы!!!"}],
 	"s-3034-1000-307-0": [{"type": "text","sub_type": "message","message": "PULL","message_RU": "Стяжка!!!"}],
 	"s-3034-1000-309-0": [
 		{"type": "text","sub_type": "message","message": "Four missile launches were initiated","message_RU": "Запуск 4 ракет!!!"},
@@ -214,7 +214,7 @@ module.exports = {
 		{"type": "spawn","id": 476,"sub_delay": 99999999,"pos": {x: -32379,y: 59750,z: 0}}
 	],
 	"s-3034-2000-102-0": [{"type": "text","sub_type": "message","message": "Front","message_RU": "Пила"}],
-	"s-3034-2000-105-0": [{"type": "text","sub_type": "message","message": "360","message_RU": "Крутилка (откид)"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,10,250,0,5000)}],
+	"s-3034-2000-105-0": [{"type": "text","sub_type": "message","message": "360","message_RU": "Крутилка (откид)"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,10,278,0,5000)}],
 	"s-3034-2000-108-0": [{"type": "text","sub_type": "message","message": "Back","message_RU": "Откид назад"}],
 	"s-3034-2000-301-0": [{"type": "func","func": skilld_event.bind(null, 301)}],
 	"s-3034-2000-304-0": [{"type": "text","sub_type": "message","message": "OUT","message_RU": "ОТ НЕГО"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,8,400,0,4000)}],
