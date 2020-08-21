@@ -213,9 +213,12 @@ module.exports = {
 		{"type": "spawn","id": 476,"sub_delay": 99999999,"pos": {x: -31846,y: 59444,z: 0}},
 		{"type": "spawn","id": 476,"sub_delay": 99999999,"pos": {x: -32379,y: 59750,z: 0}}
 	],
-	"s-3034-2000-102-0": [{"type": "text","sub_type": "message","message": "Front","message_RU": "Пила"}],
+	"s-3034-2000-102-0": [{"type": "text","sub_type": "message","message": "Front","message_RU": "Пила"},{"type": "func","func": SpawnCircle.bind(null,true,553,0,300,12,228,0,3000)}],
 	"s-3034-2000-105-0": [{"type": "text","sub_type": "message","message": "360","message_RU": "Крутилка (откид)"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,10,278,0,5000)}],
-	"s-3034-2000-108-0": [{"type": "text","sub_type": "message","message": "Back","message_RU": "Откид назад"}],
+	"s-3034-2000-108-0": [{"type": "text","sub_type": "message","message": "Back","message_RU": "Откид назад"},
+		{"type": "func","func": SpawnVector.bind(null,553,0,0,240,380,0,2000)},
+		{"type": "func","func": SpawnVector.bind(null,553,0,0,120,380,0,2000)}
+	],
 	"s-3034-2000-301-0": [{"type": "func","func": skilld_event.bind(null, 301)}],
 	"s-3034-2000-304-0": [{"type": "text","sub_type": "message","message": "OUT","message_RU": "ОТ НЕГО"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,8,400,0,4000)}],
 	"s-3034-2000-305-0": [{"type": "text","sub_type": "message","message": "IN | OUT","message_RU": "К НЕМУ | ОТ НЕГО"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,10,200,0,3000)}],
