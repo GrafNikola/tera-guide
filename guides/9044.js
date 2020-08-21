@@ -30,7 +30,7 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 	if (skillid == 90442000) shining = true;
 	if (skillid == 90442001) shining = false;
 	if (skillid == 90442304) {
-		handlers['text']({"sub_type": "message","notification": "Stun","message_RU": "Стан!!!"});
+		handlers['text']({"sub_type": "notification","message": "Stun","message_RU": "Стан!!!"});
 		handlers['text']({"sub_type": "message","message": "Stun","message_RU": "Стан!!!"});
 	}
 	if (skillid == 90444001 && skill == 104) {
