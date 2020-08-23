@@ -47,14 +47,14 @@ module.exports = {
 	"ab-3202-1000-32021006": [{"type": "text","sub_type": "message","message": 'Plague/Regress',"message_RU": "Чума/регресс"}],
 
 	// Pizza boi
-	"s-3202-1000-121-0": [{"type": "text","sub_type": "message","message": 'Right Foot | IN (OUT waves)',"message_RU": "Правая нога | К НЕМУ (волны ОТ)"},
+	"s-3202-1000-121-0": [{"type": "text","sub_type": "message","message": 'Right Foot | In (Out waves)',"message_RU": "Правая нога | К нему (волны от него)"},
 		{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,8,550,0,3000)},
-		{"type": "func","func": SpawnSemicircle.bind(null,130,250,912,0,0,8,450,0,4000)},
-		{"type": "func","func": SpawnSemicircle.bind(null,-50,65,912,0,0,8,450,0,4000)},
-		{"type": "func","func": SpawnVector.bind(null,912,0,0,245,450,0,4000)},
-		{"type": "func","func": SpawnVector.bind(null,912,0,0,305,450,0,4000)},
-		{"type": "func","func": SpawnVector.bind(null,912,0,0,65,450,0,4000)},
-		{"type": "func","func": SpawnVector.bind(null,912,0,0,125,450,0,4000)},
+		{"type": "func","func": SpawnSemicircle.bind(null,-60,70,912,0,0,8,450,0,4000)},
+		{"type": "func","func": SpawnSemicircle.bind(null,120,250,912,0,0,8,450,0,4000)},
+		{"type": "func","func": SpawnVector.bind(null,912,0,0,70,450,0,4000)},
+		{"type": "func","func": SpawnVector.bind(null,912,0,0,120,450,0,4000)},
+		{"type": "func","func": SpawnVector.bind(null,912,0,0,250,450,0,4000)},
+		{"type": "func","func": SpawnVector.bind(null,912,0,0,300,450,0,4000)},
 		{"type": "text","sub_type": "message","delay": 1900,"message": 'Dodge!',"message_RU": "Эвейд!"}
 	],
 	"s-3202-1000-122-0": [{"type": "text","sub_type": "message","message": 'Front + Back',"message_RU": "Передняя + задняя"},
@@ -63,22 +63,22 @@ module.exports = {
 	"s-3202-1000-123-0": [{"type": "text","sub_type": "message","message": 'Back',"message_RU": "Задняя"},
 		{"type": "func","func": SpawnVector.bind(null,912,0,0,295,550,0,2000)},
 		{"type": "func","func": SpawnVector.bind(null,912,0,0,85,550,0,2000)},
-		{"type": "func","func": SpawnSemicircle.bind(null,85,295,912,0,0,6,550,0,2000)},
-		{"type": "text","sub_type": "message","delay": 100,"message": 'IN (OUT waves)',"message_RU": "К НЕМУ (волны ОТ)"}
+		{"type": "func","func": SpawnSemicircle.bind(null,85,295,912,0,0,6,550,0,2000)}
 	],
-	"s-3202-1000-127-0": [{"type": "text","sub_type": "message","message": 'IN (OUT waves)',"message_RU": "К НЕМУ (волны ОТ)"},
-		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,18,157,0,5000)},
-		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,12,307,0,5000)}
+	"s-3202-1000-127-0": [{"type": "text","sub_type": "message","message": 'In (Out waves)',"message_RU": "К нему (волны от него)"},
+		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,14,160,0,4000)},
+		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,8,390,0,4000)},
+		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,6,620,0,4000)}
 	],
 	//
-	"s-3202-1000-124-0": [{"type": "text","sub_type": "message","message": 'Left Foot | OUT (IN waves)',"message_RU": "Левая нога | ОТ НЕГО (волны К)"},
+	"s-3202-1000-124-0": [{"type": "text","sub_type": "message","message": 'Left Foot | Out (In waves)',"message_RU": "Левая нога | От него (волны к нему)"},
 		{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,8,550,0,3000)},
-		{"type": "func","func": SpawnSemicircle.bind(null,130,250,912,0,0,8,450,0,4000)},
-		{"type": "func","func": SpawnSemicircle.bind(null,-50,65,912,0,0,8,450,0,4000)},
-		{"type": "func","func": SpawnVector.bind(null,912,0,0,245,450,0,4000)},
-		{"type": "func","func": SpawnVector.bind(null,912,0,0,305,450,0,4000)},
-		{"type": "func","func": SpawnVector.bind(null,912,0,0,65,450,0,4000)},
-		{"type": "func","func": SpawnVector.bind(null,912,0,0,125,450,0,4000)},
+		{"type": "func","func": SpawnSemicircle.bind(null,-60,70,912,0,0,8,450,0,4000)},
+		{"type": "func","func": SpawnSemicircle.bind(null,120,250,912,0,0,8,450,0,4000)},
+		{"type": "func","func": SpawnVector.bind(null,912,0,0,70,450,0,4000)},
+		{"type": "func","func": SpawnVector.bind(null,912,0,0,120,450,0,4000)},
+		{"type": "func","func": SpawnVector.bind(null,912,0,0,250,450,0,4000)},
+		{"type": "func","func": SpawnVector.bind(null,912,0,0,300,450,0,4000)},
 		{"type": "text","sub_type": "message","delay": 1900,"message": 'Dodge!',"message_RU": "Эвейд!"}
 	],
 	"s-3202-1000-125-0": [{"type": "text","sub_type": "message","message": 'Front + Back',"message_RU": "Передняя + задняя"},
@@ -87,11 +87,11 @@ module.exports = {
 	"s-3202-1000-126-0": [{"type": "text","sub_type": "message","message": 'Back',"message_RU": "Задняя"},
 		{"type": "func","func": SpawnVector.bind(null,912,0,0,295,550,0,2000)},
 		{"type": "func","func": SpawnVector.bind(null,912,0,0,85,550,0,2000)},
-		{"type": "func","func": SpawnSemicircle.bind(null,85,295,912,0,0,6,550,0,2000)},
-		{"type": "text","sub_type": "message","delay": 100,"message": 'OUT (IN waves)',"message_RU": "ОТ НЕГО (волны К)"}
+		{"type": "func","func": SpawnSemicircle.bind(null,85,295,912,0,0,6,550,0,2000)}
 	],
-	"s-3202-1000-128-0": [{"type": "text","sub_type": "message","message": 'OUT (IN waves)',"message_RU": "ОТ НЕГО (волны К)"},
-		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,18,143,0,5000)},
-		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,12,293,0,5000)}
+	"s-3202-1000-128-0": [{"type": "text","sub_type": "message","message": 'Out (In waves)',"message_RU": "От него (волны к нему)"},
+		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,14,160,0,4000)},
+		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,8,390,0,4000)},
+		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,6,620,0,4000)}
 	]
 };
