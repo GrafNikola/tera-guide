@@ -47,7 +47,7 @@ module.exports = {
 	"ab-3202-1000-32021006": [{"type": "text","sub_type": "message","message": 'Plague/Regress',"message_RU": "Чума/регресс"}],
 
 	// Pizza boi
-	"s-3202-1000-121-0": [{"type": "text","sub_type": "message","message": 'Right Foot | In (Out waves)',"message_RU": "Правая нога | К нему (волны от него)"},
+	"s-3202-1000-121-0": [{"type": "text","sub_type": "message","message": 'Right Foot | In (Out waves)',"message_RU": "Правая нога | К нему (волны от)"},
 		{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,8,550,0,3000)},
 		{"type": "func","func": SpawnSemicircle.bind(null,-60,70,912,0,0,8,450,0,4000)},
 		{"type": "func","func": SpawnSemicircle.bind(null,120,250,912,0,0,8,450,0,4000)},
