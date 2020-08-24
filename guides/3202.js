@@ -63,15 +63,16 @@ module.exports = {
 	"s-3202-1000-123-0": [{"type": "text","sub_type": "message","message": 'Back',"message_RU": "Задняя"},
 		{"type": "func","func": SpawnVector.bind(null,912,0,0,295,550,0,1500)},
 		{"type": "func","func": SpawnVector.bind(null,912,0,0,85,550,0,1500)},
-		{"type": "func","func": SpawnSemicircle.bind(null,85,295,912,0,0,6,550,0,1500)}
+		{"type": "func","func": SpawnSemicircle.bind(null,85,295,912,0,0,6,550,0,1500)},
+		{"type": "text","sub_type": "message","delay":100,"message": 'In (Out waves)',"message_RU": "К нему (волны от)"}
 	],
-	"s-3202-1000-127-0": [{"type": "text","sub_type": "message","message": 'In (Out waves)',"message_RU": "К нему (волны от него)"},
+	"s-3202-1000-127-0": [{"type": "text","sub_type": "message","message": 'In (Out waves)',"message_RU": "К нему (волны от)"},
 		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,14,160,0,3000)},
 		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,8,390,0,3000)},
 		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,6,620,0,3000)}
 	],
 	//
-	"s-3202-1000-124-0": [{"type": "text","sub_type": "message","message": 'Left Foot | Out (In waves)',"message_RU": "Левая нога | От него (волны к нему)"},
+	"s-3202-1000-124-0": [{"type": "text","sub_type": "message","message": 'Left Foot | Out (In waves)',"message_RU": "Левая нога | От него (волны к)"},
 		{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,8,550,0,3000)},
 		{"type": "func","func": SpawnSemicircle.bind(null,-60,70,912,0,0,8,450,0,4000)},
 		{"type": "func","func": SpawnSemicircle.bind(null,120,250,912,0,0,8,450,0,4000)},
@@ -87,9 +88,10 @@ module.exports = {
 	"s-3202-1000-126-0": [{"type": "text","sub_type": "message","message": 'Back',"message_RU": "Задняя"},
 		{"type": "func","func": SpawnVector.bind(null,912,0,0,295,550,0,1500)},
 		{"type": "func","func": SpawnVector.bind(null,912,0,0,85,550,0,1500)},
-		{"type": "func","func": SpawnSemicircle.bind(null,85,295,912,0,0,6,550,0,1500)}
+		{"type": "func","func": SpawnSemicircle.bind(null,85,295,912,0,0,6,550,0,1500)},
+		{"type": "text","sub_type": "message","delay":100,"message": 'Out (In waves)',"message_RU": "От него (волны к)"}
 	],
-	"s-3202-1000-128-0": [{"type": "text","sub_type": "message","message": 'Out (In waves)',"message_RU": "От него (волны к нему)"},
+	"s-3202-1000-128-0": [{"type": "text","sub_type": "message","message": 'Out (In waves)',"message_RU": "От него (волны к)"},
 		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,14,160,0,3000)},
 		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,8,390,0,3000)},
 		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,6,620,0,3000)}
