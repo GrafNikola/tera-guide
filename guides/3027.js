@@ -1,7 +1,6 @@
-// Forbidden Arena
+// Forbidden Arena [Hagufna]
 //
-// made by michengs
-// updated by HSDN
+// made by michengs / HSDN
 
 const {HIGHLIGHT_ITEM, SpawnItem, SpawnMarker, SpawnVector, SpawnCircle} = require("../lib");
 
