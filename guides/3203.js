@@ -4,14 +4,34 @@
 
 // Stub
 
+const {SpawnCircle, SpawnVector} = require("../lib");
+
 let player, entity, library, effect;
 
-const {SpawnCircle, SpawnVector} = require("../lib");
+let print = false;
+
+function start_boss() {
+	print = true;
+}
+
+function print_thirty(handlers) {
+	if (print) {
+		handlers['text']({
+			"sub_type": "message",
+			"message": "30%",
+			"message_RU": "30%"
+		});
+	}
+	print = false;
+}
 
 module.exports = {
 	load(dispatch) {
 		({ player, entity, library, effect } = dispatch.require.library);
 	},
+
+	"h-3203-1000-99": [{"type": "func","func": start_boss}],
+	"h-3203-1000-30": [{"type": "func","func": print_thirty}],
 
 	"s-3203-1000-110-0": [{"type": "text","sub_type": "message","message": "Spin","message_RU": "Крутилка"},{"type": "func","func": SpawnCircle.bind(null,true,553,0,0,12,420,0,3000)}],
 	"s-3203-1000-114-0": [{"type": "text","sub_type": "message","message": "Jump (Knockdown)","message_RU": "Прыжок (опрокид)"},{"type": "func","func": SpawnCircle.bind(null,true,553,0,0,12,230,0,2000)}],
@@ -51,7 +71,7 @@ module.exports = {
 	"s-3203-1000-143-0": [{"type": "text","sub_type": "message","message": "Jump (Stun)","message_RU": "Прыжок (стан)"}],
 	"s-3203-1000-143-1": [{"type": "func","func": SpawnCircle.bind(null,true,553,0,0,14,230,0,2000)}],
 
-	// Target 32031007
+	// Target 32031007 308
 	"qb-3203-1000-32031007": [{"type": "text","sub_type": "message","message": "Target","message_RU": "Таргет"}],
 
 	// AoE 313 314
