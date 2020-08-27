@@ -39,10 +39,13 @@ id | Dungeon name | Название данжа
 3020 | Sea of Honor | Золотая чешуя
 3026 | Corrupted Skynest | Логово Келсаика
 3126 | Corrupted Skynest (Hard) | Логово Бессмертного Келсаика
-3027 | Forbidden Arena [Hagufna] | Арена безумия [Бессмертный воин]
-3103 | Forbidden Arena [Undying Warlord] | Арена безумия [Этерния]
 3102 | Draakon Arena | Командный центр
 3202 | Draakon Arena (Hard) | Командный центр (сложно)
+3027 | Forbidden Arena [Hagufna] | Арена безумия [Бессмертный воин]
+3103 | Forbidden Arena [Undying Warlord] | Арена безумия [Этерния]
+3203 | Forbidden Arena [Nightmare Undying Warlord]&#42; | Арена безумия [Бессмертный]&#42;
+
+&#42; - Dungeon on testing, possibly mistakes / Данж тестируется, возможны ошибки
 
 ## Notices settings / Настройка уведомлений
 
