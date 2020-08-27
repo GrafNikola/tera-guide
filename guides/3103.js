@@ -62,8 +62,8 @@ module.exports = {
 		{"type": "func","func": SpawnVector.bind(null,912,270,200,-390,250,0,3000)}
 	],
 
-	// Jump  143-0 143-1 // 09-23
-	"s-3103-1000-143-0": [{"type": "text","sub_type": "message","message": "Jump","message_RU": "Прыжок (стан)"}],
+	// Jump 143-0 143-1 // 09-23
+	"s-3103-1000-143-0": [{"type": "text","sub_type": "message","message": "Jump (Stun)","message_RU": "Прыжок (стан)"}],
 	"s-3103-1000-143-1": [{"type": "func","func": SpawnCircle.bind(null,true,553,0,0,14,230,0,2000)}],
 
 	// Target 31031007 308 // 10-25
