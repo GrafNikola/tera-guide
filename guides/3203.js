@@ -42,7 +42,10 @@ module.exports = {
 	// Stun 142 148 129
 	"s-3203-1000-142-0": [{"type": "text","sub_type": "message","message": "Stun | Back wave","message_RU": "Стан | Волна назад"}],
 	"s-3203-1000-148-0": [{"type": "func","func": SpawnCircle.bind(null,true,912,0,0,12,300,0,3000)}],
-	"s-3203-1000-129-0": [{"type": "text","sub_type": "message","message": "Back wave","message_RU": "Волна назад (откид)"}],
+	"s-3203-1000-129-0": [{"type": "text","sub_type": "message","message": "Back wave","message_RU": "Волна назад (откид)"},
+		{"type": "func","func": SpawnVector.bind(null,912,90,200,390,250,0,3000)},
+		{"type": "func","func": SpawnVector.bind(null,912,270,200,-390,250,0,3000)}
+	],
 
 	// Jump  143-0 143-1
 	"s-3203-1000-143-0": [{"type": "text","sub_type": "message","message": "Jump","message_RU": "Прыжок (стан)"}],
