@@ -72,18 +72,18 @@ module.exports = {
 		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,12,250,0,5000)},
 		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,8,480,0,5000)}
 	],
-	"s-3203-1000-155-0": [{"type": "text","sub_type": "message","delay": 200,"message": "Dodge","message_RU": "Эвейд"}],
+	"s-3203-1000-155-0": [{"type": "text","sub_type": "message","delay": 300,"message": "Dodge","message_RU": "Эвейд"}],
 
 	// Stun 142 148 129
 	"s-3203-1000-142-0": [{"type": "text","sub_type": "message","message": "Stun | Back wave","message_RU": "Стан | Волна назад"}],
 	"s-3203-1000-148-0": [{"type": "func","func": SpawnCircle.bind(null,true,912,0,0,12,300,0,3000)}],
 	"s-3203-1000-129-0": [{"type": "text","sub_type": "message","message": "Back wave","message_RU": "Волна назад (откид)"},
 		{"type": "func","func": SpawnVector.bind(null,912,90,200,390,300,0,2000)},
-		{"type": "func","func": SpawnVector.bind(null,912,90,140,380,300,0,2000)},
-		{"type": "func","func": SpawnVector.bind(null,912,90,70,370,300,0,2000)},
-		{"type": "func","func": SpawnVector.bind(null,912,90,0,0,300,0,2000)},
-		{"type": "func","func": SpawnVector.bind(null,912,270,70,-370,300,0,2000)},
-		{"type": "func","func": SpawnVector.bind(null,912,270,140,-380,300,0,2000)},
+		{"type": "func","func": SpawnVector.bind(null,912,90,140,380,310,0,2000)},
+		{"type": "func","func": SpawnVector.bind(null,912,90,70,370,320,0,2000)},
+		{"type": "func","func": SpawnVector.bind(null,912,90,0,0,330,0,2000)},
+		{"type": "func","func": SpawnVector.bind(null,912,270,70,-370,320,0,2000)},
+		{"type": "func","func": SpawnVector.bind(null,912,270,140,-380,310,0,2000)},
 		{"type": "func","func": SpawnVector.bind(null,912,270,200,-390,300,0,2000)}
 	],
 
@@ -96,7 +96,7 @@ module.exports = {
 	"s-3203-1000-314-0": [{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,20,460,0,4000)}],
 
 	// Debuff
-	"ae-0-0-32031011": [{"type": "text","sub_type": "notification","message": "[Debuff] Layer 2","message_RU": "[Дебафф] 2 стак"}],
-	"am-3203-1000-32031011": [{"type": "text","sub_type": "notification","message": "[Debuff] Layer 1","message_RU": "[Дебафф] 1 стак"}],
-	"am-3203-1000-32031012": [{"type": "text","sub_type": "notification","message": "[Debuff] Layer 3","message_RU": "[Дебафф] 3 стак"}],
+	"ae-0-0-32031011": [{"type": "text","sub_type": "notification","message": "Debuff stack","message_RU": "Дебафф (стаки)"}],
+	"am-3203-1000-32031011": [{"type": "text","sub_type": "notification","message": "Debuff stack","message_RU": "Дебафф (стаки)"}],
+	"am-3203-1000-32031012": [{"type": "text","sub_type": "notification","message": "Debuff stack","message_RU": "Дебафф (стаки)"}],
 };
