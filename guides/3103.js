@@ -19,7 +19,6 @@ module.exports = {
 	"s-3103-1000-115-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Front kick","message_RU": "Удар вперед"}],
 	"s-3103-1000-153-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Two kicks","message_RU": "Два удара"}], // 153 108
 	//"s-3103-1000-108-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Floor punch","message_RU": "Удар о землю"}],
-	//"s-3103-1000-154-0": [{"type": "text","sub_type": "message","message": "Jumping kick","message_RU": "Удар в прыжке"}], // 154 310 116
 
 	//"s-3103-1000-120-0": [{"type": "text","sub_type": "message","message": "_","message_RU": "120"}], // 08-01
 	//"s-3103-1000-124-0": [{"type": "text","sub_type": "message","message": "_","message_RU": "124"}], // 07-34
@@ -29,7 +28,8 @@ module.exports = {
 	"s-3103-1000-107-0": [{"type": "text","sub_type": "message","message": "Target (Bait)","message_RU": "Байт (таргет)"}],
 	"s-3103-1000-110-0": [{"type": "text","sub_type": "message","message": "Spin","message_RU": "Крутилка"},{"type": "func","func": SpawnCircle.bind(null,true,553,0,0,12,420,0,3000)}],
 	"s-3103-1000-114-0": [{"type": "text","sub_type": "message","message": "Jump (Knockdown)","message_RU": "Прыжок (опрокид)"},{"type": "func","func": SpawnCircle.bind(null,true,553,0,0,12,240,0,2000)}],
-	"s-3103-1000-310-0": [{"type": "text","sub_type": "message","message": "Back flip","message_RU": "Сальто назад"}], // 310 116
+	//"s-3103-1000-154-0": [{"type": "text","sub_type": "message","message": "Jumping kick","message_RU": "Удар в прыжке"}], // 154 310 116
+	"s-3103-1000-310-0": [{"type": "text","sub_type": "message","message": "Back flip | Kick","message_RU": "Сальто назад | Удар"}], // 310 116
 	"s-3103-1000-116-0": [{"type": "text","sub_type": "message","message": "Kick","message_RU": "Удар"}],
 	"s-3103-1000-131-0": [{"type": "text","sub_type": "message","message": "Rhythmic Blows","message_RU": "Ураганная серия"}], // 131 132 133
 	"s-3103-1000-146-0": [{"type": "text","sub_type": "message","message": "Back kick","message_RU": "Откид назад"}, // 116 146
