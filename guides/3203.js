@@ -35,7 +35,7 @@ module.exports = {
 
 	//"s-3203-1000-101-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Punch","message_RU": "Серия ударов"}],
 	"s-3203-1000-113-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Roundhouse kick","message_RU": "Удар с разворота"}],
-	"s-3203-1000-121-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Flip kick","message_RU": "Удар в воздухе"}],
+	"s-3203-1000-121-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Flip kick (Stun)","message_RU": "Удар в воздухе (стан)"}],
 	"s-3203-1000-111-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Knockdown","message_RU": "Опрокид"}],
 	"s-3203-1000-102-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Combo","message_RU": "Комба"}], // 102 153/154 115/116
 	//"s-3203-1000-154-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Jumping kick","message_RU": "Удар в прыжке"}],
