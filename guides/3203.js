@@ -72,7 +72,7 @@ module.exports = {
 		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,12,250,0,5000)},
 		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,8,480,0,5000)}
 	],
-	"s-3203-1000-155-0": [{"type": "text","sub_type": "message","delay": 500,"message": "Dodge","message_RU": "Эвейд"}],
+	"s-3203-1000-155-0": [{"type": "text","sub_type": "message","delay": 200,"message": "Dodge","message_RU": "Эвейд"}],
 
 	// Stun 142 148 129
 	"s-3203-1000-142-0": [{"type": "text","sub_type": "message","message": "Stun | Back wave","message_RU": "Стан | Волна назад"}],
