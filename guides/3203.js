@@ -45,7 +45,7 @@ module.exports = {
 
 	"s-3203-1000-107-0": [{"type": "text","sub_type": "message","message": "Target (Bait)","message_RU": "Байт (таргет)"}],
 	"s-3203-1000-110-0": [{"type": "text","sub_type": "message","message": "Spin","message_RU": "Крутилка"},{"type": "func","func": SpawnCircle.bind(null,true,553,0,0,12,420,0,3000)}],
-	"s-3203-1000-114-0": [{"type": "text","sub_type": "message","message": "Jump (Knockdown)","message_RU": "Прыжок (опрокид)"},{"type": "func","func": SpawnCircle.bind(null,true,553,0,0,12,230,0,2000)}],
+	"s-3203-1000-114-0": [{"type": "text","sub_type": "message","message": "Jump (Knockdown)","message_RU": "Прыжок (опрокид)"},{"type": "func","func": SpawnCircle.bind(null,true,553,0,0,12,240,0,2000)}],
 	"s-3203-1000-310-0": [{"type": "text","sub_type": "message","message": "Back flip","message_RU": "Сальто назад"}], // 310 116
 	"s-3203-1000-116-0": [{"type": "text","sub_type": "message","message": "Kick","message_RU": "Удар"}],
 	"s-3203-1000-131-0": [{"type": "text","sub_type": "message","message": "Rhythmic Blows","message_RU": "Ураганная серия"}], // 131 132 133
@@ -80,11 +80,11 @@ module.exports = {
 	"s-3203-1000-148-0": [{"type": "func","func": SpawnCircle.bind(null,true,912,0,0,12,300,0,3000)}],
 	"s-3203-1000-129-0": [{"type": "text","sub_type": "message","message": "Back wave","message_RU": "Волна назад (откид)"},
 		{"type": "func","func": SpawnVector.bind(null,912,90,200,390,300,0,2000)},
-		{"type": "func","func": SpawnVector.bind(null,912,90,140,380,310,0,2000)},
-		{"type": "func","func": SpawnVector.bind(null,912,90,70,370,320,0,2000)},
-		{"type": "func","func": SpawnVector.bind(null,912,90,0,0,330,0,2000)},
-		{"type": "func","func": SpawnVector.bind(null,912,270,70,-370,320,0,2000)},
-		{"type": "func","func": SpawnVector.bind(null,912,270,140,-380,310,0,2000)},
+		{"type": "func","func": SpawnVector.bind(null,912,90,140,380,350,0,2000)},
+		{"type": "func","func": SpawnVector.bind(null,912,90,70,370,400,0,2000)},
+		{"type": "func","func": SpawnVector.bind(null,912,90,0,0,400,0,2000)},
+		{"type": "func","func": SpawnVector.bind(null,912,270,70,-370,400,0,2000)},
+		{"type": "func","func": SpawnVector.bind(null,912,270,140,-380,350,0,2000)},
 		{"type": "func","func": SpawnVector.bind(null,912,270,200,-390,300,0,2000)}
 	],
 
