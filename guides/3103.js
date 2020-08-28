@@ -77,4 +77,9 @@ module.exports = {
 	// AoE 313 314
 	"s-3103-1000-313-0": [{"type": "text","sub_type": "message","message": "AOE","message_RU": "AOE"}],
 	"s-3103-1000-314-0": [{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,20,460,0,4000)}],
+
+	// Debuff
+	"ae-0-0-31031011": [{"type": "text","sub_type": "notification","message": "[Debuff] Layer 2","message_RU": "[Дебафф] 2 стак"}],
+	"am-3103-1000-31031011": [{"type": "text","sub_type": "notification","message": "[Debuff] Layer 1","message_RU": "[Дебафф] 1 стак"}],
+	"am-3103-1000-31031012": [{"type": "text","sub_type": "notification","message": "[Debuff] Layer 3","message_RU": "[Дебафф] 3 стак"}],
 };

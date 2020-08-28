@@ -47,7 +47,7 @@ module.exports = {
 	"s-3203-1000-110-0": [{"type": "text","sub_type": "message","message": "Spin","message_RU": "Крутилка"},{"type": "func","func": SpawnCircle.bind(null,true,553,0,0,12,420,0,3000)}],
 	"s-3203-1000-114-0": [{"type": "text","sub_type": "message","message": "Jump (Knockdown)","message_RU": "Прыжок (опрокид)"},{"type": "func","func": SpawnCircle.bind(null,true,553,0,0,12,230,0,2000)}],
 	"s-3203-1000-116-0": [{"type": "text","sub_type": "message","message": "Kick","message_RU": "Удар"}],
-	"s-3203-1000-131-0": [{"type": "text","sub_type": "message","message": "Rhythmic Blows","message_RU": "Ураганная серия"}], // 131 132 133
+	"s-3203-1000-131-0": [{"type": "text","sub_type": "message","message": "Rhythmic Blows","message_RU": "Ураганная серия"}, // 131 132 133
 	"s-3203-1000-146-0": [{"type": "text","sub_type": "message","message": "Back kick","message_RU": "Откид назад"}, // 116 146
 		{"type": "func","func": SpawnVector.bind(null,553,90,120,170,600,0,3000)},
 		{"type": "func","func": SpawnVector.bind(null,553,270,120,-170,600,0,3000)}
@@ -94,4 +94,9 @@ module.exports = {
 	// AoE 313 314
 	"s-3203-1000-313-0": [{"type": "text","sub_type": "message","message": "AOE","message_RU": "AOE"}],
 	"s-3203-1000-314-0": [{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,20,460,0,4000)}],
+
+	// Debuff
+	"ae-0-0-32031011": [{"type": "text","sub_type": "notification","message": "[Debuff] Layer 2","message_RU": "[Дебафф] 2 стак"}],
+	"am-3203-1000-32031011": [{"type": "text","sub_type": "notification","message": "[Debuff] Layer 1","message_RU": "[Дебафф] 1 стак"}],
+	"am-3203-1000-32031012": [{"type": "text","sub_type": "notification","message": "[Debuff] Layer 3","message_RU": "[Дебафф] 3 стак"}],
 };
