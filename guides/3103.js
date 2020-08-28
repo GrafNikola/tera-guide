@@ -30,7 +30,7 @@ module.exports = {
 	"s-3103-1000-110-0": [{"type": "text","sub_type": "message","message": "Spin","message_RU": "Крутилка"},{"type": "func","func": SpawnCircle.bind(null,true,553,0,0,12,420,0,3000)}],
 	"s-3103-1000-114-0": [{"type": "text","sub_type": "message","message": "Jump (Knockdown)","message_RU": "Прыжок (опрокид)"},{"type": "func","func": SpawnCircle.bind(null,true,553,0,0,12,230,0,2000)}],
 	"s-3103-1000-116-0": [{"type": "text","sub_type": "message","message": "Kick","message_RU": "Удар"}],
-	"s-3103-1000-131-0": [{"type": "text","sub_type": "message","message": "Rhythmic Blows","message_RU": "Ураганная серия"}, // 131 132 133
+	"s-3103-1000-131-0": [{"type": "text","sub_type": "message","message": "Rhythmic Blows","message_RU": "Ураганная серия"}], // 131 132 133
 	"s-3103-1000-146-0": [{"type": "text","sub_type": "message","message": "Back kick","message_RU": "Откид назад"}, // 116 146
 		{"type": "func","func": SpawnVector.bind(null,553,90,120,170,600,0,3000)},
 		{"type": "func","func": SpawnVector.bind(null,553,270,120,-170,600,0,3000)}
