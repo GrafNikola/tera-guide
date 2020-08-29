@@ -6,6 +6,26 @@ const {SpawnCircle, SpawnVector} = require("../lib");
 
 let player, entity, library, effect;
 
+let timer1;
+let printTarget = true;
+
+function skilld_event(skillid, handlers, event, entity, dispatch) {
+	if ([31031007,32031007].includes(skillid)) { // "Ha" attacks
+		if (printTarget) {
+			clearTimeout(timer1);
+			printTarget = false;
+			setTimeout(() => printTarget = true, 5000);
+			timer1 = setTimeout(()=> {
+				handlers['text']({
+					"sub_type": "notification",
+					"message": "Target attacks soon",
+					"message_RU": "Скоро таргет-атака"
+				});
+			}, 65000);
+		}
+	}
+}
+
 module.exports = {
 	load(dispatch) {
 		({ player, entity, library, effect } = dispatch.require.library);
@@ -37,8 +57,8 @@ module.exports = {
 	// Shield
 	"qb-3103-1000-31031006": [{"type": "text","sub_type": "message","message": "SHIELD!","message_RU": "ЩИТ!"}],
 
-	// Target 308 31031007 125
-	"qb-3103-1000-31031007": [{"type": "text","sub_type": "message","message": "Target","message_RU": "Таргет"}],
+	// Target "Ha" attacks 308 31031007 125
+	"qb-3103-1000-31031007": [{"type": "text","sub_type": "message","message": "Target","message_RU": "Таргет"},{"type": "func","func": skilld_event.bind(null, 31031007)}],
 	"s-3103-1000-124-0": [{"type": "text","sub_type": "message","message": "Kick","message_RU": "Удар"}], // 305 124
 	"s-3103-1000-125-0": [{"type": "text","sub_type": "message","message": "Kick","message_RU": "Удар"}],
 
