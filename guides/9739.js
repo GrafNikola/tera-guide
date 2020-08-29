@@ -6,28 +6,6 @@ const {SpawnVector, SpawnCircle} = require("../lib");
 
 let player, entity, library, effect;
 
-function argogStun(handlers) {
-	setTimeout(() => {
-		handlers['text']({
-			"type": "text",
-			"sub_type": "message",
-			"message": "Dodge!",
-			"message_RU": "Эвейд!"
-		});
-	}, 1750);
-}
-
-function argogReveal(handlers) {
-	setTimeout(() => {
-		handlers['text']({
-			"type": "text",
-			"sub_type": "message",
-			"message": "Dodge!",
-			"message_RU": "Эвейд!"
-		});
-	}, 3600);
-}
-
 module.exports = {
 	load(dispatch) {
 		({ player, entity, library, effect } = dispatch.require.library);
@@ -78,14 +56,14 @@ module.exports = {
 
 	// 3 BOSS
 	"h-739-3001-30": [{"type": "text","sub_type": "message","message": "Reveal soon","message_RU": "Скоро разоблачение"}],
-	"s-739-3000-1201-0": [{"type": "func","func": argogReveal}],
-	"s-739-3000-2201-0": [{"type": "func","func": argogReveal}],
+	"s-739-3000-1201-0": [{"type": "text","sub_type": "message","delay": 3600,"message": "Dodge!","message_RU": "Эвейд!"}],
+	"s-739-3000-2201-0": [{"type": "text","sub_type": "message","delay": 3600,"message": "Dodge!","message_RU": "Эвейд!"}],
 	"s-739-3000-1107-0": [{"type": "text","sub_type": "message","message": "Many hits","message_RU": "Кнут"}],
 	"s-739-3000-2107-0": [{"type": "text","sub_type": "message","message": "Many hits","message_RU": "Кнут"}],
-	"s-739-3000-1115-0": [{"type": "func","func": argogStun},
+	"s-739-3000-1115-0": [{"type": "text","sub_type": "message","delay": 1750,"message": "Dodge!","message_RU": "Эвейд!"},
 		{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,10,630,0,4000)}
 	],
-	"s-739-3000-2115-0": [{"type": "func","func": argogStun},
+	"s-739-3000-2115-0": [{"type": "text","sub_type": "message","delay": 1750,"message": "Dodge!","message_RU": "Эвейд!"},
 		{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,10,630,0,4000)}
 	],
 	"s-739-3000-1118-0": [{"type": "text","sub_type": "message","message": "Spin","message_RU": "Крутилка"}],
@@ -93,10 +71,10 @@ module.exports = {
 	// Revealed Argog
 	"s-739-3000-1167-0": [{"type": "text","sub_type": "message","message": "Many hits","message_RU": "Несколько ударов"}],
 	"s-739-3000-2167-0": [{"type": "text","sub_type": "message","message": "Many hits","message_RU": "Несколько ударов"}],
-	"s-739-3000-1175-0": [{"type": "func","func":  argogStun},
+	"s-739-3000-1175-0": [{"type": "text","sub_type": "message","delay": 1750,"message": "Dodge!","message_RU": "Эвейд!"},
 		{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,10,630,0,4000)}
 	],
-	"s-739-3000-2175-0": [{"type": "func","func": argogStun},
+	"s-739-3000-2175-0": [{"type": "text","sub_type": "message","delay": 1750,"message": "Dodge!","message_RU": "Эвейд!"},
 		{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,10,630,0,4000)}
 	],
 	"s-739-3000-1178-0": [{"type": "text","sub_type": "message","message": "Spin","message_RU": "Крутилка"}],
