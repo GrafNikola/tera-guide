@@ -1,17 +1,17 @@
 {
     "files": {
         "LICENSE": "7f2ae2125b491e75c546a5d538f82ad4431d5d6b1bbd4aea724864a21daeca63",
-        "README.md": "e085f809a308ccd6d4beabeeb38585ab811b35d024c466d56ba4edb5162add07",
+        "README.md": "5b5829b57fdb8f26af626e32eb5ef98c1f2f57e73a3d4dfb0f627a3738b181cf",
         "dbg.json": {
             "hash": "629638b8d5c9f3e359bfad1795298babfe23a44a3ff6bd0afc0275d8bf4e4be8",
             "overwrite": false
         },
         "dispatch.js": "8550f756e05b171839867491a9f52385f1aef8bfbbed3c80e0afe6aff1d53902",
         "guides/3020.js": "d53d2acd9b40eed608a216ce5890459078297ed13bf996f445f5713e92b501a2",
-        "guides/3023.js": "0e60768bb2424e843610db13d7fde82584a2b6fc3689c802219f85a42bf91dea",
+        "guides/3023.js": "bcd2c92c137ac4598a2933c3e399d1322a77783ea49f35267162ad7b7b198b09",
         "guides/3026.js": "50e011cec22e9a908a04e029363d3b113d85e6709679d4665829c4cd2afa52b4",
         "guides/3027.js": "01dd77f1cd9fd6e1c568de3221ad52065f5e83efe66e4d6c792d52af94636bb3",
-        "guides/3034.js": "bb163b4b35f2c306d520b99e2164d7f7609e500b1638d01ae3dd28770d38618b",
+        "guides/3034.js": "3c0c0180794882370dcbb1b805cb019d319b1a0d9cb8d537c63f46f315cd4257",
         "guides/3101.js": "b300aeaabbe45fd26063ac83cbbc056deca4ca684a765eccc84b7b7b7a0015a9",
         "guides/3102.js": "41ea0fc025ee407f6a77da3357f7425e6d8ce2bd080c0136c3a3da087457fb17",
         "guides/3103.js": "2a4f7919cc9546a8aacb5fa12f34a611850776e1d43f8a608dc93d84b4fdd813",
@@ -22,7 +22,8 @@
         "guides/9044.js": "911abbddf915121e8aefbc10c086bca3fa40eba63559d3c8231da6e3c85f3f57",
         "guides/9067.js": "a65a421bd51d0efd37cd38ad9de01722b6a3efc63da90168ea0b4af70946237c",
         "guides/9720.js": "118a40f41fa6b7b76f84d5fc8b7dacd160092b0678f1b7876507e94980931804",
-        "guides/9735.js": "595a2e44938998e82426e5aeefd6f7389753591778e23f7970a9f3a613bea1e4",
+        "guides/9735.js": "7b957507aa467257e44d1a7fbffb9c21517b33acde23e685db25d35edb57c71f",
+        "guides/9739.js": "ba2f7350c5d2d5cf15574cf21afaeb39af6179e18ef2b5832838d377df9e025d",
         "guides/9781.js": "7c7ff0507938869fca35c11682e39978b06cbc9b109581577e1edfb6a6ca0f6f",
         "guides/9782.js": "86e0aca8d291a5f717973ac1f2c60129174ad534f921694291f3c3c46fcbc554",
         "guides/9920.js": "e7d8c94ed6d250be4b8b2ec33d7134a5a99695245472192cad59d76251691fc3",
@@ -31,8 +32,8 @@
         "guides/9982.js": "5f0d7cfee6d24c360e886a5a2b2206ec04224b7a16041b46afe081abf65066a5",
         "index.js": "99ce65829aa28e207fc22fac766b5b45cfe3e251721907fc35880ac2b7bf29da",
         "lib.js": "4a09d9686ac10c0954f48e52ea51f9824e610c88471a9f79d186a92a15237fda",
-        "module.json": "047739908cbdf0f6184a91352b3817cf90d494a7a9f1b0001230168b0b1668de",
-        "settings_migrator.js": "b7ba5b74a585c382f7ce79b4888338061fa47b70d7712d0e1e7115919cffbdb9",
+        "module.json": "7d4516e35d479e6e71cc63a98a6a0f5fb0a23c729969f722e51b6969372463b0",
+        "settings_migrator.js": "9c6b354806dc5815f92652a89162bdd604f97edc25f5069b4266dfc913f69954",
         "voice/index.js": "34801cb6577926f496b8c793b3ff0cdaa96d7e81b37e3be416c90c0b2175a336"
     },
     "defs": {

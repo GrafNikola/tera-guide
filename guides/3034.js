@@ -25,7 +25,7 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 	// 2 BOSS
 	if (notice && skillid == 301) {
 		notice = false;
-		handlers['text']({"sub_type": "message","message": "Throws","message_RU": "Бомба"});
+		handlers['text']({"sub_type": "message","message": "Throwing orb","message_RU": "Бомба"});
 		setTimeout(() => notice = true, 13000);
 	}
 
@@ -213,9 +213,9 @@ module.exports = {
 		{"type": "spawn","id": 476,"sub_delay": 99999999,"pos": {x: -31846,y: 59444,z: 0}},
 		{"type": "spawn","id": 476,"sub_delay": 99999999,"pos": {x: -32379,y: 59750,z: 0}}
 	],
-	"s-3034-2000-102-0": [{"type": "text","sub_type": "message","message": "Front","message_RU": "Пила"},{"type": "func","func": SpawnCircle.bind(null,true,553,0,300,12,228,0,3000)}],
+	"s-3034-2000-102-0": [{"type": "text","sub_type": "message","message": "Pizza cutter","message_RU": "Пила"},{"type": "func","func": SpawnCircle.bind(null,true,553,0,300,12,228,0,3000)}],
 	"s-3034-2000-105-0": [{"type": "text","sub_type": "message","message": "360","message_RU": "Крутилка (откид)"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,10,278,0,5000)}],
-	"s-3034-2000-108-0": [{"type": "text","sub_type": "message","message": "Back","message_RU": "Откид назад"},
+	"s-3034-2000-108-0": [{"type": "text","sub_type": "message","message": "Back swipe","message_RU": "Откид назад"},
 		{"type": "func","func": SpawnVector.bind(null,553,0,0,240,380,0,2000)},
 		{"type": "func","func": SpawnVector.bind(null,553,0,0,120,380,0,2000)}
 	],
@@ -310,7 +310,7 @@ module.exports = {
 	"s-3034-3000-305-0": [{"type": "func","func": SpawnCircle.bind(null,false,912,0,0,10,300,0,6000)}], // Проверка
 	"s-3034-3000-321-0": [
 		{"type": "text","sub_type": "message","message": "SHIELD!","message_RU": "ЩИТ!"},
-		{"type": "text","sub_type": "message","delay": 105000,"message": "After 10s SHIELD! ", "message_RU": "Через 10 сек. ЩИТ!!!"}
+		{"type": "text","sub_type": "message","delay": 105000,"message": "SHIELD in 10 seconds!", "message_RU": "Через 10 сек. ЩИТ!!!"}
 	],
 	"s-3034-3001-308-0": [
 		{"type": "text","sub_type": "message","message": "Bait!","message_RU": "Байт!"},
