@@ -152,5 +152,7 @@ module.exports = {
 	"s-3027-1000-148-1": [{"type": "text","sub_type": "message","message": "Teleport (target)","message_RU": "Телепорт (таргет)"}],
 
 	"s-3027-1000-351-0": [{"type": "text","sub_type": "message","message": "SHIELD!","message_RU": "ЩИТ!"},{"type": "func","func": skilld_event.bind(null, 351)}],
-	"s-3027-1000-401-0": [{"type": "text","sub_type": "message","message": "30% AOE!","message_RU": "АОЕ!!!"}]
+	"s-3027-1000-401-0": [{"type": "text","sub_type": "message","message": "30% AOE!","message_RU": "АОЕ"},
+		{"type": "text","sub_type": "message","delay": 1600,"message": "Dodge!","message_RU": "Эвейд!"}
+	]
 };
