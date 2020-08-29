@@ -48,8 +48,8 @@ module.exports = {
 	"s-3203-1000-110-0": [{"type": "text","sub_type": "message","message": "Spin","message_RU": "Крутилка"},{"type": "func","func": SpawnCircle.bind(null,true,553,0,0,12,420,0,3000)}],
 	"s-3203-1000-114-0": [{"type": "text","sub_type": "message","message": "Leap (Knockdown)","message_RU": "Прыжок (опрокид)"},{"type": "func","func": SpawnCircle.bind(null,true,553,0,0,12,240,0,2000)}],
 	//"s-3203-1000-154-0": [{"type": "text","sub_type": "message","message": "Jumping kick","message_RU": "Удар в прыжке"}], // 154 310 116
-	"s-3203-1000-310-0": [{"type": "text","sub_type": "message","message": "Back flip | Kick","message_RU": "Сальто назад | Удар"}], // 310 116
-	"s-3203-1000-116-0": [{"type": "text","sub_type": "message","message": "Kick","message_RU": "Удар"}],
+	"s-3203-1000-310-0": [{"type": "text","sub_type": "message","message": "Back flip | Strong kick","message_RU": "Сальто назад | Мощный удар"}], // 310 116
+	"s-3203-1000-116-0": [{"type": "text","sub_type": "message","message": "Strong kick","message_RU": "Мощный удар"}],
 	"s-3203-1000-131-0": [{"type": "text","sub_type": "message","message": "Rhythmic Blows","message_RU": "Ураганная серия"}], // 131 132 133
 	"s-3203-1000-146-0": [{"type": "text","sub_type": "message","message": "Back kick","message_RU": "Откид назад"}, // 116 146
 		{"type": "func","func": SpawnVector.bind(null,553,90,120,170,600,0,3000)},
