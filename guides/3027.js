@@ -24,14 +24,14 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 				timer1 = setTimeout(()=> {
 				handlers['text']({
 					"sub_type": "message",
-					"message": isHP_74_39 ? "!" : "After 5s SHIELD!!!",
+					"message": isHP_74_39 ? "!" : "SHIELD in 5 seconds!",
 					"message_RU": isHP_74_39 ? "!" : "Через 5 сек. ЩИТ!!!"
 				});
 			}, 85000);
 			timer2 = setTimeout(()=> {
 				handlers['text']({
 					"sub_type": "message",
-					"message": isHP_74_39 ? "!" : "After 15s SHIELD!!!",
+					"message": isHP_74_39 ? "!" : "SHIELD in 15 seconds!",
 					"message_RU": isHP_74_39 ? "!" : "Через 15 сек. ЩИТ!!!"
 				});
 			}, 75000);

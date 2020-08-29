@@ -129,29 +129,29 @@ module.exports = {
 
 	// 2 BOSS, NOT ENRAGED
 	"s-920-2000-1108-0": [{"type": "text","sub_type": "message","message": "Target swing","message_RU": "Таргет"}],
-	"s-920-2000-1113-0": [{"type": "text","sub_type": "message","message": "Left hand","message_RU": "| Левая полоса"}],
-	"s-920-2000-1114-0": [{"type": "text","sub_type": "message","message": "Right hand","message_RU": "Правая полоса |"}],
+	"s-920-2000-1113-0": [{"type": "text","sub_type": "message","message": "Left slash","message_RU": "Левая полоса"}],
+	"s-920-2000-1114-0": [{"type": "text","sub_type": "message","message": "Right slash","message_RU": "Правая полоса"}],
 	"s-920-2000-1106-0": [{"type": "text","sub_type": "message","message": "Spin attack","message_RU": "Крутилка"},
 		{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,10,320,0,3500)}
 	],
 	"s-920-2000-1105-0": [{"type": "text","sub_type": "message","message": "Back attack","message_RU": "Удар назад"}],
 	"s-920-2000-1104-0": [{"type": "text","sub_type": "message","message": "Random jump","message_RU": "Прыжок (стан)"}],
 	"s-920-2000-1110-0": [{"type": "text","sub_type": "message","message": "Stun attack","message_RU": "Передний стан"}],
-	"s-920-2000-1111-0": [{"type": "text","sub_type": "message","message": "Left hand","message_RU": "| Левая полоса"}],
-	"s-920-2000-1112-0": [{"type": "text","sub_type": "message","message": "Right hand","message_RU": "Правая полоса |"}],
+	"s-920-2000-1111-0": [{"type": "text","sub_type": "message","message": "Left slash","message_RU": "Левая полоса"}],
+	"s-920-2000-1112-0": [{"type": "text","sub_type": "message","message": "Right slash","message_RU": "Правая полоса"}],
 
 	// 2 BOSS, ENRAGED
 	"s-920-2000-2108-0": [{"type": "text","sub_type": "message","message": "Target swing","message_RU": "Таргет"}],
-	"s-920-2000-2113-0": [{"type": "text","sub_type": "message","message": "Left hand","message_RU": "| Левая полоса"}],
-	"s-920-2000-2114-0": [{"type": "text","sub_type": "message","message": "Right hand","message_RU": "Правая полоса |"}],
+	"s-920-2000-2113-0": [{"type": "text","sub_type": "message","message": "Left slash","message_RU": "Левая полоса"}],
+	"s-920-2000-2114-0": [{"type": "text","sub_type": "message","message": "Right slash","message_RU": "Правая полоса"}],
 	"s-920-2000-2106-0": [{"type": "text","sub_type": "message","message": "Spin attack","message_RU": "Крутилка"},
 		{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,10,320,0,3500)}
 	],
 	"s-920-2000-2105-0": [{"type": "text","sub_type": "message","message": "Back attack","message_RU": "Удар назад"}],
 	"s-920-2000-2104-0": [{"type": "text","sub_type": "message","message": "Random jump","message_RU": "Прыжок (стан)"}],
 	"s-920-2000-2110-0": [{"type": "text","sub_type": "message","message": "Stun attack","message_RU": "Передний стан"}],
-	"s-920-2000-2111-0": [{"type": "text","sub_type": "message","message": "Left hand","message_RU": "| Левая полоса"}],
-	"s-920-2000-2112-0": [{"type": "text","sub_type": "message","message": "Right hand","message_RU": "Правая полоса"}],
+	"s-920-2000-2111-0": [{"type": "text","sub_type": "message","message": "Left slash","message_RU": "Левая полоса"}],
+	"s-920-2000-2112-0": [{"type": "text","sub_type": "message","message": "Right slash","message_RU": "Правая полоса"}],
 
 	// 2 BOSS, SPECIAL ATTACKS
 	"s-920-2000-3119-0": [{"type": "text","sub_type": "message","message": "Red: OUT safe","message_RU": "Красный: Наружу сейф"}],
