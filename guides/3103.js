@@ -37,7 +37,6 @@ module.exports = {
 	"s-3103-1000-120-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Knockdown","message_RU": "Опрокид"}],
 	"s-3103-1000-121-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Flip kick (Stun)","message_RU": "Удар в воздухе (стан)"}],
 	//"s-3103-1000-102-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Combo","message_RU": "Комба"}], // 102 153/154 115/116
-	"s-3103-1000-115-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Front kick","message_RU": "Удар вперед"}],
 	"s-3103-1000-153-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Two kicks","message_RU": "Два удара"}], // 153 108
 	//"s-3103-1000-108-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Floor punch","message_RU": "Удар о землю"}],
 	//"s-3103-1000-127-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Many kicks","message_RU": "Несколько ударов"}],
@@ -48,6 +47,7 @@ module.exports = {
 	//"s-3103-1000-154-0": [{"type": "text","sub_type": "message","message": "Jumping kick","message_RU": "Удар в прыжке"}], // 154 310 116
 	"s-3103-1000-310-0": [{"type": "text","sub_type": "message","message": "Back flip | Strong kick","message_RU": "Сальто назад | Мощный удар"}], // 310 116
 	"s-3103-1000-116-0": [{"type": "text","sub_type": "message","message": "Strong kick","message_RU": "Мощный удар"}],
+	"s-3103-1000-115-0": [{"type": "text","sub_type": "message","message": "Strong kick","message_RU": "Мощный удар"}],
 	"s-3103-1000-131-0": [{"type": "text","sub_type": "message","message": "Rhythmic Blows","message_RU": "Ураганная серия"}], // 131 132 133
 	"s-3103-1000-146-0": [{"type": "text","sub_type": "message","message": "Back kick","message_RU": "Откид назад"}, // 116 146
 		{"type": "func","func": SpawnVector.bind(null,553,90,120,170,600,0,3000)},
