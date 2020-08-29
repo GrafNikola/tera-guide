@@ -43,6 +43,7 @@ module.exports = {
 	"s-3203-1000-153-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Two kicks","message_RU": "Два удара"}], // 153 108
 	//"s-3203-1000-108-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Floor punch","message_RU": "Удар о землю"}],
 	//"s-3203-1000-127-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Many kicks","message_RU": "Несколько ударов"}],
+
 	"s-3203-1000-107-0": [{"type": "text","sub_type": "message","message": "Target (Bait)","message_RU": "Байт"}],
 	"s-3203-1000-110-0": [{"type": "text","sub_type": "message","message": "Spin","message_RU": "Крутилка"},{"type": "func","func": SpawnCircle.bind(null,true,553,0,0,12,420,0,3000)}],
 	"s-3203-1000-114-0": [{"type": "text","sub_type": "message","message": "Leap (Knockdown)","message_RU": "Прыжок (опрокид)"},{"type": "func","func": SpawnCircle.bind(null,true,553,0,0,12,240,0,2000)}],
