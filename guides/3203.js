@@ -74,12 +74,12 @@ module.exports = {
 	"s-3203-1000-113-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Roundhouse kick","message_RU": "Удар с разворота"}],
 	"s-3203-1000-111-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Knockdown","message_RU": "Опрокид"}],
 	"s-3203-1000-120-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Knockdown","message_RU": "Опрокид"}],
-	"s-3203-1000-121-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Flip kick (Stun)","message_RU": "Удар в воздухе (стан)"}],
 	//"s-3203-1000-102-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Combo","message_RU": "Комба"}], // 102 153/154 115/116
 	"s-3203-1000-153-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Two kicks","message_RU": "Два удара"}], // 153 108
 	//"s-3203-1000-108-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Floor punch","message_RU": "Удар о землю"}],
 	//"s-3203-1000-127-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Many kicks","message_RU": "Несколько ударов"}],
 
+	"s-3203-1000-121-0": [{"type": "text","sub_type": "message","message": "Flip kick (Stun)","message_RU": "Удар в воздухе (стан)"}],
 	"s-3203-1000-107-0": [{"type": "text","sub_type": "message","message": "Bait","message_RU": "Байт"},{"type": "func","func": skilld_event.bind(null, 107)}],
 	"s-3203-1000-110-0": [{"type": "text","sub_type": "message","message": "Spin","message_RU": "Крутилка"},{"type": "func","func": SpawnCircle.bind(null,true,553,0,0,12,420,0,3000)}],
 	"s-3203-1000-114-0": [{"type": "text","sub_type": "message","message": "Leap (Knockdown)","message_RU": "Прыжок (опрокид)"},{"type": "func","func": SpawnCircle.bind(null,true,553,0,0,12,240,0,2000)}],
