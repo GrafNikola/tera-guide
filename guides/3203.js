@@ -135,7 +135,14 @@ module.exports = {
 
 	// AoE 313 314
 	"s-3203-1000-313-0": [{"type": "text","sub_type": "message","message": "AOE","message_RU": "AOE"}],
-	"s-3203-1000-314-0": [{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,20,460,0,4000)}],
+	"s-3203-1000-314-0": [{"type": "text","sub_type": "message","message": "Get out","message_RU": "Выйти"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,20,460,0,4000)}],
+
+	// Explosion 320310?? ??? ???
+	//"s-3203-1000-???-0": [{"type": "text","sub_type": "message","message": "Explosion (Stun)","message_RU": "Взрыв (стан)"},
+	//	{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,14,360,0,3000)},
+	//	{"type": "text","sub_type": "message","delay": 65000,"message": "Explosion soon","message_RU": "Скоро взрыв"}
+	//],
+	//"s-3203-1000-???-0": [{"type": "text","sub_type": "message","message": "Dodge","message_RU": "Эвейд"}],
 
 	// Debuff
 	"ae-0-0-32031011": [{"type": "text","sub_type": "notification","message": "Debuff stack","message_RU": "Дебафф (стаки)"}],
