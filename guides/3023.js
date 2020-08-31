@@ -199,7 +199,7 @@ module.exports = {
 	"s-3023-2000-164-0": [{"type": "text","sub_type": "message","message": 'Counter attack (bleed)',"message_RU": "Отпрыжка (Кровоток)"}],
 	"s-3023-2000-166-0": [{"type": "text","sub_type": "message","message": 'Turn-back',"message_RU": "Оборот назад"}],
 	"s-3023-2000-175-0": [{"type": "text","sub_type": "message","message": 'Debuff',"message_RU": "Рёв"},
-						  {"type": "text","sub_type": "message","delay": 1750,"message": 'Dodge',"message_RU": "Эвейд"}
+						  {"type": "text","sub_type": "message","delay": 1500,"message": 'Dodge',"message_RU": "Эвейд"}
 	],
 	"s-3023-2000-178-0": [{"type": "text","sub_type": "message","message": 'Scratching (bleed)',"message_RU": "Крутилка (Кровоток)"}],
 	"s-3023-2000-181-0": [{"type": "text","sub_type": "message","message": 'Insert the floor',"message_RU": "Полоса вперед"},
