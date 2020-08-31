@@ -140,7 +140,7 @@ module.exports = {
 	// Explosion 320310?? ??? ???
 	//"s-3203-1000-???-0": [{"type": "text","sub_type": "message","message": "Explosion (Stun)","message_RU": "Взрыв (стан)"},
 	//	{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,14,360,0,3000)},
-	//	{"type": "text","sub_type": "message","delay": 65000,"message": "Explosion soon","message_RU": "Скоро взрыв"}
+	//	{"type": "text","sub_type": "notification","delay": 65000,"message": "Explosion soon","message_RU": "Скоро взрыв"}
 	//],
 	//"s-3203-1000-???-0": [{"type": "text","sub_type": "message","message": "Dodge","message_RU": "Эвейд"}],
 
