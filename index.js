@@ -925,19 +925,23 @@ class TeraGuide{
 			}
 			// Team leader notice
 			if (dispatch.settings.lNotice) {
-				dispatch.toClient('S_CHAT', 3, {
-					channel: 21, // 21 = p-notice, 1 = party, 2 = guild
-					message
-				});
-			// Send notices to party
-			} else if (dispatch.settings.gNotice) {
-				dispatch.toClient('S_CHAT', 3, {
-					channel: 1, // 21 = p-notice, 1 = party, 2 = guild
-					message
-				});
-			// Dungeon event message
+				// Send notice to me
+				if (!dispatch.settings.gNotice) {
+					dispatch.toClient('S_CHAT', 3, {
+						channel: 21, // 21 = p-notice, 1 = party, 2 = guild
+						message
+					});
+				}
+			// or Dungeon event message
 			} else {
 				sendSPMessage(message, dispatch.settings.cc, spg);
+			}
+			// Send notices to party
+			if (dispatch.settings.gNotice) {
+				dispatch.toClient('S_CHAT', 3, {
+					channel: 1,
+					message
+				});
 			}
 		}
 		// Team leader notification message
@@ -946,11 +950,21 @@ class TeraGuide{
 				command.message(clb + 'Alert: ' + dispatch.settings.cc + message);
 				return;
 			}
-			dispatch.toClient('S_CHAT', 3, {
-				channel: 21,
-				authorName: 'guide',
-				message
-			});
+			// Send notices to party
+			if (dispatch.settings.gNotice) {
+				dispatch.toClient('S_CHAT', 3, {
+					channel: 1,
+					message
+				});
+			// Send notice to me
+			} else {
+				dispatch.toClient('S_CHAT', 3, {
+					channel: 21,
+					authorName: 'guide',
+					message
+				});
+			}
+			// Dungeon event message
 			if (!dispatch.settings.lNotice) {
 				sendSPMessage(message, dispatch.settings.cc, spb);
 			}
@@ -961,11 +975,20 @@ class TeraGuide{
 				command.message(cr + 'Notice: ' + dispatch.settings.cc + message);
 				return;
 			}
-			dispatch.toClient('S_CHAT', 3, {
-				channel: 25,
-				authorName: 'guide',
-				message
-			});
+			// Send notices to party
+			if (dispatch.settings.gNotice) {
+				dispatch.toClient('S_CHAT', 3, {
+					channel: 1,
+					message
+				});
+			// Send notice to me
+			} else {
+				dispatch.toClient('S_CHAT', 3, {
+					channel: 25,
+					authorName: 'guide',
+					message
+				});
+			}
 			if (!dispatch.settings.lNotice) {
 				sendSPMessage(message, dispatch.settings.cc, spr);
 			}
