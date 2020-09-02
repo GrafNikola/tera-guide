@@ -950,23 +950,22 @@ class TeraGuide{
 				command.message(clb + 'Alert: ' + dispatch.settings.cc + message);
 				return;
 			}
+			// Send notice to me
+			dispatch.toClient('S_CHAT', 3, {
+				channel: 21,
+				authorName: 'guide',
+				message
+			});
+			// Dungeon event message
+			if (!dispatch.settings.lNotice) {
+				sendSPMessage(message, dispatch.settings.cc, spb);
+			}
 			// Send notices to party
 			if (dispatch.settings.gNotice) {
 				dispatch.toClient('S_CHAT', 3, {
 					channel: 1,
 					message
 				});
-			// Send notice to me
-			} else {
-				dispatch.toClient('S_CHAT', 3, {
-					channel: 21,
-					authorName: 'guide',
-					message
-				});
-			}
-			// Dungeon event message
-			if (!dispatch.settings.lNotice) {
-				sendSPMessage(message, dispatch.settings.cc, spb);
 			}
 		}
 		// Raid leader notification message
@@ -975,22 +974,22 @@ class TeraGuide{
 				command.message(cr + 'Notice: ' + dispatch.settings.cc + message);
 				return;
 			}
+			// Send notice to me
+			dispatch.toClient('S_CHAT', 3, {
+				channel: 25,
+				authorName: 'guide',
+				message
+			});
+			// Dungeon event message
+			if (!dispatch.settings.lNotice) {
+				//sendSPMessage(message, dispatch.settings.cc, spr);
+			}
 			// Send notices to party
 			if (dispatch.settings.gNotice) {
 				dispatch.toClient('S_CHAT', 3, {
 					channel: 1,
 					message
 				});
-			// Send notice to me
-			} else {
-				dispatch.toClient('S_CHAT', 3, {
-					channel: 25,
-					authorName: 'guide',
-					message
-				});
-			}
-			if (!dispatch.settings.lNotice) {
-				sendSPMessage(message, dispatch.settings.cc, spr);
 			}
 		}
 		// Dungeon event message
