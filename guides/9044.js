@@ -30,7 +30,7 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 	if (skillid == 90442000) shining = true;
 	if (skillid == 90442001) shining = false;
 	if (skillid == 90442304) {
-		//handlers['text']({"sub_type": "notification","message": "Stun","message_RU": "Стан!!!"});
+		//handlers['text']({"sub_type": "alert","message": "Stun","message_RU": "Стан!!!"});
 		handlers['text']({"sub_type": "message","message": "Stun","message_RU": "Стан!!!"});
 	}
 	if (skillid == 90444001 && skill == 104) {
@@ -61,7 +61,7 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 	}, 300);
 	if (notice && skillid == 305) {
 		notice = false;
-		//handlers['text']({"sub_type": "notification","message": "Laser","message_RU": "Лазер !!!"});
+		//handlers['text']({"sub_type": "alert","message": "Laser","message_RU": "Лазер !!!"});
 		handlers['text']({"sub_type": "message","message": "Laser","message_RU": "Лазер !!!"});
 		setTimeout(() => notice = true, 4000);
 	}
@@ -79,7 +79,7 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 		SpawnVector(553,270,50,180,500,0,6000,handlers,event,entity);//左后直线
 		SpawnCircle(false,445,0,0,6,400,0,6000,handlers,event,entity);
 
-		handlers['text']({"type": "text","sub_type": "notification","delay": 60000,"message": 'Waves soon...',"message_RU": "Скоро волны"});
+		handlers['text']({"type": "text","sub_type": "alert","delay": 60000,"message": 'Waves soon...',"message_RU": "Скоро волны"});
 	}
 	// Right
 	if ([1140,2140].includes(skillid)) {
@@ -92,7 +92,7 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 		SpawnVector(553,270,50,180,500,0,6000,handlers,event,entity);//左后直线
 		SpawnCircle(false,445,0,0,6,400,0,6000,handlers,event,entity);
 
-		handlers['text']({"type": "text","sub_type": "notification","delay": 60000,"message": 'Waves soon...',"message_RU": "Скоро волны"});
+		handlers['text']({"type": "text","sub_type": "alert","delay": 60000,"message": 'Waves soon...',"message_RU": "Скоро волны"});
 	}
 	// 2nd fast 123 142
 	// Left
@@ -106,7 +106,7 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 		SpawnVector(553,270,50,180,500,0,6000,handlers,event,entity);//左后直线
 		SpawnCircle(false,445,0,0,6,400,0,6000,handlers,event,entity);
 
-		handlers['text']({"type": "text","sub_type": "notification","delay": 60000,"message": 'Waves soon...',"message_RU": "Скоро волны"});
+		handlers['text']({"type": "text","sub_type": "alert","delay": 60000,"message": 'Waves soon...',"message_RU": "Скоро волны"});
 	}
 	// Right
 	if ([1142,2142].includes(skillid)) {
@@ -119,7 +119,7 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 		SpawnVector(553,270,50,180,500,0,6000,handlers,event,entity);//左后直线
 		SpawnCircle(false,445,0,0,6,400,0,6000,handlers,event,entity);
 
-		handlers['text']({"type": "text","sub_type": "notification","delay": 60000,"message": 'Waves soon...',"message_RU": "Скоро волны"});
+		handlers['text']({"type": "text","sub_type": "alert","delay": 60000,"message": 'Waves soon...',"message_RU": "Скоро волны"});
 	}
 	// 3rd fast 122 141
 	// Left
@@ -133,7 +133,7 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 		SpawnVector(553,270,50,180,500,0,6000,handlers,event,entity);//左后直线
 		SpawnCircle(false,445,0,0,6,400,0,6000,handlers,event,entity);
 
-		handlers['text']({"type": "text","sub_type": "notification","delay": 60000,"message": 'Waves soon...',"message_RU": "Скоро волны"});
+		handlers['text']({"type": "text","sub_type": "alert","delay": 60000,"message": 'Waves soon...',"message_RU": "Скоро волны"});
 	}
 	// Right
 	if ([1141,2141].includes(skillid)) {
@@ -146,7 +146,7 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 		SpawnVector(553,270,50,180,500,0,6000,handlers,event,entity);//左后直线
 		SpawnCircle(false,445,0,0,6,400,0,6000,handlers,event,entity);
 
-		handlers['text']({"type": "text","sub_type": "notification","delay": 60000,"message": 'Waves soon...',"message_RU": "Скоро волны"});
+		handlers['text']({"type": "text","sub_type": "alert","delay": 60000,"message": 'Waves soon...',"message_RU": "Скоро волны"});
 	}
 }
 

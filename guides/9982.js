@@ -88,7 +88,7 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 				"message": "Fully charged!!"
 			});
 			handlers['text']({
-				"sub_type": "notification",
+				"sub_type": "alert",
 				"message_RU": "Полностью заряжен!!!",
 				"message": "Fully charged!!"
 			});
@@ -99,7 +99,7 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 				"message": "Fully charged!!"
 			});	
 			handlers['text']({
-				"sub_type": "notification",
+				"sub_type": "alert",
 				"message_RU": "Полностью заряжен!!!",
 				"message": "Fully charged!!"
 			});

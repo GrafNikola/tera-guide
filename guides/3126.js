@@ -70,7 +70,7 @@ function debuff_added(id, handlers) {
 		if (debuff != null) {
 			setTimeout(() => {
 				handlers['text']({
-					"sub_type": "notification",
+					"sub_type": "alert",
 					"message": (`${debuff_TipMsg[debuff % 2].msgt}`),
 					"message_RU": (`${debuff_TipMsg[debuff % 2].msg}`)
 				});

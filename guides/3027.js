@@ -52,7 +52,7 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 			isHP_74_39 = false;
 			setTimeout(() => print = true, 15000);
 			handlers['text']({
-				"sub_type": "notification",
+				"sub_type": "alert",
 				"message": "Ready for SHIELD",
 				"message_RU": "Готовность ломать щит"
 			});
@@ -65,7 +65,7 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 			setTimeout(() => printMech = true, 15000);
 			timer3 = setTimeout(()=> {
 				handlers['text']({
-					"sub_type": "notification",
+					"sub_type": "alert",
 					"message": "Mechanics soon",
 					"message_RU": "Скоро стяжка"
 				});

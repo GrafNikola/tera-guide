@@ -140,7 +140,7 @@ function print_mech(next, code, handlers) {
 	if (next) {
 		message    += 'Next: ';
 		message_RU += 'Далее: ';
-		sub_type = 'alert';
+		sub_type = 'notification';
 	}
 	if (mech_reverse) {
 		message_RU += RK_TipMsg[msg_b].msg  + ' + ' + RK_TipMsg[msg_a].msg;

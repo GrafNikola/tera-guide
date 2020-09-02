@@ -943,10 +943,10 @@ class TeraGuide{
 				});
 			}
 		}
-		// Alert message
-		function sendAlert(message) {
+		// Notification message
+		function sendNotification(message) {
 			if (dispatch.settings.stream) {
-				command.message(clb + '[Alert] ' + dispatch.settings.cc + message);
+				command.message(clb + '[Notice] ' + dispatch.settings.cc + message);
 				return;
 			}
 			// Raid leader notification
@@ -955,10 +955,6 @@ class TeraGuide{
 				authorName: 'guide',
 				message
 			});
-			if (!dispatch.settings.lNotice) {
-				// Dungeon event blue
-				//sendDungeonEvent(message, dispatch.settings.cc, spb);
-			}
 			// Send notices to party
 			if (dispatch.settings.gNotice) {
 				dispatch.toClient('S_CHAT', 3, {
@@ -967,10 +963,10 @@ class TeraGuide{
 				});
 			}
 		}
-		// Notification message
-		function sendNotification(message) {
+		// Alert message
+		function sendAlert(message) {
 			if (dispatch.settings.stream) {
-				command.message(cr + '[Notice] ' + dispatch.settings.cc + message);
+				command.message(cr + '[Alert] ' + dispatch.settings.cc + message);
 				return;
 			}
 			if (dispatch.settings.lNotice) {

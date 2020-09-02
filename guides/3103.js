@@ -37,7 +37,7 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 			setTimeout(() => printTarget = true, 5000);
 			timer1 = setTimeout(()=> {
 				handlers['text']({
-					"sub_type": "notification",
+					"sub_type": "alert",
 					"message": "Target attacks soon",
 					"message_RU": "Скоро таргет-атака"
 				});
@@ -119,7 +119,7 @@ module.exports = {
 	"s-3103-1000-314-0": [{"type": "text","sub_type": "message","message": "Get out","message_RU": "Выйти"},{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,20,460,0,4000)}],
 
 	// Debuff
-	"ae-0-0-31031011": [{"type": "text","sub_type": "notification","message": "Debuff stack","message_RU": "Дебафф (стаки)"}],
-	"am-3103-1000-31031011": [{"type": "text","sub_type": "notification","message": "Debuff stack","message_RU": "Дебафф (стаки)"}],
-	"am-3103-1000-31031012": [{"type": "text","sub_type": "notification","message": "Debuff stack","message_RU": "Дебафф (стаки)"}],
+	"ae-0-0-31031011": [{"type": "text","sub_type": "alert","message": "Debuff stack","message_RU": "Дебафф (стаки)"}],
+	"am-3103-1000-31031011": [{"type": "text","sub_type": "alert","message": "Debuff stack","message_RU": "Дебафф (стаки)"}],
+	"am-3103-1000-31031012": [{"type": "text","sub_type": "alert","message": "Debuff stack","message_RU": "Дебафф (стаки)"}],
 };

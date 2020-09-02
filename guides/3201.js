@@ -225,12 +225,12 @@ module.exports = {
 	"s-3201-1000-113-0": [{"type": "text","sub_type": "message","message": "Jump (Slow)","message_RU": "Прыжок" },
 						  {"type": "text","sub_type": "message","delay": 1500,"message": "pull","message_RU": "Камень!"}
 	],
-	//{"type": "text","sub_type": "notification","delay": 1500,"message": "pull","message_RU": "Камень!"}
+	//{"type": "text","sub_type": "alert","delay": 1500,"message": "pull","message_RU": "Камень!"}
 
 	"s-3201-1000-118-0": [{"type": "text","sub_type": "message","message": "Jump P (Slow)","message_RU": "Прыжок" },
 						  {"type": "text","sub_type": "message","delay": 1500,"message": "pull","message_RU": "Камень!"},
 	],
-	//{"type": "text","sub_type": "notification","delay": 1500,"message": "pull","message_RU": "Камень!"}	
+	//{"type": "text","sub_type": "alert","delay": 1500,"message": "pull","message_RU": "Камень!"}	
 	"s-3201-1000-119-0": [{"type": "text","sub_type": "message","delay": 1000,"message": "Back + Front","message_RU": "Вперед + Назад" }],
 	//"s-3201-1000-121-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Right","message_RU": "Право" }],
 	//"s-3201-1000-122-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Left","message_RU": "Лево" }],
@@ -297,8 +297,8 @@ module.exports = {
 	"s-3201-2000-203-0": [{"type": "func","func": skilld_event.bind(null, 203)}],
 	"s-3201-2000-204-0": [{"type": "func","func": skilld_event.bind(null, 204)}],
 	
-	"am-3201-320126-32010224": [{"type": "text","sub_type": "notification","message": "Next true","message_RU": "След. правда"},{"type": "func","func": skilld_event.bind(null, 32010224)}],
-	"am-3201-2000-32010220": [{"type": "text","sub_type": "notification","message": "Next false","message_RU": "След. ложь"},{"type": "func","func": skilld_event.bind(null, 32010220)}],
+	"am-3201-320126-32010224": [{"type": "text","sub_type": "alert","message": "Next true","message_RU": "След. правда"},{"type": "func","func": skilld_event.bind(null, 32010224)}],
+	"am-3201-2000-32010220": [{"type": "text","sub_type": "alert","message": "Next false","message_RU": "След. ложь"},{"type": "func","func": skilld_event.bind(null, 32010220)}],
 	"ae-0-0-9203100": [{"type": "func","func": skilld_event.bind(null, 9203100)}],
 	
 	//"s-3201-2000-211-0": [{"type": "text","sub_type": "message","message": "front","message_RU": "???"}],
@@ -307,7 +307,7 @@ module.exports = {
 	"s-3201-2000-228-0": [ 
 		{"type": "text","sub_type": "message","message": "Team up","message_RU": "Камни (вместе)!!!"},
 		{"type": "text","sub_type": "message","delay": 3500,"message": "Dodge","message_RU": "Эвейд"}
-	//	{"type": "text","sub_type": "notification","delay": 3500,"message": "Dodge","message_RU": "Эвейд"}
+	//	{"type": "text","sub_type": "alert","delay": 3500,"message": "Dodge","message_RU": "Эвейд"}
 	//	{"type": "text","sub_type": "message","delay": 65000,"message": "Dodge","message_RU": "Эвейд"},
 	],
 	//"s-3201-2000-229-0": [{"type": "text","sub_type": "message","message": "3","message_RU": "3 Бомбы"}],
