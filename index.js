@@ -373,12 +373,14 @@ class TeraGuide{
 						"delay": 8000,
 						"message_RU": 
 							`Введите "guide help" для вывода справки\n` + 
+							`Состояние режима сообщений в группу: ${dispatch.settings.gNotice?"Вкл":"Выкл"}.\n` + 
 							`Состояние режима стрима: ${dispatch.settings.stream?"Вкл":"Выкл"}.\n` + 
-							`Состояние голосовых сообщений: ${dispatch.settings.speaks?"Вкл":"Выкл"}.`,
+							`Состояние режима голосовых сообщений: ${dispatch.settings.speaks?"Вкл":"Выкл"}.`,
 						"message": 
 							`'Enter "guide help" for more information\n` + 
-							`The current stream mode ${dispatch.settings.stream?"on":"off"}.\n` + 
-							`The current guide voice ${dispatch.settings.speaks?"on":"off"}.`
+							`The current party notices mode is ${dispatch.settings.gNotice?"on":"off"}.\n` + 
+							`The current stream mode is ${dispatch.settings.stream?"on":"off"}.\n` + 
+							`The current guide voice mode is ${dispatch.settings.speaks?"on":"off"}.`
 					});
 				}
 			} catch(e) {
@@ -457,11 +459,11 @@ class TeraGuide{
 			},
 			voice() {
 				dispatch.settings.speaks = !dispatch.settings.speaks;
-				text_handler({"sub_type": "PRMSG","message_RU": `Голосовое сообщение ${dispatch.settings.speaks?"Вкл":"Выкл"}.`, "message": `Text-to-speech ${dispatch.settings.speaks?"on":"off"}.` });
+				text_handler({"sub_type": "PRMSG","message_RU": `Голосовое сообщение ${dispatch.settings.speaks?"Вкл":"Выкл"}.`, "message": `Text-to-speech has been ${dispatch.settings.speaks?"on":"off"}.` });
 			},
 			stream() {
 				dispatch.settings.stream = !dispatch.settings.stream;
-				text_handler({"sub_type": "PRMSG","message_RU": `Стрим, скрытие сообщений ${dispatch.settings.stream?"Вкл":"Выкл"}.`, "message": `Stream ${dispatch.settings.stream?"on":"off"}.`});
+				text_handler({"sub_type": "PRMSG","message_RU": `Стрим, скрытие сообщений ${dispatch.settings.stream?"Вкл":"Выкл"}.`, "message": `Stream mode has been ${dispatch.settings.stream?"on":"off"}.`});
 			},
 			spawnObject(arg1) {
 				let sd_id;
@@ -500,12 +502,12 @@ class TeraGuide{
 			},
 			lNotice() {
 				dispatch.settings.lNotice = !dispatch.settings.lNotice;
-				text_handler({"sub_type": "PRMSG","message_RU": `Сообщения в чат: ${dispatch.settings.lNotice?"Вкл":"Выкл"}.`, "message": `Virtual captain has been ${dispatch.settings.lNotice?"on":"off"}.`});
+				text_handler({"sub_type": "PRMSG","message_RU": `Сообщения в чат: ${dispatch.settings.lNotice?"Вкл":"Выкл"}.`, "message": `Chat notices has been ${dispatch.settings.lNotice?"on":"off"}.`});
 			},
 			gNotice() {
 				dispatch.settings.gNotice = !dispatch.settings.gNotice;
 				command.message(`system Notice ${dispatch.settings.gNotice?"on":"off"}.`);
-				text_handler({"sub_type": "PRMSG","message_RU": `сообщения в группе: ${dispatch.settings.gNotice?"Вкл":"Выкл"}.`, "message": `system Notice ${dispatch.settings.gNotice?"on":"off"}.`});
+				text_handler({"sub_type": "PRMSG","message_RU": `Сообщения в группе: ${dispatch.settings.gNotice?"Вкл":"Выкл"}.`, "message": `Party chat notices has been ${dispatch.settings.gNotice?"on":"off"}.`});
 			},
 			1() {
 				text_handler({"sub_type": "PRMSG","message_RU": `Скорость речи 1`, "message": `Voice speed 1` });
