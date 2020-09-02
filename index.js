@@ -923,16 +923,13 @@ class TeraGuide{
 				command.message(dispatch.settings.cc + message);
 				return;
 			}
-			// Team leader notice
+			// Team leader notification message
 			if (dispatch.settings.lNotice) {
-				// Send notice to me
-				if (!dispatch.settings.gNotice) {
-					dispatch.toClient('S_CHAT', 3, {
-						channel: 21, // 21 = p-notice, 1 = party, 2 = guild
-						message
-					});
-				}
-			// or Dungeon event message
+				dispatch.toClient('S_CHAT', 3, {
+					channel: 21, // 21 = p-notice, 1 = party, 2 = guild
+					message
+				});
+			// Dungeon event message
 			} else {
 				sendSPMessage(message, dispatch.settings.cc, spg);
 			}
