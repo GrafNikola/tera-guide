@@ -29,6 +29,14 @@ const clb = '</font><font color="#00ffff">'; // light blue
 const cbl = '</font><font color="#000000">'; // black
 const cgr = '</font><font color="#777777">'; // gray
 const cw  = '</font><font color="#ffffff">'; // white
+// Dungeon messages types
+const spt = 31; // text notice
+const spg = 42; // green message
+const spb = 43; // blue message
+const spr = 44; // red message
+const spi = 66; // blue info message
+const spn = 49; // left side notice
+// TTS rates
 const rate1 = 1;
 const rate2 = 2;
 const rate3 = 3;
@@ -762,7 +770,7 @@ class TeraGuide{
 			let sending_event = {};
 			// Create the sending event
 			switch(event['sub_type']) {
-				// Mixed notice
+				// Basic message
 				case "message": {
 					if (!entered_zone_data.verbose && !is_event) return;
 					if (voice && dispatch.settings.speaks) {
@@ -777,13 +785,14 @@ class TeraGuide{
 				}
 				// Pink dungeon event message
 				case "msgcp": {
+					if (!entered_zone_data.verbose && !is_event) return;
 					if (voice && dispatch.settings.speaks) {
 						timers[event['id'] || random_timer_id--] = setTimeout(()=> {
 							voice.speak(message, dispatch.settings.rate);
 						}, (event['delay'] || 0 ) - 600 / speed);
 					}
 					timers[event['id'] || random_timer_id--] = setTimeout(()=> {
-						sendspMessage(message, cp);
+						sendSPMessage(message, cp, spg);
 					}, (event['delay'] || 0) / speed);
 					break;
 				}
@@ -796,7 +805,7 @@ class TeraGuide{
 						}, (event['delay'] || 0 ) - 600 / speed);
 					}
 					timers[event['id'] || random_timer_id--] = setTimeout(()=> {
-						sendspMessage(message, cg);
+						sendSPMessage(message, cg, spg);
 					}, (event['delay'] || 0) / speed);
 					break;
 				}
@@ -808,15 +817,9 @@ class TeraGuide{
 							voice.speak(message, dispatch.settings.rate);
 						}, (event['delay'] || 0 ) - 600 / speed);
 					}
-					if (dispatch.settings.stream) {
-						command.message(dispatch.settings.cc + message);
-						return;
-					}
-					sending_event = {
-						channel: 21,
-						authorName: 'guide',
-						message
-					};
+					timers[event['id'] || random_timer_id--] = setTimeout(()=> {
+						sendTLMessage(message);
+					}, (event['delay'] || 0 ) / speed);
 					break;
 				}
 				// Raid leader notice
@@ -827,15 +830,9 @@ class TeraGuide{
 							voice.speak(message, dispatch.settings.rate);
 						}, (event['delay'] || 0 ) - 600 / speed);
 					}
-					if (dispatch.settings.stream) {
-						command.message(dispatch.settings.cc + message);
-						return;
-					}
-					sending_event = {
-						channel: 25,
-						authorName: 'guide',
-						message
-					};
+					timers[event['id'] || random_timer_id--] = setTimeout(()=> {
+						sendRLMessage(message);
+					}, (event['delay'] || 0 ) / speed);
 					break;
 				}
 				// Voice announcement
@@ -848,17 +845,9 @@ class TeraGuide{
 					}
 					break;
 				}
+				// Proxy channel test message (red color)
 				case "MSG": {
 					if (!entered_zone_data.verbose && !is_event) return;
-					if (voice && dispatch.settings.speaks) {
-						timers[event['id'] || random_timer_id--] = setTimeout(()=> {
-							voice.speak(message, dispatch.settings.rate);
-						}, (event['delay'] || 0 ) - 600 / speed);
-					}
-					if (dispatch.settings.stream) {
-						command.message(dispatch.settings.cc +  message);
-						return;
-					}
 					timers[event['id'] || random_timer_id--] = setTimeout(()=> {
 						command.message(cr + message);
 						console.log(cr + message);
@@ -927,15 +916,8 @@ class TeraGuide{
 					return debug_message(true, "Invalid sub_type for text handler:", event['sub_type']);
 				}
 			}
-			// Create the timer
-			timers[event['id'] || random_timer_id--] = setTimeout(()=> {
-				switch(event['sub_type']) {
-					case "notification": return dispatch.toClient('S_CHAT', 3, sending_event);
-					case "alert": return dispatch.toClient('S_CHAT', 3, sending_event);
-				}
-			}, (event['delay'] || 0 ) / speed);
 		}
-		// Mixed notice message
+		// Basic messages
 		function sendMessage(message) {
 			if (dispatch.settings.stream) {
 				command.message(dispatch.settings.cc + message);
@@ -944,28 +926,58 @@ class TeraGuide{
 			// Team leader notice
 			if (dispatch.settings.lNotice) {
 				dispatch.toClient('S_CHAT', 3, {
-					channel: 21, //21 = p-notice, 1 = party, 2 = guild
+					channel: 21, // 21 = p-notice, 1 = party, 2 = guild
 					message
 				});
-			// Party notice
+			// Send notices to party
 			} else if (dispatch.settings.gNotice) {
 				dispatch.toClient('S_CHAT', 3, {
-					channel: 1, //21 = p-notice, 1 = party, 2 = guild
+					channel: 1, // 21 = p-notice, 1 = party, 2 = guild
 					message
 				});
 			// Dungeon event message
 			} else {
-				sendspMessage(message, dispatch.settings.cc);
+				sendSPMessage(message, dispatch.settings.cc, spg);
+			}
+		}
+		// Team leader notification message
+		function sendTLMessage(message) {
+			if (dispatch.settings.stream) {
+				command.message(clb + 'Alert: ' + dispatch.settings.cc + message);
+				return;
+			}
+			dispatch.toClient('S_CHAT', 3, {
+				channel: 21,
+				authorName: 'guide',
+				message
+			});
+			if (!dispatch.settings.lNotice) {
+				sendSPMessage(message, dispatch.settings.cc, spb);
+			}
+		}
+		// Raid leader notification message
+		function sendRLMessage(message) {
+			if (dispatch.settings.stream) {
+				command.message(cr + 'Notice: ' + dispatch.settings.cc + message);
+				return;
+			}
+			dispatch.toClient('S_CHAT', 3, {
+				channel: 25,
+				authorName: 'guide',
+				message
+			});
+			if (!dispatch.settings.lNotice) {
+				sendSPMessage(message, dispatch.settings.cc, spr);
 			}
 		}
 		// Dungeon event message
-		function sendspMessage(message, spcc) {
+		function sendSPMessage(message, spcc, type) {
 			if (dispatch.settings.stream) {
 				command.message(dispatch.settings.cc + message);
 				return;
 			}
 			dispatch.toClient('S_DUNGEON_EVENT_MESSAGE', 2, {
-				type: 42,
+				type: type,
 				chat: 0,
 				channel: 27,
 				message: (spcc + message)

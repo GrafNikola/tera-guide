@@ -30,7 +30,7 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 	if (skillid == 90442000) shining = true;
 	if (skillid == 90442001) shining = false;
 	if (skillid == 90442304) {
-		handlers['text']({"sub_type": "notification","message": "Stun","message_RU": "Стан!!!"});
+		//handlers['text']({"sub_type": "notification","message": "Stun","message_RU": "Стан!!!"});
 		handlers['text']({"sub_type": "message","message": "Stun","message_RU": "Стан!!!"});
 	}
 	if (skillid == 90444001 && skill == 104) {
@@ -61,7 +61,7 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 	}, 300);
 	if (notice && skillid == 305) {
 		notice = false;
-		handlers['text']({"sub_type": "notification","message": "Laser","message_RU": "Лазер !!!"});
+		//handlers['text']({"sub_type": "notification","message": "Laser","message_RU": "Лазер !!!"});
 		handlers['text']({"sub_type": "message","message": "Laser","message_RU": "Лазер !!!"});
 		setTimeout(() => notice = true, 4000);
 	}
