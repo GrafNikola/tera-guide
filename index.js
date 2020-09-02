@@ -946,7 +946,7 @@ class TeraGuide{
 		// Team leader notification message
 		function sendTLMessage(message) {
 			if (dispatch.settings.stream) {
-				command.message(clb + 'Alert: ' + dispatch.settings.cc + message);
+				command.message(clb + '[Alert] ' + dispatch.settings.cc + message);
 				return;
 			}
 			// Send notice to me
@@ -956,9 +956,7 @@ class TeraGuide{
 				message
 			});
 			// Dungeon event message
-			if (!dispatch.settings.lNotice) {
-				sendSPMessage(message, dispatch.settings.cc, spb);
-			}
+			sendSPMessage(message, dispatch.settings.cc, spb);
 			// Send notices to party
 			if (dispatch.settings.gNotice) {
 				dispatch.toClient('S_CHAT', 3, {
@@ -970,18 +968,19 @@ class TeraGuide{
 		// Raid leader notification message
 		function sendRLMessage(message) {
 			if (dispatch.settings.stream) {
-				command.message(cr + 'Notice: ' + dispatch.settings.cc + message);
+				command.message(cr + '[Notice] ' + dispatch.settings.cc + message);
 				return;
 			}
 			// Send notice to me
-			dispatch.toClient('S_CHAT', 3, {
-				channel: 25,
-				authorName: 'guide',
-				message
-			});
+			if (dispatch.settings.lNotice) {
+				dispatch.toClient('S_CHAT', 3, {
+					channel: 25,
+					authorName: 'guide',
+					message
+				});
 			// Dungeon event message
-			if (!dispatch.settings.lNotice) {
-				//sendSPMessage(message, dispatch.settings.cc, spr);
+			} else {
+				sendSPMessage(message, dispatch.settings.cc, spr);
 			}
 			// Send notices to party
 			if (dispatch.settings.gNotice) {

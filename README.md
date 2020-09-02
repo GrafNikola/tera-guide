@@ -15,7 +15,7 @@ Toolbox(/8) | Command description | Описание команды
 --- | --- | ---
 **guide** | Module on/off | Вкл./выкл. модуля
 **guide&nbsp;voice**<br>(default: on) | Text-to-speech (TTS) notices on/off, speech rate is set by command **guide `1`~`10`** | Вкл./выкл. голосовых уведомлений (TTS), скорость чтения задается командой **guide `1`~`10`**
-**guide&nbsp;lNotice**<br>(default: off) | Send notices to chat channel "Notice" instead of on-screen messages on/off (notices for the "Raid Notice" channel work regardless of this setting) | Вкл./выкл. отправки уведомлений в канал чата "Важно" вместо показа экранных сообщений (уведомления для канала "Сообщения рейда" работают не зависимо от данной настройки)
+**guide&nbsp;lNotice**<br>(default: off) | Send notices to chat channel "Notice" instead of on-screen messages on/off | Вкл./выкл. отправки уведомлений в канал чата "Важно" вместо показа экранных сообщений
 **guide&nbsp;gNotice**<br>(default: off) | Send notices to party chat channel on/off (will be visible for all party members) | Вкл./выкл. отправки уведомлений в чат группы (уведомления будут видеть все члены группы)
 **guide&nbsp;`1`~`10`**<br>(default: 2) | Set TTS speech rate | Регулировка скорости чтения голосовых сообщений
 **guide&nbsp;spawnObject**<br>(default: on) | Spawn marker objects on/off | Вкл./выкл. спавна маркировочных объектов

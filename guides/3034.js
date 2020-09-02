@@ -37,22 +37,26 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 			// DM
 			case 3034302: // Out
 				msg_a = 0;
+				print_mech(true, false, handlers);
 				break;
 			case 3034303: // In
 				msg_a = 1;
+				print_mech(true, false, handlers);
 				break;
 			case 3034304: // Wave
 				msg_a = 2;
+				print_mech(true, false, handlers);
 				break;
 			// QB
 			case 3034311: // STANDARD (1)
 				mech_reverse = false;
+				print_mech(true, true, handlers);
 				break;
 			case 3034312: // REVERSE (0)
 				mech_reverse = true;
+				print_mech(true, true, handlers);
 				break;
 		}
-		print_mech(true, handlers);
 	}
 	// QB
 	// 0: Out  3034301
@@ -60,17 +64,17 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 	// 2: Wave 3034303
 	if (0 <= skillid && skillid < 3) {
 		msg_b = skillid;
-		print_mech(false, handlers);
-		setTimeout(() => {
-			print_mech(true, handlers);
-		}, 8000);
+		print_mech(false, false, handlers);
 		msg_a = msg_b;
 		msg_b = 3;
+		setTimeout(() => {
+			print_mech(true, false, handlers);
+		}, 7000);
 	}
 
 	// S-attacks
-	// Safe: 116/119 [R] + 222-0 [R] > 222-1 [L] > 222-2 [R] > 326 [IN]
-	// Safe: 117/118 [L] + 223-0 [L] > 223-1 [R] > 223-2 [L] > 327 [OUT]
+	// Safe: 116/119 [R] + 222-0 [R] > 222-1 [L] > 222-2 [R] > 326/327
+	// Safe: 117/118 [L] + 223-0 [L] > 223-1 [R] > 223-2 [L] > 326/327
 	let delay    = boss_seventy ? 2000 : 0,
 		duration = boss_seventy ? 800 : 900;
 	if ([1160,1190].includes(skillid)) {
@@ -128,18 +132,31 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 	}
 }
 
-function print_mech(next, handlers) {
+function print_mech(next, code, handlers) {
+	let message    = '',
+		message_RU = '',
+		sub_type = 'message';
+
+	if (next) {
+		message    += 'Next: ';
+		message_RU += 'Далее: ';
+		sub_type = 'alert';
+	}
+	if (code) {
+		message    += 'Code ' + (mech_reverse ? '0' : '1') + ' | ';
+		message_RU += 'Код '  + (mech_reverse ? '0' : '1') + ' | ';
+	}
 	if (mech_reverse) {
 		handlers['text']({
-			"sub_type": (next ? 'notification' : 'message'),
-			"message_RU": (next ? 'Далее: ' : '') + RK_TipMsg[msg_b].msg  + ' + ' + RK_TipMsg[msg_a].msg,
-			"message":    (next ? 'Next: ' : '')  + RK_TipMsg[msg_b].msgt + ' + ' + RK_TipMsg[msg_a].msgt
+			"sub_type": sub_type,
+			"message_RU": message_RU + RK_TipMsg[msg_b].msg  + ' + ' + RK_TipMsg[msg_a].msg,
+			"message":    message    + RK_TipMsg[msg_b].msgt + ' + ' + RK_TipMsg[msg_a].msgt
 		});
 	} else {
 		handlers['text']({
-			"sub_type": (next ? 'notification' : 'message'),
-			"message_RU": (next ? 'Далее: ' : '') + RK_TipMsg[msg_a].msg  + ' + ' + RK_TipMsg[msg_b].msg,
-			"message":    (next ? 'Next: ' : '')  + RK_TipMsg[msg_a].msgt + ' + ' + RK_TipMsg[msg_b].msgt
+			"sub_type": sub_type,
+			"message_RU": message_RU + RK_TipMsg[msg_a].msg  + ' + ' + RK_TipMsg[msg_b].msg,
+			"message":    message    + RK_TipMsg[msg_a].msgt + ' + ' + RK_TipMsg[msg_b].msgt
 		});
 	}
 }
