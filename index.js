@@ -772,33 +772,12 @@ class TeraGuide{
 			let sending_event = {};
 			// Create the sending event
 			switch(event['sub_type']) {
-				// Basic message
-				case "message": {
-					if (!entered_zone_data.verbose && !is_event) return;
-					if (voice && dispatch.settings.speaks) {
-						timers[event['id'] || random_timer_id--] = setTimeout(()=> {
-							voice.speak(message, dispatch.settings.rate);
-						}, (event['delay'] || 0 ) - 600 / speed);
-					}
-					timers[event['id'] || random_timer_id--] = setTimeout(()=> {
-						sendMessage(message);
-					}, (event['delay'] || 0) / speed);
-					break;
-				}
-				// Pink dungeon event message
-				case "msgcp": {
-					if (!entered_zone_data.verbose && !is_event) return;
-					if (voice && dispatch.settings.speaks) {
-						timers[event['id'] || random_timer_id--] = setTimeout(()=> {
-							voice.speak(message, dispatch.settings.rate);
-						}, (event['delay'] || 0 ) - 600 / speed);
-					}
-					timers[event['id'] || random_timer_id--] = setTimeout(()=> {
-						sendDungeonEvent(message, cp, spg);
-					}, (event['delay'] || 0) / speed);
-					break;
-				}
-				// Green dungeon event message
+				// Guide message
+				case "message":
+				case "alert":
+				case "warning":
+				case "notification":
+				case "msgcp":
 				case "msgcg": {
 					if (!entered_zone_data.verbose && !is_event) return;
 					if (voice && dispatch.settings.speaks) {
@@ -807,34 +786,21 @@ class TeraGuide{
 						}, (event['delay'] || 0 ) - 600 / speed);
 					}
 					timers[event['id'] || random_timer_id--] = setTimeout(()=> {
-						sendDungeonEvent(message, cg, spg);
+						switch(event['sub_type']) {
+							// Basic message
+							case "message": sendMessage(message); break;
+							// Alert message red
+							case "alert": sendAlert(message, cr, spr); break;
+							// Alert message blue
+							case "warning": sendAlert(message, clb, spb); break;
+							// Notification message
+							case "notification": sendNotification(message); break;
+							// Pink dungeon event message
+							case "msgcp": sendDungeonEvent(message, cp, spg); break;
+							// Green dungeon event message
+							case "msgcg": sendDungeonEvent(message, cg, spg); break;
+						}
 					}, (event['delay'] || 0) / speed);
-					break;
-				}
-				// Team leader notice
-				case "alert": {
-					if (!entered_zone_data.verbose && !is_event) return;
-					if (voice && dispatch.settings.speaks) {
-						timers[event['id'] || random_timer_id--] = setTimeout(()=> {
-							voice.speak(message, dispatch.settings.rate);
-						}, (event['delay'] || 0 ) - 600 / speed);
-					}
-					timers[event['id'] || random_timer_id--] = setTimeout(()=> {
-						sendAlert(message);
-					}, (event['delay'] || 0 ) / speed);
-					break;
-				}
-				// Raid leader notice
-				case "notification": {
-					if (!entered_zone_data.verbose && !is_event) return;
-					if (voice && dispatch.settings.speaks) {
-						timers[event['id'] || random_timer_id--] = setTimeout(()=> {
-							voice.speak(message, dispatch.settings.rate);
-						}, (event['delay'] || 0 ) - 600 / speed);
-					}
-					timers[event['id'] || random_timer_id--] = setTimeout(()=> {
-						sendNotification(message);
-					}, (event['delay'] || 0 ) / speed);
 					break;
 				}
 				// Voice announcement
@@ -857,69 +823,27 @@ class TeraGuide{
 					break;
 				}
 				// Color-specified proxy channel messages
-				case "COMSG": {
-					command.message(co + message);
-					break;
-				}
-				case "CYMSG": {
-					command.message(cy + message);
-					break;
-				}
-				case "CGMSG": {
-					command.message(cg + message);
-					break;
-				}
-				case "CDBMSG": {
-					command.message(cdb + message);
-					break;
-				}
-				case "CBMSG": {
-					command.message(cb + message);
-					break;
-				}
-				case "CVMSG": {
-					command.message(cv + message);
-					break;
-				}
-				case "CPMSG": {
-					command.message(cp + message);
-					break;
-				}
-				case "CLPMSG": {
-					command.message(clp + message);
-					break;
-				}
-				case "CLBMSG": {
-					command.message(clb + message);
-					break;
-				}
-				case "CBLMSG": {
-					command.message(cbl + message);
-					break;
-				}
-				case "CGRMSG": {
-					command.message(cgr + message);
-					break;
-				}
-				case "CWMSG": {
-					command.message(cw + message);
-					break;
-				}
-				case "CRMSG": {
-					command.message(cr + message);
-					break;
-				}
+				case "COMSG": command.message(co + message); break;
+				case "CYMSG": command.message(cy + message); break;
+				case "CGMSG": command.message(cg + message); break;
+				case "CDBMSG": command.message(cdb + message); break;
+				case "CBMSG": command.message(cb + message); break;
+				case "CVMSG": command.message(cv + message); break;
+				case "CPMSG": command.message(cp + message); break;
+				case "CLPMSG": command.message(clp + message); break;
+				case "CLBMSG": command.message(clb + message); break;
+				case "CBLMSG": command.message(cbl + message); break;
+				case "CGRMSG": command.message(cgr + message); break;
+				case "CWMSG": command.message(cw + message); break;
+				case "CRMSG": command.message(cr + message); break;
 				// Default color proxy channel message
-				case "PRMSG": {
-					command.message(dispatch.settings.cc + message);
-					break;
-				}
-				default: {
+				case "PRMSG": command.message(dispatch.settings.cc + message); break;
+
+				default:
 					return debug_message(true, "Invalid sub_type for text handler:", event['sub_type']);
-				}
 			}
 		}
-		// Basic messages
+		// Basic message
 		function sendMessage(message) {
 			if (dispatch.settings.stream) {
 				command.message(dispatch.settings.cc + message);
@@ -964,9 +888,9 @@ class TeraGuide{
 			}
 		}
 		// Alert message
-		function sendAlert(message) {
+		function sendAlert(message, cc, spc) {
 			if (dispatch.settings.stream) {
-				command.message(cr + '[Alert] ' + dispatch.settings.cc + message);
+				command.message(cc + '[Alert] ' + dispatch.settings.cc + message);
 				return;
 			}
 			if (dispatch.settings.lNotice) {
@@ -977,8 +901,8 @@ class TeraGuide{
 					message
 				});
 			} else {
-				// Dungeon event red
-				sendDungeonEvent(message, dispatch.settings.cc, spr);
+				// Dungeon event
+				sendDungeonEvent(message, dispatch.settings.cc, spc);
 			}
 			// Send notices to party
 			if (dispatch.settings.gNotice) {
