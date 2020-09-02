@@ -142,23 +142,22 @@ function print_mech(next, code, handlers) {
 		message_RU += 'Далее: ';
 		sub_type = 'alert';
 	}
-	if (code) {
-		message    += 'Code ' + (mech_reverse ? '0' : '1') + ' | ';
-		message_RU += 'Код '  + (mech_reverse ? '0' : '1') + ' | ';
-	}
 	if (mech_reverse) {
-		handlers['text']({
-			"sub_type": sub_type,
-			"message_RU": message_RU + RK_TipMsg[msg_b].msg  + ' + ' + RK_TipMsg[msg_a].msg,
-			"message":    message    + RK_TipMsg[msg_b].msgt + ' + ' + RK_TipMsg[msg_a].msgt
-		});
+		message_RU += RK_TipMsg[msg_b].msg  + ' + ' + RK_TipMsg[msg_a].msg;
+		message    += RK_TipMsg[msg_b].msgt + ' + ' + RK_TipMsg[msg_a].msgt;
 	} else {
-		handlers['text']({
-			"sub_type": sub_type,
-			"message_RU": message_RU + RK_TipMsg[msg_a].msg  + ' + ' + RK_TipMsg[msg_b].msg,
-			"message":    message    + RK_TipMsg[msg_a].msgt + ' + ' + RK_TipMsg[msg_b].msgt
-		});
+		message_RU += RK_TipMsg[msg_a].msg  + ' + ' + RK_TipMsg[msg_b].msg;
+		message    += RK_TipMsg[msg_a].msgt + ' + ' + RK_TipMsg[msg_b].msgt;
 	}
+	if (code) {
+		message    += ', Code: ' + (mech_reverse ? '0' : '1');
+		message_RU += ', Код: '  + (mech_reverse ? '0' : '1');
+	}
+	handlers['text']({
+		"sub_type": sub_type,
+		"message_RU": message_RU,
+		"message":    message
+	});
 }
 
 function start_boss() {
