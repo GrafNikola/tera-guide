@@ -64,7 +64,7 @@ module.exports = {
 		{"type": "func","func": SpawnSemicircle.bind(null,85,295,912,0,0,6,550,0,1500)},
 		{"type": "text","sub_type": "message","delay":100,"message": "Out > In","message_RU": "От него > К нему"}
 	],
-	"s-3202-1000-127-0": [{"type": "text","sub_type": "message","message": "Out > In","message_RU": "От него > К нему"}
+	"s-3202-1000-127-0": [{"type": "text","sub_type": "message","message": "Out > In","message_RU": "От него > К нему"},
 		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,14,160,0,3000)},
 		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,8,390,0,3000)},
 		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,6,620,0,3000)}
@@ -87,7 +87,7 @@ module.exports = {
 		{"type": "func","func": SpawnSemicircle.bind(null,85,295,912,0,0,6,550,0,1500)},
 		{"type": "text","sub_type": "message","delay":100,"message": "In > Out","message_RU": "К нему > От него"}
 	],
-	"s-3202-1000-128-0": [{"type": "text","sub_type": "message","message": "In > Out","message_RU": "К нему > От него"}
+	"s-3202-1000-128-0": [{"type": "text","sub_type": "message","message": "In > Out","message_RU": "К нему > От него"},
 		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,14,160,0,3000)},
 		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,8,390,0,3000)},
 		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,6,620,0,3000)}
