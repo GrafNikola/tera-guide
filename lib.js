@@ -198,9 +198,9 @@ function SpawnObject(type, target, item, offsetAngle, offsetDistance, angle, dis
 }
 
 function applyDistance(loc, offsetDistance, offsetAngle) {
-	let r = loc.w; //(loc.w / 0x8000) * Math.PI;
-	let rads = (offsetAngle * Math.PI / 180);
-	let finalrad = r - rads;
+	const r = loc.w; //(loc.w / 0x8000) * Math.PI;
+	const rads = (offsetAngle * Math.PI / 180);
+	const finalrad = r - rads;
 
 	loc.x += Math.cos(finalrad) * offsetDistance;
 	loc.y += Math.sin(finalrad) * offsetDistance;

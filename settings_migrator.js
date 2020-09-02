@@ -53,8 +53,8 @@ module.exports = function MigrateSettings(from_ver, to_ver, settings) {
 			// Recursively upgrade in one-version steps
 			settings = MigrateSettings(from_ver, from_ver + 1, settings);
 
-			setTimeout(function(){ 
-					return MigrateSettings(from_ver + 1, to_ver, settings); 
+			setTimeout(function(){
+				return MigrateSettings(from_ver + 1, to_ver, settings);
 			}, 0);
 		}
 		// If we reach this point it's guaranteed that from_ver === to_ver - 1, so we can implement
@@ -64,10 +64,10 @@ module.exports = function MigrateSettings(from_ver, to_ver, settings) {
 			default:
 				let oldsettings = settings;
 				settings = Object.assign(DefaultSettings, {});
-				for (let option in settings) {
+				for (const option in settings) {
 					if (option == "dungeons") {
-						let optionobj = [];
-						for (let i of settings[option]) {
+						const optionobj = [];
+						for (const i of settings[option]) {
 							if (i.id == undefined) continue;
 							if (oldsettings[option]) {
 								for (const oldi of oldsettings[option]) {

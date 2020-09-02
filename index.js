@@ -13,8 +13,31 @@ const DPS_CLASS_IDS = [2, 3, 4, 5, 8, 9, 11, 12];
 const HEALER_CLASS_IDS = [6, 7];
 // Warrior Defence stance abnormality ids
 const WARRIOR_TANK_IDS = [100200, 100201];
+// Zones with skillid range 1000-3000
+const SP_ZONES = [
+	3026, // Corrupted Skynest
+	3126, // Corrupted Skynest (Hard)
+	9050, // Rift's Edge (Hard)
+	9054, // Bathysmal Rise (Hard)
+	9044, // Bahaar's Sanctum
+	9066, // Demon's Wheel
+	9070, // Manglemire
+	9750, // Rift's Edge
+	9754, // Bathysmal Rise
+	9781, // Velik's Sanctuary
+	9916, // Sky Cruiser Endeavor (Hard)
+	9920, // Antaroth's Abyss (Hard)
+	9970, // Ruinous Manor (Hard)
+	9981  // Velik's Sanctuary (Hard)
+];
+// Zones with skillid range 100-200-3000
+const ES_ZONES = [
+	3023, // Akalath Quarantine
+	9000, // ???
+	9759  // Forsaken Island (Hard)
+];
 // Supported languages by client
-const languages = {0: 'en', 1: 'kr', 3: 'jp', 4: 'de', 5: 'fr', 7: 'tw', 8: 'ru'};
+const languages = { 0: 'en', 1: 'kr', 3: 'jp', 4: 'de', 5: 'fr', 7: 'tw', 8: 'ru' };
 // Messages colors
 const cr  = '</font><font color="#ff0000">'; // red
 const co  = '</font><font color="#ff7700">'; // orange
@@ -180,7 +203,8 @@ class TeraGuide{
 			const unique_id = `${prefix_identifier}-${ent['huntingZoneId']}-${ent['templateId']}`;
 			const key = `${unique_id}-${id}`;
 			const stage_string = (stage === false ? '' : `-${stage}`);
-			debug_message(d, `${called_from_identifier}: ${id} | Started by: ${unique_id} | key: ${key + stage_string}`);
+			const debug_string = `${called_from_identifier}: ${id} | Started by: ${unique_id} | key: ${key + stage_string}`;
+			debug_message(d, debug_string);
 			if(stage !== false) {
 				const entry = active_guide[key + stage_string];
 				if (entry) start_events(entry, ent, speed);
@@ -207,7 +231,11 @@ class TeraGuide{
 		function s_action_stage(e) {
 			let skillid = e.skill.id % 1000;
 			let eskillid;
-			if (e.skill.id > 3000){ eskillid = e.skill.id } else { eskillid = e.skill.id % 1000}
+			if (e.skill.id > 3000) {
+				eskillid = e.skill.id;
+			} else {
+				eskillid = e.skill.id % 1000;
+			}
 			// If the guide module is active and a guide for the current dungeon is found
 			if (dispatch.settings.enabled && guide_found) {
 				const ent = entity['mobs'][e.gameId.toString()];
@@ -216,11 +244,9 @@ class TeraGuide{
 				// We've confirmed it's a mob, so it's plausible we want to act on this
 				if (spguide) {
 					if (ent) return handle_event(Object.assign({}, ent, e), e.skill.id, 'Skill', 's', debug.debug || debug.skill || (ent['templateId'] % 1 === 0 ? debug.boss : false), e.speed, e.stage);
-				}
-				else if (esguide) {
+				} else if (esguide) {
 					if (ent) return handle_event(Object.assign({}, ent, e), eskillid, 'Skill', 's', debug.debug || debug.skill || (ent['templateId'] % 1 === 0 ? debug.boss : false), e.speed, e.stage);
-				}
-				else{
+				} else {
 					if (ent) return handle_event(Object.assign({}, ent, e), skillid, 'Skill', 's', debug.debug || debug.skill || (ent['templateId'] % 1 === 0 ? debug.boss : false), e.speed, e.stage);
 				}
 			}
@@ -334,11 +360,11 @@ class TeraGuide{
 					throw 'Guide for zone ' + zone + ' not found in config';
 				}
 				active_guide = require('./guides/' + zone);
-				if ([3126, 3026, 9750, 9066, 9050, 9054, 9754, 9916, 9781, 3017, 9044, 9070, 9920, 9970, 9981].includes(zone)) {
-					spguide = true;   // skill  1000-3000 
+				if (SP_ZONES.includes(zone)) {
+					spguide = true;  // skill  1000-3000
 					esguide = false;
-				} else if ([9000, 3023, 9759].includes(zone)) {
-					spguide = false; // skill  100-200-3000 
+				} else if (ES_ZONES.includes(zone)) {
+					spguide = false; // skill  100-200-3000
 					esguide = true;
 				} else {
 					spguide = false; // skill  100-200 
@@ -350,21 +376,21 @@ class TeraGuide{
 						text_handler({
 							"sub_type": "PRMSG",
 							"delay": 8000,
-							"message_RU": 'Вы вошли в ' + cr + entered_zone_data.name_RU + cw + ' [' + zone + ']', 
+							"message_RU": 'Вы вошли в SP данж: ' + cr + entered_zone_data.name_RU + cw + ' [' + zone + ']', 
 							"message": 'Enter SP Dungeon: ' +  cr + entered_zone_data.name + cw + ' [' + zone + ']'
 						});
 					} else if (esguide) {
 						text_handler({
 							"sub_type": "PRMSG",
 							"delay": 8000,
-							"message_RU": 'Вы вошли в ' + cr + entered_zone_data.name_RU + cw + ' [' + zone + ']',
+							"message_RU": 'Вы вошли в ES данж: ' + cr + entered_zone_data.name_RU + cw + ' [' + zone + ']',
 							"message": 'Enter ES Dungeon: ' + cr + entered_zone_data.name + cw + ' [' + zone + ']'
 						 });
 					} else {
 						text_handler({
 							"sub_type": "PRMSG",
 							"delay": 8000,
-							"message_RU": 'Вы вошли в ' + cr + entered_zone_data.name_RU + cw + ' [' + zone + ']',
+							"message_RU": 'Вы вошли в данж: ' + cr + entered_zone_data.name_RU + cw + ' [' + zone + ']',
 							"message": 'Enter Dungeon: ' + cr + entered_zone_data.name + cw + ' [' + zone + ']'
 						});
 					}
@@ -514,8 +540,8 @@ class TeraGuide{
 				dispatch.settings.rate.splice(0,1, rate1);
 			},
 			2() {
-			   text_handler({"sub_type": "PRMSG","message_RU": `Скорость речи 2`, "message": `Voice speed 2` });
-			   dispatch.settings.rate.splice(0,1, rate2);
+				text_handler({"sub_type": "PRMSG","message_RU": `Скорость речи 2`, "message": `Voice speed 2` });
+				dispatch.settings.rate.splice(0,1, rate2);
 			},
 			3() {
 				text_handler({"sub_type": "PRMSG","message_RU": `Скорость речи 3`, "message": `Voice speed 3` });
