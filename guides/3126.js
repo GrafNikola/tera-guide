@@ -61,7 +61,7 @@ function debuff_added(id, handlers, dispatch) {
 		if (debuff != null) {
 			handlers['text']({
 				"sub_type": "message",
-				"message": "Debuff 20s",
+				"message": "Debuff 20 seconds",
 				"message_RU": "Дебафф 20 сек."
 			});
 		}
@@ -77,7 +77,7 @@ function debuff_added(id, handlers, dispatch) {
 			}, 2000);
 			handlers['text']({
 				"sub_type": "message",
-				"message": "Debuff 50s",
+				"message": "Debuff 50 seconds",
 				"message_RU": "Дебафф 50 сек."
 			});
 		}
@@ -86,7 +86,7 @@ function debuff_added(id, handlers, dispatch) {
 		if (debuff != null) {
 			handlers['text']({
 				"sub_type": "message",
-				"message": "Warning! Debuff 15s",
+				"message": "Warning! Debuff 15 seconds",
 				"message_RU": "Дебафф 15 сек."
 			});
 		}
@@ -95,7 +95,7 @@ function debuff_added(id, handlers, dispatch) {
 		if (debuff != null) {
 			handlers['text']({
 				"sub_type": "message",
-				"message": "Warning! Debuff 10s",
+				"message": "Warning! Debuff 10 seconds",
 				"message_RU": "Дебафф 10 сек."
 			});
 		}
@@ -104,7 +104,7 @@ function debuff_added(id, handlers, dispatch) {
 		if (debuff != null) {
 			handlers['text']({
 				"sub_type": "message",
-				"message": "Warning! Debuff 5s",
+				"message": "Warning! Debuff 5 seconds",
 				"message_RU": "Дебафф 5 сек."
 			});
 		}
