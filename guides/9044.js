@@ -214,8 +214,8 @@ module.exports = {
 	//
 	"s-444-1000-2131-0": [{"type": "text","sub_type": "message","message": 'Front | Left Scratch',"message_RU": "Удар в вперед | Левый черкаш"},
 		{"type": "func","func": SpawnCircle.bind(null,false,445,358,340,8,660,100,4000)},
-		{"type": "func","func": SpawnVector.bind(null,553,358,340,180,500,100,4000)},
-		{"type": "func","func": SpawnVector.bind(null,553,358,340,0,500,100,4000)}
+		{"type": "func","func": SpawnVector.bind(null,553,358,0,180,500,100,4000)},
+		{"type": "func","func": SpawnVector.bind(null,553,358,0,0,500,100,4000)}
 	],
 	"s-444-1000-2132-0": [
 		{"type": "func","func": SpawnVector.bind(null,553,270,200,0,500,0,2000)},
@@ -258,8 +258,8 @@ module.exports = {
 	"s-444-1000-1121-0": [{"type": "text","sub_type": "message","message": 'Waves (Left)',"message_RU": "Волны (левая)"},{"type": "func","func": skilld_event.bind(null, 1121)}],
 	"s-444-1000-1131-0": [{"type": "text","sub_type": "message","message": 'Front | Left Scratch',"message_RU": "Удар вперед | Левый черкаш"},
 		{"type": "func","func": SpawnCircle.bind(null,false,445,358,340,8,660,100,4000)},
-		{"type": "func","func": SpawnVector.bind(null,553,358,340,180,500,100,4000)},
-		{"type": "func","func": SpawnVector.bind(null,553,358,340,0,500,100,4000)}
+		{"type": "func","func": SpawnVector.bind(null,553,358,0,180,500,100,4000)},
+		{"type": "func","func": SpawnVector.bind(null,553,358,0,0,500,100,4000)}
 	],
 	"s-444-1000-1132-0": [
 		{"type": "func","func": SpawnVector.bind(null,553,270,200,0,500,0,2000)},
@@ -341,8 +341,8 @@ module.exports = {
 	//
 	"s-444-2000-1125-0": [{"type": "text","sub_type": "message","message": 'Front | Right Scratch',"message_RU": "Удар вперед | Правый черкаш"}, 
 		{"type": "func","func": SpawnCircle.bind(null,false,445,356,400,8,350,100,3000)},
-		{"type": "func","func": SpawnVector.bind(null,553,356,400,180,500,100,3000)},
-		{"type": "func","func": SpawnVector.bind(null,553,356,400,0,500,100,3000)}
+		{"type": "func","func": SpawnVector.bind(null,553,356,0,180,500,100,3000)},
+		{"type": "func","func": SpawnVector.bind(null,553,356,0,0,500,100,3000)}
 	],
 	"s-444-2000-1126-0": [
 		{"type": "func","func": SpawnVector.bind(null,553,90,200,0,500,100,2000)},
@@ -350,8 +350,8 @@ module.exports = {
 	],
 	"s-444-2000-1131-0": [{"type": "text","sub_type": "message","message": 'Front | Left Scratch',"message_RU": "Удар вперед | Левый черкаш"},
 		{"type": "func","func": SpawnCircle.bind(null,false,445,358,340,8,660,100,4000)},
-		{"type": "func","func": SpawnVector.bind(null,553,358,340,180,500,100,4000)},
-		{"type": "func","func": SpawnVector.bind(null,553,358,340,0,500,100,4000)}
+		{"type": "func","func": SpawnVector.bind(null,553,358,0,180,500,100,4000)},
+		{"type": "func","func": SpawnVector.bind(null,553,358,0,0,500,100,4000)}
 	],
 	"s-444-2000-1132-0": [
 		{"type": "func","func": SpawnVector.bind(null,553,270,200,0,500,100,2000)},
@@ -445,8 +445,8 @@ module.exports = {
 	//
 	"s-444-2000-2125-0": [{"type": "text","sub_type": "message","message": 'Front | Right Scratch',"message_RU": "Удар вперед | Правый черкаш"},
 		{"type": "func","func": SpawnCircle.bind(null,false,445,356,400,8,350,100,3000)},
-		{"type": "func","func": SpawnVector.bind(null,553,356,400,180,500,100,3000)},
-		{"type": "func","func": SpawnVector.bind(null,553,356,400,0,500,100,3000)}
+		{"type": "func","func": SpawnVector.bind(null,553,356,0,180,500,100,3000)},
+		{"type": "func","func": SpawnVector.bind(null,553,356,0,0,500,100,3000)}
 	],
 	 "s-444-2000-2126-0": [
 		{"type": "func","func": SpawnVector.bind(null,553,90,200,0,500,100,2000)},
@@ -454,8 +454,8 @@ module.exports = {
 	],
 	"s-444-2000-2131-0": [{"type": "text","sub_type": "message","message": 'Front | Left Scratch',"message_RU": "Удар вперед | Левый черкаш"},
 		{"type": "func","func": SpawnCircle.bind(null,false,445,358,340,8,660,100,4000)},
-		{"type": "func","func": SpawnVector.bind(null,553,358,340,180,500,100,4000)},
-		{"type": "func","func": SpawnVector.bind(null,553,358,340,0,500,100,4000)}
+		{"type": "func","func": SpawnVector.bind(null,553,358,0,180,500,100,4000)},
+		{"type": "func","func": SpawnVector.bind(null,553,358,0,0,500,100,4000)}
 	],
 	"s-444-2000-2132-0": [
 		{"type": "func","func": SpawnVector.bind(null,553,270,200,0,500,100,2000)},
