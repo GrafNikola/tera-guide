@@ -10,10 +10,10 @@ let timer1;
 let printTarget = true;
 let inBait = false;
 
-function skilld_event(skillid, handlers, event, entity, dispatch) {
+function skilld_event(skillid, handlers, event, ent, dispatch) {
 	if ([107,310].includes(skillid)) { // Bait/Back flip
 		inBait = true;
-		setTimeout(() => inBait = false, 3500);
+		dispatch.setTimeout(() => inBait = false, 3500);
 	}
 	if (skillid == 116) { // Haymaker
 		if (inBait) {
@@ -32,10 +32,10 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 	}
 	if ([31031007,32031007].includes(skillid)) { // "Ha" attacks
 		if (printTarget) {
-			clearTimeout(timer1);
+			dispatch.clearTimeout(timer1);
 			printTarget = false;
-			setTimeout(() => printTarget = true, 5000);
-			timer1 = setTimeout(()=> {
+			dispatch.setTimeout(() => printTarget = true, 5000);
+			timer1 = dispatch.setTimeout(()=> {
 				handlers['text']({
 					"sub_type": "alert",
 					"message": "Target attacks soon",

@@ -10,8 +10,8 @@ let player, entity, library, effect;
 let counter = 0;
 let timer;
 
-function back_attack_NM(handlers) {
-	clearTimeout(timer);
+function back_attack_NM(handlers, event, ent, dispatch) {
+	dispatch.clearTimeout(timer);
 	counter++;
 	if (counter >= 2) {
 		handlers['text']({
@@ -20,7 +20,7 @@ function back_attack_NM(handlers) {
 			"message_RU": "Задний"
 		});
 	}
-	timer = setTimeout(()=> {
+	timer = dispatch.setTimeout(()=> {
 		counter = 0;
 	}, 3000);
 }

@@ -224,6 +224,12 @@ class TeraGuide{
 			}
 		}
 
+		// setTimeout wrapper
+		function _setTimeout(callback, timeout, id) {
+			if (id === null) id = random_timer_id--
+			return timers[id] = dispatch.setTimeout(callback, timeout);
+		}
+
 		/** S_ACTION_STAGE **/
 
 		// Boss skill action
@@ -331,7 +337,8 @@ class TeraGuide{
 			// Clear current hp values for all zone mobs
 			mobs_hp = {};
 			// Clear out the timers
-			for (let key in timers) clearTimeout(timers[key]);
+			fake_dispatch._clear_all_timers();
+			for (let key in timers) dispatch.clearTimeout(timers[key]);
 			timers = {};
 			// Clear out previous hooks, that our previous guide module hooked
 			fake_dispatch._remove_all_hooks();
@@ -747,7 +754,7 @@ class TeraGuide{
 				}
 			}
 			// Create the timer for spawning the item
-			timers[item_unique_id] = setTimeout(()=> {
+			timers[item_unique_id] = dispatch.setTimeout(()=> {
 				switch(sub_type) {
 					case "collection": return dispatch.toClient('S_SPAWN_COLLECTION', 4, sending_event);
 					case "item": return dispatch.toClient('S_SPAWN_DROPITEM', 8, sending_event);
@@ -755,7 +762,7 @@ class TeraGuide{
 				}
 			}, event['delay'] || 0 / speed);
 			// Create the timer for despawning the item
-			timers[random_timer_id--] = setTimeout(()=> {
+			timers[random_timer_id--] = dispatch.setTimeout(()=> {
 				switch (sub_type) {
 					case "collection": return dispatch.toClient('S_DESPAWN_COLLECTION', 2, despawn_event);
 					case "item": return dispatch.toClient('S_DESPAWN_DROPITEM', 4, despawn_event);
@@ -806,11 +813,11 @@ class TeraGuide{
 				case "msgcg": {
 					if (!entered_zone_data.verbose && !is_event) return;
 					if (voice && dispatch.settings.speaks) {
-						timers[event['id'] || random_timer_id--] = setTimeout(()=> {
+						timers[event['id'] || random_timer_id--] = dispatch.setTimeout(()=> {
 							voice.speak(message, dispatch.settings.rate);
 						}, (event['delay'] || 0 ) - 600 / speed);
 					}
-					timers[event['id'] || random_timer_id--] = setTimeout(()=> {
+					timers[event['id'] || random_timer_id--] = dispatch.setTimeout(()=> {
 						switch(event['sub_type']) {
 							// Basic message
 							case "message": sendMessage(message); break;
@@ -832,7 +839,7 @@ class TeraGuide{
 				case "speech": {
 					if (!entered_zone_data.verbose && !is_event) return;
 					if (voice && dispatch.settings.speaks) {
-						timers[event['id'] || random_timer_id--] = setTimeout(()=> {
+						timers[event['id'] || random_timer_id--] = dispatch.setTimeout(()=> {
 							voice.speak(message, dispatch.settings.rate);
 						}, (event['delay'] || 0 ) - 600 / speed);
 					}
@@ -841,7 +848,7 @@ class TeraGuide{
 				// Proxy channel test message (red color)
 				case "MSG": {
 					if (!entered_zone_data.verbose && !is_event) return;
-					timers[event['id'] || random_timer_id--] = setTimeout(()=> {
+					timers[event['id'] || random_timer_id--] = dispatch.setTimeout(()=> {
 						command.message(cr + message);
 						console.log(cr + message);
 					}, (event['delay'] || 0 ) - 600 / speed);
@@ -957,14 +964,14 @@ class TeraGuide{
 			// Check if that entry exists, if it doesn't print out a debug message. This is because users can make mistakes
 			if (!timers[event['id']]) return debug_message(true, `There isn't a timer with tie id: ${event['id']} active`);
 			// clearout the timer
-			clearTimeout(timers[event['id']]);
+			dispatch.clearTimeout(timers[event['id']]);
 		}
 		// Func handler
 		function func_handler(event, ent, speed = 1.0) {
 			// Make sure func is defined
 			if (!event['func']) return debug_message(true, "Func handler needs a func");
 			// Start the timer for the function call
-			timers[event['id'] || random_timer_id--] = setTimeout(event['func'], (event['delay'] || 0) / speed, function_event_handlers, event, ent, fake_dispatch);
+			timers[event['id'] || random_timer_id--] = dispatch.setTimeout(event['func'], (event['delay'] || 0) / speed, function_event_handlers, event, ent, fake_dispatch);
 		}
 	}
 }

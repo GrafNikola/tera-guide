@@ -13,20 +13,20 @@ let notice = true;
 let notices = true;
 let printend = false;
 
-function skillds_event(skillids, handlers, event, entity, dispatch) {
+function skillds_event(skillids, handlers, event, ent, dispatch) {
 	if (skillids === 104) {
 		skill = 104;
-		//setTimeout(() => skill = 0, 500);
+		//dispatch.setTimeout(() => skill = 0, 500);
 	} else if (skillids === 134) {
 		skill = 134;
-		//setTimeout(() => skill = 0, 500);
+		//dispatch.setTimeout(() => skill = 0, 500);
 	} else if (skillids === 118) {
 		skill = 118;
-		//setTimeout(() => skill = 0, 500);
+		//dispatch.setTimeout(() => skill = 0, 500);
 	}
 }
 
-function skilld_event(skillid, handlers, event, entity, dispatch) {
+function skilld_event(skillid, handlers, event, ent, dispatch) {
 	if (skillid == 90442000) shining = true;
 	if (skillid == 90442001) shining = false;
 	if (skillid == 90442304) {
@@ -34,117 +34,117 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 		handlers['text']({"sub_type": "message","message": "Stun","message_RU": "Стан!!!"});
 	}
 	if (skillid == 90444001 && skill == 104) {
-		setTimeout(() => {
+		dispatch.setTimeout(() => {
 			if (shining){
 				handlers['text']({"sub_type": "msgcp","message": "Back","message_RU": "Удар назад"}); 
 				skill = 0;
 				notices = false;
-				setTimeout(() => notices = true, 1000);
+				dispatch.setTimeout(() => notices = true, 1000);
 			}
 		}, 500);
 	}
-	if (skillid == 90442000 && skill == 134) setTimeout(() => {
+	if (skillid == 90442000 && skill == 134) dispatch.setTimeout(() => {
 		if (shining) {
 			handlers['text']({"sub_type": "msgcp","message": "Back","message_RU": "Удар назад"});
 			skill = 0; 
 			notices = false;
-			setTimeout(() => notices = true, 1000);
+			dispatch.setTimeout(() => notices = true, 1000);
 		}
 	}, 300);
-	if (skillid == 90444001 && skill == 118) setTimeout(() => {
+	if (skillid == 90444001 && skill == 118) dispatch.setTimeout(() => {
 		if (shining) {
 			handlers['text']({"sub_type": "msgcp","message": "Back","message_RU": "Удар назад"});
 			skill = 0; 
 			notices = false;
-			setTimeout(() => notices = true, 1000);
+			dispatch.setTimeout(() => notices = true, 1000);
 		}
 	}, 300);
 	if (notice && skillid == 305) {
 		notice = false;
 		handlers['text']({"sub_type": "notification","message": "Laser","message_RU": "Лазер !!!"});
 		handlers['text']({"sub_type": "message","message": "Laser","message_RU": "Лазер !!!"});
-		setTimeout(() => notice = true, 4000);
+		dispatch.setTimeout(() => notice = true, 4000);
 	}
 	if (notices && skillid == 137) {
 		handlers['text']({"sub_type": "message","message": "Back","message_RU": "Удар назад"});
 	}
 	//
 	if ([1121,2121].includes(skillid)) {
-		SpawnMarker(false,37,125,0,2533,false,["safe","safe"],handlers,event,entity);
-		SpawnMarker(false,143,125,0,2533,false,["safe","safe"],handlers,event,entity);
+		SpawnMarker(false,37,125,0,2533,false,["safe","safe"],handlers,event,ent,dispatch);
+		SpawnMarker(false,143,125,0,2533,false,["safe","safe"],handlers,event,ent,dispatch);
 
-		SpawnVector(553,90,50,0,500,0,6000,handlers,event,entity);//右前直线
-		SpawnVector(553,270,50,0,500,0,6000,handlers,event,entity);//左前直线
-		SpawnVector(553,90,50,180,500,0,6000,handlers,event,entity);//右后直线
-		SpawnVector(553,270,50,180,500,0,6000,handlers,event,entity);//左后直线
-		SpawnCircle(false,445,0,0,6,400,0,6000,handlers,event,entity);
+		SpawnVector(553,90,50,0,500,0,6000,handlers,event,ent,dispatch);//右前直线
+		SpawnVector(553,270,50,0,500,0,6000,handlers,event,ent,dispatch);//左前直线
+		SpawnVector(553,90,50,180,500,0,6000,handlers,event,ent,dispatch);//右后直线
+		SpawnVector(553,270,50,180,500,0,6000,handlers,event,ent,dispatch);//左后直线
+		SpawnCircle(false,445,0,0,6,400,0,6000,handlers,event,ent,dispatch);
 
 		handlers['text']({"type": "text","sub_type": "alert","delay": 60000,"message": 'Waves soon...',"message_RU": "Скоро волны"});
 	}
 	// Right
 	if ([1140,2140].includes(skillid)) {
-		SpawnMarker(false,323,125,0,2533,false,["safe","safe"],handlers,event,entity);
-		SpawnMarker(false,217,125,0,2533,false,["safe","safe"],handlers,event,entity);
+		SpawnMarker(false,323,125,0,2533,false,["safe","safe"],handlers,event,ent,dispatch);
+		SpawnMarker(false,217,125,0,2533,false,["safe","safe"],handlers,event,ent,dispatch);
 
-		SpawnVector(553,90,50,0,500,0,6000,handlers,event,entity);//右前直线
-		SpawnVector(553,270,50,0,500,0,6000,handlers,event,entity);//左前直线
-		SpawnVector(553,90,50,180,500,0,6000,handlers,event,entity);//右后直线
-		SpawnVector(553,270,50,180,500,0,6000,handlers,event,entity);//左后直线
-		SpawnCircle(false,445,0,0,6,400,0,6000,handlers,event,entity);
+		SpawnVector(553,90,50,0,500,0,6000,handlers,event,ent,dispatch);//右前直线
+		SpawnVector(553,270,50,0,500,0,6000,handlers,event,ent,dispatch);//左前直线
+		SpawnVector(553,90,50,180,500,0,6000,handlers,event,ent,dispatch);//右后直线
+		SpawnVector(553,270,50,180,500,0,6000,handlers,event,ent,dispatch);//左后直线
+		SpawnCircle(false,445,0,0,6,400,0,6000,handlers,event,ent,dispatch);
 
 		handlers['text']({"type": "text","sub_type": "alert","delay": 60000,"message": 'Waves soon...',"message_RU": "Скоро волны"});
 	}
 	// 2nd fast 123 142
 	// Left
 	if ([1123,2123].includes(skillid)) {
-		SpawnMarker(false,37,125,0,2500,false,["safe","safe"],handlers,event,entity);
-		SpawnMarker(false,143,125,0,2500,false,["safe","safe"],handlers,event,entity);
+		SpawnMarker(false,37,125,0,2500,false,["safe","safe"],handlers,event,ent,dispatch);
+		SpawnMarker(false,143,125,0,2500,false,["safe","safe"],handlers,event,ent,dispatch);
 
-		SpawnVector(553,90,50,0,500,0,6000,handlers,event,entity);//右前直线
-		SpawnVector(553,270,50,0,500,0,6000,handlers,event,entity);//左前直线
-		SpawnVector(553,90,50,180,500,0,6000,handlers,event,entity);//右后直线
-		SpawnVector(553,270,50,180,500,0,6000,handlers,event,entity);//左后直线
-		SpawnCircle(false,445,0,0,6,400,0,6000,handlers,event,entity);
+		SpawnVector(553,90,50,0,500,0,6000,handlers,event,ent,dispatch);//右前直线
+		SpawnVector(553,270,50,0,500,0,6000,handlers,event,ent,dispatch);//左前直线
+		SpawnVector(553,90,50,180,500,0,6000,handlers,event,ent,dispatch);//右后直线
+		SpawnVector(553,270,50,180,500,0,6000,handlers,event,ent,dispatch);//左后直线
+		SpawnCircle(false,445,0,0,6,400,0,6000,handlers,event,ent,dispatch);
 
 		handlers['text']({"type": "text","sub_type": "alert","delay": 60000,"message": 'Waves soon...',"message_RU": "Скоро волны"});
 	}
 	// Right
 	if ([1142,2142].includes(skillid)) {
-		SpawnMarker(false,323,125,0,2500,false,["safe","safe"],handlers,event,entity);
-		SpawnMarker(false,217,125,0,2500,false,["safe","safe"],handlers,event,entity);
+		SpawnMarker(false,323,125,0,2500,false,["safe","safe"],handlers,event,ent,dispatch);
+		SpawnMarker(false,217,125,0,2500,false,["safe","safe"],handlers,event,ent,dispatch);
 
-		SpawnVector(553,90,50,0,500,0,6000,handlers,event,entity);//右前直线
-		SpawnVector(553,270,50,0,500,0,6000,handlers,event,entity);//左前直线
-		SpawnVector(553,90,50,180,500,0,6000,handlers,event,entity);//右后直线
-		SpawnVector(553,270,50,180,500,0,6000,handlers,event,entity);//左后直线
-		SpawnCircle(false,445,0,0,6,400,0,6000,handlers,event,entity);
+		SpawnVector(553,90,50,0,500,0,6000,handlers,event,ent,dispatch);//右前直线
+		SpawnVector(553,270,50,0,500,0,6000,handlers,event,ent,dispatch);//左前直线
+		SpawnVector(553,90,50,180,500,0,6000,handlers,event,ent,dispatch);//右后直线
+		SpawnVector(553,270,50,180,500,0,6000,handlers,event,ent,dispatch);//左后直线
+		SpawnCircle(false,445,0,0,6,400,0,6000,handlers,event,ent,dispatch);
 
 		handlers['text']({"type": "text","sub_type": "alert","delay": 60000,"message": 'Waves soon...',"message_RU": "Скоро волны"});
 	}
 	// 3rd fast 122 141
 	// Left
 	if ([1122,2122].includes(skillid)) {
-		SpawnMarker(false,37,125,0,2533,false,["safe","safe"],handlers,event,entity);
-		SpawnMarker(false,143,125,0,2533,false,["safe","safe"],handlers,event,entity);
+		SpawnMarker(false,37,125,0,2533,false,["safe","safe"],handlers,event,ent,dispatch);
+		SpawnMarker(false,143,125,0,2533,false,["safe","safe"],handlers,event,ent,dispatch);
 
-		SpawnVector(553,90,50,0,500,0,6000,handlers,event,entity);//右前直线
-		SpawnVector(553,270,50,0,500,0,6000,handlers,event,entity);//左前直线
-		SpawnVector(553,90,50,180,500,0,6000,handlers,event,entity);//右后直线
-		SpawnVector(553,270,50,180,500,0,6000,handlers,event,entity);//左后直线
-		SpawnCircle(false,445,0,0,6,400,0,6000,handlers,event,entity);
+		SpawnVector(553,90,50,0,500,0,6000,handlers,event,ent,dispatch);//右前直线
+		SpawnVector(553,270,50,0,500,0,6000,handlers,event,ent,dispatch);//左前直线
+		SpawnVector(553,90,50,180,500,0,6000,handlers,event,ent,dispatch);//右后直线
+		SpawnVector(553,270,50,180,500,0,6000,handlers,event,ent,dispatch);//左后直线
+		SpawnCircle(false,445,0,0,6,400,0,6000,handlers,event,ent,dispatch);
 
 		handlers['text']({"type": "text","sub_type": "alert","delay": 60000,"message": 'Waves soon...',"message_RU": "Скоро волны"});
 	}
 	// Right
 	if ([1141,2141].includes(skillid)) {
-		SpawnMarker(false,323,125,0,2533,false,["safe","safe"],handlers,event,entity);
-		SpawnMarker(false,217,125,0,2533,false,["safe","safe"],handlers,event,entity);
+		SpawnMarker(false,323,125,0,2533,false,["safe","safe"],handlers,event,ent,dispatch);
+		SpawnMarker(false,217,125,0,2533,false,["safe","safe"],handlers,event,ent,dispatch);
 
-		SpawnVector(553,90,50,0,500,0,6000,handlers,event,entity);//右前直线
-		SpawnVector(553,270,50,0,500,0,6000,handlers,event,entity);//左前直线
-		SpawnVector(553,90,50,180,500,0,6000,handlers,event,entity);//右后直线
-		SpawnVector(553,270,50,180,500,0,6000,handlers,event,entity);//左后直线
-		SpawnCircle(false,445,0,0,6,400,0,6000,handlers,event,entity);
+		SpawnVector(553,90,50,0,500,0,6000,handlers,event,ent,dispatch);//右前直线
+		SpawnVector(553,270,50,0,500,0,6000,handlers,event,ent,dispatch);//左前直线
+		SpawnVector(553,90,50,180,500,0,6000,handlers,event,ent,dispatch);//右后直线
+		SpawnVector(553,270,50,180,500,0,6000,handlers,event,ent,dispatch);//左后直线
+		SpawnCircle(false,445,0,0,6,400,0,6000,handlers,event,ent,dispatch);
 
 		handlers['text']({"type": "text","sub_type": "alert","delay": 60000,"message": 'Waves soon...',"message_RU": "Скоро волны"});
 	}

@@ -21,12 +21,12 @@ const RK_TipMsg =
 	3: {msgt: '?',     msg: '?'},
 };
 
-function skilld_event(skillid, handlers, event, entity, dispatch) {
+function skilld_event(skillid, handlers, event, ent, dispatch) {
 	// 2 BOSS
 	if (notice && skillid == 301) {
 		notice = false;
 		handlers['text']({"sub_type": "message","message": "Throwing orb","message_RU": "Бомба"});
-		setTimeout(() => notice = true, 13000);
+		dispatch.setTimeout(() => notice = true, 13000);
 	}
 
 	// 3 BOSS
@@ -67,7 +67,7 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 		print_mech(false, false, handlers);
 		msg_a = msg_b;
 		msg_b = 3;
-		setTimeout(() => {
+		dispatch.setTimeout(() => {
 			print_mech(true, false, handlers);
 		}, 7000);
 	}
@@ -91,44 +91,44 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 			handlers['text']({"sub_type": "message","message": "Triple-S | IN","message_RU": "Трипл-эска | К НЕМУ"});
 			handlers['text']({"sub_type": "message","delay": 5000,"message": "IN","message_RU": "К НЕМУ"});
 		}
-		SpawnCircle(false,445,0,0,10,300,5000,3000,handlers,event,entity);
+		SpawnCircle(false,445,0,0,10,300,5000,3000,handlers,event,ent,dispatch);
 		duration = 2000;
 	}
 	if ([1160,1161,1162,1163,1190,1191,1192,1193,2220,2222,2231].includes(skillid)) { // right safe
-		SpawnMarker(false,160,300,0,duration,true,null,handlers,event,entity);
-		SpawnMarker(false,340,300,0,duration,true,null,handlers,event,entity);
-		SpawnPoint(202,170,200,0,duration,handlers,event,entity);
-		SpawnPoint(202,350,200,0,duration,handlers,event,entity);
-		SpawnVector(912,170,210,180,290,0,duration,handlers,event,entity);
-		SpawnPoint(912,120,250,0,duration,handlers,event,entity);
-		SpawnPoint(912,130,240,0,duration,handlers,event,entity);
-		SpawnPoint(912,140,230,0,duration,handlers,event,entity);
-		SpawnPoint(912,150,220,0,duration,handlers,event,entity);
-		SpawnPoint(912,160,210,0,duration,handlers,event,entity);
-		SpawnPoint(912,300,250,0,duration,handlers,event,entity);
-		SpawnPoint(912,310,240,0,duration,handlers,event,entity);
-		SpawnPoint(912,320,230,0,duration,handlers,event,entity);
-		SpawnPoint(912,330,220,0,duration,handlers,event,entity);
-		SpawnPoint(912,340,210,0,duration,handlers,event,entity);
-		SpawnVector(912,350,210,0,290,0,duration,handlers,event,entity);
+		SpawnMarker(false,160,300,0,duration,true,null,handlers,event,ent,dispatch);
+		SpawnMarker(false,340,300,0,duration,true,null,handlers,event,ent,dispatch);
+		SpawnPoint(202,170,200,0,duration,handlers,event,ent,dispatch);
+		SpawnPoint(202,350,200,0,duration,handlers,event,ent,dispatch);
+		SpawnVector(912,170,210,180,290,0,duration,handlers,event,ent,dispatch);
+		SpawnPoint(912,120,250,0,duration,handlers,event,ent,dispatch);
+		SpawnPoint(912,130,240,0,duration,handlers,event,ent,dispatch);
+		SpawnPoint(912,140,230,0,duration,handlers,event,ent,dispatch);
+		SpawnPoint(912,150,220,0,duration,handlers,event,ent,dispatch);
+		SpawnPoint(912,160,210,0,duration,handlers,event,ent,dispatch);
+		SpawnPoint(912,300,250,0,duration,handlers,event,ent,dispatch);
+		SpawnPoint(912,310,240,0,duration,handlers,event,ent,dispatch);
+		SpawnPoint(912,320,230,0,duration,handlers,event,ent,dispatch);
+		SpawnPoint(912,330,220,0,duration,handlers,event,ent,dispatch);
+		SpawnPoint(912,340,210,0,duration,handlers,event,ent,dispatch);
+		SpawnVector(912,350,210,0,290,0,duration,handlers,event,ent,dispatch);
 	}
 	if ([1170,1171,1172,1173,1180,1181,1182,1183,2230,2232,2221].includes(skillid)) { // left safe
-		SpawnMarker(false,20,300,0,duration,true,null,handlers,event,entity);
-		SpawnMarker(false,200,300,0,duration,true,null,handlers,event,entity);
-		SpawnPoint(202,10,200,0,duration,handlers,event,entity);
-		SpawnPoint(202,190,200,0,duration,handlers,event,entity);
-		SpawnVector(912,10,210,0,290,0,duration,handlers,event,entity);
-		SpawnPoint(912,20,210,0,duration,handlers,event,entity);
-		SpawnPoint(912,30,220,0,duration,handlers,event,entity);
-		SpawnPoint(912,40,230,0,duration,handlers,event,entity);
-		SpawnPoint(912,50,240,0,duration,handlers,event,entity);
-		SpawnPoint(912,60,250,0,duration,handlers,event,entity);
-		SpawnPoint(912,240,250,0,duration,handlers,event,entity);
-		SpawnPoint(912,230,240,0,duration,handlers,event,entity);
-		SpawnPoint(912,220,230,0,duration,handlers,event,entity);
-		SpawnPoint(912,210,220,0,duration,handlers,event,entity);
-		SpawnPoint(912,200,210,0,duration,handlers,event,entity);
-		SpawnVector(912,190,210,180,290,0,duration,handlers,event,entity);
+		SpawnMarker(false,20,300,0,duration,true,null,handlers,event,ent,dispatch);
+		SpawnMarker(false,200,300,0,duration,true,null,handlers,event,ent,dispatch);
+		SpawnPoint(202,10,200,0,duration,handlers,event,ent,dispatch);
+		SpawnPoint(202,190,200,0,duration,handlers,event,ent,dispatch);
+		SpawnVector(912,10,210,0,290,0,duration,handlers,event,ent,dispatch);
+		SpawnPoint(912,20,210,0,duration,handlers,event,ent,dispatch);
+		SpawnPoint(912,30,220,0,duration,handlers,event,ent,dispatch);
+		SpawnPoint(912,40,230,0,duration,handlers,event,ent,dispatch);
+		SpawnPoint(912,50,240,0,duration,handlers,event,ent,dispatch);
+		SpawnPoint(912,60,250,0,duration,handlers,event,ent,dispatch);
+		SpawnPoint(912,240,250,0,duration,handlers,event,ent,dispatch);
+		SpawnPoint(912,230,240,0,duration,handlers,event,ent,dispatch);
+		SpawnPoint(912,220,230,0,duration,handlers,event,ent,dispatch);
+		SpawnPoint(912,210,220,0,duration,handlers,event,ent,dispatch);
+		SpawnPoint(912,200,210,0,duration,handlers,event,ent,dispatch);
+		SpawnVector(912,190,210,180,290,0,duration,handlers,event,ent,dispatch);
 	}
 }
 

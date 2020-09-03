@@ -23,7 +23,7 @@ function start_boss1() {
 function skilld_event(skillid, handlers, event, ent, dispatch) {
 	if (skillid === 203 || skillid === 204) {
 			notice = false;
-			setTimeout(() => notice = true, 4000);
+			dispatch.setTimeout(() => notice = true, 4000);
 	}
 	if (notice && skillid === 234 && boss === 1) { //203 204技能没出/满足234 打手位置本体技能/满足吃分身buff
 		/*handlers['text']({
@@ -31,7 +31,7 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 			"message_RU": "ДД дебафф!!!",
 			"message": "Dps entity"
 		});*/
-		setTimeout(function () {
+		dispatch.setTimeout(function () {
 			handlers['text']({
 				"sub_type": "message",
 				"message_RU": "Скоро дебафф!",
@@ -45,7 +45,7 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 			"message_RU": "танк дебафф!!!",
 			"message": "tank"
 		});*/
-		setTimeout(function () {
+		dispatch.setTimeout(function () {
 			handlers['text']({
 				"sub_type": "message",
 				"message_RU": "Скоро дебафф!",
@@ -55,7 +55,7 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 	}
 	if (skillid === 32010224) {  //吃分身buff
 		boss = 1;
-		setTimeout(function () {
+		dispatch.setTimeout(function () {
 			if (boss === 1) {
 				handlers['text']({
 					"sub_type": "message",
@@ -68,7 +68,7 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 	}
 	if (skillid === 32010220) { //吃本体buff
 		boss = 0;
-		setTimeout(function () {
+		dispatch.setTimeout(function () {
 			if (boss === 0){
 				handlers['text']({
 					"sub_type": "message",
@@ -85,7 +85,7 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 			"message_RU": "танк дебафф!!!",
 			"message": "tank"
 		});*/
-		setTimeout(function () {
+		dispatch.setTimeout(function () {
 			handlers['text']({
 				"sub_type": "message",
 				"message_RU": "Скоро дебафф!!!",
@@ -99,7 +99,7 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 			"message_RU": "ДД дебафф!!!",
 			"message": "Dps entity"
 		});*/
-		setTimeout(function () {
+		dispatch.setTimeout(function () {
 			handlers['text']({
 				"sub_type": "message",
 				"message_RU": "Скоро дебафф!!!",
@@ -113,7 +113,7 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 			"message_RU": "танк дебафф!!!",
 			"message": "tank"
 		});*/
-		setTimeout(function () {
+		dispatch.setTimeout(function () {
 			handlers['text']({
 				"sub_type": "message",
 				"message_RU": "Скоро дебафф!!",
@@ -127,7 +127,7 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 			"message_RU": "дд дебафф!!!",
 			"message": "Dps entity"
 		});*/
-		setTimeout(function () {
+		dispatch.setTimeout(function () {
 			handlers['text']({
 				"sub_type": "message",
 				"message_RU": "Скоро дебафф!!!",
@@ -141,7 +141,7 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 			"message_RU": "ДД дебафф!!!",
 			"message": "Dps entity"
 		});*/
-		setTimeout(function () {
+		dispatch.setTimeout(function () {
 			handlers['text']({
 				"sub_type": "message",
 				"message_RU": "Скоро дебафф!!!",
@@ -155,7 +155,7 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 			"message_RU": "Танк дебафф!!!",
 			"message": "Tank entity"
 		});	*/
-		setTimeout(function () {
+		dispatch.setTimeout(function () {
 			handlers['text']({
 				"sub_type": "message",
 				"message_RU": "Скоро дебафф!!!",
@@ -169,7 +169,7 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 			"message_RU": "дд дебафф!!!",
 			"message": "dps entity"
 		}); */
-		setTimeout(function () {
+		dispatch.setTimeout(function () {
 			handlers['text']({
 				"sub_type": "message",
 				"message_RU": "Скоро дебафф!!!",

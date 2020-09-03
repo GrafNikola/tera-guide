@@ -14,21 +14,21 @@ let printHP = true;
 let printMech = true;
 let isHP_74_39 = false;
 
-function skilld_event(skillid, handlers, event, entity, dispatch) {
+function skilld_event(skillid, handlers, event, ent, dispatch) {
 	if ([351].includes(skillid)) { // щит
 		if (notices) {
-			clearTimeout(timer1);
-			clearTimeout(timer2);
+			dispatch.clearTimeout(timer1);
+			dispatch.clearTimeout(timer2);
 			notices = false;
-			setTimeout(() => notices = true, 5000);
-				timer1 = setTimeout(()=> {
+			dispatch.setTimeout(() => notices = true, 5000);
+				timer1 = dispatch.setTimeout(()=> {
 				handlers['text']({
 					"sub_type": "message",
 					"message": isHP_74_39 ? "!" : "SHIELD in 5 seconds!",
 					"message_RU": isHP_74_39 ? "!" : "Через 5 сек. ЩИТ!!!"
 				});
 			}, 85000);
-			timer2 = setTimeout(()=> {
+			timer2 = dispatch.setTimeout(()=> {
 				handlers['text']({
 					"sub_type": "message",
 					"message": isHP_74_39 ? "!" : "SHIELD in 15 seconds!",
@@ -39,18 +39,18 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 	}
 	if ([74,39].includes(skillid)) {
 		if (printHP) {
-			clearTimeout(timer1);
-			clearTimeout(timer2);
+			dispatch.clearTimeout(timer1);
+			dispatch.clearTimeout(timer2);
 			printHP = false;
 			isHP_74_39 = true;
-			setTimeout(() => printHP = true, 15000);
+			dispatch.setTimeout(() => printHP = true, 15000);
 		}
 	}
 	if ([89,59,29].includes(skillid)) { // до щита
 		if (print) {
 			print = false;
 			isHP_74_39 = false;
-			setTimeout(() => print = true, 15000);
+			dispatch.setTimeout(() => print = true, 15000);
 			handlers['text']({
 				"sub_type": "alert",
 				"message": "Ready for SHIELD",
@@ -60,10 +60,10 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 	}
 	if ([350,357].includes(skillid)) { // до стяжки
 		if (printMech) {
-			clearTimeout(timer3);
+			dispatch.clearTimeout(timer3);
 			printMech = false;
-			setTimeout(() => printMech = true, 15000);
-			timer3 = setTimeout(()=> {
+			dispatch.setTimeout(() => printMech = true, 15000);
+			timer3 = dispatch.setTimeout(()=> {
 				handlers['text']({
 					"sub_type": "alert",
 					"message": "Mechanics soon",

@@ -11,7 +11,7 @@ let timer2;
 let timer3;
 let timer4;
 let timer5;
-let boss_entity;
+let boss_ent;
 let boss_offset = 0;
 let qbacting = null;
 let blue = false;
@@ -40,22 +40,22 @@ const debuff_TipMsg =
 //    2 % 2 = 0
 
 function spawn_marker(out, handlers) {
-	if (!boss_entity) return;
+	if (!boss_ent) return;
 	let distance = 220;
 	let caption  = "IN";
 	if (out) {
 		distance = 620;
 		caption  = "OUT";
 	}
-	SpawnMarker(false,  45 + boss_offset, distance, 0, 4000, true, [caption, "SAFE"], handlers, null, boss_entity);
-	SpawnMarker(false, 135 + boss_offset, distance, 0, 4000, true, [caption, "SAFE"], handlers, null, boss_entity);
-	SpawnMarker(false, 225 + boss_offset, distance, 0, 4000, true, [caption, "SAFE"], handlers, null, boss_entity);
-	SpawnMarker(false, 315 + boss_offset, distance, 0, 4000, true, [caption, "SAFE"], handlers, null, boss_entity);
+	SpawnMarker(false,  45 + boss_offset, distance, 0, 4000, true, [caption, "SAFE"], handlers, null, boss_ent, dispatch);
+	SpawnMarker(false, 135 + boss_offset, distance, 0, 4000, true, [caption, "SAFE"], handlers, null, boss_ent, dispatch);
+	SpawnMarker(false, 225 + boss_offset, distance, 0, 4000, true, [caption, "SAFE"], handlers, null, boss_ent, dispatch);
+	SpawnMarker(false, 315 + boss_offset, distance, 0, 4000, true, [caption, "SAFE"], handlers, null, boss_ent, dispatch);
 }
-function debuff_added(id, handlers) {
-	debuff_removed();
+function debuff_added(id, handlers, dispatch) {
+	debuff_removed(dispatch);
 	debuff = id; // debuff event id
-	timer1 = setTimeout(() => {
+	timer1 = dispatch.setTimeout(() => {
 		if (debuff != null) {
 			handlers['text']({
 				"sub_type": "message",
@@ -64,9 +64,9 @@ function debuff_added(id, handlers) {
 			});
 		}
 	}, 70000);
-	timer2 = setTimeout(() => {
+	timer2 = dispatch.setTimeout(() => {
 		if (debuff != null) {
-			setTimeout(() => {
+			dispatch.setTimeout(() => {
 				handlers['text']({
 					"sub_type": "alert",
 					"message": (`${debuff_TipMsg[debuff % 2].msgt}`),
@@ -80,7 +80,7 @@ function debuff_added(id, handlers) {
 			});
 		}
 	}, 40000);
-	timer3 = setTimeout(() => {
+	timer3 = dispatch.setTimeout(() => {
 		if (debuff != null) {
 			handlers['text']({
 				"sub_type": "message",
@@ -89,7 +89,7 @@ function debuff_added(id, handlers) {
 			});
 		}
 	}, 75000);
-	timer4 = setTimeout(() => {
+	timer4 = dispatch.setTimeout(() => {
 		if (debuff != null) {
 			handlers['text']({
 				"sub_type": "message",
@@ -98,7 +98,7 @@ function debuff_added(id, handlers) {
 			});
 		}
 	}, 80000);
-	timer5 = setTimeout(() => {
+	timer5 = dispatch.setTimeout(() => {
 		if (debuff != null) {
 			handlers['text']({
 				"sub_type": "message",
@@ -114,39 +114,39 @@ function debuff_added(id, handlers) {
 			"message": (`${CK_TipMsg[(qbacting + debuff + 1) % 2].msgt}`),
 			"message_RU": (`${CK_TipMsg[(qbacting + debuff + 1) % 2].msg}`)
 		});
-		spawn_marker((qbacting + debuff + 1) % 2, handlers);
+		Spawn_marker((qbacting + debuff + 1) % 2, handlers);
 	} else if (red) {
 		handlers['text']({
 			"sub_type": "message",
 			"message": (`${CK_TipMsg[(qbacting + debuff) % 2].msgt}`),
 			"message_RU": (`${CK_TipMsg[(qbacting + debuff) % 2].msg}`)
 		});
-		spawn_marker((qbacting + debuff) % 2, handlers);
+		Spawn_marker((qbacting + debuff) % 2, handlers);
 	}
 }
-function debuff_removed() {
+function debuff_removed(dispatch) {
 	debuff = null;
-	clearTimeout(timer1);
-	clearTimeout(timer2);
-	clearTimeout(timer3);
-	clearTimeout(timer4);
-	clearTimeout(timer5);
+	dispatch.clearTimeout(timer1);
+	dispatch.clearTimeout(timer2);
+	dispatch.clearTimeout(timer3);
+	dispatch.clearTimeout(timer4);
+	dispatch.clearTimeout(timer5);
 }
-function skilld_event(skillid, handlers, event, entity, dispatch) {
+function skilld_event(skillid, handlers, event, ent, dispatch) {
 	const abnormality_change = (added, event) => {
 		// Fire/Ice debuff
 		if (player.isMe(event.target.toString()) && [30260001,30260002,31260001,31260002].includes(event.id)) {
 			if (added) {
-				debuff_added(event.id, handlers);
+				debuff_added(event.id, handlers, dispatch);
 			} else {
-				debuff_removed();
+				debuff_removed(dispatch);
 			}
 		}
 		// Argon Priest Essence buff
 		if (player.isMe(event.target.toString()) && [30261701,31261701].includes(event.id)) {
-			if (added && boss_entity) {
-				let shield_loc = boss_entity['loc'].clone();
-				shield_loc.w = boss_entity['loc'].w;
+			if (added && boss_ent) {
+				let shield_loc = boss_ent['loc'].clone();
+				shield_loc.w = boss_ent['loc'].w;
 				handlers['spawn']({ // spawn teleport mark
 					"sub_type": "item",
 					"id": MARKER_ITEM,
@@ -168,33 +168,33 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 	}
 	// Fire/Ice debuff (debuff % 2 => синий 0, красный 1)
 	if ([30260001,31260001,30260002,31260002].includes(skillid) && !debuff_tracker_started) {
-		debuff_added(skillid, handlers);
+		debuff_added(skillid, handlers, dispatch);
 	}
 	// In-Out identification
 	if ([212,213,214,215].includes(skillid)) {
-		boss_entity = entity;
-		SpawnCircle(false,445,0,0,8,440,200,8000,handlers,event,entity);
-		SpawnCircle(false,445,0,0,4,840,200,8000,handlers,event,entity);
+		boss_ent = ent;
+		SpawnCircle(false,445,0,0,8,440,200,8000,handlers,event,ent,dispatch);
+		SpawnCircle(false,445,0,0,4,840,200,8000,handlers,event,ent,dispatch);
 	}
 	if ([212,214].includes(skillid)) {   // Fire claw (141, 142)
 		boss_offset = 10;
-		SpawnVector(553,0,0,190,840,200,8000,handlers,event,entity);
-		SpawnVector(553,0,0, 10,840,200,8000,handlers,event,entity);
+		SpawnVector(553,0,0,190,840,200,8000,handlers,event,ent,dispatch);
+		SpawnVector(553,0,0, 10,840,200,8000,handlers,event,ent,dispatch);
 	}
 	if ([213,215].includes(skillid)) {   // Ice claw (143, 144)
 		boss_offset = -10;
-		SpawnVector(553,0,0,170,840,200,8000,handlers,event,entity);
-		SpawnVector(553,0,0,350,840,200,8000,handlers,event,entity);
+		SpawnVector(553,0,0,170,840,200,8000,handlers,event,ent,dispatch);
+		SpawnVector(553,0,0,350,840,200,8000,handlers,event,ent,dispatch);
 	}
 	if ([213,214].includes(skillid)) {   // Ice inside
-		setTimeout(() => {
+		dispatch.setTimeout(() => {
 			if (debuff != null) {
 				handlers['text']({
 					"sub_type": "message",
 					"message": (`Ice inside (${qbacting_TipMsg[qbacting].msgt}) | ${CK_TipMsg[(qbacting + debuff + 1) % 2].msgt}`),
 					"message_RU": (`Внутри лед (${qbacting_TipMsg[qbacting].msg}) | ${CK_TipMsg[(qbacting + debuff + 1) % 2].msg}`)
 				});
-				spawn_marker((qbacting + debuff + 1) % 2, handlers);
+				Spawn_marker((qbacting + debuff + 1) % 2, handlers);
 			} else {
 				handlers['text']({
 					"sub_type": "message",
@@ -205,17 +205,17 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 		}, 500);
 		blue = true;
 		red  = false;
-		setTimeout(() => blue = false, 6500); //6700
+		dispatch.setTimeout(() => blue = false, 6500); //6700
 	}
 	if ([212,215].includes(skillid)) {   // Fire inside
-		setTimeout(() => {
+		dispatch.setTimeout(() => {
 			if (debuff != null) {
 				handlers['text']({
 					"sub_type": "message",
 					"message": (`Fire inside (${qbacting_TipMsg[qbacting].msgt}) | ${CK_TipMsg[(qbacting + debuff) % 2].msgt}`),
 					"message_RU": (`Внутри огонь (${qbacting_TipMsg[qbacting].msg}) | ${CK_TipMsg[(qbacting + debuff) % 2].msg}`)
 				});
-				spawn_marker((qbacting + debuff) % 2, handlers);
+				Spawn_marker((qbacting + debuff) % 2, handlers);
 			} else {
 				handlers['text']({
 					"sub_type": "message",
@@ -226,11 +226,11 @@ function skilld_event(skillid, handlers, event, entity, dispatch) {
 		}, 500);
 		blue = false;
 		red  = true;
-		setTimeout(() => red = false, 6500);
+		dispatch.setTimeout(() => red = false, 6500);
 	}
 	if (skillid === 99020020) {   // Death release debuff
-		clearTimeout(timer1);
-		clearTimeout(timer2);
+		dispatch.clearTimeout(timer1);
+		dispatch.clearTimeout(timer2);
 	}
 	if (!debuff_tracker_started) {
 		dispatch.hook('S_ABNORMALITY_BEGIN', 4, abnormality_change.bind(null, true));

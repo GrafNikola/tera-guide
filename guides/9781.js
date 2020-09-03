@@ -7,8 +7,8 @@ const {SpawnMarker, SpawnCircle} = require("../lib");
 
 let player, entity, library, effect;
 
-function single_stage_callout(message, handlers, event, entity) {
-	//if (entity.stage == 0) {
+function single_stage_callout(message, handlers, event, ent) {
+	//if (ent.stage == 0) {
 		handlers['text']({
 			"sub_type": "message",
 			"message": message,

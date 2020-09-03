@@ -73,7 +73,7 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 	if (!notice) return;
 	if (notice && [118, 139, 141, 150, 152].includes(skillid)) {
 		notice = false;
-		setTimeout(() => notice = true, 4000);
+		dispatch.setTimeout(() => notice = true, 4000);
 	}
 	if (skillid === 300) power = true, Level = 0, powerMsg = null;
 	if (skillid === 360 || skillid === 399) Level = 0;
@@ -126,7 +126,7 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 	}
 }
 
-function start_3boss40(handlers) {
+function start_3boss40(handlers, event, ent, dispatch) {
 	if (print) {
 		handlers['text']({
 			"sub_type": "message",
@@ -135,7 +135,7 @@ function start_3boss40(handlers) {
 		});
 	}
 	print = false;
-	setTimeout(() => print = true, 10000);
+	dispatch.setTimeout(() => print = true, 10000);
 }
 
 module.exports = {

@@ -47,7 +47,7 @@ module.exports = {
 	"ab-3202-1000-32021006": [{"type": "text","sub_type": "message","message": "Plague/Regress","message_RU": "Чума/регресс"}],
 
 	// Pizza + Donuts (Out > In)
-	"s-3202-1000-121-0": [{"type": "text","sub_type": "message","message": "Pizza (Right foot) | Out > In","message_RU": "Пицца (правая нога) | От него > К нему"},
+	"s-3202-1000-121-0": [{"type": "text","sub_type": "message","message": "Pizza (Right foot) | Donuts: Out > In","message_RU": "Пицца (правая нога) | Бублики: От него > К нему"},
 		{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,8,550,0,3000)},
 		{"type": "func","func": SpawnSemicircle.bind(null,-60,70,912,0,0,8,450,0,4000)},
 		{"type": "func","func": SpawnSemicircle.bind(null,120,250,912,0,0,8,450,0,4000)},
@@ -62,15 +62,15 @@ module.exports = {
 		{"type": "func","func": SpawnVector.bind(null,912,0,0,295,550,0,1500)},
 		{"type": "func","func": SpawnVector.bind(null,912,0,0,85,550,0,1500)},
 		{"type": "func","func": SpawnSemicircle.bind(null,85,295,912,0,0,6,550,0,1500)},
-		{"type": "text","sub_type": "message","delay":100,"message": "Out > In","message_RU": "От него > К нему"}
+		{"type": "text","sub_type": "message","delay":100,"message": "[Donuts: Out > In]","message_RU": "[Бублики: От него > К нему]"}
 	],
-	"s-3202-1000-127-0": [{"type": "text","sub_type": "message","message": "Out > In","message_RU": "От него > К нему"},
+	"s-3202-1000-127-0": [{"type": "text","sub_type": "message","message": "Donuts: Out > In","message_RU": "Бублики: От него > К нему"},
 		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,14,160,0,3000)},
 		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,8,390,0,3000)},
 		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,6,620,0,3000)}
 	],
 	// Pizza + Donuts (In > Out)
-	"s-3202-1000-124-0": [{"type": "text","sub_type": "message","message": "Pizza (Left foot) | In > Out","message_RU": "Пицца (левая нога) | К нему > От него"},
+	"s-3202-1000-124-0": [{"type": "text","sub_type": "message","message": "Pizza (Left foot) | Donuts: In > Out","message_RU": "Пицца (левая нога) | Бублики: К нему > От него"},
 		{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,8,550,0,3000)},
 		{"type": "func","func": SpawnSemicircle.bind(null,-60,70,912,0,0,8,450,0,4000)},
 		{"type": "func","func": SpawnSemicircle.bind(null,120,250,912,0,0,8,450,0,4000)},
@@ -85,9 +85,9 @@ module.exports = {
 		{"type": "func","func": SpawnVector.bind(null,912,0,0,295,550,0,1500)},
 		{"type": "func","func": SpawnVector.bind(null,912,0,0,85,550,0,1500)},
 		{"type": "func","func": SpawnSemicircle.bind(null,85,295,912,0,0,6,550,0,1500)},
-		{"type": "text","sub_type": "message","delay":100,"message": "In > Out","message_RU": "К нему > От него"}
+		{"type": "text","sub_type": "message","delay":100,"message": "[Donuts: In > Out]","message_RU": "[Бублики: К нему > От него]"}
 	],
-	"s-3202-1000-128-0": [{"type": "text","sub_type": "message","message": "In > Out","message_RU": "К нему > От него"},
+	"s-3202-1000-128-0": [{"type": "text","sub_type": "message","message": "Donuts: In > Out","message_RU": "Бублики: К нему > От него"},
 		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,14,160,0,3000)},
 		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,8,390,0,3000)},
 		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,6,620,0,3000)}
