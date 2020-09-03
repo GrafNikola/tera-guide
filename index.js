@@ -224,12 +224,6 @@ class TeraGuide{
 			}
 		}
 
-		// setTimeout wrapper
-		function _setTimeout(callback, timeout, id) {
-			if (id === null) id = random_timer_id--
-			return timers[id] = dispatch.setTimeout(callback, timeout);
-		}
-
 		/** S_ACTION_STAGE **/
 
 		// Boss skill action
