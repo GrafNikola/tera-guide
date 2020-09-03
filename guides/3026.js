@@ -114,14 +114,14 @@ function debuff_added(id, handlers, dispatch) {
 			"message": (`${CK_TipMsg[(qbacting + debuff + 1) % 2].msgt}`),
 			"message_RU": (`${CK_TipMsg[(qbacting + debuff + 1) % 2].msg}`)
 		});
-		Spawn_marker((qbacting + debuff + 1) % 2, handlers);
+		spawn_marker((qbacting + debuff + 1) % 2, handlers);
 	} else if (red) {
 		handlers['text']({
 			"sub_type": "message",
 			"message": (`${CK_TipMsg[(qbacting + debuff) % 2].msgt}`),
 			"message_RU": (`${CK_TipMsg[(qbacting + debuff) % 2].msg}`)
 		});
-		Spawn_marker((qbacting + debuff) % 2, handlers);
+		spawn_marker((qbacting + debuff) % 2, handlers);
 	}
 }
 function debuff_removed(dispatch) {
@@ -194,7 +194,7 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 					"message": (`Ice inside (${qbacting_TipMsg[qbacting].msgt}) | ${CK_TipMsg[(qbacting + debuff + 1) % 2].msgt}`),
 					"message_RU": (`Внутри лед (${qbacting_TipMsg[qbacting].msg}) | ${CK_TipMsg[(qbacting + debuff + 1) % 2].msg}`)
 				});
-				Spawn_marker((qbacting + debuff + 1) % 2, handlers);
+				spawn_marker((qbacting + debuff + 1) % 2, handlers);
 			} else {
 				handlers['text']({
 					"sub_type": "message",
@@ -215,7 +215,7 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 					"message": (`Fire inside (${qbacting_TipMsg[qbacting].msgt}) | ${CK_TipMsg[(qbacting + debuff) % 2].msgt}`),
 					"message_RU": (`Внутри огонь (${qbacting_TipMsg[qbacting].msg}) | ${CK_TipMsg[(qbacting + debuff) % 2].msg}`)
 				});
-				Spawn_marker((qbacting + debuff) % 2, handlers);
+				spawn_marker((qbacting + debuff) % 2, handlers);
 			} else {
 				handlers['text']({
 					"sub_type": "message",
