@@ -64,13 +64,13 @@ module.exports = function MigrateSettings(from_ver, to_ver, settings) {
 			default:
 				let oldsettings = settings;
 				settings = Object.assign(DefaultSettings, {});
-				for (const option in settings) {
+				for (let option in settings) {
 					if (option == "dungeons") {
-						const optionobj = [];
-						for (const i of settings[option]) {
+						let  optionobj = [];
+						for (let i of settings[option]) {
 							if (i.id == undefined) continue;
 							if (oldsettings[option]) {
-								for (const oldi of oldsettings[option]) {
+								for (let oldi of oldsettings[option]) {
 									if (oldi.id == i.id) {
 										i = oldi;
 										break;
