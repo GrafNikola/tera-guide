@@ -126,7 +126,7 @@ module.exports = {
 	"s-3027-1000-146-0": [{"type": "text","sub_type": "message","message": "Eviscerate | Strike","message_RU": "Потрошение | Меч"}],      // 146 ->         114 -> 130
 
 	// стяжка -> бублики (350 -> 302)
-	"s-3027-1000-350-0": [{"type": "text","sub_type": "message","message": "Red: Donuts (Out > In)","message_RU": "Стяжка | Бублики (От него > К нему)"},
+	"s-3027-1000-350-0": [{"type": "text","sub_type": "message","message": "Red: Donuts (Stay Out > Get In)","message_RU": "Стяжка | Бублики (От него > К нему)"},
 		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,12,240,0,5000)},
 		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,8,480,0,5000)},
 		{"type": "func","func": SpawnCircle.bind(null,false,445,0,0,3,950,0,5000)},
@@ -139,7 +139,7 @@ module.exports = {
 		{"type": "func","func": skilld_event.bind(null, 350)}
 	],
 	// стяжка -> волна (357 -> 110)
-	"s-3027-1000-357-0": [{"type": "text","sub_type": "message","message": "Purple: Get out","message_RU": "Стяжка | От него"},
+	"s-3027-1000-357-0": [{"type": "text","sub_type": "message","message": "Purple: Get Out","message_RU": "Стяжка | От него"},
 		{"type": "func","func": SpawnCircle.bind(null,false,553,0,0,20,500,2000,5000)},
 		{"type": "func","func": skilld_event.bind(null, 357)}
 	],
