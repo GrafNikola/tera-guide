@@ -12,7 +12,7 @@ function format_message(message) {
 	};
 	message = message.toLowerCase();
 	for (const [key, value] of Object.entries(unescape_map)) {
-		message = message.replace(new RegExp(value, 'g'), value);
+		message = message.replace(new RegExp(key, 'g'), value);
 	}
 	for (const value of ['<-','->','<','>']) {
 		message = message.replace(new RegExp(value, 'g'), ' ');
