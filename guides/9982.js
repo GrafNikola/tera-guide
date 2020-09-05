@@ -94,7 +94,7 @@ module.exports = {
 		{ "type": "text", "class_position": "dps", "sub_type": "message", "message": "Pushback", "message_RU": "Откид (конус)" },
 		{ "type": "text", "class_position": "heal", "sub_type": "message", "message": "Pushback (Kaia)", "message_RU": "Откид (кайя)" }
 	],
-	"s-982-1000-108-0": [{ "type": "text", "sub_type": "message", "message": "Bait (Flying)", "message_RU": "Байт (подет)" }, ],
+	"s-982-1000-108-0": [{ "type": "text", "sub_type": "message", "message": "Bait (Flying)", "message_RU": "Байт (подлет)" }, ],
 	"s-982-1000-109-0": [{ "type": "text", "sub_type": "message", "message": "Rocks (Small)", "message_RU": "Камни (малые)" }],
 	"s-982-1000-110-0": [{ "type": "text", "sub_type": "message", "message": "Rocks (Large)", "message_RU": "Камни (большие)" }],
 	"s-982-1000-301-0": [{ "type": "text", "sub_type": "message", "message": "Flower Stuns", "message_RU": "Оглушающие цветы" }],
