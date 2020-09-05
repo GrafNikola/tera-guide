@@ -1,6 +1,4 @@
 const DispatchWrapper = require('./dispatch');
-const fs = require('fs');
-const path = require('path');
 const dbg = require('./dbg');
 let voice = null;
 try { voice = require('./voice') }
@@ -86,16 +84,6 @@ class TeraGuide{
 			"func": func_handler,
 			"lib": require('./lib')
 		};
-		/*if (dispatch.proxyAuthor !== 'caali') {
-			const options = require('./module').options;
-			if (options) {
-				const settingsVersion = options.settingsVersion;
-				if (settingsVersion) {
-					dispatch.settings = require('./' + (options.settingsMigrator || 'settings_migrator.js'))(dispatch.settings._version, settingsVersion, dispatch.settings);
-					dispatch.settings._version = settingsVersion;
-				}
-			}
-		}*/
 		// export functionality for 3rd party modules
 		this.handlers = function_event_handlers;
 		// Detected language
@@ -684,7 +672,6 @@ class TeraGuide{
 			if (!event['sub_delay']) return debug_message(true, "Spawn handler needs a sub_delay");
 			// Make sure distance is defined
 			//if(!event['distance']) return debug_message(true, "Spawn handler needs a distance");
-			// Ignore if dispatch.settings.streamer mode is enabled
 			// Set sub_type to be collection as default for backward compatibility
 			const sub_type =  event['sub_type'] || 'collection';
 			// The unique spawned id this item will be using.
