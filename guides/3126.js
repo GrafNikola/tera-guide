@@ -260,11 +260,13 @@ let skills = {
 	"145-0": [{"type": "text","sub_type": "message","message": "Stun","message_RU": "Стан"}],
 	"157-0": [{"type": "text","sub_type": "message","message": "Change","message_RU": "Смена"}],
 	"103-0": [{"type": "text","sub_type": "message","message": "Tail (Flying!!)","message_RU": "Хвост (полет!!)"},
+		{"type": "text", "sub_type": "message", "message": "Arise!", "message_RU": "Удочка!", "delay": 1500, "class_position": "priest"},
 		{"type": "func","func": SpawnSemicircle.bind(null,140,260,912,0,0,10,500,0,2000)},
 		{"type": "func","func": SpawnVector.bind(null,912,0,0,135,500,0,2000)},
 		{"type": "func","func": SpawnVector.bind(null,912,0,0,260,500,0,2000)}
 	],
 	"153-0": [{"type": "text","sub_type": "message","message": "Tail (Flying!!)","message_RU": "Хвост (полет!!)"},
+		{"type": "text", "sub_type": "message", "message": "Arise!", "message_RU": "Удочка!", "delay": 1500, "class_position": "priest"},
 		{"type": "func","func": SpawnSemicircle.bind(null,140,260,912,0,0,10,500,0,2000)},
 		{"type": "func","func": SpawnVector.bind(null,912,0,0,135,500,0,2000)},
 		{"type": "func","func": SpawnVector.bind(null,912,0,0,260,500,0,2000)}

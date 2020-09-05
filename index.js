@@ -179,6 +179,18 @@ class TeraGuide{
 					if(HEALER_CLASS_IDS.includes(player.job)) return true;
 					break;
 				}
+				case "priest":{
+					if(player.job === 6) return true; // For Priest specific actions (eg Arise)
+					break;
+				}
+				case "mystic":{
+					if(player.job === 7) return true; // For Mystic specific actions
+					break;
+				}
+				case "lancer":{
+					if(player.job === 1) return true; // For Lancer specific actions (eg Blue Shield)
+					break;
+				}
 				default: {
 					debug_message(true, "Failed to find class_position value:", class_position);
 				}
