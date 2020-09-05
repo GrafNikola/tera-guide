@@ -12,10 +12,10 @@ function format_message(message) {
 	};
 	message = message.toLowerCase();
 	for (const [key, value] of Object.entries(unescape_map)) {
-		message = message.replace(key, value);
+		message = message.replace(new RegExp(value, 'g'), value);
 	}
 	for (const value of ['<-','->','<','>']) {
-		message = message.replace(value, ' ');
+		message = message.replace(new RegExp(value, 'g'), ' ');
 	}
 	return message;
 }
