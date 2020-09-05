@@ -142,21 +142,21 @@ function SpawnObject(type, target, item, offsetAngle, offsetDistance, angle, dis
 	// use local delay
 	dispatch.setTimeout(() => {
 		if (target && entity.dest !== undefined) {
-			shield_loc = entity['dest'].clone();
+			shield_loc = entity["dest"].clone();
 		} else if (entity.loc !== undefined) {
-			shield_loc = entity['loc'].clone();
+			shield_loc = entity["loc"].clone();
 		} else {
 			return;
 		}
 
-		shield_loc.w = entity['loc'].w;
+		shield_loc.w = entity["loc"].w;
 
 		applyDistance(shield_loc, offsetDistance, 360 - offsetAngle);
 
 		switch (type) {
 			// S_SPAWN_COLLECTION
 			case "collection":
-				handlers['spawn']({
+				handlers["spawn"]({
 					id: item,
 					sub_delay: duration,
 					distance: distance,
@@ -168,7 +168,7 @@ function SpawnObject(type, target, item, offsetAngle, offsetDistance, angle, dis
 
 			// S_SPAWN_DROPITEM
 			case "item":
-				handlers['spawn']({
+				handlers["spawn"]({
 					sub_type: "item",
 					id: item,
 					sub_delay: duration,
@@ -181,7 +181,7 @@ function SpawnObject(type, target, item, offsetAngle, offsetDistance, angle, dis
 
 			// S_SPAWN_BUILD_OBJECT
 			case "build_object":
-				handlers['spawn']({
+				handlers["spawn"]({
 					sub_type: "build_object",
 					id: item,
 					sub_delay: duration,
