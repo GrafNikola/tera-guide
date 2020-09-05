@@ -120,7 +120,7 @@ module.exports = {
 
 	// 3 БОСС
 	"h-982-3000-99": [{"type": "func","func": start_boss}],
-	"h-982-3000-30": [{"sub_type": "message","message": "-------- 30% --------","message_RU": "-------- 30% --------"}],
+	"h-982-3000-30": [{"type": "text","sub_type": "message","message": "-------- 30% --------","message_RU": "-------- 30% --------"}],
 	"s-982-3000-118-0": [{"type": "text","sub_type": "message","message": "Front triple","message_RU": "Передняя комба"},{"type": "func","func": skilld_event.bind(null, 118)}],
 	"s-982-3000-143-0": [{"type": "text","sub_type": "message","message": "Left rear","message_RU": "Слева сзади"},{"type": "func","func": skilld_event.bind(null, 143)}],
 	"s-982-3000-145-0": [{"type": "text","sub_type": "message","message": "Left rear","message_RU": "Слева сзади"},{"type": "func","func": skilld_event.bind(null, 145)}],

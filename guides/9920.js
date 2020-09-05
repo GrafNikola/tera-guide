@@ -118,8 +118,8 @@ module.exports = {
 	"s-920-2000-3119-0": [{"type": "text","sub_type": "message","message": "Red: OUT safe","message_RU": "Красный: Наружу сейф"}],
 	"s-920-2000-3220-0": [{"type": "text","sub_type": "message","message": "Blue: IN safe","message_RU": "Синий: Внутрь сейф"}],
 	"s-920-2000-3116-0": [{"type": "text","sub_type": "message","message": "Circles","message_RU": "Круги"}],
-	"h-920-2000-50": [{"sub_type": "message","message": "50%","message_RU": "50%"}],
-	"h-920-2000-20": [{"sub_type": "message","message": "20%","message_RU": "20%"}],
+	"h-920-2000-50": [{"type": "text","sub_type": "message","message": "50%","message_RU": "50%"}],
+	"h-920-2000-20": [{"type": "text","sub_type": "message","message": "20%","message_RU": "20%"}],
 
 	// 3 BOSS, UNENRAGED
 	"s-920-3000-1315-0": [{"type": "text","sub_type": "message","message": "Pushback","message_RU": "Откид (кайа)"}],

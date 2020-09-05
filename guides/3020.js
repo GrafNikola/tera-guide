@@ -201,7 +201,7 @@ module.exports = {
 	// 3 BOSS
 	"s-3020-2200-108-0": [{"type": "text","sub_type": "message","message": "Front stun","message_RU": "Стан"},{"type": "func","func": SpawnCircle.bind(null,true,553,0,170,20,120,200,2000)}],
 	"h-3020-2200-99": [{"type": "func","func": boss_start_event}],
-	"h-3020-2200-30": [{"sub_type": "message","message": "30%","message_RU": "30%"},{"type": "func","func": boss_thirty_event}],
+	"h-3020-2200-30": [{"type": "text","sub_type": "message","message": "30%","message_RU": "30%"},{"type": "func","func": boss_thirty_event}],
 	"h-3020-2200-29": [{"type": "func","func": boss_thirty_event}],
 	"h-3020-2200-28": [{"type": "func","func": boss_thirty_event}],
 	"h-3020-2200-27": [{"type": "func","func": boss_thirty_event}],

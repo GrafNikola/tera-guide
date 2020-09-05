@@ -51,7 +51,7 @@ module.exports = {
 		({ player, entity, library, effect } = dispatch.require.library);
 	},
 
-	"h-3203-1000-30": [{"sub_type": "message","message": "30%","message_RU": "30%"}],
+	"h-3203-1000-30": [{"type": "text","sub_type": "message","message": "30%","message_RU": "30%"}],
 
 	//"s-3203-1000-101-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Punch","message_RU": "Серия ударов"}],
 	"s-3203-1000-113-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Roundhouse kick","message_RU": "Удар с разворота"}],

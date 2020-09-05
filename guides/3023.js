@@ -100,7 +100,7 @@ module.exports = {
 
 	// 1 BOSS
 	"h-3023-1000-99": [{"type": "func","func": firstboss_start_event}],
-	"h-3023-1000-80": [{"sub_type": "message","message": "80%","message_RU": "80%"}],
+	"h-3023-1000-80": [{"type": "text","sub_type": "message","message": "80%","message_RU": "80%"}],
 	"s-3023-1000-104-0": [{"type": "text","sub_type": "message","message": 'Random jump',"message_RU": "Прыжок + Стан"}],
 	"s-3023-1000-105-0": [{"type": "text","sub_type": "message","message": 'Back',"message_RU": "Поворот назад"}],
 	"s-3023-1000-110-0": [{"type": "text","sub_type": "message","message": 'Stun',"message_RU": "Передний стан"},

@@ -253,8 +253,8 @@ module.exports = {
 	// 2 BOSS
 
 	"h-3201-2000-99": [{"type": "func","func": secondboss_start_event}],
-	"h-3201-2000-81": [{"sub_type": "message","message": "80%","message_RU": "Дебафф"}],
-	"h-3201-2000-76": [{"sub_type": "message","message": "75%","message_RU": "Камни"}],
+	"h-3201-2000-81": [{"type": "text","sub_type": "message","message": "80%","message_RU": "Дебафф"}],
+	"h-3201-2000-76": [{"type": "text","sub_type": "message","message": "75%","message_RU": "Камни"}],
 
 	//"s-3201-2000-101-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "right left","message_RU": "右手 左手"}],
 	//"s-3201-2000-102-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "left right","message_RU": "左手 右手"}],

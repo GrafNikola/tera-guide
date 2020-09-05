@@ -269,7 +269,7 @@ module.exports = {
 
 	// 3 BOSS
 	"h-3034-3000-99": [{"type": "func","func": thirdboss_start_event}],
-	"h-3034-3000-70": [{"sub_type": "message","message": "70%","message_RU": "70%"},{"type": "func","func": thirdboss_seventy_event}],
+	"h-3034-3000-70": [{"type": "text","sub_type": "message","message": "70%","message_RU": "70%"},{"type": "func","func": thirdboss_seventy_event}],
 	//
 	"dm-0-0-3034311": [{"type": "func","func": skilld_event.bind(null, 3034311)}], // 1 std
 	"dm-0-0-3034312": [{"type": "func","func": skilld_event.bind(null, 3034312)}], // 0 rev
