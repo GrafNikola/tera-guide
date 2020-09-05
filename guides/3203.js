@@ -133,7 +133,7 @@ module.exports = {
 	//"s-3203-1000-???-0": [{ "type": "text", "sub_type": "message", "message": "Dodge!", "message_RU": "Эвейд!" }],
 
 	// Debuff
-	"ae-0-0-32031011": [{ "type": "text", "sub_type": "alert", "message": "Debuff stack", "message_RU": "Дебафф (стаки)" }],
-	"am-3203-1000-32031011": [{ "type": "text", "sub_type": "alert", "message": "Debuff stack", "message_RU": "Дебафф (стаки)" }],
-	"am-3203-1000-32031012": [{ "type": "text", "sub_type": "alert", "message": "Debuff stack", "message_RU": "Дебафф (стаки)" }], 
+	"ae-0-0-32031011": [{ "type": "text", "sub_type": "alert", "message": "Debuff Stack", "message_RU": "Дебафф (стаки)" }],
+	"am-3203-1000-32031011": [{ "type": "text", "sub_type": "alert", "message": "Debuff Stack", "message_RU": "Дебафф (стаки)" }],
+	"am-3203-1000-32031012": [{ "type": "text", "sub_type": "alert", "message": "Debuff Stack", "message_RU": "Дебафф (стаки)" }], 
 };
