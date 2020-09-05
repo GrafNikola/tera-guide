@@ -1,9 +1,9 @@
 # tera-guide
-A generic guide module for TERA with English and Russian translations (detects automaticly). Display hints on screen and drawing zones of bosses attacks and mechanics (also supports of Text-to-speech notifications).
+A generic guide module for TERA with English and Russian translations (detects automatically). Display hints on screen and drawing zones of bosses attacks and mechanics (also supports of Text-to-speech notifications).
 
 Основной модуль подсказок по данжам TERA с поддержкой русского и английского языков. Вывод подсказок в чат или на экран, а также отрисовка зон атак боссов и механик (присутствует возможность голосовых уведомлений).
 
-&#x1F534; **Critical updates have been released from September 3rd, 2020. Please update!  
+&#x1F534; **A critical updates have been released from September 3rd, 2020. Please update!  
 &#x1F534; От 3 сентября 2020 года были выпущены критические обновления. Пожалуйста, обновитесь!**
 
 ## Dependencies / Зависимости
@@ -69,12 +69,14 @@ id | Dungeon name | Название данжа
 * When streamer mode is *on* (**stream** parameter), notices ONLY sent to Toolbox(/8) chat channel.   
   Если включен режим стримера (парам. **stream**), уведомления будут отправляться ТОЛЬКО в канал чата Toolbox(/8).
 
-## Development and debugging / Разработка и отладка
+## Development and Debugging / Разработка и отладка
 Подробнее на https://github.com/hsdn/tera-guide/wiki
 
 ## Credits
 - **[Kasea](https://github.com/tera-toolbox-mods)** - Original developer of Tera-Guide module
 - **[michengs](https://github.com/michengs)** - Author of base code for most guides and module core
 - **[ZC](https://github.com/tera-mod)** - Provided coordinates for rendering attack areas and mechanics
+- **[Kuroine](https://github.com/Kuroine)** - Author of base code for the DA guide
+- **[Multarix](https://github.com/Multarix)** - Author of the RR guide and also making changes to the English translation
 - **[Owyn](https://github.com/Owyn)** - Developer of great guides for RK-9, AA and GV, whose code was used
 - **[ITunk](https://github.com/GrafNikola)** - Author of initial Russian translation
