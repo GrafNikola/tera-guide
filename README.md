@@ -3,6 +3,9 @@ A generic guide module for TERA with English and Russian translations (detects a
 
 Основной модуль подсказок по данжам TERA с поддержкой русского и английского языков. Вывод подсказок в чат или на экран, а также отрисовка зон атак боссов и механик (присутствует возможность голосовых уведомлений).
 
+&#x1F534; **Critical updates have been released from September 3th, 2020. Please update!  
+&#x1F534; От 3 сентября 2020 года были выпущены критические обновления. Пожалуйста, обновитесь!**
+
 ## Dependencies / Зависимости
 https://github.com/tera-toolbox-mods/library
 
