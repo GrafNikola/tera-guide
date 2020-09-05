@@ -34,7 +34,7 @@
         "lib.js": "3c789bad02b292e4905098306a37b68b0b37d21c9c161e04f0de6273b3f9c5d8",
         "module.json": "7d4516e35d479e6e71cc63a98a6a0f5fb0a23c729969f722e51b6969372463b0",
         "settings_migrator.js": "687986eb9046f73991381699f509e33892c85d09098fd582b154e6bf2cd94ed8",
-        "voice/index.js": "34801cb6577926f496b8c793b3ff0cdaa96d7e81b37e3be416c90c0b2175a336"
+        "voice/index.js": "887c5b100a3a3c4c123de203711c32c4c0086e05400d2d22aa1b1951eb07cbee"
     },
     "defs": {
         "C_LOGIN_ARBITER": 2,
