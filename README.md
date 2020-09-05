@@ -3,7 +3,7 @@ A generic guide module for TERA with English and Russian translations (detects a
 
 Основной модуль подсказок по данжам TERA с поддержкой русского и английского языков. Вывод подсказок в чат или на экран, а также отрисовка зон атак боссов и механик (присутствует возможность голосовых уведомлений).
 
-&#x1F534; **Critical updates have been released from September 3th, 2020. Please update!  
+&#x1F534; **Critical updates have been released from September 3rd, 2020. Please update!  
 &#x1F534; От 3 сентября 2020 года были выпущены критические обновления. Пожалуйста, обновитесь!**
 
 ## Dependencies / Зависимости
@@ -47,9 +47,7 @@ id | Dungeon name | Название данжа
 3202 | Draakon Arena (Hard) | Командный центр (сложно)
 3027 | Forbidden Arena [Hagufna] | Арена безумия [Бессмертный воин]
 3103 | Forbidden Arena [Undying Warlord] | Арена безумия [Этерния]
-3203 | Forbidden Arena [Nightmare Undying Warlord]&#42; | Арена безумия [Бессмертный]&#42;
-
-&#42; - Dungeon on testing, possibly mistakes / Данж тестируется, возможны ошибки
+3203 | Forbidden Arena [Nightmare Undying Warlord] | Арена безумия [Бессмертный]
 
 ## Notices settings / Настройка уведомлений
 
