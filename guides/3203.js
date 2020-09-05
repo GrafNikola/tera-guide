@@ -59,8 +59,8 @@ module.exports = {
 	"s-3203-1000-120-0": [{ "type": "text", "class_position": "tank", "sub_type": "message", "message": "Knockdown", "message_RU": "Опрокид" }],
 	//"s-3203-1000-102-0": [{ "type": "text", "class_position": "tank", "sub_type": "message", "message": "Combo", "message_RU": "Комба" }], // 102 153/154 115/116
 	"s-3203-1000-153-0": [{ "type": "text", "class_position": "tank", "sub_type": "message", "message": "Two Kicks", "message_RU": "Два удара" }], // 153 108
-	//"s-3203-1000-108-0": [{ "type": "text", "class_position": "tank", "sub_type": "message", "message": "Floor punch", "message_RU": "Удар о землю" }],
-	//"s-3203-1000-127-0": [{ "type": "text", "class_position": "tank", "sub_type": "message", "message": "Many kicks", "message_RU": "Несколько ударов" }],
+	//"s-3203-1000-108-0": [{ "type": "text", "class_position": "tank", "sub_type": "message", "message": "Floor Punch", "message_RU": "Удар о землю" }],
+	//"s-3203-1000-127-0": [{ "type": "text", "class_position": "tank", "sub_type": "message", "message": "Many Kicks", "message_RU": "Несколько ударов" }],
 
 	"s-3203-1000-121-0": [{ "type": "text", "sub_type": "message", "message": "Flip Kick (Stun)", "message_RU": "Удар в воздухе (стан)" }],
 	"s-3203-1000-107-0": [{ "type": "text", "sub_type": "message", "message": "Bait", "message_RU": "Байт" }, { "type": "func", "func": skilld_event.bind(null, 107) }],
@@ -78,7 +78,7 @@ module.exports = {
 	],
 
 	// Shield
-	"qb-3203-1000-32031006": [{ "type": "text", "sub_type": "message", "message": "SHIELD!", "message_RU": "ЩИТ!" }],
+	"qb-3203-1000-32031006": [{ "type": "text", "sub_type": "message", "message": "Shield!", "message_RU": "Щит!" }],
 
 	// Target "Ha" attacks 308 32031007 125
 	"qb-3203-1000-32031007": [{ "type": "text", "sub_type": "message", "message": "Target", "message_RU": "Таргет" }, { "type": "func", "func": skilld_event.bind(null, 32031007) }],
