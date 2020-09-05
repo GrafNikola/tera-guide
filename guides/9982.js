@@ -6,58 +6,11 @@ const {SpawnMarker, SpawnVector, SpawnCircle} = require("../lib");
 
 let player, entity, library, effect;
 
-let notice_guide = true;
-let print = true;
-let rad = 300;
 let power = true;
 let Level = 0;
 let powerMsg = null;
 let notice = true;
 let steptwo = false;
-
-/*function SpawnVector2(item,degrees, maxRadius, times, handlers, event, entity) {
-	let shield_loc = entity['loc'].clone();
-	let shield = entity['loc'].clone();
-		shield_loc.w  = entity['loc'].w;
-		shield.w = entity['loc'].w;
-		let X = Math.pow((-95703 - shield.x), 2),
-			Y = Math.pow((144980 - shield.y), 2),
-			C = Math.pow(X+Y, 0.5);  
-
-	if (C < 500) return;
-	let angle = degrees * Math.PI/180;
-	for (let radius=50 ; radius<=maxRadius; radius+=50) {
-		handlers['spawn']({
-			"id": item,
-			"sub_delay": times,
-			"distance": radius,
-			"offset": angle
-		}, entity);
-	}
-}
-
-function SpawnMarker2( degrees, radius, times, handlers, event, entity ) {	
-	let shield_loc = entity['loc'].clone();
-	let shield = entity['loc'].clone();
-		shield_loc.w  = entity['loc'].w;
-		shield.w = entity['loc'].w;
-		let X = Math.pow((-95703 - shield.x), 2),
-			Y = Math.pow((144980 - shield.y), 2),
-			C = Math.pow(X+Y, 0.5);  
-	if (C < 500) {
-		if (radius > 105) { return; } else { radius = 105 }
-	}
-	let angle =  Math.PI * degrees / 180;
-	handlers['spawn']({
-		"sub_type": "build_object",
-		"id": 1,
-		"sub_delay": times,
-		"distance": radius,
-		"offset": angle,
-		"ownerName": "Position",
-		"message": "Position"
-	}, {loc: shield_loc});
-}*/
 
 function start_boss() {
 	power = false;
@@ -65,43 +18,47 @@ function start_boss() {
 	notice = true;
 	powerMsg = null;
 	steptwo = false;
-	rad = 300;
-	print = true;
 }
 
 function skilld_event(skillid, handlers, event, ent, dispatch) {
 	if (!notice) return;
+
 	if (notice && [118, 139, 141, 150, 152].includes(skillid)) {
 		notice = false;
 		dispatch.setTimeout(() => notice = true, 4000);
 	}
-	if (skillid === 300) power = true, Level = 0, powerMsg = null;
-	if (skillid === 360 || skillid === 399) Level = 0;
-	if (power && [118, 143, 145, 146, 144, 147, 148, 154, 155, 161, 162, 213, 215].includes(skillid)) {
+	if (skillid === 300) {
+		power = true;
+		Level = 0;
+		powerMsg = null;
+	}
+	if (skillid === 360 || skillid === 399) {
+		Level = 0;
+	}
+	if (power && [118,143,145,146,144,147,148,154,155,161,162,213,215].includes(skillid)) {
 		Level++;
-		//powerMsg = '<font color="#FF0000">(' + Level + ') </font> ';
-		powerMsg = `{` + Level + `} `;
+		powerMsg = "{" + Level + "}";
 		if (Level == 4) {
 			handlers['text']({
 				"sub_type": "message",
-				"message_RU": "Полностью заряжен!!!",
-				"message": "Fully charged!!"
+				"message_RU": "Полностью заряжен!",
+				"message": "Fully charged!"
 			});
 			handlers['text']({
 				"sub_type": "alert",
-				"message_RU": "Полностью заряжен!!!",
-				"message": "Fully charged!!"
+				"message_RU": "Полностью заряжен!",
+				"message": "Fully charged!"
 			});
-		} else if (Level== 2 && steptwo) {
+		} else if (Level == 2 && steptwo) {
 			handlers['text']({
 				"sub_type": "message",
-				"message_RU": "Полностью заряжен!!!",
+				"message_RU": "Полностью заряжен!",
 				"message": "Fully charged!!"
-			});	
+			});
 			handlers['text']({
 				"sub_type": "alert",
-				"message_RU": "Полностью заряжен!!!",
-				"message": "Fully charged!!"
+				"message_RU": "Полностью заряжен!",
+				"message": "Fully charged!"
 			});
 		}
 		if (powerMsg !== null && skillid !== 399) {
@@ -121,21 +78,9 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 			}
 		}
 	}
-	if (skillid === 399){
+	if (skillid === 399) {
 		steptwo = true;
 	}
-}
-
-function start_3boss40(handlers, event, ent, dispatch) {
-	if (print) {
-		handlers['text']({
-			"sub_type": "message",
-			"message": "-------- 30% --------",
-			"message_RU": "-------- 30% --------"
-		});
-	}
-	print = false;
-	dispatch.setTimeout(() => print = true, 10000);
 }
 
 module.exports = {
@@ -175,13 +120,7 @@ module.exports = {
 
 	// 3 БОСС
 	"h-982-3000-99": [{"type": "func","func": start_boss}],
-	"h-982-3000-30": [{"type": "func","func": start_3boss40}],
-	/*"s-982-3022-101-0": [{"type": "func","func": SpawnVector2.bind(null,912,0,420,8000)},
-						 {"type": "func","func": SpawnMarker2.bind(null,0,105,8000)},
-						 {"type": "func","func": SpawnMarker2.bind(null,0,210,8000)},
-						 {"type": "func","func": SpawnMarker2.bind(null,0,315,8000)},
-						 {"type": "func","func": SpawnMarker2.bind(null,0,420,8000)}
-	],*/
+	"h-982-3000-30": [{"sub_type": "message","message": "-------- 30% --------","message_RU": "-------- 30% --------"}],
 	"s-982-3000-118-0": [{"type": "text","sub_type": "message","message": "Front triple","message_RU": "Передняя комба"},{"type": "func","func": skilld_event.bind(null, 118)}],
 	"s-982-3000-143-0": [{"type": "text","sub_type": "message","message": "Left rear","message_RU": "Слева сзади"},{"type": "func","func": skilld_event.bind(null, 143)}],
 	"s-982-3000-145-0": [{"type": "text","sub_type": "message","message": "Left rear","message_RU": "Слева сзади"},{"type": "func","func": skilld_event.bind(null, 145)}],

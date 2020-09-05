@@ -9,8 +9,7 @@ let player, entity, library, effect;
 let green = false;
 let purple = false;
 let boss_thirty = false;
-let print = false;
-let partyMakers = [];
+let party_makers = [];
 
 function skilld_event(skillid, handlers, event, ent, dispatch) {
 	// (зеленый) "Ближе!"
@@ -122,11 +121,12 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 	}
 }
 
-// HP босса < 30%
-function start_boss() {
-	if (print) return;
+function boss_start_event() {
+	boss_thirty = false;
+}
+
+function boss_thirty_event() {
 	boss_thirty = true;
-	print = true;
 }
 
 let debuff_tracker_started = false;
@@ -136,10 +136,10 @@ let debuffs_targe = {
 };
 
 let debuff_call_event = null;
-function start_Sailing_Instance(handlers, event, ent, dispatch) {
+function start_dungeon_event(handlers, event, ent, dispatch) {
 	const abnormality_change = (added, event) => {
 		if (debuffs_targe[event.id]) {
-			partyMakers.push({
+			party_makers.push({
 				color: 2, // 0. red, 1. yellow, 2. blue
 				target: event.target
 			});
@@ -147,7 +147,7 @@ function start_Sailing_Instance(handlers, event, ent, dispatch) {
 			updateMarkers(dispatch);
 
 			dispatch.setTimeout(() => {
-				partyMakers = [];
+				party_makers = [];
 				updateMarkers(dispatch);
 			}, 3500);
 
@@ -180,7 +180,7 @@ function updateMarkers(dispatch) {
 	if (dispatch._dispatch.settings.stream) return;
 
 	dispatch.send('S_PARTY_MARKER', 1, {
-		markers: partyMakers
+		markers: party_makers
 	});
 }
 
@@ -189,8 +189,8 @@ module.exports = {
 		({ player, entity, library, effect } = dispatch.require.library);
 	},
 
-	"dm-0-0-30209203": [{"type": "func","func": start_Sailing_Instance}],
-	"dm-0-0-30209204": [{"type": "func","func": start_Sailing_Instance}],
+	"dm-0-0-30209203": [{"type": "func","func": start_dungeon_event}],
+	"dm-0-0-30209204": [{"type": "func","func": start_dungeon_event}],
 
 	// 1 BOSS
 	"s-3020-1900-104-0": [{"type": "text","sub_type": "message","message": "Suction (Dodge)","message_RU": "Высасывание (Выйти)"},{"type": "func","func": SpawnCircle.bind(null,true,553,0,0,15,450,200,6000)}],
@@ -200,36 +200,37 @@ module.exports = {
 
 	// 3 BOSS
 	"s-3020-2200-108-0": [{"type": "text","sub_type": "message","message": "Front stun","message_RU": "Стан"},{"type": "func","func": SpawnCircle.bind(null,true,553,0,170,20,120,200,2000)}],
-	"h-3020-2200-30": [{"type": "func","func": start_boss}],
-	"h-3020-2200-29": [{"type": "func","func": start_boss}],
-	"h-3020-2200-28": [{"type": "func","func": start_boss}],
-	"h-3020-2200-27": [{"type": "func","func": start_boss}],
-	"h-3020-2200-26": [{"type": "func","func": start_boss}],
-	"h-3020-2200-25": [{"type": "func","func": start_boss}],
-	"h-3020-2200-24": [{"type": "func","func": start_boss}],
-	"h-3020-2200-23": [{"type": "func","func": start_boss}],
-	"h-3020-2200-22": [{"type": "func","func": start_boss}],
-	"h-3020-2200-21": [{"type": "func","func": start_boss}],
-	"h-3020-2200-20": [{"type": "func","func": start_boss}],
-	"h-3020-2200-19": [{"type": "func","func": start_boss}],
-	"h-3020-2200-18": [{"type": "func","func": start_boss}],
-	"h-3020-2200-17": [{"type": "func","func": start_boss}],
-	"h-3020-2200-16": [{"type": "func","func": start_boss}],
-	"h-3020-2200-15": [{"type": "func","func": start_boss}],
-	"h-3020-2200-14": [{"type": "func","func": start_boss}],
-	"h-3020-2200-13": [{"type": "func","func": start_boss}],
-	"h-3020-2200-12": [{"type": "func","func": start_boss}],
-	"h-3020-2200-11": [{"type": "func","func": start_boss}],
-	"h-3020-2200-10": [{"type": "func","func": start_boss}],
-	"h-3020-2200-9": [{"type": "func","func": start_boss}],
-	"h-3020-2200-8": [{"type": "func","func": start_boss}],
-	"h-3020-2200-7": [{"type": "func","func": start_boss}],
-	"h-3020-2200-6": [{"type": "func","func": start_boss}],
-	"h-3020-2200-5": [{"type": "func","func": start_boss}],
-	"h-3020-2200-4": [{"type": "func","func": start_boss}],
-	"h-3020-2200-3": [{"type": "func","func": start_boss}],
-	"h-3020-2200-2": [{"type": "func","func": start_boss}],
-	"h-3020-2200-1": [{"type": "func","func": start_boss}],
+	"h-3020-2200-99": [{"type": "func","func": boss_start_event}],
+	"h-3020-2200-30": [{"sub_type": "message","message": "30%","message_RU": "30%"},{"type": "func","func": boss_thirty_event}],
+	"h-3020-2200-29": [{"type": "func","func": boss_thirty_event}],
+	"h-3020-2200-28": [{"type": "func","func": boss_thirty_event}],
+	"h-3020-2200-27": [{"type": "func","func": boss_thirty_event}],
+	"h-3020-2200-26": [{"type": "func","func": boss_thirty_event}],
+	"h-3020-2200-25": [{"type": "func","func": boss_thirty_event}],
+	"h-3020-2200-24": [{"type": "func","func": boss_thirty_event}],
+	"h-3020-2200-23": [{"type": "func","func": boss_thirty_event}],
+	"h-3020-2200-22": [{"type": "func","func": boss_thirty_event}],
+	"h-3020-2200-21": [{"type": "func","func": boss_thirty_event}],
+	"h-3020-2200-20": [{"type": "func","func": boss_thirty_event}],
+	"h-3020-2200-19": [{"type": "func","func": boss_thirty_event}],
+	"h-3020-2200-18": [{"type": "func","func": boss_thirty_event}],
+	"h-3020-2200-17": [{"type": "func","func": boss_thirty_event}],
+	"h-3020-2200-16": [{"type": "func","func": boss_thirty_event}],
+	"h-3020-2200-15": [{"type": "func","func": boss_thirty_event}],
+	"h-3020-2200-14": [{"type": "func","func": boss_thirty_event}],
+	"h-3020-2200-13": [{"type": "func","func": boss_thirty_event}],
+	"h-3020-2200-12": [{"type": "func","func": boss_thirty_event}],
+	"h-3020-2200-11": [{"type": "func","func": boss_thirty_event}],
+	"h-3020-2200-10": [{"type": "func","func": boss_thirty_event}],
+	"h-3020-2200-9": [{"type": "func","func": boss_thirty_event}],
+	"h-3020-2200-8": [{"type": "func","func": boss_thirty_event}],
+	"h-3020-2200-7": [{"type": "func","func": boss_thirty_event}],
+	"h-3020-2200-6": [{"type": "func","func": boss_thirty_event}],
+	"h-3020-2200-5": [{"type": "func","func": boss_thirty_event}],
+	"h-3020-2200-4": [{"type": "func","func": boss_thirty_event}],
+	"h-3020-2200-3": [{"type": "func","func": boss_thirty_event}],
+	"h-3020-2200-2": [{"type": "func","func": boss_thirty_event}],
+	"h-3020-2200-1": [{"type": "func","func": boss_thirty_event}],
 
 	"s-3020-2200-121-0": [{"type": "func","func": skilld_event.bind(null, 121)}], // "Ближе!" (зеленый)
 	"s-3020-2200-122-0": [{"type": "func","func": skilld_event.bind(null, 122)}], // "Проваливай!" (фиолетовый)

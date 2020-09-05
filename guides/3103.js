@@ -7,16 +7,16 @@ const {SpawnCircle, SpawnVector} = require("../lib");
 let player, entity, library, effect;
 
 let timer1;
-let printTarget = true;
-let inBait = false;
+let print_target = true;
+let in_bait = false;
 
 function skilld_event(skillid, handlers, event, ent, dispatch) {
 	if ([107,310].includes(skillid)) { // Bait/Back flip
-		inBait = true;
-		dispatch.setTimeout(() => inBait = false, 3500);
+		in_bait = true;
+		dispatch.setTimeout(() => in_bait = false, 3500);
 	}
 	if (skillid == 116) { // Haymaker
-		if (inBait) {
+		if (in_bait) {
 			handlers['text']({
 				"sub_type": "message",
 				"message": "Haymaker",
@@ -31,10 +31,10 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 		}
 	}
 	if ([31031007,32031007].includes(skillid)) { // "Ha" attacks
-		if (printTarget) {
+		if (print_target) {
 			dispatch.clearTimeout(timer1);
-			printTarget = false;
-			dispatch.setTimeout(() => printTarget = true, 5000);
+			print_target = false;
+			dispatch.setTimeout(() => print_target = true, 5000);
 			timer1 = dispatch.setTimeout(()=> {
 				handlers['text']({
 					"sub_type": "alert",

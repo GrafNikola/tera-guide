@@ -1,8 +1,9 @@
 // Gossamer Vault
+//
+// made by michengs
 
 const {SpawnCircle} = require("../lib");
 
-let notice_guide = true;
 let player, entity, library, effect;
 
 module.exports = {

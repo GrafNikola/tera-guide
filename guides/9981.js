@@ -1,32 +1,18 @@
 ﻿// Velik's Sanctuary (Hard)
 //
-// made by michengs
-// updated by HSDN
+// made by michengs / HSDN
 
 const {SpawnMarker, SpawnCircle} = require("../lib");
 
 let player, entity, library, effect;
 
-function single_stage_callout(message, handlers, event, ent) {
-	//if (ent.stage == 0) {
-		handlers['text']({
-			"sub_type": "message",
-			"message": message,
-		});
-	//}
-}
+let thirdboss_fifty = false;
 
-let thirdboss_h50 = false;
-
-function start_thirdboss_h50_event() {
-	thirdboss_h50 = true;
-}
-
-function start_thirdboss_message_event(skillid, handlers, event, ent, dispatch) {
+function thirdboss_message_event(skillid, handlers, event, ent, dispatch) {
 	switch (skillid) {
 		// Lakan has noticed you.
 		case 1043:
-			if (!thirdboss_h50) {
+			if (!thirdboss_fifty) {
 				handlers['text']({
 					"sub_type": "notification",
 					"message": "Debuffs > Circles > Bombs",
@@ -42,7 +28,7 @@ function start_thirdboss_message_event(skillid, handlers, event, ent, dispatch) 
 			break;
 		// Lakan is trying to take you on one at a time.
 		case 1044:
-			if (!thirdboss_h50) {
+			if (!thirdboss_fifty) {
 				handlers['text']({
 					"sub_type": "notification",
 					"message": "Circles > Bombs > Debuffs",
@@ -58,7 +44,7 @@ function start_thirdboss_message_event(skillid, handlers, event, ent, dispatch) 
 			break;
 		// Lakan intends to kill all of you at once.
 		case 1045:
-			if (!thirdboss_h50) {
+			if (!thirdboss_fifty) {
 				handlers['text']({
 					"sub_type": "notification",
 					"message": "Bombs > Debuffs > Circles",
@@ -75,13 +61,20 @@ function start_thirdboss_message_event(skillid, handlers, event, ent, dispatch) 
 	}
 }
 
+function thirdboss_start_event() {
+	thirdboss_fifty = false;
+}
+
+function thirdboss_fifty_event() {
+	thirdboss_fifty = true;
+}
+
 module.exports = {
 	load(dispatch) {
 		({ player, entity, library, effect } = dispatch.require.library);
 	},
 
 	// 1 BOSS
-
 	"s-981-1000-2401": [
 		{"type": "text","sub_type": "message","message": "Right","message_RU": "Откид вправо"},
 		{"type": "func","func": SpawnMarker.bind(null,false,300,100,0,2000,true,null)},
@@ -116,9 +109,7 @@ module.exports = {
 	//"qb-981-1000-98103": [{"type": "text","sub_type": "message","message": "点名炸石柱","message_RU": "点名炸石柱"}], // круг на одного
 	//"qb-981-1000-98106": [{"type": "text","sub_type": "message","message": "集体炸石柱","message_RU": "集体炸石柱"}], // круги на всех
 
-
 	// 2 BOSS
-
 	// Cage Mechanic
 	//"s-981-2000-1503-0": [{"type": "text","sub_type": "message","message": "坦快跑远","message_RU": "坦快跑远"}],
 	"s-981-2000-1106-0": [{"type": "text","sub_type": "message","message": "Back","message_RU": "Задний"}],
@@ -143,10 +134,7 @@ module.exports = {
 		{"type": "func","func": SpawnMarker.bind(null,false,300,100,0,2000,true,null)},
 		{"type": "func","func": SpawnMarker.bind(null,false,230,100,0,2000,true,null)}
 	],
-	//"s-981-2000-1134-0": [{"type": "func","func": single_stage_callout.bind(null, "吃注视")}],
-	//"s-981-2000-1502-0": [{"type": "func","func": single_stage_callout.bind(null, "鉴定准备")}],
 	//"s-981-2000-2503-0": [{"type": "text","sub_type": "message","message": "坦快跑远","message_RU": "坦快跑远"}],
-
 	"s-981-2000-2106-0": [{"type": "text","sub_type": "message","message": "Back","message_RU": "Задний"}],
 	"s-981-2000-2108-0": [{"type": "text","sub_type": "message","message": "Front","message_RU": "Передний"}],
 	"s-981-2000-2111-0": [{"type": "text","sub_type": "message","message": "360 attack","message_RU": "Круговая"}],
@@ -157,7 +145,6 @@ module.exports = {
 		{"type": "text","sub_type": "message","delay": 2000,"message": "2"},
 		{"type": "text","sub_type": "message","delay": 3000,"message": "1"}
 	],
-	//"s-981-2000-2112-0": [{"type": "func","func": single_stage_callout.bind(null, "STAB + KNOCKUP")}],
 	"s-981-2000-2130-0": [
 		{"type": "text","sub_type": "message","message": "Left","message_RU": "Откид влево"},
 		{"type": "func","func": SpawnMarker.bind(null,false,60,100,0,2000,true,null)},
@@ -168,23 +155,19 @@ module.exports = {
 		{"type": "func","func": SpawnMarker.bind(null,false,300,100,0,2000,true,null)},
 		{"type": "func","func": SpawnMarker.bind(null,false,230,100,0,2000,true,null)}
 	],
-	//"s-981-2000-2134-0": [{"type": "func","func": single_stage_callout.bind(null, "吃注视")}],
-	//"s-981-2000-2502-0": [{"type": "func","func": single_stage_callout.bind(null, "鉴定准备")}],
 	//"s-981-2000-4000-0": [{"type": "text","sub_type": "alert","message": "鉴定！！！！","message_RU": "Дискотека！"}],
-
 	//"dm-0-0-9981022": [{"type": "text","sub_type": "alert","message": "鉴定","message_RU": "鉴定"}],
 	//"dm-0-0-9981023": [{"type": "text","sub_type": "message","message": "全场鉴定","message_RU": "全场鉴定"}],	
 	"dm-0-0-9981046": [{"type": "text","sub_type": "message","message": "First: (Debuffs) Closest","message_RU": "[ДКБ] Первая: дебафф (ближние)"}], // Thank you... for this release...
 	"dm-0-0-9981047": [{"type": "text","sub_type": "message","message": "First: (Circles) Spread","message_RU": "[КБД] Первая: круги (отдельно)"}], // Beware the... red lightning...
 	"dm-0-0-9981048": [{"type": "text","sub_type": "message","message": "First: (Bombs) Gather + cleanse","message_RU": "[БДК] Первая: бомбы (вместе + клинс)"}], // Beware the mark... of Lakan...  
 
-
 	// 3 BOSS
-	"h-981-3000-50": [{"type": "func","func": start_thirdboss_h50_event}],
-	"dm-0-0-9981043": [{"type": "func","func": start_thirdboss_message_event.bind(null, 1043)}], // Lakan has noticed you.
-	"dm-0-0-9981044": [{"type": "func","func": start_thirdboss_message_event.bind(null, 1044)}], // Lakan is trying to take you on one at a time.
-	"dm-0-0-9981045": [{"type": "func","func": start_thirdboss_message_event.bind(null, 1045)}], // Lakan intends to kill all of you at once.
-
+	"h-981-3000-99": [{"type": "func","func": thirdboss_start_event}],
+	"h-981-3000-50": [{"type": "func","func": thirdboss_fifty_event}],
+	"dm-0-0-9981043": [{"type": "func","func": thirdboss_message_event.bind(null, 1043)}], // Lakan has noticed you.
+	"dm-0-0-9981044": [{"type": "func","func": thirdboss_message_event.bind(null, 1044)}], // Lakan is trying to take you on one at a time.
+	"dm-0-0-9981045": [{"type": "func","func": thirdboss_message_event.bind(null, 1045)}], // Lakan intends to kill all of you at once.
 	"s-981-3000-1404-0": [{"type": "text","sub_type": "message","message": "(Debuffs) Closest","message_RU": "Дебафф (ближние)"}],
 	"s-981-3000-1405-0": [{"type": "text","sub_type": "message","message": "(Debuffs) Farthest","message_RU": "Дебафф (дальние)"}],
 	"s-981-3000-1301-0": [{"type": "text","sub_type": "message","message": "(Bombs) Gather + cleanse","message_RU": "Бомбы (вместе!) + клинс"}],

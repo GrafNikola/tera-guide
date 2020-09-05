@@ -6,8 +6,7 @@ const {HIGHLIGHT_ITEM, SpawnItem, SpawnMarker, SpawnPoint, SpawnVector, SpawnCir
 
 let player, entity, library, effect;
 
-let print = false,
-	notice = true,
+let orb_notice = true,
 	boss_seventy = false,
 	msg_a = 3,
 	msg_b = 3,
@@ -23,10 +22,10 @@ const RK_TipMsg =
 
 function skilld_event(skillid, handlers, event, ent, dispatch) {
 	// 2 BOSS
-	if (notice && skillid == 301) {
-		notice = false;
+	if (orb_notice && skillid == 301) {
+		orb_notice = false;
 		handlers['text']({"sub_type": "message","message": "Throwing orb","message_RU": "Бомба"});
-		dispatch.setTimeout(() => notice = true, 13000);
+		dispatch.setTimeout(() => orb_notice = true, 13000);
 	}
 
 	// 3 BOSS
@@ -160,20 +159,11 @@ function print_mech(next, code, handlers) {
 	});
 }
 
-function start_boss() {
-	print = true;
+function thirdboss_start_event() {
 	boss_seventy = false;
 }
 
-function print_seventy(handlers) {
-	if (print) {
-		handlers['text']({
-			"sub_type": "message",
-			"message": "70%",
-			"message_RU": "70%"
-		});
-	}
-	print = false;
+function thirdboss_seventy_event(handlers) {
 	boss_seventy = true;
 }
 
@@ -278,8 +268,8 @@ module.exports = {
 	],
 
 	// 3 BOSS
-	"h-3034-3000-99": [{"type": "func","func": start_boss}],
-	"h-3034-3000-70": [{"type": "func","func": print_seventy}],
+	"h-3034-3000-99": [{"type": "func","func": thirdboss_start_event}],
+	"h-3034-3000-70": [{"sub_type": "message","message": "70%","message_RU": "70%"},{"type": "func","func": thirdboss_seventy_event}],
 	//
 	"dm-0-0-3034311": [{"type": "func","func": skilld_event.bind(null, 3034311)}], // 1 std
 	"dm-0-0-3034312": [{"type": "func","func": skilld_event.bind(null, 3034312)}], // 0 rev

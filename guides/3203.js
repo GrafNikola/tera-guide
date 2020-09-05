@@ -7,17 +7,16 @@ const {SpawnCircle, SpawnVector} = require("../lib");
 let player, entity, library, effect;
 
 let timer1;
-let print = false;
-let printTarget = true;
-let inBait = false;
+let print_target = true;
+let in_bait = false;
 
 function skilld_event(skillid, handlers, event, ent, dispatch) {
 	if ([107,310].includes(skillid)) { // Bait/Back flip
-		inBait = true;
-		dispatch.setTimeout(() => inBait = false, 3500);
+		in_bait = true;
+		dispatch.setTimeout(() => in_bait = false, 3500);
 	}
 	if (skillid == 116) { // Haymaker
-		if (inBait) {
+		if (in_bait) {
 			handlers['text']({
 				"sub_type": "message",
 				"message": "Haymaker",
@@ -32,10 +31,10 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 		}
 	}
 	if ([31031007,32031007].includes(skillid)) { // "Ha" attacks
-		if (printTarget) {
+		if (print_target) {
 			dispatch.clearTimeout(timer1);
-			printTarget = false;
-			dispatch.setTimeout(() => printTarget = true, 5000);
+			print_target = false;
+			dispatch.setTimeout(() => print_target = true, 5000);
 			timer1 = dispatch.setTimeout(()=> {
 				handlers['text']({
 					"sub_type": "alert",
@@ -47,28 +46,12 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 	}
 }
 
-function start_boss() {
-	print = true;
-}
-
-function print_thirty(handlers) {
-	if (print) {
-		handlers['text']({
-			"sub_type": "message",
-			"message": "30%",
-			"message_RU": "30%"
-		});
-	}
-	print = false;
-}
-
 module.exports = {
 	load(dispatch) {
 		({ player, entity, library, effect } = dispatch.require.library);
 	},
 
-	"h-3203-1000-99": [{"type": "func","func": start_boss}],
-	"h-3203-1000-30": [{"type": "func","func": print_thirty}],
+	"h-3203-1000-30": [{"sub_type": "message","message": "30%","message_RU": "30%"}],
 
 	//"s-3203-1000-101-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Punch","message_RU": "Серия ударов"}],
 	"s-3203-1000-113-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Roundhouse kick","message_RU": "Удар с разворота"}],

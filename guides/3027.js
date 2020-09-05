@@ -5,52 +5,53 @@
 const {HIGHLIGHT_ITEM, SpawnItem, SpawnMarker, SpawnVector, SpawnCircle} = require("../lib");
 
 let player, entity, library, effect;
+
 let timer1;
 let timer2;
 let timer3;
-let notices = true;
-let print = true;
-let printHP = true;
-let printMech = true;
-let isHP_74_39 = false;
+let shield_notices = true;
+let print_shield = true;
+let print_hp = true;
+let print_mech = true;
+let is_hp_74_39 = false;
 
 function skilld_event(skillid, handlers, event, ent, dispatch) {
 	if ([351].includes(skillid)) { // щит
-		if (notices) {
+		if (shield_notices) {
 			dispatch.clearTimeout(timer1);
 			dispatch.clearTimeout(timer2);
-			notices = false;
-			dispatch.setTimeout(() => notices = true, 5000);
-				timer1 = dispatch.setTimeout(()=> {
+			shield_notices = false;
+			dispatch.setTimeout(() => shield_notices = true, 5000);
+			timer1 = dispatch.setTimeout(()=> {
 				handlers['text']({
 					"sub_type": "message",
-					"message": isHP_74_39 ? "!" : "SHIELD in 5 seconds!",
-					"message_RU": isHP_74_39 ? "!" : "Через 5 сек. ЩИТ!!!"
+					"message": is_hp_74_39 ? "!" : "SHIELD in 5 seconds!",
+					"message_RU": is_hp_74_39 ? "!" : "Через 5 сек. ЩИТ!!!"
 				});
 			}, 85000);
 			timer2 = dispatch.setTimeout(()=> {
 				handlers['text']({
 					"sub_type": "message",
-					"message": isHP_74_39 ? "!" : "SHIELD in 15 seconds!",
-					"message_RU": isHP_74_39 ? "!" : "Через 15 сек. ЩИТ!!!"
+					"message": is_hp_74_39 ? "!" : "SHIELD in 15 seconds!",
+					"message_RU": is_hp_74_39 ? "!" : "Через 15 сек. ЩИТ!!!"
 				});
 			}, 75000);
 		}
 	}
 	if ([74,39].includes(skillid)) {
-		if (printHP) {
+		if (print_hp) {
 			dispatch.clearTimeout(timer1);
 			dispatch.clearTimeout(timer2);
-			printHP = false;
-			isHP_74_39 = true;
-			dispatch.setTimeout(() => printHP = true, 15000);
+			print_hp = false;
+			is_hp_74_39 = true;
+			dispatch.setTimeout(() => print_hp = true, 15000);
 		}
 	}
 	if ([89,59,29].includes(skillid)) { // до щита
-		if (print) {
-			print = false;
-			isHP_74_39 = false;
-			dispatch.setTimeout(() => print = true, 15000);
+		if (print_shield) {
+			print_shield = false;
+			is_hp_74_39 = false;
+			dispatch.setTimeout(() => print_shield = true, 15000);
 			handlers['text']({
 				"sub_type": "alert",
 				"message": "Ready for SHIELD",
@@ -59,10 +60,10 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 		}
 	}
 	if ([350,357].includes(skillid)) { // до стяжки
-		if (printMech) {
+		if (print_mech) {
 			dispatch.clearTimeout(timer3);
-			printMech = false;
-			dispatch.setTimeout(() => printMech = true, 15000);
+			print_mech = false;
+			dispatch.setTimeout(() => print_mech = true, 15000);
 			timer3 = dispatch.setTimeout(()=> {
 				handlers['text']({
 					"sub_type": "alert",

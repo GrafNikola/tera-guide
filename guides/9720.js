@@ -1,7 +1,6 @@
 ﻿// Antaroth's Abyss
 //
-// made by Yuyuko
-// updated by HSDN
+// made by Yuyuko / HSDN
 
 const {SpawnMarker, SpawnVector, SpawnCircle} = require("../lib");
 
@@ -10,7 +9,7 @@ let player, entity, library, effect;
 let counter = 0;
 let timer;
 
-function back_attack_NM(handlers, event, ent, dispatch) {
+function thirdboss_backattack_event(handlers, event, ent, dispatch) {
 	dispatch.clearTimeout(timer);
 	counter++;
 	if (counter >= 2) {
@@ -71,7 +70,7 @@ module.exports = {
 	],
 	"s-720-3000-113-0": [{"type": "text","sub_type": "message","message": "Front | Back slam","message_RU": "Передний | Задний"}],
 	"s-720-3000-115-0": [{"type": "text","sub_type": "message","message": "Spinning attack","message_RU": "Круговая"}],
-	"s-720-3000-104-0": [{"type": "func","func": back_attack_NM}],
+	"s-720-3000-104-0": [{"type": "func","func": thirdboss_backattack_event}],
 	//"s-720-3000-202-0": [{"type": "text","sub_type": "message","message": "spin or front,back slam","message_RU": "Круговая | Задний"}],
 
 	"s-720-3000-400-0": [{"type": "text","sub_type": "message","message": "Clones: beam","message_RU": "Копии: волны"}],

@@ -4,59 +4,47 @@
 
 const {SpawnVector, SpawnCircle, SpawnSemicircle} = require("../lib");
 
-let lastboss = false;
 let player, entity, library, effect;
-let	print = true;
+
 let debuff = 0;
+let counter = 0;
 let timer1;
 let timer2;
 let timer3;
 let timer4;
-let timer5;
-let counter = 0;
 
 function skilld_event(skillid, handlers, event, ent, dispatch) {
-	if (skillid === 99020020) { //死亡解除debuff
+	if (skillid === 99020020) { // Debuff removed
 		debuff = 0;
-		dispatch.clearTimeout(timer2);
 		dispatch.clearTimeout(timer1);
+		dispatch.clearTimeout(timer2);
 	}
-	if (skillid === 185) { //死亡解除debuff
-		dispatch.clearTimeout(timer5);
-		timer5 = dispatch.setTimeout(()=> {
-			handlers['text']({
-				"sub_type": "message",
-				"message": "Big jump soon",
-				"message_RU": "Скоро прыжок!"
-			});
-		}, 110000);
-	}
-	if (skillid === 3119 && debuff === 1) {    //紅色气息判断
+	if (skillid === 3119 && debuff === 1) { // Red aura
 		handlers['text']({
 			"sub_type": "message",
 			"message": "OUT",
 			"message_RU": "ОТ НЕГО"
 		});
-	} else if (skillid === 3119 && debuff === 2) {    //紅色气息判断
+	} else if (skillid === 3119 && debuff === 2) { // Red aura
 		handlers['text']({
 			"sub_type": "message",
 			"message": "IN",
 			"message_RU": "К НЕМУ"
 		});
-	} else if (skillid === 3220 && debuff === 1) {    //蓝色气息判断
+	} else if (skillid === 3220 && debuff === 1) { // Blue aura
 		handlers['text']({
 			"sub_type": "message",
 			"message": "IN",
 			"message_RU": "К НЕМУ"
 		});
-	} else if (skillid === 3220 && debuff === 2) {    //蓝色气息判断
+	} else if (skillid === 3220 && debuff === 2) { // Blue aura
 		handlers['text']({
 			"sub_type": "message",
 			"message": "OUT",
 			"message_RU": "ОТ НЕГО"
 		});
 	}
-	if ([30231000, 1000].includes(skillid)) {   //debuff为红色
+	if ([30231000,1000].includes(skillid)) { // Red debuff
 		debuff = 1;
 		dispatch.clearTimeout(timer1);
 		dispatch.clearTimeout(timer2);
@@ -69,7 +57,7 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 			debuff = 0;
 		}, 70000);
 	}
-	if ([30231001, 1001].includes(skillid)) {    //debuff为蓝色
+	if ([30231001,1001].includes(skillid)) { // Blue debuff
 		debuff = 2;
 		dispatch.clearTimeout(timer2);
 		dispatch.clearTimeout(timer1);
@@ -82,12 +70,12 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 			debuff = 0;
 		}, 70000);
 	}
-	if ([1113, 1114].includes(skillid)) { //4连挥刀预判
+	if ([1113,1114].includes(skillid)) { // x4 slash
 		dispatch.clearTimeout(timer3);
 		counter++;
 		if(counter >= 4) {
-			dispatch.clearTimeout(timer4);
-			/*timer4 = dispatch.setTimeout(()=> {
+			/*dispatch.clearTimeout(timer4);
+			timer4 = dispatch.setTimeout(()=> {
 				handlers['text']({
 					"sub_type": "message",
 					"message": "4x slash",
@@ -96,24 +84,13 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 			}, 70000);*/
 		}
 		timer3 = dispatch.setTimeout(()=> {
-		counter = 0;
+			counter = 0;
 		}, 20000);
 	}
 }
-function start_boss() {
-	let print = true;
+
+function firstboss_start_event() {
 	debuff = 0;
-}
-function start_1boss80(handlers, event, ent, dispatch) {
-	if(print) {
-		handlers['text']({
-			"sub_type": "message",
-			"message": "80%",
-			"message_RU": "80%"
-		});
-	}
-	print = false;
-	dispatch.setTimeout(() => print = true, 10000);
 }
 
 module.exports = {
@@ -122,8 +99,8 @@ module.exports = {
 	},
 
 	// 1 BOSS
-	"h-3023-1000-99": [{"type": "func","func": start_boss}],
-	"h-3023-1000-80": [{"type": "func","func": start_1boss80}],
+	"h-3023-1000-99": [{"type": "func","func": firstboss_start_event}],
+	"h-3023-1000-80": [{"sub_type": "message","message": "80%","message_RU": "80%"}],
 	"s-3023-1000-104-0": [{"type": "text","sub_type": "message","message": 'Random jump',"message_RU": "Прыжок + Стан"}],
 	"s-3023-1000-105-0": [{"type": "text","sub_type": "message","message": 'Back',"message_RU": "Поворот назад"}],
 	"s-3023-1000-110-0": [{"type": "text","sub_type": "message","message": 'Stun',"message_RU": "Передний стан"},
@@ -208,7 +185,7 @@ module.exports = {
 	],
 	"s-3023-2000-182-0": [{"type": "text","sub_type": "message","message": 'Knock down',"message_RU": "Опрокид"}],
 	"s-3023-2000-185-0": [{"type": "text","sub_type": "message","message": 'Kaia/Thrall of Protection',"message_RU": "Взрыв (Кайя)!!!"},
-						  {"type": "func","func": skilld_event.bind(null, 185)},
+						  {"sub_type": "message","delay": 110000,"message": "Big jump soon","message_RU": "Скоро прыжок!"},
 						  {"type": "func","func": SpawnCircle.bind(null,false,553,0,0,10,500,0,6000)},
 						  {"type": "func","func": SpawnCircle.bind(null,false,553,0,0,8,750,0,6000)}
 	],

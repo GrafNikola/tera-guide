@@ -1,23 +1,19 @@
 // Gossamer Vault (Hard)
+//
+// made by michengs
 
 const {SpawnMarker, SpawnVector, SpawnCircle} = require("../lib");
 
-let notice_guide = true;
 let player, entity, library, effect;
+
 let notice = true;
 let boss = 3;
-let lastboss = false;
-let print = false;
+let secondboss = false;
 
-function start_boss() {
-	lastboss = true;
+function secondboss_start_event() {
+	secondboss = true;
 	notice = true;
 	boss = 3;
-	print = true;
-}
-
-function start_boss1() {
-	print = true;
 }
 
 function skilld_event(skillid, handlers, event, ent, dispatch) {
@@ -177,34 +173,12 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 			});
 		}, 55000);
 	}
-	if (skillid === 9203100 && lastboss) {
+	if (skillid === 9203100 && secondboss) {
 		/*handlers['text']({
 			"sub_type": "message",
 			"message_RU": "Смерть +1!!"
 		});*/
 	}
-}
-
-function print_eighty(handlers) {
-	if (print) {
-		handlers['text']({
-			"sub_type": "message",
-			"message": "80%",
-			"message_RU": "Дебафф"
-		});
-	}
-	print = false;
-}
-
-function print_seventyfive(handlers) {
-	if (print) {
-		handlers['text']({
-			"sub_type": "message",
-			"message": "75%",
-			"message_RU": "Камни"
-		});
-	}
-	print = false;
 }
 
 module.exports = {
@@ -278,8 +252,10 @@ module.exports = {
 
 	// 2 BOSS
 
-	"h-3201-2000-99": [{"type": "func","func": start_boss}],
-	
+	"h-3201-2000-99": [{"type": "func","func": secondboss_start_event}],
+	"h-3201-2000-81": [{"sub_type": "message","message": "80%","message_RU": "Дебафф"}],
+	"h-3201-2000-76": [{"sub_type": "message","message": "75%","message_RU": "Камни"}],
+
 	//"s-3201-2000-101-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "right left","message_RU": "右手 左手"}],
 	//"s-3201-2000-102-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "left right","message_RU": "左手 右手"}],
 	//"s-3201-2000-103-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "spin","message_RU": "旋转顺"}],
@@ -322,10 +298,6 @@ module.exports = {
 	],
 
 	//"s-3201-2000-233-0": [{"type": "text","sub_type": "message","message": "5","message_RU": "5 бомб" }],
-
-	"h-3201-2000-81": [{"type": "func","func": print_eighty}],
-	"h-3201-2000-78": [{"type": "func","func": start_boss1}],
-	"h-3201-2000-76": [{"type": "func","func": print_seventyfive}],
 	
 	"s-3201-2000-234-0": [{"type": "func","func": skilld_event.bind(null, 234)}],
 	//"s-3201-2000-235-0": [{"type": "text","sub_type": "message","message": "Debuffs","message_RU": "注视2人吃鉴定" }]
