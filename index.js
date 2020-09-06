@@ -404,13 +404,13 @@ class TeraGuide {
 					text_handler({
 						"sub_type": "CGMSG",
 						"message_RU": `Введите "guide help" для вывода справки\n` +
-							`Состояние режима сообщений в группу: ${dispatch.settings.gNotice ? "Вкл" : "Выкл"}.\n` +
-							`Состояние режима стрима: ${dispatch.settings.stream ? "Вкл" : "Выкл"}.\n` +
-							`Состояние режима голосовых сообщений: ${dispatch.settings.speaks ? "Вкл" : "Выкл"}.`,
+							`Режим стриммера: ${dispatch.settings.stream ? "Вкл" : "Выкл"}\n` +
+							`Отправка сообщений членам группы: ${dispatch.settings.gNotice ? "Вкл" : "Выкл"}\n` +
+							`Проигрывание голосовых сообщений: ${dispatch.settings.speaks ? "Вкл" : "Выкл"}`,
 						"message": `Enter "guide help" for more information\n` +
-							`The current party notices mode is ${dispatch.settings.gNotice ? "on" : "off"}.\n` +
-							`The current stream mode is ${dispatch.settings.stream ? "on" : "off"}.\n` +
-							`The current guide voice mode is ${dispatch.settings.speaks ? "on" : "off"}.`
+							`Streamer mode is ${dispatch.settings.stream ? "on" : "off"}.\n` +
+							`Send messages to party members is ${dispatch.settings.gNotice ? "on" : "off"}.\n` +
+							`Playng the voice messages is ${dispatch.settings.speaks ? "on" : "off"}.`
 					});
 				}
 			} catch (e) {
@@ -919,7 +919,9 @@ class TeraGuide {
 
 		// Spawn handler
 		function spawn_handler(event, ent, speed = 1.0) {
+			// Ignore if streamer mode is enabled
 			if (dispatch.settings.stream) return;
+			// Ignore if spawnObject is disabled
 			if (!dispatch.settings.spawnObject) return;
 			if (!entered_zone_data.spawnObject && !is_event) return;
 			// Make sure id is defined
@@ -1016,12 +1018,13 @@ class TeraGuide {
 
 		// Despawn handler
 		function despawn_handler(event) {
+			// Ignore if streamer mode is enabled
+			if (dispatch.settings.stream) return;
+			// Ignore if spawnObject is disabled
+			if (!dispatch.settings.spawnObject) return;
+			if (!entered_zone_data.spawnObject && !is_event) return;
 			// Make sure id is defined
 			if (!event['id']) return debug_message(true, "Spawn handler needs a id");
-			// 
-			if (!dispatch.settings.spawnObject) return;
-			// Ignore if dispatch.settings.streamer mode is enabled
-			if (dispatch.settings.stream) return;
 			// Set sub_type to be collection as default for backward compatibility
 			const sub_type = event["sub_type"] || "collection";
 			const despawn_event = {
@@ -1040,6 +1043,7 @@ class TeraGuide {
 					return debug_message(true, "Invalid sub_type for despawn handler:", event["sub_type"]);
 			}
 		}
+
 		// Text handler
 		function text_handler(event, ent, speed = 1.0) {
 			// Fetch the message
@@ -1048,137 +1052,127 @@ class TeraGuide {
 			if (!event["sub_type"]) return debug_message(true, "Text handler needs a sub_type");
 			// Make sure message is defined
 			if (!message) return debug_message(true, "Text handler needs a message");
-			let sending_event = {};
-			// Create the sending event
-			switch (event["sub_type"]) {
-				// Guide message
-				case "message":
-				case "alert":
-				case "warning":
-				case "notification":
-				case "msgcp":
-				case "msgcg": {
-					if (!entered_zone_data.verbose && !is_event) return;
-					if (voice && dispatch.settings.speaks) {
-						timers[event["id"] || random_timer_id--] = dispatch.setTimeout(() => {
-							voice.speak(message, dispatch.settings.rate);
-						}, (event["delay"] || 0) - 600 / speed);
-					}
+			// Send guide messages or/and play the voice
+			if (["message", "alert", "warning", "notification", "msgcp", "msgcg", "speech"].includes(event["sub_type"])) {
+				// Ignoring if verbose mode is disabled
+				if (!entered_zone_data.verbose && !is_event) return;
+				// Play the voice of text message
+				if (voice && dispatch.settings.speaks) {
 					timers[event["id"] || random_timer_id--] = dispatch.setTimeout(() => {
-						switch (event["sub_type"]) {
-							// Basic message
-							case "message":
-								sendMessage(message);
-								break;
-								// Alert message red
-							case "alert":
-								sendAlert(message, cr, spr);
-								break;
-								// Alert message blue
-							case "warning":
-								sendAlert(message, clb, spb);
-								break;
-								// Notification message
-							case "notification":
-								sendNotification(message);
-								break;
-								// Pink dungeon event message
-							case "msgcp":
-								sendDungeonEvent(message, cp, spg);
-								break;
-								// Green dungeon event message
-							case "msgcg":
-								sendDungeonEvent(message, cg, spg);
-								break;
-						}
-					}, (event["delay"] || 0) / speed);
-					break;
-				}
-				// Voice announcement
-				case "speech": {
-					if (!entered_zone_data.verbose && !is_event) return;
-					if (voice && dispatch.settings.speaks) {
-						timers[event["id"] || random_timer_id--] = dispatch.setTimeout(() => {
-							voice.speak(message, dispatch.settings.rate);
-						}, (event["delay"] || 0) - 600 / speed);
-					}
-					break;
-				}
-				// Proxy channel test message (red color)
-				case "MSG": {
-					if (!entered_zone_data.verbose && !is_event) return;
-					timers[event["id"] || random_timer_id--] = dispatch.setTimeout(() => {
-						command.message(cr + message);
-						console.log(cr + message);
+						voice.speak(message, dispatch.settings.rate);
 					}, (event["delay"] || 0) - 600 / speed);
-					break;
 				}
-				// Color-specified proxy channel messages
-				case "COMSG":
-					command.message(co + message);
-					break;
-				case "CYMSG":
-					command.message(cy + message);
-					break;
-				case "CGMSG":
-					command.message(cg + message);
-					break;
-				case "CDBMSG":
-					command.message(cdb + message);
-					break;
-				case "CBMSG":
-					command.message(cb + message);
-					break;
-				case "CVMSG":
-					command.message(cv + message);
-					break;
-				case "CPMSG":
-					command.message(cp + message);
-					break;
-				case "CLPMSG":
-					command.message(clp + message);
-					break;
-				case "CLBMSG":
-					command.message(clb + message);
-					break;
-				case "CBLMSG":
-					command.message(cbl + message);
-					break;
-				case "CGRMSG":
-					command.message(cgr + message);
-					break;
-				case "CWMSG":
-					command.message(cw + message);
-					break;
-				case "CRMSG":
-					command.message(cr + message);
-					break;
-					// Default color proxy channel message
-				case "PRMSG":
-					command.message(dispatch.settings.cc + message);
-					break;
-
-				default:
-					return debug_message(true, "Invalid sub_type for text handler:", event['sub_type']);
+				// Ignoring sending a text message if "speech" sub_type specified
+				if (event["sub_type"] == "speech") return;
+				// Send a text message
+				timers[event["id"] || random_timer_id--] = dispatch.setTimeout(() => {
+					switch (event["sub_type"]) {
+						// Basic message
+						case "message":
+							sendMessage(message);
+							break;
+							// Alert message red
+						case "alert":
+							sendAlert(message, cr, spr);
+							break;
+							// Alert message blue
+						case "warning":
+							sendAlert(message, clb, spb);
+							break;
+							// Notification message
+						case "notification":
+							sendNotification(message);
+							break;
+							// Pink dungeon event message
+						case "msgcp":
+							sendDungeonEvent(message, cp, spg);
+							break;
+							// Green dungeon event message
+						case "msgcg":
+							sendDungeonEvent(message, cg, spg);
+							break;
+					}
+				}, (event["delay"] || 0) / speed);
+			// Other types of messages (eg proxy-channel message)
+			} else {
+				switch (event["sub_type"]) {
+					// Debug or test message to the proxy-channel and log console
+					case "MSG": {
+						timers[event["id"] || random_timer_id--] = dispatch.setTimeout(() => {
+							command.message(cr + message);
+							console.log(cr + message);
+						}, (event["delay"] || 0) - 600 / speed);
+						break;
+					}
+					// Color-specified proxy-channel messages
+					case "COMSG":
+						command.message(co + message);
+						break;
+					case "CYMSG":
+						command.message(cy + message);
+						break;
+					case "CGMSG":
+						command.message(cg + message);
+						break;
+					case "CDBMSG":
+						command.message(cdb + message);
+						break;
+					case "CBMSG":
+						command.message(cb + message);
+						break;
+					case "CVMSG":
+						command.message(cv + message);
+						break;
+					case "CPMSG":
+						command.message(cp + message);
+						break;
+					case "CLPMSG":
+						command.message(clp + message);
+						break;
+					case "CLBMSG":
+						command.message(clb + message);
+						break;
+					case "CBLMSG":
+						command.message(cbl + message);
+						break;
+					case "CGRMSG":
+						command.message(cgr + message);
+						break;
+					case "CWMSG":
+						command.message(cw + message);
+						break;
+					case "CRMSG":
+						command.message(cr + message);
+						break;
+					// Default color proxy-channel message
+					case "PRMSG":
+						command.message(dispatch.settings.cc + message);
+						break;
+					// Invalid sub_type value
+					default:
+						return debug_message(true, "Invalid sub_type for text handler:", event['sub_type']);
+				}
 			}
 		}
+
 		// Basic message
 		function sendMessage(message) {
+			// If streamer mode is enabled send message to the proxy-channel
 			if (dispatch.settings.stream) {
 				command.message(dispatch.settings.cc + message);
 				return;
 			}
 			if (dispatch.settings.lNotice) {
-				// Team leader notification
+				// Send message as a Team leader notification
 				dispatch.toClient("S_CHAT", 3, {
 					channel: 21, // 21 = team leader, 25 = raid leader, 1 = party, 2 = guild
 					message
 				});
 			} else {
-				// Dungeon event green
+				// Send message as a green colored Dungeon Event
 				sendDungeonEvent(message, dispatch.settings.cc, spg);
 			}
-			// Send notices to party
+			// Send message to party if gNotice is enabled
 			if (dispatch.settings.gNotice) {
 				dispatch.toClient("S_CHAT", 3, {
 					channel: 1,
@@ -1186,19 +1180,21 @@ class TeraGuide {
 				});
 			}
 		}
+
 		// Notification message
 		function sendNotification(message) {
+			// If streamer mode is enabled send message to the proxy-channel
 			if (dispatch.settings.stream) {
 				command.message(clb + "[Notice] " + dispatch.settings.cc + message);
 				return;
 			}
-			// Raid leader notification
+			// Send message as a Raid leader notification
 			dispatch.toClient("S_CHAT", 3, {
 				channel: 25,
 				authorName: "guide",
 				message
 			});
-			// Send notices to party
+			// Send message to party if gNotice is enabled
 			if (dispatch.settings.gNotice) {
 				dispatch.toClient("S_CHAT", 3, {
 					channel: 1,
@@ -1206,37 +1202,42 @@ class TeraGuide {
 				});
 			}
 		}
+
 		// Alert message
 		function sendAlert(message, cc, spc) {
+			// If streamer mode is enabled send message to the proxy-channel
 			if (dispatch.settings.stream) {
 				command.message(cc + "[Alert] " + dispatch.settings.cc + message);
 				return;
 			}
 			if (dispatch.settings.lNotice) {
-				// Raid leader notification
+				// Send message as a Raid leader notification
 				dispatch.toClient("S_CHAT", 3, {
 					channel: 25,
 					authorName: "guide",
 					message
 				});
 			} else {
-				// Dungeon event
+				// Send message as a color-specified Dungeon Event
 				sendDungeonEvent(message, dispatch.settings.cc, spc);
 			}
-			// Send notices to party
-			if (dispatch.settings.gNotice) {
+			// Send message to party if gNotice or gAlert is enabled
+			if (dispatch.settings.gNotice/* || dispatch.settings.gAlert*/) {
 				dispatch.toClient("S_CHAT", 3, {
 					channel: 1,
 					message
 				});
 			}
 		}
-		// Dungeon event message
+
+		// Dungeon Event message
 		function sendDungeonEvent(message, spcc, type) {
+			// If streamer mode is enabled send message to the proxy-channel
 			if (dispatch.settings.stream) {
 				command.message(dispatch.settings.cc + message);
 				return;
 			}
+			// Send a color-specified Dungeon Event message
 			dispatch.toClient("S_DUNGEON_EVENT_MESSAGE", 2, {
 				type: type,
 				chat: 0,
@@ -1244,6 +1245,7 @@ class TeraGuide {
 				message: (spcc + message)
 			});
 		}
+
 		// Stop timer handler
 		function stop_timer_handler(event, ent, speed = 1.0) {
 			// Make sure id is defined
@@ -1253,6 +1255,7 @@ class TeraGuide {
 			// clearout the timer
 			dispatch.clearTimeout(timers[event["id"]]);
 		}
+
 		// Func handler
 		function func_handler(event, ent, speed = 1.0) {
 			// Make sure func is defined
