@@ -1014,7 +1014,7 @@ class TeraGuide {
 				});
 			},
 			gui() {
-				gui_handler("index", "Tera-Guide");
+				gui_handler("index", "TERA-Guide");
 			},
 			$default(arg1) {
 				if (arg1 === undefined) {
