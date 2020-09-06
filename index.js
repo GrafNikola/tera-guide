@@ -14,8 +14,28 @@ const DPS_CLASS_IDS = [2, 3, 4, 5, 8, 9, 11, 12];
 const HEALER_CLASS_IDS = [6, 7];
 // Warrior Defence stance abnormality ids
 const WARRIOR_TANK_IDS = [100200, 100201];
+// Zones is available in game for GUI or menus
+const AVAILABLE_ZONE_IDS = [
+	3020, // Sea of Honor
+	3023, // Akalath Quarantine
+	3026, // Corrupted Skynest
+	3027, // Forbidden Arena [Hagufna]
+	3034, // RK-9 Kennel (Hard)
+	3102, // Draakon Arena
+	3103, // Forbidden Arena [Undying Warlord]
+	3126, // Corrupted Skynest (Hard)
+	3201, // Gossamer Vault (Hard)
+	3202, // Draakon Arena (Hard)
+	3203, // Forbidden Arena [Nightmare Undying Warlord]
+	9044, // Bahaar's Sanctum
+	9735, // RK-9 Kennel
+	9739, // Red Refuge
+	9781, // Velik's Sanctuary
+	9920, // Antaroth's Abyss (Hard)
+	9982  // Grotto of Lost Souls (Hard)
+];
 // Zones with skillid range 1000-3000
-const SP_ZONES = [
+const SP_ZONE_IDS = [
 	3026, // Corrupted Skynest
 	3126, // Corrupted Skynest (Hard)
 	9050, // Rift's Edge (Hard)
@@ -32,7 +52,7 @@ const SP_ZONES = [
 	9981  // Velik's Sanctuary (Hard)
 ];
 // Zones with skillid range 100-200-3000
-const ES_ZONES = [
+const ES_ZONE_IDS = [
 	3023, // Akalath Quarantine
 	9000, // ???
 	9759  // Forsaken Island (Hard)
@@ -53,6 +73,11 @@ const clb = '</font><font color="#00ffff">'; // light blue
 const cbl = '</font><font color="#000000">'; // black
 const cgr = '</font><font color="#777777">'; // gray
 const cw = '</font><font color="#ffffff">';  // white
+// GUI colors
+const gcr = '#fe6f5e';  // red
+const gcg = '#4de19c';  // green
+const gcy = '#c0b94d';  // yellow
+const gcgr = '#778899'; // gray
 // Dungeon messages types
 const spt = 31; // text notice
 const spg = 42; // green message
@@ -77,7 +102,6 @@ class TeraGuide {
 		const fake_dispatch = new DispatchWrapper(dispatch);
 		const { player, entity, library, effect } = dispatch.require.library;
 		const command = dispatch.command;
-
 		// An object of types and their corresponding function handlers
 		const function_event_handlers = {
 			"spawn": spawn_handler,
@@ -86,6 +110,50 @@ class TeraGuide {
 			"stop_timer": stop_timer_handler,
 			"func": func_handler,
 			"lib": require("./lib")
+		};
+		// GUI helpers
+		const gui = {
+			lang: {
+				"en": {
+					"settings": "Settings",
+					"spawnObject": "Spawn Objects",
+					"speaks": "Voice Messages",
+					"lNotice": "Chat Messages",
+					"stream": "Streamer Mode",
+					"rate": "Speech rate",
+					"dungeons": "Dungeon settings",
+					"verbose": "Messages",
+					"objects": "Objects"
+				},
+				"ru": {
+					"settings": "Настройки",
+					"spawnObject": "Спавн объектов",
+					"speaks": "Голосовые сообщения",
+					"lNotice": "Сообщения в чат",
+					"stream": "Режим стримера",
+					"rate": "Скорость речи",
+					"dungeons": "Настройки данжей",
+					"verbose": "Сообщения",
+					"objects": "Объекты"
+				},
+			},
+			parse(data_array, title) {
+				let body = '';
+				for (const data of data_array) {
+					if (body.length >= 16000) {
+						body += 'GUI data limit exceeded, some values may be missing.';
+						break;
+					}
+					if (data.command) body += `<a href="admincommand:/@${data.command}">${data.text}</a>`;
+					else if (!data.command) body += `${data.text}`;
+					else continue;
+				}
+				dispatch.toClient('S_ANNOUNCE_UPDATE_NOTIFICATION', 1, {
+					id: 0,
+					title,
+					body
+				});
+			}
 		};
 		// export functionality for 3rd party modules
 		this.handlers = function_event_handlers;
@@ -118,6 +186,47 @@ class TeraGuide {
 		});
 
 		/** HELPER FUNCTIONS **/
+
+		// GUI handler
+		function gui_handler(page, title) {
+			let tmp_data = [];
+			let lang = gui.lang[language] || gui.lang["en"];
+			switch (page) {
+				default:
+					tmp_data.push(
+						{ text: `<font color="${gcy}" size="+20">${lang.settings}:</font>` }, { text: "&#09;&#09;&#09;" },
+						{ text: `<font color="${dispatch.settings.spawnObject ? gcg : gcr}" size="+18">[${lang.spawnObject}]</font>`, command: "guide spawnObject;guide gui" }, { text: "&nbsp;&nbsp;" },
+						{ text: `<font color="${dispatch.settings.speaks ? gcg : gcr}" size="+18">[${lang.speaks}]</font>`, command: "guide voice;guide gui" },
+						{ text: "<br>&#09;&#09;&#09;&#09;&#09;" },
+						{ text: `<font color="${dispatch.settings.lNotice ? gcg : gcr}" size="+18">[${lang.lNotice}]</font>`, command: "guide lNotice;guide gui" }, { text: "&nbsp;&nbsp;" },
+						{ text: `<font color="${dispatch.settings.stream ? gcg : gcr}" size="+18">[${lang.stream}]</font>`, command: "guide stream;guide gui" }, { text: "&nbsp;&nbsp;" },
+						{ text: `<br><br>` },
+						{ text: `<font color="${gcy}" size="+20">${lang.rate}:</font>` }, { text: "&#09;&#09;" },
+						{ text: `<font color="${dispatch.settings.rate[0] == 1 ? gcg : gcr}" size="+18">[1]</font>`, command: "guide 1;guide gui" }, { text: "&nbsp;&nbsp;" },
+						{ text: `<font color="${dispatch.settings.rate[0] == 2 ? gcg : gcr}" size="+18">[2]</font>`, command: "guide 2;guide gui" }, { text: "&nbsp;&nbsp;" },
+						{ text: `<font color="${dispatch.settings.rate[0] == 3 ? gcg : gcr}" size="+18">[3]</font>`, command: "guide 3;guide gui" }, { text: "&nbsp;&nbsp;" },
+						{ text: `<font color="${dispatch.settings.rate[0] == 4 ? gcg : gcr}" size="+18">[4]</font>`, command: "guide 4;guide gui" }, { text: "&nbsp;&nbsp;" },
+						{ text: `<font color="${dispatch.settings.rate[0] == 5 ? gcg : gcr}" size="+18">[5]</font>`, command: "guide 5;guide gui" }, { text: "&nbsp;&nbsp;" },
+						{ text: `<font color="${dispatch.settings.rate[0] == 6 ? gcg : gcr}" size="+18">[6]</font>`, command: "guide 6;guide gui" }, { text: "&nbsp;&nbsp;" },
+						{ text: `<font color="${dispatch.settings.rate[0] == 7 ? gcg : gcr}" size="+18">[7]</font>`, command: "guide 7;guide gui" }, { text: "&nbsp;&nbsp;" },
+						{ text: `<font color="${dispatch.settings.rate[0] == 8 ? gcg : gcr}" size="+18">[8]</font>`, command: "guide 8;guide gui" }, { text: "&nbsp;&nbsp;" },
+						{ text: `<font color="${dispatch.settings.rate[0] == 9 ? gcg : gcr}" size="+18">[9]</font>`, command: "guide 9;guide gui" }, { text: "&nbsp;&nbsp;" },
+						{ text: `<font color="${dispatch.settings.rate[0] == 10 ? gcg : gcr}" size="+18">[10]</font>`, command: "guide 10;guide gui" },
+						{ text: `<br><br>` },
+						{ text: `<font color="${gcy}" size="+20">${lang.dungeons}:</font><br>` },
+					)
+					for (const dungeon of dispatch.settings.dungeons) {
+						if (AVAILABLE_ZONE_IDS.includes(dungeon.id)) {
+							tmp_data.push({ text: `<font color="${dungeon.spawnObject ? gcg : gcr}" size="+18">[${lang.objects}]</font>`, command: "guide spawnObject " + dungeon.id + ";guide gui" }, { text: "&nbsp;&nbsp;" });
+							tmp_data.push({ text: `<font color="${dungeon.verbose ? gcg : gcr}" size="+18">[${lang.verbose}]</font>`, command: "guide verbose " + dungeon.id + ";guide gui" }, { text: "&nbsp;&#8212;&nbsp;" });
+							tmp_data.push({ text: `<font color="${gcgr}" size="+20">` + (dungeon['name_' + language.toUpperCase()] || dungeon.name) + "</font>" });
+							tmp_data.push({ text: "<br>" });
+						}
+					}
+					gui.parse(tmp_data, `<font color="red">${title}</font>`)
+					break;
+			}
+		}
 
 		// Find index for dungeons settings param
 		function find_dungeon_index(id) {
@@ -370,10 +479,10 @@ class TeraGuide {
 					throw "Guide for zone " + zone + " not found in config";
 				}
 				active_guide = require("./guides/" + zone);
-				if (SP_ZONES.includes(zone)) {
+				if (SP_ZONE_IDS.includes(zone)) {
 					spguide = true; // skill 1000-3000
 					esguide = false;
-				} else if (ES_ZONES.includes(zone)) {
+				} else if (ES_ZONE_IDS.includes(zone)) {
 					spguide = false; // skill 100-200-3000
 					esguide = true;
 				} else {
@@ -493,15 +602,15 @@ class TeraGuide {
 				dispatch.settings.speaks = !dispatch.settings.speaks;
 				text_handler({
 					"sub_type": "PRMSG",
-					"message_RU": `Голосовое сообщение ${dispatch.settings.speaks ? "Вкл" : "Выкл"}.`,
-					"message": `Text-to-speech has been ${dispatch.settings.speaks ? "on" : "off"}.`
+					"message_RU": `Голосовые сообщения: ${dispatch.settings.speaks ? "Вкл" : "Выкл"}.`,
+					"message": `Voice messages has been ${dispatch.settings.speaks ? "on" : "off"}.`
 				});
 			},
 			stream() {
 				dispatch.settings.stream = !dispatch.settings.stream;
 				text_handler({
 					"sub_type": "PRMSG",
-					"message_RU": `Стрим, скрытие сообщений ${dispatch.settings.stream ? "Вкл" : "Выкл"}.`,
+					"message_RU": `Режим стримера, скрытие сообщений: ${dispatch.settings.stream ? "Вкл" : "Выкл"}.`,
 					"message": `Stream mode has been ${dispatch.settings.stream ? "on" : "off"}.`
 				});
 			},
@@ -768,11 +877,13 @@ class TeraGuide {
 			},
 			dungeons() {
 				for (const i of dispatch.settings.dungeons) {
-					text_handler({
-						"sub_type": "CWMSG",
-						"message_RU": `${i.id} - ${i.name_RU}`,
-						"message": `${i.id} - ${i.name}`
-					});
+					if (AVAILABLE_ZONE_IDS.includes(i.id)) {
+						text_handler({
+							"sub_type": "CWMSG",
+							"message_RU": `${i.id} - ${i.name_RU}`,
+							"message": `${i.id} - ${i.name}`
+						});
+					}
 				}
 			},
 			help() {
@@ -780,6 +891,11 @@ class TeraGuide {
 					"sub_type": "PRMSG",
 					"message_RU": "guide, вкл./выкл. модуля",
 					"message": "guide, module on/off"
+				});
+				text_handler({
+					"sub_type": "PRMSG",
+					"message_RU": "guide gui, показать графический интерфейс",
+					"message": "guide gui, show module GUI"
 				});
 				text_handler({
 					"sub_type": "PRMSG",
@@ -896,6 +1012,9 @@ class TeraGuide {
 					"message_RU": "guide cw, установить цвет сообщения: белый",
 					"message": "guide cw, message color is WHITE"
 				});
+			},
+			gui() {
+				gui_handler("index", "Tera-Guide");
 			},
 			$default(arg1) {
 				if (arg1 === undefined) {
