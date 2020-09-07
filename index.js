@@ -99,6 +99,10 @@ exports.NetworkMod = function(dispatch) {
 	const gui = {
 		lang: {
 			"en": {
+				"enabled": "On",
+				"disabled": "Off",
+				"red": "Red",
+				"green": "Green",
 				"settings": "Settings",
 				"spawnObject": "Spawn Objects",
 				"speaks": "Voice Messages",
@@ -110,6 +114,10 @@ exports.NetworkMod = function(dispatch) {
 				"objects": "Objects"
 			},
 			"ru": {
+				"enabled": "Вкл.",
+				"disabled": "Выкл.",
+				"red": "Красный",
+				"green": "Зеленый",
 				"settings": "Настройки",
 				"spawnObject": "Спавн объектов",
 				"speaks": "Голосовые сообщения",
@@ -121,9 +129,8 @@ exports.NetworkMod = function(dispatch) {
 				"objects": "Объекты"
 			},
 		},
-		parse(data_array, title) {
-			let body = '';
-			for (const data of data_array) {
+		parse(array, title, body = '') {
+			for (const data of array) {
 				if (body.length >= 16000) {
 					body += 'GUI data limit exceeded, some values may be missing.';
 					break;
@@ -134,8 +141,8 @@ exports.NetworkMod = function(dispatch) {
 			}
 			dispatch.toClient('S_ANNOUNCE_UPDATE_NOTIFICATION', 1, {
 				id: 0,
-				title,
-				body
+				title: title,
+				body: body
 			});
 		}
 	};
@@ -206,7 +213,7 @@ exports.NetworkMod = function(dispatch) {
 					tmp_data.push({ text: `<font color="${gcgr}" size="+20">${dungeon.name}</font>` });
 					tmp_data.push({ text: "<br>" });
 				}
-				gui.parse(tmp_data, `<font color="red">${title}</font>`)
+				gui.parse(tmp_data, `<font>${title}</font> | <font color="${gcr}" size="+16">${lang.red}</font><font color="${gcgr}" size="+16"> = ${lang.disabled}, <font color="${gcg}" size="+16">${lang.green}</font><font color="${gcgr}" size="+16"> = ${lang.enabled}</font>`)
 				break;
 		}
 	}
