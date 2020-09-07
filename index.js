@@ -95,57 +95,6 @@ exports.NetworkMod = function(dispatch) {
 		"func": func_handler,
 		"lib": require("./lib")
 	};
-	// GUI helpers
-	const gui = {
-		lang: {
-			"en": {
-				"enabled": "On",
-				"disabled": "Off",
-				"red": "Red",
-				"green": "Green",
-				"settings": "Settings",
-				"spawnObject": "Spawn Objects",
-				"speaks": "Voice Messages",
-				"lNotice": "Chat Messages",
-				"stream": "Streamer Mode",
-				"rate": "Speech rate",
-				"dungeons": "Dungeon settings",
-				"verbose": "Messages",
-				"objects": "Objects"
-			},
-			"ru": {
-				"enabled": "Вкл.",
-				"disabled": "Выкл.",
-				"red": "Красный",
-				"green": "Зеленый",
-				"settings": "Настройки",
-				"spawnObject": "Спавн объектов",
-				"speaks": "Голосовые сообщения",
-				"lNotice": "Сообщения в чат",
-				"stream": "Режим стримера",
-				"rate": "Скорость речи",
-				"dungeons": "Настройки данжей",
-				"verbose": "Сообщения",
-				"objects": "Объекты"
-			},
-		},
-		parse(array, title, body = '') {
-			for (const data of array) {
-				if (body.length >= 16000) {
-					body += 'GUI data limit exceeded, some values may be missing.';
-					break;
-				}
-				if (data.command) body += `<a href="admincommand:/@${data.command}">${data.text}</a>`;
-				else if (!data.command) body += `${data.text}`;
-				else continue;
-			}
-			dispatch.toClient('S_ANNOUNCE_UPDATE_NOTIFICATION', 1, {
-				id: 0,
-				title: title,
-				body: body
-			});
-		}
-	};
 	// Default dungeon guide settings
 	let default_dungeon_settings = {
 		"verbose": true,
@@ -175,15 +124,71 @@ exports.NetworkMod = function(dispatch) {
 	let entered_guide = {};
 	// Trigger event flag
 	let is_event = false;
+	// Parse data and create GUI window
+	const gui = {
+		parse(array, title, body = '') {
+			for (const data of array) {
+				if (body.length >= 16000) {
+					body += 'GUI data limit exceeded, some values may be missing.';
+					break;
+				}
+				if (data.command) body += `<a href="admincommand:/@${data.command}">${data.text}</a>`;
+				else if (!data.command) body += `${data.text}`;
+				else continue;
+			}
+			dispatch.toClient('S_ANNOUNCE_UPDATE_NOTIFICATION', 1, {
+				id: 0,
+				title: title,
+				body: body
+			});
+		}
+	};
 
 	/** HELPER FUNCTIONS **/
 
 	// GUI handler
 	function gui_handler(page, title) {
 		let tmp_data = [];
-		let lang = gui.lang[language] || gui.lang["en"];
+		let lang = {};
+		switch (language){
+			case "ru": {
+				lang = {
+					"enabled": "Вкл.",
+					"disabled": "Выкл.",
+					"red": "Красный",
+					"green": "Зеленый",
+					"settings": "Настройки",
+					"spawnObject": "Спавн объектов",
+					"speaks": "Голосовые сообщения",
+					"lNotice": "Сообщения в чат",
+					"stream": "Режим стримера",
+					"rate": "Скорость речи",
+					"dungeons": "Настройки данжей",
+					"verbose": "Сообщения",
+					"objects": "Объекты"
+				};
+				break;
+			}
+			default: {
+				lang = {
+					"enabled": "On",
+					"disabled": "Off",
+					"red": "Red",
+					"green": "Green",
+					"settings": "Settings",
+					"spawnObject": "Spawn Objects",
+					"speaks": "Voice Messages",
+					"lNotice": "Chat Messages",
+					"stream": "Streamer Mode",
+					"rate": "Speech rate",
+					"dungeons": "Dungeon settings",
+					"verbose": "Messages",
+					"objects": "Objects"
+				};
+			}
+		}
 		switch (page) {
-			default:
+			default: {
 				tmp_data.push(
 					{ text: `<font color="${gcy}" size="+20">${lang.settings}:</font>` }, { text: "&#09;&#09;&#09;" },
 					{ text: `<font color="${dispatch.settings.spawnObject ? gcg : gcr}" size="+18">[${lang.spawnObject}]</font>`, command: "guide spawnObject;guide gui" }, { text: "&nbsp;&nbsp;" },
@@ -214,7 +219,7 @@ exports.NetworkMod = function(dispatch) {
 					tmp_data.push({ text: "<br>" });
 				}
 				gui.parse(tmp_data, `<font>${title}</font> | <font color="${gcr}" size="+16">${lang.red}</font><font color="${gcgr}" size="+16"> = ${lang.disabled}, <font color="${gcg}" size="+16">${lang.green}</font><font color="${gcgr}" size="+16"> = ${lang.enabled}</font>`)
-				break;
+			}
 		}
 	}
 
@@ -369,24 +374,30 @@ exports.NetworkMod = function(dispatch) {
 		// Add "Sea of Honor" to dungeon list
 		let name = "Sea of Honor";
 		switch (language) {
-			case "kr":
+			case "kr": {
 				name = "금비늘호"; 
 				break;
-			case "jp":
+			}
+			case "jp": {
 				name = "探宝の金鱗号";
 				break;
-			case "de":
+			}
+			case "de": {
 				name = "Goldschuppe";
 				break;
-			case "fr":
+			}
+			case "fr": {
 				name = "l'Écaille dorée";
 				break;
-			case "tw":
+			}
+			case "tw": {
 				name = "金麟號";
 				break;
-			case "ru":
+			}
+			case "ru": {
 				name = "Золотая чешуя";
 				break;
+			}
 		}
 		dungeons.push({ "id": 3020, "name": name });
 	}
@@ -1253,29 +1264,35 @@ exports.NetworkMod = function(dispatch) {
 			timers[event["id"] || random_timer_id--] = dispatch.setTimeout(() => {
 				switch (event["sub_type"]) {
 					// Basic message
-					case "message":
+					case "message": {
 						sendMessage(message);
 						break;
-						// Alert message red
-					case "alert":
+					}
+					// Alert message red
+					case "alert": {
 						sendAlert(message, cr, spr);
 						break;
-						// Alert message blue
-					case "warning":
+					}
+					// Alert message blue
+					case "warning": {
 						sendAlert(message, clb, spb);
 						break;
-						// Notification message
-					case "notification":
+					}
+					// Notification message
+					case "notification": {
 						sendNotification(message);
 						break;
-						// Pink dungeon event message
-					case "msgcp":
+					}
+					// Pink dungeon event message
+					case "msgcp": {
 						sendDungeonEvent(message, cp, spg);
 						break;
-						// Green dungeon event message
-					case "msgcg":
+					}
+					// Green dungeon event message
+					case "msgcg": {
 						sendDungeonEvent(message, cg, spg);
 						break;
+					}
 				}
 			}, (event["delay"] || 0) / speed);
 		// Other types of messages (eg proxy-channel message)
@@ -1290,52 +1307,67 @@ exports.NetworkMod = function(dispatch) {
 					break;
 				}
 				// Color-specified proxy-channel messages
-				case "COMSG":
+				case "COMSG": {
 					command.message(co + message);
 					break;
-				case "CYMSG":
+				}
+				case "CYMSG": {
 					command.message(cy + message);
 					break;
-				case "CGMSG":
+				}
+				case "CGMSG": {
 					command.message(cg + message);
 					break;
-				case "CDBMSG":
+				}
+				case "CDBMSG": {
 					command.message(cdb + message);
 					break;
-				case "CBMSG":
+				}
+				case "CBMSG": {
 					command.message(cb + message);
 					break;
-				case "CVMSG":
+				}
+				case "CVMSG": {
 					command.message(cv + message);
 					break;
-				case "CPMSG":
+				}
+				case "CPMSG": {
 					command.message(cp + message);
 					break;
-				case "CLPMSG":
+				}
+				case "CLPMSG": {
 					command.message(clp + message);
 					break;
-				case "CLBMSG":
+				}
+				case "CLBMSG": {
 					command.message(clb + message);
 					break;
-				case "CBLMSG":
+				}
+				case "CBLMSG": {
 					command.message(cbl + message);
 					break;
-				case "CGRMSG":
+				}
+				case "CGRMSG": {
 					command.message(cgr + message);
 					break;
-				case "CWMSG":
+				}
+				case "CWMSG": {
 					command.message(cw + message);
 					break;
-				case "CRMSG":
+				}
+				case "CRMSG": {
 					command.message(cr + message);
 					break;
+				}
 				// Default color proxy-channel message
-				case "PRMSG":
+				case "PRMSG": {
 					command.message(dispatch.settings.cc + message);
 					break;
+				}
 				// Invalid sub_type value
-				default:
+				default: {
 					return debug_message(true, "Invalid sub_type for text handler:", event['sub_type']);
+				}
 			}
 		}
 	}
