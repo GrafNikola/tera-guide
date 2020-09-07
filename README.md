@@ -46,9 +46,9 @@ id | Dungeon name | Название данжа
 3126 | Corrupted Skynest (Hard) | Логово Бессмертного Келсаика
 3102 | Draakon Arena | Командный центр
 3202 | Draakon Arena (Hard) | Командный центр (сложно)
-3027 | Forbidden Arena [Hagufna] | Арена безумия [Бессмертный воин]
-3103 | Forbidden Arena [Undying Warlord] | Арена безумия [Этерния]
-3203 | Forbidden Arena [Nightmare Undying Warlord] | Арена безумия [Бессмертный]
+3027 | Forbidden Arena [Hagufna] | [Бессмертный воин] Арена безумия
+3103 | Forbidden Arena [Undying Warlord] | [Этерния] Арена безумия
+3203 | Forbidden Arena [Nightmare Undying Warlord] | [Бессмертный] Арена безумия
 
 ## Notices settings / Настройка уведомлений
 

@@ -2,11 +2,11 @@
     "disableAutoUpdate": false,
     "name": "TERA-Guide",
     "options": {
-        "niceName": "TERA-Guide",
+        "niceName": "Guide",
         "guiName": "TERA-Guide",
         "settingsFile": "config.json",
         "settingsMigrator": "settings_migrator.js",
-        "settingsVersion": "1.09"
+        "settingsVersion": "1.10"
     },
     "author": "HSDN / ZC / ITunk / michengs / Kasea",
     "description": "A generic guide module for TERA. Display hints on screen and drawing zones of bosses attacks and mechanics.",
