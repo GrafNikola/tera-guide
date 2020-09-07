@@ -1451,22 +1451,21 @@ exports.NetworkMod = function(dispatch) {
 exports.ClientMod = function(dispatch) {
 	this.allDungeons;
 	const dungeons = new Map();
-	dispatch.clientInterface.once('ready', async () => {
-		dispatch.queryData('/EventMatching/EventGroup/Event@type=?', ['Dungeon'], true, true, ['id']).then((result) => {
+	dispatch.clientInterface.once("ready", async () => {
+		dispatch.queryData("/EventMatching/EventGroup/Event@type=?", ["Dungeon"], true, true, ["id"]).then((result) => {
 			this.allDungeons = result.map(e => {
-				const zoneId = e.children.find(x => x.name == 'TargetList').children.find(x => x.name == 'Target').attributes.id
+				const zoneId = e.children.find(x => x.name == "TargetList").children.find(x => x.name == "Target").attributes.id
 				let dungeon = dungeons.get(zoneId);
 				if (!dungeon) {
-					dungeon = { id: zoneId, name: '' };
+					dungeon = { id: zoneId, name: "" };
 					dungeons.set(zoneId, dungeon);
 				}
 				return dungeon;
 			});
-			dispatch.queryData('/StrSheet_Dungeon/String@id=?', [[... dungeons.keys()]], true).then((result) => {
-				const acronymRegex = / |of|\(.*/i
+			dispatch.queryData("/StrSheet_Dungeon/String@id=?", [[... dungeons.keys()]], true).then((result) => {
 				result.forEach(d => {
 					const dungeon = dungeons.get(d.attributes.id);
-					dungeon['name'] = d.attributes.string;
+					dungeon["name"] = d.attributes.string;
 				});
 			});
 		});
