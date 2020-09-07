@@ -169,46 +169,6 @@ exports.NetworkMod = function(dispatch) {
 	// Trigger event flag
 	let is_event = false;
 
-	/** C_LOGIN_ARBITER **/
-
-	dispatch.hook("C_LOGIN_ARBITER", 2, event => {
-		// Set client language
-		language = languages[event.language] || languages[0];
-		// Set list of available guides
-		let zone_ids = [];
-		for (let i in dispatch.clientMod.allDungeons) {
-			let dungeon = dispatch.clientMod.allDungeons[i];
-			fs.access(path.join(__dirname, "guides", dungeon.id + ".js"), fs.F_OK, (e) => {
-				if (e || zone_ids.includes(dungeon.id)) return;
-				zone_ids.push(dungeon.id);
-				dungeons.push(dungeon);
-			});
-		}
-		// Add "Sea of Honor" to dungeon list
-		let name = "Sea of Honor";
-		switch (language) {
-			case "kr":
-				name = "금비늘호"; 
-				break;
-			case "jp":
-				name = "探宝の金鱗号";
-				break;
-			case "de":
-				name = "Goldschuppe";
-				break;
-			case "fr":
-				name = "l'Écaille dorée";
-				break;
-			case "tw":
-				name = "金麟號";
-				break;
-			case "ru":
-				name = "Золотая чешуя";
-				break;
-		}
-		dungeons.push({ "id": 3020, "name": name });
-	});
-
 	/** HELPER FUNCTIONS **/
 
 	// GUI handler
@@ -283,11 +243,6 @@ exports.NetworkMod = function(dispatch) {
 				entered_guide.settings = default_dungeon_settings;
 			}
 		}
-	}
-
-	// Fetch information of all available guides
-	function fetch_available_dungeons() {
-
 	}
 
 	// Write generic debug message used when creating guides
@@ -388,6 +343,47 @@ exports.NetworkMod = function(dispatch) {
 			else if (class_position_check(event["class_position"])) func(event, ent, speed = 1.0);
 		}
 	}
+
+	/** C_LOGIN_ARBITER **/
+
+	function c_login_arbiter(e) {
+		// Set client language
+		language = languages[e.language] || languages[0];
+		// Set list of available guides
+		let zone_ids = [];
+		for (let i in dispatch.clientMod.allDungeons) {
+			let dungeon = dispatch.clientMod.allDungeons[i];
+			fs.access(path.join(__dirname, "guides", dungeon.id + ".js"), fs.F_OK, (e) => {
+				if (e || zone_ids.includes(dungeon.id)) return;
+				zone_ids.push(dungeon.id);
+				dungeons.push(dungeon);
+			});
+		}
+		// Add "Sea of Honor" to dungeon list
+		let name = "Sea of Honor";
+		switch (language) {
+			case "kr":
+				name = "금비늘호"; 
+				break;
+			case "jp":
+				name = "探宝の金鱗号";
+				break;
+			case "de":
+				name = "Goldschuppe";
+				break;
+			case "fr":
+				name = "l'Écaille dorée";
+				break;
+			case "tw":
+				name = "金麟號";
+				break;
+			case "ru":
+				name = "Золотая чешуя";
+				break;
+		}
+		dungeons.push({ "id": 3020, "name": name });
+	}
+	dispatch.hook("C_LOGIN_ARBITER", 2, {}, c_login_arbiter);
 
 	/** S_ACTION_STAGE **/
 
@@ -494,6 +490,7 @@ exports.NetworkMod = function(dispatch) {
 
 	/** S_LOAD_TOPO **/
 
+	// Load guide and clear out timers
 	function entry_zone(zone) {
 		// Create default dungeon configuration
 		create_dungeon_configuration();
@@ -600,8 +597,6 @@ exports.NetworkMod = function(dispatch) {
 			}
 		}
 	}
-
-	// Load guide and clear out timers
 	dispatch.hook("S_LOAD_TOPO", 3, e => {
 		entry_zone(e.zone)
 	});
