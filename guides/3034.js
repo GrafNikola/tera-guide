@@ -84,12 +84,12 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 	if ([1160, 1170, 1180, 1190].includes(skillid) && boss_seventy) { // <70%
 		if (mech_reverse) {
 			handlers["text"]({ "sub_type": "message","message": "Triple-S | Out", "message_RU": "Трипл-эска | От него" });
-			handlers["text"]({ "sub_type": "message","delay": 5000, "message": "Out", "message_RU": "От него" });
+			handlers["text"]({ "sub_type": "message","delay": 4500, "message": "Out", "message_RU": "От него" });
 		} else {
 			handlers["text"]({ "sub_type": "message", "message": "Triple-S | In", "message_RU": "Трипл-эска | К нему" });
-			handlers["text"]({ "sub_type": "message", "delay": 5000, "message": "In", "message_RU": "К нему" });
+			handlers["text"]({ "sub_type": "message", "delay": 4500, "message": "In", "message_RU": "К нему" });
 		}
-		SpawnCircle(false, 445, 0, 0, 10, 300, 5000, 3000, handlers, event, ent, dispatch);
+		SpawnCircle(false, 445, 0, 0, 10, 300, 5000, 2000, handlers, event, ent, dispatch);
 		duration = 2000;
 	}
 	if ([1160, 1161, 1162, 1163, 1190, 1191, 1192, 1193, 2220, 2222, 2231].includes(skillid)) { // right safe
