@@ -252,7 +252,7 @@ exports.NetworkMod = function(dispatch) {
 			});
 		}
 	} catch (e) {
-		debug_message(true, "Some features of clientInterface not supported: " + e);
+		debug_message(true, "Some features of clientInterface not supported:", e);
 		dungeons = [];
 	}
 
@@ -335,6 +335,7 @@ exports.NetworkMod = function(dispatch) {
 				gui.parse(tmp_data, `<font>${title}</font> | <font color="${gcr}" size="+16">${lang.red}</font><font color="${gcgr}" size="+16"> = ${lang.disabled}, <font color="${gcg}" size="+16">${lang.green}</font><font color="${gcgr}" size="+16"> = ${lang.enabled}</font>`)
 			}
 		}
+		tmp_data = [];
 	}
 
 	/** HELPER FUNCTIONS **/
