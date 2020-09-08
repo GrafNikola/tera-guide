@@ -212,7 +212,8 @@ exports.NetworkMod = function(dispatch) {
 	// export functionality for 3rd party modules
 	this.handlers = function_event_handlers;
 	// Detected language
-	let language = languages[0];
+	let language = null;
+	let uclanguage = null;
 	// Current language strings
 	let lang = {};
 	// A boolean for the debugging settings
@@ -458,7 +459,12 @@ exports.NetworkMod = function(dispatch) {
 
 	function c_login_arbiter(e) {
 		// Set client language
-		language = languages[e.language] || languages[0];
+		if (!dispatch.settings.language || dispatch.settings.language == "auto") {
+			language = languages[e.language] || languages[0];
+		} else {
+			language = dispatch.settings.language.toLowerCase();
+		}
+		uclanguage = language.toUpperCase();
 		// Set language strings
 		lang = translation[language] || translation["en"];
 		// Set list of available guides
@@ -1022,7 +1028,7 @@ exports.NetworkMod = function(dispatch) {
 	// Text handler
 	function text_handler(event, ent, speed = 1.0) {
 		// Fetch the message
-		const message = event[`message_${language}`] || event[`message_${language.toUpperCase()}`] || event["message"];
+		const message = event[`message_${uclanguage}`] || event[`message_${language}`] || event["message"];
 		// Make sure sub_type is defined
 		if (!event["sub_type"]) return debug_message(true, "Text handler needs a sub_type");
 		// Make sure message is defined
