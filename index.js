@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const readline = require("readline");
 const dbg = require("./dbg");
 const DispatchWrapper = require("./dispatch");
 
@@ -166,6 +167,8 @@ exports.NetworkMod = function(dispatch) {
 		9000, // ???
 		9759  // Forsaken Island (Hard)
 	];
+	// Guide files directory name
+	const GUIDES_DIR = "guides";
 	// Supported languages by client
 	const languages = { 0: "en", 1: "kr", 3: "jp", 4: "de", 5: "fr", 7: "tw", 8: "ru" };
 	// Messages colors
@@ -218,8 +221,6 @@ exports.NetworkMod = function(dispatch) {
 	let lang = {};
 	// A boolean for the debugging settings
 	let debug = dbg["debug"];
-	// List of available guides
-	let dungeons = [];
 	// A boolean indicating if a guide was found
 	let guide_found = false;
 	let spguide = false;
@@ -236,6 +237,24 @@ exports.NetworkMod = function(dispatch) {
 	let entered_guide = {};
 	// Trigger event flag
 	let is_event = false;
+
+	/** Set list of available guides **/
+
+	let dungeons = [];
+	let zone_ids = [];
+	try {
+		for (let i in dispatch.clientMod.allDungeons) {
+			let dungeon = dispatch.clientMod.allDungeons[i];
+			fs.access(path.join(__dirname, GUIDES_DIR, dungeon.id + ".js"), fs.F_OK, (e) => {
+				if (e || zone_ids.includes(dungeon.id)) return;
+				zone_ids.push(dungeon.id);
+				dungeons.push(dungeon);
+			});
+		}
+	} catch (e) {
+		debug_message(true, "Some features of clientInterface not supported: " + e);
+		dungeons = [];
+	}
 
 
 	/** GUI FUNCTIONS **/
@@ -319,6 +338,41 @@ exports.NetworkMod = function(dispatch) {
 	}
 
 	/** HELPER FUNCTIONS **/
+
+	// Check and generate gungeon list if it is not exists
+	function check_dungeon_list() {
+		if (dungeons.length > 0) {
+			// Add zone 3020 to dungeon list
+			if (dungeons.findIndex(d => d.id == 3020) === -1) {
+				let s = {
+					en: "Sea of Honor",
+					kr: "금비늘호",
+					jp: "探宝の金鱗号",
+					de: "Goldschuppe",
+					fr: "l'Écaille dorée",
+					tw: "金麟號",
+					ru: "Золотая чешуя"
+				};
+				dungeons.push({ "id": 3020, "name": (s[language] || s["en"]) });
+			}
+			return;
+		}
+		// Try to read dungeon list from "guides" directory, as dungeon name uses first line of guide js-file
+		fs.readdirSync(path.join(__dirname, GUIDES_DIR)).filter(x => x.indexOf("js") !== -1).forEach(file => {
+			let id = parseInt(file.split(".")[0]);
+			if (id) {
+				let lineReader = readline.createInterface({
+					input: fs.createReadStream(path.join(__dirname, GUIDES_DIR, file))
+				});
+				lineReader.on("line", function (line) {
+					let name = line.replace(/^[\/\s]+/g, "") || id;
+					dungeons.push({ "id": id, "name": name });
+					lineReader.close();
+					lineReader.removeAllListeners();
+				});
+			}
+		});
+	}
 
 	// Fetch information of all available guides
 	function create_dungeon_configuration() {
@@ -467,27 +521,6 @@ exports.NetworkMod = function(dispatch) {
 		uclanguage = language.toUpperCase();
 		// Set language strings
 		lang = translation[language] || translation["en"];
-		// Set list of available guides
-		let zone_ids = [];
-		for (let i in dispatch.clientMod.allDungeons) {
-			let dungeon = dispatch.clientMod.allDungeons[i];
-			fs.access(path.join(__dirname, "guides", dungeon.id + ".js"), fs.F_OK, (e) => {
-				if (e || zone_ids.includes(dungeon.id)) return;
-				zone_ids.push(dungeon.id);
-				dungeons.push(dungeon);
-			});
-		}
-		// Add "Sea of Honor" to dungeon list
-		let s = {
-			en: "Sea of Honor",
-			kr: "금비늘호",
-			jp: "探宝の金鱗号",
-			de: "Goldschuppe",
-			fr: "l'Écaille dorée",
-			tw: "金麟號",
-			ru: "Золотая чешуя"
-		};
-		dungeons.push({ "id": 3020, "name": (s[language] || s["en"]) });
 	}
 	dispatch.hook("C_LOGIN_ARBITER", 2, {}, c_login_arbiter);
 
@@ -598,6 +631,8 @@ exports.NetworkMod = function(dispatch) {
 
 	// Load guide and clear out timers
 	function entry_zone(zone) {
+		// Check and generate gungeon list if it is not exists
+		check_dungeon_list();
 		// Create default dungeon configuration
 		create_dungeon_configuration();
 		// Enable errors debug
@@ -616,7 +651,7 @@ exports.NetworkMod = function(dispatch) {
 		debug_message(debug.debug, "Entered zone:", zone);
 		// Remove potential cached guide from require cache, so that we don"t need to relog to refresh guide
 		try {
-			delete require.cache[require.resolve("./guides/" + zone)];
+			delete require.cache[require.resolve("./" + GUIDES_DIR + "/" + zone)];
 		} catch (e) {}
 		// Try loading a guide
 		try {
@@ -644,7 +679,7 @@ exports.NetworkMod = function(dispatch) {
 				throw "Guide for zone " + zone + " not found";
 			}
 			//
-			active_guide = require("./guides/" + zone);
+			active_guide = require("./" + GUIDES_DIR + "/" + zone);
 			if (SP_ZONE_IDS.includes(zone)) {
 				spguide = true; // skill 1000-3000
 				esguide = false;
