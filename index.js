@@ -74,17 +74,6 @@ exports.NetworkMod = function(dispatch) {
 	const spr = 44; // red message
 	const spi = 66; // blue info message
 	const spn = 49; // left side notice
-	// TTS rates
-	const rate1 = 1;
-	const rate2 = 2;
-	const rate3 = 3;
-	const rate4 = 4;
-	const rate5 = 5;
-	const rate6 = 6;
-	const rate7 = 7;
-	const rate8 = 8;
-	const rate9 = 9;
-	const rate10 = 10;
 
 	// An object of types and their corresponding function handlers
 	const function_event_handlers = {
@@ -128,7 +117,7 @@ exports.NetworkMod = function(dispatch) {
 	/** GUI FUNCTIONS **/
 
 	dispatch.hook("C_CONFIRM_UPDATE_NOTIFICATION", "raw", { order: 100010 }, () => false);
-	dispatch.hook("C_ADMIN", 1, { order: 100010, filter: { fake: null, silenced: false, modified: null }}, (event) => {
+	dispatch.hook("C_ADMIN", 1, { order: 100010, filter: { fake: null, silenced: false, modified: null } }, (event) => {
 		const commands = event.command.split(";");
 		for (const cmd of commands) {
 			try {
@@ -158,44 +147,41 @@ exports.NetworkMod = function(dispatch) {
 
 	function gui_handler(page, title) {
 		let tmp_data = [];
-		let lang = {};
-		switch (language){
-			case "ru": {
-				lang = {
-					"enabled": "Вкл.",
-					"disabled": "Выкл.",
-					"red": "Красный",
-					"green": "Зеленый",
-					"settings": "Настройки",
-					"spawnObject": "Спавн объектов",
-					"speaks": "Голосовые сообщения",
-					"lNotice": "Сообщения в чат",
-					"stream": "Режим стримера",
-					"rate": "Скорость речи",
-					"dungeons": "Настройки данжей",
-					"verbose": "Сообщения",
-					"objects": "Объекты"
-				};
-				break;
+		let lang = {
+			"ru": {
+				"enabled": "Вкл.",
+				"disabled": "Выкл.",
+				"red": "Красный",
+				"green": "Зеленый",
+				"settings": "Настройки",
+				"spawnObject": "Спавн объектов",
+				"speaks": "Голосовые сообщения",
+				"lNotice": "Сообщения в чат",
+				"stream": "Режим стримера",
+				"rate": "Скорость речи",
+				"color": "Выбор цвета",
+				"dungeons": "Настройки данжей",
+				"verbose": "Сообщения",
+				"objects": "Объекты"
+			},
+			"en": {
+				"enabled": "On",
+				"disabled": "Off",
+				"red": "Red",
+				"green": "Green",
+				"settings": "Settings",
+				"spawnObject": "Spawn Objects",
+				"speaks": "Voice Messages",
+				"lNotice": "Chat Messages",
+				"stream": "Streamer Mode",
+				"rate": "Speech rate",
+				"color": "Change color",
+				"dungeons": "Dungeon settings",
+				"verbose": "Messages",
+				"objects": "Objects"
 			}
-			default: {
-				lang = {
-					"enabled": "On",
-					"disabled": "Off",
-					"red": "Red",
-					"green": "Green",
-					"settings": "Settings",
-					"spawnObject": "Spawn Objects",
-					"speaks": "Voice Messages",
-					"lNotice": "Chat Messages",
-					"stream": "Streamer Mode",
-					"rate": "Speech rate",
-					"dungeons": "Dungeon settings",
-					"verbose": "Messages",
-					"objects": "Objects"
-				};
-			}
-		}
+		};
+		lang = lang[language] || lang["en"];
 		switch (page) {
 			default: {
 				tmp_data.push(
@@ -217,9 +203,19 @@ exports.NetworkMod = function(dispatch) {
 					{ text: `<font color="${dispatch.settings.rate[0] == 8 ? gcg : gcr}" size="+18">[8]</font>`, command: "guide 8;guide gui" }, { text: "&nbsp;&nbsp;" },
 					{ text: `<font color="${dispatch.settings.rate[0] == 9 ? gcg : gcr}" size="+18">[9]</font>`, command: "guide 9;guide gui" }, { text: "&nbsp;&nbsp;" },
 					{ text: `<font color="${dispatch.settings.rate[0] == 10 ? gcg : gcr}" size="+18">[10]</font>`, command: "guide 10;guide gui" },
+					{ text: `<br>` }
+				);
+				tmp_data.push(
+					{ text: `<font color="${gcy}" size="+20">${lang.color}:</font>` }, { text: "&#09;&#09;" }
+				);
+				for (const color of ["cr", "co", "cy", "cg", "cv", "cb", "clb", "cdb", "cp", "clp", "cw", "cgr", "cbl"]) {
+					let cc = eval(color);
+					tmp_data.push({ text: `<font color="${dispatch.settings.cc[0] === cc ? gcg : gcr}" size="+18">[${color.substr(1).toUpperCase()}]</font>`, command: "guide " + color + ";guide gui" }, { text: "&nbsp;&nbsp;" });
+				}
+				tmp_data.push(
 					{ text: `<br><br>` },
-					{ text: `<font color="${gcy}" size="+20">${lang.dungeons}:</font><br>` },
-				)
+					{ text: `<font color="${gcy}" size="+20">${lang.dungeons}:</font><br>` }
+				);
 				for (const dungeon of dungeons) {
 					let s = dispatch.settings.dungeons.findIndex(s => s.id == dungeon.id);
 					tmp_data.push({ text: `<font color="${dispatch.settings.dungeons[s].spawnObject ? gcg : gcr}" size="+18">[${lang.objects}]</font>`, command: "guide spawnObject " + dungeon.id + ";guide gui" }, { text: "&nbsp;&nbsp;" });
@@ -383,34 +379,16 @@ exports.NetworkMod = function(dispatch) {
 			});
 		}
 		// Add "Sea of Honor" to dungeon list
-		let name = "Sea of Honor";
-		switch (language) {
-			case "kr": {
-				name = "금비늘호"; 
-				break;
-			}
-			case "jp": {
-				name = "探宝の金鱗号";
-				break;
-			}
-			case "de": {
-				name = "Goldschuppe";
-				break;
-			}
-			case "fr": {
-				name = "l'Écaille dorée";
-				break;
-			}
-			case "tw": {
-				name = "金麟號";
-				break;
-			}
-			case "ru": {
-				name = "Золотая чешуя";
-				break;
-			}
-		}
-		dungeons.push({ "id": 3020, "name": name });
+		let lang = {
+			"en": "Sea of Honor",
+			"kr": "금비늘호",
+			"jp": "探宝の金鱗号",
+			"de": "Goldschuppe",
+			"fr": "l'Écaille dorée",
+			"tw": "金麟號",
+			"ru": "Золотая чешуя"
+		};
+		dungeons.push({ "id": 3020, "name": (lang[language] || lang["en"]) });
 	}
 	dispatch.hook("C_LOGIN_ARBITER", 2, {}, c_login_arbiter);
 
@@ -685,22 +663,6 @@ exports.NetworkMod = function(dispatch) {
 			// guide event text '{"sub_type":"message","message":"Сообщение"}'
 			// guide event spawn '{"type":"item","id":"1","sub_delay":"999999"}'
 		},
-		voice() {
-			dispatch.settings.speaks = !dispatch.settings.speaks;
-			text_handler({
-				"sub_type": "PRMSG",
-				"message_RU": `Голосовые сообщения: ${dispatch.settings.speaks ? "Вкл" : "Выкл"}.`,
-				"message": `Voice messages has been ${dispatch.settings.speaks ? "on" : "off"}.`
-			});
-		},
-		stream() {
-			dispatch.settings.stream = !dispatch.settings.stream;
-			text_handler({
-				"sub_type": "PRMSG",
-				"message_RU": `Режим стримера, скрытие сообщений: ${dispatch.settings.stream ? "Вкл" : "Выкл"}.`,
-				"message": `Stream mode has been ${dispatch.settings.stream ? "on" : "off"}.`
-			});
-		},
 		spawnObject(arg1) {
 			if (arg1) {
 				let d = dungeons.findIndex(d => d.id == arg1);
@@ -758,6 +720,22 @@ exports.NetworkMod = function(dispatch) {
 				});
 			}
 		},
+		voice() {
+			dispatch.settings.speaks = !dispatch.settings.speaks;
+			text_handler({
+				"sub_type": "PRMSG",
+				"message_RU": `Голосовые сообщения: ${dispatch.settings.speaks ? "Вкл" : "Выкл"}.`,
+				"message": `Voice messages has been ${dispatch.settings.speaks ? "on" : "off"}.`
+			});
+		},
+		stream() {
+			dispatch.settings.stream = !dispatch.settings.stream;
+			text_handler({
+				"sub_type": "PRMSG",
+				"message_RU": `Режим стримера, скрытие сообщений: ${dispatch.settings.stream ? "Вкл" : "Выкл"}.`,
+				"message": `Stream mode has been ${dispatch.settings.stream ? "on" : "off"}.`
+			});
+		},
 		lNotice() {
 			dispatch.settings.lNotice = !dispatch.settings.lNotice;
 			text_handler({
@@ -775,197 +753,6 @@ exports.NetworkMod = function(dispatch) {
 				"message": `Party chat notices has been ${dispatch.settings.gNotice ? "on" : "off"}.`
 			});
 		},
-		1() {
-			text_handler({
-				"sub_type": "PRMSG",
-				"message_RU": "Скорость речи 1",
-				"message": "Voice speed 1"
-			});
-			dispatch.settings.rate.splice(0, 1, rate1);
-		},
-		2() {
-			text_handler({
-				"sub_type": "PRMSG",
-				"message_RU": "Скорость речи 2",
-				"message": "Voice speed 2"
-			});
-			dispatch.settings.rate.splice(0, 1, rate2);
-		},
-		3() {
-			text_handler({
-				"sub_type": "PRMSG",
-				"message_RU": "Скорость речи 3",
-				"message": "Voice speed 3"
-			});
-			dispatch.settings.rate.splice(0, 1, rate3);
-		},
-		4() {
-			text_handler({
-				"sub_type": "PRMSG",
-				"message_RU": "Скорость речи 4",
-				"message": "Voice speed 4"
-			});
-			dispatch.settings.rate.splice(0, 1, rate4);
-		},
-		5() {
-			text_handler({
-				"sub_type": "PRMSG",
-				"message_RU": "Скорость речи 5",
-				"message": "Voice speed 5"
-			});
-			dispatch.settings.rate.splice(0, 1, rate5);
-		},
-		6() {
-			text_handler({
-				"sub_type": "PRMSG",
-				"message_RU": "Скорость речи 6",
-				"message": "Voice speed 6"
-			});
-			dispatch.settings.rate.splice(0, 1, rate6);
-		},
-		7() {
-			text_handler({
-				"sub_type": "PRMSG",
-				"message_RU": "Скорость речи 7",
-				"message": "Voice speed 7"
-			});
-			dispatch.settings.rate.splice(0, 1, rate7);
-		},
-		8() {
-			text_handler({
-				"sub_type": "PRMSG",
-				"message_RU": "Скорость речи 8",
-				"message": "Voice speed 8"
-			});
-			dispatch.settings.rate.splice(0, 1, rate8);
-		},
-		9() {
-			text_handler({
-				"sub_type": "PRMSG",
-				"message_RU": "Скорость речи 9",
-				"message": "Voice speed 9"
-			});
-			dispatch.settings.rate.splice(0, 1, rate9);
-		},
-		10() {
-			text_handler({
-				"sub_type": "PRMSG",
-				"message_RU": "Скорость речи 10",
-				"message": "Voice speed 10"
-			});
-			dispatch.settings.rate.splice(0, 1, rate10);
-		},
-		cr() {
-			text_handler({
-				"sub_type": "CRMSG",
-				"message_RU": "Цвет системного сообщения: красный",
-				"message": "system message notification color is red"
-			});
-			dispatch.settings.cc.splice(0, 1, cr);
-		},
-		cc() {
-			text_handler({
-				"sub_type": "PRMSG",
-				"message_RU": "Текущий цвет системного сообщения",
-				"message": "View the current system message notification color"
-			});
-		},
-		co() {
-			text_handler({
-				"sub_type": "COMSG",
-				"message_RU": "Цвет системного сообщения: оранжевый",
-				"message": "system message notification color is  ORANGE"
-			});
-			dispatch.settings.cc.splice(0, 1, co);
-		},
-		cy() {
-			text_handler({
-				"sub_type": "CYMSG",
-				"message_RU": "Цвет системного сообщения: желтый",
-				"message": "system message notification color is YELLOW"
-			});
-			dispatch.settings.cc.splice(0, 1, cy);
-		},
-		cg() {
-			text_handler({
-				"sub_type": "CGMSG",
-				"message_RU": "Цвет системного сообщения: зеленый",
-				"message": "system message notification color is GREEN"
-			});
-			dispatch.settings.cc.splice(0, 1, cg);
-		},
-		cdb() {
-			text_handler({
-				"sub_type": "CDBMSG",
-				"message_RU": "Цвет системного сообщения: темно-синий",
-				"message": "system message notification color is DARK BLUE"
-			});
-			dispatch.settings.cc.splice(0, 1, cr);
-		},
-		cb() {
-			text_handler({
-				"sub_type": "CBMSG",
-				"message_RU": "Цвет системного сообщения: синий",
-				"message": "system message notification color is BLUE"
-			});
-			dispatch.settings.cc.splice(0, 1, cb);
-		},
-		cv() {
-			text_handler({
-				"sub_type": "CVMSG",
-				"message_RU": "Цвет системного сообщения: фиолетовый",
-				"message": "system message notification color is VIOLET"
-			});
-			dispatch.settings.cc.splice(0, 1, cv);
-		},
-		cp() {
-			text_handler({
-				"sub_type": "CPMSG",
-				"message_RU": "Цвет системного сообщения: розовый",
-				"message": "system message notification color is PINK"
-			});
-			dispatch.settings.cc.splice(0, 1, cp);
-		},
-		clp() {
-			text_handler({
-				"sub_type": "CLPMSG",
-				"message_RU": "Цвет системного сообщения: светло-розовый",
-				"message": "system message notification color is LIGHT PINK"
-			});
-			dispatch.settings.cc.splice(0, 1, clp);
-		},
-		clb() {
-			text_handler({
-				"sub_type": "CLBMSG",
-				"message_RU": "Цвет системного сообщения: светло-синий",
-				"message": "system message notification color is LIGHT BLUE"
-			});
-			dispatch.settings.cc.splice(0, 1, clb);
-		},
-		cbl() {
-			text_handler({
-				"sub_type": "CBLMSG",
-				"message_RU": "Цвет системного сообщения: черный",
-				"message": "system message notification color is  BLACK"
-			});
-			dispatch.settings.cc.splice(0, 1, cbl);
-		},
-		cgr() {
-			text_handler({
-				"sub_type": "CGRMSG",
-				"message_RU": "Цвет системного сообщения: серый",
-				"message": "system message notification color is  GRAY"
-			});
-			dispatch.settings.cc.splice(0, 1, cgr);
-		},
-		cw() {
-			text_handler({
-				"sub_type": "CWMSG",
-				"message_RU": "Цвет системного сообщения: белый",
-				"message": "system message notification color is  WHITE"
-			});
-			dispatch.settings.cc.splice(0, 1, cw);
-		},
 		dungeons() {
 			for (const i of dungeons) {
 				text_handler({
@@ -973,6 +760,9 @@ exports.NetworkMod = function(dispatch) {
 					"message": `${i.id} - ${i.name}`
 				});
 			}
+		},
+		gui() {
+			gui_handler("index", "TERA-Guide");
 		},
 		help() {
 			text_handler({
@@ -1101,10 +891,8 @@ exports.NetworkMod = function(dispatch) {
 				"message": "guide cw, message color is WHITE"
 			});
 		},
-		gui() {
-			gui_handler("index", "TERA-Guide");
-		},
 		$default(arg1) {
+			// Enable/Disable the module
 			if (arg1 === undefined) {
 				dispatch.settings.enabled = !dispatch.settings.enabled;
 				text_handler({
@@ -1112,6 +900,29 @@ exports.NetworkMod = function(dispatch) {
 					"message_RU": `Модуль: ${dispatch.settings.enabled ? "Вкл" : "Выкл"}.`,
 					"message": `guide ${dispatch.settings.enabled ? "on" : "off"}.`
 				});
+			// Set messages text color
+			} else if (["cr", "co", "cy", "cg", "cv", "cb", "clb", "cdb", "cp", "clp", "cw", "cgr", "cbl"].includes(arg1)) {
+				dispatch.settings.cc.splice(0, 1, eval(arg1));
+				let lang = {
+					"ru": "Цвет текста сообщений изменен",
+					"en": "Message notification color is changed" 
+				};
+				text_handler({
+					"sub_type": "PRMSG",
+					"message": (lang[language] || lang["en"])
+				});
+				if (!dispatch.settings.lNotice && !dispatch.settings.stream) {
+					sendDungeonEvent((lang[language] || lang["en"]), dispatch.settings.cc, spg);
+				}
+			// Set voice rate
+			} else if (parseInt(arg1) >= 1 && parseInt(arg1) <= 10) {
+				text_handler({
+					"sub_type": "PRMSG",
+					"message_RU": `Скорость речи изменена на ${arg1}`,
+					"message": `Voice speed changed to ${arg1}`
+				});
+				dispatch.settings.rate.splice(0, 1, parseInt(arg1));
+			// Unknown command
 			} else {
 				text_handler({
 					"sub_type": "PRMSG",
@@ -1462,7 +1273,7 @@ exports.NetworkMod = function(dispatch) {
 	function sendDungeonEvent(message, spcc, type) {
 		// If streamer mode is enabled send message to the proxy-channel
 		if (dispatch.settings.stream) {
-			command.message(dispatch.settings.cc + message);
+			command.message(spcc + message);
 			return;
 		}
 		// Send a color-specified Dungeon Event message
