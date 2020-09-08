@@ -334,6 +334,7 @@ exports.NetworkMod = function(dispatch) {
 				if (settings[i][key] === undefined) {
 					settings[i][key] = value;
 				}
+				// Delete obsolete config options
 				delete settings[i].name;
 				delete settings[i].name_RU;
 			}
@@ -472,13 +473,13 @@ exports.NetworkMod = function(dispatch) {
 		}
 		// Add "Sea of Honor" to dungeon list
 		let s = {
-			"en": "Sea of Honor",
-			"kr": "금비늘호",
-			"jp": "探宝の金鱗号",
-			"de": "Goldschuppe",
-			"fr": "l'Écaille dorée",
-			"tw": "金麟號",
-			"ru": "Золотая чешуя"
+			en: "Sea of Honor",
+			kr: "금비늘호",
+			jp: "探宝の金鱗号",
+			de: "Goldschuppe",
+			fr: "l'Écaille dorée",
+			tw: "金麟號",
+			ru: "Золотая чешуя"
 		};
 		dungeons.push({ "id": 3020, "name": (s[language] || s["en"]) });
 	}
