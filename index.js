@@ -162,7 +162,8 @@ exports.NetworkMod = function(dispatch) {
 				"color": "Выбор цвета",
 				"dungeons": "Настройки данжей",
 				"verbose": "Сообщения",
-				"objects": "Объекты"
+				"objects": "Объекты",
+				"test": "Проверка"
 			},
 			"en": {
 				"enabled": "On",
@@ -178,7 +179,8 @@ exports.NetworkMod = function(dispatch) {
 				"color": "Change color",
 				"dungeons": "Dungeon settings",
 				"verbose": "Messages",
-				"objects": "Objects"
+				"objects": "Objects",
+				"test": "Test"
 			}
 		};
 		lang = lang[language] || lang["en"];
@@ -202,7 +204,8 @@ exports.NetworkMod = function(dispatch) {
 					{ text: `<font color="${dispatch.settings.rate[0] == 7 ? gcg : gcr}" size="+18">[7]</font>`, command: "guide 7;guide gui" }, { text: "&nbsp;&nbsp;" },
 					{ text: `<font color="${dispatch.settings.rate[0] == 8 ? gcg : gcr}" size="+18">[8]</font>`, command: "guide 8;guide gui" }, { text: "&nbsp;&nbsp;" },
 					{ text: `<font color="${dispatch.settings.rate[0] == 9 ? gcg : gcr}" size="+18">[9]</font>`, command: "guide 9;guide gui" }, { text: "&nbsp;&nbsp;" },
-					{ text: `<font color="${dispatch.settings.rate[0] == 10 ? gcg : gcr}" size="+18">[10]</font>`, command: "guide 10;guide gui" },
+					{ text: `<font color="${dispatch.settings.rate[0] == 10 ? gcg : gcr}" size="+18">[10]</font>`, command: "guide 10;guide gui" }, { text: "&nbsp;&nbsp;&nbsp;&nbsp;" },
+					{ text: `<font size="+18">[${lang.test}]</font>`, command: "guide guivoicetest" },
 					{ text: `<br>` }
 				);
 				tmp_data.push(
@@ -250,6 +253,7 @@ exports.NetworkMod = function(dispatch) {
 			}
 		}
 		dispatch.settings.dungeons = settings;
+		settings = {};
 	}
 
 	// Reload settings for entered guide
@@ -889,6 +893,17 @@ exports.NetworkMod = function(dispatch) {
 				"sub_type": "CWMSG",
 				"message_RU": "guide cw, установить цвет сообщения: белый",
 				"message": "guide cw, message color is WHITE"
+			});
+		},
+		guivoicetest() {
+			let lang = {
+				"ru": "[Проверка скорости чтения сообщений]",
+				"en": "[Voice speech rate test]"
+			};
+			voice.speak(lang[language] || lang["en"], dispatch.settings.rate);
+			text_handler({
+				"sub_type": "PRMSG",
+				"message": (lang[language] || lang["en"])
 			});
 		},
 		$default(arg1) {
