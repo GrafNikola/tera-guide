@@ -10,6 +10,126 @@ try {
 	voice = null;
 }
 
+// Available strings for different languages
+const translation = {
+	// Russian
+	ru: {
+		unknowncommand: "Невереная команда, введите guide help",
+		helpheader: "Введите \"guide help\" для вывода справки",
+		helpbody: [
+			["guide, вкл./выкл. модуля", "PRMSG"],
+			["guide gui, показать графический интерфейс", "PRMSG"],
+			["guide voice, вкл./выкл. голосовые сообщения", "PRMSG"],
+			["guide lNotice, вкл./выкл. отправки сообщений в канал чата", "PRMSG"],
+			["guide gNotice, вкл./выкл. отправки сообщений в чат группы", "PRMSG"],
+			["guide 1~10, регулировка скорости чтения голосовых сообщений", "PRMSG"],
+			["guide spawnObject, вкл./выкл. спавна маркировочных объектов", "PRMSG"],
+			["guide stream, вкл./выкл. режима стрима (скрытие сообщений и объектов)", "PRMSG"],
+			["guide dungeons, список всех поддерживаемых данжей и их id", "PRMSG"],
+			["guide verbose id, вкл./выкл. всех сообщений для данжа, где id - идентификатор данжа", "PRMSG"],
+			["guide spawnObject id, вкл./выкл. спавна объектов для данжа, где id - идентификатор данжа", "PRMSG"],
+			["guide cc, отобразить текущий цвет системного сообщения", "PRMSG"],
+			["guide cr, установить цвет сообщения: красный", "CRMSG"],
+			["guide c, установить цвет сообщения: оранжевый", "COMSG"],
+			["guide cy, установить цвет сообщения: желтый", "CYMSG"],
+			["guide cg, установить цвет сообщения: зеленый", "CGMSG"],
+			["guide cdb, установить цвет сообщения: темно-синий", "CDBMSG"],
+			["guide cb, установить цвет сообщения: синий", "CBMSG"],
+			["guide cv, установить цвет сообщения: фиолетовый", "CVMSG"],
+			["guide cp, установить цвет сообщения: розовый", "CPMSG"],
+			["guide clp, установить цвет сообщения: светло-розовый", "CLPMSG"],
+			["guide clb, установить цвет сообщения: светло-синий", "CLBMSG"],
+			["guide cbl, установить цвет сообщения: черный", "CBLMSG"],
+			["guide cgr, установить цвет сообщения: серый", "CGRMSG"],
+			["guide cw, установить цвет сообщения: белый", "CWMSG"],
+		],
+		red: "Красный",
+		green: "Зеленый",
+		settings: "Настройки",
+		spawnObject: "Спавн объектов",
+		speaks: "Голосовые сообщения",
+		lNotice: "Сообщения в чат",
+		gNotice: "Отправка сообщений членам группы",
+		stream: "Режим стримера",
+		rate: "Скорость речи",
+		color: "Выбор цвета",
+		dungeons: "Настройки данжей",
+		verbose: "Сообщения",
+		objects: "Объекты",
+		test: "Проверка",
+		module: "Модуль TERA-Guide",
+		enabled: "Вкл.",
+		disabled: "Выкл.",
+		voicetest: "[Проверка скорости чтения сообщений]",
+		colorchanged: "Цвет текста сообщений изменен",
+		ratechanged: "Скорость речи изменена на",
+		dgnotfound: "Данж с таким id не найден.",
+		dgnotspecified: "Не указан id данжа.",
+		enterdg: "Вы вошли в данж",
+		enterspdg: "Вы вошли в SP данж",
+		enteresdg: "Вы вошли в ES данж",
+		fordungeon: "для данжа",
+	},
+	// English
+	en: {
+		unknowncommand: "Unknown command, type \"guide help\"",
+		helpheader: "Enter \"guide help\" for more information",
+		helpbody: [
+			["guide, module on/off", "PRMSG"],
+			["guide gui, show module GUI", "PRMSG"],
+			["guide voice, text-to-speech (TTS) notices on/off", "PRMSG"],
+			["guide lNotice, send notices to chat on/off", "PRMSG"],
+			["guide gNotice, send notices to party chat channel on/off", "PRMSG"],
+			["guide 1~10, to settings TTS speech rate", "PRMSG"],
+			["guide spawnObject, spawn marker objects on/off", "PRMSG"],
+			["guide stream, streamer mode on/off", "PRMSG"],
+			["guide dungeons, list of all supported dungeons", "PRMSG"],
+			["verbose id, send notices for specified dungeon on/off", "PRMSG"],
+			["guide spawnObject id, spawn marker objects for specified dungeon on/off", "PRMSG"],
+			["guide cc, view the current system message notification color", "PRMSG"],
+			["guide cr, message color is RED", "CRMSG"],
+			["guide co, message color is ORANGE", "COMSG"],
+			["guide cy, message color is YELLOW", "CYMSG"],
+			["guide cg, message color is GREEN", "CGMSG"],
+			["guide cdb, message color is DARK BLUE", "CDBMSG"],
+			["guide cb, message color is BLUE", "CBMSG"],
+			["guide cv, message color is VIOLET", "CVMSG"],
+			["guide cp, message color is PINK", "CPMSG"],
+			["guide clp, message color is LIGHT PINK", "CLPMSG"],
+			["guide clb, message color is LIGHT BLUE", "CLBMSG"],
+			["guide cbl, message color is BLACK", "CBLMSG"],
+			["guide cgr, message color is GRAY", "CGRMSG"],
+			["guide cw, message color is WHITE", "CWMSG"],
+		],
+		red: "Red",
+		green: "Green",
+		settings: "Settings",
+		spawnObject: "Spawn objects",
+		speaks: "Voice messages",
+		lNotice: "Chat messages",
+		gNotice: "Send messages to party members",
+		stream: "Streamer Mode",
+		rate: "Speech rate",
+		color: "Change color",
+		dungeons: "Dungeon settings",
+		verbose: "Messages",
+		objects: "Objects",
+		test: "Test",
+		module: "TERA-Guide module",
+		enabled: "On",
+		disabled: "Off",
+		voicetest: "[Voice speech rate test]",
+		colorchanged: "Message notification color is changed",
+		ratechanged: "Voice speed changed to",
+		dgnotfound: "Dungeon not found.",
+		dgnotspecified: "Dungeon id not specified.",
+		enterdg: "Enter Dungeon",
+		enterspdg: "Enter SP Dungeon",
+		enteresdg: "Enter ES Dungeon",
+		fordungeon: "for dungeon",
+	},
+};
+
 exports.NetworkMod = function(dispatch) {
 	const fake_dispatch = new DispatchWrapper(dispatch);
 	const { player, entity, library, effect } = dispatch.require.library;
@@ -93,6 +213,8 @@ exports.NetworkMod = function(dispatch) {
 	this.handlers = function_event_handlers;
 	// Detected language
 	let language = languages[0];
+	// Current language strings
+	let lang = {};
 	// A boolean for the debugging settings
 	let debug = dbg["debug"];
 	// List of available guides
@@ -113,6 +235,7 @@ exports.NetworkMod = function(dispatch) {
 	let entered_guide = {};
 	// Trigger event flag
 	let is_event = false;
+
 
 	/** GUI FUNCTIONS **/
 
@@ -147,43 +270,6 @@ exports.NetworkMod = function(dispatch) {
 
 	function gui_handler(page, title) {
 		let tmp_data = [];
-		let lang = {
-			"ru": {
-				"enabled": "Вкл.",
-				"disabled": "Выкл.",
-				"red": "Красный",
-				"green": "Зеленый",
-				"settings": "Настройки",
-				"spawnObject": "Спавн объектов",
-				"speaks": "Голосовые сообщения",
-				"lNotice": "Сообщения в чат",
-				"stream": "Режим стримера",
-				"rate": "Скорость речи",
-				"color": "Выбор цвета",
-				"dungeons": "Настройки данжей",
-				"verbose": "Сообщения",
-				"objects": "Объекты",
-				"test": "Проверка"
-			},
-			"en": {
-				"enabled": "On",
-				"disabled": "Off",
-				"red": "Red",
-				"green": "Green",
-				"settings": "Settings",
-				"spawnObject": "Spawn Objects",
-				"speaks": "Voice Messages",
-				"lNotice": "Chat Messages",
-				"stream": "Streamer Mode",
-				"rate": "Speech rate",
-				"color": "Change color",
-				"dungeons": "Dungeon settings",
-				"verbose": "Messages",
-				"objects": "Objects",
-				"test": "Test"
-			}
-		};
-		lang = lang[language] || lang["en"];
 		switch (page) {
 			default: {
 				tmp_data.push(
@@ -372,6 +458,8 @@ exports.NetworkMod = function(dispatch) {
 	function c_login_arbiter(e) {
 		// Set client language
 		language = languages[e.language] || languages[0];
+		// Set language strings
+		lang = translation[language] || translation["en"];
 		// Set list of available guides
 		let zone_ids = [];
 		for (let i in dispatch.clientMod.allDungeons) {
@@ -383,7 +471,7 @@ exports.NetworkMod = function(dispatch) {
 			});
 		}
 		// Add "Sea of Honor" to dungeon list
-		let lang = {
+		let s = {
 			"en": "Sea of Honor",
 			"kr": "금비늘호",
 			"jp": "探宝の金鱗号",
@@ -392,7 +480,7 @@ exports.NetworkMod = function(dispatch) {
 			"tw": "金麟號",
 			"ru": "Золотая чешуя"
 		};
-		dungeons.push({ "id": 3020, "name": (lang[language] || lang["en"]) });
+		dungeons.push({ "id": 3020, "name": (s[language] || s["en"]) });
 	}
 	dispatch.hook("C_LOGIN_ARBITER", 2, {}, c_login_arbiter);
 
@@ -565,32 +653,25 @@ exports.NetworkMod = function(dispatch) {
 				if (spguide) {
 					text_handler({
 						"sub_type": "PRMSG",
-						"message_RU": "Вы вошли в SP данж: " + cr + entered_guide.name + cw + " [" + zone + "]",
-						"message": "Enter SP Dungeon: " + cr + entered_guide.name + cw + " [" + zone + "]"
+						"message": `${lang.enteresdg}: ${cr}${entered_guide.name} ${cw}[${zone}]`
 					});
 				} else if (esguide) {
 					text_handler({
 						"sub_type": "PRMSG",
-						"message_RU": "Вы вошли в ES данж: " + cr + entered_guide.name + cw + " [" + zone + "]",
-						"message": "Enter ES Dungeon: " + cr + entered_guide.name + cw + " [" + zone + "]"
+						"message": `${lang.enterspdg}: ${cr}${entered_guide.name} ${cw}[${zone}]`
 					});
 				} else {
 					text_handler({
 						"sub_type": "PRMSG",
-						"message_RU": "Вы вошли в данж: " + cr + entered_guide.name + cw + " [" + zone + "]",
-						"message": "Enter Dungeon: " + cr + entered_guide.name + cw + " [" + zone + "]"
+						"message": `${lang.enterdg}: ${cr}${entered_guide.name} ${cw}[${zone}]`
 					});
 				}
 				text_handler({
 					"sub_type": "CGMSG",
-					"message_RU": `Введите "guide help" для вывода справки\n` +
-						`Режим стриммера: ${dispatch.settings.stream ? "Вкл" : "Выкл"}\n` +
-						`Отправка сообщений членам группы: ${dispatch.settings.gNotice ? "Вкл" : "Выкл"}\n` +
-						`Проигрывание голосовых сообщений: ${dispatch.settings.speaks ? "Вкл" : "Выкл"}`,
-					"message": `Enter "guide help" for more information\n` +
-						`Streamer mode is ${dispatch.settings.stream ? "on" : "off"}.\n` +
-						`Send messages to party members is ${dispatch.settings.gNotice ? "on" : "off"}.\n` +
-						`Playng the voice messages is ${dispatch.settings.speaks ? "on" : "off"}.`
+					"message": `${lang.helpheader}\n` +
+						`${lang.stream}: ${dispatch.settings.stream ? lang.enabled : lang.disabled}\n` +
+						`${lang.gNotice}: ${dispatch.settings.gNotice ? lang.enabled : lang.disabled}\n` +
+						`${lang.speaks}: ${dispatch.settings.speaks ? lang.enabled : lang.disabled}`
 				});
 			}
 		} catch (e) {
@@ -675,24 +756,21 @@ exports.NetworkMod = function(dispatch) {
 					dispatch.settings.dungeons[s].spawnObject = !dispatch.settings.dungeons[s].spawnObject;
 					text_handler({
 						"sub_type": "PRMSG",
-						"message_RU": `Спавн объектов для данжа ${dungeons[d].name} [${dungeons[d].id}]: ${dispatch.settings.dungeons[s].spawnObject ? "Вкл" : "Выкл"}.`,
-						"message": `Spawning objects for dungeon ${dungeons[d].name} [${dungeons[d].id}] has been ${dispatch.settings.dungeons[s].spawnObject ? "on" : "off"}.`
+						"message": `${lang.spawnObject} ${lang.fordungeon} "${dungeons[d].name}": ${dispatch.settings.dungeons[s].spawnObject ? lang.enabled : lang.disabled}`
 					});
 					// Reload settings for entered guide
 					reload_dungeon_configuration(dungeons[d].id);
 				} else {
 					text_handler({
 						"sub_type": "PRMSG",
-						"message_RU": "Данж с таким id не найден.",
-						"message": "Dungeon not found."
+						"message": lang.dgnotfound
 					});
 				}
 			} else {
 				dispatch.settings.spawnObject = !dispatch.settings.spawnObject;
 				text_handler({
 					"sub_type": "PRMSG",
-					"message_RU": `Спавн объектов: ${dispatch.settings.spawnObject ? "Вкл" : "Выкл"}.`,
-					"message": `Spawn objects ${dispatch.settings.spawnObject ? "on" : "off"}.`
+					"message": `${lang.spawnObject} ${dispatch.settings.spawnObject ? lang.enabled : lang.disabled}`
 				});
 			}
 		},
@@ -704,23 +782,20 @@ exports.NetworkMod = function(dispatch) {
 					dispatch.settings.dungeons[s].verbose = !dispatch.settings.dungeons[s].verbose;
 					text_handler({
 						"sub_type": "PRMSG",
-						"message_RU": `Показ сообщений для данжа ${dungeons[d].name} [${dungeons[d].id}]: ${dispatch.settings.dungeons[s].verbose ? "Вкл" : "Выкл"}.`,
-						"message": `Messaging for dungeon ${dungeons[d].name} [${dungeons[d].id}] has been ${dispatch.settings.dungeons[s].verbose ? "on" : "off"}.`
+						"message": `${lang.verbose} ${lang.fordungeon} "${dungeons[d].name}": ${dispatch.settings.dungeons[s].verbose ? lang.enabled : lang.disabled}`
 					});
 					// Reload settings for entered guide
 					reload_dungeon_configuration(dungeons[d].id);
 				} else {
 					text_handler({
 						"sub_type": "PRMSG",
-						"message_RU": "Данж с таким id не найден.",
-						"message": "Dungeon not found."
+						"message": lang.dgnotfound
 					});
 				}
 			} else {
 				text_handler({
 					"sub_type": "PRMSG",
-					"message_RU": `Не указан id данжа.`,
-					"message": `Dungeon id not specified.`
+					"message": lang.dgnotspecified
 				});
 			}
 		},
@@ -728,24 +803,21 @@ exports.NetworkMod = function(dispatch) {
 			dispatch.settings.speaks = !dispatch.settings.speaks;
 			text_handler({
 				"sub_type": "PRMSG",
-				"message_RU": `Голосовые сообщения: ${dispatch.settings.speaks ? "Вкл" : "Выкл"}.`,
-				"message": `Voice messages has been ${dispatch.settings.speaks ? "on" : "off"}.`
+				"message": `${lang.speaks}: ${dispatch.settings.speaks ? lang.enabled : lang.disabled}`
 			});
 		},
 		stream() {
 			dispatch.settings.stream = !dispatch.settings.stream;
 			text_handler({
 				"sub_type": "PRMSG",
-				"message_RU": `Режим стримера, скрытие сообщений: ${dispatch.settings.stream ? "Вкл" : "Выкл"}.`,
-				"message": `Stream mode has been ${dispatch.settings.stream ? "on" : "off"}.`
+				"message": `${lang.stream}: ${dispatch.settings.stream ? lang.enabled : lang.disabled}`
 			});
 		},
 		lNotice() {
 			dispatch.settings.lNotice = !dispatch.settings.lNotice;
 			text_handler({
 				"sub_type": "PRMSG",
-				"message_RU": `Сообщения в чат: ${dispatch.settings.lNotice ? "Вкл" : "Выкл"}.`,
-				"message": `Chat notices has been ${dispatch.settings.lNotice ? "on" : "off"}.`
+				"message": `${lang.lNotice}: ${dispatch.settings.lNotice ? lang.enabled : lang.disabled}`
 			});
 		},
 		gNotice() {
@@ -753,14 +825,13 @@ exports.NetworkMod = function(dispatch) {
 			command.message(`system Notice ${dispatch.settings.gNotice? "on" : "off"}.`);
 			text_handler({
 				"sub_type": "PRMSG",
-				"message_RU": `Сообщения в группе: ${dispatch.settings.gNotice ? "Вкл" : "Выкл"}.`,
-				"message": `Party chat notices has been ${dispatch.settings.gNotice ? "on" : "off"}.`
+				"message": `${lang.gNotice}: ${dispatch.settings.gNotice ? lang.enabled : lang.disabled}`
 			});
 		},
 		dungeons() {
 			for (const i of dungeons) {
 				text_handler({
-					"sub_type": "CWMSG",
+					"sub_type": "PRMSG",
 					"message": `${i.id} - ${i.name}`
 				});
 			}
@@ -769,141 +840,18 @@ exports.NetworkMod = function(dispatch) {
 			gui_handler("index", "TERA-Guide");
 		},
 		help() {
-			text_handler({
-				"sub_type": "PRMSG",
-				"message_RU": "guide, вкл./выкл. модуля",
-				"message": "guide, module on/off"
-			});
-			text_handler({
-				"sub_type": "PRMSG",
-				"message_RU": "guide gui, показать графический интерфейс",
-				"message": "guide gui, show module GUI"
-			});
-			text_handler({
-				"sub_type": "PRMSG",
-				"message_RU": "guide voice, вкл./выкл. голосовые сообщения",
-				"message": "guide voice, text-to-speech (TTS) notices on/off"
-			});
-			text_handler({
-				"sub_type": "PRMSG",
-				"message_RU": "guide lNotice, вкл./выкл. отправки уведомлений в канал чата",
-				"message": "guide lNotice, send notices to chat on/off"
-			});
-			text_handler({
-				"sub_type": "PRMSG",
-				"message_RU": "guide gNotice, вкл./выкл. отправки уведомлений в чат группы",
-				"message": "guide gNotice, send notices to party chat channel on/off"
-			});
-			text_handler({
-				"sub_type": "PRMSG",
-				"message_RU": "guide 1~10, регулировка скорости чтения голосовых сообщений",
-				"message": "guide 1~10, to settings TTS speech rate"
-			});
-			text_handler({
-				"sub_type": "PRMSG",
-				"message_RU": "guide spawnObject, вкл./выкл. спавна маркировочных объектов",
-				"message": "guide spawnObject, spawn marker objects on/off"
-			});
-			text_handler({
-				"sub_type": "PRMSG",
-				"message_RU": "guide stream, вкл./выкл. режима стрима (скрытие уведомлений и объектов)",
-				"message": "guide stream, streamer mode on/off"
-			});
-			text_handler({
-				"sub_type": "PRMSG",
-				"message_RU": "guide dungeons, список всех поддерживаемых данжей и их id",
-				"message": "guide dungeons, list of all supported dungeons"
-			});
-			text_handler({
-				"sub_type": "PRMSG",
-				"message_RU": "guide verbose id, вкл./выкл. всех сообщений для данжа, где id - идентификатор данжа",
-				"message": "verbose id, send notices for specified dungeon on/off"
-			});
-			text_handler({
-				"sub_type": "PRMSG",
-				"message_RU": "guide spawnObject id, вкл./выкл. спавна объектов для данжа, где id - идентификатор данжа",
-				"message": "guide spawnObject id, spawn marker objects for specified dungeon on/off"
-			});
-			text_handler({
-				"sub_type": "PRMSG",
-				"message_RU": "guide cc, отобразить текущий цвет системного сообщения",
-				"message": "guide cc, view the current system message notification color"
-			});
-			text_handler({
-				"sub_type": "CRMSG",
-				"message_RU": "guide cr, установить цвет сообщения: красный",
-				"message": "guide cr, message color is RED"
-			});
-			text_handler({
-				"sub_type": "COMSG",
-				"message_RU": "guide c, установить цвет сообщения: оранжевый",
-				"message": "guide co, message color is ORANGE"
-			});
-			text_handler({
-				"sub_type": "CYMSG",
-				"message_RU": "guide cy, установить цвет сообщения: желтый",
-				"message": "guide cy, message color is YELLOW"
-			});
-			text_handler({
-				"sub_type": "CGMSG",
-				"message_RU": "guide cg, установить цвет сообщения: зеленый",
-				"message": "guide cg, message color is GREEN"
-			});
-			text_handler({
-				"sub_type": "CDBMSG",
-				"message_RU": "guide cdb, установить цвет сообщения: темно-синий",
-				"message": "guide cdb, message color is DARK BLUE"
-			});
-			text_handler({
-				"sub_type": "CBMSG",
-				"message_RU": "guide cb, установить цвет сообщения: синий",
-				"message": "guide cb, message color is BLUE"
-			});
-			text_handler({
-				"sub_type": "CVMSG",
-				"message_RU": "guide cv, установить цвет сообщения: фиолетовый",
-				"message": "guide cv, message color is VIOLET"
-			});
-			text_handler({
-				"sub_type": "CPMSG",
-				"message_RU": "guide cp, установить цвет сообщения: розовый",
-				"message": "guide cp, message color is PINK"
-			});
-			text_handler({
-				"sub_type": "CLPMSG",
-				"message_RU": "guide clp, установить цвет сообщения: светло-розовый",
-				"message": "guide clp, message color is LIGHT PINK"
-			});
-			text_handler({
-				"sub_type": "CLBMSG",
-				"message_RU": "guide clb, установить цвет сообщения: светло-синий",
-				"message": "guide clb, message color is LIGHT BLUE"
-			});
-			text_handler({
-				"sub_type": "CBLMSG",
-				"message_RU": "guide cbl, установить цвет сообщения: черный",
-				"message": "guide cbl, message color is BLACK"
-			});
-			text_handler({
-				"sub_type": "CGRMSG",
-				"message_RU": "guide cgr, установить цвет сообщения: серый",
-				"message": "guide cgr, message color is GRAY"
-			});
-			text_handler({
-				"sub_type": "CWMSG",
-				"message_RU": "guide cw, установить цвет сообщения: белый",
-				"message": "guide cw, message color is WHITE"
-			});
+			for (const helpstring of lang.helpbody) {
+				text_handler({
+					"sub_type": helpstring[1],
+					"message": helpstring[0]
+				});
+			}
 		},
 		guivoicetest() {
-			let lang = {
-				"ru": "[Проверка скорости чтения сообщений]",
-				"en": "[Voice speech rate test]"
-			};
-			voice.speak(lang[language] || lang["en"], dispatch.settings.rate);
+			voice.speak(lang.voicetest, dispatch.settings.rate);
 			text_handler({
 				"sub_type": "PRMSG",
-				"message": (lang[language] || lang["en"])
+				"message": lang.voicetest
 			});
 		},
 		$default(arg1) {
@@ -912,37 +860,30 @@ exports.NetworkMod = function(dispatch) {
 				dispatch.settings.enabled = !dispatch.settings.enabled;
 				text_handler({
 					"sub_type": "PRMSG",
-					"message_RU": `Модуль: ${dispatch.settings.enabled ? "Вкл" : "Выкл"}.`,
-					"message": `guide ${dispatch.settings.enabled ? "on" : "off"}.`
+					"message": `${lang.module}: ${dispatch.settings.enabled ? lang.enabled : lang.disabled}`,
 				});
 			// Set messages text color
 			} else if (["cr", "co", "cy", "cg", "cv", "cb", "clb", "cdb", "cp", "clp", "cw", "cgr", "cbl"].includes(arg1)) {
 				dispatch.settings.cc.splice(0, 1, eval(arg1));
-				let lang = {
-					"ru": "Цвет текста сообщений изменен",
-					"en": "Message notification color is changed" 
-				};
 				text_handler({
 					"sub_type": "PRMSG",
-					"message": (lang[language] || lang["en"])
+					"message": lang.colorchanged
 				});
 				if (!dispatch.settings.lNotice && !dispatch.settings.stream) {
-					sendDungeonEvent((lang[language] || lang["en"]), dispatch.settings.cc, spg);
+					sendDungeonEvent(lang.colorchanged, dispatch.settings.cc, spg);
 				}
 			// Set voice rate
 			} else if (parseInt(arg1) >= 1 && parseInt(arg1) <= 10) {
 				text_handler({
 					"sub_type": "PRMSG",
-					"message_RU": `Скорость речи изменена на ${arg1}`,
-					"message": `Voice speed changed to ${arg1}`
+					"message": `${lang.ratechanged} ${arg1}`
 				});
 				dispatch.settings.rate.splice(0, 1, parseInt(arg1));
 			// Unknown command
 			} else {
 				text_handler({
 					"sub_type": "PRMSG",
-					"message_RU": "Невереная команда, введите guide help",
-					"message": 'Unknown command, type "guide help"'
+					"message": lang.unknowncommand
 				});
 			}
 		}
