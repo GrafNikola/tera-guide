@@ -141,18 +141,18 @@ exports.NetworkMod = function(dispatch) {
 	});
 
 	const gui = {
-		parse(Xarray, title) {
+		parse(array, title) {
 			let body = "";
-			for (const data of Xarray) {
+			for (const data of array) {
 				if (body.length >= 16000) {
-					body += "Gui data limit exceeded, some values may be missing.";
+					body += "GUI data limit exceeded, some values may be missing.";
 					break;
 				}
 				if (data.command) body += `<a href="admincommand:/@${data.command}">${data.text}</a>`;
 				else if (!data.command) body += `${data.text}`;
 				else continue;
 			}
-			dispatch.toClient("S_ANNOUNCE_UPDATE_NOTIFICATION", 1, { id: 0, title, body })
+			dispatch.toClient("S_ANNOUNCE_UPDATE_NOTIFICATION", 1, { id: 0, title, body });
 		}
 	}
 
