@@ -32,8 +32,8 @@
         "guides/9982.js": "a010009ae4dcb19e07936ad8363dbb99907938377df7e1ce0dde076aa2db8809",
         "index.js": "f4a33577c520751016e131e4b939a3a2b3267c90166f40b33a2baa6d75ec1056",
         "lib.js": "5278bf2a982a8aad7b9900f7c9ff9089387327715aa6a972b8d5d389a2a097e1",
-        "module.json": "c2bb1b4a6c225560bfebe73b190980c366dc689cec287774fd649c952adb7294",
-        "settings_migrator.js": "13b4a2f5b92fa2dc29c5b2fb0f5ed918a464d2860d63c7fa7391f526318bc778",
+        "module.json": "9477df5209aa4053252eef539111ef0fafc7b1edeb7a15f09c19c1d2df79bb76",
+        "settings_migrator.js": "0005b783d00f7e146fd90d8a24a8f90050bf76542fa6bce5628c07ab12d560e4",
         "voice/index.js": "371c6cca9f3094d3e88b42634981d0ad030017886dbae3eaa700aad1ce049d7b"
     },
     "defs": {

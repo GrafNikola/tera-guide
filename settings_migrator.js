@@ -10,10 +10,11 @@ const DefaultSettings = {
 	"rate": [
 		2
 	],
-	"dungeons": [],
 	"cc": [
 		"</font><font color=\"#ffff00\">"
 	],
+	"language": "auto",
+	"dungeons": [],
 	"chat-name": "Guide"
 };
 
