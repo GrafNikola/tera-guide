@@ -865,7 +865,6 @@ exports.NetworkMod = function(dispatch) {
 		},
 		gNotice() {
 			dispatch.settings.gNotice = !dispatch.settings.gNotice;
-			command.message(`system Notice ${dispatch.settings.gNotice? "on" : "off"}.`);
 			text_handler({
 				"sub_type": "PRMSG",
 				"message": `${lang.gNotice}: ${dispatch.settings.gNotice ? lang.enabled : lang.disabled}`
