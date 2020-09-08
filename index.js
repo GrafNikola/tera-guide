@@ -124,29 +124,38 @@ exports.NetworkMod = function(dispatch) {
 	let entered_guide = {};
 	// Trigger event flag
 	let is_event = false;
-	// Parse data and create GUI window
+
+	/** GUI FUNCTIONS **/
+
+	dispatch.hook("C_CONFIRM_UPDATE_NOTIFICATION", "raw", { order: 100010 }, () => false);
+	dispatch.hook("C_ADMIN", 1, { order: 100010, filter: { fake: null, silenced: false, modified: null }}, (event) => {
+		const commands = event.command.split(";");
+		for (const cmd of commands) {
+			try {
+				dispatch.command.exec(cmd);
+			} catch (e) {
+				continue;
+			}
+		}
+		return false;
+	});
+
 	const gui = {
-		parse(array, title, body = '') {
-			for (const data of array) {
+		parse(Xarray, title) {
+			let body = "";
+			for (const data of Xarray) {
 				if (body.length >= 16000) {
-					body += 'GUI data limit exceeded, some values may be missing.';
+					body += "Gui data limit exceeded, some values may be missing.";
 					break;
 				}
 				if (data.command) body += `<a href="admincommand:/@${data.command}">${data.text}</a>`;
 				else if (!data.command) body += `${data.text}`;
 				else continue;
 			}
-			dispatch.toClient('S_ANNOUNCE_UPDATE_NOTIFICATION', 1, {
-				id: 0,
-				title: title,
-				body: body
-			});
+			dispatch.toClient("S_ANNOUNCE_UPDATE_NOTIFICATION", 1, { id: 0, title, body })
 		}
-	};
+	}
 
-	/** HELPER FUNCTIONS **/
-
-	// GUI handler
 	function gui_handler(page, title) {
 		let tmp_data = [];
 		let lang = {};
@@ -222,6 +231,8 @@ exports.NetworkMod = function(dispatch) {
 			}
 		}
 	}
+
+	/** HELPER FUNCTIONS **/
 
 	// Fetch information of all available guides
 	function create_dungeon_configuration() {

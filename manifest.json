@@ -30,13 +30,15 @@
         "guides/9970.js": "25ac10d781d8476286658225b3a0c2e114262e1605844db3d2c45aa77792d04c",
         "guides/9981.js": "0563fb15519abcac0442f75a7f9f6239738dd9d2d7611fc69242a6dc8940d301",
         "guides/9982.js": "a010009ae4dcb19e07936ad8363dbb99907938377df7e1ce0dde076aa2db8809",
-        "index.js": "7465ea2c239f471c4c60db2eab022ed07f88e718465f1ddc6ea825e7e7cc67cc",
+        "index.js": "94a2c8a1de8a917c4c97d1385693315d5ede614732f81eb8ca346f4be5e42f16",
         "lib.js": "5278bf2a982a8aad7b9900f7c9ff9089387327715aa6a972b8d5d389a2a097e1",
         "module.json": "c2bb1b4a6c225560bfebe73b190980c366dc689cec287774fd649c952adb7294",
         "settings_migrator.js": "13b4a2f5b92fa2dc29c5b2fb0f5ed918a464d2860d63c7fa7391f526318bc778",
         "voice/index.js": "371c6cca9f3094d3e88b42634981d0ad030017886dbae3eaa700aad1ce049d7b"
     },
     "defs": {
+        "C_ADMIN": 1,
+        "C_CONFIRM_UPDATE_NOTIFICATION": "raw",
         "C_LOGIN_ARBITER": 2,
         "S_ABNORMALITY_BEGIN": 4,
         "S_ABNORMALITY_END": 1,
