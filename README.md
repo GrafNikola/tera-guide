@@ -35,7 +35,7 @@ id | Dungeon name | Название данжа
 9781 | Velik's Sanctuary | Святилище Велики
 9739 | Red Refuge | Лагерь повстанцев
 9735 | RK-9 Kennel | Ангар RK-9
-3034 | RK-9 Kennel (Hard) | Ангар RK-9 (сложно)
+3034 | Rampaging RK-9 Kennel | Ангар RK-9 (сложно)
 9920 | Antaroth's Abyss (Hard) | Омут Бездушного Антароса
 9982 | Grotto of Lost Souls (Hard) | Заброшенная мастерская Леандра
 9044 | Bahaar's Sanctum | Святилище Бахаара
