@@ -131,72 +131,72 @@ const translation = {
 	},
 };
 
+// Tank class ids(brawler + lancer)
+const TANK_CLASS_IDS = [1, 10];
+// Dps class ids(not counting warrior)
+const DPS_CLASS_IDS = [2, 3, 4, 5, 8, 9, 11, 12];
+// Healer class ids
+const HEALER_CLASS_IDS = [6, 7];
+// Warrior Defence stance abnormality ids
+const WARRIOR_TANK_IDS = [100200, 100201];
+// Zones with skillid range 1000-3000
+const SP_ZONE_IDS = [
+	3026, // Corrupted Skynest
+	3126, // Corrupted Skynest (Hard)
+	9050, // Rift's Edge (Hard)
+	9054, // Bathysmal Rise (Hard)
+	9044, // Bahaar's Sanctum
+	9066, // Demon's Wheel
+	9070, // Manglemire
+	9750, // Rift's Edge
+	9754, // Bathysmal Rise
+	9781, // Velik's Sanctuary
+	9916, // Sky Cruiser Endeavor (Hard)
+	9920, // Antaroth's Abyss (Hard)
+	9970, // Ruinous Manor (Hard)
+	9981  // Velik's Sanctuary (Hard)
+];
+// Zones with skillid range 100-200-3000
+const ES_ZONE_IDS = [
+	3023, // Akalath Quarantine
+	9000, // ???
+	9759  // Forsaken Island (Hard)
+];
+// Guide files directory name
+const GUIDES_DIR = "guides";
+// Supported languages by client
+const languages = { 0: "en", 1: "kr", 3: "jp", 4: "de", 5: "fr", 7: "tw", 8: "ru" };
+// Messages colors
+const cr = '</font><font color="#ff0000">';  // red
+const co = '</font><font color="#ff7700">';  // orange
+const cy = '</font><font color="#ffff00">';  // yellow
+const cg = '</font><font color="#00ff00">';  // green
+const cdb = '</font><font color="#2727ff">'; // dark blue
+const cb = '</font><font color="#0077ff">';  // blue
+const cv = '</font><font color="#7700ff">';  // violet
+const cp = '</font><font color="#ff00ff">';  // pink
+const clp = '</font><font color="#ff77ff">'; // light pink
+const clb = '</font><font color="#00ffff">'; // light blue
+const cbl = '</font><font color="#000000">'; // black
+const cgr = '</font><font color="#777777">'; // gray
+const cw = '</font><font color="#ffffff">';  // white
+// GUI colors
+const gcr = '#fe6f5e';  // red
+const gcg = '#4de19c';  // green
+const gcy = '#c0b94d';  // yellow
+const gcgr = '#778899'; // gray
+// Dungeon messages types
+const spt = 31; // text notice
+const spg = 42; // green message
+const spb = 43; // blue message
+const spr = 44; // red message
+const spi = 66; // blue info message
+const spn = 49; // left side notice
+
 exports.NetworkMod = function(dispatch) {
 	const fake_dispatch = new DispatchWrapper(dispatch);
 	const { player, entity, library, effect } = dispatch.require.library;
 	const command = dispatch.command;
-
-	// Tank class ids(brawler + lancer)
-	const TANK_CLASS_IDS = [1, 10];
-	// Dps class ids(not counting warrior)
-	const DPS_CLASS_IDS = [2, 3, 4, 5, 8, 9, 11, 12];
-	// Healer class ids
-	const HEALER_CLASS_IDS = [6, 7];
-	// Warrior Defence stance abnormality ids
-	const WARRIOR_TANK_IDS = [100200, 100201];
-	// Zones with skillid range 1000-3000
-	const SP_ZONE_IDS = [
-		3026, // Corrupted Skynest
-		3126, // Corrupted Skynest (Hard)
-		9050, // Rift's Edge (Hard)
-		9054, // Bathysmal Rise (Hard)
-		9044, // Bahaar's Sanctum
-		9066, // Demon's Wheel
-		9070, // Manglemire
-		9750, // Rift's Edge
-		9754, // Bathysmal Rise
-		9781, // Velik's Sanctuary
-		9916, // Sky Cruiser Endeavor (Hard)
-		9920, // Antaroth's Abyss (Hard)
-		9970, // Ruinous Manor (Hard)
-		9981  // Velik's Sanctuary (Hard)
-	];
-	// Zones with skillid range 100-200-3000
-	const ES_ZONE_IDS = [
-		3023, // Akalath Quarantine
-		9000, // ???
-		9759  // Forsaken Island (Hard)
-	];
-	// Guide files directory name
-	const GUIDES_DIR = "guides";
-	// Supported languages by client
-	const languages = { 0: "en", 1: "kr", 3: "jp", 4: "de", 5: "fr", 7: "tw", 8: "ru" };
-	// Messages colors
-	const cr = '</font><font color="#ff0000">';  // red
-	const co = '</font><font color="#ff7700">';  // orange
-	const cy = '</font><font color="#ffff00">';  // yellow
-	const cg = '</font><font color="#00ff00">';  // green
-	const cdb = '</font><font color="#2727ff">'; // dark blue
-	const cb = '</font><font color="#0077ff">';  // blue
-	const cv = '</font><font color="#7700ff">';  // violet
-	const cp = '</font><font color="#ff00ff">';  // pink
-	const clp = '</font><font color="#ff77ff">'; // light pink
-	const clb = '</font><font color="#00ffff">'; // light blue
-	const cbl = '</font><font color="#000000">'; // black
-	const cgr = '</font><font color="#777777">'; // gray
-	const cw = '</font><font color="#ffffff">';  // white
-	// GUI colors
-	const gcr = '#fe6f5e';  // red
-	const gcg = '#4de19c';  // green
-	const gcy = '#c0b94d';  // yellow
-	const gcgr = '#778899'; // gray
-	// Dungeon messages types
-	const spt = 31; // text notice
-	const spg = 42; // green message
-	const spb = 43; // blue message
-	const spr = 44; // red message
-	const spi = 66; // blue info message
-	const spn = 49; // left side notice
 
 	// An object of types and their corresponding function handlers
 	const function_event_handlers = {
@@ -208,29 +208,26 @@ exports.NetworkMod = function(dispatch) {
 		"lib": require("./lib")
 	};
 	// Default dungeon guide settings
-	let default_guide_settings = {
+	const default_guide_settings = {
 		"verbose": true,
 		"spawnObject": true
 	};
-	// export functionality for 3rd party modules
-	this.handlers = function_event_handlers;
-	// Trigger event flag
-	let is_event = false;
+	// A boolean for the debugging settings
+	let debug = dbg["debug"];
 	// Detected language
 	let language = null;
 	let uclanguage = null;
 	// Current language strings
 	let lang = {};
-	// A boolean for the debugging settings
-	let debug = dbg["debug"];
 	// All of the timers, where the key is the id
 	let random_timer_id = 0xFFFFFFFA; // Used if no id is specified
 	let timers = {};
 	// Entered zone guide data
 	let guide = { "found": false, "object": {} };
 
-	/** Set list of available guides **/
+	/** SET LIST OF AVAILABLE GUIDES **/
 
+	// List of all available dungeons
 	let dungeons = [];
 	let zone_ids = [];
 	try {
@@ -247,6 +244,40 @@ exports.NetworkMod = function(dispatch) {
 		dungeons = [];
 	}
 
+	// Check and generate gungeon list if it is not exists
+	function update_dungeon_list() {
+		if (dungeons.length > 0) {
+			// Add zone 3020 to dungeon list
+			if (dungeons.findIndex(d => d.id == 3020) === -1) {
+				let s = {
+					en: "Sea of Honor",
+					kr: "금비늘호",
+					jp: "探宝の金鱗号",
+					de: "Goldschuppe",
+					fr: "l'Écaille dorée",
+					tw: "金麟號",
+					ru: "Золотая чешуя"
+				};
+				dungeons.push({ "id": 3020, "name": (s[language] || s["en"]) });
+			}
+			return;
+		}
+		// Try to read dungeon list from "guides" directory, as dungeon name uses first line of guide js file
+		fs.readdirSync(path.join(__dirname, GUIDES_DIR)).filter(x => x.indexOf("js") !== -1).forEach(file => {
+			let id = parseInt(file.split(".")[0]);
+			if (id) {
+				let lineReader = readline.createInterface({
+					input: fs.createReadStream(path.join(__dirname, GUIDES_DIR, file))
+				});
+				lineReader.on("line", function (line) {
+					let name = line.replace(/^[\/\s]+/g, "") || id;
+					dungeons.push({ "id": id, "name": name });
+					lineReader.close();
+					lineReader.removeAllListeners();
+				});
+			}
+		});
+	}
 
 	/** GUI FUNCTIONS **/
 
@@ -331,43 +362,8 @@ exports.NetworkMod = function(dispatch) {
 
 	/** HELPER FUNCTIONS **/
 
-	// Check and generate gungeon list if it is not exists
-	function check_dungeon_list() {
-		if (dungeons.length > 0) {
-			// Add zone 3020 to dungeon list
-			if (dungeons.findIndex(d => d.id == 3020) === -1) {
-				let s = {
-					en: "Sea of Honor",
-					kr: "금비늘호",
-					jp: "探宝の金鱗号",
-					de: "Goldschuppe",
-					fr: "l'Écaille dorée",
-					tw: "金麟號",
-					ru: "Золотая чешуя"
-				};
-				dungeons.push({ "id": 3020, "name": (s[language] || s["en"]) });
-			}
-			return;
-		}
-		// Try to read dungeon list from "guides" directory, as dungeon name uses first line of guide js-file
-		fs.readdirSync(path.join(__dirname, GUIDES_DIR)).filter(x => x.indexOf("js") !== -1).forEach(file => {
-			let id = parseInt(file.split(".")[0]);
-			if (id) {
-				let lineReader = readline.createInterface({
-					input: fs.createReadStream(path.join(__dirname, GUIDES_DIR, file))
-				});
-				lineReader.on("line", function (line) {
-					let name = line.replace(/^[\/\s]+/g, "") || id;
-					dungeons.push({ "id": id, "name": name });
-					lineReader.close();
-					lineReader.removeAllListeners();
-				});
-			}
-		});
-	}
-
 	// Fetch information of all available guides
-	function create_dungeon_configuration() {
+	function create_guide_configuration() {
 		let settings = dispatch.settings.dungeons;
 		for (const dungeon of dungeons) {
 			let s = settings.findIndex(s => s.id == dungeon.id);
@@ -381,9 +377,6 @@ exports.NetworkMod = function(dispatch) {
 				if (settings[i][key] === undefined) {
 					settings[i][key] = value;
 				}
-				// Delete obsolete config options
-				delete settings[i].name;
-				delete settings[i].name_RU;
 			}
 		}
 		dispatch.settings.dungeons = settings;
@@ -391,7 +384,7 @@ exports.NetworkMod = function(dispatch) {
 	}
 
 	// Reload settings for entered guide
-	function reload_dungeon_configuration(id) {
+	function reload_guide_configuration(id) {
 		if (guide.id == id) {
 			let s = dispatch.settings.dungeons.findIndex(s => s.id == id);
 			if (dispatch.settings.dungeons[s] !== undefined) {
@@ -625,15 +618,13 @@ exports.NetworkMod = function(dispatch) {
 	/** S_LOAD_TOPO **/
 
 	// Load guide and clear out timers
-	function entry_zone(zone) {
+	function entry_zone(zone, d) {
 		// Check and generate gungeon list if it is not exists
-		check_dungeon_list();
+		update_dungeon_list();
 		// Create default dungeon configuration
-		create_dungeon_configuration();
+		create_guide_configuration();
 		// Enable errors debug
 		let debug_errors = true;
-		// Disable trigger event flag
-		is_event = false;
 		// Clear out the timers
 		fake_dispatch._clear_all_timers();
 		for (let key in timers) dispatch.clearTimeout(timers[key]);
@@ -655,7 +646,7 @@ exports.NetworkMod = function(dispatch) {
 					// Create zone data for entered guide
 					guide = Object.assign(guide, dungeon);
 					// Reload guide configuration
-					reload_dungeon_configuration(guide.id);
+					reload_guide_configuration(guide.id);
 					break;
 				}
 			}
@@ -668,7 +659,7 @@ exports.NetworkMod = function(dispatch) {
 				});
 			}
 			if (!guide.id) {
-				debug_errors = debug.debug;
+				debug_errors = debug.debug || d;
 				throw "Guide for zone " + zone + " not found";
 			}
 			// Load guide script
@@ -723,7 +714,7 @@ exports.NetworkMod = function(dispatch) {
 		}
 	}
 	dispatch.hook("S_LOAD_TOPO", 3, e => {
-		entry_zone(e.zone)
+		entry_zone(e.zone, false)
 	});
 
 	/** MISC **/
@@ -747,8 +738,6 @@ exports.NetworkMod = function(dispatch) {
 		},
 		// Testing events
 		event(arg1, arg2) {
-			// Enable trigger event flag
-			is_event = true;
 			// Clear library cache
 			try {
 				delete require.cache[require.resolve("./lib")];
@@ -756,12 +745,12 @@ exports.NetworkMod = function(dispatch) {
 			// If arg1 is "load", load guide from arg2 specified
 			if (arg1 === "load") {
 				if (!arg2) return command.message(`Invalid values for sub command "event" ${arg1}`);
-				return entry_zone(arg2);
+				return entry_zone(arg2, true);
 			}
 			// If arg1 is "reload", reload current loaded guide
 			if (arg1 === "reload") {
 				if (!guide.id) return command.message("Guide not loaded");
-				return entry_zone(guide.id);
+				return entry_zone(guide.id, true);
 			}
 			// If we didn't get a second argument or the argument value isn't an event type, we return
 			if (arg1 === "trigger" ? (!guide.object[arg2]) : (!arg1 || !function_event_handlers[arg1] || !arg2)) return command.message(`Invalid values for sub command "event" ${arg1} | ${arg2}`);
@@ -773,8 +762,6 @@ exports.NetworkMod = function(dispatch) {
 					// Call a function handler with the event we got from arg2 with yourself as the entity
 					function_event_handlers[arg1](JSON.parse(arg2), player);
 				} catch (e) {
-					// Disable trigger event flag
-					is_event = false;
 					debug_message(true, e);
 				}
 			}
@@ -792,7 +779,7 @@ exports.NetworkMod = function(dispatch) {
 						"message": `${lang.spawnObject} ${lang.fordungeon} "${dungeons[d].name}": ${dispatch.settings.dungeons[s].spawnObject ? lang.enabled : lang.disabled}`
 					});
 					// Reload settings for entered guide
-					reload_dungeon_configuration(dungeons[d].id);
+					reload_guide_configuration(dungeons[d].id);
 				} else {
 					text_handler({
 						"sub_type": "PRMSG",
@@ -818,7 +805,7 @@ exports.NetworkMod = function(dispatch) {
 						"message": `${lang.verbose} ${lang.fordungeon} "${dungeons[d].name}": ${dispatch.settings.dungeons[s].verbose ? lang.enabled : lang.disabled}`
 					});
 					// Reload settings for entered guide
-					reload_dungeon_configuration(dungeons[d].id);
+					reload_guide_configuration(dungeons[d].id);
 				} else {
 					text_handler({
 						"sub_type": "PRMSG",
