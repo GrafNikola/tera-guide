@@ -208,12 +208,14 @@ exports.NetworkMod = function(dispatch) {
 		"lib": require("./lib")
 	};
 	// Default dungeon guide settings
-	let default_dungeon_settings = {
+	let default_guide_settings = {
 		"verbose": true,
 		"spawnObject": true
 	};
 	// export functionality for 3rd party modules
 	this.handlers = function_event_handlers;
+	// Trigger event flag
+	let is_event = false;
 	// Detected language
 	let language = null;
 	let uclanguage = null;
@@ -221,22 +223,11 @@ exports.NetworkMod = function(dispatch) {
 	let lang = {};
 	// A boolean for the debugging settings
 	let debug = dbg["debug"];
-	// A boolean indicating if a guide was found
-	let guide_found = false;
-	let spguide = false;
-	let esguide = false;
-	//let cc = cg;
-	// The guide settings for the current zone
-	let active_guide = {};
-	// Hp values of mobs in the current zone
-	let mobs_hp = {};
 	// All of the timers, where the key is the id
 	let random_timer_id = 0xFFFFFFFA; // Used if no id is specified
 	let timers = {};
 	// Entered zone guide data
-	let entered_guide = {};
-	// Trigger event flag
-	let is_event = false;
+	let guide = { "found": false, "object": {} };
 
 	/** Set list of available guides **/
 
@@ -386,7 +377,7 @@ exports.NetworkMod = function(dispatch) {
 		}
 		for (let i in settings) {
 			// Set default values
-			for (const [key, value] of Object.entries(default_dungeon_settings)) {
+			for (const [key, value] of Object.entries(default_guide_settings)) {
 				if (settings[i][key] === undefined) {
 					settings[i][key] = value;
 				}
@@ -401,12 +392,12 @@ exports.NetworkMod = function(dispatch) {
 
 	// Reload settings for entered guide
 	function reload_dungeon_configuration(id) {
-		if (entered_guide.id == id) {
+		if (guide.id == id) {
 			let s = dispatch.settings.dungeons.findIndex(s => s.id == id);
 			if (dispatch.settings.dungeons[s] !== undefined) {
-				entered_guide.settings = dispatch.settings.dungeons[s];
+				guide.settings = dispatch.settings.dungeons[s];
 			} else {
-				entered_guide.settings = default_dungeon_settings;
+				guide.settings = default_guide_settings;
 			}
 		}
 	}
@@ -491,10 +482,10 @@ exports.NetworkMod = function(dispatch) {
 		const stage_string = (stage === false ? '' : `-${stage}`);
 		debug_message(d, `${called_from_identifier}: ${id} | Started by: ${unique_id} | key: ${key + stage_string}`);
 		if (stage !== false) {
-			const entry = active_guide[key + stage_string];
+			const entry = guide.object[key + stage_string];
 			if (entry) start_events(entry, ent, speed);
 		}
-		const entry = active_guide[key];
+		const entry = guide.object[key];
 		if (entry) start_events(entry, ent, speed);
 	}
 
@@ -529,22 +520,22 @@ exports.NetworkMod = function(dispatch) {
 
 	// Boss skill action
 	function s_action_stage(e) {
-		let skillid = e.skill.id % 1000;
-		let eskillid;
-		if (e.skill.id > 3000) {
-			eskillid = e.skill.id;
-		} else {
-			eskillid = e.skill.id % 1000;
-		}
 		// If the guide module is active and a guide for the current dungeon is found
-		if (dispatch.settings.enabled && guide_found) {
+		if (dispatch.settings.enabled && guide.found) {
+			let skillid = e.skill.id % 1000;
+			let eskillid;
+			if (e.skill.id > 3000) {
+				eskillid = e.skill.id;
+			} else {
+				eskillid = e.skill.id % 1000;
+			}
 			const ent = entity["mobs"][e.gameId.toString()];
 			// Due to a bug for some bizare reason(probably proxy fucking itself) we do this ugly hack
 			e.loc.w = e.w;
 			// We've confirmed it's a mob, so it's plausible we want to act on this
-			if (spguide) {
+			if (guide.sp) {
 				if (ent) return handle_event(Object.assign({}, ent, e), e.skill.id, "Skill", "s", debug.debug || debug.skill || (ent["templateId"] % 1 === 0 ? debug.boss : false), e.speed, e.stage);
-			} else if (esguide) {
+			} else if (guide.es) {
 				if (ent) return handle_event(Object.assign({}, ent, e), eskillid, "Skill", "s", debug.debug || debug.skill || (ent["templateId"] % 1 === 0 ? debug.boss : false), e.speed, e.stage);
 			} else {
 				if (ent) return handle_event(Object.assign({}, ent, e), skillid, "Skill", "s", debug.debug || debug.skill || (ent["templateId"] % 1 === 0 ? debug.boss : false), e.speed, e.stage);
@@ -560,7 +551,7 @@ exports.NetworkMod = function(dispatch) {
 	// Boss abnormality triggered
 	function abnormality_triggered(e) {
 		// If the guide module is active and a guide for the current dungeon is found
-		if (dispatch.settings.enabled && guide_found) {
+		if (dispatch.settings.enabled && guide.found) {
 			// avoid errors ResidentSleeper (neede for abnormality refresh)
 			if (!e.source) e.source = 0n;
 			// If the boss/mob get"s a abnormality applied to it
@@ -590,12 +581,13 @@ exports.NetworkMod = function(dispatch) {
 	// Boss health bar triggered
 	dispatch.hook("S_BOSS_GAGE_INFO", 3, e => {
 		// If the guide module is active and a guide for the current dungeon is found
-		if (dispatch.settings.enabled && guide_found) {
+		if (dispatch.settings.enabled && guide.found) {
 			const ent = entity["mobs"][e.id.toString()];
 			let hp = Math.floor(Number(e.curHp) / Number(e.maxHp) * 100);
-			// Check mob"s hp of existing value for single call the event
-			if (ent && mobs_hp[e.id.toString()] != hp) {
-				mobs_hp[e.id.toString()] = hp;
+			// Check mob's hp of existing value for single call the event
+			if (guide["mobshp"] === undefined) guide.mobshp = {};
+			if (ent && guide.mobshp[e.id.toString()] != hp) {
+				guide.mobshp[e.id.toString()] = hp;
 				// We"ve confirmed it"s a mob, so it"s plausible we want to act on this
 				return handle_event(ent, hp, "Health", "h", debug.debug || debug.hp);
 			}
@@ -605,7 +597,8 @@ exports.NetworkMod = function(dispatch) {
 	/** S_DUNGEON_EVENT_MESSAGE **/
 
 	dispatch.hook("S_DUNGEON_EVENT_MESSAGE", 2, e => {
-		if (dispatch.settings.enabled && guide_found) {
+		// If the guide module is active and a guide for the current dungeon is found
+		if (dispatch.settings.enabled && guide.found) {
 			const result = /@dungeon:(\d+)/g.exec(e.message);
 			if (result) {
 				handle_event({
@@ -619,7 +612,8 @@ exports.NetworkMod = function(dispatch) {
 	/** S_QUEST_BALLOON **/
 
 	dispatch.hook("S_QUEST_BALLOON", 1, e => {
-		if (dispatch.settings.enabled && guide_found) {
+		// If the guide module is active and a guide for the current dungeon is found
+		if (dispatch.settings.enabled && guide.found) {
 			const source_ent = entity["mobs"][e.source.toString()];
 			const result = /@monsterBehavior:(\d+)/g.exec(e.message);
 			if (result && source_ent) {
@@ -640,8 +634,6 @@ exports.NetworkMod = function(dispatch) {
 		let debug_errors = true;
 		// Disable trigger event flag
 		is_event = false;
-		// Clear current hp values for all zone mobs
-		mobs_hp = {};
 		// Clear out the timers
 		fake_dispatch._clear_all_timers();
 		for (let key in timers) dispatch.clearTimeout(timers[key]);
@@ -656,57 +648,57 @@ exports.NetworkMod = function(dispatch) {
 		} catch (e) {}
 		// Try loading a guide
 		try {
-			entered_guide = {};
+			guide = { "found": true, "object": {} };
 			// Check guide and attach settings from config
 			for (const dungeon of dungeons) {
 				if (dungeon.id == zone) {
 					// Create zone data for entered guide
-					entered_guide = dungeon;
+					guide = Object.assign(guide, dungeon);
 					// Reload guide configuration
-					reload_dungeon_configuration(entered_guide.id);
+					reload_dungeon_configuration(guide.id);
 					break;
 				}
 			}
 			// Load test guide data
 			if (zone == "test") {
-				entered_guide = { 
+				guide = Object.assign(guide, {
 					"id": "test",
 					"name": "Test Guide",
-					"settings": default_dungeon_settings
-				};
+					"settings": default_guide_settings
+				});
 			}
-			if (!entered_guide.id) {
+			if (!guide.id) {
 				debug_errors = debug.debug;
 				throw "Guide for zone " + zone + " not found";
 			}
-			//
-			active_guide = require("./" + GUIDES_DIR + "/" + zone);
-			if (SP_ZONE_IDS.includes(zone)) {
-				spguide = true; // skill 1000-3000
-				esguide = false;
-			} else if (ES_ZONE_IDS.includes(zone)) {
-				spguide = false; // skill 100-200-3000
-				esguide = true;
+			// Load guide script
+			guide.object = require("./" + GUIDES_DIR + "/" + zone);
+			// Set dungeon zone type for loaded guide
+			if (SP_ZONE_IDS.includes(parseInt(zone))) {
+				guide.sp = true; // skill 1000-3000
+				guide.es = false;
+			} else if (ES_ZONE_IDS.includes(parseInt(zone))) {
+				guide.sp = false; // skill 100-200-3000
+				guide.es = true;
 			} else {
-				spguide = false; // skill 100-200 
-				esguide = false;
+				guide.sp = false; // skill 100-200 
+				guide.es = false;
 			}
-			guide_found = true;
-			if (entered_guide.name) {
-				if (spguide) {
+			if (guide.name) {
+				if (guide.sp) {
 					text_handler({
 						"sub_type": "PRMSG",
-						"message": `${lang.enteresdg}: ${cr}${entered_guide.name} ${cw}[${zone}]`
+						"message": `${lang.enteresdg}: ${cr}${guide.name} ${cw}[${zone}]`
 					});
-				} else if (esguide) {
+				} else if (guide.es) {
 					text_handler({
 						"sub_type": "PRMSG",
-						"message": `${lang.enterspdg}: ${cr}${entered_guide.name} ${cw}[${zone}]`
+						"message": `${lang.enterspdg}: ${cr}${guide.name} ${cw}[${zone}]`
 					});
 				} else {
 					text_handler({
 						"sub_type": "PRMSG",
-						"message": `${lang.enterdg}: ${cr}${entered_guide.name} ${cw}[${zone}]`
+						"message": `${lang.enterdg}: ${cr}${guide.name} ${cw}[${zone}]`
 					});
 				}
 				text_handler({
@@ -718,15 +710,13 @@ exports.NetworkMod = function(dispatch) {
 				});
 			}
 		} catch (e) {
-			entered_guide = {};
-			active_guide = {};
-			guide_found = false;
+			guide = { "found": false, "object": {} };
 			debug_message(debug_errors, e);
 		}
-		if (guide_found) {
+		if (guide.found) {
 			// Try calling the "load" function
 			try {
-				active_guide.load(fake_dispatch);
+				guide.object.load(fake_dispatch);
 			} catch (e) {
 				debug_message(debug_errors, e);
 			}
@@ -770,14 +760,14 @@ exports.NetworkMod = function(dispatch) {
 			}
 			// If arg1 is "reload", reload current loaded guide
 			if (arg1 === "reload") {
-				if (!entered_guide.id) return command.message("Guide not loaded");
-				return entry_zone(entered_guide.id);
+				if (!guide.id) return command.message("Guide not loaded");
+				return entry_zone(guide.id);
 			}
 			// If we didn't get a second argument or the argument value isn't an event type, we return
-			if (arg1 === "trigger" ? (!active_guide[arg2]) : (!arg1 || !function_event_handlers[arg1] || !arg2)) return command.message(`Invalid values for sub command "event" ${arg1} | ${arg2}`);
+			if (arg1 === "trigger" ? (!guide.object[arg2]) : (!arg1 || !function_event_handlers[arg1] || !arg2)) return command.message(`Invalid values for sub command "event" ${arg1} | ${arg2}`);
 			// if arg2 is "trigger". It means we want to trigger a event
 			if (arg1 === "trigger") {
-				start_events(active_guide[arg2], player);
+				start_events(guide.object[arg2], player);
 			} else {
 				try {
 					// Call a function handler with the event we got from arg2 with yourself as the entity
@@ -939,7 +929,7 @@ exports.NetworkMod = function(dispatch) {
 		if (dispatch.settings.stream) return;
 		// Ignore if spawnObject is disabled
 		if (!dispatch.settings.spawnObject) return;
-		if (!entered_guide.settings.spawnObject) return;
+		if (!guide.settings.spawnObject) return;
 		// Make sure id is defined
 		if (!event["id"]) return debug_message(true, "Spawn handler needs a id");
 		// Make sure sub_delay is defined
@@ -1038,7 +1028,7 @@ exports.NetworkMod = function(dispatch) {
 		if (dispatch.settings.stream) return;
 		// Ignore if spawnObject is disabled
 		if (!dispatch.settings.spawnObject) return;
-		if (!entered_guide.settings.spawnObject) return;
+		if (!guide.settings.spawnObject) return;
 		// Make sure id is defined
 		if (!event['id']) return debug_message(true, "Spawn handler needs a id");
 		// Set sub_type to be collection as default for backward compatibility
@@ -1071,7 +1061,7 @@ exports.NetworkMod = function(dispatch) {
 		// Send guide messages or/and play the voice
 		if (["message", "alert", "warning", "notification", "msgcp", "msgcg", "speech"].includes(event["sub_type"])) {
 			// Ignoring if verbose mode is disabled
-			if (!entered_guide.settings.verbose) return;
+			if (!guide.settings.verbose) return;
 			// Play the voice of text message
 			if (voice && dispatch.settings.speaks) {
 				timers[event["id"] || random_timer_id--] = dispatch.setTimeout(() => {
