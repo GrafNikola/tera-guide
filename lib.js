@@ -1,4 +1,3 @@
-
 const HIGHLIGHT_ITEM        = 110684; // Tier 21 Superior Twin Swords
 const HIGHLIGHT_ITEM_BLUE   = 89542;  // Annihilation Disc (x1 effect)
 const HIGHLIGHT_ITEM_PURPLE = 89543;  // Annihilation Disc (x2 effect)
@@ -137,64 +136,75 @@ function SpawnSemicircle(degree1, degree2, item, offsetAngle, offsetDistance, in
 }
 
 function SpawnObject(type, target, item, offsetAngle, offsetDistance, angle, distance, delay, duration, label, handlers, event, entity, dispatch) {
+	if (delay > 0) {
+		dispatch.setTimeout(SpawnObjectCallback, delay,
+			type, target, item, offsetAngle, offsetDistance, angle, distance, duration, label,
+			handlers, event, entity
+		);
+	} else {
+		SpawnObjectCallback(
+			type, target, item, offsetAngle, offsetDistance, angle, distance, duration, label,
+			handlers, event, entity
+		);
+	}
+}
+
+function SpawnObjectCallback(type, target, item, offsetAngle, offsetDistance, angle, distance, duration, label, handlers, event, entity) {
 	let shield_loc;
 
-	// use local delay
-	dispatch.setTimeout(() => {
-		if (target && entity.dest !== undefined) {
-			shield_loc = entity["dest"].clone();
-		} else if (entity.loc !== undefined) {
-			shield_loc = entity["loc"].clone();
-		} else {
-			return;
-		}
+	if (target && entity.dest !== undefined) {
+		shield_loc = entity["dest"].clone();
+	} else if (entity.loc !== undefined) {
+		shield_loc = entity["loc"].clone();
+	} else {
+		return;
+	}
 
-		shield_loc.w = entity["loc"].w;
+	shield_loc.w = entity["loc"].w;
 
-		applyDistance(shield_loc, offsetDistance, 360 - offsetAngle);
+	applyDistance(shield_loc, offsetDistance, 360 - offsetAngle);
 
-		switch (type) {
-			// S_SPAWN_COLLECTION
-			case "collection":
-				handlers["spawn"]({
-					id: item,
-					sub_delay: duration,
-					distance: distance,
-					offset: angle
-				}, {
-					loc: shield_loc
-				});
-				break;
+	switch (type) {
+		// S_SPAWN_COLLECTION
+		case "collection":
+			handlers["spawn"]({
+				id: item,
+				sub_delay: duration,
+				distance: distance,
+				offset: angle
+			}, {
+				loc: shield_loc
+			});
+			break;
 
-			// S_SPAWN_DROPITEM
-			case "item":
-				handlers["spawn"]({
-					sub_type: "item",
-					id: item,
-					sub_delay: duration,
-					distance: distance,
-					offset: angle
-				}, {
-					loc: shield_loc
-				});
-				break;
+		// S_SPAWN_DROPITEM
+		case "item":
+			handlers["spawn"]({
+				sub_type: "item",
+				id: item,
+				sub_delay: duration,
+				distance: distance,
+				offset: angle
+			}, {
+				loc: shield_loc
+			});
+			break;
 
-			// S_SPAWN_BUILD_OBJECT
-			case "build_object":
-				handlers["spawn"]({
-					sub_type: "build_object",
-					id: item,
-					sub_delay: duration,
-					distance: distance,
-					offset: angle,
-					ownerName: label[0],
-					message: label[1]
-				}, {
-					loc: shield_loc
-				});
-				break;
-		}
-	}, delay);
+		// S_SPAWN_BUILD_OBJECT
+		case "build_object":
+			handlers["spawn"]({
+				sub_type: "build_object",
+				id: item,
+				sub_delay: duration,
+				distance: distance,
+				offset: angle,
+				ownerName: label[0],
+				message: label[1]
+			}, {
+				loc: shield_loc
+			});
+			break;
+	}
 }
 
 function applyDistance(loc, offsetDistance, offsetAngle) {

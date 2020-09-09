@@ -2,7 +2,7 @@
 //
 // made by HSDN
 
-const { SpawnCircle, SpawnVector } = require("../lib");
+const { SpawnCircle, SpawnVector } = module.parent.exports.lib;
 
 let player, entity, library, effect;
 

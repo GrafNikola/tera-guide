@@ -3,7 +3,7 @@
 // made by michengs
 // updated by HSDN
 
-const { SpawnMarker, SpawnVector, SpawnCircle, applyDistance } = require("../lib");
+const { SpawnMarker, SpawnVector, SpawnCircle, applyDistance } = module.parent.exports.lib;
 
 let player, entity, library, effect;
 

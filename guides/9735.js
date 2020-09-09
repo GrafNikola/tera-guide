@@ -2,7 +2,7 @@
 //
 // made by michengs
 
-const { SpawnPoint, SpawnVector, SpawnCircle } = require("../lib");
+const { SpawnPoint, SpawnVector, SpawnCircle } = module.parent.exports.lib;
 
 let player, entity, library, effect;
 

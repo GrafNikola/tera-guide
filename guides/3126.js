@@ -2,7 +2,7 @@
 //
 // made by michengs / HSDN / ZC
 
-const { MARKER_ITEM, SpawnMarker, SpawnVector, SpawnCircle, SpawnSemicircle } = require("../lib");
+const { MARKER_ITEM, SpawnMarker, SpawnVector, SpawnCircle, SpawnSemicircle } = module.parent.exports.lib;
 
 let player, entity, library, effect;
 

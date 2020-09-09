@@ -2,7 +2,7 @@
 //
 // made by multarix
 
-const { SpawnVector, SpawnCircle } = require("../lib");
+const { SpawnVector, SpawnCircle } = module.parent.exports.lib;
 
 let player, entity, library, effect;
 

@@ -1,6 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const readline = require("readline");
+const lib = require("./lib");
 const dbg = require("./dbg");
 const DispatchWrapper = require("./dispatch");
 
@@ -11,192 +12,216 @@ try {
 	voice = null;
 }
 
-// Available strings for different languages
-const translation = {
-	// Russian
-	ru: {
-		unknowncommand: "Невереная команда, введите guide help",
-		helpheader: "Введите \"guide help\" для вывода справки",
-		helpbody: [
-			["guide, вкл./выкл. модуля", "PRMSG"],
-			["guide gui, показать графический интерфейс", "PRMSG"],
-			["guide voice, вкл./выкл. голосовые сообщения", "PRMSG"],
-			["guide lNotice, вкл./выкл. отправки сообщений в канал чата", "PRMSG"],
-			["guide gNotice, вкл./выкл. отправки сообщений в чат группы", "PRMSG"],
-			["guide 1~10, регулировка скорости чтения голосовых сообщений", "PRMSG"],
-			["guide spawnObject, вкл./выкл. спавна маркировочных объектов", "PRMSG"],
-			["guide stream, вкл./выкл. режима стрима (скрытие сообщений и объектов)", "PRMSG"],
-			["guide dungeons, список всех поддерживаемых данжей и их id", "PRMSG"],
-			["guide verbose id, вкл./выкл. всех сообщений для данжа, где id - идентификатор данжа", "PRMSG"],
-			["guide spawnObject id, вкл./выкл. спавна объектов для данжа, где id - идентификатор данжа", "PRMSG"],
-			["guide cc, отобразить текущий цвет системного сообщения", "PRMSG"],
-			["guide cr, установить цвет сообщения: красный", "CRMSG"],
-			["guide c, установить цвет сообщения: оранжевый", "COMSG"],
-			["guide cy, установить цвет сообщения: желтый", "CYMSG"],
-			["guide cg, установить цвет сообщения: зеленый", "CGMSG"],
-			["guide cdb, установить цвет сообщения: темно-синий", "CDBMSG"],
-			["guide cb, установить цвет сообщения: синий", "CBMSG"],
-			["guide cv, установить цвет сообщения: фиолетовый", "CVMSG"],
-			["guide cp, установить цвет сообщения: розовый", "CPMSG"],
-			["guide clp, установить цвет сообщения: светло-розовый", "CLPMSG"],
-			["guide clb, установить цвет сообщения: светло-синий", "CLBMSG"],
-			["guide cbl, установить цвет сообщения: черный", "CBLMSG"],
-			["guide cgr, установить цвет сообщения: серый", "CGRMSG"],
-			["guide cw, установить цвет сообщения: белый", "CWMSG"],
-		],
-		red: "Красный",
-		green: "Зеленый",
-		settings: "Настройки",
-		spawnObject: "Спавн объектов",
-		speaks: "Голосовые сообщения",
-		lNotice: "Сообщения в чат",
-		gNotice: "Отправка сообщений членам группы",
-		stream: "Режим стримера",
-		rate: "Скорость речи",
-		color: "Выбор цвета",
-		dungeons: "Настройки данжей",
-		verbose: "Сообщения",
-		objects: "Объекты",
-		test: "Проверка",
-		module: "Модуль TERA-Guide",
-		enabled: "Вкл.",
-		disabled: "Выкл.",
-		voicetest: "[Проверка скорости чтения сообщений]",
-		colorchanged: "Цвет текста сообщений изменен",
-		ratechanged: "Скорость речи изменена на",
-		dgnotfound: "Данж с таким id не найден.",
-		dgnotspecified: "Не указан id данжа.",
-		enterdg: "Вы вошли в данж",
-		enterspdg: "Вы вошли в SP данж",
-		enteresdg: "Вы вошли в ES данж",
-		fordungeon: "для данжа",
-	},
-	// English
-	en: {
-		unknowncommand: "Unknown command, type \"guide help\"",
-		helpheader: "Enter \"guide help\" for more information",
-		helpbody: [
-			["guide, module on/off", "PRMSG"],
-			["guide gui, show module GUI", "PRMSG"],
-			["guide voice, text-to-speech (TTS) notices on/off", "PRMSG"],
-			["guide lNotice, send notices to chat on/off", "PRMSG"],
-			["guide gNotice, send notices to party chat channel on/off", "PRMSG"],
-			["guide 1~10, to settings TTS speech rate", "PRMSG"],
-			["guide spawnObject, spawn marker objects on/off", "PRMSG"],
-			["guide stream, streamer mode on/off", "PRMSG"],
-			["guide dungeons, list of all supported dungeons", "PRMSG"],
-			["verbose id, send notices for specified dungeon on/off", "PRMSG"],
-			["guide spawnObject id, spawn marker objects for specified dungeon on/off", "PRMSG"],
-			["guide cc, view the current system message notification color", "PRMSG"],
-			["guide cr, message color is RED", "CRMSG"],
-			["guide co, message color is ORANGE", "COMSG"],
-			["guide cy, message color is YELLOW", "CYMSG"],
-			["guide cg, message color is GREEN", "CGMSG"],
-			["guide cdb, message color is DARK BLUE", "CDBMSG"],
-			["guide cb, message color is BLUE", "CBMSG"],
-			["guide cv, message color is VIOLET", "CVMSG"],
-			["guide cp, message color is PINK", "CPMSG"],
-			["guide clp, message color is LIGHT PINK", "CLPMSG"],
-			["guide clb, message color is LIGHT BLUE", "CLBMSG"],
-			["guide cbl, message color is BLACK", "CBLMSG"],
-			["guide cgr, message color is GRAY", "CGRMSG"],
-			["guide cw, message color is WHITE", "CWMSG"],
-		],
-		red: "Red",
-		green: "Green",
-		settings: "Settings",
-		spawnObject: "Spawn objects",
-		speaks: "Voice messages",
-		lNotice: "Chat messages",
-		gNotice: "Send messages to party members",
-		stream: "Streamer Mode",
-		rate: "Speech rate",
-		color: "Change color",
-		dungeons: "Dungeon settings",
-		verbose: "Messages",
-		objects: "Objects",
-		test: "Test",
-		module: "TERA-Guide module",
-		enabled: "On",
-		disabled: "Off",
-		voicetest: "[Voice speech rate test]",
-		colorchanged: "Message notification color is changed",
-		ratechanged: "Voice speed changed to",
-		dgnotfound: "Dungeon not found.",
-		dgnotspecified: "Dungeon id not specified.",
-		enterdg: "Enter Dungeon",
-		enterspdg: "Enter SP Dungeon",
-		enteresdg: "Enter ES Dungeon",
-		fordungeon: "for dungeon",
-	},
-};
+function ClientMod(dispatch) {
+	this.allDungeons;
+	const dungeons = new Map();
+	dispatch.clientInterface.once("ready", async () => {
+		dispatch.queryData("/EventMatching/EventGroup/Event@type=?", ["Dungeon"], true, true, ["id"]).then((result) => {
+			this.allDungeons = result.map(e => {
+				const zoneId = e.children.find(x => x.name == "TargetList").children.find(x => x.name == "Target").attributes.id
+				let dungeon = dungeons.get(zoneId);
+				if (!dungeon) {
+					dungeon = { id: zoneId, name: "" };
+					dungeons.set(zoneId, dungeon);
+				}
+				return dungeon;
+			});
+			dispatch.queryData("/StrSheet_Dungeon/String@id=?", [[... dungeons.keys()]], true).then((result) => {
+				result.forEach(d => {
+					const dungeon = dungeons.get(d.attributes.id);
+					dungeon["name"] = d.attributes.string;
+				});
+			});
+		});
+	});
+}
 
-// Tank class ids(brawler + lancer)
-const TANK_CLASS_IDS = [1, 10];
-// Dps class ids(not counting warrior)
-const DPS_CLASS_IDS = [2, 3, 4, 5, 8, 9, 11, 12];
-// Healer class ids
-const HEALER_CLASS_IDS = [6, 7];
-// Warrior Defence stance abnormality ids
-const WARRIOR_TANK_IDS = [100200, 100201];
-// Zones with skillid range 1000-3000
-const SP_ZONE_IDS = [
-	3026, // Corrupted Skynest
-	3126, // Corrupted Skynest (Hard)
-	9050, // Rift's Edge (Hard)
-	9054, // Bathysmal Rise (Hard)
-	9044, // Bahaar's Sanctum
-	9066, // Demon's Wheel
-	9070, // Manglemire
-	9750, // Rift's Edge
-	9754, // Bathysmal Rise
-	9781, // Velik's Sanctuary
-	9916, // Sky Cruiser Endeavor (Hard)
-	9920, // Antaroth's Abyss (Hard)
-	9970, // Ruinous Manor (Hard)
-	9981  // Velik's Sanctuary (Hard)
-];
-// Zones with skillid range 100-200-3000
-const ES_ZONE_IDS = [
-	3023, // Akalath Quarantine
-	9000, // ???
-	9759  // Forsaken Island (Hard)
-];
-// Guide files directory name
-const GUIDES_DIR = "guides";
-// Supported languages by client
-const languages = { 0: "en", 1: "kr", 3: "jp", 4: "de", 5: "fr", 7: "tw", 8: "ru" };
-// Messages colors
-const cr = '</font><font color="#ff0000">';  // red
-const co = '</font><font color="#ff7700">';  // orange
-const cy = '</font><font color="#ffff00">';  // yellow
-const cg = '</font><font color="#00ff00">';  // green
-const cdb = '</font><font color="#2727ff">'; // dark blue
-const cb = '</font><font color="#0077ff">';  // blue
-const cv = '</font><font color="#7700ff">';  // violet
-const cp = '</font><font color="#ff00ff">';  // pink
-const clp = '</font><font color="#ff77ff">'; // light pink
-const clb = '</font><font color="#00ffff">'; // light blue
-const cbl = '</font><font color="#000000">'; // black
-const cgr = '</font><font color="#777777">'; // gray
-const cw = '</font><font color="#ffffff">';  // white
-// GUI colors
-const gcr = '#fe6f5e';  // red
-const gcg = '#4de19c';  // green
-const gcy = '#c0b94d';  // yellow
-const gcgr = '#778899'; // gray
-// Dungeon messages types
-const spt = 31; // text notice
-const spg = 42; // green message
-const spb = 43; // blue message
-const spr = 44; // red message
-const spi = 66; // blue info message
-const spn = 49; // left side notice
-
-exports.NetworkMod = function(dispatch) {
+function NetworkMod(dispatch) {
 	const fake_dispatch = new DispatchWrapper(dispatch);
 	const { player, entity, library, effect } = dispatch.require.library;
 	const command = dispatch.command;
+
+	// Available strings for different languages
+	const translation = {
+		// Russian
+		ru: {
+			unknowncommand: "Невереная команда, введите guide help",
+			helpheader: "Введите \"guide help\" для вывода справки",
+			helpbody: [
+				["guide, вкл./выкл. модуля", "PRMSG"],
+				["guide gui, показать графический интерфейс", "PRMSG"],
+				["guide voice, вкл./выкл. голосовые сообщения", "PRMSG"],
+				["guide lNotice, вкл./выкл. отправки сообщений в канал чата", "PRMSG"],
+				["guide gNotice, вкл./выкл. отправки сообщений в чат группы", "PRMSG"],
+				["guide 1~10, регулировка скорости чтения голосовых сообщений", "PRMSG"],
+				["guide spawnObject, вкл./выкл. спавна маркировочных объектов", "PRMSG"],
+				["guide stream, вкл./выкл. режима стрима (скрытие сообщений и объектов)", "PRMSG"],
+				["guide dungeons, список всех поддерживаемых данжей и их id", "PRMSG"],
+				["guide verbose id, вкл./выкл. всех сообщений для данжа, где id - идентификатор данжа", "PRMSG"],
+				["guide spawnObject id, вкл./выкл. спавна объектов для данжа, где id - идентификатор данжа", "PRMSG"],
+				["guide cc, отобразить текущий цвет системного сообщения", "PRMSG"],
+				["guide cr, установить цвет сообщения: красный", "CRMSG"],
+				["guide c, установить цвет сообщения: оранжевый", "COMSG"],
+				["guide cy, установить цвет сообщения: желтый", "CYMSG"],
+				["guide cg, установить цвет сообщения: зеленый", "CGMSG"],
+				["guide cdb, установить цвет сообщения: темно-синий", "CDBMSG"],
+				["guide cb, установить цвет сообщения: синий", "CBMSG"],
+				["guide cv, установить цвет сообщения: фиолетовый", "CVMSG"],
+				["guide cp, установить цвет сообщения: розовый", "CPMSG"],
+				["guide clp, установить цвет сообщения: светло-розовый", "CLPMSG"],
+				["guide clb, установить цвет сообщения: светло-синий", "CLBMSG"],
+				["guide cbl, установить цвет сообщения: черный", "CBLMSG"],
+				["guide cgr, установить цвет сообщения: серый", "CGRMSG"],
+				["guide cw, установить цвет сообщения: белый", "CWMSG"],
+			],
+			red: "Красный",
+			green: "Зеленый",
+			settings: "Настройки",
+			spawnObject: "Спавн объектов",
+			speaks: "Голосовые сообщения",
+			lNotice: "Сообщения в чат",
+			gNotice: "Отправка сообщений членам группы",
+			stream: "Режим стримера",
+			rate: "Скорость речи",
+			color: "Выбор цвета",
+			dungeons: "Настройки данжей",
+			verbose: "Сообщения",
+			objects: "Объекты",
+			test: "Проверка",
+			module: "Модуль TERA-Guide",
+			enabled: "Вкл.",
+			disabled: "Выкл.",
+			voicetest: "[Проверка скорости чтения сообщений]",
+			colorchanged: "Цвет текста сообщений изменен",
+			ratechanged: "Скорость речи изменена на",
+			dgnotfound: "Данж с таким id не найден.",
+			dgnotspecified: "Не указан id данжа.",
+			enterdg: "Вы вошли в данж",
+			enterspdg: "Вы вошли в SP данж",
+			enteresdg: "Вы вошли в ES данж",
+			fordungeon: "для данжа",
+		},
+		// English
+		en: {
+			unknowncommand: "Unknown command, type \"guide help\"",
+			helpheader: "Enter \"guide help\" for more information",
+			helpbody: [
+				["guide, module on/off", "PRMSG"],
+				["guide gui, show module GUI", "PRMSG"],
+				["guide voice, text-to-speech (TTS) notices on/off", "PRMSG"],
+				["guide lNotice, send notices to chat on/off", "PRMSG"],
+				["guide gNotice, send notices to party chat channel on/off", "PRMSG"],
+				["guide 1~10, to settings TTS speech rate", "PRMSG"],
+				["guide spawnObject, spawn marker objects on/off", "PRMSG"],
+				["guide stream, streamer mode on/off", "PRMSG"],
+				["guide dungeons, list of all supported dungeons", "PRMSG"],
+				["verbose id, send notices for specified dungeon on/off", "PRMSG"],
+				["guide spawnObject id, spawn marker objects for specified dungeon on/off", "PRMSG"],
+				["guide cc, view the current system message notification color", "PRMSG"],
+				["guide cr, message color is RED", "CRMSG"],
+				["guide co, message color is ORANGE", "COMSG"],
+				["guide cy, message color is YELLOW", "CYMSG"],
+				["guide cg, message color is GREEN", "CGMSG"],
+				["guide cdb, message color is DARK BLUE", "CDBMSG"],
+				["guide cb, message color is BLUE", "CBMSG"],
+				["guide cv, message color is VIOLET", "CVMSG"],
+				["guide cp, message color is PINK", "CPMSG"],
+				["guide clp, message color is LIGHT PINK", "CLPMSG"],
+				["guide clb, message color is LIGHT BLUE", "CLBMSG"],
+				["guide cbl, message color is BLACK", "CBLMSG"],
+				["guide cgr, message color is GRAY", "CGRMSG"],
+				["guide cw, message color is WHITE", "CWMSG"],
+			],
+			red: "Red",
+			green: "Green",
+			settings: "Settings",
+			spawnObject: "Spawn objects",
+			speaks: "Voice messages",
+			lNotice: "Chat messages",
+			gNotice: "Send messages to party members",
+			stream: "Streamer Mode",
+			rate: "Speech rate",
+			color: "Change color",
+			dungeons: "Dungeon settings",
+			verbose: "Messages",
+			objects: "Objects",
+			test: "Test",
+			module: "TERA-Guide module",
+			enabled: "On",
+			disabled: "Off",
+			voicetest: "[Voice speech rate test]",
+			colorchanged: "Message notification color is changed",
+			ratechanged: "Voice speed changed to",
+			dgnotfound: "Dungeon not found.",
+			dgnotspecified: "Dungeon id not specified.",
+			enterdg: "Enter Dungeon",
+			enterspdg: "Enter SP Dungeon",
+			enteresdg: "Enter ES Dungeon",
+			fordungeon: "for dungeon",
+		},
+	};
+
+	// Tank class ids(brawler + lancer)
+	const TANK_CLASS_IDS = [1, 10];
+	// Dps class ids(not counting warrior)
+	const DPS_CLASS_IDS = [2, 3, 4, 5, 8, 9, 11, 12];
+	// Healer class ids
+	const HEALER_CLASS_IDS = [6, 7];
+	// Warrior Defence stance abnormality ids
+	const WARRIOR_TANK_IDS = [100200, 100201];
+	// Zones with skillid range 1000-3000
+	const SP_ZONE_IDS = [
+		3026, // Corrupted Skynest
+		3126, // Corrupted Skynest (Hard)
+		9050, // Rift's Edge (Hard)
+		9054, // Bathysmal Rise (Hard)
+		9044, // Bahaar's Sanctum
+		9066, // Demon's Wheel
+		9070, // Manglemire
+		9750, // Rift's Edge
+		9754, // Bathysmal Rise
+		9781, // Velik's Sanctuary
+		9916, // Sky Cruiser Endeavor (Hard)
+		9920, // Antaroth's Abyss (Hard)
+		9970, // Ruinous Manor (Hard)
+		9981  // Velik's Sanctuary (Hard)
+	];
+	// Zones with skillid range 100-200-3000
+	const ES_ZONE_IDS = [
+		3023, // Akalath Quarantine
+		9000, // ???
+		9759  // Forsaken Island (Hard)
+	];
+	// Guide files directory name
+	const GUIDES_DIR = "guides";
+	// Supported languages by client
+	const languages = { 0: "en", 1: "kr", 3: "jp", 4: "de", 5: "fr", 7: "tw", 8: "ru" };
+	// Messages colors
+	const cr = '</font><font color="#ff0000">';  // red
+	const co = '</font><font color="#ff7700">';  // orange
+	const cy = '</font><font color="#ffff00">';  // yellow
+	const cg = '</font><font color="#00ff00">';  // green
+	const cdb = '</font><font color="#2727ff">'; // dark blue
+	const cb = '</font><font color="#0077ff">';  // blue
+	const cv = '</font><font color="#7700ff">';  // violet
+	const cp = '</font><font color="#ff00ff">';  // pink
+	const clp = '</font><font color="#ff77ff">'; // light pink
+	const clb = '</font><font color="#00ffff">'; // light blue
+	const cbl = '</font><font color="#000000">'; // black
+	const cgr = '</font><font color="#777777">'; // gray
+	const cw = '</font><font color="#ffffff">';  // white
+	// GUI colors
+	const gcr = '#fe6f5e';  // red
+	const gcg = '#4de19c';  // green
+	const gcy = '#c0b94d';  // yellow
+	const gcgr = '#778899'; // gray
+	// Dungeon messages types
+	const spt = 31; // text notice
+	const spg = 42; // green message
+	const spb = 43; // blue message
+	const spr = 44; // red message
+	const spi = 66; // blue info message
+	const spn = 49; // left side notice
 
 	// An object of types and their corresponding function handlers
 	const function_event_handlers = {
@@ -204,8 +229,7 @@ exports.NetworkMod = function(dispatch) {
 		"despawn": despawn_handler,
 		"text": text_handler,
 		"stop_timer": stop_timer_handler,
-		"func": func_handler,
-		"lib": require("./lib")
+		"func": func_handler
 	};
 	// Default dungeon guide settings
 	const default_guide_settings = {
@@ -313,7 +337,7 @@ exports.NetworkMod = function(dispatch) {
 	function gui_handler(page, title) {
 		let tmp_data = [];
 		switch (page) {
-			default: {
+			default:
 				tmp_data.push(
 					{ text: `<font color="${gcy}" size="+20">${lang.settings}:</font>` }, { text: "&#09;&#09;&#09;" },
 					{ text: `<font color="${dispatch.settings.spawnObject ? gcg : gcr}" size="+18">[${lang.spawnObject}]</font>`, command: "guide spawnObject;guide gui" }, { text: "&nbsp;&nbsp;" },
@@ -355,7 +379,6 @@ exports.NetworkMod = function(dispatch) {
 					tmp_data.push({ text: "<br>" });
 				}
 				gui.parse(tmp_data, `<font>${title}</font> | <font color="${gcr}" size="+16">${lang.red}</font><font color="${gcgr}" size="+16"> = ${lang.disabled}, <font color="${gcg}" size="+16">${lang.green}</font><font color="${gcgr}" size="+16"> = ${lang.enabled}</font>`)
-			}
 		}
 		tmp_data = [];
 	}
@@ -416,7 +439,7 @@ exports.NetworkMod = function(dispatch) {
 			return false;
 		}
 		switch (class_position) {
-			case "tank": {
+			case "tank":
 				// if it's a warrior with dstance abnormality
 				if (player.job === 0) {
 					// Loop thru tank abnormalities
@@ -428,8 +451,7 @@ exports.NetworkMod = function(dispatch) {
 				// if it's a tank return true
 				if (TANK_CLASS_IDS.includes(player.job)) return true;
 				break;
-			}
-			case "dps": {
+			case "dps":
 				// If it's a warrior with dstance abnormality
 				if (player.job === 0) {
 					// Loop thru tank abnormalities
@@ -443,27 +465,21 @@ exports.NetworkMod = function(dispatch) {
 				// if it's a dps return true
 				if (DPS_CLASS_IDS.includes(player.job)) return true;
 				break;
-			}
-			case "heal": {
+			case "heal":
 				// if it's a healer return true
 				if (HEALER_CLASS_IDS.includes(player.job)) return true;
 				break;
-			}
-			case "priest": {
+			case "priest":
 				if (player.job === 6) return true; // For Priest specific actions (eg Arise)
 				break;
-			}
-			case "mystic": {
+			case "mystic":
 				if (player.job === 7) return true; // For Mystic specific actions
 				break;
-			}
-			case "lancer": {
+			case "lancer":
 				if (player.job === 1) return true; // For Lancer specific actions (eg Blue Shield)
 				break;
-			}
-			default: {
+			default:
 				debug_message(true, "Failed to find class_position value:", class_position);
-			}
 		}
 		return false;
 	}
@@ -738,10 +754,6 @@ exports.NetworkMod = function(dispatch) {
 		},
 		// Testing events
 		event(arg1, arg2) {
-			// Clear library cache
-			try {
-				delete require.cache[require.resolve("./lib")];
-			} catch (e) {}
 			// If arg1 is "load", load guide from arg2 specified
 			if (arg1 === "load") {
 				if (!arg2) return command.message(`Invalid values for sub command "event" ${arg1}`);
@@ -946,7 +958,7 @@ exports.NetworkMod = function(dispatch) {
 		// Create the sending event
 		switch (sub_type) {
 			// If it"s type collection, it"s S_SPAWN_COLLECTION
-			case "collection": {
+			case "collection":
 				Object.assign(sending_event, {
 					id: event["id"],
 					amount: 1,
@@ -955,9 +967,8 @@ exports.NetworkMod = function(dispatch) {
 					extractorDisabledTime: 0
 				});
 				break;
-			}
 			// If it"s type item, it"s S_SPAWN_DROPITEM
-			case "item": {
+			case "item":
 				Object.assign(sending_event, {
 					item: event["id"],
 					amount: 1,
@@ -969,9 +980,8 @@ exports.NetworkMod = function(dispatch) {
 					owners: []
 				});
 				break;
-			}
 			// If it's type build_object, it's S_SPAWN_BUILD_OBJECT
-			case "build_object": {
+			case "build_object":
 				Object.assign(sending_event, {
 					itemId: event["id"],
 					unk: 0,
@@ -979,24 +989,15 @@ exports.NetworkMod = function(dispatch) {
 					message: event["message"] || ""
 				});
 				break;
-			}
 			// If we haven't implemented the sub_type the event asks for
-			default: {
+			default:
 				return debug_message(true, "Invalid sub_type for spawn handler:", event['sub_type']);
-			}
 		}
-		// Create the timer for spawning the item
-		timers[item_unique_id] = dispatch.setTimeout(() => {
-			switch (sub_type) {
-				case "collection":
-					return dispatch.toClient("S_SPAWN_COLLECTION", 4, sending_event);
-				case "item":
-					return dispatch.toClient("S_SPAWN_DROPITEM", 8, sending_event);
-				case "build_object":
-					return dispatch.toClient("S_SPAWN_BUILD_OBJECT", 2, sending_event);
-			}
-		}, event["delay"] || 0 / speed);
-		// Create the timer for despawning the item
+		if (event["delay"] > 0) {
+			timers[item_unique_id] = dispatch.setTimeout(spawn_callback, event["delay"] / speed, sub_type, sending_event);
+		} else {
+			spawn_callback(sub_type, sending_event);
+		}
 		timers[random_timer_id--] = dispatch.setTimeout(() => {
 			switch (sub_type) {
 				case "collection":
@@ -1007,6 +1008,18 @@ exports.NetworkMod = function(dispatch) {
 					return dispatch.toClient("S_DESPAWN_BUILD_OBJECT", 2, despawn_event);
 			}
 		}, event["sub_delay"] / speed);
+	}
+
+	// Spawn callback
+	function spawn_callback(sub_type, sending_event) {
+		switch (sub_type) {
+			case "collection":
+				return dispatch.toClient("S_SPAWN_COLLECTION", 4, sending_event);
+			case "item":
+				return dispatch.toClient("S_SPAWN_DROPITEM", 8, sending_event);
+			case "build_object":
+				return dispatch.toClient("S_SPAWN_BUILD_OBJECT", 2, sending_event);
+		}
 	}
 
 	// Despawn handler
@@ -1046,126 +1059,111 @@ exports.NetworkMod = function(dispatch) {
 		// Make sure message is defined
 		if (!message) return debug_message(true, "Text handler needs a message");
 		// Send guide messages or/and play the voice
-		if (["message", "alert", "warning", "notification", "msgcp", "msgcg", "speech"].includes(event["sub_type"])) {
+		if (["message", "alert", "warning", "notification", "msgcp", "msgcg", "speech", "MSG"].includes(event["sub_type"])) {
 			// Ignoring if verbose mode is disabled
 			if (!guide.settings.verbose) return;
 			// Play the voice of text message
 			if (voice && dispatch.settings.speaks) {
-				timers[event["id"] || random_timer_id--] = dispatch.setTimeout(() => {
+				if (event["delay"] > 0) {
+					timers[event["id"] || random_timer_id--] = dispatch.setTimeout(voice.speak, event["delay"] - 600 / speed, message, dispatch.settings.rate);
+				} else {
 					voice.speak(message, dispatch.settings.rate);
-				}, (event["delay"] || 0) - 600 / speed);
+				}
 			}
 			// Ignoring sending a text message if "speech" sub_type specified
 			if (event["sub_type"] == "speech") return;
 			// Send a text message
-			timers[event["id"] || random_timer_id--] = dispatch.setTimeout(() => {
-				switch (event["sub_type"]) {
-					// Basic message
-					case "message": {
-						sendMessage(message);
-						break;
-					}
-					// Alert message red
-					case "alert": {
-						sendAlert(message, cr, spr);
-						break;
-					}
-					// Alert message blue
-					case "warning": {
-						sendAlert(message, clb, spb);
-						break;
-					}
-					// Notification message
-					case "notification": {
-						sendNotification(message);
-						break;
-					}
-					// Pink dungeon event message
-					case "msgcp": {
-						sendDungeonEvent(message, cp, spg);
-						break;
-					}
-					// Green dungeon event message
-					case "msgcg": {
-						sendDungeonEvent(message, cg, spg);
-						break;
-					}
-				}
-			}, (event["delay"] || 0) / speed);
+			if (event["delay"] > 0) {
+				timers[event["id"] || random_timer_id--] = dispatch.setTimeout(text_callback, event["delay"] / speed, event["sub_type"], message);
+			} else {
+				text_callback(event["sub_type"], message);
+			}
 		// Other types of messages (eg proxy-channel message)
 		} else {
 			switch (event["sub_type"]) {
-				// Debug or test message to the proxy-channel and log console
-				case "MSG": {
-					timers[event["id"] || random_timer_id--] = dispatch.setTimeout(() => {
-						command.message(cr + message);
-						console.log(cr + message);
-					}, (event["delay"] || 0) - 600 / speed);
-					break;
-				}
 				// Color-specified proxy-channel messages
-				case "COMSG": {
+				case "COMSG":
 					command.message(co + message);
 					break;
-				}
-				case "CYMSG": {
+				case "CYMSG":
 					command.message(cy + message);
 					break;
-				}
-				case "CGMSG": {
+				case "CGMSG":
 					command.message(cg + message);
 					break;
-				}
-				case "CDBMSG": {
+				case "CDBMSG":
 					command.message(cdb + message);
 					break;
-				}
-				case "CBMSG": {
+				case "CBMSG":
 					command.message(cb + message);
 					break;
-				}
-				case "CVMSG": {
+				case "CVMSG":
 					command.message(cv + message);
 					break;
-				}
-				case "CPMSG": {
+				case "CPMSG":
 					command.message(cp + message);
 					break;
-				}
-				case "CLPMSG": {
+				case "CLPMSG":
 					command.message(clp + message);
 					break;
-				}
-				case "CLBMSG": {
+				case "CLBMSG":
 					command.message(clb + message);
 					break;
-				}
-				case "CBLMSG": {
+				case "CBLMSG":
 					command.message(cbl + message);
 					break;
-				}
-				case "CGRMSG": {
+				case "CGRMSG":
 					command.message(cgr + message);
 					break;
-				}
-				case "CWMSG": {
+				case "CWMSG":
 					command.message(cw + message);
 					break;
-				}
-				case "CRMSG": {
+				case "CRMSG":
 					command.message(cr + message);
 					break;
-				}
 				// Default color proxy-channel message
-				case "PRMSG": {
+				case "PRMSG":
 					command.message(dispatch.settings.cc + message);
 					break;
-				}
 				// Invalid sub_type value
-				default: {
+				default:
 					return debug_message(true, "Invalid sub_type for text handler:", event['sub_type']);
-				}
 			}
+		}
+	}
+
+	// Text callback
+	function text_callback(sub_type, message) {
+		switch (sub_type) {
+			// Basic message
+			case "message":
+				sendMessage(message);
+				break;
+			// Alert message red
+			case "alert":
+				sendAlert(message, cr, spr);
+				break;
+			// Alert message blue
+			case "warning":
+				sendAlert(message, clb, spb);
+				break;
+			// Notification message
+			case "notification":
+				sendNotification(message);
+				break;
+			// Pink dungeon event message
+			case "msgcp":
+				sendDungeonEvent(message, cp, spg);
+				break;
+			// Green dungeon event message
+			case "msgcg":
+				sendDungeonEvent(message, cg, spg);
+				break;
+			// Debug or test message to the proxy-channel and log console
+			case "MSG":
+				command.message(cr + message);
+				console.log(cr + message);
+				break;
 		}
 	}
 
@@ -1274,31 +1272,16 @@ exports.NetworkMod = function(dispatch) {
 	function func_handler(event, ent, speed = 1.0) {
 		// Make sure func is defined
 		if (!event["func"]) return debug_message(true, "Func handler needs a func");
-		// Start the timer for the function call
-		timers[event["id"] || random_timer_id--] = dispatch.setTimeout(event["func"], (event["delay"] || 0) / speed, function_event_handlers, event, ent, fake_dispatch);
+		try {
+			if (event["delay"] > 0) {
+				timers[event["id"] || random_timer_id--] = dispatch.setTimeout(event["func"], event["delay"] / speed, function_event_handlers, event, ent, fake_dispatch);
+			} else {
+				event["func"].call(null, function_event_handlers, event, ent, fake_dispatch);
+			}
+		} catch (e) {
+			debug_message(true, e);
+		}
 	}
 }
 
-exports.ClientMod = function(dispatch) {
-	this.allDungeons;
-	const dungeons = new Map();
-	dispatch.clientInterface.once("ready", async () => {
-		dispatch.queryData("/EventMatching/EventGroup/Event@type=?", ["Dungeon"], true, true, ["id"]).then((result) => {
-			this.allDungeons = result.map(e => {
-				const zoneId = e.children.find(x => x.name == "TargetList").children.find(x => x.name == "Target").attributes.id
-				let dungeon = dungeons.get(zoneId);
-				if (!dungeon) {
-					dungeon = { id: zoneId, name: "" };
-					dungeons.set(zoneId, dungeon);
-				}
-				return dungeon;
-			});
-			dispatch.queryData("/StrSheet_Dungeon/String@id=?", [[... dungeons.keys()]], true).then((result) => {
-				result.forEach(d => {
-					const dungeon = dungeons.get(d.attributes.id);
-					dungeon["name"] = d.attributes.string;
-				});
-			});
-		});
-	});
-}
+module.exports = { ClientMod, NetworkMod, lib };

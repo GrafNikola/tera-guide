@@ -2,7 +2,7 @@
 //
 // made by michengs / HSDN
 
-const { HIGHLIGHT_ITEM, SpawnItem, SpawnMarker, SpawnVector, SpawnCircle } = require("../lib");
+const { HIGHLIGHT_ITEM, SpawnItem, SpawnMarker, SpawnVector, SpawnCircle } = module.parent.exports.lib;
 
 let player, entity, library, effect;
 

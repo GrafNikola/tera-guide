@@ -2,7 +2,7 @@
 //
 // made by michengs / HSDN
 
-const {SpawnMarker, SpawnCircle} = require("../lib");
+const {SpawnMarker, SpawnCircle} = module.parent.exports.lib;
 
 let player, entity, library, effect;
 
