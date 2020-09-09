@@ -20,18 +20,18 @@ let red  = false;
 let debuff_tracker_started = false;
 
 const mech_messages = {
-	0: { msgt: "IN",    msg: "К НЕМУ" },
-	1: { msgt: "OUT",   msg: "ОТ НЕГО" },
-	2: { msgt: "Left",  msg: "Лево" },
-	3: { msgt: "Right", msg: "Право" }
+	0: { message: "IN",    message_RU: "К НЕМУ" },
+	1: { message: "OUT",   message_RU: "ОТ НЕГО" },
+	2: { message: "Left",  message_RU: "Лево" },
+	3: { message: "Right", message_RU: "Право" }
 };
 const qbacting_messages = {
-	0: { msgt: "different", msg: "разные" },
-	1: { msgt: "same",      msg: "одинаковые" }
+	0: { message: "different", message_RU: "разные" },
+	1: { message: "same",      message_RU: "одинаковые" }
 };
 const debuff_messages = {
-	0: { msgt: "Ready to get Fire debuff", msg: "Готовность к переключению на Огонь" },
-	1: { msgt: "Ready to get Ice debuff",  msg: "Готовность к переключению на Лед" }
+	0: { message: "Ready to get Fire debuff", message_RU: "Готовность к переключению на Огонь" },
+	1: { message: "Ready to get Ice debuff",  message_RU: "Готовность к переключению на Лед" }
 };
 
 // NULL % 2 = 0
@@ -70,8 +70,8 @@ function debuff_added(id, handlers, dispatch) {
 			dispatch.setTimeout(() => {
 				handlers["text"]({
 					"sub_type": "alert",
-					"message": (`${debuff_messages[debuff % 2].msgt}`),
-					"message_RU": (`${debuff_messages[debuff % 2].msg}`)
+					"message": (`${debuff_messages[debuff % 2].message}`),
+					"message_RU": (`${debuff_messages[debuff % 2].message_RU}`)
 				});
 			}, 2000);
 			handlers["text"]({
@@ -112,15 +112,15 @@ function debuff_added(id, handlers, dispatch) {
 	if (blue) {
 		handlers["text"]({
 			"sub_type": "message",
-			"message": (`${mech_messages[(qbacting + debuff + 1) % 2].msgt}`),
-			"message_RU": (`${mech_messages[(qbacting + debuff + 1) % 2].msg}`)
+			"message": (`${mech_messages[(qbacting + debuff + 1) % 2].message}`),
+			"message_RU": (`${mech_messages[(qbacting + debuff + 1) % 2].message_RU}`)
 		});
 		spawn_marker((qbacting + debuff + 1) % 2, handlers, dispatch);
 	} else if (red) {
 		handlers["text"]({
 			"sub_type": "message",
-			"message": (`${mech_messages[(qbacting + debuff) % 2].msgt}`),
-			"message_RU": (`${mech_messages[(qbacting + debuff) % 2].msg}`)
+			"message": (`${mech_messages[(qbacting + debuff) % 2].message}`),
+			"message_RU": (`${mech_messages[(qbacting + debuff) % 2].message_RU}`)
 		});
 		spawn_marker((qbacting + debuff) % 2, handlers, dispatch);
 	}
@@ -194,15 +194,15 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 			if (debuff != null) {
 				handlers["text"]({
 					"sub_type": "message",
-					"message": (`Ice inside (${qbacting_messages[qbacting].msgt}) | ${mech_messages[debuff % 2 + 2].msgt} | ${mech_messages[(qbacting + debuff + 1) % 2].msgt}`),
-					"message_RU": (`Внутри лед (${qbacting_messages[qbacting].msg}) | ${mech_messages[debuff % 2 + 2].msg} | ${mech_messages[(qbacting + debuff + 1) % 2].msg}`),
+					"message": (`Ice inside (${qbacting_messages[qbacting].message}) | ${mech_messages[debuff % 2 + 2].message} | ${mech_messages[(qbacting + debuff + 1) % 2].message}`),
+					"message_RU": (`Внутри лед (${qbacting_messages[qbacting].message_RU}) | ${mech_messages[debuff % 2 + 2].message_RU} | ${mech_messages[(qbacting + debuff + 1) % 2].message_RU}`),
 				});
 				spawn_marker((qbacting + debuff + 1) % 2, handlers, dispatch);
 			} else {
 				handlers["text"]({
 					"sub_type": "message",
-					"message": (`Ice inside (${qbacting_messages[qbacting].msgt})`),
-					"message_RU": (`Внутри лед (${qbacting_messages[qbacting].msg})`)
+					"message": (`Ice inside (${qbacting_messages[qbacting].message})`),
+					"message_RU": (`Внутри лед (${qbacting_messages[qbacting].message_RU})`)
 				});
 			}
 		}, 500);
@@ -219,15 +219,15 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 			if (debuff != null) {
 				handlers["text"]({
 					"sub_type": "message",
-					"message": (`Fire inside (${qbacting_messages[qbacting].msgt}) | ${mech_messages[debuff % 2 + 2].msgt} | ${mech_messages[(qbacting + debuff) % 2].msgt}`),
-					"message_RU": (`Внутри огонь (${qbacting_messages[qbacting].msg}) | ${mech_messages[debuff % 2 + 2].msg} | ${mech_messages[(qbacting + debuff) % 2].msg}`)
+					"message": (`Fire inside (${qbacting_messages[qbacting].message}) | ${mech_messages[debuff % 2 + 2].message} | ${mech_messages[(qbacting + debuff) % 2].message}`),
+					"message_RU": (`Внутри огонь (${qbacting_messages[qbacting].message_RU}) | ${mech_messages[debuff % 2 + 2].message_RU} | ${mech_messages[(qbacting + debuff) % 2].message_RU}`)
 				});
 				spawn_marker((qbacting + debuff) % 2, handlers, dispatch);
 			} else {
 				handlers["text"]({
 					"sub_type": "message",
-					"message": (`Fire inside (${qbacting_messages[qbacting].msgt})`),
-					"message_RU": (`Внутри огонь (${qbacting_messages[qbacting].msg})`)
+					"message": (`Fire inside (${qbacting_messages[qbacting].message})`),
+					"message_RU": (`Внутри огонь (${qbacting_messages[qbacting].message_RU})`)
 				});
 			}
 		}, 500);

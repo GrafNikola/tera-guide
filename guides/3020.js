@@ -115,8 +115,8 @@ function boss_thirty_event() {
 
 let debuff_tracker_started = false;
 let debuffs_targe = {
-	30209101: { msgt: "Lightning", msg: "Молния (эвейд)" },
-	30209102: { msgt: "Witch",     msg: "Ведьма (эвейд)" }
+	30209101: { message: "Lightning", message_RU: "Молния (эвейд)" },
+	30209102: { message: "Witch",     message_RU: "Ведьма (эвейд)" }
 };
 
 let debuff_call_event = null;
@@ -140,8 +140,8 @@ function start_dungeon_event(handlers, event, ent, dispatch) {
 					debuff_call_event = dispatch.setTimeout(() => {
 						handlers["text"]({
 							"sub_type": "alert",
-							"message": debuffs_targe[event.id].msgt,
-							"message_RU": debuffs_targe[event.id].msg
+							"message": debuffs_targe[event.id].message,
+							"message_RU": debuffs_targe[event.id].message_RU
 						});
 						debuff_call_event = null;
 					}, 1500);

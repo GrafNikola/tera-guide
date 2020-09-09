@@ -13,10 +13,10 @@ let msg_b = 3;
 let mech_reverse = false;
 
 const mech_messages = {
-	0: { msgt: "Out",  msg: "От него" },
-	1: { msgt: "In",   msg: "К нему" },
-	2: { msgt: "Wave", msg: "Волна" },
-	3: { msgt: "?",    msg: "?" }
+	0: { message: "Out",  message_RU: "От него" },
+	1: { message: "In",   message_RU: "К нему" },
+	2: { message: "Wave", message_RU: "Волна" },
+	3: { message: "?",    message_RU: "?" }
 };
 
 function skilld_event(skillid, handlers, event, ent, dispatch) {
@@ -141,11 +141,11 @@ function print_mech(next, code, handlers) {
 		sub_type = "notification";
 	}
 	if (mech_reverse) {
-		message += mech_messages[msg_b].msgt + " + " + mech_messages[msg_a].msgt;
-		message_RU += mech_messages[msg_b].msg  + " + " + mech_messages[msg_a].msg;
+		message += mech_messages[msg_b].message + " + " + mech_messages[msg_a].message;
+		message_RU += mech_messages[msg_b].message_RU  + " + " + mech_messages[msg_a].message_RU;
 	} else {
-		message += mech_messages[msg_a].msgt + " + " + mech_messages[msg_b].msgt;
-		message_RU += mech_messages[msg_a].msg  + " + " + mech_messages[msg_b].msg;
+		message += mech_messages[msg_a].message + " + " + mech_messages[msg_b].message;
+		message_RU += mech_messages[msg_a].message_RU  + " + " + mech_messages[msg_b].message_RU;
 	}
 	if (code) {
 		message += ", Code: " + (mech_reverse ? "0" : "1");
