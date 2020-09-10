@@ -2,7 +2,7 @@
 //
 // made by Yuyuko / HSDN
 
-const { HIGHLIGHT_ITEM, SpawnMarker, SpawnVector, SpawnCircle } = module.parent.exports.lib;
+const { Spawn } = module.parent.exports.lib;
 
 let player, entity, library, effect;
 
@@ -29,11 +29,12 @@ const COLOURS_OFFSETS = {
 	"blue": 240,
 };
 function thirdboss_set_clockwise_event(clockwise, handlers, event, ent, dispatch) {
+	const spawn = new Spawn(handlers, event, ent, dispatch);
 	dispatch.setTimeout(() => {
 		const colour_rotation = clockwise ? ["red", "yellow", "blue"] : ["blue", "yellow", "red"];
 		for (let i = 0; i < 3; i++) {
 			let current_colour = colour_rotation[(colour_rotation.indexOf(colour_to_use) + i) % 3];
-			SpawnMarker(false, COLOURS_OFFSETS[current_colour], 150, i * 2600, (i + 1) * 3000, true, null, handlers, event, ent, dispatch);
+			spawn.marker(false, COLOURS_OFFSETS[current_colour], 150, i * 2600, (i + 1) * 3000, true, null);
 		}
 		dispatch.setTimeout(()=> clockwise = null, 12000);
 	}, 1000);
@@ -46,22 +47,22 @@ let SPAWNING_FIRST_CIRCLE_FLOWERS = [
 	{ "type": "text", "class_position": "tank", "sub_type": "message", "message": "Right Safe > Inward Waves", "message_RU": "Вправо сейф > Волны внутрь" },
 	{ "type": "text", "class_position": "dps", "sub_type": "message", "message": "Left Safe > Inward Waves", "message_RU": "Влево сейф > Волны внутрь" },
 	{ "type": "text", "class_position": "heal", "sub_type": "message", "message": "Left Safe > Inward Waves", "message_RU": "Влево сейф > Волны внутрь" },
-	{ "type": "func", "func": SpawnMarker.bind(null, false, 90, -250, 0, 2500, true, null) },
-	{ "type": "func", "func": SpawnVector.bind(null, 553, 0, 0, 180, 500, 0, 2500) },
-	{ "type": "func", "func": SpawnVector.bind(null, 553, 0, 0, 0, 500, 0, 1500) },
-	{ "type": "func", "func": SpawnCircle.bind(null, false, 445, 0, 0, 18, 143, 1500, 5000) },
-	{ "type": "func", "func": SpawnCircle.bind(null, false, 445, 0, 0, 12, 293, 1500, 5000)}
+	{ "type": "spawn_func", "func": "marker", "args": [false, 90, -250, 0, 2500, true, null] },
+	{ "type": "spawn_func", "func": "vector", "args": [553, 0, 0, 180, 500, 0, 2500] },
+	{ "type": "spawn_func", "func": "vector", "args": [553, 0, 0, 0, 500, 0, 1500] },
+	{ "type": "spawn_func", "func": "circle", "args": [false, 445, 0, 0, 18, 143, 1500, 5000] },
+	{ "type": "spawn_func", "func": "circle", "args": [false, 445, 0, 0, 12, 293, 1500, 5000] }
 ];
 
 let SPAWNING_SECOND_CIRCLE_FLOWERS = [
 	{ "type": "text", "class_position": "tank", "sub_type": "message", "message": "Left Safe > Outward Waves", "message_RU": "Влево сейф > Волны наружу" },
 	{ "type": "text", "class_position": "dps", "sub_type": "message", "message": "Right Safe > Outward Waves", "message_RU": "Вправо сейф > Волны наружу" },
 	{ "type": "text", "class_position": "heal", "sub_type": "message", "message": "Right Safe > Outward Waves", "message_RU": "Вправо сейф > Волны наружу" },
-	{ "type": "func", "func": SpawnMarker.bind(null, false, 270, -250, 0, 2500, true, null) },
-	{ "type": "func", "func": SpawnVector.bind(null, 553, 0, 0, 180, 500, 0, 2500) },
-	{ "type": "func", "func": SpawnVector.bind(null, 553, 0, 0, 0, 500, 0, 1500) },
-	{ "type": "func", "func": SpawnCircle.bind(null, false, 445, 0, 0, 18, 157, 1500, 5000) },
-	{ "type": "func", "func": SpawnCircle.bind(null, false, 445, 0, 0, 12, 307, 1500, 5000) }
+	{ "type": "spawn_func", "func": "marker", "args": [false, 270, -250, 0, 2500, true, null] },
+	{ "type": "spawn_func", "func": "vector", "args": [553, 0, 0, 180, 500, 0, 2500] },
+	{ "type": "spawn_func", "func": "vector", "args": [553, 0, 0, 0, 500, 0, 1500] },
+	{ "type": "spawn_func", "func": "circle", "args": [false, 445, 0, 0, 18, 157, 1500, 5000] },
+	{ "type": "spawn_func", "func": "circle", "args": [false, 445, 0, 0, 12, 307, 1500, 5000] }
 ];
 
 module.exports = {
@@ -89,7 +90,7 @@ module.exports = {
 	"s-920-2000-1113-0": [{ "type": "text", "sub_type": "message", "message": "Left Slash", "message_RU": "Левая полоса" }],
 	"s-920-2000-1114-0": [{ "type": "text", "sub_type": "message", "message": "Right Slash", "message_RU": "Правая полоса" }],
 	"s-920-2000-1106-0": [{ "type": "text", "sub_type": "message", "message": "Spin Attack", "message_RU": "Крутилка" },
-		{ "type": "func", "func": SpawnCircle.bind(null, false, 553, 0, 0, 10, 320, 0, 3500) }
+		{ "type": "spawn_func", "func": "circle", "args": [false, 553, 0, 0, 10, 320, 0, 3500] }
 	],
 	"s-920-2000-1105-0": [{ "type": "text", "sub_type": "message", "message": "Back Attack", "message_RU": "Удар назад" }],
 	"s-920-2000-1104-0": [{ "type": "text", "sub_type": "message", "message": "Random Jump", "message_RU": "Прыжок (стан)" }],
@@ -102,7 +103,7 @@ module.exports = {
 	"s-920-2000-2113-0": [{ "type": "text", "sub_type": "message", "message": "Left Slash", "message_RU": "Левая полоса" }],
 	"s-920-2000-2114-0": [{ "type": "text", "sub_type": "message", "message": "Right Slash", "message_RU": "Правая полоса" }],
 	"s-920-2000-2106-0": [{ "type": "text", "sub_type": "message", "message": "Spin Attack", "message_RU": "Крутилка" },
-		{ "type": "func", "func": SpawnCircle.bind(null, false, 553, 0, 0, 10, 320, 0, 3500) }
+		{ "type": "spawn_func", "func": "circle", "args": [false, 553, 0, 0, 10, 320, 0, 3500] }
 	],
 	"s-920-2000-2105-0": [{ "type": "text", "sub_type": "message", "message": "Back Attack", "message_RU": "Удар назад" }],
 	"s-920-2000-2104-0": [{ "type": "text", "sub_type": "message", "message": "Random Jump", "message_RU": "Прыжок (стан)" }],

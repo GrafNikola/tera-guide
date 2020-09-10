@@ -2,8 +2,6 @@
 //
 // made by michengs
 
-const {SpawnMarker, SpawnVector, SpawnCircle} = module.parent.exports.lib;
-
 let player, entity, library, effect;
 
 let power = true;
@@ -109,20 +107,20 @@ module.exports = {
 	"s-982-2000-113-0": [{ "type": "text", "sub_type": "message", "message": "Stun Inc", "message_RU": "Стан" }],
 	"s-982-2000-114-0": [
 		{ "type": "text", "sub_type": "message", "message": "Get In", "message_RU": "К нему" },
-		{ "type": "func", "func": SpawnCircle.bind(null, false, 553, 0, 0, 15, 260, 0, 3000) }
+		{ "type": "spawn_func", "func": "circle", "args": [false, 553, 0, 0, 15, 260, 0, 3000] }
 	],
 	"s-982-2000-116-0": [
 		{ "type": "text", "sub_type": "message", "message": "Front then Back", "message_RU": "Вперед | Назад" },
-		{ "type": "func", "func": SpawnVector.bind(null, 553, 0, 0, 270, 500, 0, 5000) },
-		{ "type": "func", "func": SpawnVector.bind(null, 553, 180, 0, 90, 500, 0, 5000) }
+		{ "type": "spawn_func", "func": "vector", "args": [553, 0, 0, 270, 500, 0, 5000] },
+		{ "type": "spawn_func", "func": "vector", "args": [553, 180, 0, 90, 500, 0, 5000] }
 	],
 	"s-982-2000-301-0": [
 		{ "type": "text", "sub_type": "message", "message": "Get Out + Dodge", "message_RU": "От него | Эвейд" },
-		{ "type": "func", "func": SpawnCircle.bind(null, false, 553, 0, 0, 15, 260, 0, 3000) }
+		{ "type": "spawn_func", "func": "circle", "args": [false, 553, 0, 0, 15, 260, 0, 3000] }
 	],
 	"s-982-2000-302-0": [
 		{ "type": "text", "sub_type": "message", "message": "Get In + Dodge", "message_RU": "К нему | Эвейд" },
-		{ "type": "func", "func": SpawnCircle.bind(null, false, 553, 0, 0, 15, 260, 0, 3000) }
+		{ "type": "spawn_func", "func": "circle", "args": [false, 553, 0, 0, 15, 260, 0, 3000] }
 	],
 
 	// 3 БОСС
@@ -142,22 +140,22 @@ module.exports = {
 	],
 	"s-982-3000-146-0": [
 		{ "type": "text", "sub_type": "message", "message": "Left Rear (Pulses)", "message_RU": "Слева сзади (бублик)" },
-		{ "type": "func", "func": SpawnMarker.bind(null, false, 215, 370, 0, 8000, true, null) },
-		{ "type": "func", "func": SpawnCircle.bind(null, false, 445, 215, 370, 15, 160, 2500, 8000) },
-		{ "type": "func", "func": SpawnCircle.bind(null, false, 445, 215, 370, 12, 320, 2500, 8000) },
-		{ "type": "func", "func": SpawnCircle.bind(null, false, 445, 215, 370, 10, 480, 2500, 8000) },
-		{ "type": "func", "func": SpawnCircle.bind(null, false, 445, 215, 370, 8, 640, 2500, 8000) },
-		{ "type": "func", "func": SpawnCircle.bind(null, false, 445, 215, 370, 6, 800, 2500, 8000) },
+		{ "type": "spawn_func", "func": "marker", "args": [false, 215, 370, 0, 8000, true, null] },
+		{ "type": "spawn_func", "func": "circle", "args": [false, 445, 215, 370, 15, 160, 2500, 8000] },
+		{ "type": "spawn_func", "func": "circle", "args": [false, 445, 215, 370, 12, 320, 2500, 8000] },
+		{ "type": "spawn_func", "func": "circle", "args": [false, 445, 215, 370, 10, 480, 2500, 8000] },
+		{ "type": "spawn_func", "func": "circle", "args": [false, 445, 215, 370, 8, 640, 2500, 8000] },
+		{ "type": "spawn_func", "func": "circle", "args": [false, 445, 215, 370, 6, 800, 2500, 8000] },
 		{ "type": "func", "func": skilld_event.bind(null, 146) }
 	],
 	"s-982-3000-154-0": [
 		{ "type": "text", "sub_type": "message", "message": "Left Rear (Pulses)", "message_RU": "Слева сзади (бублик)" },
-		{ "type": "func", "func": SpawnMarker.bind(null, false, 215, 370, 0, 8000, true, null) },
-		{ "type": "func", "func": SpawnCircle.bind(null, false, 445, 215, 370, 15, 160, 2500, 8000) },
-		{ "type": "func", "func": SpawnCircle.bind(null, false, 445, 215, 370, 12, 320, 2500, 8000) },
-		{ "type": "func", "func": SpawnCircle.bind(null, false, 445, 215, 370, 10, 480, 2500, 8000) },
-		{ "type": "func", "func": SpawnCircle.bind(null, false, 445, 215, 370, 8, 640, 2500, 8000) },
-		{ "type": "func", "func": SpawnCircle.bind(null, false, 445, 215, 370, 6, 800, 2500, 8000) },
+		{ "type": "spawn_func", "func": "marker", "args": [false, 215, 370, 0, 8000, true, null] },
+		{ "type": "spawn_func", "func": "circle", "args": [false, 445, 215, 370, 15, 160, 2500, 8000] },
+		{ "type": "spawn_func", "func": "circle", "args": [false, 445, 215, 370, 12, 320, 2500, 8000] },
+		{ "type": "spawn_func", "func": "circle", "args": [false, 445, 215, 370, 10, 480, 2500, 8000] },
+		{ "type": "spawn_func", "func": "circle", "args": [false, 445, 215, 370, 8, 640, 2500, 8000] },
+		{ "type": "spawn_func", "func": "circle", "args": [false, 445, 215, 370, 6, 800, 2500, 8000] },
 		{ "type": "func", "func": skilld_event.bind(null, 154) } 
 	],
 	"s-982-3000-144-0": [
@@ -170,22 +168,22 @@ module.exports = {
 	],
 	"s-982-3000-148-0": [
 		{ "type": "text", "sub_type": "message", "message": "Right Rear (Pulses)", "message_RU": "Справа сзади (бублик)" },
-		{ "type": "func", "func": SpawnMarker.bind(null, false, 155, 388, 0, 8000, true, null) }, 
-		{ "type": "func", "func": SpawnCircle.bind(null, false, 445, 155, 388, 15, 160, 2500, 8000) },
-		{ "type": "func", "func": SpawnCircle.bind(null, false, 445, 155, 388, 12, 320, 2500, 8000) },
-		{ "type": "func", "func": SpawnCircle.bind(null, false, 445, 155, 388, 10, 480, 2500, 8000) },
-		{ "type": "func", "func": SpawnCircle.bind(null, false, 445, 155, 388, 8, 640, 2500, 8000) },
-		{ "type": "func", "func": SpawnCircle.bind(null, false, 445, 155, 388, 6, 800, 2500, 8000) },
+		{ "type": "spawn_func", "func": "marker", "args": [false, 155, 388, 0, 8000, true, null] }, 
+		{ "type": "spawn_func", "func": "circle", "args": [false, 445, 155, 388, 15, 160, 2500, 8000] },
+		{ "type": "spawn_func", "func": "circle", "args": [false, 445, 155, 388, 12, 320, 2500, 8000] },
+		{ "type": "spawn_func", "func": "circle", "args": [false, 445, 155, 388, 10, 480, 2500, 8000] },
+		{ "type": "spawn_func", "func": "circle", "args": [false, 445, 155, 388, 8, 640, 2500, 8000] },
+		{ "type": "spawn_func", "func": "circle", "args": [false, 445, 155, 388, 6, 800, 2500, 8000] },
 		{ "type": "func", "func": skilld_event.bind(null, 148) }
 	],
 	"s-982-3000-155-0": [
 		{ "type": "text", "sub_type": "message", "message": "Right Rear (Pulses)", "message_RU": "Справа сзади (бублик)" },
-		{ "type": "func", "func": SpawnMarker.bind(null, false, 155, 388, 0, 8000, true, null) }, 
-		{ "type": "func", "func": SpawnCircle.bind(null, false, 445, 155, 388, 15, 160, 2500, 8000) },
-		{ "type": "func", "func": SpawnCircle.bind(null, false, 445, 155, 388, 12, 320, 2500, 8000) },
-		{ "type": "func", "func": SpawnCircle.bind(null, false, 445, 155, 388, 10, 480, 2500, 8000) },
-		{ "type": "func", "func": SpawnCircle.bind(null, false, 445, 155, 388, 8, 640, 2500, 8000) },
-		{ "type": "func", "func": SpawnCircle.bind(null, false, 445, 155, 388, 6, 800, 2500, 8000) },
+		{ "type": "spawn_func", "func": "marker", "args": [false, 155, 388, 0, 8000, true, null] }, 
+		{ "type": "spawn_func", "func": "circle", "args": [false, 445, 155, 388, 15, 160, 2500, 8000] },
+		{ "type": "spawn_func", "func": "circle", "args": [false, 445, 155, 388, 12, 320, 2500, 8000] },
+		{ "type": "spawn_func", "func": "circle", "args": [false, 445, 155, 388, 10, 480, 2500, 8000] },
+		{ "type": "spawn_func", "func": "circle", "args": [false, 445, 155, 388, 8, 640, 2500, 8000] },
+		{ "type": "spawn_func", "func": "circle", "args": [false, 445, 155, 388, 6, 800, 2500, 8000] },
 		{ "type": "func", "func": skilld_event.bind(null, 155) }
 	],
 	"s-982-3000-161-0": [
@@ -206,30 +204,30 @@ module.exports = {
 	],
 	"s-982-3000-139-0": [
 		{ "type": "text", "sub_type": "message", "message": "Left Safe", "message_RU": "Лево сейф" },
-		{ "type": "func", "func": SpawnVector.bind(null, 912, 90, 0, 0, 500, 0, 5000) },
-		{ "type": "func", "func": SpawnVector.bind(null, 912, 270, 0, 180, 500, 0, 5000) },
-		{ "type": "func", "func": SpawnMarker.bind(null, false, 270, 200, 0, 8000, true, null) },
+		{ "type": "spawn_func", "func": "vector", "args": [912, 90, 0, 0, 500, 0, 5000] },
+		{ "type": "spawn_func", "func": "vector", "args": [912, 270, 0, 180, 500, 0, 5000] },
+		{ "type": "spawn_func", "func": "marker", "args": [false, 270, 200, 0, 8000, true, null] },
 		{ "type": "func", "func": skilld_event.bind(null, 139) }
 	],
 	"s-982-3000-150-0": [
 		{ "type": "text", "sub_type": "message", "message": "Left Safe", "message_RU": "Лево сейф" },
-		{ "type": "func", "func": SpawnVector.bind(null, 912, 90, 0, 0, 500, 0, 5000) },
-		{ "type": "func", "func": SpawnVector.bind(null, 912, 270, 0, 180, 500, 0, 5000) },
-		{ "type": "func", "func": SpawnMarker.bind(null, false, 270, 200, 0, 8000, true, null) },
+		{ "type": "spawn_func", "func": "vector", "args": [912, 90, 0, 0, 500, 0, 5000] },
+		{ "type": "spawn_func", "func": "vector", "args": [912, 270, 0, 180, 500, 0, 5000] },
+		{ "type": "spawn_func", "func": "marker", "args": [false, 270, 200, 0, 8000, true, null] },
 		{ "type": "func", "func": skilld_event.bind(null, 150) }
 	],
 	"s-982-3000-141-0": [
 		{ "type": "text", "sub_type": "message", "message": "Right Safe", "message_RU": "Право сейф" },
-		{ "type": "func", "func": SpawnVector.bind(null, 912, 90, 0, 0, 500, 0, 5000) },
-		{ "type": "func", "func": SpawnVector.bind(null, 912, 270, 0, 180, 500, 0, 5000) },
-		{ "type": "func", "func": SpawnMarker.bind(null, false, 90, 200, 0, 8000, true, null) },
+		{ "type": "spawn_func", "func": "vector", "args": [912, 90, 0, 0, 500, 0, 5000] },
+		{ "type": "spawn_func", "func": "vector", "args": [912, 270, 0, 180, 500, 0, 5000] },
+		{ "type": "spawn_func", "func": "marker", "args": [false, 90, 200, 0, 8000, true, null] },
 		{ "type": "func", "func": skilld_event.bind(null, 141) }
 	],
 	"s-982-3000-152-0": [
 		{ "type": "text", "sub_type": "message", "message": "Right Safe", "message_RU": "Право сейф" },
-		{ "type": "func", "func": SpawnVector.bind(null, 912, 90, 0, 0, 500, 0, 5000) },
-		{ "type": "func", "func": SpawnVector.bind(null, 912, 270, 0, 180, 500, 0, 5000) },
-		{ "type": "func", "func": SpawnMarker.bind(null, false, 90, 200, 0, 8000, true, null) },
+		{ "type": "spawn_func", "func": "vector", "args": [912, 90, 0, 0, 500, 0, 5000] },
+		{ "type": "spawn_func", "func": "vector", "args": [912, 270, 0, 180, 500, 0, 5000] },
+		{ "type": "spawn_func", "func": "marker", "args": [false, 90, 200, 0, 8000, true, null] },
 		{ "type": "func", "func": skilld_event.bind(null, 152) }
 	],
 	"s-982-3000-300-0": [

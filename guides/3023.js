@@ -2,8 +2,6 @@
 //
 // made by michengs
 
-const { SpawnVector, SpawnCircle, SpawnSemicircle } = module.parent.exports.lib;
-
 let player, entity, library, effect;
 
 let debuff = 0;
@@ -115,49 +113,49 @@ module.exports = {
 	"s-3023-1000-104-0": [{ "type": "text", "sub_type": "message", "message": "Random Jump", "message_RU": "Прыжок + Стан" }],
 	"s-3023-1000-105-0": [{ "type": "text", "sub_type": "message", "message": "Back", "message_RU": "Поворот назад" }],
 	"s-3023-1000-110-0": [{ "type": "text", "sub_type": "message", "message": "Stun", "message_RU": "Передний стан" },
-		{ "type": "func", "func": SpawnCircle.bind(null, false, 553, 0, 175, 10, 260, 0, 6000) }
+		{ "type": "spawn_func", "func": "circle", "args": [false, 553, 0, 175, 10, 260, 0, 6000] }
 	],
 	"s-3023-1000-111-0": [{ "type": "text", "sub_type": "message", "message": "Left Slash", "message_RU": "Левая полоса" },
-		{ "type": "func", "func": SpawnVector.bind(null, 553, 270, 200, 180, 500, 0, 2000) },
-		{ "type": "func", "func": SpawnVector.bind(null, 553, 270, 200, 0, 300, 0, 2000) },
-		{ "type": "func", "func": SpawnVector.bind(null, 553, 0, 0, 180, 500, 0, 2000) },
-		{ "type": "func", "func": SpawnVector.bind(null, 553, 0, 0, 0, 300, 0, 2000) },
-		{ "type": "func", "func": SpawnVector.bind(null, 553, 0, 300, 270, 200, 0, 2000) },
-		{ "type": "func", "func": SpawnVector.bind(null, 553, 180, 500, 270, 200, 0, 2000) }
+		{ "type": "spawn_func", "func": "vector", "args": [553, 270, 200, 180, 500, 0, 2000] },
+		{ "type": "spawn_func", "func": "vector", "args": [553, 270, 200, 0, 300, 0, 2000] },
+		{ "type": "spawn_func", "func": "vector", "args": [553, 0, 0, 180, 500, 0, 2000] },
+		{ "type": "spawn_func", "func": "vector", "args": [553, 0, 0, 0, 300, 0, 2000] },
+		{ "type": "spawn_func", "func": "vector", "args": [553, 0, 300, 270, 200, 0, 2000] },
+		{ "type": "spawn_func", "func": "vector", "args": [553, 180, 500, 270, 200, 0, 2000] }
 	],
 	"s-3023-1000-112-0": [{ "type": "text", "sub_type": "message", "message": "Right Slash", "message_RU": "Правая полоса" },
-		{ "type": "func", "func": SpawnVector.bind(null, 553, 90, 200, 180, 500, 0, 2000) },
-		{ "type": "func", "func": SpawnVector.bind(null, 553, 90, 200, 0, 300, 0, 2000) },
-		{ "type": "func", "func": SpawnVector.bind(null, 553, 0, 0, 180, 500, 0, 2000) },
-		{ "type": "func", "func": SpawnVector.bind(null, 553, 0, 0, 0, 300, 0, 2000) },
-		{ "type": "func", "func": SpawnVector.bind(null, 553, 0, 300, 90, 200, 0, 2000) },
-		{ "type": "func", "func": SpawnVector.bind(null, 553, 180, 500, 90, 200, 0, 2000) }
+		{ "type": "spawn_func", "func": "vector", "args": [553, 90, 200, 180, 500, 0, 2000] },
+		{ "type": "spawn_func", "func": "vector", "args": [553, 90, 200, 0, 300, 0, 2000] },
+		{ "type": "spawn_func", "func": "vector", "args": [553, 0, 0, 180, 500, 0, 2000] },
+		{ "type": "spawn_func", "func": "vector", "args": [553, 0, 0, 0, 300, 0, 2000] },
+		{ "type": "spawn_func", "func": "vector", "args": [553, 0, 300, 90, 200, 0, 2000] },
+		{ "type": "spawn_func", "func": "vector", "args": [553, 180, 500, 90, 200, 0, 2000] }
 	],
 	"s-3023-1000-113-0": [{ "type": "text", "sub_type": "message", "message": "Left Slash", "message_RU": "Левая полоса" },
 		{ "type": "func", "func": skilld_event.bind(null, 1113) },
-		{ "type": "func", "func": SpawnVector.bind(null, 553, 270, 200, 180, 500, 0, 2000) },
-		{ "type": "func", "func": SpawnVector.bind(null, 553, 270, 200, 0, 300, 0, 2000) },
-		{ "type": "func", "func": SpawnVector.bind(null, 553, 0, 0, 180, 500, 0, 2000) },
-		{ "type": "func", "func": SpawnVector.bind(null, 553, 0, 0, 0, 300, 0, 2000) },
-		{ "type": "func", "func": SpawnVector.bind(null, 553, 0, 300, 270, 200, 0, 2000) },
-		{ "type": "func", "func": SpawnVector.bind(null, 553, 180, 500, 270, 200, 0, 2000) }
+		{ "type": "spawn_func", "func": "vector", "args": [553, 270, 200, 180, 500, 0, 2000] },
+		{ "type": "spawn_func", "func": "vector", "args": [553, 270, 200, 0, 300, 0, 2000] },
+		{ "type": "spawn_func", "func": "vector", "args": [553, 0, 0, 180, 500, 0, 2000] },
+		{ "type": "spawn_func", "func": "vector", "args": [553, 0, 0, 0, 300, 0, 2000] },
+		{ "type": "spawn_func", "func": "vector", "args": [553, 0, 300, 270, 200, 0, 2000] },
+		{ "type": "spawn_func", "func": "vector", "args": [553, 180, 500, 270, 200, 0, 2000] }
 	],
 	"s-3023-1000-114-0": [{ "type": "text", "sub_type": "message", "message": "Right Slash", "message_RU": "Правая полоса" },
 		{ "type": "func", "func": skilld_event.bind(null, 1114) },
-		{ "type": "func", "func": SpawnVector.bind(null, 553, 90, 200, 180, 500, 0, 2000) },
-		{ "type": "func", "func": SpawnVector.bind(null, 553, 90, 200, 0, 300, 0, 2000) },
-		{ "type": "func", "func": SpawnVector.bind(null, 553, 0, 0, 180, 500, 0, 2000) },
-		{ "type": "func", "func": SpawnVector.bind(null, 553, 0, 0, 0, 300, 0, 2000) },
-		{ "type": "func", "func": SpawnVector.bind(null, 553, 0, 300, 90, 200, 0, 2000) },
-		{ "type": "func", "func": SpawnVector.bind(null, 553, 180, 500, 90, 200, 0, 2000) }
+		{ "type": "spawn_func", "func": "vector", "args": [553, 90, 200, 180, 500, 0, 2000] },
+		{ "type": "spawn_func", "func": "vector", "args": [553, 90, 200, 0, 300, 0, 2000] },
+		{ "type": "spawn_func", "func": "vector", "args": [553, 0, 0, 180, 500, 0, 2000] },
+		{ "type": "spawn_func", "func": "vector", "args": [553, 0, 0, 0, 300, 0, 2000] },
+		{ "type": "spawn_func", "func": "vector", "args": [553, 0, 300, 90, 200, 0, 2000] },
+		{ "type": "spawn_func", "func": "vector", "args": [553, 180, 500, 90, 200, 0, 2000] }
 	],
 	"s-3023-1000-115-0": [{ "type": "text", "sub_type": "message", "message": "Back Attack", "message_RU": "Удар назад" },
-		{ "type": "func", "func": SpawnSemicircle.bind(null, 90, 270, 553, 0, 0, 20, 160, 100, 2000) },
-		{ "type": "func", "func": SpawnSemicircle.bind(null, 90, 270, 553, 0, 0, 12, 220, 100, 2000) },
-		{ "type": "func", "func": SpawnSemicircle.bind(null, 90, 270, 553, 0, 0, 10, 300, 100, 2000) }
+		{ "type": "spawn_func", "func": "semicircle", "args": [90, 270, 553, 0, 0, 20, 160, 100, 2000] },
+		{ "type": "spawn_func", "func": "semicircle", "args": [90, 270, 553, 0, 0, 12, 220, 100, 2000] },
+		{ "type": "spawn_func", "func": "semicircle", "args": [90, 270, 553, 0, 0, 10, 300, 100, 2000] }
 	],
 	"s-3023-1000-116-0": [{ "type": "text", "sub_type": "message", "message": "Kaia/Thrall of Protection", "message_RU": "Взрыв (Кайя)!!!" },
-		{ "type": "func", "func": SpawnCircle.bind(null, false, 553, 0, 0, 8, 500, 0, 6000) }
+		{ "type": "spawn_func", "func": "circle", "args": [false, 553, 0, 0, 8, 500, 0, 6000] }
 	],
 	"am-3023-1000-30231001": [{ "type": "func", "func": skilld_event.bind(null, 1001) }],
 	"am-3023-1000-30231000": [{ "type": "func", "func": skilld_event.bind(null, 1000) }],
@@ -165,21 +163,21 @@ module.exports = {
 	"ae-0-0-30231000": [{ "type": "func", "func": skilld_event.bind(null, 30231000) }], //开始红色
 	"ae-0-0-30231001": [{ "type": "func", "func": skilld_event.bind(null, 30231001) }], //开始蓝色
 	"s-3023-1000-3107-0": [{ "type": "text", "sub_type": "message", "message": "Smash", "message_RU": "Конус вперед" },
-		{ "type": "func", "func": SpawnVector.bind(null, 553, 90, 80, 10, 1000, 0, 4000) },
-		{ "type": "func", "func": SpawnVector.bind(null, 553, 270, 80, 350, 1000, 0, 4000) }
+		{ "type": "spawn_func", "func": "vector", "args": [553, 90, 80, 10, 1000, 0, 4000] },
+		{ "type": "spawn_func", "func": "vector", "args": [553, 270, 80, 350, 1000, 0, 4000] }
 	],
 	"s-3023-1000-3115-0": [{ "type": "text", "sub_type": "message", "message": "Spin", "message_RU": "Крутилка" },
-		{ "type": "func", "func": SpawnCircle.bind(null, false, 553, 0, 0, 10, 320, 0, 3500) }],
+		{ "type": "spawn_func", "func": "circle", "args": [false, 553, 0, 0, 10, 320, 0, 3500] }],
 	"s-3023-1000-3116-0": [{ "type": "text", "sub_type": "message", "message": "Circles + Spin", "message_RU": "Круги + Крутилка" },
-		{ "type": "func", "func": SpawnCircle.bind(null, false, 553, 0, 0, 10, 320, 0, 5000) }
+		{ "type": "spawn_func", "func": "circle", "args": [false, 553, 0, 0, 10, 320, 0, 5000] }
 	],
 	"s-3023-1000-3119-0": [{ "type": "func", "func": skilld_event.bind(null, 3119) },
-		{ "type": "func", "func": SpawnCircle.bind(null, false, 553, 0, 0, 10, 270, 0, 4000) },
-		{ "type": "func", "func": SpawnCircle.bind(null, false, 553, 0, 0, 8, 575, 0, 4000) }
+		{ "type": "spawn_func", "func": "circle", "args": [false, 553, 0, 0, 10, 270, 0, 4000] },
+		{ "type": "spawn_func", "func": "circle", "args": [false, 553, 0, 0, 8, 575, 0, 4000] }
 	],
 	"s-3023-1000-3220-0": [{ "type": "func", "func": skilld_event.bind(null, 3220) },
-		{ "type": "func", "func": SpawnCircle.bind(null, false, 553, 0, 0, 10, 270, 0, 4000) },
-		{ "type": "func", "func": SpawnCircle.bind(null, false, 553, 0, 0, 8, 575, 0, 4000) }
+		{ "type": "spawn_func", "func": "circle", "args": [false, 553, 0, 0, 10, 270, 0, 4000] },
+		{ "type": "spawn_func", "func": "circle", "args": [false, 553, 0, 0, 8, 575, 0, 4000] }
 	],
 	//"s-3023-1000-3223-0": [{ "type": "text", "sub_type": "message", "message_RU": "Красный дебаф" }],
 
@@ -191,18 +189,18 @@ module.exports = {
 	],
 	"s-3023-2000-178-0": [{ "type": "text", "sub_type": "message", "message": "Scratching (bleed)", "message_RU": "Крутилка (Кровоток)" }],
 	"s-3023-2000-181-0": [{ "type": "text", "sub_type": "message", "message": "Rock Throw", "message_RU": "Полоса вперед" },
-		{ "type": "func", "func": SpawnVector.bind(null, 553, 90, 80, 10, 1000, 0, 4000) },
-		{ "type": "func", "func": SpawnVector.bind(null, 553, 270, 80, 350, 1000, 0, 4000) }
+		{ "type": "spawn_func", "func": "vector", "args": [553, 90, 80, 10, 1000, 0, 4000] },
+		{ "type": "spawn_func", "func": "vector", "args": [553, 270, 80, 350, 1000, 0, 4000] }
 	],
 	"s-3023-2000-182-0": [{ "type": "text", "sub_type": "message", "message": "Knockdown", "message_RU": "Опрокид" }],
 	"s-3023-2000-185-0": [{ "type": "text", "sub_type": "message", "message": "Kaia/Thrall of Protection", "message_RU": "Взрыв (Кайя)!!!" },
 		{ "sub_type": "message", "delay": 110000, "message": "Big jump soon", "message_RU": "Скоро прыжок!" },
-		{ "type": "func", "func": SpawnCircle.bind(null, false, 553, 0, 0, 10, 500, 0, 6000) },
-		{ "type": "func", "func": SpawnCircle.bind(null, false, 553, 0, 0, 8, 750, 0, 6000) }
+		{ "type": "spawn_func", "func": "circle", "args": [false, 553, 0, 0, 10, 500, 0, 6000] },
+		{ "type": "spawn_func", "func": "circle", "args": [false, 553, 0, 0, 8, 750, 0, 6000] }
 	],
 	"s-3023-2000-202-0": [{ "type": "text", "sub_type": "message", "message": "Backstab", "message_RU": "Назад + Вперед" },
-		{ "type": "func", "func": SpawnVector.bind(null, 553, 90, 80, 180, 500, 0, 3000) },
-		{ "type": "func", "func": SpawnVector.bind(null, 553, 270, 80, 180, 500, 0, 3000) }
+		{ "type": "spawn_func", "func": "vector", "args": [553, 90, 80, 180, 500, 0, 3000] },
+		{ "type": "spawn_func", "func": "vector", "args": [553, 270, 80, 180, 500, 0, 3000] }
 	],
 	"s-3023-2000-207-0": [{ "type": "text", "sub_type": "message", "message": "Phantom x5 (bleed)", "message_RU": "Прыжки x5 (Кровоток)" }],
 	"s-3023-2000-212-0": [{ "type": "text", "sub_type": "message", "message": "Flash (bleed)", "message_RU": "Байт (Кровоток)" }]

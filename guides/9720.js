@@ -2,8 +2,6 @@
 //
 // made by Yuyuko / HSDN
 
-const { SpawnMarker, SpawnVector, SpawnCircle } = module.parent.exports.lib;
-
 let player, entity, library, effect;
 
 let counter = 0;
@@ -38,7 +36,7 @@ module.exports = {
 	// 2 BOSS
 	"s-720-2000-106-0": [
 		{ "type": "text", "sub_type": "message", "message": "Spin Attack", "message_RU": "Крутилка" },
-		{ "type": "func", "func": SpawnCircle.bind(null, false, 553, 0, 0, 10, 320, 0, 3500) }
+		{ "type": "spawn_func", "func": "circle", "args": [false, 553, 0, 0, 10, 320, 0, 3500] }
 	],
 	"s-720-2000-105-0": [{ "type": "text", "sub_type": "message", "message": "Back Attack", "message_RU": "Удар назад" }],
 	"s-720-2000-104-0": [{ "type": "text", "sub_type": "message", "message": "Random Jump", "message_RU": "Прыжок (стан)" }],
@@ -58,18 +56,18 @@ module.exports = {
 		{ "type": "text", "class_position":"tank", "sub_type": "message", "message": "Right Safe", "message_RU": "Вправо сейф" },
 		{ "type": "text", "class_position":"dps", "sub_type": "message", "message": "Left Safe", "message_RU": "Влево сейф" },
 		{ "type": "text", "class_position":"heal", "sub_type": "message", "message": "Left Safe", "message_RU": "Влево сейф" },
-		{ "type": "func", "func": SpawnMarker.bind(null, false, 90, -250, 0, 2500, true, null) },
-		{ "type": "func", "func": SpawnVector.bind(null, 553, 0, 0, 180, 500, 0, 2500) },
-		{ "type": "func", "func": SpawnVector.bind(null, 553, 0, 0, 0, 500, 0, 2500) }
+		{ "type": "spawn_func", "func": "marker", "args": [false, 90, -250, 0, 2500, true, null] },
+		{ "type": "spawn_func", "func": "vector", "args": [553, 0, 0, 180, 500, 0, 2500] },
+		{ "type": "spawn_func", "func": "vector", "args": [553, 0, 0, 0, 500, 0, 2500] }
 	],
 	// heart thrust+clockwise spin+left swipe
 	"s-720-3000-111-0": [
 		{ "type": "text", "class_position":"tank", "sub_type": "message", "message": "Left Safe", "message_RU": "Влево сейф" },
 		{ "type": "text", "class_position":"dps", "sub_type": "message", "message": "Right Safe", "message_RU": "Вправо сейф" },
 		{ "type": "text", "class_position":"heal", "sub_type": "message", "message": "Right Safe", "message_RU": "Вправо сейф" },
-		{ "type": "func", "func": SpawnMarker.bind(null, false, 270, -250, 0, 2500, true, null) },
-		{ "type": "func", "func": SpawnVector.bind(null, 553, 0, 0, 180, 500, 0, 2500) },
-		{ "type": "func", "func": SpawnVector.bind(null, 553, 0, 0, 0, 500, 0, 2500) }
+		{ "type": "spawn_func", "func": "marker", "args": [false, 270, -250, 0, 2500, true, null] },
+		{ "type": "spawn_func", "func": "vector", "args": [553, 0, 0, 180, 500, 0, 2500] },
+		{ "type": "spawn_func", "func": "vector", "args": [553, 0, 0, 0, 500, 0, 2500] }
 	],
 	"s-720-3000-113-0": [{ "type": "text", "sub_type": "message", "message": "Front | Back Slam", "message_RU": "Передний | Задний" }],
 	"s-720-3000-115-0": [{ "type": "text", "sub_type": "message", "message": "Spinning Attack", "message_RU": "Круговая" }],

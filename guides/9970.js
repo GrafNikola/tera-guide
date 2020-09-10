@@ -1,7 +1,5 @@
 // Ruinous Manor (Hard)
 
-const { SpawnCircle } = module.parent.exports.lib;
-
 let player, entity, library, effect;
 
 const FIRST_TIMER_DELAY = 40000;
@@ -68,12 +66,12 @@ module.exports = {
 	"s-970-3000-1303-0": [{ "type": "text", "sub_type": "message", "message_RU": "Готовность!", "message": "Get Ready! (for in out mechanic)" }],
 
 	// GO OUT then come in
-	"s-970-3000-2113-0": [{ "type": "text", "sub_type": "message", "message_RU": "От него > К нему", "message": "Out > In" }, { "type": "func", "func": SpawnCircle.bind(null, false, 553, 0, 0, 15, 300, 0, 5000) }],
-	"s-970-3000-1113-0": [{ "type": "text", "sub_type": "message", "message_RU": "От него > К нему", "message": "Out > In" }, { "type": "func", "func": SpawnCircle.bind(null, false, 553, 0, 0, 15, 300, 0, 5000) }],
+	"s-970-3000-2113-0": [{ "type": "text", "sub_type": "message", "message_RU": "От него > К нему", "message": "Out > In" }, { "type": "spawn_func", "func": "circle", "args": [false, 553, 0, 0, 15, 300, 0, 5000] }],
+	"s-970-3000-1113-0": [{ "type": "text", "sub_type": "message", "message_RU": "От него > К нему", "message": "Out > In" }, { "type": "spawn_func", "func": "circle", "args": [false, 553, 0, 0, 15, 300, 0, 5000] }],
 
 	// STAY IN then go out
-	"s-970-3000-2116-0": [{ "type": "text", "sub_type": "message", "message_RU": "К нему > От него", "message": " In > Out" }, { "type": "func", "func": SpawnCircle.bind(null, false, 553, 0, 0, 15, 300, 0, 5000) }],
-	"s-970-3000-1116-0": [{ "type": "text", "sub_type": "message", "message_RU": "К нему > От него", "message": " In > Out" }, { "type": "func", "func": SpawnCircle.bind(null, false, 553, 0, 0, 15, 300, 0, 5000) }],
+	"s-970-3000-2116-0": [{ "type": "text", "sub_type": "message", "message_RU": "К нему > От него", "message": " In > Out" }, { "type": "spawn_func", "func": "circle", "args": [false, 553, 0, 0, 15, 300, 0, 5000] }],
+	"s-970-3000-1116-0": [{ "type": "text", "sub_type": "message", "message_RU": "К нему > От него", "message": " In > Out" }, { "type": "spawn_func", "func": "circle", "args": [false, 553, 0, 0, 15, 300, 0, 5000] }],
 
 	// GET RED SKULL
 	"s-970-3000-1318-0": [{ "type": "text", "sub_type": "message", "message_RU": "Взять красную голову!", "message": "Get red skull!" }],
