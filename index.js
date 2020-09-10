@@ -660,7 +660,7 @@ function NetworkMod(dispatch) {
 			for (const dungeon of dungeons) {
 				if (dungeon.id == zone) {
 					// Create zone data for entered guide
-					guide = Object.assign(guide, dungeon);
+					Object.assign(guide, dungeon);
 					// Reload guide configuration
 					reload_guide_configuration(guide.id);
 					break;
@@ -668,7 +668,7 @@ function NetworkMod(dispatch) {
 			}
 			// Load test guide data
 			if (zone == "test") {
-				guide = Object.assign(guide, {
+				Object.assign(guide, {
 					"id": "test",
 					"name": "Test Guide",
 					"settings": default_guide_settings
@@ -1063,7 +1063,7 @@ function NetworkMod(dispatch) {
 			// Ignoring if verbose mode is disabled
 			if (!guide.settings.verbose) return;
 			// Play the voice of text message
-			if (voice && dispatch.settings.speaks) {
+			if (voice && dispatch.settings.speaks && event["sub_type"] != "MSG") {
 				if (event["delay"] > 0) {
 					timers[event["id"] || random_timer_id--] = dispatch.setTimeout(voice.speak, event["delay"] - 600 / speed, message, dispatch.settings.rate);
 				} else {
