@@ -39,6 +39,7 @@ function ClientMod(dispatch) {
 function NetworkMod(dispatch) {
 	const fake_dispatch = new DispatchWrapper(dispatch);
 	const { player, entity, library, effect } = dispatch.require.library;
+	const { Spawn } = lib;
 	const command = dispatch.command;
 
 	// Available strings for different languages
@@ -225,11 +226,13 @@ function NetworkMod(dispatch) {
 
 	// An object of types and their corresponding function handlers
 	const function_event_handlers = {
+		"lib": lib,
 		"spawn": spawn_handler,
 		"despawn": despawn_handler,
 		"text": text_handler,
 		"stop_timer": stop_timer_handler,
-		"func": func_handler
+		"func": func_handler,
+		"spawn_func": spawn_func_handler
 	};
 	// Default dungeon guide settings
 	const default_guide_settings = {
@@ -1277,6 +1280,26 @@ function NetworkMod(dispatch) {
 				timers[event["id"] || random_timer_id--] = dispatch.setTimeout(event["func"], event["delay"] / speed, function_event_handlers, event, ent, fake_dispatch);
 			} else {
 				event["func"].call(null, function_event_handlers, event, ent, fake_dispatch);
+			}
+		} catch (e) {
+			debug_message(true, e);
+		}
+	}
+
+	// Spawn Func handler
+	function spawn_func_handler(event, ent, speed = 1.0) {
+		// Make sure func and args is defined
+		if (!event["func"]) return debug_message(true, "Spawn Func handler needs a func");
+		if (!event["args"]) return debug_message(true, "Spawn Func handler needs a args");
+		// Create a Spawn class
+		const sc = new Spawn(function_event_handlers, event, ent, fake_dispatch);
+		try {
+			if (event["delay"] > 0) {
+				timers[event["id"] || random_timer_id--] = dispatch.setTimeout(() => {
+					sc[event["func"]](...event["args"]);
+				}, event["delay"] / speed);
+			} else {
+				sc[event["func"]](...event["args"]);
 			}
 		} catch (e) {
 			debug_message(true, e);
