@@ -6,6 +6,8 @@ A generic guide module for TERA with English and Russian translations (detects a
 &#x1F534; **A critical updates have been released from September 3rd, 2020. Please update!  
 &#x1F534; От 3 сентября 2020 года были выпущены критические обновления. Пожалуйста, обновитесь!**
 
+Versión en español del módulo (Spanish translation): https://github.com/Loliconera/tera-guide-spanish
+
 ## Dependencies / Зависимости
 https://github.com/tera-toolbox-mods/library
 
@@ -87,3 +89,4 @@ id | Dungeon name | Название данжа
 - **[Multarix](https://github.com/Multarix)** - Author of the RR guide and also making changes to the English translation
 - **[Owyn](https://github.com/Owyn)** - Developer of great guides for RK-9, AA and GV, whose code was used
 - **[ITunk](https://github.com/GrafNikola)** - Author of initial Russian translation
+- **[Loliconera](https://github.com/Loliconera)** - Author of Spanish translation
