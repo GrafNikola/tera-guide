@@ -70,6 +70,12 @@ id | Dungeon name | Название данжа
 * When streamer mode is *on* (**stream** parameter), notices ONLY sent to Toolbox(/8) chat channel.   
   Если включен режим стримера (парам. **stream**), уведомления будут отправляться ТОЛЬКО в канал чата Toolbox(/8).
 
+## Module GUI / Графический интерфейс
+
+* When you enter the **guide gui** command, the module GUI is displayed, allowing you to change basic settings.   
+  При вводе команды **guide gui** отображается графический интерфейс модуля, позволяющий осуществить основные настройки.   
+  ![](https://i.imgur.com/NDDiL1B.png)
+
 ## Development and Debugging / Разработка и отладка
 Подробнее на https://github.com/hsdn/tera-guide/wiki
 
