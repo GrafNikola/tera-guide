@@ -76,7 +76,7 @@ id | Dungeon name | Название данжа
 
 * When you enter the **guide gui** command, the module GUI is displayed, allowing you to change basic settings.   
   При вводе команды **guide gui** отображается графический интерфейс модуля, позволяющий осуществить основные настройки.   
-  ![](https://i.imgur.com/NDDiL1B.png)
+  ![](https://i.imgur.com/7zAeYhi.png)
 
 ## Development and Debugging / Разработка и отладка
 Подробнее на https://github.com/hsdn/tera-guide/wiki
