@@ -123,9 +123,17 @@ module.exports = {
 		{ "type": "spawn_func", "func": "circle", "args": [false, 553, 0, 0, 20, 460, 0, 4000] }
 	],
 
-	// Explosion 32031003 152 / 135
-	"s-3203-1000-152-0": [{ "type": "text", "sub_type": "message", "message": "Explosion!", "message_RU": "Взрыв!" }],
-	"s-3203-1000-135-0": [{ "type": "text", "sub_type": "message", "message": "Explosion!", "message_RU": "Взрыв!" }],
+	// Explosion 32031003 152 / 135 / 128
+	"s-3203-1000-152-0": [
+		{ "type": "text", "sub_type": "message", "message": "Explosion (Stun)", "message_RU": "Взрыв (стан)" },
+		{ "type": "spawn_func", "func": "circle", "args": [true, 912, 0, 0, 8, 460, 0, 2500] },
+		{ "type": "text", "sub_type": "alert", "delay": 59000, "message": "Explosion soon...", "message_RU": "Скоро взрыв..." }
+	],
+	"s-3203-1000-135-0": [
+		{ "type": "text", "sub_type": "message", "message": "Explosion (Stun)", "message_RU": "Взрыв (стан)" },
+		{ "type": "spawn_func", "func": "circle", "args": [true, 912, 0, 0, 8, 460, 0, 2500] },
+		{ "type": "text", "sub_type": "alert", "delay": 59000, "message": "Explosion soon...", "message_RU": "Скоро взрыв..." }
+	],
 
 	// Debuff
 	"ae-0-0-32031011": [{ "type": "text", "sub_type": "alert", "message": "Debuff Stack", "message_RU": "Дебафф (стаки)" }],
