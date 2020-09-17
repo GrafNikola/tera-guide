@@ -34,7 +34,7 @@
         "index.js": "38afbcc58a944d7f80b4d0e8a981a51a6b9579d1b4c2dc9560749fa62f0d0afd",
         "lib.js": "f9c6007cfdcb0aaecc0e534348de258e5c52ea9340761aae5615785af19bf36c",
         "module.json": "9477df5209aa4053252eef539111ef0fafc7b1edeb7a15f09c19c1d2df79bb76",
-        "settings_migrator.js": "32d6dd3d12c4df43586574003a67dee5387a27fd6723f28178a7d26ffa46acab",
+        "settings_migrator.js": "fdadc947af03d460168a371c0a3f86591019bd1942f139d1e43db3578858486f",
         "voice/index.js": "371c6cca9f3094d3e88b42634981d0ad030017886dbae3eaa700aad1ce049d7b"
     },
     "defs": {
