@@ -51,6 +51,7 @@ id | Dungeon name | Название данжа
 3027 | Forbidden Arena [Hagufna] | [Бессмертный воин] Арена безумия
 3103 | Forbidden Arena [Undying Warlord] | [Этерния] Арена безумия
 3203 | Forbidden Arena [Nightmare Undying Warlord] | [Бессмертный] Арена безумия
+9053 | Kezzel's Gorge (5-Person) | Ущелье Кеззела (5 игроков)
 
 ## Notices settings / Настройка уведомлений
 
