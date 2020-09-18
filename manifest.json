@@ -33,7 +33,7 @@
         "guides/9982.js": "11726f04825b20f0f4c3030e0c37aa414c459a7ebabcb96860fc08e3ea79ec79",
         "index.js": "38afbcc58a944d7f80b4d0e8a981a51a6b9579d1b4c2dc9560749fa62f0d0afd",
         "lib.js": "f9c6007cfdcb0aaecc0e534348de258e5c52ea9340761aae5615785af19bf36c",
-        "module.json": "9477df5209aa4053252eef539111ef0fafc7b1edeb7a15f09c19c1d2df79bb76",
+        "module.json": "01652ee7daf3fe973e170750cccd861c2e56d94b5112a11780626d84c9f4b321",
         "settings_migrator.js": "fdadc947af03d460168a371c0a3f86591019bd1942f139d1e43db3578858486f",
         "voice/index.js": "371c6cca9f3094d3e88b42634981d0ad030017886dbae3eaa700aad1ce049d7b"
     },
@@ -51,7 +51,6 @@
         "S_DESPAWN_BUILD_OBJECT": 2,
         "S_DESPAWN_COLLECTION": 2,
         "S_DESPAWN_DROPITEM": 4,
-        "S_DUNGEON_EVENT_GAGE": 1,
         "S_DUNGEON_EVENT_MESSAGE": 2,
         "S_LOAD_TOPO": 3,
         "S_PARTY_MARKER": 1,
