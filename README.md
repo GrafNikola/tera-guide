@@ -23,7 +23,7 @@ Toolbox(/8) | Command description | Описание команды
 **guide&nbsp;gNotice**<br>(default: off) | Send notices to party chat channel on/off (will be visible for all party members) | Вкл./выкл. отправки уведомлений в чат группы (уведомления будут видеть все члены группы)
 **guide&nbsp;`1`~`10`**<br>(default: 2) | Set TTS speech rate | Регулировка скорости чтения голосовых сообщений
 **guide&nbsp;spawnObject**<br>(default: on) | Spawn marker objects on/off | Вкл./выкл. спавна маркировочных объектов
-**guide&nbsp;stream**<br>(default: off) | Streamer mode on/off (hide all notices and objects, TTS will played) | Вкл./выкл. режима стримера (скрывает все уведомления и маркеры, TTS будет проигрываться)
+**guide&nbsp;stream**<br>(default: off) | Streamer Mode on/off (hide all notices and objects, TTS will played) | Вкл./выкл. режима стримера (скрывает все уведомления и маркеры, TTS будет проигрываться)
 **guide&nbsp;dungeons** | List of all supported dungeons and its ids | Список всех поддерживаемых данжей и их id
 **guide&nbsp;verbose&nbsp;`id`**<br>(default: on for all) | Send notices for specified by `id` dungeon on/off | Вкл./выкл. всех уведомлений для данжа, где `id` - идентификатор данжа
 **guide&nbsp;spawnObject&nbsp;`id`**<br>(default: on for all) | Spawn marker objects for specified by `id` dungeon on/off | Вкл./выкл. спавна объектов для данжа, где `id` - идентификатор данжа
@@ -63,13 +63,14 @@ id | Dungeon name | Название данжа
 * The message on top side of the screen, if **lNotice** parameter is *off* (by default). Notices visible for you only.   
   Сообщение в верхней части экрана, если параметр **lNotice** - *выключен* (по-умолчанию). Видны только вам.   
   ![](https://i.imgur.com/r2bb8Wc.png)   
-  You can set the color for this type of notices using the commands (also change color in the Toolbox chat).   
-  Возможен выбор цвета для этого вида уведомлений при помощи команд (также изменяют цвет в чате Toolbox).   
-  ![](https://i.imgur.com/TfHFgjD.png)
+  You can set the color for this type of notices using the commands or GUI (also change color in the Toolbox chat).   
+  Возможен выбор цвета для этого вида уведомлений при помощи команд или графического интерфейса (также изменяется цвет в чате Toolbox).
 
+* When Streamer Mode is *on* (**stream** parameter), all text notices ONLY sent to Toolbox(/8) chat channel, but TTS notices will be played.   
+  Если включен режим стримера (парам. **stream**), все текстовые уведомления будут отправляться ТОЛЬКО в канал чата Toolbox(/8), однако голосовые уведомления будут проигрываться.
 
-* When streamer mode is *on* (**stream** parameter), notices ONLY sent to Toolbox(/8) chat channel.   
-  Если включен режим стримера (парам. **stream**), уведомления будут отправляться ТОЛЬКО в канал чата Toolbox(/8).
+* To disable or enable TTS notifications, use the **guide voice** command.   
+  Для отключения или включения голосовых уведомлений используется команда **guide voice**.
 
 ## Module GUI / Графический интерфейс
 
