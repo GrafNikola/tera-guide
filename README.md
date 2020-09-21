@@ -9,11 +9,9 @@ The dungeon guide module with Text-to-speech notifications, display hints on scr
 Versión en español del módulo (Spanish translation): https://github.com/Loliconera/tera-guide-spanish
 
 ## Dependencies / Зависимости
-https://github.com/tera-toolbox-mods/library
-
-Extract to "mods" directory in your Tera-Proxy. DO NOT INSTALLED IT AS "library-master" MAKE SURE IT'S NAMED "library".
-
-Распаковать в директорию "mods" в вашей Tera-Proxy. НЕ РАСПАКОВЫВАТЬ КАК "library-master", ДИРЕКТОРИЯ ДОЛЖНА НАЗЫВАТЬСЯ "library".
+* **Library** - https://github.com/tera-toolbox-mods/library   
+  Extract to your **mods** directory. Do not installed it as **library-master** make sure it's named **library**.   
+  Распаковать в директорию **mods**. Не распаковывать как **library-master**, директория должна называться **library**.
 
 ## Commands / Команды
 Toolbox(/8) | Command description | Описание команды
