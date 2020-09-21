@@ -1,7 +1,7 @@
 {
     "files": {
         "LICENSE": "7f2ae2125b491e75c546a5d538f82ad4431d5d6b1bbd4aea724864a21daeca63",
-        "README.md": "4904617e3e675bc84f0fe012b88606b127932ae57c7103082ced55e8ec618309",
+        "README.md": "67b2334ebff8895d96a79818aaf8ab9a50f44430c9e3677265df3df0cbd31546",
         "dbg.json": {
             "hash": "629638b8d5c9f3e359bfad1795298babfe23a44a3ff6bd0afc0275d8bf4e4be8",
             "overwrite": false
@@ -33,7 +33,7 @@
         "guides/9982.js": "11726f04825b20f0f4c3030e0c37aa414c459a7ebabcb96860fc08e3ea79ec79",
         "index.js": "38afbcc58a944d7f80b4d0e8a981a51a6b9579d1b4c2dc9560749fa62f0d0afd",
         "lib.js": "f9c6007cfdcb0aaecc0e534348de258e5c52ea9340761aae5615785af19bf36c",
-        "module.json": "6f8846bca199c860795b80b6d4f0ebc6e9c528fe3aa6585334d886fbef0a6b16",
+        "module.json": "ec626611274426c04ff2e4f14a36146b3d6b932c6ef982b15a8761b691f0432d",
         "settings_migrator.js": "fdadc947af03d460168a371c0a3f86591019bd1942f139d1e43db3578858486f",
         "voice/index.js": "371c6cca9f3094d3e88b42634981d0ad030017886dbae3eaa700aad1ce049d7b"
     },

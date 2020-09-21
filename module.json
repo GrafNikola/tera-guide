@@ -9,11 +9,11 @@
         "settingsVersion": "1.11"
     },
     "author": "HSDN / ZC / ITunk / michengs / Kasea",
-    "description": "A generic guide module for TERA. Display hints on screen and drawing zones of bosses attacks and mechanics.",
+    "description": "The dungeon guide module with TTS notifications. Display hints on screen and drawing zones of bosses attacks and mechanics.",
     "servers": ["https://raw.githubusercontent.com/hsdn/tera-guide/master/"],
     "supportUrl": "https://github.com/hsdn/tera-guide/issues",
     "dependencies": {
         "library": "https://raw.githubusercontent.com/tera-toolbox-mods/library/master/module.json"
     },
-    "version": "9/20/2020"
+    "version": "9/21/2020"
 }

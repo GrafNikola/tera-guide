@@ -1,7 +1,7 @@
 # tera-guide
-A generic guide module for TERA with English and Russian translations (detects automatically). Display hints on screen and drawing zones of bosses attacks and mechanics (also supports of Text-to-speech notifications).
+The dungeon guide module with Text-to-speech notifications, display hints on screen and drawing zones of bosses attacks and mechanics. Available English and Russian languages (detects automatically).
 
-Основной модуль подсказок по данжам TERA с поддержкой русского и английского языков. Вывод подсказок в чат или на экран, а также отрисовка зон атак боссов и механик (присутствует возможность голосовых уведомлений).
+Модуль подсказок по данжам с возможностью голосовых уведомлений, вывод подсказок в чат или на экран, а также отрисовка зон атак боссов и механик. Поддерживаются Русский и Английский языки (определяются автоматически).
 
 &#x1F534; **A critical updates have been released from September 3rd, 2020. Please update!  
 &#x1F534; От 3 сентября 2020 года были выпущены критические обновления. Пожалуйста, обновитесь!**
