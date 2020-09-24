@@ -57,45 +57,29 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 		debuff = 1;
 		dispatch.clearTimeout(timer1);
 		dispatch.clearTimeout(timer2);
-		timer1 = dispatch.setTimeout(() => {
-			/*handlers['text']({
-				"sub_type": "message",
-				"message": "!",
-				"message_RU": "!"
-			});*/
-			debuff = 0;
-		}, 70000);
+		timer1 = dispatch.setTimeout(() => debuff = 0, 70000);
 	}
 	if ([30231001, 1001].includes(skillid)) { // Blue debuff
 		debuff = 2;
 		dispatch.clearTimeout(timer2);
 		dispatch.clearTimeout(timer1);
-		timer2 = dispatch.setTimeout(() => {
-			/*handlers['text']({
-				"sub_type": "message",
-				"message": "!",
-				"message_RU": "!"
-			});*/
-			debuff = 0;
-		}, 70000);
+		timer2 = dispatch.setTimeout(() => debuff = 0, 70000);
 	}
-	if ([1113, 1114].includes(skillid)) { // x4 slash
+	/*if ([1113, 1114].includes(skillid)) { // x4 slash
 		dispatch.clearTimeout(timer3);
 		counter++;
 		if (counter >= 4) {
-			/*dispatch.clearTimeout(timer4);
+			dispatch.clearTimeout(timer4);
 			timer4 = dispatch.setTimeout(()=> {
 				handlers['text']({
-					"sub_type": "message",
+					"sub_type": "alert",
 					"message": "4x slash",
 					"message_RU": "4 полосы"
 				});
-			}, 70000);*/
+			}, 70000);
 		}
-		timer3 = dispatch.setTimeout(() => {
-			counter = 0;
-		}, 20000);
-	}
+		timer3 = dispatch.setTimeout(() => counter = 0, 20000);
+	}*/
 }
 
 function firstboss_start_event() {
@@ -112,44 +96,50 @@ module.exports = {
 	"h-3023-1000-80": [{ "type": "text", "sub_type": "message", "message": "80%", "message_RU": "80%" }],
 	"s-3023-1000-104-0": [{ "type": "text", "sub_type": "message", "message": "Random Jump", "message_RU": "Прыжок + Стан" }],
 	"s-3023-1000-105-0": [{ "type": "text", "sub_type": "message", "message": "Back", "message_RU": "Поворот назад" }],
-	"s-3023-1000-110-0": [{ "type": "text", "sub_type": "message", "message": "Stun", "message_RU": "Передний стан" },
+	"s-3023-1000-110-0": [
+		{ "type": "text", "sub_type": "message", "message": "Stun", "message_RU": "Передний стан" },
 		{ "type": "spawn_func", "func": "circle", "args": [false, 553, 0, 175, 10, 260, 0, 6000] }
 	],
-	"s-3023-1000-111-0": [{ "type": "text", "sub_type": "message", "message": "Left Slash", "message_RU": "Левая полоса" },
+	"s-3023-1000-111-0": [
+		{ "type": "text", "sub_type": "message", "message": "Left Slash", "message_RU": "Левая полоса" },
 		{ "type": "spawn_func", "func": "vector", "args": [553, 270, 200, 180, 500, 0, 2000] },
 		{ "type": "spawn_func", "func": "vector", "args": [553, 270, 200, 0, 300, 0, 2000] },
-		{ "type": "spawn_func", "func": "vector", "args": [553, 0, 0, 180, 500, 0, 2000] },
-		{ "type": "spawn_func", "func": "vector", "args": [553, 0, 0, 0, 300, 0, 2000] },
-		{ "type": "spawn_func", "func": "vector", "args": [553, 0, 300, 270, 200, 0, 2000] },
-		{ "type": "spawn_func", "func": "vector", "args": [553, 180, 500, 270, 200, 0, 2000] }
+		{ "type": "spawn_func", "func": "vector", "args": [553, 90, 20, 180, 500, 0, 2000] },
+		{ "type": "spawn_func", "func": "vector", "args": [553, 90, 20, 0, 300, 0, 2000] },
+		{ "type": "spawn_func", "func": "vector", "args": [553, 6, 302, 270, 200, 0, 2000] },
+		{ "type": "spawn_func", "func": "vector", "args": [553, 176, 502, 270, 200, 0, 2000] }
 	],
-	"s-3023-1000-112-0": [{ "type": "text", "sub_type": "message", "message": "Right Slash", "message_RU": "Правая полоса" },
+	"s-3023-1000-112-0": [
+		{ "type": "text", "sub_type": "message", "message": "Right Slash", "message_RU": "Правая полоса" },
 		{ "type": "spawn_func", "func": "vector", "args": [553, 90, 200, 180, 500, 0, 2000] },
 		{ "type": "spawn_func", "func": "vector", "args": [553, 90, 200, 0, 300, 0, 2000] },
-		{ "type": "spawn_func", "func": "vector", "args": [553, 0, 0, 180, 500, 0, 2000] },
-		{ "type": "spawn_func", "func": "vector", "args": [553, 0, 0, 0, 300, 0, 2000] },
-		{ "type": "spawn_func", "func": "vector", "args": [553, 0, 300, 90, 200, 0, 2000] },
-		{ "type": "spawn_func", "func": "vector", "args": [553, 180, 500, 90, 200, 0, 2000] }
+		{ "type": "spawn_func", "func": "vector", "args": [553, 270, 20, 180, 500, 0, 2000] },
+		{ "type": "spawn_func", "func": "vector", "args": [553, 270, 20, 0, 300, 0, 2000] },
+		{ "type": "spawn_func", "func": "vector", "args": [553, 354, 302, 90, 200, 0, 2000] },
+		{ "type": "spawn_func", "func": "vector", "args": [553, 184, 502, 90, 200, 0, 2000] }
 	],
-	"s-3023-1000-113-0": [{ "type": "text", "sub_type": "message", "message": "Left Slash", "message_RU": "Левая полоса" },
+	"s-3023-1000-113-0": [
+		{ "type": "text", "sub_type": "message", "message": "Left Slash", "message_RU": "Левая полоса" },
 		{ "type": "func", "func": skilld_event.bind(null, 1113) },
 		{ "type": "spawn_func", "func": "vector", "args": [553, 270, 200, 180, 500, 0, 2000] },
 		{ "type": "spawn_func", "func": "vector", "args": [553, 270, 200, 0, 300, 0, 2000] },
-		{ "type": "spawn_func", "func": "vector", "args": [553, 0, 0, 180, 500, 0, 2000] },
-		{ "type": "spawn_func", "func": "vector", "args": [553, 0, 0, 0, 300, 0, 2000] },
-		{ "type": "spawn_func", "func": "vector", "args": [553, 0, 300, 270, 200, 0, 2000] },
-		{ "type": "spawn_func", "func": "vector", "args": [553, 180, 500, 270, 200, 0, 2000] }
+		{ "type": "spawn_func", "func": "vector", "args": [553, 90, 20, 180, 500, 0, 2000] },
+		{ "type": "spawn_func", "func": "vector", "args": [553, 90, 20, 0, 300, 0, 2000] },
+		{ "type": "spawn_func", "func": "vector", "args": [553, 6, 302, 270, 200, 0, 2000] },
+		{ "type": "spawn_func", "func": "vector", "args": [553, 176, 502, 270, 200, 0, 2000] }
 	],
-	"s-3023-1000-114-0": [{ "type": "text", "sub_type": "message", "message": "Right Slash", "message_RU": "Правая полоса" },
+	"s-3023-1000-114-0": [
+		{ "type": "text", "sub_type": "message", "message": "Right Slash", "message_RU": "Правая полоса" },
 		{ "type": "func", "func": skilld_event.bind(null, 1114) },
 		{ "type": "spawn_func", "func": "vector", "args": [553, 90, 200, 180, 500, 0, 2000] },
 		{ "type": "spawn_func", "func": "vector", "args": [553, 90, 200, 0, 300, 0, 2000] },
-		{ "type": "spawn_func", "func": "vector", "args": [553, 0, 0, 180, 500, 0, 2000] },
-		{ "type": "spawn_func", "func": "vector", "args": [553, 0, 0, 0, 300, 0, 2000] },
-		{ "type": "spawn_func", "func": "vector", "args": [553, 0, 300, 90, 200, 0, 2000] },
-		{ "type": "spawn_func", "func": "vector", "args": [553, 180, 500, 90, 200, 0, 2000] }
+		{ "type": "spawn_func", "func": "vector", "args": [553, 270, 20, 180, 500, 0, 2000] },
+		{ "type": "spawn_func", "func": "vector", "args": [553, 270, 20, 0, 300, 0, 2000] },
+		{ "type": "spawn_func", "func": "vector", "args": [553, 354, 302, 90, 200, 0, 2000] },
+		{ "type": "spawn_func", "func": "vector", "args": [553, 184, 502, 90, 200, 0, 2000] }
 	],
-	"s-3023-1000-115-0": [{ "type": "text", "sub_type": "message", "message": "Back Attack", "message_RU": "Удар назад" },
+	"s-3023-1000-115-0": [
+		{ "type": "text", "sub_type": "message", "message": "Back Attack", "message_RU": "Удар назад" },
 		{ "type": "spawn_func", "func": "semicircle", "args": [90, 270, 553, 0, 0, 20, 160, 100, 2000] },
 		{ "type": "spawn_func", "func": "semicircle", "args": [90, 270, 553, 0, 0, 12, 220, 100, 2000] },
 		{ "type": "spawn_func", "func": "semicircle", "args": [90, 270, 553, 0, 0, 10, 300, 100, 2000] }
@@ -161,23 +151,29 @@ module.exports = {
 	],
 	"am-3023-1000-30231001": [{ "type": "func", "func": skilld_event.bind(null, 1001) }],
 	"am-3023-1000-30231000": [{ "type": "func", "func": skilld_event.bind(null, 1000) }],
-	"ae-0-0-99020020": [{ "type": "func", "func": skilld_event.bind(null, 99020020) }], //复生
-	"ae-0-0-30231000": [{ "type": "func", "func": skilld_event.bind(null, 30231000) }], //开始红色
-	"ae-0-0-30231001": [{ "type": "func", "func": skilld_event.bind(null, 30231001) }], //开始蓝色
-	"s-3023-1000-3107-0": [{ "type": "text", "sub_type": "message", "message": "Smash", "message_RU": "Конус вперед" },
+	"ae-0-0-99020020": [{ "type": "func", "func": skilld_event.bind(null, 99020020) }], // Debuff removed
+	"ae-0-0-30231000": [{ "type": "func", "func": skilld_event.bind(null, 30231000) }], // Red debuff
+	"ae-0-0-30231001": [{ "type": "func", "func": skilld_event.bind(null, 30231001) }], // Blue debuff
+	"s-3023-1000-3107-0": [
+		{ "type": "text", "sub_type": "message", "message": "Smash", "message_RU": "Конус вперед" },
 		{ "type": "spawn_func", "func": "vector", "args": [553, 90, 80, 10, 1000, 0, 4000] },
 		{ "type": "spawn_func", "func": "vector", "args": [553, 270, 80, 350, 1000, 0, 4000] }
 	],
-	"s-3023-1000-3115-0": [{ "type": "text", "sub_type": "message", "message": "Spin", "message_RU": "Крутилка" },
-		{ "type": "spawn_func", "func": "circle", "args": [false, 553, 0, 0, 10, 320, 0, 3500] }],
-	"s-3023-1000-3116-0": [{ "type": "text", "sub_type": "message", "message": "Circles + Spin", "message_RU": "Круги + Крутилка" },
+	"s-3023-1000-3115-0": [
+		{ "type": "text", "sub_type": "message", "message": "Spin", "message_RU": "Крутилка" },
+		{ "type": "spawn_func", "func": "circle", "args": [false, 553, 0, 0, 10, 320, 0, 3500] }
+	],
+	"s-3023-1000-3116-0": [
+		{ "type": "text", "sub_type": "message", "message": "Circles + Spin", "message_RU": "Круги + Крутилка" },
 		{ "type": "spawn_func", "func": "circle", "args": [false, 553, 0, 0, 10, 320, 0, 5000] }
 	],
-	"s-3023-1000-3119-0": [{ "type": "func", "func": skilld_event.bind(null, 3119) },
+	"s-3023-1000-3119-0": [
+		{ "type": "func", "func": skilld_event.bind(null, 3119) },
 		{ "type": "spawn_func", "func": "circle", "args": [false, 553, 0, 0, 10, 270, 0, 4000] },
 		{ "type": "spawn_func", "func": "circle", "args": [false, 553, 0, 0, 8, 575, 0, 4000] }
 	],
-	"s-3023-1000-3220-0": [{ "type": "func", "func": skilld_event.bind(null, 3220) },
+	"s-3023-1000-3220-0": [
+		{ "type": "func", "func": skilld_event.bind(null, 3220) },
 		{ "type": "spawn_func", "func": "circle", "args": [false, 553, 0, 0, 10, 270, 0, 4000] },
 		{ "type": "spawn_func", "func": "circle", "args": [false, 553, 0, 0, 8, 575, 0, 4000] }
 	],
@@ -186,23 +182,26 @@ module.exports = {
 	// 2 BOSS
 	"s-3023-2000-164-0": [{ "type": "text", "sub_type": "message", "message": "Counter Attack (bleed)", "message_RU": "Отпрыжка (Кровоток)" }],
 	"s-3023-2000-166-0": [{ "type": "text", "sub_type": "message", "message": "Turn-back", "message_RU": "Оборот назад" }],
-	"s-3023-2000-175-0": [{ "type": "text", "sub_type": "message", "message": "Incoming Stun", "message_RU": "Рёв" },
+	"s-3023-2000-175-0": [
+		{ "type": "text", "sub_type": "message", "message": "Incoming Stun", "message_RU": "Рёв" },
 		{ "type": "text", "sub_type": "message", "delay": 1500, "message": "Dodge", "message_RU": "Эвейд" }
 	],
 	"s-3023-2000-178-0": [{ "type": "text", "sub_type": "message", "message": "Scratching (bleed)", "message_RU": "Крутилка (Кровоток)" }],
-	"s-3023-2000-181-0": [{ "type": "text", "sub_type": "message", "message": "Rock Throw", "message_RU": "Полоса вперед" },
+	"s-3023-2000-181-0": [
+		{ "type": "text", "sub_type": "message", "message": "Rock Throw", "message_RU": "Полоса вперед" },
 		{ "type": "spawn_func", "func": "vector", "args": [553, 90, 80, 10, 1000, 0, 4000] },
 		{ "type": "spawn_func", "func": "vector", "args": [553, 270, 80, 350, 1000, 0, 4000] }
 	],
 	"s-3023-2000-182-0": [{ "type": "text", "sub_type": "message", "message": "Knockdown", "message_RU": "Опрокид" }],
 	"s-3023-2000-185-0": [
-		{ "type": "text", "sub_type": "message", "message": "Kaia's Shield", "message_RU": "Кайа", "class_position": "priest" },
-		{ "type": "text", "sub_type": "message", "message": "Thrall of Protection", "message_RU": "Кайа", "class_position": "mystic" },
-		{ "type": "text", "sub_type": "message", "delay": 110000, "message": "Big jump soon", "message_RU": "Скоро прыжок!" },
+		{ "type": "text", "sub_type": "message", "message": "Big jump (Kaia's Shield)", "message_RU": "Прыжок (кайа)", "class_position": "priest" },
+		{ "type": "text", "sub_type": "message", "message": "Big jump (Thrall of Protection)", "message_RU": "Прыжок (кайа)", "class_position": "mystic" },
+		{ "type": "text", "sub_type": "alert", "delay": 110000, "message": "Big jump soon...", "message_RU": "Скоро прыжок...", "class_position": "heal" },
 		{ "type": "spawn_func", "func": "circle", "args": [false, 553, 0, 0, 10, 500, 0, 6000] },
 		{ "type": "spawn_func", "func": "circle", "args": [false, 553, 0, 0, 8, 750, 0, 6000] }
 	],
-	"s-3023-2000-202-0": [{ "type": "text", "sub_type": "message", "message": "Backstab", "message_RU": "Назад + Вперед" },
+	"s-3023-2000-202-0": [
+		{ "type": "text", "sub_type": "message", "message": "Backstab", "message_RU": "Назад + Вперед" },
 		{ "type": "spawn_func", "func": "vector", "args": [553, 90, 80, 180, 500, 0, 3000] },
 		{ "type": "spawn_func", "func": "vector", "args": [553, 270, 80, 180, 500, 0, 3000] }
 	],
