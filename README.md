@@ -3,8 +3,8 @@ The dungeon guide module with Text-to-speech notifications, display hints on scr
 
 Модуль подсказок по данжам с возможностью голосовых уведомлений, вывод подсказок в чат или на экран, а также отрисовка зон атак боссов и механик. Поддерживаются Русский и Английский языки (определяются автоматически).
 
-&#x1F534; **A critical updates have been released from September 3rd, 2020. Please update!  
-&#x1F534; От 3 сентября 2020 года были выпущены критические обновления. Пожалуйста, обновитесь!**
+&#x1F534; **A critical updates have been released. Please update!  
+&#x1F534; Были выпущены критические обновления. Пожалуйста, обновитесь!**
 
 Versión en español del módulo (Spanish translation): https://github.com/Loliconera/tera-guide-spanish
 

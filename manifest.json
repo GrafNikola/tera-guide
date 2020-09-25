@@ -1,12 +1,12 @@
 {
     "files": {
         "LICENSE": "7f2ae2125b491e75c546a5d538f82ad4431d5d6b1bbd4aea724864a21daeca63",
-        "README.md": "75799b29c5436acfc4b5e3ceec1270b87996bc346717ca0ade7646f475f3dc1c",
+        "README.md": "91bbcab37bb61bd016c6f3f3e6cf9dd72a7c3bb301ec5b3a83b8d7716bc68542",
         "dbg.json": {
             "hash": "629638b8d5c9f3e359bfad1795298babfe23a44a3ff6bd0afc0275d8bf4e4be8",
             "overwrite": false
         },
-        "dispatch.js": "f54263ada8c42258febdcdaa05545019d9040aa0710706a1101a0ad5422a6586",
+        "dispatch.js": "ef8982a74fd52fa08244690fc136283c77e538c9c908b7632ef409ae81d7d4f2",
         "guides/3020.js": "e1f64dc1b4086815d35b8a44e56aca03dfc140693491effdefaadc35a591fc82",
         "guides/3023.js": "453abe1a993603006ca9a9ea52181d949c065e8e62b8772b37508dda69ee1157",
         "guides/3026.js": "f37469e4675947215b08f47e6d67612efaa960373d8e190c6c6448a93f4c82ed",
@@ -31,16 +31,15 @@
         "guides/9970.js": "a9c841ef2be605d588ffcb9ffa6a5daf47b3ab9a1d6632ef97b735838abb3f9f",
         "guides/9981.js": "5afa372a90faf2547850746253b68ec3334cbaaffe4c5b19337aef5fcc8752ab",
         "guides/9982.js": "11726f04825b20f0f4c3030e0c37aa414c459a7ebabcb96860fc08e3ea79ec79",
-        "index.js": "38afbcc58a944d7f80b4d0e8a981a51a6b9579d1b4c2dc9560749fa62f0d0afd",
+        "index.js": "2aa10d78400d3b1bbf6f07c7dcff67db3af83642f01d7a57396aaa289576dc1d",
         "lib.js": "f9c6007cfdcb0aaecc0e534348de258e5c52ea9340761aae5615785af19bf36c",
-        "module.json": "06de67a5d57150a64a2ddc8d5776b6982f6738fa1f3aae80fff25fbfcf57c0af",
-        "settings_migrator.js": "a3a50392ce2b97eb5a54e0ffdb1ee2080e07b24aba0abe5dd118ad528977bbc7",
+        "module.json": "6bb409900695c625254895916f82a9324c54bfbd2dff549c712c32026d95432d",
+        "settings_migrator.js": "a2df84b5f829a76257f0ec2225811e54df01cd9c68596434c3c7862d6de6ab9a",
         "voice/index.js": "371c6cca9f3094d3e88b42634981d0ad030017886dbae3eaa700aad1ce049d7b"
     },
     "defs": {
         "C_ADMIN": 1,
         "C_CONFIRM_UPDATE_NOTIFICATION": "raw",
-        "C_LOGIN_ARBITER": 2,
         "S_ABNORMALITY_BEGIN": 4,
         "S_ABNORMALITY_END": 1,
         "S_ABNORMALITY_REFRESH": 2,
@@ -52,7 +51,6 @@
         "S_DESPAWN_COLLECTION": 2,
         "S_DESPAWN_DROPITEM": 4,
         "S_DUNGEON_EVENT_MESSAGE": 2,
-        "S_LOAD_TOPO": 3,
         "S_PARTY_MARKER": 1,
         "S_QUEST_BALLOON": 1,
         "S_SPAWN_BUILD_OBJECT": 2,
