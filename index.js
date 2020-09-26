@@ -211,7 +211,8 @@ module.exports = function TeraGuide(mod) {
 		"despawn": despawnHandler,
 		"text": textHandler,
 		"func": funcHandler,
-		"spawn_func": spawnFuncHandler
+		"spawn_func": spawnFuncHandler,
+		"stop_timers": stopTimersHandler
 	};
 	// Default dungeon guide settings
 	const defaultSettings = {
@@ -225,7 +226,6 @@ module.exports = function TeraGuide(mod) {
 		loaded: false,
 		object: null,
 		event: null,
-		ent: null,
 		es: false,
 		sp: false,
 		mobshp: {}
@@ -265,12 +265,12 @@ module.exports = function TeraGuide(mod) {
 			// If arg1 is "load", load guide from arg2 specified
 			if (arg1 === "load") {
 				if (!arg2) return command.message(`Invalid values for sub command "event" ${arg1}`);
-				return loadZoneHandler(arg2, true);
+				return loadGuide(arg2, true);
 			}
 			// If arg1 is "reload", reload current loaded guide
 			if (arg1 === "reload") {
 				if (!guide.loaded) return command.message("Guide not loaded");
-				return loadZoneHandler(guide.id, true);
+				return loadGuide(guide.id, true);
 			}
 			// If we didn't get a second argument or the argument value isn't an event type, we return
 			if (arg1 === "trigger" ? (!guide.object[arg2]) : (!arg1 || !eventHandlers[arg1] || !arg2)) return command.message(`Invalid values for sub command "event" ${arg1} | ${arg2}`);
@@ -526,13 +526,12 @@ module.exports = function TeraGuide(mod) {
 
 	// Clear out the timers when leave the game
 	mod.game.on("leave_game", () => {
-		mod.clearAllTimeouts();
-		mod.clearAllIntervals();
+		stopTimersHandler();
 	});
 
 	// Load guide when entry new zone
 	mod.game.me.on("change_zone", (zone, quick) => {
-		loadZoneHandler(zone, false);
+		loadGuide(zone, false);
 	});
 
 	// Boss skill action
@@ -722,7 +721,7 @@ module.exports = function TeraGuide(mod) {
 	/** FUNCTION/EVENT HANDLERS FOR TYPES **/
 
 	// Spawn handler
-	function spawnHandler(event, ent, speed = 1.0) {
+	function spawnHandler(event, ent = false, speed = 1.0) {
 		// Callback function
 		const callback = (sub_type, sending_event) => {
 			switch (sub_type) {
@@ -852,7 +851,7 @@ module.exports = function TeraGuide(mod) {
 	}
 
 	// Text handler
-	function textHandler(event, ent, speed = 1.0) {
+	function textHandler(event, ent = false, speed = 1.0) {
 		// Callback function
 		const callback = (sub_type, message) => {
 			switch (sub_type) {
@@ -964,7 +963,7 @@ module.exports = function TeraGuide(mod) {
 	}
 
 	// Func handler
-	function funcHandler(event, ent, speed = 1.0) {
+	function funcHandler(event, ent = false, speed = 1.0) {
 		// Callback function
 		const callback = (event) => {
 			try {
@@ -990,7 +989,7 @@ module.exports = function TeraGuide(mod) {
 	}
 
 	// Spawn Func handler
-	function spawnFuncHandler(event, ent, speed = 1.0) {
+	function spawnFuncHandler(event, ent = false, speed = 1.0) {
 		// Ignore if streamer mode is enabled
 		if (mod.settings.stream) return;
 		// Ignore if spawnObject is disabled
@@ -1019,11 +1018,17 @@ module.exports = function TeraGuide(mod) {
 		}
 	}
 
+	// Clear timers handler
+	function stopTimersHandler() {
+		mod.clearAllTimeouts();
+		mod.clearAllIntervals();
+	}
+
 
 	/** HELPER FUNCTIONS **/
 
 	// Load guide script
-	function loadZoneHandler(zone, debug_enabled) {
+	function loadGuide(zone, debug_enabled) {
 		// Clear old data and set guide as not loaded
 		guide.object = {};
 		guide.mobshp = {};
@@ -1031,8 +1036,7 @@ module.exports = function TeraGuide(mod) {
 		guide.sp = false;
 		guide.es = false;
 		// Clear out the timers
-		mod.clearAllTimeouts();
-		mod.clearAllIntervals();
+		stopTimersHandler();
 		// Clear out previous hooks, that our previous guide module hooked
 		dispatch._remove_all_hooks();
 		// Send debug message
@@ -1226,7 +1230,7 @@ module.exports = function TeraGuide(mod) {
 	}
 
 	// This is where all the magic happens
-	function startEvents(events = [], ent, speed = 1.0) {
+	function startEvents(events = [], ent = false, speed = 1.0) {
 		// Loop over the events
 		for (let event of events) {
 			const func = eventHandlers[event["type"]];
@@ -1252,8 +1256,7 @@ module.exports = function TeraGuide(mod) {
 
 	// When the mod gets unloaded, clear all the timers & remove the chat command
 	this.destructor = async () => {
-		mod.clearAllTimeouts();
-		mod.clearAllIntervals();
+		stopTimersHandler();
 		command.remove("guide");
 		guide = {};
 	};
