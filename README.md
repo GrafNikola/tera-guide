@@ -6,7 +6,8 @@ The dungeon guide module with Text-to-speech notifications, display hints on scr
 &#x1F534; **A critical updates have been released. Please update!  
 &#x1F534; Были выпущены критические обновления. Пожалуйста, обновитесь!**
 
-Versión en español del módulo (Spanish translation): https://github.com/Loliconera/tera-guide-spanish
+* Versión en español del módulo (Spanish translation): https://github.com/Loliconera/tera-guide-spanish
+* Versão em português do módulo (Portuguese translation): https://github.com/emilia-s2/Guia-DG-Portugues
 
 ## Dependencies / Зависимости
 * **Library** - https://github.com/tera-toolbox-mods/library   
@@ -90,3 +91,4 @@ id | Dungeon name | Название данжа
 - **[Owyn](https://github.com/Owyn)** - Developer of great guides for RK-9, AA and GV, whose code was used
 - **[ITunk](https://github.com/GrafNikola)** - Author of initial Russian translation
 - **[Loliconera](https://github.com/Loliconera)** - Author of Spanish translation
+- **[Emilia](https://github.com/emilia-s2)** - Author of Portuguese translation
