@@ -1,6 +1,6 @@
 {
     "files": {
-        "LICENSE": "7f2ae2125b491e75c546a5d538f82ad4431d5d6b1bbd4aea724864a21daeca63",
+        "LICENSE": "3a6951431f77f106f39ebc87cc32cb6aee7371cc168ec1862d2ce8775875c8f1",
         "README.md": "751ae0946c97c607b42be34c8b4b94c4ddb7e5a74cdfb62d905c7f0d4b4636c6",
         "dbg.json": {
             "hash": "97a4fa5030a94d8bf4adf0a0c46d54014f9228d2ec1fb44237e9840e7d9c8bcd",
@@ -25,9 +25,9 @@
         "guides/9781.js": "bb5f39656e2b4f0f24421587354b4afba81685deb8c72a18b07b3ca3c6647ef0",
         "guides/9920.js": "adad6ab50edb75cc2d0d122e9cb649c697497c8ebe070cb076559e02068f9dc2",
         "guides/9982.js": "11726f04825b20f0f4c3030e0c37aa414c459a7ebabcb96860fc08e3ea79ec79",
-        "index.js": "43158a056604056b8ad475f575f48160e130338a82889141445d070103bea82f",
+        "index.js": "9c3d695f2b6077df627dce1c8b36aa7778a5ae72dfec1cd559a4a17a6fc98b1e",
         "lib.js": "f9c6007cfdcb0aaecc0e534348de258e5c52ea9340761aae5615785af19bf36c",
-        "module.json": "7f8039091506752bc5c5dea86c7bdbe21a09a0f7f028bd65436d8f83e18ef218",
+        "module.json": "fb6abdff7064fac859ac2fbc9f770e8a2c7f65da00e87e4bf43fe1546c2ebd07",
         "settings_migrator.js": "413ae907a70fc3379b1de07b9c0cc6c456bcf9d28129ff8954e828fdcdb6202e",
         "voice/index.js": "371c6cca9f3094d3e88b42634981d0ad030017886dbae3eaa700aad1ce049d7b"
     },
