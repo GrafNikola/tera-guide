@@ -10,9 +10,10 @@ The dungeon guide module with Text-to-speech notifications, display hints on scr
 * Versão em português do módulo (Portuguese translation): https://github.com/emilia-s2/Guia-DG-Portugues
 
 ## Dependencies / Зависимости
-* **Library** - https://github.com/tera-toolbox-mods/library   
-  Extract to your **mods** directory. Do not installed it as **library-master** make sure it's named **library**.   
-  Распаковать в директорию **mods**. Не распаковывать как **library-master**, директория должна называться **library**.
+* **tera-guide-core** - https://github.com/hsdn/tera-guide-core
+
+When using TeraToolbox, all dependencies will be installed automatically.   
+При использовании TeraToolbox, все зависимости будут установлены автоматически.
 
 ## Commands / Команды
 Toolbox(/8) | Command description | Описание команды
