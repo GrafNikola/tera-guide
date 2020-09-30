@@ -20,9 +20,9 @@
         "guides/9781.js": "a6297fe8bb917f38bf7db5b21725c52edef302b44459f6c7a1dea885fd552d76",
         "guides/9920.js": "716df33af9a7bfb78d2784da41f161d46d22abf93b15fda5d30d2be2617417a6",
         "guides/9982.js": "830aee7f5d0a0942051084ce44d51c0658d4924510b46489d0166edd56638691",
-        "index.js": "290c68ffe58bf270e3add274988bf9fa3139cababe858ba4d641e7eda7f6cb47",
+        "index.js": "53d5a4fd84f9bee3041ebaa6266c1ee0314f24f5dc679d6a2f567340a399239a",
         "lang/dungeons.js": "a399ee9ec680d0a639976b2e1bb10b61ad63b0e29aac982ea615f8fb2f2464f1",
-        "lang/strings.js": "51e0bf2702559401e5bd1f7571ac00e716462700716d7ccd71417bd11ec7d8c8",
+        "lang/strings.js": "0aa616a76c2c9065c59d96baa9d266932553682f0d8c8218db0f79b72bca4855",
         "module.json": "8c1d01a93cb8235c4c30eee8559fb26e276787109876dc1b1b4d15e978af05bb",
         "settings_migrator.js": "8b924da5c6ddb97e5bd09745eb746b52ac0bd91267ff1d441e6669cb817bc376"
     },
