@@ -22,7 +22,7 @@ Toolbox(/8) | Command description | Описание команды
 **guide&nbsp;gui** | Show module GUI| Показать графический интерфейс
 **guide&nbsp;voice**<br>(default: on) | Text-to-speech (TTS) notices on/off, speech rate is set by command **guide `1`~`10`** | Вкл./выкл. голосовых уведомлений (TTS), скорость чтения задается командой **guide `1`~`10`**
 **guide&nbsp;lNotice**<br>(default: off) | Send notices to chat channel "Notice" instead of on-screen messages on/off | Вкл./выкл. отправки уведомлений в канал чата "Важно" вместо показа экранных сообщений
-**guide&nbsp;gNotice**<br>(default: off) | Send notices to party chat channel on/off (will be visible for all party members) | Вкл./выкл. отправки уведомлений в чат группы (уведомления будут видеть все члены группы)
+**guide&nbsp;gNotice**<br>(default: off) | Send notices to party chat channel on/off | Вкл./выкл. отправки уведомлений в канал чата группы
 **guide&nbsp;`1`~`10`**<br>(default: 2) | Set TTS speech rate | Регулировка скорости чтения голосовых сообщений
 **guide&nbsp;spawnObject**<br>(default: on) | Spawn marker objects on/off | Вкл./выкл. спавна маркировочных объектов
 **guide&nbsp;stream**<br>(default: off) | Streamer Mode on/off (hide all notices and objects, TTS will played) | Вкл./выкл. режима стримера (скрывает все уведомления и маркеры, TTS будет проигрываться)
@@ -55,15 +55,15 @@ id | Dungeon name | Название данжа
 
 ## Notices settings / Настройка уведомлений
 
-* On screen (on bottom side) and chat notices, if **lNotice** parameter is *on*. Notices visible for you only.   
-  Уведомления на экране (в нижней части), а также в чате, если параметр **lNotice** - *включен*. Видны только вам.   
+* On screen (on bottom side) and chat notices, if **lNotice** parameter is *on*.   
+  Уведомления на экране (в нижней части), а также в чате, если параметр **lNotice** - *включен*.   
   ![](https://i.imgur.com/BPlK58M.png)
 
-* When **gNotice** parameter is *on*, notices will also be sent to all party members.   
-  Если параметр **gNotice** был *включен*, уведомления также будут отправляться всем членам группы.
+* When **gNotice** parameter is *on*, notices will also be sent to party chat channel.   
+  Если параметр **gNotice** был *включен*, уведомления также будут отправляться в канал чата группы.   
 
-* The message on top side of the screen, if **lNotice** parameter is *off* (by default). Notices visible for you only.   
-  Сообщение в верхней части экрана, если параметр **lNotice** - *выключен* (по-умолчанию). Видны только вам.   
+* The message on top side of the screen, if **lNotice** parameter is *off* (by default).   
+  Сообщение в верхней части экрана, если параметр **lNotice** - *выключен* (по-умолчанию).   
   ![](https://i.imgur.com/r2bb8Wc.png)   
   You can set the color for this type of notices using the commands or GUI (also change color in the Toolbox chat).   
   Возможен выбор цвета для этого вида уведомлений при помощи команд или графического интерфейса (также изменяется цвет в чате Toolbox).
