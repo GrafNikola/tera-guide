@@ -2,7 +2,7 @@
 //
 // made by michengs
 
-module.exports = (dispatch, guide, lang, handlers) => {
+module.exports = (dispatch, handlers, guide, lang) => {
 	let notice = true;
 	let boss = 3;
 	let secondboss = false;

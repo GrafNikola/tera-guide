@@ -2,7 +2,7 @@
 //
 // made by michengs / HSDN
 
-module.exports = (dispatch, guide, lang, handlers) => {
+module.exports = (dispatch, handlers, guide, lang) => {
 	const { HIGHLIGHT_ITEM } = module.parent.exports.spawn;
 
 	let timer1;

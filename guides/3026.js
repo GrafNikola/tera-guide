@@ -2,7 +2,7 @@
 //
 // made by michengs / HSDN / ZC
 
-module.exports = (dispatch, guide, lang, handlers) => {
+module.exports = (dispatch, handlers, guide, lang) => {
 	guide.type = SP;
 
 	const { player } = dispatch.require.library;

@@ -2,7 +2,7 @@
 //
 // made by Kuroine / HSDN
 
-module.exports = (dispatch, guide, lang, handlers) => {
+module.exports = (dispatch, handlers, guide, lang) => {
 	return {
 		"nd-3102-1000": [
 			{ type: "stop_timers" },

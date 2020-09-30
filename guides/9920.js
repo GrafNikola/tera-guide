@@ -2,7 +2,7 @@
 //
 // made by Yuyuko / HSDN
 
-module.exports = (dispatch, guide, lang, handlers) => {
+module.exports = (dispatch, handlers, guide, lang) => {
 	guide.type = SP;
 
 	let counter = 0;

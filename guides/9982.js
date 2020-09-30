@@ -2,7 +2,7 @@
 //
 // made by michengs
 
-module.exports = (dispatch, guide, lang, handlers) => {
+module.exports = (dispatch, handlers, guide, lang) => {
 	let power = true;
 	let Level = 0;
 	let powerMsg = null;
