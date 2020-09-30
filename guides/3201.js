@@ -2,7 +2,7 @@
 //
 // made by michengs
 
-module.exports = (dispatch, guide) => {
+module.exports = (dispatch, guide, lang, handlers) => {
 	let notice = true;
 	let boss = 3;
 	let secondboss = false;
@@ -21,7 +21,7 @@ module.exports = (dispatch, guide) => {
 
 		if (notice && skillid === 234 && boss === 1) { //203 204技能没出/满足234 打手位置本体技能/满足吃分身buff
 			dispatch.setTimeout(() => {
-				textHandler({
+				handlers.text({
 					sub_type: "alert",
 					message_RU: "Скоро дебафф!",
 					message: "Debuff coming soon！"
@@ -31,7 +31,7 @@ module.exports = (dispatch, guide) => {
 
 		if (notice && skillid === 234 && boss === 0) { //203 204技能没出/满足234 打手位置本体技能/满足吃本体buff
 			dispatch.setTimeout(() => {
-				textHandler({
+				handlers.text({
 					sub_type: "alert",
 					message_RU: "Скоро дебафф!",
 					message: "Debuff coming soon！"
@@ -44,7 +44,7 @@ module.exports = (dispatch, guide) => {
 
 			dispatch.setTimeout(() => {
 				if (boss === 1) {
-					textHandler({
+					handlers.text({
 						sub_type: "message",
 						message_RU: "Смена дебаффа!",
 						message: "Debuff reload"
@@ -59,7 +59,7 @@ module.exports = (dispatch, guide) => {
 
 			dispatch.setTimeout(() => {
 				if (boss === 0){
-					textHandler({
+					handlers.text({
 						sub_type: "message",
 						message_RU: "Смена дебаффа!",
 						message: "Debuff reload"
@@ -71,7 +71,7 @@ module.exports = (dispatch, guide) => {
 
 		if (skillid === 203 && boss === 0) {
 			dispatch.setTimeout(() => {
-				textHandler({
+				handlers.text({
 					sub_type: "alert",
 					message_RU: "Скоро дебафф!",
 					message: "Debuff coming soon！"
@@ -81,7 +81,7 @@ module.exports = (dispatch, guide) => {
 
 		if (skillid === 203 && boss === 1) {
 			dispatch.setTimeout(() => {
-				textHandler({
+				handlers.text({
 					sub_type: "alert",
 					message_RU: "Скоро дебафф!",
 					message: "Debuff coming soon！"
@@ -91,7 +91,7 @@ module.exports = (dispatch, guide) => {
 
 		if (skillid === 204 && boss === 1) {
 			dispatch.setTimeout(() => {
-				textHandler({
+				handlers.text({
 					sub_type: "alert",
 					message_RU: "Скоро дебафф!",
 					message: "Debuff coming soon！"
@@ -101,7 +101,7 @@ module.exports = (dispatch, guide) => {
 
 		if (skillid === 204 && boss === 0) {
 			dispatch.setTimeout(() => {
-				textHandler({
+				handlers.text({
 					sub_type: "alert",
 					message_RU: "Скоро дебафф!",
 					message: "Debuff coming soon！"
@@ -111,7 +111,7 @@ module.exports = (dispatch, guide) => {
 
 		if (skillid === 203 && boss === 3) {
 			dispatch.setTimeout(() => {
-				textHandler({
+				handlers.text({
 					sub_type: "alert",
 					message_RU: "Скоро дебафф!",
 					message: "Debuff coming soon！"
@@ -121,7 +121,7 @@ module.exports = (dispatch, guide) => {
 
 		if (skillid === 204 && boss === 3) {
 			dispatch.setTimeout(() => {
-				textHandler({
+				handlers.text({
 					sub_type: "alert",
 					message_RU: "Скоро дебафф!",
 					message: "Debuff coming soon！"
@@ -131,7 +131,7 @@ module.exports = (dispatch, guide) => {
 
 		if (notice && skillid === 234 && boss === 3) {
 			dispatch.setTimeout(() => {
-				textHandler({
+				handlers.text({
 					sub_type: "alert",
 					message_RU: "Скоро дебафф!!!",
 					message: "Debuff coming soon！"

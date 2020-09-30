@@ -2,7 +2,7 @@
 //
 // made by michengs / HSDN
 
-module.exports = (dispatch, guide) => {
+module.exports = (dispatch, guide, lang, handlers) => {
 	let orb_notice = true;
 	let boss_seventy = false;
 	let msg_a = 3;
@@ -22,7 +22,7 @@ module.exports = (dispatch, guide) => {
 		if (orb_notice) {
 			orb_notice = false;
 
-			textHandler({
+			handlers.text({
 				sub_type: "message",
 				message: "Throwing Orb",
 				message_RU: "Бомба"
@@ -112,7 +112,7 @@ module.exports = (dispatch, guide) => {
 			message_RU += ", Код: "  + (mech_reverse ? "0" : "1");
 		}
 
-		textHandler({
+		handlers.text({
 			sub_type: sub_type,
 			message: message,
 			message_RU: message_RU
@@ -126,24 +126,24 @@ module.exports = (dispatch, guide) => {
 		let delay    = boss_seventy ? 2000 : 0,
 			duration = boss_seventy ? 800 : 900;
 		if ([1160, 1190].includes(skillid)) {
-			textHandler({ sub_type: "message", delay: delay, message: "Right Safe", message_RU: "Справа сейф" });
+			handlers.text({ sub_type: "message", delay: delay, message: "Right Safe", message_RU: "Справа сейф" });
 		}
 		if ([1170, 1180].includes(skillid)) {
-			textHandler({ sub_type: "message",delay: delay, message: "Left Safe", message_RU: "Слева сейф" });
+			handlers.text({ sub_type: "message",delay: delay, message: "Left Safe", message_RU: "Слева сейф" });
 		}
 		if ([1160, 1170, 1180, 1190].includes(skillid) && boss_seventy) { // <70%
 			if (mech_reverse) {
-				textHandler({ sub_type: "message",message: "Triple-S | Out", message_RU: "Трипл-эска | От него" });
-				textHandler({ sub_type: "message",delay: 4500, message: "Out", message_RU: "От него" });
+				handlers.text({ sub_type: "message",message: "Triple-S | Out", message_RU: "Трипл-эска | От него" });
+				handlers.text({ sub_type: "message",delay: 4500, message: "Out", message_RU: "От него" });
 			} else {
-				textHandler({ sub_type: "message", message: "Triple-S | In", message_RU: "Трипл-эска | К нему" });
-				textHandler({ sub_type: "message", delay: 4500, message: "In", message_RU: "К нему" });
+				handlers.text({ sub_type: "message", message: "Triple-S | In", message_RU: "Трипл-эска | К нему" });
+				handlers.text({ sub_type: "message", delay: 4500, message: "In", message_RU: "К нему" });
 			}
-			spawnHandler({ func: "circle", args: [false, 445, 0, 0, 10, 300, 5000, 2000] });
+			handlers.spawn({ func: "circle", args: [false, 445, 0, 0, 10, 300, 5000, 2000] });
 			duration = 2000;
 		}
 		if ([1160, 1161, 1162, 1163, 1190, 1191, 1192, 1193, 2220, 2222, 2231].includes(skillid)) { // right safe
-			eventHandler([
+			handlers.event([
 				{ type: "spawn", func: "marker", args: [false, 160, 300, 0, duration, true, null] },
 				{ type: "spawn", func: "marker", args: [false, 340, 300, 0, duration, true, null] },
 				{ type: "spawn", func: "point", args: [202, 170, 200, 0, duration] },
@@ -163,7 +163,7 @@ module.exports = (dispatch, guide) => {
 			]);
 		}
 		if ([1170, 1171, 1172, 1173, 1180, 1181, 1182, 1183, 2230, 2232, 2221].includes(skillid)) { // left safe
-			eventHandler([
+			handlers.event([
 				{ type: "spawn", func: "marker", args: [false, 20, 300, 0, duration, true, null] },
 				{ type: "spawn", func: "marker", args: [false, 200, 300, 0, duration, true, null] },
 				{ type: "spawn", func: "point", args: [202, 10, 200, 0, duration] },

@@ -2,7 +2,7 @@
 //
 // made by michengs / HSDN
 
-module.exports = (dispatch, guide) => {
+module.exports = (dispatch, guide, lang, handlers) => {
 	guide.type = SP;
 
 	let thirdboss_fifty = false;
@@ -12,13 +12,13 @@ module.exports = (dispatch, guide) => {
 			// Lakan has noticed you.
 			case 1043:
 				if (!thirdboss_fifty) {
-					textHandler({
+					handlers.text({
 						sub_type: "notification",
 						message: "Debuffs > Circles > Bombs",
 						message_RU: "ДКБ"
 					});
 				} else {
-					textHandler({
+					handlers.text({
 						sub_type: "notification",
 						message: "Debuffs > Bombs > Circles",
 						message_RU: "ДБК"
@@ -28,13 +28,13 @@ module.exports = (dispatch, guide) => {
 			// Lakan is trying to take you on one at a time.
 			case 1044:
 				if (!thirdboss_fifty) {
-					textHandler({
+					handlers.text({
 						sub_type: "notification",
 						message: "Circles > Bombs > Debuffs",
 						message_RU: "КБД"
 					});
 				} else {
-					textHandler({
+					handlers.text({
 						sub_type: "notification",
 						message: "Circles > Debuffs > Bombs",
 						message_RU: "КДБ"
@@ -44,13 +44,13 @@ module.exports = (dispatch, guide) => {
 			// Lakan intends to kill all of you at once.
 			case 1045:
 				if (!thirdboss_fifty) {
-					textHandler({
+					handlers.text({
 						sub_type: "notification",
 						message: "Bombs > Debuffs > Circles",
 						message_RU: "БДК"
 					});
 				} else {
-					textHandler({
+					handlers.text({
 						sub_type: "notification",
 						message: "Bombs > Circles > Debuffs",
 						message_RU: "БКД"

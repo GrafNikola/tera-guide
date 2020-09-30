@@ -2,7 +2,7 @@
 //
 // made by michengs
 
-module.exports = (dispatch, guide) => {
+module.exports = (dispatch, guide, lang, handlers) => {
 	guide.type = SP;
 
 	let print = false;
@@ -11,13 +11,13 @@ module.exports = (dispatch, guide) => {
 
 	function skilld_event(skillid,  ent) {
 		if (skillid == 90442304) {
-			textHandler({ sub_type: "notification", message: "Stun", message_RU: "Стан!!!" });
-			textHandler({ sub_type: "message", message: "Stun", message_RU: "Стан!!!" });
+			handlers.text({ sub_type: "notification", message: "Stun", message_RU: "Стан!!!" });
+			handlers.text({ sub_type: "message", message: "Stun", message_RU: "Стан!!!" });
 		}
 
 		if (notice && skillid == 305) {
 			notice = false;
-			textHandler({
+			handlers.text({
 				sub_type: "message",
 				message: "Laser",
 				message_RU: "Лазер"
@@ -28,7 +28,7 @@ module.exports = (dispatch, guide) => {
 
 		// Wawes
 		if ([1121, 2121, 1140, 2140, 1123, 2123, 1142, 2142, 1122, 2122, 1141, 2141].includes(skillid)) {
-			eventHandler([
+			handlers.event([
 				{ type: "spawn", func: "vector", args: [553, 90, 50, 0, 500, 0, 6000] },
 				{ type: "spawn", func: "vector", args: [553, 270, 50, 0, 500, 0, 6000] },
 				{ type: "spawn", func: "vector", args: [553, 90, 50, 180, 500, 0, 6000] },
@@ -40,7 +40,7 @@ module.exports = (dispatch, guide) => {
 
 		// Left
 		if ([1121, 2121].includes(skillid)) {
-			eventHandler([
+			handlers.event([
 				{ type: "spawn", func: "marker", args: [false, 37, 125, 0, 2533, false, ["safe", "safe"]] },
 				{ type: "spawn", func: "marker", args: [false, 143, 125, 0, 2533, false, ["safe", "safe"]] }
 			]);
@@ -48,7 +48,7 @@ module.exports = (dispatch, guide) => {
 
 		// Right
 		if ([1140, 2140].includes(skillid)) {
-			eventHandler([
+			handlers.event([
 				{ type: "spawn", func: "marker", args: [false, 323, 125, 0, 2533, false, ["safe", "safe"]] },
 				{ type: "spawn", func: "marker", args: [false, 217, 125, 0, 2533, false, ["safe", "safe"]] }
 			]);
@@ -57,7 +57,7 @@ module.exports = (dispatch, guide) => {
 		// 2nd fast 123 142
 		// Left
 		if ([1123, 2123].includes(skillid)) {
-			eventHandler([
+			handlers.event([
 				{ type: "spawn", func: "marker", args: [false, 37, 125, 0, 2500, false, ["safe", "safe"]] },
 				{ type: "spawn", func: "marker", args: [false, 143, 125, 0, 2500, false, ["safe", "safe"]] }
 			]);
@@ -65,7 +65,7 @@ module.exports = (dispatch, guide) => {
 
 		// Right
 		if ([1142, 2142].includes(skillid)) {
-			eventHandler([
+			handlers.event([
 				{ type: "spawn", func: "marker", args: [false, 323, 125, 0, 2500, false, ["safe", "safe"]] },
 				{ type: "spawn", func: "marker", args: [false, 217, 125, 0, 2500, false, ["safe", "safe"]] }
 			]);
@@ -74,7 +74,7 @@ module.exports = (dispatch, guide) => {
 		// 3rd fast 122 141
 		// Left
 		if ([1122, 2122].includes(skillid)) {
-			eventHandler([
+			handlers.event([
 				{ type: "spawn", func: "marker", args: [false, 37, 125, 0, 2533, false, ["safe", "safe"]] },
 				{ type: "spawn", func: "marker", args: [false, 143, 125, 0, 2533, false, ["safe", "safe"]] }
 			]);
@@ -82,7 +82,7 @@ module.exports = (dispatch, guide) => {
 
 		// Right
 		if ([1141, 2141].includes(skillid)) {
-			eventHandler([
+			handlers.event([
 				{ type: "spawn", func: "marker", args: [false, 323, 125, 0, 2533, false, ["safe", "safe"]] },
 				{ type: "spawn", func: "marker", args: [false, 217, 125, 0, 2533, false, ["safe", "safe"]] }
 			]);
@@ -96,7 +96,7 @@ module.exports = (dispatch, guide) => {
 
 	function print_th() {
 		if (print) {
-			textHandler({
+			handlers.text({
 				sub_type: "message",
 				message: "Laser (loading)",
 				message_RU: "Лазер (зарядка)"
@@ -108,12 +108,12 @@ module.exports = (dispatch, guide) => {
 
 	function print_end() {
 		if (printend) {
-			textHandler({
+			handlers.text({
 				sub_type: "message",
 				message: "Laser (loading)",
 				message_RU: "Лазер (зарядка)"
 			});
-			textHandler({
+			handlers.text({
 				sub_type: "message",
 				delay: 30000,
 				message: "Laser (loading)",

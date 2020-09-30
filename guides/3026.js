@@ -2,7 +2,7 @@
 //
 // made by michengs / HSDN / ZC
 
-module.exports = (dispatch, guide) => {
+module.exports = (dispatch, guide, lang, handlers) => {
 	guide.type = SP;
 
 	const { player } = dispatch.require.library;
@@ -52,7 +52,7 @@ module.exports = (dispatch, guide) => {
 			caption  = "OUT";
 		}
 
-		eventHandler([
+		handlers.event([
 			{ type: "spawn", func: "marker", args: [false,  45 + boss_offset, distance, 0, 4000, true, [caption, "SAFE"]] },
 			{ type: "spawn", func: "marker", args: [false, 135 + boss_offset, distance, 0, 4000, true, [caption, "SAFE"]] },
 			{ type: "spawn", func: "marker", args: [false, 225 + boss_offset, distance, 0, 4000, true, [caption, "SAFE"]] },
@@ -66,7 +66,7 @@ module.exports = (dispatch, guide) => {
 
 		timer1 = dispatch.setTimeout(() => {
 			if (debuff != null) {
-				textHandler({
+				handlers.text({
 					sub_type: "message",
 					message: "Debuff 20 seconds",
 					message_RU: "Дебафф 20 сек."
@@ -77,14 +77,14 @@ module.exports = (dispatch, guide) => {
 		timer2 = dispatch.setTimeout(() => {
 			if (debuff != null) {
 				dispatch.setTimeout(() => {
-					textHandler({
+					handlers.text({
 						sub_type: "alert",
 						message: (`${debuff_messages[debuff % 2].message}`),
 						message_RU: (`${debuff_messages[debuff % 2].message_RU}`)
 					});
 				}, 2000);
 
-				textHandler({
+				handlers.text({
 					sub_type: "message",
 					message: "Debuff 50 seconds",
 					message_RU: "Дебафф 50 сек."
@@ -94,7 +94,7 @@ module.exports = (dispatch, guide) => {
 
 		timer3 = dispatch.setTimeout(() => {
 			if (debuff != null) {
-				textHandler({
+				handlers.text({
 					sub_type: "message",
 					message: "Warning! Debuff 15 seconds",
 					message_RU: "Дебафф 15 сек."
@@ -104,7 +104,7 @@ module.exports = (dispatch, guide) => {
 
 		timer4 = dispatch.setTimeout(() => {
 			if (debuff != null) {
-				textHandler({
+				handlers.text({
 					sub_type: "message",
 					message: "Warning! Debuff 10 seconds",
 					message_RU: "Дебафф 10 сек."
@@ -114,7 +114,7 @@ module.exports = (dispatch, guide) => {
 
 		timer5 = dispatch.setTimeout(() => {
 			if (debuff != null) {
-				textHandler({
+				handlers.text({
 					sub_type: "message",
 					message: "Warning! Debuff 5 seconds",
 					message_RU: "Дебафф 5 сек."
@@ -123,7 +123,7 @@ module.exports = (dispatch, guide) => {
 		}, 85000);
 
 		if (blue) {
-			textHandler({
+			handlers.text({
 				sub_type: "message",
 				message: (`${mech_messages[(qbacting + debuff + 1) % 2].message}`),
 				message_RU: (`${mech_messages[(qbacting + debuff + 1) % 2].message_RU}`)
@@ -131,7 +131,7 @@ module.exports = (dispatch, guide) => {
 
 			spawn_marker((qbacting + debuff + 1) % 2);
 		} else if (red) {
-			textHandler({
+			handlers.text({
 				sub_type: "message",
 				message: (`${mech_messages[(qbacting + debuff) % 2].message}`),
 				message_RU: (`${mech_messages[(qbacting + debuff) % 2].message_RU}`)
@@ -164,7 +164,7 @@ module.exports = (dispatch, guide) => {
 			// Argon Priest Essence buff
 			if (player.isMe(event.target.toString()) && [30261701, 31261701].includes(event.id)) {
 				if (added && boss_ent) {
-					spawnHandler({ // spawn teleport mark
+					handlers.spawn({ // spawn teleport mark
 						sub_type: "item",
 						id: MARKER_ITEM,
 						sub_delay: 50000,
@@ -191,7 +191,7 @@ module.exports = (dispatch, guide) => {
 		// In-Out identification
 		if ([212, 213, 214, 215].includes(skillid)) {
 			boss_ent = ent;
-			eventHandler([
+			handlers.event([
 				{ type: "spawn", func: "circle", args: [false, 445, 0, 0, 8, 440, 200, 8000] },
 				{ type: "spawn", func: "circle", args: [false, 445, 0, 0, 4, 840, 200, 8000] }
 			]);
@@ -199,7 +199,7 @@ module.exports = (dispatch, guide) => {
 
 		if ([212, 214].includes(skillid)) { // Fire claw (141, 142)
 			boss_offset = 10;
-			eventHandler([
+			handlers.event([
 				{ type: "spawn", func: "vector", args: [553, 0, 0, 190, 840, 200, 8000] },
 				{ type: "spawn", func: "vector", args: [553, 0, 0,  10, 840, 200, 8000] }
 			]);
@@ -207,7 +207,7 @@ module.exports = (dispatch, guide) => {
 
 		if ([213, 215].includes(skillid)) { // Ice claw (143, 144)
 			boss_offset = -10;
-			eventHandler([
+			handlers.event([
 				{ type: "spawn", func: "vector", args: [553, 0, 0, 170, 840, 200, 8000] },
 				{ type: "spawn", func: "vector", args: [553, 0, 0, 350, 840, 200, 8000] }
 			]);
@@ -216,7 +216,7 @@ module.exports = (dispatch, guide) => {
 		if ([213, 214].includes(skillid)) { // Ice inside
 			dispatch.setTimeout(() => {
 				if (debuff != null) {
-					textHandler({
+					handlers.text({
 						sub_type: "message",
 						message: (`Ice inside (${qbacting_messages[qbacting].message}) | ${mech_messages[(qbacting + debuff + 1) % 2].message}`),
 						message_RU: (`Внутри лед (${qbacting_messages[qbacting].message_RU}) | ${mech_messages[(qbacting + debuff + 1) % 2].message_RU}`)
@@ -224,7 +224,7 @@ module.exports = (dispatch, guide) => {
 
 					spawn_marker((qbacting + debuff + 1) % 2);
 				} else {
-					textHandler({
+					handlers.text({
 						sub_type: "message",
 						message: (`Ice inside (${qbacting_messages[qbacting].message})`),
 						message_RU: (`Внутри лед (${qbacting_messages[qbacting].message_RU})`)
@@ -241,7 +241,7 @@ module.exports = (dispatch, guide) => {
 		if ([212, 215].includes(skillid)) { // Fire inside
 			dispatch.setTimeout(() => {
 				if (debuff != null) {
-					textHandler({
+					handlers.text({
 						sub_type: "message",
 						message: (`Fire inside (${qbacting_messages[qbacting].message}) | ${mech_messages[(qbacting + debuff) % 2].message}`),
 						message_RU: (`Внутри огонь (${qbacting_messages[qbacting].message_RU}) | ${mech_messages[(qbacting + debuff) % 2].message_RU}`)
@@ -249,7 +249,7 @@ module.exports = (dispatch, guide) => {
 
 					spawn_marker((qbacting + debuff) % 2);
 				} else {
-					textHandler({
+					handlers.text({
 						sub_type: "message",
 						message: (`Fire inside (${qbacting_messages[qbacting].message})`),
 						message_RU: (`Внутри огонь (${qbacting_messages[qbacting].message_RU})`)

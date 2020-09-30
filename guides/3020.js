@@ -2,7 +2,7 @@
 //
 // made by michengs / HSDN
 
-module.exports = (dispatch, guide) => {
+module.exports = (dispatch, guide, lang, handlers) => {
 	const { player } = dispatch.require.library;
 	const { Spawn } = module.parent.exports.lib;
 
@@ -15,7 +15,7 @@ module.exports = (dispatch, guide) => {
 		// (зеленый) "Ближе!"
 		if (skillid == 121) {
 			green  = true;
-			eventHandler([
+			handlers.event([
 				// круг перед боссом
 				{ type: "spawn", func: "circle", args: [true, 553, 0, 170, 8, 290, 3000, 2000] }, // 1
 				// бублик вокруг босса
@@ -27,7 +27,7 @@ module.exports = (dispatch, guide) => {
 		// (фиолетовый) "Проваливай!"
 		if (skillid == 122) {
 			purple = true;
-			eventHandler([
+			handlers.event([
 				// бублик вокруг босса
 				{ type: "spawn", func: "circle", args: [true, 553, 0, 0, 8, 280, 3000, 2000] },  // 1
 				{ type: "spawn", func: "circle", args: [true, 553, 0, 0, 4, 570, 3000, 2000] },  // 1
@@ -41,7 +41,7 @@ module.exports = (dispatch, guide) => {
 			// Проваливай! - Упади в бездну
 			// к нему (бублик вокруг босса) -> от него (круг перед боссом) -> к нему (бублик перед боссом)
 			if (purple && !boss_thirty) {
-				eventHandler([
+				handlers.event([
 					{ type: "text", sub_type: "message", message: "In > Out > In", message_RU: "К нему > От него > К нему" },
 					// бублик перед боссом
 					{ type: "spawn", func: "circle", args: [true, 912, 0, 150, 8, 280, 5000, 3000] }, // 3
@@ -54,7 +54,7 @@ module.exports = (dispatch, guide) => {
 			// Проваливай! - Упади в бездну
 			// к нему (бублик вокруг босса) -> от него (круг перед боссом) -> [волны] -> к нему (бублик перед боссом)
 			} else if (purple && boss_thirty) {
-				eventHandler([
+				handlers.event([
 					{ type: "text", sub_type: "message", message: "In > Out", message_RU: "К нему > От него > (К нему)" },
 					{ type: "text", sub_type: "message", delay: 5000, message: "In", message_RU: "К нему" },
 					// бублик перед боссом
@@ -71,7 +71,7 @@ module.exports = (dispatch, guide) => {
 			// Ближе! - Ощути силу взрыва
 			// от него (круг перед боссом) -> к нему (бублик вокруг босса) -> от него (большой круг перед боссом)
 			if (green && !boss_thirty) {
-				eventHandler([
+				handlers.event([
 					{ type: "text", sub_type: "message", message: "Out > In > Out", message_RU: "От него > К нему > От него" },
 					// большой круг перед боссом
 					{ type: "spawn", func: "circle", args: [true, 912, 0, 200, 8, 450, 5000, 3000] } // 3
@@ -82,7 +82,7 @@ module.exports = (dispatch, guide) => {
 			// Проваливай - Ощути силу взрыва
 			// к нему (бублик вокруг босса) -> от него (круг перед боссом) -> от него (большой круг перед боссом)
 			} else if (purple && !boss_thirty) {
-				eventHandler([
+				handlers.event([
 					{ type: "text", sub_type: "message", message: "In > Out > Out", message_RU: "К нему > От него > От него" },
 					// большой круг перед боссом
 					{ type: "spawn", func: "circle", args: [true, 912, 0, 200, 8, 450, 5000, 3000] } // 3
@@ -94,7 +94,7 @@ module.exports = (dispatch, guide) => {
 			// Ближе! - Ощути силу взрыва
 			// от него (круг перед боссом) -> к нему (бублик вокруг босса) -> [волны] -> от него (большой круг перед боссом)
 			} else if (green && boss_thirty) {
-				eventHandler([
+				handlers.event([
 					{ type: "text", sub_type: "message", message: "Out > In", message_RU: "От него > К нему > (От него)" },
 					{ type: "text", sub_type: "message", delay: 5000, message: "Out", message_RU: "От него" },
 					// большой круг перед боссом
@@ -107,7 +107,7 @@ module.exports = (dispatch, guide) => {
 			// Проваливай! - Ощути силу взрыва
 			// к нему (бублик вокруг босса) -> от него (круг перед боссом) -> [волны] -> от него (большой круг перед боссом)
 			} else if (purple && boss_thirty) {
-				eventHandler([
+				handlers.event([
 					{ type: "text", sub_type: "message", message: "In > Out", message_RU: "К нему > От него > (От него)" },
 					{ type: "text", sub_type: "message", delay: 5000, message: "Out", message_RU: "От него" },
 					// большой круг перед боссом
@@ -121,9 +121,9 @@ module.exports = (dispatch, guide) => {
 		// Прыжок
 		if (skillid == 127) {
 			if (boss_thirty)
-				textHandler({ sub_type: "message", message: "Jump | Get Out", message_RU: "Прыжок | От него" });
+				handlers.text({ sub_type: "message", message: "Jump | Get Out", message_RU: "Прыжок | От него" });
 			else
-				eventHandler([
+				handlers.event([
 					{ type: "text", sub_type: "message", message: "Jump | Get In", message_RU: "Прыжок | К нему" },
 					{ type: "spawn", func: "circle", args: [true, 553, 0, 0, 15, 200, 250, 1000] },
 					{ type: "spawn", func: "circle", args: [true, 553, 0, 0, 10, 300, 1000, 4000] }
@@ -168,7 +168,7 @@ module.exports = (dispatch, guide) => {
 						}
 
 						debuff_call_event = dispatch.setTimeout(() => {
-							textHandler({
+							handlers.text({
 								sub_type: "alert",
 								message: debuffs_targe[event.id].message,
 								message_RU: debuffs_targe[event.id].message_RU

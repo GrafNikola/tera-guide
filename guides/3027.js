@@ -2,7 +2,7 @@
 //
 // made by michengs / HSDN
 
-module.exports = (dispatch, guide) => {
+module.exports = (dispatch, guide, lang, handlers) => {
 	const { HIGHLIGHT_ITEM } = module.parent.exports.spawn;
 
 	let timer1;
@@ -17,7 +17,7 @@ module.exports = (dispatch, guide) => {
 
 		timer1 = dispatch.setTimeout(()=> {
 			if (!is_hp_74_39) {
-				textHandler({
+				handlers.text({
 					sub_type: "message",
 					message: "Shield in 5 seconds!",
 					message_RU: "Через 5 сек. щит!"
@@ -27,7 +27,7 @@ module.exports = (dispatch, guide) => {
 
 		timer2 = dispatch.setTimeout(()=> {
 			if (!is_hp_74_39) {
-				textHandler({
+				handlers.text({
 					sub_type: "message",
 					message: "Shield in 15 seconds!",
 					message_RU: "Через 15 сек. щит!"
@@ -52,7 +52,7 @@ module.exports = (dispatch, guide) => {
 				is_hp_74_39 = false;
 				dispatch.setTimeout(() => print_shield = true, 15000);
 
-				textHandler({
+				handlers.text({
 					sub_type: "alert",
 					message: "Ready for Shield",
 					message_RU: "Готовность ломать щит"

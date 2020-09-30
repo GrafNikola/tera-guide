@@ -2,7 +2,7 @@
 //
 // made by michengs
 
-module.exports = (dispatch, guide) => {
+module.exports = (dispatch, guide, lang, handlers) => {
 	let power = true;
 	let Level = 0;
 	let powerMsg = null;
@@ -39,24 +39,24 @@ module.exports = (dispatch, guide) => {
 			powerMsg = "{" + Level + "}";
 
 			if (Level == 4) {
-				textHandler({
+				handlers.text({
 					sub_type: "message",
 					message_RU: "Полностью заряжен!",
 					message: "Fully charged!"
 				});
-				textHandler({
+				handlers.text({
 					sub_type: "alert",
 					message_RU: "Полностью заряжен!",
 					message: "Fully charged!"
 				});
 
 			} else if (Level == 2 && steptwo) {
-				textHandler({
+				handlers.text({
 					sub_type: "message",
 					message_RU: "Полностью заряжен!",
 					message: "Fully charged!!"
 				});
-				textHandler({
+				handlers.text({
 					sub_type: "alert",
 					message_RU: "Полностью заряжен!",
 					message: "Fully charged!"
@@ -65,7 +65,7 @@ module.exports = (dispatch, guide) => {
 
 			if (powerMsg !== null && skillid !== 399) {
 				if (!steptwo && Level !== 4) {
-					textHandler({
+					handlers.text({
 						sub_type: "message",
 						message_RU: powerMsg,
 						message: powerMsg
@@ -73,7 +73,7 @@ module.exports = (dispatch, guide) => {
 				}
 
 				if (steptwo && Level !== 2) {
-					textHandler({
+					handlers.text({
 						sub_type: "message",
 						message_RU: powerMsg,
 						message: powerMsg

@@ -2,7 +2,7 @@
 //
 // made by michengs
 
-module.exports = (dispatch, guide) => {
+module.exports = (dispatch, guide, lang, handlers) => {
 	guide.type = ES;
 
 	let debuff = 0;
@@ -21,13 +21,13 @@ module.exports = (dispatch, guide) => {
 			switch (skillid) {
 				case 3119: // red inside
 					if (debuff === 1) {
-						textHandler({
+						handlers.text({
 							sub_type: "message",
 							message: "OUT (blue)",
 							message_RU: "ОТ НЕГО"
 						});
 					} else if (debuff === 2) {
-						textHandler({
+						handlers.text({
 							sub_type: "message",
 							message: "IN (red)",
 							message_RU: "К НЕМУ"
@@ -37,13 +37,13 @@ module.exports = (dispatch, guide) => {
 
 				case 3220: // blue inside
 					if (debuff === 1) {
-						textHandler({
+						handlers.text({
 							sub_type: "message",
 							message: "IN (blue)",
 							message_RU: "К НЕМУ"
 						});
 					} else if (debuff === 2) {
-						textHandler({
+						handlers.text({
 							sub_type: "message",
 							message: "OUT (red)",
 							message_RU: "ОТ НЕГО"

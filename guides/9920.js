@@ -2,7 +2,7 @@
 //
 // made by Yuyuko / HSDN
 
-module.exports = (dispatch, guide) => {
+module.exports = (dispatch, guide, lang, handlers) => {
 	guide.type = SP;
 
 	let counter = 0;
@@ -13,7 +13,7 @@ module.exports = (dispatch, guide) => {
 		counter++;
 
 		if (counter >= 2) {
-			textHandler({
+			handlers.text({
 				sub_type: "message",
 				message: "Back Attack",
 				message_RU: "Задний"
@@ -38,7 +38,7 @@ module.exports = (dispatch, guide) => {
 			for (let i = 0; i < 3; i++) {
 				let current_colour = colour_rotation[(colour_rotation.indexOf(colour_to_use) + i) % 3];
 
-				spawnHandler({
+				handlers.spawn({
 					func: "marker",
 					args: [false, COLOURS_OFFSETS[current_colour], 150, i * 2600, (i + 1) * 3000, true, null] 
 				}, ent);

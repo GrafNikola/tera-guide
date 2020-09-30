@@ -2,7 +2,7 @@
 //
 // made by HSDN
 
-module.exports = (dispatch, guide) => {
+module.exports = (dispatch, guide, lang, handlers) => {
 	let timer1;
 	let print_target = true;
 	let in_bait = false;
@@ -15,13 +15,13 @@ module.exports = (dispatch, guide) => {
 
 		if (skillid == 116) { // Haymaker
 			if (in_bait) {
-				textHandler({
+				handlers.text({
 					sub_type: "message",
 					message: "Haymaker",
 					message_RU: "Мощный удар"
 				});
 			} else { // 116 -> 146
-				textHandler({
+				handlers.text({
 					sub_type: "message",
 					message: "Haymaker | Back Kick",
 					message_RU: "Мощный удар | Откид назад"
@@ -37,7 +37,7 @@ module.exports = (dispatch, guide) => {
 			dispatch.setTimeout(() => print_target = true, 5000);
 
 			timer1 = dispatch.setTimeout(() => {
-				textHandler({
+				handlers.text({
 					sub_type: "alert",
 					message: "Target attacks soon...",
 					message_RU: "Скоро таргет-атака..."
