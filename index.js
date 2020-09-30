@@ -1,6 +1,6 @@
 'use strict';
 
-exports.NetworkMod = function(mod) {
+module.exports.NetworkMod = function (mod) {
 	try {
 		mod.require["tera-guide-core"].load(mod, {
 			colors: { gui: {}, general: {} }, // color settings
