@@ -149,8 +149,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		const abnormality_change = (added, event) => {
 			if (debuffs_targe[event.id]) {
 				// Set party marker to target
-				handlers.party_marker({ target: event.target, color: "blue" });
-				handlers.party_marker({ target: false, delay: 3500 });
+				handlers.marker({ id: event.target, color: "blue", sub_delay: 3500 });
 
 				if (player.isMe(event.target.toString()) || player.playersInParty.includes(event.target.toString())) {
 					if (added) {
