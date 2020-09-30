@@ -9,7 +9,6 @@ module.exports = (dispatch, handlers, guide, lang) => {
 	let green = false;
 	let purple = false;
 	let boss_thirty = false;
-	let party_makers = [];
 
 	function boss_mech_event(skillid) {
 		// (зеленый) "Ближе!"
@@ -149,17 +148,9 @@ module.exports = (dispatch, handlers, guide, lang) => {
 	function start_dungeon_event() {
 		const abnormality_change = (added, event) => {
 			if (debuffs_targe[event.id]) {
-				party_makers.push({
-					color: 2, // 0. red, 1. yellow, 2. blue
-					target: event.target
-				});
-
-				updateMarkers();
-
-				dispatch.setTimeout(() => {
-					party_makers = [];
-					updateMarkers();
-				}, 3500);
+				// Set party marker to target
+				handlers.party_marker({ target: event.target, color: "blue" });
+				handlers.party_marker({ target: false, delay: 3500 });
 
 				if (player.isMe(event.target.toString()) || player.playersInParty.includes(event.target.toString())) {
 					if (added) {
@@ -187,14 +178,6 @@ module.exports = (dispatch, handlers, guide, lang) => {
 
 			debuff_tracker_started = true;
 		}
-	}
-
-	function updateMarkers() {
-		if (dispatch._dispatch.settings.stream || !guide.verbose) return;
-
-		dispatch.send("S_PARTY_MARKER", 1, {
-			markers: party_makers
-		});
 	}
 
 	return {
