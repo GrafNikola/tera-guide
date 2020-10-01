@@ -1,6 +1,7 @@
 'use strict';
 
-// Available strings for different languages
+// Available strings for additional languages
+// If no language is found, the default language (English) will be displayed
 module.exports.general = {
 
 	// Русский
@@ -11,7 +12,7 @@ module.exports.general = {
 			["guide, вкл./выкл. модуля", "PRMSG"],
 			["guide gui, показать графический интерфейс", "PRMSG"],
 			["guide voice, вкл./выкл. голосовые сообщения", "PRMSG"],
-			["guide lNotice, вкл./выкл. отправки сообщений в канал чата", "PRMSG"],
+			["guide lNotice, вкл./выкл. отправки уведомлений в чата вместо экранных", "PRMSG"],
 			["guide gNotice, вкл./выкл. отправки сообщений в чат группы", "PRMSG"],
 			["guide 1~10, регулировка скорости чтения голосовых сообщений", "PRMSG"],
 			["guide spawnObject, вкл./выкл. спавна маркировочных объектов", "PRMSG"],
@@ -37,11 +38,11 @@ module.exports.general = {
 		red: "Красный",
 		green: "Зеленый",
 		settings: "Настройки",
-		spawnObject: "Спавн объектов",
+		spawnObject: "Спаун маркировочных объектов",
 		speaks: "Голосовые сообщения",
-		lNotice: "Уведомления в чат",
-		gNotice: "Сообщения в чат",
-		stream: "Режим стримера",
+		lNotice: "Уведомления в чат вместо экранных",
+		gNotice: "Сообщения в канал чата группы",
+		stream: "Режим стримера (скрытие сообщений и объектов)",
 		rate: "Скорость речи",
 		color: "Выбор цвета",
 		dungeons: "Настройки данжей",
@@ -59,5 +60,4 @@ module.exports.general = {
 		enterdg: "Вы вошли в данж",
 		fordungeon: "для данжа",
 	},
-
 };

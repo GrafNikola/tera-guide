@@ -1,4 +1,4 @@
 'use strict';
 
-// Available names for different languages
+// Available names for additional languages
 module.exports = {};
