@@ -47,7 +47,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 
 		// Pizza + Donuts (outward waves)
 		"s-3202-1000-121-0": [
-			{ type: "text", sub_type: "message", message: "Pizza (Right foot) | Out-waves: Stay Out > Get In", message_RU: "Пицца (правая нога) | Волны наружу: От него > К нему" },
+			{ type: "text", sub_type: "message", message: "Pizza (Right foot) | Outward Waves: Stay Out > Get In", message_RU: "Пицца (правая нога) | Волны наружу: От него > К нему" },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 8, 550, 0, 3000] },
 			{ type: "spawn", func: "semicircle", args: [-60, 70, 912, 0, 0, 8, 450, 0, 4000] },
 			{ type: "spawn", func: "semicircle", args: [120, 250, 912, 0, 0, 8, 450, 0, 4000] },
@@ -61,18 +61,17 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-3202-1000-123-0": [
 			{ type: "spawn", func: "vector", args: [912, 0, 0, 295, 550, 0, 1500] },
 			{ type: "spawn", func: "vector", args: [912, 0, 0, 85, 550, 0, 1500] },
-			{ type: "spawn", func: "semicircle", args: [85, 295, 912, 0, 0, 6, 550, 0, 1500] },
-			{ type: "text", sub_type: "message", delay:100, message: "[Out-waves: Stay Out > Get In]", message_RU: "[Волны наружу: От него > К нему]" }
+			{ type: "spawn", func: "semicircle", args: [85, 295, 912, 0, 0, 6, 550, 0, 1500] }
 		],
 		"s-3202-1000-127-0": [
-			{ type: "text", sub_type: "message", message: "Out-waves: Stay Out > Get In", message_RU: "Волны наружу: От него > К нему" },
+			{ type: "text", sub_type: "message", message: "Outward Waves: Stay Out > Get In", message_RU: "Волны наружу: От него > К нему" },
 			{ type: "spawn", func: "circle", args: [false, 445, 0, 0, 14, 160, 0, 3000] },
 			{ type: "spawn", func: "circle", args: [false, 445, 0, 0, 8, 390, 0, 3000] },
 			{ type: "spawn", func: "circle", args: [false, 445, 0, 0, 6, 620, 0, 3000] }
 		],
 		// Pizza + Donuts (inward waves)
 		"s-3202-1000-124-0": [
-			{ type: "text", sub_type: "message", message: "Pizza (Left foot) | In-waves: Stay In > Get Out", message_RU: "Пицца (левая нога) | Волны внутрь: К нему > От него" },
+			{ type: "text", sub_type: "message", message: "Pizza (Left foot) | Inward Waves: Stay In > Get Out", message_RU: "Пицца (левая нога) | Волны внутрь: К нему > От него" },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 8, 550, 0, 3000] },
 			{ type: "spawn", func: "semicircle", args: [-60, 70, 912, 0, 0, 8, 450, 0, 4000] },
 			{ type: "spawn", func: "semicircle", args: [120, 250, 912, 0, 0, 8, 450, 0, 4000] },
@@ -86,11 +85,10 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-3202-1000-126-0": [
 			{ type: "spawn", func: "vector", args: [912, 0, 0, 295, 550, 0, 1500] },
 			{ type: "spawn", func: "vector", args: [912, 0, 0, 85, 550, 0, 1500] },
-			{ type: "spawn", func: "semicircle", args: [85, 295, 912, 0, 0, 6, 550, 0, 1500] },
-			{ type: "text", sub_type: "message", delay:100, message: "[In-waves: Stay In > Get Out]", message_RU: "[Волны внутрь: К нему > От него]" }
+			{ type: "spawn", func: "semicircle", args: [85, 295, 912, 0, 0, 6, 550, 0, 1500] }
 		],
 		"s-3202-1000-128-0": [
-			{ type: "text", sub_type: "message", message: "In-waves: Stay In > Get Out", message_RU: "Волны внутрь: К нему > От него" },
+			{ type: "text", sub_type: "message", message: "Inward Waves: Stay In > Get Out", message_RU: "Волны внутрь: К нему > От него" },
 			{ type: "spawn", func: "circle", args: [false, 445, 0, 0, 14, 160, 0, 3000] },
 			{ type: "spawn", func: "circle", args: [false, 445, 0, 0, 8, 390, 0, 3000] },
 			{ type: "spawn", func: "circle", args: [false, 445, 0, 0, 6, 620, 0, 3000] }

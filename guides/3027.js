@@ -126,7 +126,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 
 		// стяжка -> бублики (350 -> 302)
 		"s-3027-1000-350-0": [
-			{ type: "text", sub_type: "message", message: "Red: Donuts (Stay Out > Get In)", message_RU: "Стяжка | Бублики (От него > К нему)" },
+			{ type: "text", sub_type: "message", message: "Red: Donuts (Out > In)", message_RU: "Стяжка | Бублики (От него > К нему)" },
 			{ type: "spawn", func: "circle", args: [false, 445, 0, 0, 12, 240, 0, 5000] },
 			{ type: "spawn", func: "circle", args: [false, 445, 0, 0, 8, 480, 0, 5000] },
 			{ type: "spawn", func: "circle", args: [false, 445, 0, 0, 3, 950, 0, 5000] },
