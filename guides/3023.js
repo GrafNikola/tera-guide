@@ -10,13 +10,6 @@ module.exports = (dispatch, handlers, guide, lang) => {
 	let timer2;
 
 	function firstboss_debuff_event(skillid) {
-		if (skillid === 99020020) { // Debuff removed
-			debuff = 0;
-
-			dispatch.clearTimeout(timer1);
-			dispatch.clearTimeout(timer2);
-		}
-
 		if ([3119, 3220].includes(skillid)) {
 			switch (skillid) {
 				case 3119: // red inside
@@ -26,7 +19,8 @@ module.exports = (dispatch, handlers, guide, lang) => {
 							message: "OUT (blue)",
 							message_RU: "ОТ НЕГО"
 						});
-					} else if (debuff === 2) {
+					}
+					if (debuff === 2) {
 						handlers.text({
 							sub_type: "message",
 							message: "IN (red)",
@@ -42,7 +36,8 @@ module.exports = (dispatch, handlers, guide, lang) => {
 							message: "IN (blue)",
 							message_RU: "К НЕМУ"
 						});
-					} else if (debuff === 2) {
+					}
+					if (debuff === 2) {
 						handlers.text({
 							sub_type: "message",
 							message: "OUT (red)",
@@ -53,7 +48,14 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			}
 		}
 
-		if ([30231000, 1000].includes(skillid)) { // Red debuff
+		if (skillid === 99020020) { // Debuff removed
+			debuff = 0;
+
+			dispatch.clearTimeout(timer1);
+			dispatch.clearTimeout(timer2);
+		}
+
+		if (skillid == 30231000) { // Red debuff
 			debuff = 1;
 
 			dispatch.clearTimeout(timer1);
@@ -62,7 +64,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			timer1 = dispatch.setTimeout(() => debuff = 0, 70000);
 		}
 
-		if ([30231001, 1001].includes(skillid)) { // Blue debuff
+		if (skillid == 30231001) { // Blue debuff
 			debuff = 2;
 
 			dispatch.clearTimeout(timer2);
@@ -82,8 +84,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "stop_timers" },
 			{ type: "despawn_all" }
 		],
-		"h-3023-1000-99": [{ type: "func", func: firstboss_start_event }],
-		"h-3023-1000-80": [{ type: "text", sub_type: "message", message: "80%", message_RU: "80%" }],
+		"ns-3023-1000": [{ type: "func", func: firstboss_start_event }],
 		"s-3023-1000-104-0": [{ type: "text", sub_type: "message", message: "Random Jump", message_RU: "Прыжок + Стан" }],
 		"s-3023-1000-105-0": [{ type: "text", sub_type: "message", message: "Back", message_RU: "Поворот назад" }],
 		"s-3023-1000-110-0": [
@@ -110,7 +111,6 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		],
 		"s-3023-1000-113-0": [
 			{ type: "text", sub_type: "message", message: "Left Slash", message_RU: "Левая полоса" },
-			{ type: "func", func: firstboss_debuff_event, args: [1113] },
 			{ type: "spawn", func: "vector", args: [553, 270, 200, 180, 500, 0, 2000] },
 			{ type: "spawn", func: "vector", args: [553, 270, 200, 0, 300, 0, 2000] },
 			{ type: "spawn", func: "vector", args: [553, 90, 20, 180, 500, 0, 2000] },
@@ -120,7 +120,6 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		],
 		"s-3023-1000-114-0": [
 			{ type: "text", sub_type: "message", message: "Right Slash", message_RU: "Правая полоса" },
-			{ type: "func", func: firstboss_debuff_event, args: [1114] },
 			{ type: "spawn", func: "vector", args: [553, 90, 200, 180, 500, 0, 2000] },
 			{ type: "spawn", func: "vector", args: [553, 90, 200, 0, 300, 0, 2000] },
 			{ type: "spawn", func: "vector", args: [553, 270, 20, 180, 500, 0, 2000] },
@@ -139,8 +138,8 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "text", sub_type: "message", message: "Thrall of Protection", message_RU: "Кайа", class_position: "mystic" },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 8, 500, 0, 6000] }
 		],
-		"am-3023-1000-30231001": [{ type: "func", func: firstboss_debuff_event, args: [1001] }],
-		"am-3023-1000-30231000": [{ type: "func", func: firstboss_debuff_event, args: [1000] }],
+		"am-3023-1000-30231000": [{ type: "func", func: firstboss_debuff_event, args: [30231000] }],
+		"am-3023-1000-30231001": [{ type: "func", func: firstboss_debuff_event, args: [30231001] }],
 		"ae-0-0-99020020": [{ type: "func", func: firstboss_debuff_event, args: [99020020] }], // Debuff removed
 		"ae-0-0-30231000": [{ type: "func", func: firstboss_debuff_event, args: [30231000] }], // Red debuff
 		"ae-0-0-30231001": [{ type: "func", func: firstboss_debuff_event, args: [30231001] }], // Blue debuff
@@ -158,16 +157,13 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 10, 320, 0, 5000] }
 		],
 		"s-3023-1000-3119-0": [
-			{ type: "func", func: firstboss_debuff_event, args: [3119] },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 10, 270, 0, 4000] },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 8, 575, 0, 4000] }
 		],
 		"s-3023-1000-3220-0": [
-			{ type: "func", func: firstboss_debuff_event, args: [3220] },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 10, 270, 0, 4000] },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 8, 575, 0, 4000] }
 		],
-		//"s-3023-1000-3223-0": [{ type: "text", sub_type: "message", message_RU: "Красный дебаф" }],
 
 		// 2 BOSS
 		"nd-3023-2000": [
