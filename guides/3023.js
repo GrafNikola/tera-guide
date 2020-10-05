@@ -155,10 +155,12 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 10, 320, 0, 5000] }
 		],
 		"s-3023-1000-3119-0": [
+			{ type: "func", func: firstboss_debuff_event, args: [3119] },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 10, 270, 0, 4000] },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 8, 575, 0, 4000] }
 		],
 		"s-3023-1000-3220-0": [
+			{ type: "func", func: firstboss_debuff_event, args: [3220] },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 10, 270, 0, 4000] },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 8, 575, 0, 4000] }
 		],
