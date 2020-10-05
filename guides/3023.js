@@ -10,67 +10,65 @@ module.exports = (dispatch, handlers, guide, lang) => {
 	let timer2;
 
 	function firstboss_debuff_event(skillid) {
-		if ([3119, 3220].includes(skillid)) {
-			switch (skillid) {
-				case 3119: // red inside
-					if (debuff === 1) {
-						handlers.text({
-							sub_type: "message",
-							message: "OUT (blue)",
-							message_RU: "ОТ НЕГО"
-						});
-					}
-					if (debuff === 2) {
-						handlers.text({
-							sub_type: "message",
-							message: "IN (red)",
-							message_RU: "К НЕМУ"
-						});
-					}
-					break;
+		switch (skillid) {
+			case 3119: // red inside
+				if (debuff === 1) {
+					handlers.text({
+						sub_type: "message",
+						message: "OUT (blue)",
+						message_RU: "ОТ НЕГО"
+					});
+				}
+				if (debuff === 2) {
+					handlers.text({
+						sub_type: "message",
+						message: "IN (red)",
+						message_RU: "К НЕМУ"
+					});
+				}
+				break;
 
-				case 3220: // blue inside
-					if (debuff === 1) {
-						handlers.text({
-							sub_type: "message",
-							message: "IN (blue)",
-							message_RU: "К НЕМУ"
-						});
-					}
-					if (debuff === 2) {
-						handlers.text({
-							sub_type: "message",
-							message: "OUT (red)",
-							message_RU: "ОТ НЕГО"
-						});
-					}
-					break;
-			}
-		}
+			case 3220: // blue inside
+				if (debuff === 1) {
+					handlers.text({
+						sub_type: "message",
+						message: "IN (blue)",
+						message_RU: "К НЕМУ"
+					});
+				}
+				if (debuff === 2) {
+					handlers.text({
+						sub_type: "message",
+						message: "OUT (red)",
+						message_RU: "ОТ НЕГО"
+					});
+				}
+				break;
 
-		if (skillid === 99020020) { // Debuff removed
-			debuff = 0;
+			case 30231000: // red debuff
+				debuff = 1;
 
-			dispatch.clearTimeout(timer1);
-			dispatch.clearTimeout(timer2);
-		}
+				dispatch.clearTimeout(timer1);
+				dispatch.clearTimeout(timer2);
 
-		if (skillid == 30231000) { // Red debuff
-			debuff = 1;
+				timer1 = dispatch.setTimeout(() => debuff = 0, 70000);
+				break;
 
-			dispatch.clearTimeout(timer1);
-			dispatch.clearTimeout(timer2);
+			case 30231001: // blue debuff
+				debuff = 2;
 
-			timer1 = dispatch.setTimeout(() => debuff = 0, 70000);
-		}
+				dispatch.clearTimeout(timer2);
+				dispatch.clearTimeout(timer1);
 
-		if (skillid == 30231001) { // Blue debuff
-			debuff = 2;
+				timer2 = dispatch.setTimeout(() => debuff = 0, 70000);
+				break;
 
-			dispatch.clearTimeout(timer2);
-			dispatch.clearTimeout(timer1);
+			case 99020020: // debuff removed
+				debuff = 0;
 
-			timer2 = dispatch.setTimeout(() => debuff = 0, 70000);
+				dispatch.clearTimeout(timer1);
+				dispatch.clearTimeout(timer2);
+				break;
 		}
 	}
 
