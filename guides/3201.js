@@ -73,11 +73,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "despawn_all" }
 		],
 		//"s-3201-1000-103-0": [{ type: "text", class_position:"tank", sub_type: "message", message: "Dodge", message_RU: "Эвейд!" }],
-		"s-3201-1000-104-0": [
-			{ type: "text", class_position:"tank", sub_type: "message", message: "Stun attack", message_RU: "Стан!" },
-			{ type: "spawn", func: "vector", args: [553, 90, 139, 173, 800, 0, 3000] },
-			{ type: "spawn", func: "vector", args: [553, 270, 139, -173, 800, 0, 3000] }
-		],
+		"s-3201-1000-104-0": [{ type: "text", class_position:"tank", sub_type: "message", message: "Stun attack", message_RU: "Стан!" }],
 		"s-3201-1000-107-0": [
 			{ type: "text", sub_type: "message", message: "back", message_RU: "|Полоса|" },
 			{ type: "text", sub_type: "message", delay: 2250, message: "pull", message_RU: "Откид!!!" },
