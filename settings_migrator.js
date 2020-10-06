@@ -61,9 +61,11 @@ module.exports = function MigrateSettings(from_ver, to_ver, settings) {
 							settings[option][id] = element;
 						}
 						continue;
+					} else {
+						settings[option] = oldsettings[option];
 					}
 				}
-				break;
+				return settings;
 
 			case 1.13:
 				remove(["dbg.json", "lib.js", "dispatch.js", "voice/index.js", "voice"]);
