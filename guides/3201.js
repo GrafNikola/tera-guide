@@ -73,12 +73,22 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "despawn_all" }
 		],
 		//"s-3201-1000-103-0": [{ type: "text", class_position:"tank", sub_type: "message", message: "Dodge", message_RU: "Эвейд!" }],
-		"s-3201-1000-104-0": [{ type: "text", class_position:"tank", sub_type: "message", message: "Stun attack", message_RU: "Стан!" }],
+		"s-3201-1000-104-0": [
+			{ type: "text", class_position:"tank", sub_type: "message", message: "Stun attack", message_RU: "Стан!" },
+			{ type: "spawn", func: "vector", args: [553, 90, 139, 173, 800, 0, 3000] },
+			{ type: "spawn", func: "vector", args: [553, 270, 139, -173, 800, 0, 3000] }
+		],
 		"s-3201-1000-107-0": [
 			{ type: "text", sub_type: "message", message: "back", message_RU: "|Полоса|" },
-			{ type: "text", sub_type: "message", delay: 2250, message: "pull", message_RU: "Откид!!!" }
+			{ type: "text", sub_type: "message", delay: 2250, message: "pull", message_RU: "Откид!!!" },
+			{ type: "spawn", func: "vector", args: [553, 90, 139, 173, 800, 0, 3000] },
+			{ type: "spawn", func: "vector", args: [553, 270, 139, -173, 800, 0, 3000] }
 		],
-		"s-3201-1000-111-0": [{ type: "text", sub_type: "message", message: "Back Wave", message_RU: "Волна назад" }],
+		"s-3201-1000-111-0": [
+			{ type: "text", sub_type: "message", message: "Back Wave", message_RU: "Волна назад" },
+			{ type: "spawn", func: "vector", args: [553, 0, 100, 112, 800, 0, 3000] },
+			{ type: "spawn", func: "vector", args: [553, 0, 100, -112, 800, 0, 3000] }
+		],
 		//"s-3201-1000-112-0": [{ type: "text", sub_type: "message", message: "Left + Right", message_RU: "Лево + Право" }],
 		"s-3201-1000-113-0": [
 			{ type: "text", sub_type: "message", message: "Jump (Slow)", message_RU: "Прыжок" },
@@ -88,21 +98,39 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "text", sub_type: "message", message: "Jump P (Slow)", message_RU: "Прыжок" },
 			{ type: "text", sub_type: "message", delay: 1500, message: "Pull", message_RU: "Камень!" },
 		],
-		"s-3201-1000-119-0": [{ type: "text", sub_type: "message", delay: 1000, message: "Back + Front", message_RU: "Вперед + Назад" }],
+		"s-3201-1000-119-0": [
+			{ type: "text", sub_type: "message", delay: 1000, message: "Back + Front", message_RU: "Вперед + Назад" },
+			{ type: "spawn", func: "vector", args: [553, 2, 0, 70, 800, 0, 2500] },
+			{ type: "spawn", func: "vector", args: [553, 2, 0, 110, 800, 0, 2500] },
+			{ type: "spawn", func: "vector", args: [553, 2, 0, 250, 800, 0, 2500] },
+			{ type: "spawn", func: "vector", args: [553, 2, 0, 290, 800, 0, 2500] }
+		],
 		//"s-3201-1000-121-0": [{ type: "text", class_position:"tank", sub_type: "message", message: "Right", message_RU: "Право" }],
 		//"s-3201-1000-122-0": [{ type: "text", class_position:"tank", sub_type: "message", message: "Left", message_RU: "Лево" }],
 		"s-3201-1000-124-0": [{ type: "text", class_position:"tank", sub_type: "message", message: "Stun attack", message_RU: "Стан (фаст)" }],
-		"s-3201-1000-127-0": [{ type: "text", class_position:"dps", sub_type: "message", message: "Back", message_RU: "Полоса (фаст)" },
-			{ type: "text", class_position:"heal", sub_type: "message", message: "Back", message_RU: "Полоса (фаст)" }
+		"s-3201-1000-127-0": [
+			{ type: "text", class_position:"dps", sub_type: "message", message: "Back", message_RU: "Полоса (фаст)" },
+			{ type: "text", class_position:"heal", sub_type: "message", message: "Back", message_RU: "Полоса (фаст)" },
+			{ type: "spawn", func: "vector", args: [553, 90, 139, 173, 800, 0, 3000] },
+			{ type: "spawn", func: "vector", args: [553, 270, 139, -173, 800, 0, 3000] }
 		],
 		//"s-3201-1000-128-0": [{ type: "text", class_position:"tank", sub_type: "message", message: "Triple Attack", message_RU: "Комба" }],
-		"s-3201-1000-131-0": [{ type: "text", class_position:"dps", sub_type: "message", message: "Back Wave", message_RU: "Волна назад (фаст)" },
-			{ type: "text", class_position:"heal", sub_type: "message", message: "Back Wave", message_RU: "Волна назад (фаст)" }
+		"s-3201-1000-131-0": [
+			{ type: "text", class_position:"dps", sub_type: "message", message: "Back Wave", message_RU: "Волна назад (фаст)" },
+			{ type: "text", class_position:"heal", sub_type: "message", message: "Back Wave", message_RU: "Волна назад (фаст)" },
+			{ type: "spawn", func: "vector", args: [553, 0, 100, 112, 800, 0, 3000] },
+			{ type: "spawn", func: "vector", args: [553, 0, 100, -112, 800, 0, 3000] }
 		],
 		//"s-3201-1000-132-0": [{ type: "text", sub_type: "message", message: "Left + Right", message_RU: "Лево + Право (фаст)" }],
 		"s-3201-1000-133-0": [{ type: "text", sub_type: "message", delay: 500, message: "Jump (Fast)", message_RU: "Прыжок (фаст)" }],
 		"s-3201-1000-138-0": [{ type: "text", sub_type: "message", delay: 500, message: "Jump P (Fast)", message_RU: "Прыжок (фаст)" }],
-		"s-3201-1000-139-0": [{ type: "text", sub_type: "message", message: "Back + Front (Fast)", message_RU: "Вперед + Назад (фаст)" }],
+		"s-3201-1000-139-0": [
+			{ type: "text", sub_type: "message", message: "Back + Front (Fast)", message_RU: "Вперед + Назад (фаст)" },
+			{ type: "spawn", func: "vector", args: [553, 2, 0, 70, 800, 0, 2500] },
+			{ type: "spawn", func: "vector", args: [553, 2, 0, 110, 800, 0, 2500] },
+			{ type: "spawn", func: "vector", args: [553, 2, 0, 250, 800, 0, 2500] },
+			{ type: "spawn", func: "vector", args: [553, 2, 0, 290, 800, 0, 2500] }
+		],
 		"s-3201-1000-143-0": [
 			{ type: "text", class_position:"tank", sub_type: "message", message: "Left > Right", message_RU: "Слева > Справа" },
 			{ type: "text", class_position:"dps", sub_type: "message", message: "Right > Left", message_RU: "Справа > Слева" },
@@ -121,8 +149,14 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "spawn", func: "marker", args: [false, 150, 300, 100, 2000, true, null] }, // 1
 			{ type: "spawn", func: "marker", args: [false, 225, 300, 2500, 5000, true, null] } // 6
 		],
-		"s-3201-1000-148-0": [{ type: "text", sub_type: "message", message: "Right Hand (Flying)", message_RU: "Правая рука (подлет)" }],
-		"s-3201-1000-149-0": [{ type: "text", sub_type: "message", message: "Left Hand (Flying)", message_RU: "Левая рука (подлет)" }],
+		"s-3201-1000-148-0": [
+			{ type: "text", sub_type: "message", message: "Right Hand (Flying)", message_RU: "Правая рука (подлет)" },
+			{ type: "spawn", func: "circle", args: [false, 553, 20, 150, 10, 320, 0, 4000] }
+		],
+		"s-3201-1000-149-0": [
+			{ type: "text", sub_type: "message", message: "Left Hand (Flying)", message_RU: "Левая рука (подлет)" },
+			{ type: "spawn", func: "circle", args: [false, 553, 340, 150, 10, 320, 0, 4000] }
+		],
 		"s-3201-1000-151-0": [{ type: "text", sub_type: "message", message: "Stun Attack", message_RU: "Стан!" }],
 		"s-3201-1000-305-0": [{ type: "text", sub_type: "message", message: "Pizza", message_RU: "Pizza" }],
 		"s-3201-1000-311-0": [
