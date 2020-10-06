@@ -5,10 +5,8 @@
 module.exports = (dispatch, handlers, guide, lang) => {
 	let notice = true;
 	let boss = null;
-	let secondboss = false;
 
 	function secondboss_start_event() {
-		secondboss = true;
 		notice = true;
 		boss = null;
 	}
@@ -109,19 +107,19 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "text", class_position:"tank", sub_type: "message", message: "Left > Right", message_RU: "Слева > Справа" },
 			{ type: "text", class_position:"dps", sub_type: "message", message: "Right > Left", message_RU: "Справа > Слева" },
 			{ type: "text", class_position:"heal", sub_type: "message", message: "Right > Left", message_RU: "Справа > Слева" },
-			{ type: "spawn", func: "marker", args: [false, 150, 300, 100, 2715, true, null] },  // 1
+			{ type: "spawn", func: "marker", args: [false, 150, 300, 100, 2715, true, null] }, // 1
 			{ type: "spawn", func: "marker", args: [false, 225, 300, 2800, 4175, true, null] }, // 6
-			{ type: "spawn", func: "marker", args: [false, 30, 300, 100, 1000, true, null] },   // 1
-			{ type: "spawn", func: "marker", args: [false, 330, 300, 1100, 5000, true, null] }  // 7
+			{ type: "spawn", func: "marker", args: [false, 30, 300, 100, 1000, true, null] }, // 1
+			{ type: "spawn", func: "marker", args: [false, 330, 300, 1100, 5000, true, null] } // 7
 		],
 		"s-3201-1000-145-0": [
 			{ type: "text", class_position:"tank", sub_type: "message", message: "Left > Right", message_RU: "Слева > Справа" },
 			{ type: "text", class_position:"dps", sub_type: "message", message: "Right > Left", message_RU: "Справа > Слева" },
 			{ type: "text", class_position:"heal", sub_type: "message", message: "Right > Left", message_RU: "Справа > Слева" },
-			{ type: "spawn", func: "marker", args: [false, 30, 300, 100, 1000, true, null] },   // 1
+			{ type: "spawn", func: "marker", args: [false, 30, 300, 100, 1000, true, null] }, // 1
 			{ type: "spawn", func: "marker", args: [false, 330, 300, 1100, 5000, true, null] }, // 7
-			{ type: "spawn", func: "marker", args: [false, 150, 300, 100, 2000, true, null] },  // 1
-			{ type: "spawn", func: "marker", args: [false, 225, 300, 2500, 5000, true, null] }  // 6
+			{ type: "spawn", func: "marker", args: [false, 150, 300, 100, 2000, true, null] }, // 1
+			{ type: "spawn", func: "marker", args: [false, 225, 300, 2500, 5000, true, null] } // 6
 		],
 		"s-3201-1000-148-0": [{ type: "text", sub_type: "message", message: "Right Hand (Flying)", message_RU: "Правая рука (подлет)" }],
 		"s-3201-1000-149-0": [{ type: "text", sub_type: "message", message: "Left Hand (Flying)", message_RU: "Левая рука (подлет)" }],

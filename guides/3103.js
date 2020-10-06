@@ -3,7 +3,7 @@
 // made by HSDN
 
 module.exports = (dispatch, handlers, guide, lang) => {
-	let timer1;
+	let timer1 = null;
 	let print_target = true;
 	let in_bait = false;
 
@@ -83,7 +83,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-3103-1000-116-0": [{ type: "func", func: back_kick_event, args: [116] }], // Haymaker
 		"s-3103-1000-115-0": [{ type: "text", sub_type: "message", message: "Haymaker (Tank)", message_RU: "Мощный удар (танк)" }],
 		"s-3103-1000-131-0": [{ type: "text", sub_type: "message", message: "Rhythmic Blows", message_RU: "Ураганная серия" }], // 131 132 133
-		 // 116 146
+		// 116 146
 		"s-3103-1000-146-0": [
 			{ type: "text", sub_type: "message", message: "Back Kick", message_RU: "Откид назад" },
 			{ type: "spawn", func: "vector", args: [553, 90, 120, 170, 600, 0, 3000] },

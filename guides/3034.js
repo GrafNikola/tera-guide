@@ -11,10 +11,10 @@ module.exports = (dispatch, handlers, guide, lang) => {
 	let mech_notice = false;
 
 	const mech_messages = {
-		0: { message: "Out",  message_RU: "От него" },
-		1: { message: "In",   message_RU: "К нему" },
+		0: { message: "Out", message_RU: "От него" },
+		1: { message: "In", message_RU: "К нему" },
 		2: { message: "Wave", message_RU: "Волна" },
-		3: { message: "?",    message_RU: "?" }
+		3: { message: "?", message_RU: "?" }
 	};
 
 	// Throwing orbs
@@ -74,7 +74,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		// 0: Out  3034301
 		// 1: In   3034302
 		// 2: Wave 3034303
-		if (0 <= skillid && skillid < 3) {
+		if (skillid >= 0 && skillid < 3) {
 			msg_b = skillid;
 			print_mech(false, false);
 			msg_a = msg_b;
@@ -100,16 +100,16 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		}
 
 		if (mech_reverse) {
-			message += mech_messages[msg_b].message + " + " + mech_messages[msg_a].message;
-			message_RU += mech_messages[msg_b].message_RU  + " + " + mech_messages[msg_a].message_RU;
+			message += `${mech_messages[msg_b].message} + ${mech_messages[msg_a].message}`;
+			message_RU += `${mech_messages[msg_b].message_RU} + ${mech_messages[msg_a].message_RU}`;
 		} else {
-			message += mech_messages[msg_a].message + " + " + mech_messages[msg_b].message;
-			message_RU += mech_messages[msg_a].message_RU  + " + " + mech_messages[msg_b].message_RU;
+			message += `${mech_messages[msg_a].message} + ${mech_messages[msg_b].message}`;
+			message_RU += `${mech_messages[msg_a].message_RU} + ${mech_messages[msg_b].message_RU}`;
 		}
 
 		if (code) {
-			message += ", Code: " + (mech_reverse ? "0" : "1");
-			message_RU += ", Код: "  + (mech_reverse ? "0" : "1");
+			message += `, Code: ${mech_reverse ? "0" : "1"}`;
+			message_RU += `, Код: ${mech_reverse ? "0" : "1"}`;
 		}
 
 		handlers.text({
@@ -123,7 +123,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 	function thirdboss_sattack_event(skillid) {
 		// Safe: 116/119 [R] + 222-0 [R] > 222-1 [L] > 222-2 [R] > 326/327
 		// Safe: 117/118 [L] + 223-0 [L] > 223-1 [R] > 223-2 [L] > 326/327
-		let delay    = boss_seventy ? 2000 : 0,
+		let delay = boss_seventy ? 2000 : 0,
 			duration = boss_seventy ? 800 : 900;
 		if ([1160, 1190].includes(skillid)) {
 			handlers.text({ sub_type: "message", delay: delay, message: "Right Safe", message_RU: "Справа сейф" });
@@ -320,18 +320,18 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		],
 		// Safe: |||2|2||| > ||||1|||| > ||3|||3||
 		"s-3034-2000-310-0": [{ type: "text", sub_type: "message", message: "2 - 1 - 3" },
-			{ type: "spawn", func: "marker", args: [false, 40, 220, 0, 1500, true, null] },     // 2
-			{ type: "spawn", func: "marker", args: [false, -40, 220, 0, 1500, true, null] },    // 2
-			{ type: "spawn", func: "marker", args: [false, 0, 150, 1600, 1500, true, null] },   // 1
-			{ type: "spawn", func: "marker", args: [false, 60, 300, 1600, 1500, true, null] },  // 3
+			{ type: "spawn", func: "marker", args: [false, 40, 220, 0, 1500, true, null] }, // 2
+			{ type: "spawn", func: "marker", args: [false, -40, 220, 0, 1500, true, null] }, // 2
+			{ type: "spawn", func: "marker", args: [false, 0, 150, 1600, 1500, true, null] }, // 1
+			{ type: "spawn", func: "marker", args: [false, 60, 300, 1600, 1500, true, null] }, // 3
 			{ type: "spawn", func: "marker", args: [false, -60, 300, 3200, 1500, true, null] }, // 3
 		],
 		// Safe: ||||1|||| > ||3|||3|| > |||2|2|||
 		"s-3034-2000-311-0": [{ type: "text", sub_type: "message", message: "1 - 3 - 2" },
-			{ type: "spawn", func: "marker", args: [false, 0, 150, 0, 1500, true, null] },      // 1
-			{ type: "spawn", func: "marker", args: [false, 60, 300, 1600, 1500, true, null] },  // 3
+			{ type: "spawn", func: "marker", args: [false, 0, 150, 0, 1500, true, null] }, // 1
+			{ type: "spawn", func: "marker", args: [false, 60, 300, 1600, 1500, true, null] }, // 3
 			{ type: "spawn", func: "marker", args: [false, -60, 300, 1600, 1500, true, null] }, // 3
-			{ type: "spawn", func: "marker", args: [false, 40, 220, 3200, 1500, true, null] },  // 2
+			{ type: "spawn", func: "marker", args: [false, 40, 220, 3200, 1500, true, null] }, // 2
 			{ type: "spawn", func: "marker", args: [false, -40, 220, 3200, 1500, true, null] }, // 2
 		],
 		"s-3034-2007-201-0": [
@@ -372,7 +372,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"qb-3034-3000-3034301": [{ type: "func", func: thirdboss_mech_event, args: [0] }], // out
 		"qb-3034-3000-3034302": [{ type: "func", func: thirdboss_mech_event, args: [1] }], // in
 		"qb-3034-3000-3034303": [{ type: "func", func: thirdboss_mech_event, args: [2] }], // wave
-		 // right safe S
+		// right safe S
 		"s-3034-3000-116-0": [{ type: "func", func: thirdboss_sattack_event, args: [1160] }],
 		"s-3034-3000-116-1": [{ type: "func", func: thirdboss_sattack_event, args: [1161] }],
 		"s-3034-3000-116-2": [{ type: "func", func: thirdboss_sattack_event, args: [1162] }],
@@ -384,7 +384,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-3034-3000-223-1": [{ type: "func", func: thirdboss_sattack_event, args: [2231] }],
 		"s-3034-3000-222-0": [{ type: "func", func: thirdboss_sattack_event, args: [2220] }],
 		"s-3034-3000-222-2": [{ type: "func", func: thirdboss_sattack_event, args: [2222] }],
-		 // left safe S
+		// left safe S
 		"s-3034-3000-117-0": [{ type: "func", func: thirdboss_sattack_event, args: [1170] }],
 		"s-3034-3000-117-1": [{ type: "func", func: thirdboss_sattack_event, args: [1171] }],
 		"s-3034-3000-117-2": [{ type: "func", func: thirdboss_sattack_event, args: [1172] }],
