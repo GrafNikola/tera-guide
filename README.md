@@ -3,8 +3,10 @@ The dungeon guide module with Text-to-speech notifications, display hints on scr
 
 Модуль подсказок по данжам с возможностью голосовых уведомлений, вывод подсказок в чат или на экран, а также отрисовка зон атак боссов и механик. Поддерживаются Русский и Английский языки (определяются автоматически).
 
-* Versión en español del módulo (Spanish translation): https://github.com/Loliconera/tera-guide-spanish
-* Versão em português do módulo (Portuguese translation): https://github.com/emilia-s2/Guia-DG-Portugues
+#### Other translations / Другие локализации
+
+* Spanish: https://github.com/Loliconera/tera-guide-spanish
+* Portuguese: https://github.com/emilia-s2/Guia-DG-Portugues
 
 ## Dependencies / Зависимости
 * **tera-guide-core** - https://github.com/hsdn/tera-guide-core
@@ -77,8 +79,10 @@ id | Dungeon name | Название данжа
   При вводе команды **guide gui** отображается графический интерфейс модуля, позволяющий осуществить основные настройки.   
   ![](https://i.imgur.com/7zAeYhi.png)
 
-## Development and Debugging / Разработка и отладка
-Подробнее на https://github.com/hsdn/tera-guide/wiki
+## More information / Дополнительная информация
+
+* Developers Wiki: https://github.com/hsdn/tera-guide/wiki
+* For questions and suggestions, contact via Discord: **JKQ#5649**
 
 ## Credits
 - **[Kasea](https://github.com/tera-toolbox-mods)** - Original developer of Tera-Guide module
