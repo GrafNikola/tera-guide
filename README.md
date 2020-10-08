@@ -81,7 +81,7 @@ id | Dungeon name | Название данжа
 
 ## More information / Дополнительная информация
 
-* Developers Wiki: https://github.com/hsdn/tera-guide/wiki
+* Developers Wiki: https://github.com/hsdn/tera-guide-core/wiki
 * For questions and suggestions, contact via Discord: **JKQ#5649**
 
 ## Credits
