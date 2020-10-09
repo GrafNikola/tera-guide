@@ -33,6 +33,8 @@ Toolbox(/8) | Command description | Описание команды
 ## Supported dungeons / Поддерживаемые данжи
 id | Dungeon name | Название данжа
 --- | --- | ---
+7011 | Shadow of the Gutrends | Живодеры и черная тень
+7015 | Escape from Balder's Refuge | Операция "Спасти Убежище Балдера"
 9781 | Velik's Sanctuary | Святилище Велики
 9739 | Red Refuge | Лагерь повстанцев
 9735 | RK-9 Kennel | Ангар RK-9
@@ -93,4 +95,4 @@ id | Dungeon name | Название данжа
 - **[Owyn](https://github.com/Owyn)** - Developer of great guides for RK-9, AA and GV, whose code was used
 - **[ITunk](https://github.com/GrafNikola)** - Author of initial Russian translation
 - **[Loliconera](https://github.com/Loliconera)** - Author of Spanish translation
-- **[Emilia](https://github.com/emilia-s2)** - Author of Portuguese translation
+- **[Emilia](https://github.com/emilia-s2)** - Author of Portuguese translation and guardian guides
