@@ -33,8 +33,8 @@ Toolbox(/8) | Command description | Описание команды
 ## Supported dungeons / Поддерживаемые данжи
 id | Dungeon name | Название данжа
 --- | --- | ---
-7011 | Shadow of the Gutrends | Живодеры и черная тень
-7015 | Escape from Balder's Refuge | Операция "Спасти Убежище Балдера"
+7011 | Shadow of the Gutrends (Guardian) | Живодеры и черная тень (хранитель)
+7015 | Escape from Balder's Refuge (Guardian) | Операция "Спасти Убежище Балдера" (хранитель)
 9781 | Velik's Sanctuary | Святилище Велики
 9739 | Red Refuge | Лагерь повстанцев
 9735 | RK-9 Kennel | Ангар RK-9
@@ -83,7 +83,7 @@ id | Dungeon name | Название данжа
 
 ## More information / Дополнительная информация
 
-* Developers Wiki: https://github.com/hsdn/tera-guide-core/wiki
+* Developers wiki: https://github.com/hsdn/tera-guide-core/wiki
 * For questions and suggestions, contact via Discord: **JKQ#5649**
 
 ## Credits
@@ -93,6 +93,6 @@ id | Dungeon name | Название данжа
 - **[Kuroine](https://github.com/Kuroine)** - Author of base code for the DA guide
 - **[Multarix](https://github.com/Multarix)** - Author of the RR guide and also making changes to the English translation
 - **[Owyn](https://github.com/Owyn)** - Developer of great guides for RK-9, AA and GV, whose code was used
-- **[ITunk](https://github.com/GrafNikola)** - Author of initial Russian translation
-- **[Loliconera](https://github.com/Loliconera)** - Author of Spanish translation
 - **[Emilia](https://github.com/emilia-s2)** - Author of Portuguese translation and guardian guides
+- **[Loliconera](https://github.com/Loliconera)** - Author of Spanish translation
+- **[ITunk](https://github.com/GrafNikola)** - Author of initial Russian translation
