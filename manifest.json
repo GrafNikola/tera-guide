@@ -24,8 +24,8 @@
         "guides/9982.js": "d807947c993f96bc66efae577ecc7d297bf16733a06b358532b794f117e6f298",
         "index.js": "0f7a4193238d859c8e356eecd3c7527a043e577c0f039b6e9e39384d89667517",
         "lang/dungeons.js": "d9de1df1abffb55e3ae08fe843ce9ad2712f377ee954b2066a1e8853db8d1340",
-        "lang/strings.js": "3ebc899ecf1813f348ea9d88e987435b99a65662a99753287bfcb878a7614f74",
-        "module.json": "a7252954770b6b5ac1ed8af45911469adcb7d05269db9990a13db5b0945cf6cd",
+        "lang/strings.js": "746afc94b0517c73f1bd45a30902a14e4d794f7ce28f2a925cc1627c546c51e1",
+        "module.json": "bdee335f9e3e310d3927e6888e61a61156582c5ca02c9beda4d54fead95e6b38",
         "settings_migrator.js": "8d7e987ef74ca2389c4ecafc96993df297513c85dc7f7f13863e0ee92e07f6ad"
     },
     "defs": {
