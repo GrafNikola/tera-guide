@@ -87,7 +87,7 @@ id | Dungeon name | Название данжа
 * For questions and suggestions, contact via Discord: **JKQ#5649**
 
 ## Credits
-- **[Kasea](https://github.com/tera-toolbox-mods)** - Original developer of Tera-Guide module
+- **[Kasea](https://github.com/Kaseaa)** - Original developer of Tera-Guide module
 - **[michengs](https://github.com/michengs)** - Author of base code for most guides and module core
 - **[ZC](https://github.com/tera-mod)** - Provided coordinates for rendering attack areas and mechanics
 - **[Kuroine](https://github.com/Kuroine)** - Author of base code for the DA guide
