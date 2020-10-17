@@ -14,14 +14,16 @@ module.exports = (dispatch, handlers, guide, lang) => {
 					handlers.text({
 						sub_type: "message",
 						message: "OUT (blue)",
-						message_RU: "ОТ НЕГО"
+						message_RU: "ОТ НЕГО",
+						delay: 500
 					});
 				}
 				if (debuff === 2) { // blue deuff
 					handlers.text({
 						sub_type: "message",
 						message: "IN (red)",
-						message_RU: "К НЕМУ"
+						message_RU: "К НЕМУ",
+						delay: 500
 					});
 				}
 				break;
@@ -31,14 +33,16 @@ module.exports = (dispatch, handlers, guide, lang) => {
 					handlers.text({
 						sub_type: "message",
 						message: "IN (blue)",
-						message_RU: "К НЕМУ"
+						message_RU: "К НЕМУ",
+						delay: 500
 					});
 				}
 				if (debuff === 2) { // blue deuff
 					handlers.text({
 						sub_type: "message",
 						message: "OUT (red)",
-						message_RU: "ОТ НЕГО"
+						message_RU: "ОТ НЕГО",
+						delay: 500
 					});
 				}
 				break;
@@ -114,14 +118,16 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		],
 		"s-3023-1000-115-0": [
 			{ type: "text", sub_type: "message", message: "Back Attack", message_RU: "Удар назад" },
-			{ type: "spawn", func: "semicircle", args: [90, 270, 553, 0, 0, 20, 160, 100, 2000] },
-			{ type: "spawn", func: "semicircle", args: [90, 270, 553, 0, 0, 12, 240, 100, 2000] },
-			{ type: "spawn", func: "semicircle", args: [90, 270, 553, 0, 0, 10, 330, 100, 2000] }
+			{ type: "spawn", func: "semicircle", args: [90, 280, 553, 0, 0, 15, 160, 0, 2000] },
+			{ type: "spawn", func: "semicircle", args: [90, 275, 553, 0, 0, 10, 250, 0, 2000] },
+			{ type: "spawn", func: "semicircle", args: [90, 270, 553, 0, 0, 10, 340, 0, 2000] },
+			{ type: "spawn", func: "vector", args: [553, 90, 150, 90, 150, 0, 2000] },
+			{ type: "spawn", func: "vector", args: [553, 270, 150, 270, 150, 0, 2000] }
 		],
 		"s-3023-1000-116-0": [
 			{ type: "text", sub_type: "message", message: "Kaia's Shield", message_RU: "Кайа", class_position: "priest" },
 			{ type: "text", sub_type: "message", message: "Thrall of Protection", message_RU: "Кайа", class_position: "mystic" },
-			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 8, 530, 0, 6000] }
+			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 8, 560, 0, 6000] }
 		],
 		"s-3023-1000-3107-0": [
 			{ type: "text", sub_type: "message", message: "Smash", message_RU: "Конус вперед" },
@@ -139,12 +145,12 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-3023-1000-3119-0": [
 			{ type: "func", func: firstboss_debuff_event, args: [3119] }, // red inside
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 10, 270, 0, 4000] },
-			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 8, 600, 0, 4000] }
+			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 8, 650, 0, 4000] }
 		],
 		"s-3023-1000-3220-0": [
 			{ type: "func", func: firstboss_debuff_event, args: [3220] }, // blue inside
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 10, 270, 0, 4000] },
-			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 8, 600, 0, 4000] }
+			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 8, 650, 0, 4000] }
 		],
 
 		// 2 BOSS
