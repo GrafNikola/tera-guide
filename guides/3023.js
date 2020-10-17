@@ -6,20 +6,19 @@ module.exports = (dispatch, handlers, guide, lang) => {
 	guide.type = ES;
 
 	let debuff = 0;
-	let timer1 = null;
-	let timer2 = null;
-
+	let timer = null;
+ 
 	function firstboss_debuff_event(skillid) {
 		switch (skillid) {
 			case 3119: // red inside
-				if (debuff === 1) {
+				if (debuff === 1) { // red deuff
 					handlers.text({
 						sub_type: "message",
 						message: "OUT (blue)",
 						message_RU: "ОТ НЕГО"
 					});
 				}
-				if (debuff === 2) {
+				if (debuff === 2) { // blue deuff
 					handlers.text({
 						sub_type: "message",
 						message: "IN (red)",
@@ -29,14 +28,14 @@ module.exports = (dispatch, handlers, guide, lang) => {
 				break;
 
 			case 3220: // blue inside
-				if (debuff === 1) {
+				if (debuff === 1) { // red deuff
 					handlers.text({
 						sub_type: "message",
 						message: "IN (blue)",
 						message_RU: "К НЕМУ"
 					});
 				}
-				if (debuff === 2) {
+				if (debuff === 2) { // blue deuff
 					handlers.text({
 						sub_type: "message",
 						message: "OUT (red)",
@@ -47,28 +46,19 @@ module.exports = (dispatch, handlers, guide, lang) => {
 
 			case 30231000: // red debuff
 				debuff = 1;
-
-				dispatch.clearTimeout(timer1);
-				dispatch.clearTimeout(timer2);
-
-				timer1 = dispatch.setTimeout(() => debuff = 0, 70000);
+				dispatch.clearTimeout(timer);
+				timer = dispatch.setTimeout(() => debuff = 0, 70000);
 				break;
 
 			case 30231001: // blue debuff
 				debuff = 2;
-
-				dispatch.clearTimeout(timer2);
-				dispatch.clearTimeout(timer1);
-
-				timer2 = dispatch.setTimeout(() => debuff = 0, 70000);
+				dispatch.clearTimeout(timer);
+				timer = dispatch.setTimeout(() => debuff = 0, 70000);
 				break;
 
 			default: // debuff removed
 				debuff = 0;
-
-				dispatch.clearTimeout(timer1);
-				dispatch.clearTimeout(timer2);
-				break;
+				dispatch.clearTimeout(timer);
 		}
 	}
 
@@ -152,12 +142,12 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 10, 320, 0, 5000] }
 		],
 		"s-3023-1000-3119-0": [
-			{ type: "func", func: firstboss_debuff_event, args: [3119] },
+			{ type: "func", func: firstboss_debuff_event, args: [3119] }, // red inside
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 10, 270, 0, 4000] },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 8, 575, 0, 4000] }
 		],
 		"s-3023-1000-3220-0": [
-			{ type: "func", func: firstboss_debuff_event, args: [3220] },
+			{ type: "func", func: firstboss_debuff_event, args: [3220] }, // blue inside
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 10, 270, 0, 4000] },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 8, 575, 0, 4000] }
 		],
