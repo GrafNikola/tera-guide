@@ -5,8 +5,7 @@
 module.exports = (dispatch, handlers, guide, lang) => {
 	guide.type = ES;
 
-	let debuff = 0;
-	let timer = null;
+	let debuff = null;
  
 	function firstboss_debuff_event(skillid) {
 		switch (skillid) {
@@ -44,33 +43,33 @@ module.exports = (dispatch, handlers, guide, lang) => {
 				}
 				break;
 
-			case 30231000: // red debuff
+			case 30231000: // red debuff added
 				debuff = 1;
-				dispatch.clearTimeout(timer);
-				timer = dispatch.setTimeout(() => debuff = 0, 70000);
 				break;
 
-			case 30231001: // blue debuff
+			case 30231001: // blue debuff added
 				debuff = 2;
-				dispatch.clearTimeout(timer);
-				timer = dispatch.setTimeout(() => debuff = 0, 70000);
 				break;
 
 			default: // debuff removed
-				debuff = 0;
-				dispatch.clearTimeout(timer);
+				debuff = null;
 		}
 	}
 
 	return {
-		"die": [{ type: "func", func: firstboss_debuff_event }], // Debuff removed
-
 		// 1 BOSS
 		"nd-3023-1000": [
 			{ type: "stop_timers" },
 			{ type: "despawn_all" }
 		],
-		"ns-3023-1000": [{ type: "func", func: firstboss_debuff_event }],
+		// Debuff removed
+		"die": [{ type: "func", func: firstboss_debuff_event }],
+		// Debuf added
+		"ae-0-0-30231000": [{ type: "func", func: firstboss_debuff_event, args: [30231000] }], // AoE (red)
+		"ae-0-0-30231001": [{ type: "func", func: firstboss_debuff_event, args: [30231001] }], // AoE (blue)
+		"am-3023-1000-30231000": [{ type: "func", func: firstboss_debuff_event, args: [30231000] }], // Red
+		"am-3023-1000-30231001": [{ type: "func", func: firstboss_debuff_event, args: [30231001] }], // Blue
+		//
 		"s-3023-1000-104-0": [{ type: "text", sub_type: "message", message: "Random Jump", message_RU: "Прыжок + Стан" }],
 		"s-3023-1000-105-0": [{ type: "text", sub_type: "message", message: "Back", message_RU: "Поворот назад" }],
 		"s-3023-1000-110-0": [
@@ -116,18 +115,14 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-3023-1000-115-0": [
 			{ type: "text", sub_type: "message", message: "Back Attack", message_RU: "Удар назад" },
 			{ type: "spawn", func: "semicircle", args: [90, 270, 553, 0, 0, 20, 160, 100, 2000] },
-			{ type: "spawn", func: "semicircle", args: [90, 270, 553, 0, 0, 12, 220, 100, 2000] },
-			{ type: "spawn", func: "semicircle", args: [90, 270, 553, 0, 0, 10, 300, 100, 2000] }
+			{ type: "spawn", func: "semicircle", args: [90, 270, 553, 0, 0, 12, 240, 100, 2000] },
+			{ type: "spawn", func: "semicircle", args: [90, 270, 553, 0, 0, 10, 330, 100, 2000] }
 		],
 		"s-3023-1000-116-0": [
 			{ type: "text", sub_type: "message", message: "Kaia's Shield", message_RU: "Кайа", class_position: "priest" },
 			{ type: "text", sub_type: "message", message: "Thrall of Protection", message_RU: "Кайа", class_position: "mystic" },
-			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 8, 500, 0, 6000] }
+			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 8, 530, 0, 6000] }
 		],
-		"am-3023-1000-30231000": [{ type: "func", func: firstboss_debuff_event, args: [30231000] }],
-		"am-3023-1000-30231001": [{ type: "func", func: firstboss_debuff_event, args: [30231001] }],
-		"ae-0-0-30231000": [{ type: "func", func: firstboss_debuff_event, args: [30231000] }], // Red debuff
-		"ae-0-0-30231001": [{ type: "func", func: firstboss_debuff_event, args: [30231001] }], // Blue debuff
 		"s-3023-1000-3107-0": [
 			{ type: "text", sub_type: "message", message: "Smash", message_RU: "Конус вперед" },
 			{ type: "spawn", func: "vector", args: [553, 90, 80, 10, 1000, 0, 4000] },
@@ -144,12 +139,12 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-3023-1000-3119-0": [
 			{ type: "func", func: firstboss_debuff_event, args: [3119] }, // red inside
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 10, 270, 0, 4000] },
-			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 8, 575, 0, 4000] }
+			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 8, 600, 0, 4000] }
 		],
 		"s-3023-1000-3220-0": [
 			{ type: "func", func: firstboss_debuff_event, args: [3220] }, // blue inside
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 10, 270, 0, 4000] },
-			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 8, 575, 0, 4000] }
+			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 8, 600, 0, 4000] }
 		],
 
 		// 2 BOSS
