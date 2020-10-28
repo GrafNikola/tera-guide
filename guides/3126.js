@@ -79,7 +79,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 					message_RU: "Дебафф 15 сек."
 				});
 			}
-		}, 40000);
+		}, dispatch._mod.majorPatchVersion >= 99 ? 40000 : 55000);
 
 		timer2 = dispatch.setTimeout(() => {
 			if (debuff != null) {
@@ -89,7 +89,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 					message_RU: "Дебафф 10 сек."
 				});
 			}
-		}, 45000);
+		}, dispatch._mod.majorPatchVersion >= 99 ? 45000 : 60000);
 
 		timer3 = dispatch.setTimeout(() => {
 			if (debuff != null) {
@@ -99,7 +99,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 					message_RU: "Дебафф 5 сек."
 				});
 			}
-		}, 50000);
+		}, dispatch._mod.majorPatchVersion >= 99 ? 50000 : 65000);
 
 		if (blue) {
 			handlers.text({
@@ -361,7 +361,8 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"am-3126-1000-31260067": [{ type: "text", sub_type: "message", message: "[Debuff] Layer 2", message_RU: "[Дебафф] 2 стак" }],
 		"am-3126-1000-31260068": [
 			{ type: "text", sub_type: "message", message: "[Debuff] Layer 3", message_RU: "[Дебафф] 3 стак" },
-			{ type: "text", sub_type: "message", delay: 120000, message: "[Debuff] 2 minutes passed", message_RU: "[Дебафф] Прошло 2 минуты (стаки удалены)" }
+			{ type: "text", sub_type: "message", delay: 120000, message: "[Debuff] 2 minutes passed", message_RU: "[Дебафф] Прошло 2 минуты (стаки удалены)", check_func: () => dispatch._mod.majorPatchVersion >= 99 },
+			{ type: "text", sub_type: "message", delay: 145000, message: "[Debuff] 2.5 minutes passed", message_RU: "[Дебафф] Прошло 2.5 минуты (стаки удалены)", check_func: () => dispatch._mod.majorPatchVersion < 99 }
 		]
 	};
 

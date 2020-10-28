@@ -44,6 +44,10 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-739-2000-303-0": [{ type: "text", sub_type: "message", message: "Whip", message_RU: "Кнут" }],
 
 		// 3 BOSS
+		"nd-739-3000": [
+			{ type: "stop_timers" },
+			{ type: "despawn_all" }
+		],
 		"h-739-3001-30": [{ type: "text", sub_type: "message", message: "Reveal soon...", message_RU: "Скоро разоблачение..." }],
 		"s-739-3000-201-0": [{ type: "text", sub_type: "message", delay: 3600, message: "Dodge!", message_RU: "Эвейд!" }],
 		"s-739-3000-107-0": [{ type: "text", sub_type: "message", message: "Many Hits", message_RU: "Несколько ударов" }],
