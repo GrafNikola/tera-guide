@@ -97,7 +97,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "text", class_position: "dps", sub_type: "message", message: "Pushback", message_RU: "Откид (конус)" },
 			{ type: "text", class_position: "heal", sub_type: "message", message: "Pushback (Kaia)", message_RU: "Откид (кайя)" }
 		],
-		"s-982-1000-108-0": [{ type: "text", sub_type: "message", message: "Bait (Flying)", message_RU: "Байт (подлет)" }, ],
+		"s-982-1000-108-0": [{ type: "text", sub_type: "message", message: "Bait (Flying)", message_RU: "Байт (подлет)" }],
 		"s-982-1000-109-0": [{ type: "text", sub_type: "message", message: "Rocks (Small)", message_RU: "Камни (малые)" }],
 		"s-982-1000-110-0": [{ type: "text", sub_type: "message", message: "Rocks (Large)", message_RU: "Камни (большие)" }],
 		"s-982-1000-301-0": [{ type: "text", sub_type: "message", message: "Flower Stuns", message_RU: "Оглушающие цветы" }],
@@ -169,7 +169,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "spawn", func: "circle", args: [false, 445, 215, 370, 10, 480, 2500, 8000] },
 			{ type: "spawn", func: "circle", args: [false, 445, 215, 370, 8, 640, 2500, 8000] },
 			{ type: "spawn", func: "circle", args: [false, 445, 215, 370, 6, 800, 2500, 8000] },
-			{ type: "func", func: skilld_event, args: [154] } 
+			{ type: "func", func: skilld_event, args: [154] }
 		],
 		"s-982-3000-144-0": [
 			{ type: "text", sub_type: "message", message: "Right Rear", message_RU: "Справа сзади" },
@@ -181,7 +181,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		],
 		"s-982-3000-148-0": [
 			{ type: "text", sub_type: "message", message: "Right Rear (Pulses)", message_RU: "Справа сзади (бублик)" },
-			{ type: "spawn", func: "marker", args: [false, 155, 388, 0, 8000, true, null] }, 
+			{ type: "spawn", func: "marker", args: [false, 155, 388, 0, 8000, true, null] },
 			{ type: "spawn", func: "circle", args: [false, 445, 155, 388, 15, 160, 2500, 8000] },
 			{ type: "spawn", func: "circle", args: [false, 445, 155, 388, 12, 320, 2500, 8000] },
 			{ type: "spawn", func: "circle", args: [false, 445, 155, 388, 10, 480, 2500, 8000] },
@@ -191,7 +191,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		],
 		"s-982-3000-155-0": [
 			{ type: "text", sub_type: "message", message: "Right Rear (Pulses)", message_RU: "Справа сзади (бублик)" },
-			{ type: "spawn", func: "marker", args: [false, 155, 388, 0, 8000, true, null] }, 
+			{ type: "spawn", func: "marker", args: [false, 155, 388, 0, 8000, true, null] },
 			{ type: "spawn", func: "circle", args: [false, 445, 155, 388, 15, 160, 2500, 8000] },
 			{ type: "spawn", func: "circle", args: [false, 445, 155, 388, 12, 320, 2500, 8000] },
 			{ type: "spawn", func: "circle", args: [false, 445, 155, 388, 10, 480, 2500, 8000] },

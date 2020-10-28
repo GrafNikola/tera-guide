@@ -76,7 +76,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 				]);
 
 				dispatch.setTimeout(() => green = false, 2000);
-			
+
 			// Проваливай - Ощути силу взрыва
 			// к нему (бублик вокруг босса) -> от него (круг перед боссом) -> от него (большой круг перед боссом)
 			} else if (purple && !boss_thirty) {
@@ -87,7 +87,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 				]);
 
 				dispatch.setTimeout(() => purple = false, 2000);
-			
+
 			// < 30%
 			// Ближе! - Ощути силу взрыва
 			// от него (круг перед боссом) -> к нему (бублик вокруг босса) -> [волны] -> от него (большой круг перед боссом)
@@ -100,7 +100,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 				]);
 
 				dispatch.setTimeout(() => purple = false, 2000);
-			
+
 			// < 30%
 			// Проваливай! - Ощути силу взрыва
 			// к нему (бублик вокруг босса) -> от него (круг перед боссом) -> [волны] -> от него (большой круг перед боссом)
@@ -138,7 +138,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 	}
 
 	let debuff_tracker_started = false;
-	let debuffs_targe = {
+	const debuffs_targe = {
 		30209101: { message: "Lightning", message_RU: "Молния (эвейд)" },
 		30209102: { message: "Witch", message_RU: "Ведьма (эвейд)" }
 	};
@@ -244,13 +244,13 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		//"s-3020-9101-124-0": [{ type: "text", sub_type: "message", message: "Jump", "message_TW": "前砸" }],
 		//"s-3020-9101-125-0": [{ type: "text", sub_type: "message", message: "Jump", "message_TW": "转圈" }],
 		//"s-3020-9101-126-0": [{ type: "text", sub_type: "message", message: "Jump", "message_TW": "大前砸" }],
-		//"s-3020-2201-121-0": [{ type: "text", sub_type: "message", message: 'Left swipe', "message_TW": "2201-121" }, { type: "spawn", func: "marker", args: [false, 0, 0, 100, 2000, true, null] }],  
-		//"s-3020-2201-125-0": [{ type: "text", sub_type: "message", message: 'Left swipe', "message_TW": "2201-125" }, { type: "spawn", func: "marker", args: [false, 0, 0, 100, 2000, true, null] }],  
-		//"s-3020-2201-126-0": [{ type: "text", sub_type: "message", message: 'Left swipe', "message_TW": "2201-126" }, { type: "spawn", func: "marker", args: [false, 0, 0, 100, 2000, true, null] }],  
+		//"s-3020-2201-121-0": [{ type: "text", sub_type: "message", message: 'Left swipe', "message_TW": "2201-121" }, { type: "spawn", func: "marker", args: [false, 0, 0, 100, 2000, true, null] }],
+		//"s-3020-2201-125-0": [{ type: "text", sub_type: "message", message: 'Left swipe', "message_TW": "2201-125" }, { type: "spawn", func: "marker", args: [false, 0, 0, 100, 2000, true, null] }],
+		//"s-3020-2201-126-0": [{ type: "text", sub_type: "message", message: 'Left swipe', "message_TW": "2201-126" }, { type: "spawn", func: "marker", args: [false, 0, 0, 100, 2000, true, null] }],
 		//"s-3020-2201-201-0": [{ type: "spawn", func: "marker", args: [false, 0, 0, 100, 2000, true, null] }],
-		//"s-3020-6103-203-0": [{ type: "text", sub_type: "message", message: 'Left swipe', "message_TW": "6103-203" }, { type: "spawn", func: "marker", args: [false, 0, 0, 100, 2000, true, null] }],  
-		//"s-3020-6103-202-0": [{ type: "text", sub_type: "message", message: 'Left swipe', "message_TW": "6103-202" }, { type: "spawn", func: "marker", args: [false, 0, 0, 100, 2000, true, null] }],  
-		//"s-3020-6103-201-0": [{ type: "text", sub_type: "message", message: 'Left swipe', "message_TW": "6103-201" }, { type: "spawn", func: "marker", args: [false, 0, 0, 100, 2000, true, null] }],   
+		//"s-3020-6103-203-0": [{ type: "text", sub_type: "message", message: 'Left swipe', "message_TW": "6103-203" }, { type: "spawn", func: "marker", args: [false, 0, 0, 100, 2000, true, null] }],
+		//"s-3020-6103-202-0": [{ type: "text", sub_type: "message", message: 'Left swipe', "message_TW": "6103-202" }, { type: "spawn", func: "marker", args: [false, 0, 0, 100, 2000, true, null] }],
+		//"s-3020-6103-201-0": [{ type: "text", sub_type: "message", message: 'Left swipe', "message_TW": "6103-201" }, { type: "spawn", func: "marker", args: [false, 0, 0, 100, 2000, true, null] }],
 		"s-3020-2200-127-0": [{ type: "func", func: boss_mech_event, args: [127] }],
 		"s-3020-2200-128-0": [{ type: "text", sub_type: "message", message: "Uppercut (Knockup)", message_RU: "Черкаш (подлет)" }],
 		"s-3020-2200-129-0": [

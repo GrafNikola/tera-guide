@@ -13,7 +13,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-620-1000-127-0": [
 			{ type: "text", sub_type: "message", message: "Jump Back", message_RU: "Прыжок назад" },
 			{ type: "spawn", func: "circle", args: [false, 553, 180, 376, 12, 232, 0, 6750] }
-		],	
+		],
 		"s-620-1000-120-0": [{ type: "text", sub_type: "message", message: "Fire Wave", message_RU: "Волна" }],
 		"s-620-1000-121-0": [{ type: "text", sub_type: "message", message: "Repel (Dodge)", message_RU: "Откид (эвейд)" }],
 		"s-620-1000-119-0": [{ type: "text", sub_type: "message", message: "Explosion | In", message_RU: "Взрыв | К нему" }],
@@ -29,6 +29,6 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-620-1005-303-0": [{ type: "alias", id: "s-620-1001-303-0" }],
 
 		"s-620-1000-129-0": [{ type: "text", sub_type: "message", message: "Fireballs", message_RU: "Шары" }],
-		"s-620-1000-106-0": [{ type: "text", sub_type: "message", message: "Random Jump", message_RU: "Случайный прыжок" }],
+		"s-620-1000-106-0": [{ type: "text", sub_type: "message", message: "Random Jump", message_RU: "Случайный прыжок" }]
 	};
 };

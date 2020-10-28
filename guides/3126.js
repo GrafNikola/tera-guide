@@ -199,7 +199,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 					handlers.text({
 						sub_type: "message",
 						message: (`Ice inside (${qbacting_messages[qbacting].message}) | ${mech_messages[debuff % 2 + 2].message} | ${mech_messages[(qbacting + debuff + 1) % 2].message}`),
-						message_RU: (`Внутри лед (${qbacting_messages[qbacting].message_RU}) | ${mech_messages[debuff % 2 + 2].message_RU} | ${mech_messages[(qbacting + debuff + 1) % 2].message_RU}`),
+						message_RU: (`Внутри лед (${qbacting_messages[qbacting].message_RU}) | ${mech_messages[debuff % 2 + 2].message_RU} | ${mech_messages[(qbacting + debuff + 1) % 2].message_RU}`)
 					});
 
 					spawn_marker((qbacting + debuff + 1) % 2);
@@ -365,9 +365,9 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		]
 	};
 
-	let object = {};
+	const object = {};
 
-	for (let [key, value] of Object.entries(skills)) {
+	for (const [key, value] of Object.entries(skills)) {
 		if (key.length === 5) {
 			object[`s-3126-1000-1${key}`] = value;
 			object[`s-3126-1000-2${key}`] = value;

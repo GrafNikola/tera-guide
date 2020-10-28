@@ -5,44 +5,6 @@
 module.exports = (dispatch, handlers, guide, lang) => {
 	let boss = null;
 
-	function secondboss_start_event() {
-		boss = null;
-	}
-
-	function secondboss_debuff_event(skillid) {
-		switch (skillid) {
-			case 32010224: // false debuff (next true)
-				boss = 1;
-
-				dispatch.setTimeout(() => {
-					if (boss === 1) {
-						handlers.text({
-							sub_type: "message",
-							message_RU: "Смена дебаффа",
-							message: "Debuff reload"
-						});
-						boss = null;
-					}
-				}, 80000);
-				break;
-
-			case 32010220: // true debuff (next false)
-				boss = 0;
-
-				dispatch.setTimeout(() => {
-					if (boss === 0) {
-						handlers.text({
-							sub_type: "message",
-							message_RU: "Смена дебаффа",
-							message: "Debuff reload"
-						});
-						boss = null;
-					}
-				}, 80000);
-				break;
-		}
-	}
-
 	return {
 		// 1 BOSS
 		"nd-3201-1000": [
@@ -50,7 +12,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "despawn_all" }
 		],
 		//"s-3201-1000-103-0": [{ type: "text", class_position:"tank", sub_type: "message", message: "Dodge", message_RU: "Эвейд!" }],
-		"s-3201-1000-104-0": [{ type: "text", class_position:"tank", sub_type: "message", message: "Stun attack", message_RU: "Стан!" }],
+		"s-3201-1000-104-0": [{ type: "text", class_position: "tank", sub_type: "message", message: "Stun attack", message_RU: "Стан!" }],
 		"s-3201-1000-107-0": [
 			{ type: "text", sub_type: "message", message: "back", message_RU: "|Полоса|" },
 			{ type: "text", sub_type: "message", delay: 2250, message: "pull", message_RU: "Откид!!!" },
@@ -69,7 +31,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		],
 		"s-3201-1000-118-0": [
 			{ type: "text", sub_type: "message", message: "Jump P (Slow)", message_RU: "Прыжок" },
-			{ type: "text", sub_type: "message", delay: 1500, message: "Pull", message_RU: "Камень!" },
+			{ type: "text", sub_type: "message", delay: 1500, message: "Pull", message_RU: "Камень!" }
 		],
 		"s-3201-1000-119-0": [
 			{ type: "text", sub_type: "message", delay: 1000, message: "Back + Front", message_RU: "Вперед + Назад" },
@@ -80,17 +42,17 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		],
 		//"s-3201-1000-121-0": [{ type: "text", class_position:"tank", sub_type: "message", message: "Right", message_RU: "Право" }],
 		//"s-3201-1000-122-0": [{ type: "text", class_position:"tank", sub_type: "message", message: "Left", message_RU: "Лево" }],
-		"s-3201-1000-124-0": [{ type: "text", class_position:"tank", sub_type: "message", message: "Stun attack", message_RU: "Стан (фаст)" }],
+		"s-3201-1000-124-0": [{ type: "text", class_position: "tank", sub_type: "message", message: "Stun attack", message_RU: "Стан (фаст)" }],
 		"s-3201-1000-127-0": [
-			{ type: "text", class_position:"dps", sub_type: "message", message: "Back", message_RU: "Полоса (фаст)" },
-			{ type: "text", class_position:"heal", sub_type: "message", message: "Back", message_RU: "Полоса (фаст)" },
+			{ type: "text", class_position: "dps", sub_type: "message", message: "Back", message_RU: "Полоса (фаст)" },
+			{ type: "text", class_position: "heal", sub_type: "message", message: "Back", message_RU: "Полоса (фаст)" },
 			{ type: "spawn", func: "vector", args: [553, 90, 139, 173, 800, 0, 3000] },
 			{ type: "spawn", func: "vector", args: [553, 270, 139, -173, 800, 0, 3000] }
 		],
 		//"s-3201-1000-128-0": [{ type: "text", class_position:"tank", sub_type: "message", message: "Triple Attack", message_RU: "Комба" }],
 		"s-3201-1000-131-0": [
-			{ type: "text", class_position:"dps", sub_type: "message", message: "Back Wave", message_RU: "Волна назад (фаст)" },
-			{ type: "text", class_position:"heal", sub_type: "message", message: "Back Wave", message_RU: "Волна назад (фаст)" },
+			{ type: "text", class_position: "dps", sub_type: "message", message: "Back Wave", message_RU: "Волна назад (фаст)" },
+			{ type: "text", class_position: "heal", sub_type: "message", message: "Back Wave", message_RU: "Волна назад (фаст)" },
 			{ type: "spawn", func: "vector", args: [553, 0, 100, 112, 800, 0, 3000] },
 			{ type: "spawn", func: "vector", args: [553, 0, 100, -112, 800, 0, 3000] }
 		],
@@ -105,18 +67,18 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "spawn", func: "vector", args: [553, 2, 0, 290, 800, 0, 2500] }
 		],
 		"s-3201-1000-143-0": [
-			{ type: "text", class_position:"tank", sub_type: "message", message: "Left > Right", message_RU: "Слева > Справа" },
-			{ type: "text", class_position:"dps", sub_type: "message", message: "Right > Left", message_RU: "Справа > Слева" },
-			{ type: "text", class_position:"heal", sub_type: "message", message: "Right > Left", message_RU: "Справа > Слева" },
+			{ type: "text", class_position: "tank", sub_type: "message", message: "Left > Right", message_RU: "Слева > Справа" },
+			{ type: "text", class_position: "dps", sub_type: "message", message: "Right > Left", message_RU: "Справа > Слева" },
+			{ type: "text", class_position: "heal", sub_type: "message", message: "Right > Left", message_RU: "Справа > Слева" },
 			{ type: "spawn", func: "marker", args: [false, 150, 300, 100, 2715, true, null] }, // 1
 			{ type: "spawn", func: "marker", args: [false, 225, 300, 2800, 4175, true, null] }, // 6
 			{ type: "spawn", func: "marker", args: [false, 30, 300, 100, 1000, true, null] }, // 1
 			{ type: "spawn", func: "marker", args: [false, 330, 300, 1100, 5000, true, null] } // 7
 		],
 		"s-3201-1000-145-0": [
-			{ type: "text", class_position:"tank", sub_type: "message", message: "Left > Right", message_RU: "Слева > Справа" },
-			{ type: "text", class_position:"dps", sub_type: "message", message: "Right > Left", message_RU: "Справа > Слева" },
-			{ type: "text", class_position:"heal", sub_type: "message", message: "Right > Left", message_RU: "Справа > Слева" },
+			{ type: "text", class_position: "tank", sub_type: "message", message: "Left > Right", message_RU: "Слева > Справа" },
+			{ type: "text", class_position: "dps", sub_type: "message", message: "Right > Left", message_RU: "Справа > Слева" },
+			{ type: "text", class_position: "heal", sub_type: "message", message: "Right > Left", message_RU: "Справа > Слева" },
 			{ type: "spawn", func: "marker", args: [false, 30, 300, 100, 1000, true, null] }, // 1
 			{ type: "spawn", func: "marker", args: [false, 330, 300, 1100, 5000, true, null] }, // 7
 			{ type: "spawn", func: "marker", args: [false, 150, 300, 100, 2000, true, null] }, // 1
@@ -150,24 +112,32 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		],
 
 		// 2 BOSS
+		"ns-3201-2000": [{ type: "func", func: () => boss = null }],
 		"nd-3201-2000": [
 			{ type: "stop_timers" },
 			{ type: "despawn_all" }
 		],
-		"h-3201-2000-99": [{ type: "func", func: secondboss_start_event }],
+		"am-3201-320126-32010224": [
+			{ type: "func", func: () => boss = 1 },
+			{ type: "text", delay: 52000, sub_type: "alert", message: "True Debuff in 5 seconds", message_RU: "Правда через 5 сек." },
+			{ type: "event", delay: 80000, args: [
+				{ type: "func", check_func: () => boss === 1, func: () => boss = null },
+				{ type: "text", check_func: () => boss === 1, sub_type: "message", message_RU: "Смена дебаффа", message: "Debuff reload" }
+			] }
+		],
+		"am-3201-2000-32010220": [
+			{ type: "func", func: () => { boss = 0; } },
+			{ type: "text", delay: 52000, sub_type: "alert", message: "False Debuff in 5 seconds", message_RU: "Ложь через 5 сек." },
+			{ type: "event", delay: 80000, args: [
+				{ type: "func", check_func: () => boss === 0, func: () => boss = null },
+				{ type: "text", check_func: () => boss === 0, sub_type: "message", message_RU: "Смена дебаффа", message: "Debuff reload" }
+			] }
+		],
 		"h-3201-2000-81": [{ type: "text", sub_type: "message", message: "80%", message_RU: "Дебафф" }],
 		"h-3201-2000-76": [{ type: "text", sub_type: "message", message: "75%", message_RU: "Камни" }],
 		"s-3201-2000-108-0": [{ type: "text", sub_type: "message", message: "Back Attack!", message_RU: "Откид назад!" }],
 		"s-3201-2000-150-0": [{ type: "text", sub_type: "message", message: "Phantom", message_RU: "Фантом" }],
-		"am-3201-320126-32010224": [
-			{ type: "text", sub_type: "alert", delay: 52000, message: "True Debuff in 5 seconds", message_RU: "Правда через 5 сек." },
-			{ type: "func", func: secondboss_debuff_event, args: [32010224] }
-		],
-		"am-3201-2000-32010220": [
-			{ type: "text", sub_type: "alert", delay: 52000, message: "False Debuff in 5 seconds", message_RU: "Ложь через 5 сек." },
-			{ type: "func", func: secondboss_debuff_event, args: [32010220] }
-		],
-		"s-3201-2000-228-0": [ 
+		"s-3201-2000-228-0": [
 			{ type: "text", sub_type: "message", message: "Team Up", message_RU: "Камни (вместе)!!!" },
 			{ type: "text", sub_type: "message", delay: 3500, message: "Dodge", message_RU: "Эвейд" }
 		],
@@ -181,6 +151,6 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 10, 300, 0, 3000] },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 3, 1000, 0, 3000] }
 		],
-		"s-3201-2000-236-0": [{ type: "text", sub_type: "message", message: "Counter", message_RU: "Конус вперед (байт)" }],
+		"s-3201-2000-236-0": [{ type: "text", sub_type: "message", message: "Counter", message_RU: "Конус вперед (байт)" }]
 	};
 };

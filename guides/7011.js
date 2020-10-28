@@ -11,14 +11,14 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-622-1000-206-0": [{ type: "text", sub_type: "message", message: "Jump Back", message_RU: "Прыжок назад" }],
 		"s-622-1000-108-1": [{ type: "text", sub_type: "message", message: "Jump Forward", message_RU: "Прыжок вперед" }],
 		"s-622-1000-120-0": [
-			{ type: "text", sub_type: "message", message: "Right Hand", message_RU: "Правая рука", class_position: "tank"},
-			{ type: "text", sub_type: "message", message: "Left Hand", message_RU: "Левая рука", class_position: "heal"},
-			{ type: "text", sub_type: "message", message: "Left Hand", message_RU: "Левая рука", class_position: "dps"}
+			{ type: "text", sub_type: "message", message: "Right Hand", message_RU: "Правая рука", class_position: "tank" },
+			{ type: "text", sub_type: "message", message: "Left Hand", message_RU: "Левая рука", class_position: "heal" },
+			{ type: "text", sub_type: "message", message: "Left Hand", message_RU: "Левая рука", class_position: "dps" }
 		],
 		"s-622-1000-119-0": [
-			{ type: "text", sub_type: "message", message: "Left Hand", message_RU: "Левая рука", class_position: "tank"},
-			{ type: "text", sub_type: "message", message: "Right Hand", message_RU: "Правая рука", class_position: "heal"},
-			{ type: "text", sub_type: "message", message: "Right Hand", message_RU: "Правая рука", class_position: "dps"}
+			{ type: "text", sub_type: "message", message: "Left Hand", message_RU: "Левая рука", class_position: "tank" },
+			{ type: "text", sub_type: "message", message: "Right Hand", message_RU: "Правая рука", class_position: "heal" },
+			{ type: "text", sub_type: "message", message: "Right Hand", message_RU: "Правая рука", class_position: "dps" }
 		],
 		"s-622-1000-107-0": [
 			{ type: "text", sub_type: "message", message: "Stun Frontal", message_RU: "Передний стан" },

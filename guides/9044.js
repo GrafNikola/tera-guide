@@ -315,7 +315,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		],
 		//
 		"s-444-2000-1125-0": [
-			{ type: "text", sub_type: "message", message: "Front | Right Scratch", message_RU: "Удар вперед | Правый черкаш" }, 
+			{ type: "text", sub_type: "message", message: "Front | Right Scratch", message_RU: "Удар вперед | Правый черкаш" },
 			{ type: "spawn", func: "circle", args: [false, 445, 356, 400, 8, 350, 100, 3000] },
 			{ type: "spawn", func: "vector", args: [553, 356, 0, 180, 500, 100, 3000] },
 			{ type: "spawn", func: "vector", args: [553, 356, 0, 0, 500, 100, 3000] }
