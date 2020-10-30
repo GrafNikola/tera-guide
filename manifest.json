@@ -18,14 +18,14 @@
         "guides/9044.js": "586d45203402628a1d2af28c6823afb94945847b7a7609eeece434ed70ed3b6c",
         "guides/9053.js": "dc9c5b647d622ad700437c067fc53e4689c39621863d9da9dff15ad73fd1b554",
         "guides/9735.js": "ad9e916e5f51839391879aae5de152e250cf5c8214f7dc53bef3c1b3f4dd8736",
-        "guides/9739.js": "60c0637b5f32a64a1f230b4215a5ee80fdc379d4fc5825f8bf9a412c4cbcac3d",
+        "guides/9739.js": "c1679a49c9e47f1cea731b27969290f24aee379bc6e97dd5a974c81b28b4ebb8",
         "guides/9781.js": "e4e325cc6b5f1d4d6280d44c2249a1ebbb8cb82cb3cd70934e3d97c0046613b3",
         "guides/9920.js": "512aee79de34c1ae195a4a648cfbdff70b5659b635f456fa349b4756ff2a1711",
         "guides/9982.js": "ef1b3198481712e4cc3971304f84d6acf381332ecfbb4304980bf2fe098ef91b",
         "index.js": "0f7a4193238d859c8e356eecd3c7527a043e577c0f039b6e9e39384d89667517",
         "lang/dungeons.js": "d9de1df1abffb55e3ae08fe843ce9ad2712f377ee954b2066a1e8853db8d1340",
         "lang/strings.js": "0746e3498b6456d843d5bdffbaf191586a82ebe800e2add12a0006a573193ba1",
-        "module.json": "a64621257de51a564bac86edfccaf5b8065537e4eaa59ee0b199d229fc2f3f4b",
+        "module.json": "ec580e015d7bc44fdd28a3262562e8b4835695988197f745bd863228afe08b66",
         "settings_migrator.js": "1461a6939ee14b9ab090538aa21c90e96365d37b7dd3a8b8adf693c967c841c5"
     },
     "defs": {
