@@ -47,7 +47,6 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			if ([3036039, 3036040, 3036041].includes(bossWord)) {
 				dispatch.clearTimeout(timer1);
 				triple_attack = true;
-				mech_counter = 0;
 				timer1 = dispatch.setTimeout(() => triple_attack = false, 2800);
 			}
 		}
