@@ -9,7 +9,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 	let triple_attack = false;
 	let timer1 = null;
 	let timer2 = null;
-	let	step_two = 0;
+	let step_two = 0;
 	let enraged = false;
 	let boss_ID = null;
 	let counter = 0;
@@ -86,7 +86,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 					message_RU: triple_attack ? mech_messages[step_two].message_RU : mech_messages[2].message_RU
 				});
 				print_mech = false;
-				dispatch.setTimeout(() => print_mech = true, 5000);
+				dispatch.setTimeout(() => print_mech = true, 10000);
 			}
 
 			handlers.event([
