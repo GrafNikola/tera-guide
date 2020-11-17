@@ -86,7 +86,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 					message_RU: triple_attack ? mech_messages[step_two].message_RU : mech_messages[2].message_RU
 				});
 				print_mech = false;
-				dispatch.setTimeout(() => print_mech = true, 10000);
+				dispatch.setTimeout(() => print_mech = true, triple_attack ? 10000 : 5000);
 			}
 
 			handlers.event([
