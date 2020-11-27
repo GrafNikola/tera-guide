@@ -10,4 +10,8 @@ module.exports = {
 		"en": "Escape from Balder's Refuge (Guardian)",
 		"ru": "Спасти Убежище Балдера (хранитель)"
 	},
+	9056: {
+		"en": "Timescape (Hard)",
+		"ru": "Хроноплоскость (сложно)"
+	}
 };

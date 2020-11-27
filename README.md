@@ -54,6 +54,7 @@ id | Dungeon name | Название данжа
 3203 | Forbidden Arena [Nightmare Undying Warlord] | [Бессмертный] Арена безумия
 9053 | Kezzel's Gorge (5-Person) | Ущелье Кеззела (5 игроков)
 3036 | Sky Cruiser (Hard) | Небесный крейсер (сложно)
+9056 | Timescape (Hard) | Хроноплоскость (сложно)
 
 ## Notices settings / Настройка уведомлений
 
