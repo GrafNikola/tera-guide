@@ -119,9 +119,27 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-3036-1000-1103-0": [{ type: "func", func: boss_backattack_event }],
 		"s-3036-1000-1106-0": [{ type: "func", func: boss_backattack_event }],
 		"s-3036-1000-1112-0": [{ type: "text", sub_type: "message", message: "Back Move", message_RU: "Рывок назад" }],
+		"s-3036-1000-1114-0": [
+			{ type: "text", sub_type: "message", message: "Invisible Fire", message_RU: "Невидимые полосы" },
+			{ type: "spawn", func: "vector", args: [553, 90, 150, 0, 1300, 0, 8830] },
+			{ type: "spawn", func: "vector", args: [553, 90, 75, 0, 1300, 0, 8830] },
+			{ type: "spawn", func: "vector", args: [553, 0, 0, 0, 1300, 0, 8830] },
+			{ type: "spawn", func: "vector", args: [553, 270, 75, 0, 1300, 0, 8830] },
+			{ type: "spawn", func: "vector", args: [553, 270, 150, 0, 1300, 0, 8830] }
+		],
 		"s-3036-1000-1115-0": [{ type: "text", sub_type: "message", delay: 3200, message: "Dodge", message_RU: "Эвейд" }],
 		"s-3036-1000-1117-0": [{ type: "text", sub_type: "message", message: "Front", message_RU: "Удар вперед" }],
-		"s-3036-1000-1118-0": [{ type: "text", sub_type: "message", message: "Front Cut | Dodge", message_RU: "Передний разрез | Эвейд" }],
+		"s-3036-1000-1118-0": [
+			{ type: "text", sub_type: "message", message: "Front Cut | Dodge", message_RU: "Передний разрез | Эвейд" },
+			{ type: "spawn", func: "semicircle", args: [0, 60, 553, 0, 0, 15, 60, 0, 2000] },
+			{ type: "spawn", func: "semicircle", args: [0, 55, 553, 0, 0, 15, 160, 0, 2000] },
+			{ type: "spawn", func: "semicircle", args: [0, 45, 553, 0, 0, 10, 250, 0, 2000] },
+			{ type: "spawn", func: "semicircle", args: [0, 45, 553, 0, 0, 10, 340, 0, 2000] },
+			{ type: "spawn", func: "semicircle", args: [300, 360, 553, 0, 0, 15, 60, 0, 2000] },
+			{ type: "spawn", func: "semicircle", args: [305, 360, 553, 0, 0, 15, 160, 0, 2000] },
+			{ type: "spawn", func: "semicircle", args: [310, 360, 553, 0, 0, 10, 250, 0, 2000] },
+			{ type: "spawn", func: "semicircle", args: [315, 360, 553, 0, 0, 10, 340, 0, 2000] }
+		],
 		"s-3036-1000-1302-0": [
 			{ type: "text", sub_type: "message", message: "AOE", message_RU: "AOE" },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 8, 500, 100, 6000] }
@@ -137,21 +155,22 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "text", sub_type: "message", delay: 2150, message: "IN", message_RU: "К нему" },
 			{ type: "text", sub_type: "message", delay: 3050, message: "All | OUT", message_RU: "Общая | От него" },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 10, 250, 0, 6000] },
-			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 8, 450, 0, 6000] }
+			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 8, 430, 0, 6000] }
 		],
 		"s-3036-1000-1806-0": [
 			{ type: "text", sub_type: "message", message: "IN", message_RU: "К нему" },
 			{ type: "text", sub_type: "message", delay: 2150, message: "Beween", message_RU: "Между" },
 			{ type: "text", sub_type: "message", delay: 3050, message: "All | IN", message_RU: "Общая | К нему" },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 10, 250, 0, 6000] },
-			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 8, 450, 0, 6000] }
+			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 8, 430, 0, 6000] }
 		],
-		"s-3036-1000-2103-0": [{ type: "func", func: boss_backattack_event }],
-		"s-3036-1000-2106-0": [{ type: "func", func: boss_backattack_event }],
-		"s-3036-1000-2112-0": [{ type: "text", sub_type: "message", message: "Back Move", message_RU: "Рывок назад" }],
-		"s-3036-1000-2115-0": [{ type: "text", sub_type: "message", delay: 3200, message: "Dodge", message_RU: "Эвейд" }],
-		"s-3036-1000-2117-0": [{ type: "text", sub_type: "message", message: "Front", message_RU: "Удар вперед" }],
-		"s-3036-1000-2118-0": [{ type: "text", sub_type: "message", message: "Front Cut | Dodge", message_RU: "Передний разрез | Эвейд" }],
+		"s-3036-1000-2103-0": "s-3036-1000-1103-0",
+		"s-3036-1000-2106-0": "s-3036-1000-1106-0",
+		"s-3036-1000-2112-0": "s-3036-1000-1112-0",
+		"s-3036-1000-2114-0": "s-3036-1000-1114-0",
+		"s-3036-1000-2115-0": "s-3036-1000-1115-0",
+		"s-3036-1000-2117-0": "s-3036-1000-1117-0",
+		"s-3036-1000-2118-0": "s-3036-1000-1118-0",
 		"qb-3036-1000-3036039": [{ type: "func", func: boss_tripleattack_event }],
 		"qb-3036-1000-3036040": [{ type: "func", func: boss_tripleattack_event }],
 		"qb-3036-1000-3036041": [{ type: "func", func: boss_tripleattack_event }]
