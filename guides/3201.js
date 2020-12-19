@@ -14,8 +14,8 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		//"s-3201-1000-103-0": [{ type: "text", class_position:"tank", sub_type: "message", message: "Dodge", message_RU: "Эвейд!" }],
 		"s-3201-1000-104-0": [{ type: "text", class_position: "tank", sub_type: "message", message: "Stun attack", message_RU: "Стан!" }],
 		"s-3201-1000-107-0": [
-			{ type: "text", sub_type: "message", message: "back", message_RU: "|Полоса|" },
-			{ type: "text", sub_type: "message", delay: 2250, message: "pull", message_RU: "Откид!!!" },
+			{ type: "text", sub_type: "message", message: "Back", message_RU: "Полоса" },
+			{ type: "text", sub_type: "message", delay: 2250, message: "Pull", message_RU: "Откид" },
 			{ type: "spawn", func: "vector", args: [553, 90, 139, 173, 800, 0, 3000] },
 			{ type: "spawn", func: "vector", args: [553, 270, 139, -173, 800, 0, 3000] }
 		],
@@ -27,11 +27,11 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		//"s-3201-1000-112-0": [{ type: "text", sub_type: "message", message: "Left + Right", message_RU: "Лево + Право" }],
 		"s-3201-1000-113-0": [
 			{ type: "text", sub_type: "message", message: "Jump (Slow)", message_RU: "Прыжок" },
-			{ type: "text", sub_type: "message", delay: 1500, message: "Pull", message_RU: "Камень!" }
+			{ type: "text", sub_type: "message", delay: 1500, message: "Pull", message_RU: "Камень" }
 		],
 		"s-3201-1000-118-0": [
-			{ type: "text", sub_type: "message", message: "Jump P (Slow)", message_RU: "Прыжок" },
-			{ type: "text", sub_type: "message", delay: 1500, message: "Pull", message_RU: "Камень!" }
+			{ type: "text", sub_type: "message", message: "Jump (Slow)", message_RU: "Прыжок" },
+			{ type: "text", sub_type: "message", delay: 1500, message: "Pull", message_RU: "Камень" }
 		],
 		"s-3201-1000-119-0": [
 			{ type: "text", sub_type: "message", delay: 1000, message: "Back + Front", message_RU: "Вперед + Назад" },
@@ -95,12 +95,12 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-3201-1000-151-0": [{ type: "text", sub_type: "message", message: "Stun Attack", message_RU: "Стан!" }],
 		"s-3201-1000-305-0": [{ type: "text", sub_type: "message", message: "Pizza", message_RU: "Pizza" }],
 		"s-3201-1000-311-0": [
-			{ type: "text", sub_type: "message", message_RU: "Мёд!" },
-			{ type: "text", sub_type: "message", delay: 4000, message: "pull", message_RU: "Откид!" }
+			{ type: "text", sub_type: "message", message: "Slow", message_RU: "Мёд" },
+			{ type: "text", sub_type: "message", delay: 4000, message: "Pull", message_RU: "Откид!" }
 		],
 		"s-3201-1000-312-0": [
-			{ type: "text", sub_type: "message", message_RU: "Мёд (фаст)!" },
-			{ type: "text", sub_type: "message", delay: 2000, message: "pull", message_RU: "Откид!" }
+			{ type: "text", sub_type: "message", message: "Fast", message_RU: "Мёд (фаст)" },
+			{ type: "text", sub_type: "message", delay: 2000, message: "Pull", message_RU: "Откид!" }
 		],
 		"s-3201-1000-313-0": [
 			{ type: "text", sub_type: "message", message: "Circles (Slow)", message_RU: "Кольцо" },
@@ -151,6 +151,6 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 10, 300, 0, 3000] },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 3, 1000, 0, 3000] }
 		],
-		"s-3201-2000-236-0": [{ type: "text", sub_type: "message", message: "Counter", message_RU: "Конус вперед (байт)" }]
+		"s-3201-2000-236-0": [{ type: "text", sub_type: "message", message: "Counter Attack (Bait)", message_RU: "Конус вперед (байт)" }]
 	};
 };
