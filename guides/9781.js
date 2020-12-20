@@ -112,11 +112,11 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		],
 		"s-781-2000-1108-0": [{ type: "text", sub_type: "message", message: "Front", message_RU: "Передний" }],
 		"s-781-2000-1111-0": [{ type: "text", sub_type: "message", message: "360 attack", message_RU: "Круговая" }],
-		"s-781-2000-1134-1": [
+		"s-781-2000-1134-0": [
 			{ type: "text", sub_type: "message", message: "Combo Attack (Dodge)", message_RU: "Задний" },
 			{ type: "spawn", func: "circle", args: [true, 553, 0, 80, 8, 390, 0, 2000] }
 		],
-		"s-781-2000-1134-0": [
+		"s-781-2000-1134-1": [
 			{ type: "spawn", func: "circle", args: [true, 553, 0, 75, 15, 175, 100, 2000] }
 		],
 		"s-781-2000-1130-0": [
