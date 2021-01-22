@@ -3,9 +3,15 @@
 // WIP
 
 module.exports = (dispatch, handlers, guide, lang) => {
-	return {
+	guide.type = SP;
 
+	return {
 		// 3 BOSS
+
+		"nd-970-3000": [
+			{ type: "stop_timers" },
+			{ type: "despawn_all" }
+		],
 
 		"s-970-3000-1102-0": [{ "type": "text", "sub_type": "message", "message_RU": "Левая рука", "message": "Left Hand" }],
 		"s-970-3000-2102-0": [{ "type": "text", "sub_type": "message", "message_RU": "Левая рука", "message": "Left Hand" }],
