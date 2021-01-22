@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 // Available strings for additional languages
 // If no language is found, the default language (English) will be displayed
@@ -33,7 +33,7 @@ module.exports.general = {
 			["guide clb, установить цвет сообщения: светло-синий", "CLBMSG"],
 			["guide cbl, установить цвет сообщения: черный", "CBLMSG"],
 			["guide cgr, установить цвет сообщения: серый", "CGRMSG"],
-			["guide cw, установить цвет сообщения: белый", "CWMSG"],
+			["guide cw, установить цвет сообщения: белый", "CWMSG"]
 		],
 		red: "Красный",
 		green: "Зеленый",
@@ -60,6 +60,6 @@ module.exports.general = {
 		dgnotfound: "Данж с таким id не найден.",
 		dgnotspecified: "Не указан id данжа.",
 		enterdg: "Вы вошли в данж",
-		fordungeon: "для данжа",
-	},
+		fordungeon: "для данжа"
+	}
 };

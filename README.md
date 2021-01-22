@@ -36,25 +36,17 @@ id | Dungeon name | Название данжа
 --- | --- | ---
 7011 | Shadow of the Gutrends (Guardian) | Живодеры и черная тень (хранитель)
 7015 | Escape from Balder's Refuge (Guardian) | Операция "Спасти Убежище Балдера" (хранитель)
-9781 | Velik's Sanctuary | Святилище Велики
-9739 | Red Refuge | Лагерь повстанцев
-9735 | RK-9 Kennel | Ангар RK-9
-9920 | Antaroth's Abyss (Hard) | Омут Бездушного Антароса
-9982 | Grotto of Lost Souls (Hard) | Заброшенная мастерская Леандра
 9044 | Bahaar's Sanctum | Святилище Бахаара
-3201 | Gossamer Vault (Hard) | Гнездо сверкающей Паркин
 3023 | Akalath Quarantine | Секретное подземелье крепости Берарк
 3020 | Sea of Honor | Золотая чешуя
 3026 | Corrupted Skynest | Логово Келсаика
 3126 | Corrupted Skynest (Hard) | Логово Бессмертного Келсаика
+3101 | Gossamer Vault | Гнездо Паркин
 3102 | Draakon Arena | Командный центр
-3202 | Draakon Arena (Hard) | Командный центр (сложно)
-3027 | Forbidden Arena [Hagufna] | [Бессмертный воин] Арена безумия
 3103 | Forbidden Arena [Undying Warlord] | [Этерния] Арена безумия
-3203 | Forbidden Arena [Nightmare Undying Warlord] | [Бессмертный] Арена безумия
-9053 | Kezzel's Gorge (5-Person) | Ущелье Кеззела (5 игроков)
-3036 | Sky Cruiser (Hard) | Небесный крейсер (сложно)
-9056 | Timescape (Hard) | Хроноплоскость (сложно)
+9970 | Ruinous Manor (Hard) | Руины Кошмарной Абнукты
+3104 | Catalepticon | Сонный паралич Лукмии
+3204 | Catalepticon (Hard) | Сонный паралич Лукмии (сложно)
 
 ## Notices settings / Настройка уведомлений
 
