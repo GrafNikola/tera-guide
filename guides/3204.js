@@ -45,11 +45,11 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-3204-1000-119-0": [{ type: "text", sub_type: "message", message: "Two Strikes", message_RU: "Два удара" }],
 		"s-3204-1000-120-0": [
 			{ type: "text", sub_type: "message", message: "Two Strikes + Stun (AOE)", message_RU: "Два удара + стан (АОЕ)" },
-			{ type: "text", sub_type: "message", message: "Stun (AOE)", message_RU: "Стан (АОЕ)", delay: 2000 },
-			{ type: "spawn", func: "circle", args: [true, 553, 180, -100, 10, 700, 0, 2000], delay: 2000 }
+			{ type: "text", sub_type: "message", message: "Stun (AOE)", message_RU: "Стан (АОЕ)", delay: 1500 },
+			{ type: "spawn", func: "circle", args: [true, 553, 180, -100, 10, 700, 0, 2500], delay: 1500 }
 		],
 		"s-3204-1000-123-0": [{ type: "text", sub_type: "message", message: "Spin", message_RU: "Круговая" }],
-		"s-3204-1000-125-0": [{ type: "text", sub_type: "message", message: "Strun (Tank)", message_RU: "Стан (танк)" }],
+		"s-3204-1000-125-0": [{ type: "text", sub_type: "message", message: "Stun (Tank)", message_RU: "Стан (танк)" }],
 		"s-3204-1000-127-0": [
 			{ type: "text", sub_type: "message", message: "Pizza", message_RU: "Пицца" },
 			{ type: "spawn", func: "marker", args: [false, 0, 150, 0, 2000, true, null] }
