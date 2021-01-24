@@ -22,13 +22,15 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "spawn", func: "vector", args: [553, 90, 50, 0, 1000, 0, 2000] },
 			{ type: "spawn", func: "vector", args: [553, 270, 50, 0, 1000, 0, 2000] },
 			{ type: "spawn", func: "vector", args: [553, 90, 50, 180, 1000, 0, 2000] },
-			{ type: "spawn", func: "vector", args: [553, 270, 50, 180, 1000, 0, 2000] }
+			{ type: "spawn", func: "vector", args: [553, 270, 50, 180, 1000, 0, 2000] },
+			{ type: "spawn", func: "marker", args: [false, 0, 150, 0, 2000, true, null], delay: 1000 }
 		],
 		"s-3104-1000-110-0": [
 			{ type: "text", sub_type: "message", message: "Target + Wave", message_RU: "Таргет + волна" },
 			{ type: "spawn", func: "circle", args: [true, 553, 180, -500, 10, 350, 0, 1500] },
-			{ type: "spawn", func: "vector", args: [553, 180, -20, 120, 500, 0, 2000], delay: 1500 },
-			{ type: "spawn", func: "vector", args: [553, 180, -20, 240, 500, 0, 2000], delay: 1500 }
+			{ type: "spawn", func: "vector", args: [553, 180, -50, 120, 500, 0, 2000], delay: 1500 },
+			{ type: "spawn", func: "vector", args: [553, 180, -50, 240, 500, 0, 2000], delay: 1500 },
+			{ type: "spawn", func: "marker", args: [false, 0, 150, 0, 2000, true, null], delay: 2500 }
 		],
 		"s-3104-1000-112-0": [{ type: "text", sub_type: "message", message: "Wave Forward", message_RU: "Волна вперед" },
 			{ type: "spawn", func: "vector", args: [553, 0, 0, 70, 500, 0, 2000] },
@@ -64,7 +66,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "spawn", func: "marker", args: [false, 340, 150, 0, 2000, true, null], delay: 1500 }
 		],
 		"s-3104-1000-156-0": [{ type: "text", sub_type: "message", message: "Get Skulls", message_RU: "Черепа" }],
-		"s-3104-1000-157-0": [{ type: "text", sub_type: "message", message: "Gather!", message_RU: "Собраться!", delay: 5000 }],
+		"s-3104-1000-157-0": [{ type: "text", sub_type: "message", message: "Gather!", message_RU: "Собраться!", delay: 2000 }],
 		"s-3104-1000-158-0": [{ type: "text", sub_type: "message", message: "Gather!", message_RU: "Собраться!", delay: 5000 }],
 		"s-3104-1000-159-0": [{ type: "text", sub_type: "message", message: "AOE", message_RU: "АОЕ" }]
 	};

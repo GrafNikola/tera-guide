@@ -10,7 +10,19 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "despawn_all" }
 		],
 
-		"qb-3204-1000-32042000": [{ type: "text", sub_type: "message", message: "Arrows", message_RU: "Стрелки" }],
+		"qb-3204-1000-32041000": [{ type: "text", sub_type: "message", message: "Arrows", message_RU: "Стрелки" }],
+		"qb-3204-1000-32042000": [{ type: "text", sub_type: "message", message: "Arrows + Line", message_RU: "Стрелки + полоса" }],
+		"qb-3204-1000-32042006": [
+			{ type: "text", sub_type: "message", message: "Cage", message_RU: "Клетка" },
+			{ type: "text", sub_type: "alert", message: "Cage soon...", message_RU: "Скоро клетка...", delay: 100000 }
+		],
+		"qb-3204-1000-32042009": [
+			{ type: "text", sub_type: "message", message: "Skeletons", message_RU: "Скелеты" },
+			{ type: "text", sub_type: "alert", message: "Skeletons soon...", message_RU: "Скоро скелеты...", delay: 220000 }
+		],
+
+		"h-3204-1000-90": [{ type: "text", sub_type: "message", message: "90%", message_RU: "90%" }],
+		"h-3204-1000-70": [{ type: "text", sub_type: "message", message: "70%", message_RU: "70%" }],
 		"h-3204-1000-35": [{ type: "text", sub_type: "message", message: "35%", message_RU: "35%" }],
 
 		"s-3204-1000-104-0": [
@@ -22,13 +34,15 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "spawn", func: "vector", args: [553, 90, 50, 0, 1000, 0, 2000] },
 			{ type: "spawn", func: "vector", args: [553, 270, 50, 0, 1000, 0, 2000] },
 			{ type: "spawn", func: "vector", args: [553, 90, 50, 180, 1000, 0, 2000] },
-			{ type: "spawn", func: "vector", args: [553, 270, 50, 180, 1000, 0, 2000] }
+			{ type: "spawn", func: "vector", args: [553, 270, 50, 180, 1000, 0, 2000] },
+			{ type: "spawn", func: "marker", args: [false, 0, 150, 0, 2000, true, null], delay: 1000 }
 		],
 		"s-3204-1000-110-0": [
 			{ type: "text", sub_type: "message", message: "Target + Wave", message_RU: "Таргет + волна" },
 			{ type: "spawn", func: "circle", args: [true, 553, 180, -500, 10, 350, 0, 1500] },
-			{ type: "spawn", func: "vector", args: [553, 180, -20, 120, 500, 0, 2000], delay: 1500 },
-			{ type: "spawn", func: "vector", args: [553, 180, -20, 240, 500, 0, 2000], delay: 1500 }
+			{ type: "spawn", func: "vector", args: [553, 180, -50, 120, 500, 0, 2000], delay: 1500 },
+			{ type: "spawn", func: "vector", args: [553, 180, -50, 240, 500, 0, 2000], delay: 1500 },
+			{ type: "spawn", func: "marker", args: [false, 0, 150, 0, 2000, true, null], delay: 2500 }
 		],
 		"s-3204-1000-112-0": [{ type: "text", sub_type: "message", message: "Wave Forward", message_RU: "Волна вперед" },
 			{ type: "spawn", func: "vector", args: [553, 0, 0, 70, 500, 0, 2000] },
@@ -64,7 +78,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "spawn", func: "marker", args: [false, 340, 150, 0, 2000, true, null], delay: 1500 }
 		],
 		"s-3204-1000-156-0": [{ type: "text", sub_type: "message", message: "Get Skulls", message_RU: "Черепа" }],
-		"s-3204-1000-157-0": [{ type: "text", sub_type: "message", message: "Gather!", message_RU: "Собраться!", delay: 5000 }],
+		"s-3204-1000-157-0": [{ type: "text", sub_type: "message", message: "Gather!", message_RU: "Собраться!", delay: 2000 }],
 		"s-3204-1000-158-0": [{ type: "text", sub_type: "message", message: "Gather!", message_RU: "Собраться!", delay: 5000 }],
 		"s-3204-1000-159-0": [{ type: "text", sub_type: "message", message: "AOE", message_RU: "АОЕ" }]
 	};
