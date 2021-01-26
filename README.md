@@ -44,6 +44,7 @@ id | Dungeon name | Название данжа
 3101 | Gossamer Vault | Гнездо Паркин
 3102 | Draakon Arena | Командный центр
 3103 | Forbidden Arena [Undying Warlord] | [Этерния] Арена безумия
+9770 | Ruinous Manor | Руины Абнукты
 9970 | Ruinous Manor (Hard) | Руины Кошмарной Абнукты
 3104 | Catalepticon | Сонный паралич Лукмии
 3204 | Catalepticon (Hard) | Сонный паралич Лукмии (сложно)
