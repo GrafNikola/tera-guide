@@ -5,15 +5,15 @@
 module.exports = (dispatch, handlers, guide, lang) => {
 
 	return {
-	// 1 BOSS
-
+		// 1 BOSS
 		"nd-3101-1000": [
 			{ type: "stop_timers" },
 			{ type: "despawn_all" }
 		],
 		"s-3101-1000-104-0": [{ type: "text", class_position: "tank", sub_type: "message", message: "Stun Frontal", message_RU: "Стан (танк)" }],
 		"s-3101-1000-112-0": [{ type: "text", sub_type: "message", message: "Left + Right", message_RU: "Лево + Право" }],
-		"s-3101-1000-139-0": [{ type: "text", sub_type: "message", message: "Back + Front (Fast)", message_RU: "Вперед + Назад (фаст)" },
+		"s-3101-1000-139-0": [
+			{ type: "text", sub_type: "message", message: "Back + Front (Fast)", message_RU: "Вперед + Назад (фаст)" },
 			{ type: "spawn", func: "vector", args: [553, 2, 0, 70, 800, 0, 2500] },
 			{ type: "spawn", func: "vector", args: [553, 2, 0, 110, 800, 0, 2500] },
 			{ type: "spawn", func: "vector", args: [553, 2, 0, 250, 800, 0, 2500] },
@@ -32,11 +32,11 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		],
 		"s-3101-1000-132-0": [{ type: "text", sub_type: "message", message: "Left + Right (Fast)", message_RU: "Лево + Право (фаст)" }],
 		"s-3101-1000-133-0": [
-			{ type: "text", sub_type: "message", delay: 0, message: "Jump (Fast)", message_RU: "Прыжок (фаст)" },
+			{ type: "text", sub_type: "message", message: "Jump (Fast)", message_RU: "Прыжок (фаст)" },
 			{ type: "text", sub_type: "message", delay: 1400, message: "Dodge!", message_RU: "Эвейд!" }
 		],
 		"s-3101-1000-138-0": [
-			{ type: "text", sub_type: "message", delay: 0, message: "Jump P (Fast)", message_RU: "Прыжок (фаст)" },
+			{ type: "text", sub_type: "message", message: "Jump P (Fast)", message_RU: "Прыжок (фаст)" },
 			{ type: "text", sub_type: "message", delay: 1400, message: "Dodge!", message_RU: "Эвейд!" }
 		],
 		"s-3101-1000-148-0": [
@@ -75,7 +75,8 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "text", sub_type: "message", message: "Out Safe", message_RU: "От него" },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 10, 300, 0, 3000] }
 		],
-		"s-3101-2000-232-0": [{ type: "text", sub_type: "message", message: "In Safe", message_RU: "К нему" },
+		"s-3101-2000-232-0": [
+			{ type: "text", sub_type: "message", message: "In Safe", message_RU: "К нему" },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 10, 300, 0, 3000] },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 3, 1000, 0, 3000] }
 		],
