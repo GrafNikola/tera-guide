@@ -3,7 +3,6 @@
 // made by michengs / Emilia-s2
 
 module.exports = (dispatch, handlers, guide, lang) => {
-
 	return {
 		// 1 BOSS
 		"nd-3101-1000": [
@@ -62,8 +61,6 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "stop_timers" },
 			{ type: "despawn_all" }
 		],
-		"h-3101-2000-81": [{ type: "text", sub_type: "message", message: "80%", message_RU: "Дебафф" }],
-		"h-3101-2000-76": [{ type: "text", sub_type: "message", message: "75%", message_RU: "Камни" }],
 		"s-3101-2000-108-0": [{ type: "text", sub_type: "message", message: "Back Attack!", message_RU: "Откид назад!" }],
 		"s-3101-2000-150-0": [{ type: "text", sub_type: "message", message: "Phantom", message_RU: "Фантом" }],
 		"s-3101-2000-228-0": [{ type: "text", sub_type: "message", message: "Team Up", message_RU: "Камни (вместе)!" }],

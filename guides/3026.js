@@ -341,14 +341,8 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"206-2": [{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 15, 350, 0, 3000] }],
 		"137-0": [{ type: "text", sub_type: "message", message: "Knockdown", message_RU: "Опрокидывание" }],
 		"138-0": [{ type: "text", sub_type: "message", message: "AOE", message_RU: "AOE" }],
-		"139-0": [
-			{ type: "text", sub_type: "message", message: "60 degrees (Fire to all)", message_RU: "60° (Огонь всем)" },
-			{ type: "text", sub_type: "message", delay: 4000, message: "Lower the temp", message_RU: "Снизить температуру" }
-		],
-		"140-0": [
-			{ type: "text", sub_type: "message", message: "40 degrees (Ice to all)", message_RU: "40° (Лед всем)" },
-			{ type: "text", sub_type: "message", delay: 4000, message: "Raise the temp", message_RU: "Повысить температуру" }
-		],
+		"139-0": [{ type: "text", sub_type: "message", message: "Fire to all", message_RU: "Огонь всем" }],
+		"140-0": [{ type: "text", sub_type: "message", message: "Ice to all", message_RU: "Лед всем" }],
 
 		"die": [{ type: "func", func: debuff_removed }],
 		"nd-3026-1000": [
