@@ -41,6 +41,8 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-770-3000-2103-0": [{ type: "text", sub_type: "message", message: "Tail Slam", message_RU: "Хвост" }],
 		"s-770-3000-1301-0": [{ type: "text", sub_type: "message", message: "FATE Avoid Circles", message_RU: "Круги" }],
 		"s-770-3000-2301-0": [{ type: "text", sub_type: "message", message: "FATE Avoid Circles", message_RU: "Круги" }],
+		"s-770-3000-1106-0": [{ type: "text", sub_type: "message", message: "Front Swipe", message_RU: "Передний удар" }],
+		"s-770-3000-2106-0": [{ type: "text", sub_type: "message", message: "Front Swipe", message_RU: "Передний удар" }],
 		"s-770-3000-1110-0": [{ type: "text", sub_type: "message", message: "Tail AOE (jump in front)", message_RU: "Хвост АОЕ (прыгать вперед)" }],
 		"s-770-3000-2110-0": [{ type: "text", sub_type: "message", message: "Tail AOE (jump in front)", message_RU: "Хвост АОЕ (прыгать вперед)" }],
 		"s-770-3000-1304-0": [{ type: "text", sub_type: "message", message: "Get Ready! (for in out mechanic)", message_RU: "Готовность!" }],
