@@ -48,6 +48,8 @@ id | Dungeon name | Название данжа
 9970 | Ruinous Manor (Hard) | Руины Кошмарной Абнукты
 3104 | Catalepticon | Сонный паралич Лукмии
 3204 | Catalepticon (Hard) | Сонный паралич Лукмии (сложно)
+3106 | Killing Grounds | Место казни
+3206 | Crimson Killing Grounds | Окровавленное место казни
 
 ## Notices settings / Настройка уведомлений
 
