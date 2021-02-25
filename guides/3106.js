@@ -49,7 +49,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "spawn", func: "circle", args: [false, 445, 0, 0, 18, 157, 1500, 5000] },
 			{ type: "spawn", func: "circle", args: [false, 445, 0, 0, 12, 307, 1500, 5000] }
 		],
-		"s-3106-1000-506-0": [{ type: "text", sub_type: "message", message: "Bait (Stun)", message_RU: "Байт (стан)" }],
+		// "s-3106-1000-506-0": [{ type: "text", sub_type: "message", message: "Bait (Stun)", message_RU: "Байт (стан)" }],
 		"s-3106-1000-507-0": [{ type: "text", sub_type: "message", message: "Leash + Jump (Knockdown)", message_RU: "Притяжка + прыжок (опрокид)" }],
 		// "s-3106-1000-516-0": "s-3106-1000-508-0",
 		// "s-3106-1000-517-0": "s-3106-1000-509-0",
