@@ -20,14 +20,14 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-3206-1000-202-0": [{ type: "text", sub_type: "message", message: "Front AoE", message_RU: "Переднее АоЕ" }],
 		"s-3206-1000-203-0": [{ type: "text", sub_type: "message", message: "Front AoE + Wave", message_RU: "Переднее АоЕ + волна" }],
 		"s-3206-1000-205-0": [{ type: "text", sub_type: "message", message: "Spin", message_RU: "Крутилка" }],
-		"s-3206-1000-206-0": [{ type: "text", sub_type: "message", message: "Spin", message_RU: "Крутилка" }],
-		"s-3206-1000-207-0": [{ type: "text", sub_type: "message", message: "Spin", message_RU: "Крутилка" }],
+		"s-3206-1000-206-0": [{ type: "text", sub_type: "message", message: "Spin (Bleed)", message_RU: "Крутилка (кровоток)" }],
+		"s-3206-1000-207-0": [{ type: "text", sub_type: "message", message: "Spin (Bleed)", message_RU: "Крутилка (кровоток)" }],
 		"s-3206-1000-209-0": [
-			{ type: "text", sub_type: "message", message: "Stomp (Knockdown)", message_RU: "Опрокид" },
+			{ type: "text", sub_type: "message", message: "Give Stun (Knockdown)", message_RU: "Дать стан (опрокид)" },
 			{ type: "spawn", func: "circle", args: [true, 553, 0, 0, 10, 400, 0, 2500] }
 		],
 		"s-3206-1000-210-0": [
-			{ type: "text", sub_type: "message", message: "Stomp (Knockdown)", message_RU: "Опрокид" },
+			{ type: "text", sub_type: "message", message: "Give Stun (Knockdown)", message_RU: "Дать стан (опрокид)" },
 			{ type: "spawn", func: "circle", args: [true, 553, 0, 0, 10, 400, 0, 2500] }
 		],
 		"s-3206-1000-211-0": [{ type: "text", sub_type: "message", message: "Push", message_RU: "Откид" }],
@@ -46,6 +46,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-3206-1000-516-0": "s-3206-1000-508-0",
 		"s-3206-1000-517-0": "s-3206-1000-509-0",
 
+		"s-3206-1000-502-0": [{ type: "text", sub_type: "message", message: "Unleash", message_RU: "Бешенство" }],
 		"s-3206-1000-518-0": [{ type: "text", sub_type: "message", message: "Unleash", message_RU: "Бешенство" }],
 		"s-3206-1000-519-0": [{ type: "text", sub_type: "message", message: "Unleash", message_RU: "Бешенство" }],
 		"s-3206-1000-307-0": [{ type: "text", sub_type: "message", message: "Spin", message_RU: "Крутилка" }],
