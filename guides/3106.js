@@ -21,7 +21,10 @@ module.exports = (dispatch, handlers, guide, lang) => {
 
 		"s-3106-1000-106-0": [{ type: "text", sub_type: "message", message: "Knockback Spin", message_RU: "Оборот (откид)" }],
 		"s-3106-1000-108-0": [{ type: "text", sub_type: "message", message: "Knockback Spin", message_RU: "Оборот (откид)" }],
-		"s-3106-1000-109-0": [{ type: "text", sub_type: "message", message: "Jump (Knockdown)", message_RU: "Прыжок (опрокид)" }],
+		"s-3106-1000-109-0": [
+			{ type: "text", sub_type: "message", message: "Jump (Knockdown)", message_RU: "Прыжок (опрокид)" },
+			{ type: "spawn", func: "circle", args: [true, 553, 0, 150, 10, 300, 0, 2500] }
+		],
 		"s-3106-1000-201-0": [{ type: "text", sub_type: "message", message: "Front", message_RU: "Удар вперед" }],
 		"s-3106-1000-202-0": [{ type: "text", sub_type: "message", message: "Front AoE", message_RU: "Переднее АоЕ" }],
 		"s-3106-1000-203-0": [{ type: "text", sub_type: "message", message: "Front AoE + Wave", message_RU: "Переднее АоЕ + волна" }],
