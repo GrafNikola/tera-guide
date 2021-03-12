@@ -3,7 +3,15 @@
 // made by HSDN / Kuroine
 
 module.exports = (dispatch, handlers, guide, lang) => {
-
+	
+	dispatch.hook("S_USER_EFFECT", 1, event => {
+		if ( event.circle == 3 && event.operation == 1 ) {
+			handlers.marker({ id: event.target, color: "yellow", sub_delay: 1000000 });
+		} else if ( event.circle == 3 && event.operation == 2 ) {
+			handlers.marker_remove_all({delay:1000});
+		}
+	});
+	
 	return {
 		"nd-3206-1000": [
 			{ type: "stop_timers" },
