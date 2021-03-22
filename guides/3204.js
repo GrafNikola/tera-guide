@@ -92,8 +92,13 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "spawn", func: "marker", args: [false, 340, 150, 0, 2000, true, null], delay: 1500 }
 		],
 		"s-3204-1000-156-0": [{ type: "text", sub_type: "message", message: "Get Skulls", message_RU: "Черепа" }],
-		"s-3204-1000-157-0": [{ type: "text", sub_type: "message", message: "Gather!", message_RU: "Собраться!", delay: 2000 }],
-		"s-3204-1000-158-0": [{ type: "text", sub_type: "message", message: "Gather!", message_RU: "Собраться!", delay: 5000 }],
+		"s-3204-1000-157-0": [
+			{ type: "text", sub_type: "message", message: "3 seconds", message_RU: "3 секунды" },
+			{ type: "text", sub_type: "message", message: "Gather!", message_RU: "Собраться!", delay: 2000 }],
+		"s-3204-1000-158-0": [
+			{ type: "text", sub_type: "message", message: "6 seconds", message_RU: "6 секунд" },
+			{ type: "text", sub_type: "message", message: "Gather!", message_RU: "Собраться!", delay: 5000 }
+		],
 		"s-3204-1000-159-0": [
 			{ type: "text", sub_type: "message", message: "AOE", message_RU: "АОЕ" },
 			{ type: "marker_remove_all", delay: 3000 }

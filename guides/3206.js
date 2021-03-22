@@ -1,6 +1,6 @@
 // Crimson Killing Grounds
 //
-// made by HSDN / Kuroine
+// made by HSDN / Kuroine / Minghan
 
 module.exports = (dispatch, handlers, guide, lang) => {
 
@@ -64,19 +64,37 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-3206-1000-211-0": [{ type: "text", sub_type: "message", message: "Push", message_RU: "Откид" }],
 		"s-3206-1000-212-0": [{ type: "text", sub_type: "message", message: "Somersault", message_RU: "Кувырок" }],
 		"s-3206-1000-215-0": [{ type: "text", sub_type: "message", message: "Somersault", message_RU: "Кувырок" }],
+		"s-3206-1000-507-0": [{ type: "text", sub_type: "message", message: "Leash | Jump (Knockdown)", message_RU: "Притяжка | Прыжок (опрокид)" }],
 		"s-3206-1000-508-0": [
 			{ type: "text", sub_type: "message", message: "Outward Waves (Out > In)", message_RU: "Волны наружу (от него > к нему)" },
 			{ type: "spawn", func: "circle", args: [false, 445, 0, 0, 18, 180, 1500, 5000] },
-			{ type: "spawn", func: "circle", args: [false, 445, 0, 0, 12, 350, 1500, 5000] }
+			{ type: "spawn", func: "circle", args: [false, 445, 0, 0, 12, 360, 1500, 5000] },
+			{ type: "spawn", func: "circle", args: [false, 445, 0, 0, 10, 550, 1500, 5000] },
+			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 8, 860, 1500, 5000] }
 		],
 		"s-3206-1000-509-0": [
 			{ type: "text", sub_type: "message", message: "Inward Waves (In > Out)", message_RU: "Волны внутрь (к нему > от него)" },
 			{ type: "spawn", func: "circle", args: [false, 445, 0, 0, 18, 180, 1500, 5000] },
-			{ type: "spawn", func: "circle", args: [false, 445, 0, 0, 12, 350, 1500, 5000] }
+			{ type: "spawn", func: "circle", args: [false, 445, 0, 0, 12, 360, 1500, 5000] },
+			{ type: "spawn", func: "circle", args: [false, 445, 0, 0, 10, 550, 1500, 5000] },
+			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 8, 860, 1500, 5000] }
 		],
-		"s-3206-1000-507-0": [{ type: "text", sub_type: "message", message: "Leash | Jump (Knockdown)", message_RU: "Притяжка | Прыжок (опрокид)" }],
-		"s-3206-1000-516-0": "s-3206-1000-508-0",
-		"s-3206-1000-517-0": "s-3206-1000-509-0",
+		"s-3206-1000-516-0": [
+			{ type: "text", sub_type: "message", message: "Outward Waves Fast (Out > In)", message_RU: "Волны наружу быстрые (от него > к нему)" },
+			{ type: "spawn", func: "circle", args: [false, 445, 0, 0, 18, 180, 1500, 5000] },
+			{ type: "spawn", func: "circle", args: [false, 445, 0, 0, 12, 360, 1500, 5000] },
+			{ type: "spawn", func: "circle", args: [false, 445, 0, 0, 10, 550, 1500, 5000] },
+			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 8, 860, 1500, 5000] }
+		],
+		"s-3206-1000-517-0": [
+			{ type: "text", sub_type: "message", message: "Inward Waves Fast (In > Out)", message_RU: "Волны внутрь быстрые (к нему > от него)" },
+			{ type: "spawn", func: "circle", args: [false, 445, 0, 0, 18, 180, 1500, 5000] },
+			{ type: "spawn", func: "circle", args: [false, 445, 0, 0, 12, 360, 1500, 5000] },
+			{ type: "spawn", func: "circle", args: [false, 445, 0, 0, 10, 550, 1500, 5000] },
+			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 8, 860, 1500, 5000] }
+		],
+		//"s-3206-1000-513-0": [{ type: "text", sub_type: "message", message: "Plague/Regress", message_RU: "Чума/регресс" }],
+		//"s-3206-1000-514-0": [{ type: "text", sub_type: "message", message: "Plague/Regress", message_RU: "Чума/регресс" }],
 
 		"s-3206-1000-502-0": [{ type: "text", sub_type: "message", message: "Unleash", message_RU: "Бешенство" }],
 		"s-3206-1000-518-0": [{ type: "text", sub_type: "message", message: "Unleash", message_RU: "Бешенство" }],
