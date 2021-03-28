@@ -50,6 +50,7 @@ id | Dungeon name | Название данжа
 3204 | Catalepticon (Hard) | Сонный паралич Лукмии (сложно)
 3106 | Killing Grounds | Место казни
 3206 | Crimson Killing Grounds | Окровавленное место казни
+9070 | Manglemire | Замок Парадоксов
 
 ## Notices settings / Настройка уведомлений
 
