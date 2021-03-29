@@ -3,6 +3,7 @@
 // made by michengs
 
 module.exports = (dispatch, handlers, guide, lang) => {
+	guide.type = SP;
 
 	let bossBuffs = [];
 	let count = -1;
