@@ -74,7 +74,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			if (count === 100) {
 				count = -1;
 			}
-ц
+
 			count++;
 			shining = false;
 
@@ -91,14 +91,14 @@ module.exports = (dispatch, handlers, guide, lang) => {
 
 		"s-470-1000-1105-0": [{ type: "text", sub_type: "message", message: "Jump", message_RU: "Прыжок" }],
 		"s-470-1000-1106-0": [{ type: "text", sub_type: "message", message: "Smash", message_RU: "Удар" }],
-		"s-470-1000-1120-0": [{ type: "text", sub_type: "message", message: "Pull", message_RU: "Откид" }],
+		"s-470-1000-1120-0": [{ type: "text", sub_type: "message", message: "Pull", message_RU: "Притяжка" }],
 		"s-470-1000-1114-0": [{ type: "text", sub_type: "message", message: "Spray", message_RU: "Спрей" }],
 		"s-470-1000-1201-0": [{ type: "text", sub_type: "message", message: "Stun", message_RU: "Стан" }],
 		"s-470-1000-1307-0": [{ type: "text", sub_type: "message", message: "Bomb", message_RU: "Бомба" }],
 		"s-470-1000-2105-0": [{ type: "text", sub_type: "message", message: "Jump", message_RU: "Прыжок" }],
 		"s-470-1000-2106-0": [{ type: "text", sub_type: "message", message: "Smash", message_RU: "Удар" }],
 		"s-470-1000-2107-0": [{ type: "text", sub_type: "message", message: "Stun", message_RU: "Стан" }],
-		"s-470-1000-2114-0": [{ type: "text", sub_type: "message", message: "Bomb", message_RU: "Бомба" }],
+		"s-470-1000-2114-0": [{ type: "text", sub_type: "message", message: "Line", message_RU: "Полоса" }],
 		"s-470-1000-3106-0": [{ type: "text", sub_type: "message", message: "100" }],
 
 		// "s-470-1000-3213-0": [{ type: "func", func: boss_message_event, args: [213] }],
