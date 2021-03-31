@@ -5,23 +5,20 @@
 module.exports = (dispatch, handlers, guide, lang) => {
 	guide.type = SP;
 
-	const opcodeVer = 104; // majorPatchVersion
-
 	let bossBuffs = [];
 	let count = -1;
 	let shining = true;
-	let print = true;
 
 	const bossActions = {
-		213: { truth: "Truth - Break shield", lie: "Lie - Puddles (run away)" }, // "My shield will save me!" (shield)
-		212: { truth: "Truth - Out", lie: "Lie - In" }, // "I will kill you all!" (aoe around boss)
-		218: { truth: "Truth - Out", lie: "Lie - In" } // "One of you must die!" (aoe around player)
+		213: { truth: "Truth | Break shield", lie: "Lie | Puddles (run away)" }, // "My shield will save me!" (shield)
+		212: { truth: "Truth | Out", lie: "Lie | In" }, // "I will kill you all!" (aoe around boss)
+		218: { truth: "Truth | Out", lie: "Lie | In" } // "One of you must die!" (aoe around player)
 	};
 
 	const bossActions_RU = {
-		213: { truth: "Правда - Сломать щит", lie: "Ложь - Лужи (убегать)" }, // "My shield will save me!" (shield)
-		212: { truth: "Правда - Наружу", lie: "Ложь - Внутрь" }, // "I will kill you all!" (aoe around boss)
-		218: { truth: "Правда - Наружу", lie: "Ложь - Внутрь" } // "One of you must die!" (aoe around player)
+		213: { truth: "Правда | Сломать щит", lie: "Ложь | Лужи (убегать)" }, // "My shield will save me!" (shield)
+		212: { truth: "Правда | Наружу", lie: "Ложь | Внутрь" }, // "I will kill you all!" (aoe around boss)
+		218: { truth: "Правда | Наружу", lie: "Ложь | Внутрь" } // "One of you must die!" (aoe around player)
 	};
 
 	function start_boss_event() {
@@ -31,7 +28,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 	}
 
 	function boss_message_event(skillid) {
-		if ([213, 212, 218].includes(skillid) && print) {
+		if ([213, 212, 218].includes(skillid)) {
 			handlers.text({
 				sub_type: "message",
 				message: is_telling_truth() ? bossActions[skillid].truth : bossActions[skillid].lie,
@@ -85,19 +82,11 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		}
 	};
 
-	if (dispatch._mod.majorPatchVersion == opcodeVer) {
-		dispatch._mod.dispatch.addOpcode("S_DUNGEON_EVENT_GAGE", 60350);
-	} else {
-		dispatch._mod.error("Please manually update tera-guide module!");
-	}
+	dispatch._mod.dispatch.addOpcode("S_DUNGEON_EVENT_GAGE", 60350);
 
-	try {
-		dispatch.hook("S_ABNORMALITY_BEGIN", 4, abnormality_change.bind(null, true));
-		dispatch.hook("S_ABNORMALITY_END", 1, abnormality_change.bind(null, false));
-		dispatch.hook("S_DUNGEON_EVENT_GAGE", 1, gage_change.bind(null, true));
-	} catch (_) {
-		print = false;
-	}
+	dispatch.hook("S_ABNORMALITY_BEGIN", 4, abnormality_change.bind(null, true));
+	dispatch.hook("S_ABNORMALITY_END", 1, abnormality_change.bind(null, false));
+	dispatch.hook("S_DUNGEON_EVENT_GAGE", 1, gage_change.bind(null, true));
 
 	return {
 		"ns-470-1000": [{ type: "func", func: start_boss_event }],
