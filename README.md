@@ -37,7 +37,9 @@ id | Dungeon name | Название данжа
 7011 | Shadow of the Gutrends (Guardian) | Живодеры и черная тень (хранитель)
 7015 | Escape from Balder's Refuge (Guardian) | Операция "Спасти Убежище Балдера" (хранитель)
 9044 | Bahaar's Sanctum | Святилище Бахаара
+3037 | Bahaar's Sanctum (Guide) | [Тренировка] Святилище Бахаара
 3023 | Akalath Quarantine | Секретное подземелье крепости Берарк
+3032 | Akalath Quarantine (Guide) | [Тренировка] Секретное подземелье крепости Берарк
 3020 | Sea of Honor | Золотая чешуя
 3026 | Corrupted Skynest | Логово Келсаика
 3126 | Corrupted Skynest (Hard) | Логово Бессмертного Келсаика
@@ -48,6 +50,7 @@ id | Dungeon name | Название данжа
 9970 | Ruinous Manor (Hard) | Руины Кошмарной Абнукты
 3104 | Catalepticon | Сонный паралич Лукмии
 3204 | Catalepticon (Hard) | Сонный паралич Лукмии (сложно)
+3040 | Lumikan's Trial | Сонный паралич Лукмии (Подземелье испытаний)
 3106 | Killing Grounds | Место казни
 3206 | Crimson Killing Grounds | Окровавленное место казни
 9070 | Manglemire | Замок Парадоксов
