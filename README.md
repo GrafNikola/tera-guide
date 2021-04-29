@@ -53,7 +53,8 @@ id | Dungeon name | Название данжа
 3040 | Lumikan's Trial | Сонный паралич Лукмии (Подземелье испытаний)
 3106 | Killing Grounds | Место казни
 3206 | Crimson Killing Grounds | Окровавленное место казни
-9070 | Manglemire | Замок Парадоксов
+3042 | Gardan's Trial | Место казни (Подземелье испытаний)
+3034 | Rampaging RK-9 Kennel | Ангар RK-9 (сложно)
 
 ## Notices settings / Настройка уведомлений
 
