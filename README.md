@@ -48,6 +48,7 @@ id | Dungeon name | Название данжа
 3103 | Forbidden Arena [Undying Warlord] | [Этерния] Арена безумия
 9770 | Ruinous Manor | Руины Абнукты
 9970 | Ruinous Manor (Hard) | Руины Кошмарной Абнукты
+3030 | Commander's Residence | Старая резиденция
 3104 | Catalepticon | Сонный паралич Лукмии
 3204 | Catalepticon (Hard) | Сонный паралич Лукмии (сложно)
 3040 | Lumikan's Trial | Сонный паралич Лукмии (Подземелье испытаний)
