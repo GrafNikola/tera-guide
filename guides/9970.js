@@ -44,7 +44,12 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-970-3000-1318-0": [{ type: "text", sub_type: "message", message: "Get Red Skull!", message_RU: "Взять красную голову!" }],
 		"s-970-3000-1317-0": [{ type: "text", sub_type: "message", message: "Get Red Skull!", message_RU: "Взять красную голову!" }],
 		"s-970-3000-1319-0": [{ type: "text", sub_type: "message", message: "Get Red Skull!", message_RU: "Взять красную голову!" }],
-		"s-970-3000-1322-0": [{ type: "text", sub_type: "message", message: "Dodge!", message_RU: "Эвейд!" }],
+		"s-970-3000-1322-0": [
+			{ type: "text", sub_type: "message", message: "Dodge!", message_RU: "Эвейд!" },
+			{ type: "spawn", func: "circle", args: [false, 445, 0, 0, 18, 225, 1500, 5000] },
+			{ type: "spawn", func: "circle", args: [false, 445, 0, 0, 12, 425, 1500, 5000] },
+			{ type: "spawn", func: "circle", args: [false, 445, 0, 0, 10, 625, 1500, 5000] }
+		],
 		"s-970-3000-1311-0": [{ type: "text", sub_type: "message", message: "Gather for Cleanse!", message_RU: "Клинс!" }],
 		"s-970-3000-1120-0": [{ type: "text", sub_type: "message", message: "Shooting Skulls", message_RU: "Лазеры" }],
 		"s-970-3000-2120-0": [{ type: "text", sub_type: "message", message: "Shooting Skulls", message_RU: "Лазеры" }]
