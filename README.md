@@ -57,6 +57,7 @@ id | Dungeon name | Название данжа
 3042 | Gardan's Trial | Место казни (Подземелье испытаний)
 3034 | Rampaging RK-9 Kennel | Ангар RK-9 (сложно)
 3041 | Damned Citadel | Проклятая крепость Тенебриса
+3043 | Harnovog's Trial | Крепость Тенебриса (Подземелье испытаний)
 
 ## Notices settings / Настройка уведомлений
 
