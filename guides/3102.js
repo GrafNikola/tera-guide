@@ -126,13 +126,13 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-3102-1000-1123-0": [
 			{ type: "spawn", func: "vector", args: [912, 0, 0, 295, 550, 0, 2000] },
 			{ type: "spawn", func: "vector", args: [912, 0, 0, 85, 550, 0, 2000] },
-			{ type: "spawn", func: "semicircle", args: [85, 295, 553, 0, 0, 6, 550, 0, 2000] }
+			{ type: "spawn", func: "semicircle", args: [85, 295, 912, 0, 0, 6, 550, 0, 2000] }
 		],
 		"s-3102-1000-2122-0": [{ type: "spawn", func: "marker", args: [false, 0, 200, 500, 2000, true, null] }],
 		"s-3102-1000-2123-0": [
 			{ type: "spawn", func: "vector", args: [912, 0, 0, 295, 550, 0, 2000] },
 			{ type: "spawn", func: "vector", args: [912, 0, 0, 85, 550, 0, 2000] },
-			{ type: "spawn", func: "semicircle", args: [85, 295, 553, 0, 0, 6, 550, 0, 2000] }
+			{ type: "spawn", func: "semicircle", args: [85, 295, 912, 0, 0, 6, 550, 0, 2000] }
 		],
 		// Left Foot
 		"s-3102-1000-1124-0": [
@@ -155,13 +155,13 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-3102-1000-1126-0": [
 			{ type: "spawn", func: "vector", args: [912, 0, 0, 295, 550, 0, 2000] },
 			{ type: "spawn", func: "vector", args: [912, 0, 0, 85, 550, 0, 2000] },
-			{ type: "spawn", func: "semicircle", args: [85, 295, 553, 0, 0, 6, 550, 0, 2000] }
+			{ type: "spawn", func: "semicircle", args: [85, 295, 912, 0, 0, 6, 550, 0, 2000] }
 		],
 		"s-3102-1000-2125-0": [{ type: "spawn", func: "marker", args: [false, 0, 200, 500, 3000, true, null] }],
 		"s-3102-1000-2126-0": [
 			{ type: "spawn", func: "vector", args: [912, 0, 0, 295, 550, 0, 2000] },
 			{ type: "spawn", func: "vector", args: [912, 0, 0, 85, 550, 0, 2000] },
-			{ type: "spawn", func: "semicircle", args: [85, 295, 553, 0, 0, 6, 550, 0, 2000] }
+			{ type: "spawn", func: "semicircle", args: [85, 295, 912, 0, 0, 6, 550, 0, 2000] }
 		]
 	};
 };

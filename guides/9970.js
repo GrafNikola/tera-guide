@@ -32,26 +32,26 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-970-3000-1106-0": [{ type: "text", sub_type: "message", message: "Front Swipe", message_RU: "Передний удар" }],
 		"s-970-3000-2106-0": [{ type: "text", sub_type: "message", message: "Front Swipe", message_RU: "Передний удар" }],
 		"s-970-3000-1110-0": [
-			{ type: "text", sub_type: "message", message: "Tail AOE (jump in front)", message_RU: "Хвост АОЕ (прыгать вперед)" }],
+			{ type: "text", sub_type: "message", message: "Tail AOE (jump in front)", message_RU: "Хвост АОЕ (прыгать вперед)" },
 			{ type: "spawn", func: "semicircle", args: [26, 340, 553, 0, 0, 7, 630, 0, 3000] },
 			{ type: "spawn", func: "vector", args: [553, 4, 40, 338, 600, 0, 3000] },
 			{ type: "spawn", func: "vector", args: [553, -4, 40, -338, 600, 0, 3000] }
-		],	
+		],
 		"s-970-3000-2110-0": [
 			{ type: "text", sub_type: "message", message: "Tail AOE (jump in front)", message_RU: "Хвост АОЕ (прыгать вперед)" },
 			{ type: "spawn", func: "semicircle", args: [26, 340, 553, 0, 0, 7, 630, 0, 3000] },
 			{ type: "spawn", func: "vector", args: [553, 4, 40, 338, 600, 0, 3000] },
 			{ type: "spawn", func: "vector", args: [553, -4, 40, -338, 600, 0, 3000] }
-		],	
+		],
 		"s-970-3000-1304-0": [{ type: "text", sub_type: "message", message: "Get Ready!", message_RU: "Готовность!" }],
 		"s-970-3000-1303-0": [{ type: "text", sub_type: "message", message: "Get Ready!", message_RU: "Готовность!" }],
 		"s-970-3000-1113-0": [
 			{ type: "text", sub_type: "alert", message: "Out", message_RU: "От него" },
 			{ type: "text", sub_type: "message", message: "In", message_RU: "К нему", delay: 1300 },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 14, 300, 0, 5000] }
-		],		
+		],
 		"s-970-3000-2113-0": [
-			{ type: "text", sub_type: "alert", message: "Out", message_RU: "От него" }, 
+			{ type: "text", sub_type: "alert", message: "Out", message_RU: "От него" },
 			{ type: "text", sub_type: "message", message: "In", message_RU: "К нему", delay: 1300 },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 14, 300, 0, 5000] }
 		],
@@ -59,9 +59,9 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "text", sub_type: "alert", message: "In", message_RU: "К нему" },
 			{ type: "text", sub_type: "message", message: " Out", message_RU: "От него", delay: 1300 },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 14, 300, 0, 5000] }
-		],		
+		],
 		"s-970-3000-2116-0": [
-			{ type: "text", sub_type: "alert", message: "In", message_RU: "К нему" }, 
+			{ type: "text", sub_type: "alert", message: "In", message_RU: "К нему" },
 			{ type: "text", sub_type: "message", message: "Out", message_RU: "От него", delay: 1300 },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 14, 300, 0, 5000] }
 		],

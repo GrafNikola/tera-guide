@@ -47,25 +47,20 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		}
 	}
 
-	function roundhouse() {
-		if (gettingserious) {
-			handlers.text({sub_type: "message", message: "Roundhouse Kick > Stun next", message_RU: "Удар с разворота > стан"});
-			return;
-		}
-		handlers.text({sub_type: "message", message: "Roundhouse Kick", message_RU: "Удар с разворота"});
-	}
-
 	return {
 		"nd-3103-1000": [
 			{ type: "stop_timers" },
 			{ type: "despawn_all" }
 		],
 
-		"h-3103-1000-99": [{ type: "func", func: () => gettingserious = false }], // reset after potential wipe
+		"h-3103-1000-99": [{ type: "func", func: () => gettingserious = false }],
 		"h-3103-1000-70": [{ type: "func", func: () => gettingserious = true }],
 
 		//"s-3103-1000-101-0": [{ type: "text", class_position: "tank", sub_type: "message", message: "Punch", message_RU: "Серия ударов" }],
-		"s-3103-1000-113-0": [{ type: "func", func: roundhouse, class_position: "tank" }],
+		"s-3103-1000-113-0": [
+			{ type: "text", sub_type: "message", message: "Roundhouse Kick | Stun", message_RU: "Удар с разворота | Стан", class_position: "tank", check_func: () => gettingserious },
+			{ type: "text", sub_type: "message", message: "Roundhouse Kick", message_RU: "Удар с разворота", class_position: "tank", check_func: () => !gettingserious }
+		],
 		"s-3103-1000-111-0": [{ type: "text", class_position: "tank", sub_type: "message", message: "Knockdown", message_RU: "Опрокид" }],
 		"s-3103-1000-120-0": [{ type: "text", class_position: "tank", sub_type: "message", message: "Knockdown", message_RU: "Опрокид" }],
 		//"s-3103-1000-102-0": [{ type: "text", class_position: "tank", sub_type: "message", message: "Combo", message_RU: "Комба" }], // 102 153/154 115/116
