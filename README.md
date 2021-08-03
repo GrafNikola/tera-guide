@@ -7,7 +7,6 @@ The dungeon guide module with Text-to-speech notifications, display hints on scr
 * [**Spanish (Español)** by Loliconera](https://github.com/Loliconera/tera-guide-spanish)
 * [**Spanish (Español)** by Emilia](https://github.com/emilia-s2/Guia-DG-Espanol)
 * [**Portuguese (Português)** by Emilia](https://github.com/emilia-s2/Guia-DG-Portugues)
-* [**Taiwanese (臺灣話)** by michengs](https://github.com/michengs/Dungeon-guide)
 
 ## Dependencies / Зависимости
 * **tera-guide-core** - https://github.com/hsdn/tera-guide-core
@@ -36,28 +35,18 @@ id | Dungeon name | Название данжа
 --- | --- | ---
 7011 | Shadow of the Gutrends (Guardian) | Живодеры и черная тень (хранитель)
 7015 | Escape from Balder's Refuge (Guardian) | Операция "Спасти Убежище Балдера" (хранитель)
-9044 | Bahaar's Sanctum | Святилище Бахаара
 3037 | Bahaar's Sanctum (Guide) | [Тренировка] Святилище Бахаара
-3023 | Akalath Quarantine | Секретное подземелье крепости Берарк
 3032 | Akalath Quarantine (Guide) | [Тренировка] Секретное подземелье крепости Берарк
-3020 | Sea of Honor | Золотая чешуя
-3026 | Corrupted Skynest | Логово Келсаика
-3126 | Corrupted Skynest (Hard) | Логово Бессмертного Келсаика
-3101 | Gossamer Vault | Гнездо Паркин
-3102 | Draakon Arena | Командный центр
-3103 | Forbidden Arena [Undying Warlord] | [Этерния] Арена безумия
-9770 | Ruinous Manor | Руины Абнукты
-9970 | Ruinous Manor (Hard) | Руины Кошмарной Абнукты
-3030 | Commander's Residence | Старая резиденция
-3104 | Catalepticon | Сонный паралич Лукмии
-3204 | Catalepticon (Hard) | Сонный паралич Лукмии (сложно)
 3040 | Lumikan's Trial | Сонный паралич Лукмии (Подземелье испытаний)
-3106 | Killing Grounds | Место казни
-3206 | Crimson Killing Grounds | Окровавленное место казни
 3042 | Gardan's Trial | Место казни (Подземелье испытаний)
-3034 | Rampaging RK-9 Kennel | Ангар RK-9 (сложно)
-3041 | Damned Citadel | Проклятая крепость Тенебриса
 3043 | Harnovog's Trial | Крепость Тенебриса (Подземелье испытаний)
+3030 | Commander's Residence | Старая резиденция
+9044 | Bahaar's Sanctum | Святилище Бахаара
+9982 | Мастерская Леандра (сложно) | Grotto of Lost Souls (Hard)
+3044 | Stormed Citadel | Захваченная крепость Тенебриса
+3041 | Damned Citadel | Проклятая крепость Тенебриса
+3102 | Draakon Arena | Командный центр
+3023 | Akalath Quarantine | Секретное подземелье крепости Берарк
 
 ## Notices settings / Настройка уведомлений
 
