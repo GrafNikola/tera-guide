@@ -42,7 +42,9 @@ id | Dungeon name | Название данжа
 3043 | Harnovog's Trial | Крепость Тенебриса (Подземелье испытаний)
 3030 | Commander's Residence | Старая резиденция
 9044 | Bahaar's Sanctum | Святилище Бахаара
+3205 | Cursed Fusion Laboratory | Заколдованная лаборатория слияния
 9982 | Мастерская Леандра (сложно) | Grotto of Lost Souls (Hard)
+3105 | Fusion Laboratory | Лаборатория слияния
 3044 | Stormed Citadel | Захваченная крепость Тенебриса
 3041 | Damned Citadel | Проклятая крепость Тенебриса
 3102 | Draakon Arena | Командный центр
