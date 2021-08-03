@@ -43,7 +43,7 @@ id | Dungeon name | Название данжа
 3030 | Commander's Residence | Старая резиденция
 9044 | Bahaar's Sanctum | Святилище Бахаара
 3205 | Cursed Fusion Laboratory | Заколдованная лаборатория слияния
-9982 | Мастерская Леандра (сложно) | Grotto of Lost Souls (Hard)
+9982 | Grotto of Lost Souls (Hard) | Мастерская Леандра (сложно)
 3105 | Fusion Laboratory | Лаборатория слияния
 3044 | Stormed Citadel | Захваченная крепость Тенебриса
 3041 | Damned Citadel | Проклятая крепость Тенебриса
@@ -75,7 +75,7 @@ id | Dungeon name | Название данжа
 
 * When you enter the **guide gui** command, the module GUI is displayed, allowing you to change basic settings.   
   При вводе команды **guide gui** отображается графический интерфейс модуля, позволяющий осуществить основные настройки.   
-  ![](https://i.imgur.com/7zAeYhi.png)
+  ![](https://i.imgur.com/72hDCvQ.png)
 
 ## More information / Дополнительная информация
 
