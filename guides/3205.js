@@ -59,11 +59,11 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		],
 		"s-3205-1000-120-0": [{ type: "text", sub_type: "message", message: "Storm", message_RU: "Шторм" }],
 		"s-3205-1000-107-0": [
-			{ type: "text", sub_type: "message", message: "Spin (Kaia) | Back Laser", message_RU: "Крутилка (кайа) | Задний лазер" },
+			{ type: "text", sub_type: "message", message: "Spin | Back Laser", message_RU: "Крутилка | Задний лазер" },
 			{ type: "spawn", func: "circle", args: [true, 553, 0, 0, 12, 260, 100, 5000] }
 		],
 		"s-3205-1000-117-0": [{ type: "text", sub_type: "message", message: "Kick", message_RU: "Удар ногой" }],
-		"s-3205-1000-118-0": [{ type: "text", sub_type: "message", message: "Kick (Dodge)", message_RU: "Удар ногой (Эвейд)" }],
+		"s-3205-1000-118-0": [{ type: "text", sub_type: "message", message: "Kick (Dodge)", message_RU: "Удар ногой (эвейд)" }],
 
 		// Donuts combo <80%
 		"qb-3205-1000-32051013": [{ type: "text", sub_type: "message", message: "Outward Donuts (Out > In)", message_RU: "Бублики наружу (от него > к нему)" }],
