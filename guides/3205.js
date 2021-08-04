@@ -16,9 +16,8 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		],
 
 		"h-3205-1000-80": [{ type: "text", sub_type: "message", message: "80%", message_RU: "80%" }],
-		"h-3205-1000-50": [{ type: "text", sub_type: "message", message: "50%", message_RU: "50%" }],
-		"h-3205-1000-40": [{ type: "text", sub_type: "message", message: "40%", message_RU: "40%" }],
-		"h-3205-1000-35": [{ type: "text", sub_type: "message", message: "35%", message_RU: "35%" }],
+		"h-3205-1000-40": [{ type: "text", sub_type: "message", message: "45%", message_RU: "45%" }],
+		"h-3205-1000-35": [{ type: "text", sub_type: "message", message: "40%", message_RU: "40%" }],
 
 		"s-3205-1000-101-0": [{ type: "text", sub_type: "message", message: "Front Swing", message_RU: "Удар вперед" }],
 		"s-3205-1000-102-0": [
