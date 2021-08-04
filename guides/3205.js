@@ -95,12 +95,12 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		],
 		"s-3205-1000-304-0": [ // red
 			{ type: "text", sub_type: "message", message: "Dodge!", message_RU: "Эвейд!", delay: 200 },
-			{ type: "text", sub_type: "message", message: "Plague of Exhaustion", message_RU: "Чума/регресс", class_position: "priest", delay: 1000 },
-			{ type: "text", sub_type: "message", message: "Regression", message_RU: "Регресс", class_position: "mystic", delay: 1000 },
 			{ type: "text", sub_type: "message", message: "Give Stun!", message_RU: "Дать стан!", delay: 2000 }
 		],
 		"s-3205-1000-305-0": [ // blue
 			{ type: "text", sub_type: "message", message: "Dodge!", message_RU: "Эвейд!", delay: 200 },
+			{ type: "text", sub_type: "message", message: "Plague of Exhaustion", message_RU: "Чума/регресс", class_position: "priest", delay: 1000 },
+			{ type: "text", sub_type: "message", message: "Regression", message_RU: "Регресс", class_position: "mystic", delay: 1000 },
 			{ type: "text", sub_type: "message", message: "Give Stun!", message_RU: "Дать стан!", delay: 2000 }
 		],
 		"s-3205-1000-121-0": [{ type: "text", sub_type: "message", message: "AoE", message_RU: "АоЕ" }], // red
