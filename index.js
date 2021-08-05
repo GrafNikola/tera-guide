@@ -3,6 +3,7 @@
 module.exports.NetworkMod = function (mod) {
 	try {
 		mod.require["tera-guide-core"].load(mod, {
+			languages: ["en", "ru"], // supported languages
 			colors: { gui: {}, general: {} }, // color settings
 			command: ["guide"], // module command
 			chat_name: "Guide", // set chat author name for notices
