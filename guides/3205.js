@@ -5,6 +5,7 @@
 module.exports = (dispatch, handlers, guide, lang) => {
 
 	let print_lasers = true;
+	let print_donuts = true;
 
 	return {
 		"ns-3205-1000": [
@@ -66,19 +67,33 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-3205-1000-118-0": [{ type: "text", sub_type: "message", message: "Kick (Dodge)", message_RU: "Удар ногой (эвейд)" }],
 
 		// Donuts combo <80%
-		"qb-3205-1000-32051013": [{ type: "text", sub_type: "message", message: "Outward Donuts (Out > In)", message_RU: "Бублики наружу (от него > к нему)" }],
-		"qb-3205-1000-32051014": [{ type: "text", sub_type: "message", message: "Inward Donuts (In > Out)", message_RU: "Бублики внутрь (к нему > от него)" }],
 		"s-3205-1000-115-0": [
-			{ type: "spawn", func: "circle", args: [false, 445, 0, 0, 18, 180, 1500, 5000] },
-			{ type: "spawn", func: "circle", args: [false, 445, 0, 0, 12, 330, 1500, 5000] },
-			{ type: "spawn", func: "circle", args: [false, 445, 0, 0, 10, 510, 1500, 5000] },
-			{ type: "text", sub_type: "message", delay: 4800, message: "Dodge", message_RU: "Эвейд" }
+			{ type: "func", func: () => print_donuts = true },
+			{ type: "text", sub_type: "message", message: "Outward Donuts (Out > In)", message_RU: "Бублики наружу (от него > к нему)", delay: 200, check_func: () => print_donuts },
+			{ type: "event", delay: 1500, check_func: () => print_donuts, args: [
+				{ type: "spawn", func: "circle", args: [false, 445, 0, 0, 18, 180, 0, 5000], tag: "donuts" },
+				{ type: "spawn", func: "circle", args: [false, 445, 0, 0, 12, 330, 0, 5000], tag: "donuts" },
+				{ type: "spawn", func: "circle", args: [false, 445, 0, 0, 10, 510, 0, 5000], tag: "donuts" }
+			] },
+			{ type: "text", sub_type: "message", message: "Dodge", message_RU: "Эвейд", delay: 4800, check_func: () => print_donuts }
+		],
+		"e-3205-1000-115": [
+			{ type: "despawn_all", tag: "donuts" },
+			{ type: "func", func: () => print_donuts = false }
 		],
 		"s-3205-1000-116-0": [
-			{ type: "spawn", func: "circle", args: [false, 445, 0, 0, 18, 180, 1500, 5000] },
-			{ type: "spawn", func: "circle", args: [false, 445, 0, 0, 12, 330, 1500, 5000] },
-			{ type: "spawn", func: "circle", args: [false, 445, 0, 0, 10, 510, 1500, 5000] },
-			{ type: "text", sub_type: "message", delay: 4800, message: "Dodge", message_RU: "Эвейд" }
+			{ type: "func", func: () => print_donuts = true },
+			{ type: "text", sub_type: "message", message: "Inward Donuts (In > Out)", message_RU: "Бублики внутрь (к нему > от него)", delay: 200, check_func: () => print_donuts },
+			{ type: "event", delay: 1500, check_func: () => print_donuts, args: [
+				{ type: "spawn", func: "circle", args: [false, 445, 0, 0, 18, 180, 0, 5000], tag: "donuts" },
+				{ type: "spawn", func: "circle", args: [false, 445, 0, 0, 12, 330, 0, 5000], tag: "donuts" },
+				{ type: "spawn", func: "circle", args: [false, 445, 0, 0, 10, 510, 0, 5000], tag: "donuts" }
+			] },
+			{ type: "text", sub_type: "message", message: "Dodge", message_RU: "Эвейд", delay: 4800, check_func: () => print_donuts }
+		],
+		"e-3205-1000-116": [
+			{ type: "despawn_all", tag: "donuts" },
+			{ type: "func", func: () => print_donuts = false }
 		],
 
 		"qb-3205-1000-32051002": [{ type: "text", sub_type: "message", message: "Shield!", message_RU: "Щит!" }], // <50%
@@ -94,7 +109,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "text", sub_type: "message", message: "LASERS + WAVE", message_RU: "ЛАЗЕРЫ + ВОЛНА" },
 			{ type: "text", sub_type: "notification", message: "LASERS + WAVE", message_RU: "ЛАЗЕРЫ + ВОЛНА", speech: false }
 		],
-		"s-3105-1000-310-0": [{ type: "spawn", func: "marker", args: [false, 0, 0, 0, 8000, true, ["Lasers", "Wave"]] }],
+		"s-3205-1000-310-0": [{ type: "spawn", func: "marker", args: [false, 0, 0, 0, 8000, true, ["Lasers", "Wave"]] }],
 		"s-3205-1000-304-0": [ // red
 			{ type: "text", sub_type: "message", message: "Wave (dodge)", message_RU: "Волна (эвейд)", delay: 100 },
 			{ type: "text", sub_type: "message", message: "Give Stun!", message_RU: "Дать стан!", delay: 2000 }
