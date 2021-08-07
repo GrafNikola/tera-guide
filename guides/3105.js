@@ -57,6 +57,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "spawn", func: "vector", args: [553, 90, 60, 180, 500, 0, 3000] },
 			{ type: "spawn", func: "vector", args: [553, 270, 60, 180, 500, 0, 3000] }
 		],
+		"s-3105-1000-119-0": [{ type: "text", sub_type: "message", message: "Cut", message_RU: "Разрез" }],
 		"s-3105-1000-120-0": [{ type: "text", sub_type: "message", message: "Storm", message_RU: "Шторм" }],
 		"s-3105-1000-107-0": [
 			{ type: "text", sub_type: "message", message: "Spin | Back Laser", message_RU: "Крутилка | Задний лазер" },
