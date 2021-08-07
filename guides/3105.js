@@ -21,15 +21,15 @@ module.exports = (dispatch, handlers, guide, lang) => {
 
 		"s-3105-1000-101-0": [{ type: "text", sub_type: "message", message: "Front Swing", message_RU: "Удар вперед" }],
 		"s-3105-1000-102-0": [
+			{ type: "text", sub_type: "message", message: "Disc Throw", message_RU: "Диск" },
 			{ type: "spawn", func: "vector", args: [553, 0, 0, 180, 200, 2000, 2000] },
-			{ type: "spawn", func: "vector", args: [553, 0, 0, 0, 300, 2000, 2000] },
-			{ type: "spawn", func: "vector", args: [553, 270, 150, 0, 300, 2000, 2000] },
-			{ type: "spawn", func: "vector", args: [553, 270, 150, 180, 200, 2000, 2000] },
-			{ type: "text", sub_type: "message", message: "Disc Throw", message_RU: "Диск" }
+			{ type: "spawn", func: "vector", args: [553, 0, 0, 10, 350, 2000, 2000] },
+			{ type: "spawn", func: "vector", args: [553, 270, 170, 10, 350, 2000, 2000] },
+			{ type: "spawn", func: "vector", args: [553, 270, 170, 200, 200, 2000, 2000] }
 		],
 		"s-3105-1000-104-0": [
 			{ type: "text", sub_type: "message", message: "Stun (AOE)", message_RU: "Стан (АОЕ)" },
-			{ type: "spawn", func: "circle", args: [true, 553, 0, 0, 12, 260, 100, 3000] }
+			{ type: "spawn", func: "circle", args: [true, 553, 0, 0, 12, 280, 100, 3000] }
 		],
 		"s-3105-1000-108-0": [
 			{ type: "text", sub_type: "message", message: "Push (Tank)", message_RU: "Откид (танк)" },
@@ -60,7 +60,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-3105-1000-120-0": [{ type: "text", sub_type: "message", message: "Storm", message_RU: "Шторм" }],
 		"s-3105-1000-107-0": [
 			{ type: "text", sub_type: "message", message: "Spin | Back Laser", message_RU: "Крутилка | Задний лазер" },
-			{ type: "spawn", func: "circle", args: [true, 553, 0, 0, 12, 260, 100, 5000] }
+			{ type: "spawn", func: "circle", args: [true, 553, 0, 0, 12, 280, 100, 5000] }
 		],
 		"s-3105-1000-117-0": [{ type: "text", sub_type: "message", message: "Kick", message_RU: "Удар ногой" }],
 		"s-3105-1000-118-0": [{ type: "text", sub_type: "message", message: "Kick (Dodge)", message_RU: "Удар ногой (эвейд)" }],
@@ -110,11 +110,11 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		],
 		"s-3105-1000-310-0": [{ type: "spawn", func: "marker", args: [false, 0, 0, 0, 8000, true, ["Lasers", "Wave"]] }],
 		"s-3105-1000-304-0": [ // red
-			{ type: "text", sub_type: "message", message: "Wave (dodge)", message_RU: "Волна (эвейд)", delay: 100 },
+			{ type: "text", sub_type: "message", message: "Wave (Dodge)", message_RU: "Волна (эвейд)", delay: 100 },
 			{ type: "text", sub_type: "message", message: "Give Stun!", message_RU: "Дать стан!", delay: 2000 }
 		],
 		"s-3105-1000-305-0": [ // blue
-			{ type: "text", sub_type: "message", message: "Wave (dodge)", message_RU: "Волна (эвейд)", delay: 100 },
+			{ type: "text", sub_type: "message", message: "Wave (Dodge)", message_RU: "Волна (эвейд)", delay: 100 },
 			{ type: "text", sub_type: "message", message: "Give Stun!", message_RU: "Дать стан!", delay: 2000 }
 		],
 		"s-3105-1000-121-0": [{ type: "text", sub_type: "message", message: "AoE", message_RU: "АоЕ" }], // red
