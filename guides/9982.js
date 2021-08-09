@@ -1,89 +1,37 @@
 // Grotto of Lost Souls (Hard)
 //
-// made by michengs
+// made by michengs / HSDN
 
 module.exports = (dispatch, handlers, guide, lang) => {
-	let power = true;
-	let Level = 0;
-	let powerMsg = null;
-	let notice = true;
-	let steptwo = false;
 
-	function start_boss() {
-		power = false;
-		Level = 0;
-		notice = true;
-		powerMsg = null;
-		steptwo = false;
-	}
+	let color = 0;
+	let debuff = 0;
+	let print_wave = true;
+	let awakening_one = false;
+	let awakening_two = false;
+	let stack_level = 0;
 
-	function skilld_event(skillid) {
-		if (!notice) return;
+	function stacks_level_event() { // 118, 143, 145, 146, 144, 147, 148, 154, 155, 161, 162, 213, 215  -> 98200399
+		if (!awakening_one) return;
 
-		if (notice && [118, 139, 141, 150, 152].includes(skillid)) {
-			notice = false;
-			dispatch.setTimeout(() => notice = true, 4000);
+		stack_level++;
+
+		if ((!awakening_two && stack_level > 0) || (awakening_two && stack_level > 2)) {
+			handlers.text({
+				sub_type: "notification",
+				message: `Stack ${stack_level}`,
+				message_RU: `Стак ${stack_level}`,
+				speech: false
+			});
 		}
 
-		if (skillid === 300) {
-			power = true;
-			Level = 0;
-			powerMsg = null;
+		if (stack_level === 4) {
+			handlers.text({
+				sub_type: "alert",
+				message: "Explosion soon",
+				message_RU: "Скоро взрыв"
+			});
 		}
-
-		if (skillid === 360 || skillid === 399)
-			Level = 0;
-
-		if (power && [118, 143, 145, 146, 144, 147, 148, 154, 155, 161, 162, 213, 215].includes(skillid)) {
-			Level++;
-			powerMsg = `{${Level}}`;
-
-			if (Level == 4) {
-				handlers.text({
-					sub_type: "message",
-					message_RU: "Полностью заряжен!",
-					message: "Fully charged!"
-				});
-				handlers.text({
-					sub_type: "alert",
-					message_RU: "Полностью заряжен!",
-					message: "Fully charged!"
-				});
-
-			} else if (Level == 2 && steptwo) {
-				handlers.text({
-					sub_type: "message",
-					message_RU: "Полностью заряжен!",
-					message: "Fully charged!!"
-				});
-				handlers.text({
-					sub_type: "alert",
-					message_RU: "Полностью заряжен!",
-					message: "Fully charged!"
-				});
-			}
-
-			if (powerMsg !== null && skillid !== 399) {
-				if (!steptwo && Level !== 4) {
-					handlers.text({
-						sub_type: "message",
-						message_RU: powerMsg,
-						message: powerMsg
-					});
-				}
-
-				if (steptwo && Level !== 2) {
-					handlers.text({
-						sub_type: "message",
-						message_RU: powerMsg,
-						message: powerMsg
-					});
-				}
-			}
-		}
-
-		if (skillid === 399)
-			steptwo = true;
 	}
 
 	return {
@@ -94,18 +42,55 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		],
 		"s-982-1000-106-0": [{ type: "text", class_position: "tank", sub_type: "message", message: "Heavy", message_RU: "Тяжелый удар" }],
 		"s-982-1000-107-0": [
-			{ type: "text", class_position: "dps", sub_type: "message", message: "Pushback", message_RU: "Откид (конус)" },
-			{ type: "text", class_position: "heal", sub_type: "message", message: "Pushback (Kaia)", message_RU: "Откид (кайя)" }
+			{ type: "text", class_position: "dps", sub_type: "message", message: "Pushback", message_RU: "Откид назад" },
+			{ type: "text", class_position: "heal", sub_type: "message", message: "Pushback (Kaia)", message_RU: "Откид назад (кайя)" },
+			{ type: "spawn", func: "vector", args: [553, 90, 30, 140, 600, 0, 3000] },
+			{ type: "spawn", func: "vector", args: [553, 270, 30, -140, 600, 0, 3000] }
 		],
-		"s-982-1000-108-0": [{ type: "text", sub_type: "message", message: "Bait (Flying)", message_RU: "Байт (подлет)" }],
+		"s-982-1000-108-0": [
+			{ type: "text", sub_type: "message", message: "Bait Front (Flying)", message_RU: "Байт вперед (подлет)" },
+			{ type: "spawn", func: "vector", args: [553, 90, 140, 5, 620, 0, 2000] },
+			{ type: "spawn", func: "vector", args: [553, 270, 140, 355, 620, 0, 2000] }
+		],
 		"s-982-1000-109-0": [{ type: "text", sub_type: "message", message: "Rocks (Small)", message_RU: "Камни (малые)" }],
 		"s-982-1000-110-0": [{ type: "text", sub_type: "message", message: "Rocks (Large)", message_RU: "Камни (большие)" }],
-		"s-982-1000-301-0": [{ type: "text", sub_type: "message", message: "Flower Stuns", message_RU: "Оглушающие цветы" }],
-		"s-982-1000-307-0": [{ type: "text", sub_type: "message", message: "Cage", message_RU: "Клетка" }],
-		"s-982-1000-309-0": [{ type: "text", sub_type: "message", message: "1 Flower", message_RU: "1 цветок!" }],
-		"s-982-1000-310-0": [{ type: "text", sub_type: "message", message: "2 Flower", message_RU: "2 цветка!" }],
-		"s-982-1000-116-0": [{ type: "text", sub_type: "message", message: "Big AoE Attack!", message_RU: "AOE!!" }],
-		"s-982-1000-312-0": [{ type: "text", sub_type: "message", message: "Golden Flower!", message_RU: "Золотой цветок!!" }],
+		"s-982-1000-111-0": [{ type: "text", sub_type: "message", message: "Stun (Dodge)", message_RU: "Стан (эвейд)", delay: 1500 }],
+		"s-982-1000-113-0": [{ type: "text", sub_type: "message", message: "Thorns (Bleed)", message_RU: "Колючки (кровоток)" }],
+		"s-982-1000-116-0": [
+			{ type: "text", sub_type: "message", message: "AoE", message_RU: "АоЕ" },
+			{ type: "text", sub_type: "message", message: "Dodge", message_RU: "Эвейд", delay: 2000 }
+		],
+		"s-982-1000-301-0": [{ type: "text", sub_type: "message", message: "Flower Stuns (Dodge)", message_RU: "Оглушающие цветы (эвейд)" }],
+		"s-982-1000-307-0": [{ type: "text", sub_type: "message", message: "Cage (Don't move)", message_RU: "Клетка (не двигаться)" }],
+		// Flowers mech
+		"ab-982-1003-98200161": [
+			{ type: "text", sub_type: "message", message: "Green", message_RU: "Зеленый" },
+			{ type: "func", func: () => color = 1 }
+		],
+		"ab-982-1003-98200162": [
+			{ type: "text", sub_type: "message", message: "Violet", message_RU: "Фиолетовый" },
+			{ type: "func", func: () => color = 2 }
+		],
+		"ae-0-0-98200148": [{ type: "func", func: () => debuff = 1 }], // green
+		"ae-0-0-98200149": [{ type: "func", func: () => debuff = 2 }], // violet
+		"s-982-1000-201-0": [{ type: "text", sub_type: "alert", message: "Change Debuff", message_RU: "Сменить дебаф", check_func: () => color !== debuff, delay: 2500 }],
+		"s-982-1000-309-0": [
+			{ type: "text", sub_type: "message", message: "One Flower", message_RU: "Один цветок" },
+			{ type: "text", sub_type: "alert", message: "Dodge the flower!", message_RU: "Заэвейдить цветок!", check_func: () => color === debuff, delay: 1500 }
+		],
+		"s-982-1000-310-0": [
+			{ type: "text", sub_type: "message", message: "Two Flowers", message_RU: "Два цветка" },
+			{ type: "text", sub_type: "alert", message: "Dodge ONE flower!", message_RU: "Заэвейдить один цветок!", check_func: () => color !== debuff, delay: 1500 }
+		],
+		"s-982-1000-312-0": [
+			{ type: "text", sub_type: "message", message: "Golden Golden", message_RU: "Золотой цветок" },
+			{ type: "text", sub_type: "alert", message: "Break Flower!", message_RU: "Разбить цветок!", check_func: () => color !== debuff, delay: 1500 },
+			{ type: "text", sub_type: "alert", message: "Dodge Flower!", message_RU: "Заэвейдить цветок!", check_func: () => color === debuff, delay: 4000 }
+		],
+		"s-982-1000-308-0": [
+			{ type: "func", func: () => color = 0 },
+			{ type: "func", func: () => debuff = 0 }
+		],
 
 		// 2 BOSS
 		"nd-982-2000": [
@@ -113,147 +98,170 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "despawn_all" }
 		],
 		"s-982-2000-105-0": [{ type: "text", sub_type: "message", message: "Spin", message_RU: "Кувырок" }],
-		"s-982-2000-113-0": [{ type: "text", sub_type: "message", message: "Stun Inc", message_RU: "Стан" }],
+		"s-982-2000-108-0": [{ type: "text", sub_type: "message", message: "Shot Forward", message_RU: "Выстрел вперед" }],
+		"s-982-2000-109-0": [{ type: "text", sub_type: "message", message: "Wave Forward", message_RU: "Волна вперед" }],
+		"s-982-2000-112-0": [{ type: "text", sub_type: "message", message: "Kick Forward", message_RU: "Удар вперед" }],
+		"s-982-2000-113-0": [
+			{ type: "text", sub_type: "message", message: "Stun (AoE)", message_RU: "Стан (АоЕ)" },
+			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, null, 320, 0, 3000] }
+		],
 		"s-982-2000-114-0": [
 			{ type: "text", sub_type: "message", message: "Get In", message_RU: "К нему" },
-			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 15, 260, 0, 3000] }
+			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, null, 260, 0, 5000] },
+			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, null, 600, 0, 5000] }
 		],
 		"s-982-2000-116-0": [
-			{ type: "text", sub_type: "message", message: "Front then Back", message_RU: "Вперед | Назад" },
+			{ type: "text", sub_type: "message", message: "Front | Back", message_RU: "Передняя | Задняя" },
 			{ type: "spawn", func: "vector", args: [553, 0, 0, 270, 500, 0, 5000] },
 			{ type: "spawn", func: "vector", args: [553, 180, 0, 90, 500, 0, 5000] }
 		],
 		"s-982-2000-301-0": [
-			{ type: "text", sub_type: "message", message: "Get Out + Dodge", message_RU: "От него | Эвейд" },
-			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 15, 260, 0, 3000] }
+			{ type: "text", sub_type: "message", message: "Get Out | Dodge", message_RU: "От него | Эвейд" },
+			{ type: "text", sub_type: "message", message: "Dodge", message_RU: "Эвейд", delay: 3500 },
+			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, null, 260, 0, 3000] },
+			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, null, 650, 0, 3000] }
 		],
 		"s-982-2000-302-0": [
-			{ type: "text", sub_type: "message", message: "Get In + Dodge", message_RU: "К нему | Эвейд" },
-			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 15, 260, 0, 3000] }
+			{ type: "text", sub_type: "message", message: "Get In | Dodge", message_RU: "К нему | Эвейд" },
+			{ type: "text", sub_type: "message", message: "Dodge", message_RU: "Эвейд", delay: 3500 },
+			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, null, 260, 0, 3000] },
+			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, null, 650, 0, 3000] }
 		],
+		"s-982-2000-307-0": [{ type: "text", sub_type: "message", message: "Target", message_RU: "Таргет" }],
+		"s-982-2000-307-2": [{ type: "text", sub_type: "message", message: "Dodge", message_RU: "Эвейд" }],
 
-		// 3 БОСС
+		// 3 BOSS
 		"nd-982-3000": [
 			{ type: "stop_timers" },
 			{ type: "despawn_all" }
 		],
-		"h-982-3000-99": [{ type: "func", func: start_boss }],
-		"h-982-3000-30": [{ type: "text", sub_type: "message", message: "30%", message_RU: "30%" }],
-		"s-982-3000-118-0": [
-			{ type: "text", sub_type: "message", message: "Front Triple", message_RU: "Передняя комба" },
-			{ type: "func", func: skilld_event, args: [118] }
+		"h-982-3000-99": [
+			{ type: "func", func: () => print_wave = true },
+			{ type: "func", func: () => awakening_one = false },
+			{ type: "func", func: () => awakening_two = false },
+			{ type: "func", func: () => stack_level = 0 }
 		],
+		"h-982-3000-80": [{ type: "text", sub_type: "message", message: "80%", message_RU: "80%" }],
+		"h-982-3000-30": [{ type: "text", sub_type: "message", message: "30%", message_RU: "30%" }],
+		"s-982-3000-109-0": [{ type: "text", sub_type: "message", message: "Front Throw", message_RU: "Удар вперед" }],
+		"s-982-3000-118-0": [{ type: "text", sub_type: "message", message: "Front Triple", message_RU: "Передняя комба" }],
 		"s-982-3000-143-0": [
 			{ type: "text", sub_type: "message", message: "Left Rear", message_RU: "Слева сзади" },
-			{ type: "func", func: skilld_event, args: [143] }
+			{ type: "spawn", func: "circle", args: [true, 553, 200, 330, null, 280, 0, 3000] }
 		],
-		"s-982-3000-145-0": [
-			{ type: "text", sub_type: "message", message: "Left Rear", message_RU: "Слева сзади" },
-			{ type: "func", func: skilld_event, args: [145] }
-		],
-		"s-982-3000-146-0": [
-			{ type: "text", sub_type: "message", message: "Left Rear (Pulses)", message_RU: "Слева сзади (бублик)" },
-			{ type: "spawn", func: "marker", args: [false, 215, 370, 0, 8000, true, null] },
-			{ type: "spawn", func: "circle", args: [false, 445, 215, 370, 15, 160, 2500, 8000] },
-			{ type: "spawn", func: "circle", args: [false, 445, 215, 370, 12, 320, 2500, 8000] },
-			{ type: "spawn", func: "circle", args: [false, 445, 215, 370, 10, 480, 2500, 8000] },
-			{ type: "spawn", func: "circle", args: [false, 445, 215, 370, 8, 640, 2500, 8000] },
-			{ type: "spawn", func: "circle", args: [false, 445, 215, 370, 6, 800, 2500, 8000] },
-			{ type: "func", func: skilld_event, args: [146] }
-		],
-		"s-982-3000-154-0": [
-			{ type: "text", sub_type: "message", message: "Left Rear (Pulses)", message_RU: "Слева сзади (бублик)" },
-			{ type: "spawn", func: "marker", args: [false, 215, 370, 0, 8000, true, null] },
-			{ type: "spawn", func: "circle", args: [false, 445, 215, 370, 15, 160, 2500, 8000] },
-			{ type: "spawn", func: "circle", args: [false, 445, 215, 370, 12, 320, 2500, 8000] },
-			{ type: "spawn", func: "circle", args: [false, 445, 215, 370, 10, 480, 2500, 8000] },
-			{ type: "spawn", func: "circle", args: [false, 445, 215, 370, 8, 640, 2500, 8000] },
-			{ type: "spawn", func: "circle", args: [false, 445, 215, 370, 6, 800, 2500, 8000] },
-			{ type: "func", func: skilld_event, args: [154] }
-		],
+		"s-982-3000-145-0": "s-982-3000-143-0",
 		"s-982-3000-144-0": [
 			{ type: "text", sub_type: "message", message: "Right Rear", message_RU: "Справа сзади" },
-			{ type: "func", func: skilld_event, args: [144] }
+			{ type: "spawn", func: "circle", args: [true, 553, 160, 330, null, 280, 0, 3000] }
 		],
-		"s-982-3000-147-0": [
-			{ type: "text", sub_type: "message", message: "Right Rear", message_RU: "Справа сзади" },
-			{ type: "func", func: skilld_event, args: [147] }
+		"s-982-3000-147-0": "s-982-3000-144-0",
+		"s-982-3000-146-0": [
+			{ type: "text", sub_type: "message", message: "Pulses Left", message_RU: "Бублики слева" },
+			{ type: "spawn", func: "circle", args: [true, 553, 200, 350, null, 280, 500, 2000] },
+			{ type: "spawn", func: "marker", args: [false, 215, 370, 5300, 3000, true, null] }, // 1
+			{ type: "spawn", func: "circle", args: [false, 445, 215, 370, 15, 160, 2000, 6000] },
+			{ type: "spawn", func: "circle", args: [false, 445, 215, 370, 12, 320, 2000, 6000] },
+			{ type: "spawn", func: "circle", args: [false, 445, 215, 370, 10, 480, 2000, 6000] },
+			{ type: "spawn", func: "circle", args: [false, 445, 215, 370, 8, 640, 2000, 6000] },
+			{ type: "spawn", func: "circle", args: [false, 445, 215, 370, 6, 800, 2000, 6000] }
+		],
+		"s-982-3000-154-0": [
+			{ type: "text", sub_type: "message", message: "Pulses Left", message_RU: "Бублики слева" },
+			{ type: "spawn", func: "circle", args: [true, 553, 200, 350, null, 280, 500, 2000] },
+			{ type: "spawn", func: "marker", args: [false, 215, 370, 4200, 4000, true, null] }, // 2
+			{ type: "spawn", func: "circle", args: [false, 445, 215, 370, 15, 160, 2000, 6000] },
+			{ type: "spawn", func: "circle", args: [false, 445, 215, 370, 12, 320, 2000, 6000] },
+			{ type: "spawn", func: "circle", args: [false, 445, 215, 370, 10, 480, 2000, 6000] },
+			{ type: "spawn", func: "circle", args: [false, 445, 215, 370, 8, 640, 2000, 6000] },
+			{ type: "spawn", func: "circle", args: [false, 445, 215, 370, 6, 800, 2000, 6000] }
 		],
 		"s-982-3000-148-0": [
-			{ type: "text", sub_type: "message", message: "Right Rear (Pulses)", message_RU: "Справа сзади (бублик)" },
-			{ type: "spawn", func: "marker", args: [false, 155, 388, 0, 8000, true, null] },
-			{ type: "spawn", func: "circle", args: [false, 445, 155, 388, 15, 160, 2500, 8000] },
-			{ type: "spawn", func: "circle", args: [false, 445, 155, 388, 12, 320, 2500, 8000] },
-			{ type: "spawn", func: "circle", args: [false, 445, 155, 388, 10, 480, 2500, 8000] },
-			{ type: "spawn", func: "circle", args: [false, 445, 155, 388, 8, 640, 2500, 8000] },
-			{ type: "spawn", func: "circle", args: [false, 445, 155, 388, 6, 800, 2500, 8000] },
-			{ type: "func", func: skilld_event, args: [148] }
+			{ type: "text", sub_type: "message", message: "Pulses Right", message_RU: "Бублики справа" },
+			{ type: "spawn", func: "circle", args: [true, 553, 160, 350, null, 280, 500, 2000] },
+			{ type: "spawn", func: "marker", args: [false, 155, 388, 5300, 3000, true, null] }, // 1
+			{ type: "spawn", func: "circle", args: [false, 445, 155, 388, 15, 160, 2000, 6000] },
+			{ type: "spawn", func: "circle", args: [false, 445, 155, 388, 12, 320, 2000, 6000] },
+			{ type: "spawn", func: "circle", args: [false, 445, 155, 388, 10, 480, 2000, 6000] },
+			{ type: "spawn", func: "circle", args: [false, 445, 155, 388, 8, 640, 2000, 6000] },
+			{ type: "spawn", func: "circle", args: [false, 445, 155, 388, 6, 800, 2000, 6000] }
 		],
 		"s-982-3000-155-0": [
-			{ type: "text", sub_type: "message", message: "Right Rear (Pulses)", message_RU: "Справа сзади (бублик)" },
-			{ type: "spawn", func: "marker", args: [false, 155, 388, 0, 8000, true, null] },
-			{ type: "spawn", func: "circle", args: [false, 445, 155, 388, 15, 160, 2500, 8000] },
-			{ type: "spawn", func: "circle", args: [false, 445, 155, 388, 12, 320, 2500, 8000] },
-			{ type: "spawn", func: "circle", args: [false, 445, 155, 388, 10, 480, 2500, 8000] },
-			{ type: "spawn", func: "circle", args: [false, 445, 155, 388, 8, 640, 2500, 8000] },
-			{ type: "spawn", func: "circle", args: [false, 445, 155, 388, 6, 800, 2500, 8000] },
-			{ type: "func", func: skilld_event, args: [155] }
+			{ type: "text", sub_type: "message", message: "Pulses Right", message_RU: "Бублики справа" },
+			{ type: "spawn", func: "circle", args: [true, 553, 160, 350, null, 280, 500, 2000] },
+			{ type: "spawn", func: "marker", args: [false, 155, 388, 4200, 4000, true, null] }, // 2
+			{ type: "spawn", func: "circle", args: [false, 445, 155, 388, 15, 160, 2000, 6000] },
+			{ type: "spawn", func: "circle", args: [false, 445, 155, 388, 12, 320, 2000, 6000] },
+			{ type: "spawn", func: "circle", args: [false, 445, 155, 388, 10, 480, 2000, 6000] },
+			{ type: "spawn", func: "circle", args: [false, 445, 155, 388, 8, 640, 2000, 6000] },
+			{ type: "spawn", func: "circle", args: [false, 445, 155, 388, 6, 800, 2000, 6000] }
 		],
 		"s-982-3000-161-0": [
-			{ type: "text", sub_type: "message", message: "Back then Front", message_RU: "Назад | Вперед" },
-			{ type: "func", func: skilld_event, args: [161] }
+			{ type: "text", sub_type: "message", message: "Front | Back", message_RU: "Вперед | Назад" },
+			{ type: "spawn", func: "circle", args: [true, 553, 180, 310, null, 290, 3000, 2500] }
 		],
 		"s-982-3000-162-0": [
-			{ type: "text", sub_type: "message", message: "Back then Front", message_RU: "Назад | Вперед" },
-			{ type: "func", func: skilld_event, args: [162] }
+			{ type: "text", sub_type: "message", message: "Front | Back", message_RU: "Вперед | Назад" },
+			{ type: "spawn", func: "circle", args: [true, 553, 180, 310, null, 290, 3000, 2500] }
 		],
-		"s-982-3000-213-0": [
-			{ type: "text", sub_type: "message", message: "Tail", message_RU: "Хвост!" },
-			{ type: "func", func: skilld_event, args: [213] }
-		],
+		"s-982-3000-213-0": [{ type: "text", sub_type: "message", message: "Tail", message_RU: "Хвост" }],
 		"s-982-3000-215-0": [
-			{ type: "text", sub_type: "message", message: "Tail!", message_RU: "Хвост!" },
-			{ type: "func", func: skilld_event, args: [215] }
+			{ type: "text", sub_type: "message", message: "Tail", message_RU: "Хвост" },
+			{ type: "spawn", func: "circle", args: [true, 553, 180, 340, null, 280, 0, 2000] }
 		],
 		"s-982-3000-139-0": [
-			{ type: "text", sub_type: "message", message: "Left Safe", message_RU: "Лево сейф" },
-			{ type: "spawn", func: "vector", args: [912, 90, 0, 0, 500, 0, 5000] },
-			{ type: "spawn", func: "vector", args: [912, 270, 0, 180, 500, 0, 5000] },
-			{ type: "spawn", func: "marker", args: [false, 270, 200, 0, 8000, true, null] },
-			{ type: "func", func: skilld_event, args: [139] }
+			{ type: "text", sub_type: "message", message: "Wave + Wing (Left Safe)", message_RU: "Волна (лево сейф)", check_func: () => print_wave },
+			{ type: "despawn_all", tag: "wave" },
+			{ type: "spawn", func: "vector", args: [912, 90, 0, 0, 600, 100, 3000], tag: "wave" },
+			{ type: "spawn", func: "vector", args: [912, 270, 0, 180, 600, 100, 3000], tag: "wave" },
+			{ type: "spawn", func: "marker", args: [false, 270, 200, 100, 4000, true, null], tag: "wave" },
+			{ type: "func", func: () => print_wave = false },
+			{ type: "func", func: () => print_wave = true, delay: 8000 }
 		],
-		"s-982-3000-150-0": [
-			{ type: "text", sub_type: "message", message: "Left Safe", message_RU: "Лево сейф" },
-			{ type: "spawn", func: "vector", args: [912, 90, 0, 0, 500, 0, 5000] },
-			{ type: "spawn", func: "vector", args: [912, 270, 0, 180, 500, 0, 5000] },
-			{ type: "spawn", func: "marker", args: [false, 270, 200, 0, 8000, true, null] },
-			{ type: "func", func: skilld_event, args: [150] }
-		],
+		"s-982-3000-139-1": "s-982-3000-139-0",
+		"s-982-3000-139-2": "s-982-3000-139-0",
+		"s-982-3000-150-0": "s-982-3000-139-0", //
+		"s-982-3000-150-1": "s-982-3000-139-0",
+		"s-982-3000-150-2": "s-982-3000-139-0",
 		"s-982-3000-141-0": [
-			{ type: "text", sub_type: "message", message: "Right Safe", message_RU: "Право сейф" },
-			{ type: "spawn", func: "vector", args: [912, 90, 0, 0, 500, 0, 5000] },
-			{ type: "spawn", func: "vector", args: [912, 270, 0, 180, 500, 0, 5000] },
-			{ type: "spawn", func: "marker", args: [false, 90, 200, 0, 8000, true, null] },
-			{ type: "func", func: skilld_event, args: [141] }
+			{ type: "text", sub_type: "message", message: "Wave + Wing (Right Safe)", message_RU: "Волна (право сейф)", check_func: () => print_wave },
+			{ type: "despawn_all", tag: "wave" },
+			{ type: "spawn", func: "vector", args: [912, 90, 0, 0, 600, 100, 3000], tag: "wave" },
+			{ type: "spawn", func: "vector", args: [912, 270, 0, 180, 600, 100, 3000], tag: "wave" },
+			{ type: "spawn", func: "marker", args: [false, 90, 200, 100, 4000, true, null], tag: "wave" },
+			{ type: "func", func: () => print_wave = false },
+			{ type: "func", func: () => print_wave = true, delay: 8000 }
 		],
-		"s-982-3000-152-0": [
-			{ type: "text", sub_type: "message", message: "Right Safe", message_RU: "Право сейф" },
-			{ type: "spawn", func: "vector", args: [912, 90, 0, 0, 500, 0, 5000] },
-			{ type: "spawn", func: "vector", args: [912, 270, 0, 180, 500, 0, 5000] },
-			{ type: "spawn", func: "marker", args: [false, 90, 200, 0, 8000, true, null] },
-			{ type: "func", func: skilld_event, args: [152] }
-		],
+		"s-982-3000-141-1": "s-982-3000-141-0",
+		"s-982-3000-141-2": "s-982-3000-141-0",
+		"s-982-3000-152-0": "s-982-3000-141-0", //
+		"s-982-3000-152-1": "s-982-3000-141-0",
+		"s-982-3000-152-2": "s-982-3000-141-0",
 		"s-982-3000-300-0": [
-			{ type: "text", sub_type: "message", message: "Dodge! (Awakening 1)", message_RU: "Эвейд! (пробуждение 1)" },
-			{ type: "func", func: skilld_event, args: [300] }
+			{ type: "text", sub_type: "message", message: "Dodge! (Awakening 1)", message_RU: "Эвейд! (пробуждение 1)" }, // <80%
+			{ type: "func", func: () => awakening_one = true },
+			{ type: "func", func: () => stack_level = 0 }
 		],
 		"s-982-3000-399-0": [
-			{ type: "text", sub_type: "message", message: "Dodge! (Awakening 2)", message_RU: "Эвейд! (пробуждение 2)" },
-			{ type: "func", func: skilld_event, args: [399] }
+			{ type: "text", sub_type: "message", message: "Dodge! (Awakening 2)", message_RU: "Эвейд! (пробуждение 2)", delay: 1000 }, // <30%
+			{ type: "func", func: () => awakening_two = true },
+			{ type: "func", func: () => stack_level = 0 }
 		],
 		"s-982-3000-360-0": [
-			{ type: "text", sub_type: "message", message: "Explosion!", message_RU: "Взрыв!" },
-			{ type: "func", func: skilld_event, args: [360] }
+			{ type: "text", sub_type: "message", message: "Explosion (Dodge)", message_RU: "Взрыв (эвейд)" },
+			{ type: "func", func: () => stack_level = 0 }
+		],
+		"ab-982-3000-98200399": [{ type: "func", func: stacks_level_event }],
+		"s-982-3000-351-0": [
+			{ type: "text", sub_type: "message", message: "Stones (Dodge)", message_RU: "Камни (эвейд)" },
+			{ type: "text", sub_type: "message", message: "Line up to the plate", message_RU: "Выстроиться к плите", delay: 4000 },
+			{ type: "text", sub_type: "message", message: "Kaia!", message_RU: "Кайя!", delay: 9500 }
+		],
+		"s-982-3011-352-0": [
+			{ type: "text", sub_type: "message", message: "Break Sphere", message_RU: "Разбить сферу", check_func: () => !awakening_two },
+			{ type: "text", sub_type: "message", message: "Break Three Spheres", message_RU: "Разбить три сферы!", check_func: () => awakening_two }
+		],
+		"s-982-3011-353-0": [
+			{ type: "text", sub_type: "message", message: "Break Two Spheres", message_RU: "Разбить две сферы" }
 		]
 	};
 };
