@@ -44,6 +44,8 @@ id | Dungeon name | Название данжа
 3030 | Commander's Residence | Старая резиденция
 9044 | Bahaar's Sanctum | Святилище Бахаара
 3205 | Cursed Fusion Laboratory | Заколдованная лаборатория слияния
+3036 | Sky Cruiser (Hard) | Небесный крейсер (сложно)
+3104 | Catalepticon | Сонный паралич Лукмии
 9982 | Grotto of Lost Souls (Hard) | Мастерская Леандра (сложно)
 3105 | Fusion Laboratory | Лаборатория слияния
 3044 | Stormed Citadel | Захваченная крепость Тенебриса
