@@ -83,7 +83,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "text", sub_type: "alert", message: "Dodge ONE flower!", message_RU: "Заэвейдить один цветок!", check_func: () => color !== debuff, delay: 1500 }
 		],
 		"s-982-1000-312-0": [
-			{ type: "text", sub_type: "message", message: "Golden Golden", message_RU: "Золотой цветок" },
+			{ type: "text", sub_type: "message", message: "Golden Flower", message_RU: "Золотой цветок" },
 			{ type: "text", sub_type: "alert", message: "Break Flower!", message_RU: "Разбить цветок!", check_func: () => color !== debuff, delay: 1500 },
 			{ type: "text", sub_type: "alert", message: "Dodge Flower!", message_RU: "Заэвейдить цветок!", check_func: () => color === debuff, delay: 4000 }
 		],
