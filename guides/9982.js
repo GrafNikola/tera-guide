@@ -143,7 +143,8 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		],
 		"h-982-3000-80": [{ type: "text", sub_type: "message", message: "80%", message_RU: "80%" }],
 		"h-982-3000-30": [{ type: "text", sub_type: "message", message: "30%", message_RU: "30%" }],
-		"s-982-3000-109-0": [{ type: "text", sub_type: "message", message: "Front Throw", message_RU: "Удар вперед" }],
+		"s-982-3000-109-0": [{ type: "text", sub_type: "message", message: "Front Throw (Target)", message_RU: "Удар вперед (таргет)" }],
+		"s-982-3000-134-0": [{ type: "text", sub_type: "message", message: "Front Throw (Target)", message_RU: "Удар вперед (таргет)" }],
 		"s-982-3000-118-0": [{ type: "text", sub_type: "message", message: "Front Triple", message_RU: "Передняя комба" }],
 		"s-982-3000-143-0": [
 			{ type: "text", sub_type: "message", message: "Left Rear", message_RU: "Слева сзади" },
@@ -237,7 +238,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-982-3000-152-1": "s-982-3000-141-0",
 		"s-982-3000-152-2": "s-982-3000-141-0",
 		"s-982-3000-300-0": [
-			{ type: "text", sub_type: "message", message: "Dodge! (Awakening 1)", message_RU: "Эвейд! (Пробуждение 1)", delay: 400 }, // <80%
+			{ type: "text", sub_type: "message", message: "Dodge! (Awakening 1)", message_RU: "Эвейд! (Пробуждение 1)", delay: 800 }, // <80%
 			{ type: "func", func: () => awakening_one = true },
 			{ type: "func", func: () => stack_level = 0 }
 		],
