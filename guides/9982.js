@@ -83,9 +83,8 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "text", sub_type: "alert", message: "Dodge ONE flower!", message_RU: "Заэвейдить один цветок!", check_func: () => color !== debuff, delay: 1500 }
 		],
 		"s-982-1000-312-0": [
-			{ type: "text", sub_type: "message", message: "Golden Flower", message_RU: "Золотой цветок" },
-			{ type: "text", sub_type: "alert", message: "Break Flower!", message_RU: "Разбить цветок!", check_func: () => color !== debuff, delay: 1500 },
-			{ type: "text", sub_type: "alert", message: "Dodge Flower!", message_RU: "Заэвейдить цветок!", check_func: () => color === debuff, delay: 4000 }
+			{ type: "text", sub_type: "message", message: "Golden Flower (Break)", message_RU: "Золотой цветок (разбить)" },
+			{ type: "text", sub_type: "alert", message: "Dodge Flower!", message_RU: "Заэвейдить цветок!", check_func: () => color === debuff, delay: 1500 }
 		],
 		"s-982-1000-308-0": [
 			{ type: "func", func: () => color = 0 },
@@ -103,7 +102,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-982-2000-112-0": [{ type: "text", sub_type: "message", message: "Kick Forward", message_RU: "Удар вперед" }],
 		"s-982-2000-113-0": [
 			{ type: "text", sub_type: "message", message: "Stun (AoE)", message_RU: "Стан (АоЕ)" },
-			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, null, 320, 0, 3000] }
+			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, null, 310, 0, 3000] }
 		],
 		"s-982-2000-114-0": [
 			{ type: "text", sub_type: "message", message: "Get In", message_RU: "К нему" },
