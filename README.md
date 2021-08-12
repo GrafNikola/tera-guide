@@ -48,10 +48,10 @@ id | Dungeon name | Название данжа
 3104 | Catalepticon | Сонный паралич Лукмии
 9982 | Grotto of Lost Souls (Hard) | Мастерская Леандра (сложно)
 3105 | Fusion Laboratory | Лаборатория слияния
-9780 | Velik's Hold (5-Person) | Вход в катакомбы Велики
 3044 | Stormed Citadel | Захваченная крепость Тенебриса
 3041 | Damned Citadel | Проклятая крепость Тенебриса
 3102 | Draakon Arena | Командный центр
+9780 | Velik's Hold (5-Person) | Вход в катакомбы Велики
 3023 | Akalath Quarantine | Секретное подземелье крепости Берарк
 
 ## Notices settings / Настройка уведомлений
