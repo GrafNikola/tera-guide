@@ -83,8 +83,8 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "text", sub_type: "alert", message: "Dodge ONE flower!", message_RU: "Заэвейдить один цветок!", check_func: () => color !== debuff, delay: 1500 }
 		],
 		"s-982-1000-312-0": [
-			{ type: "text", sub_type: "message", message: "Golden Flower (Break)", message_RU: "Золотой цветок (разбить)" },
-			{ type: "text", sub_type: "alert", message: "Dodge Flower!", message_RU: "Заэвейдить цветок!", check_func: () => color === debuff, delay: 1500 }
+			{ type: "text", sub_type: "message", message: "Break Golden Flower", message_RU: "Разбить золотой цветок" },
+			{ type: "text", sub_type: "alert", message: "Dodge the Flower!", message_RU: "Заэвейдить цветок!", check_func: () => color === debuff, delay: 1500 }
 		],
 		"s-982-1000-308-0": [
 			{ type: "func", func: () => color = 0 },
@@ -258,7 +258,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		],
 		"s-982-3011-352-0": [
 			{ type: "text", sub_type: "message", message: "Break Sphere", message_RU: "Разбить сферу", check_func: () => !awakening_two },
-			{ type: "text", sub_type: "message", message: "Break Three Spheres", message_RU: "Разбить три сферы!", check_func: () => awakening_two }
+			{ type: "text", sub_type: "message", message: "Break Three Spheres", message_RU: "Разбить три сферы", check_func: () => awakening_two }
 		],
 		"s-982-3012-353-0": [{ type: "text", sub_type: "message", message: "Break Two Spheres", message_RU: "Разбить две сферы" }]
 	};
