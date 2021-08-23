@@ -150,7 +150,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		],
 
 		"qb-3044-2000-3043201": [{ type: "text", sub_type: "message", message: "Blue Circles (Safe)", message_RU: "Синие круги (сейф-зона)" }], // big
-		"qb-3044-2000-3044201": [{ type: "text", sub_type: "message", message: "Blue Circles (Safe)", message_RU: "Синие круги (сейф-зона)" }], // small
+		"qb-3044-2000-3044201": [{ type: "text", sub_type: "message", message: "Small Blue Circles (Safe)", message_RU: "Синие круги малые (сейф-зона)" }], // small
 		"qb-3044-2000-3044202": [{ type: "text", sub_type: "message", message: "Red Circles (Dodge)", message_RU: "Красные круги (эвейд)" }],
 		"qb-3044-2000-3044400": [{ type: "text", sub_type: "message", message: "Break Statues", message_RU: "Разбить статуи" }]
 	};

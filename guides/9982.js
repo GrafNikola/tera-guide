@@ -11,7 +11,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 	let awakening_two = false;
 	let stack_level = 0;
 
-	function stacks_level_event() { // 118, 143, 145, 146, 144, 147, 148, 154, 155, 161, 162, 213, 215  -> 98200399
+	function stacks_level_event() {
 		if (!awakening_one) return;
 
 		stack_level++;
@@ -43,24 +43,32 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-982-1000-106-0": [{ type: "text", class_position: "tank", sub_type: "message", message: "Heavy", message_RU: "Тяжелый удар" }],
 		"s-982-1000-107-0": [
 			{ type: "text", class_position: "dps", sub_type: "message", message: "Pushback", message_RU: "Откид назад" },
-			{ type: "text", class_position: "heal", sub_type: "message", message: "Pushback (Kaia)", message_RU: "Откид назад (кайя)" },
+			{ type: "text", class_position: "heal", sub_type: "message", message: "Pushback (Kaia)", message_RU: "Откид назад (кайа)" },
 			{ type: "spawn", func: "vector", args: [553, 90, 30, 140, 600, 1000, 2000] },
 			{ type: "spawn", func: "vector", args: [553, 270, 30, -140, 600, 1000, 2000] }
 		],
 		"s-982-1000-108-0": [
-			{ type: "text", sub_type: "message", message: "Bait Front (Flying)", message_RU: "Байт вперед (подлет)" },
-			{ type: "spawn", func: "vector", args: [553, 90, 140, 5, 620, 500, 1500] },
-			{ type: "spawn", func: "vector", args: [553, 270, 140, 355, 620, 500, 1500] }
+			{ type: "text", sub_type: "message", message: "Bait Front (Flying)", message_RU: "Байт вперед (подлет)" }
+		],
+		"s-982-1000-108-1": [
+			{ type: "spawn", func: "vector", args: [553, 90, 140, 5, 620, 0, 1500] },
+			{ type: "spawn", func: "vector", args: [553, 270, 140, 355, 620, 0, 1500] }
 		],
 		"s-982-1000-109-0": [{ type: "text", sub_type: "message", message: "Rocks (Small)", message_RU: "Камни (малые)" }],
 		"s-982-1000-110-0": [{ type: "text", sub_type: "message", message: "Rocks (Large)", message_RU: "Камни (большие)" }],
-		"s-982-1000-111-0": [{ type: "text", sub_type: "message", message: "Stun (Dodge)", message_RU: "Стан (эвейд)", delay: 1500 }],
+		"s-982-1000-111-0": [
+			{ type: "text", sub_type: "message", message: "Stun (Dodge)", message_RU: "Стан (эвейд)", delay: 1500 },
+			{ type: "spawn", func: "circle", args: [true, 553, 180, 50, null, 350, 1500, 2000] }
+		],
 		"s-982-1000-113-0": [{ type: "text", sub_type: "message", message: "Thorns (Bleed)", message_RU: "Колючки (кровоток)" }],
 		"s-982-1000-116-0": [
 			{ type: "text", sub_type: "message", message: "AoE", message_RU: "АоЕ" },
 			{ type: "text", sub_type: "message", message: "Dodge", message_RU: "Эвейд", delay: 2000 }
 		],
-		"s-982-1000-301-0": [{ type: "text", sub_type: "message", message: "Flower Stuns (Dodge)", message_RU: "Оглушающие цветы (эвейд)" }],
+		"s-982-1000-301-0": [
+			{ type: "text", sub_type: "message", message: "Flower Stuns", message_RU: "Оглушающие цветы" },
+			{ type: "text", sub_type: "message", message: "Dodge", message_RU: "Эвейд", delay: 2000 }
+		],
 		"s-982-1000-307-0": [{ type: "text", sub_type: "message", message: "Cage (Don't move)", message_RU: "Клетка (не двигаться)" }],
 		// Flowers mech
 		"ab-982-1003-98200161": [
@@ -114,6 +122,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "spawn", func: "vector", args: [553, 0, 0, 270, 500, 0, 5000] },
 			{ type: "spawn", func: "vector", args: [553, 180, 0, 90, 500, 0, 5000] }
 		],
+		"s-982-2000-117-0": "s-982-2000-116-0",
 		"s-982-2000-301-0": [
 			{ type: "text", sub_type: "message", message: "Get Out | Dodge", message_RU: "От него | Эвейд" },
 			{ type: "text", sub_type: "message", message: "Dodge", message_RU: "Эвейд", delay: 3700 },
@@ -204,10 +213,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "spawn", func: "circle", args: [true, 553, 180, 310, null, 290, 3000, 2500] }
 		],
 		"s-982-3000-213-0": [{ type: "text", sub_type: "message", message: "Tail", message_RU: "Хвост" }],
-		"s-982-3000-215-0": [
-			{ type: "text", sub_type: "message", message: "Tail", message_RU: "Хвост" },
-			{ type: "spawn", func: "circle", args: [true, 553, 180, 340, null, 280, 0, 2000] }
-		],
+		"s-982-3000-215-0": [{ type: "text", sub_type: "message", message: "Tail (Combo)", message_RU: "Хвост (комба)" }],
 		"s-982-3000-139-0": [
 			{ type: "text", sub_type: "message", message: "Wave + Wing (Left Safe)", message_RU: "Волна (лево сейф)", check_func: () => print_wave },
 			{ type: "despawn_all", tag: "wave" },
@@ -252,14 +258,15 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		],
 		"ab-982-3000-98200399": [{ type: "func", func: stacks_level_event }],
 		"s-982-3000-351-0": [
-			{ type: "text", sub_type: "message", message: "Stones (Dodge)", message_RU: "Камни (эвейд)" },
+			{ type: "text", sub_type: "message", message: "Stones", message_RU: "Камни" },
+			{ type: "text", sub_type: "message", message: "Dodge", message_RU: "Эвейд", delay: 2000 },
 			{ type: "text", sub_type: "message", message: "Line up to the plate", message_RU: "Выстроиться к плите", delay: 4000 },
-			{ type: "text", sub_type: "message", message: "Kaia!", message_RU: "Кайя!", delay: 9500 }
+			{ type: "text", sub_type: "message", message: "Kaia!", message_RU: "Кайа!", delay: 9500 }
 		],
 		"s-982-3011-352-0": [
 			{ type: "text", sub_type: "message", message: "Break Sphere", message_RU: "Разбить сферу", check_func: () => !awakening_two },
 			{ type: "text", sub_type: "message", message: "Break Three Spheres", message_RU: "Разбить три сферы", check_func: () => awakening_two }
 		],
-		"s-982-3012-353-0": [{ type: "text", sub_type: "message", message: "Break Two Spheres", message_RU: "Разбить две сферы" }]
+		"s-982-3012-353-0": "s-982-3011-352-0"
 	};
 };
