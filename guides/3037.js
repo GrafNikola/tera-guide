@@ -119,7 +119,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		// Not enraged
 		"s-3037-2000-1101-0": [
 			{ type: "text", sub_type: "message", message: "4 Hit Combo", message_RU: "270 (сейф-зона)" },
-			{ type: "spawn", func: "vector", args: [553, 0, 0, 195, 500, 0, 4000] },
+			{ type: "spawn", func: "vector", args: [553, 0, 0, 195, 500, 0, 3000] },
 			{ type: "spawn", func: "vector", args: [553, 0, 0, 270, 500, 0, 3000] }
 		],
 		"s-3037-2000-1103-0": [
@@ -241,7 +241,6 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "text", sub_type: "message", message: "!", message_RU: "!" },
 			{ type: "text", sub_type: "message", delay: 20000, message: "Last aerolite", message_RU: "Последний метеор" }
 		],
-		"ab-3037-2000-30372303": [{ type: "text", sub_type: "message", message: "Plague/Regress", message_RU: "Регресс" }],
 		"s-3037-2000-1308-0": [{ type: "text", sub_type: "message", message: "Stun (1)", message_RU: "Стан (1)" }],
 		"s-3037-2000-1309-0": [{ type: "text", sub_type: "message", message: "Stun (2)", message_RU: "Стан (2)" }],
 		"s-3037-2000-1310-0": [{ type: "text", sub_type: "message", message: "Stun (3)", message_RU: "Стан (3)" }],
@@ -301,6 +300,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			] },
 			{ type: "spawn", func: "vector", args: [912, 0, 0, 0, 3000, 0, 4000] }
 		],
+		"ab-3037-2000-30372303": [{ type: "text", sub_type: "message", message: "Plague/Regress", message_RU: "Регресс" }],
 		"ab-3037-2000-30372304": [
 			{ type: "text", sub_type: "notification", message: "Stun", message_RU: "Стан!" },
 			{ type: "text", sub_type: "message", message: "Stun", message_RU: "Стан!" }
