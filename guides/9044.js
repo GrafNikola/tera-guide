@@ -199,7 +199,6 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "spawn", func: "vector", args: [553, 290, 95, -5, 300, 0, 3500] },
 			{ type: "spawn", func: "vector", args: [553, 290, 95, 175, 800, 0, 3500] }
 		],
-		"s-444-2000-1126-0": [],
 		"s-444-2000-1131-0": [
 			{ type: "text", sub_type: "message", message: "Front | Left Scratch", message_RU: "Удар вперед | Левый черкаш" },
 			{ type: "text", sub_type: "message", delay: 1350, message: "Dodge", message_RU: "Эвейд" },
