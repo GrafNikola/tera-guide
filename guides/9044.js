@@ -294,7 +294,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		//
 		"s-444-2500-1305-0": [
 			{ type: "event", check_func: () => print_lasers, args: [
-				{ type: "text", sub_type: "message", message: "Лазер", message_RU: "Лазер" },
+				{ type: "text", sub_type: "message", message: "Laser", message_RU: "Лазер" },
 				{ type: "func", func: () => print_lasers = false },
 				{ type: "func", func: () => print_lasers = true, delay: 4000 }
 			] },
