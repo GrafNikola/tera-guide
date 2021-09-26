@@ -5,6 +5,7 @@
 module.exports = (dispatch, handlers, guide, lang) => {
 	guide.type = SP;
 
+	let print_loading = true;
 	let print_lasers = true;
 
 	function waves_event() {
@@ -114,6 +115,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"ns-444-2000": [
 			{ type: "spawn", func: "marker", args: [false, 0, -700, 100, 60000000, false, ["Throne", "Throne Direction"]] },
 			{ type: "spawn", func: "point", args: [513, 0, 800, 100, 60000000] },
+			{ type: "func", func: () => print_loading = true },
 			{ type: "func", func: () => print_lasers = true }
 		],
 		// Not enraged
@@ -291,6 +293,12 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-444-2000-2141-0": "s-444-2000-1141-0",
 		"s-444-2000-2142-0": "s-444-2000-1142-0",
 		//
+		"s-444-2500-1201-0": [
+			{ type: "event", check_func: () => print_loading, args: [
+				{ type: "text", sub_type: "alert", message: "Loading lasers...", message_RU: "Зарядка лазеров..." },
+				{ type: "func", func: () => print_loading = false }
+			] }
+		],
 		"s-444-2500-1305-0": [
 			{ type: "event", check_func: () => print_lasers, args: [
 				{ type: "text", sub_type: "message", message: "Laser", message_RU: "Лазер" },
