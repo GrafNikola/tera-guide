@@ -43,6 +43,7 @@ id | Dungeon name | Название данжа
 3043 | Harnovog's Trial | Крепость Тенебриса (Подземелье испытаний)
 3046 | Rogash's Trial | Лаборатория слияния (Подземелье испытаний)
 3030 | Commander's Residence | Старая резиденция
+3126 | Corrupted Skynest (Hard) | Логово Келсаика (сложно)
 9044 | Bahaar's Sanctum | Святилище Бахаара
 3205 | Cursed Fusion Laboratory | Заколдованная лаборатория слияния
 3107 | Desolarus Testing Grounds | Испытательный полигон Бьюрндена
