@@ -20,15 +20,6 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			4 -> O-O-O-X-O-O
 			5 -> O-O-O-O-X-O
 			6 -> O-O-O-O-O-X
-
-			Example (Y=1, X=6):
-			   1
-			[O-O-O-O-O-O]
-			[O-O-O-O-O-O]
-			[O-O-O-O-O-O]
-			[O-O-O-O-O-O]
-			[O-O-O-O-O-O]
-			[O-X-O-O-O-O] 6
 		*/
 		if (!boss_ent) return;
 
