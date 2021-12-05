@@ -3,20 +3,35 @@
 // made by HSDN / Yuyuko
 
 module.exports = (dispatch, handlers, guide, lang) => {
-	guide.type = SP;
-
+	let stack_level = 0;
 	let back_notice_counter = 0;
 	let back_notice_timer = null;
 
 	function back_notice_event() {
-		dispatch.clearTimeout(back_notice_timer);
 		back_notice_counter++;
 
 		if (back_notice_counter >= 2) {
+			handlers.text({ sub_type: "notification", message: "!!!", speech: false });
 			handlers.text({ sub_type: "message", message: "!!!" });
 		}
 
+		dispatch.clearTimeout(back_notice_timer);
 		back_notice_timer = dispatch.setTimeout(() => back_notice_counter = 0, 3000);
+	}
+
+	function stacks_level_event() {
+		stack_level++;
+
+		if (stack_level > 0) {
+			handlers.text({ sub_type: "notification", message: `Stack ${stack_level}`, message_RU: `Стак ${stack_level}`, speech: false });
+		}
+
+		if (stack_level === 4) {
+			handlers.text({ sub_type: "notification", message: "Charged", message_RU: "Заряжен", speech: false });
+			handlers.text({ sub_type: "alert", message: "Pushback soon", message_RU: "Скоро откид" });
+
+			stack_level = 0;
+		}
 	}
 
 	return {
@@ -24,55 +39,60 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "stop_timers" },
 			{ type: "despawn_all" }
 		],
+		"h-982-3000-99": [{ type: "func", func: () => stack_level = 0 }],
 
-		// Not enraged
-		"s-3108-1000-1104-0": [{ type: "func", func: back_notice_event }],
-		"s-3108-1000-1107-0": [{ type: "text", sub_type: "message", message: "Random Jump", message_RU: "Прыжок (стан)" }],
-		"s-3108-1000-1109-0": [ // out to in
-			{ type: "text", class_position: "tank", sub_type: "message", message: "Right Safe > Inward Waves", message_RU: "Вправо сейф > Волны внутрь" },
-			{ type: "text", class_position: "dps", sub_type: "message", message: "Left Safe > Inward Waves", message_RU: "Влево сейф > Волны внутрь" },
-			{ type: "text", class_position: "heal", sub_type: "message", message: "Left Safe > Inward Waves", message_RU: "Влево сейф > Волны внутрь" },
-			{ type: "spawn", func: "marker", args: [false, 90, -250, 0, 2500, true, null] },
-			{ type: "spawn", func: "vector", args: [553, 0, 0, 180, 500, 0, 2500] },
+		"s-3108-1000-104-0": [{ type: "func", func: back_notice_event }],
+		"s-3108-1000-105-0": [{ type: "text", sub_type: "message", message: "Cage (Target)", message_RU: "Клетка (таргет)" }],
+		"s-3108-1000-107-0": [{ type: "text", sub_type: "message", message: "Random Jump", message_RU: "Прыжок (стан)" }],
+		"s-3108-1000-109-0": [
+			{ type: "text", sub_type: "message", message: "Left Safe | Inward Waves", message_RU: "Влево сейф | Волны внутрь" },
+			{ type: "spawn", func: "marker", args: [false, 90, -250, 0, 1500, true, null] },
+			{ type: "spawn", func: "vector", args: [553, 0, 0, 180, 500, 0, 1500] },
 			{ type: "spawn", func: "vector", args: [553, 0, 0, 0, 500, 0, 1500] },
 			{ type: "spawn", func: "circle", args: [false, 445, 0, 0, 18, 143, 1500, 5000] },
 			{ type: "spawn", func: "circle", args: [false, 445, 0, 0, 12, 293, 1500, 5000] }
 		],
-		"s-3108-1000-1111-0": [ // in to out
-			{ type: "text", class_position: "tank", sub_type: "message", message: "Left Safe > Outward Waves", message_RU: "Влево сейф > Волны наружу" },
-			{ type: "text", class_position: "dps", sub_type: "message", message: "Right Safe > Outward Waves", message_RU: "Вправо сейф > Волны наружу" },
-			{ type: "text", class_position: "heal", sub_type: "message", message: "Right Safe > Outward Waves", message_RU: "Вправо сейф > Волны наружу" },
-			{ type: "spawn", func: "marker", args: [false, 270, -250, 0, 2500, true, null] },
-			{ type: "spawn", func: "vector", args: [553, 0, 0, 180, 500, 0, 2500] },
+		"s-3108-1000-111-0": [
+			{ type: "text", sub_type: "message", message: "Right Safe | Outward Waves", message_RU: "Вправо сейф | Волны наружу" },
+			{ type: "spawn", func: "marker", args: [false, 270, -250, 0, 1500, true, null] },
+			{ type: "spawn", func: "vector", args: [553, 0, 0, 180, 500, 0, 1500] },
 			{ type: "spawn", func: "vector", args: [553, 0, 0, 0, 500, 0, 1500] },
 			{ type: "spawn", func: "circle", args: [false, 445, 0, 0, 18, 157, 1500, 5000] },
 			{ type: "spawn", func: "circle", args: [false, 445, 0, 0, 12, 307, 1500, 5000] }
 		],
-		"s-3108-1000-1113-0": [{ type: "text", sub_type: "message", message: "Front | Back Slam", message_RU: "Передний | Задний" }],
-		"s-3108-1000-1115-0": [{ type: "text", sub_type: "message", message: "Spinning Attack", message_RU: "Круговая" }],
-		"s-3108-1000-1119-0": [{ type: "text", sub_type: "message", message: "Back Attack", message_RU: "Задний" }],
-		"s-3108-1000-1120-0": [{ type: "text", sub_type: "message", message: "Energy Beam", message_RU: "Волна" }],
-		"s-3108-1000-1204-0": [{ type: "text", sub_type: "message", message: "Energy Beam", message_RU: "Волна" }],
-		"s-3108-1000-1207-0": [{ type: "text", sub_type: "message", message: "Double Waves", message_RU: "Двойные волны" }],
-		"s-3108-1000-1209-0": [{ type: "text", sub_type: "message", message: "Spinning (Pushback)", message_RU: "Круговая (откид)" }],
-		"s-3108-1000-1211-0": [{ type: "text", sub_type: "message", message: "Spinning (Pushback)", message_RU: "Круговая (откид)" }],
-		"s-3108-1000-1315-0": [{ type: "text", sub_type: "message", message: "Pushback (Kaia)", message_RU: "Откид (кайа)" }],
+		"s-3108-1000-113-0": [{ type: "text", sub_type: "message", message: "Front | Back Slam", message_RU: "Передний | Задний" }],
+		"s-3108-1000-115-0": [{ type: "text", sub_type: "message", message: "Spinning Attack", message_RU: "Круговая" }],
+		"s-3108-1000-119-0": [{ type: "text", sub_type: "message", message: "Back Attack", message_RU: "Задний" }],
+		"s-3108-1000-120-0": [{ type: "text", sub_type: "message", message: "Energy Beam", message_RU: "Волна" }],
+		"s-3108-1000-204-0": [{ type: "text", sub_type: "message", message: "Energy Beam", message_RU: "Волна" }],
+		"s-3108-1000-206-0": [{ type: "text", sub_type: "message", message: "Orbs", message_RU: "Шары" }],
+		"s-3108-1000-207-0": [{ type: "text", sub_type: "message", message: "Double Waves", message_RU: "Двойные волны" }],
+		"s-3108-1000-309-0": [{ type: "text", sub_type: "message", message: "AoE", message_RU: "АоЕ" }],
+		"s-3108-1000-310-0": [{ type: "text", sub_type: "message", message: "Puddles", message_RU: "Лужи" }],
+		"s-3108-1000-311-0": "s-3108-1000-310-0",
+		"s-3108-1000-312-0": "s-3108-1000-310-0",
+		"s-3108-1000-313-0": "s-3108-1000-310-0",
+		"s-3108-1000-314-0": "s-3108-1000-310-0",
+		"s-3108-1000-315-0": [{ type: "text", sub_type: "message", message: "Pushback (Kaia)", message_RU: "Откид (кайа)" }],
+		"s-3108-1000-322-0": [
+			{ type: "text", sub_type: "message", message: "Blue Debuff Left", message_RU: "Синий дебаф слева" },
+			{ type: "spawn", func: "vector", args: [553, 0, 0, 180, 500, 0, 3000] },
+			{ type: "spawn", func: "vector", args: [553, 0, 0, 0, 500, 0, 3000] }
+		],
+		"s-3108-1000-323-0": [
+			{ type: "text", sub_type: "message", message: "Red Debuff Left", message_RU: "Красный дебаф слева" },
+			{ type: "spawn", func: "vector", args: [553, 0, 0, 180, 500, 0, 3000] },
+			{ type: "spawn", func: "vector", args: [553, 0, 0, 0, 500, 0, 3000] }
+		],
+		"s-3108-1000-400-0": [{ type: "text", sub_type: "message", message: "Clones: Beam", message_RU: "Копии: волны" }],
+		"s-3108-1000-401-0": [{ type: "text", sub_type: "message", message: "Clones: Spin", message_RU: "Копии: круговые" }],
 
-		// Enraged
-		"s-3108-1000-2104-0": "s-3108-1000-1104-0",
-		"s-3108-1000-2107-0": "s-3108-1000-1107-0",
-		"s-3108-1000-2109-0": "s-3108-1000-1109-0",
-		"s-3108-1000-2111-0": "s-3108-1000-1111-0",
-		"s-3108-1000-2113-0": "s-3108-1000-1113-0",
-		"s-3108-1000-2115-0": "s-3108-1000-1115-0",
-		"s-3108-1000-2119-0": "s-3108-1000-1119-0",
-		"s-3108-1000-2120-0": "s-3108-1000-1120-0",
-		"s-3108-1000-2204-0": "s-3108-1000-1204-0",
-		"s-3108-1000-2207-0": "s-3108-1000-1207-0",
-		"s-3108-1000-2209-0": "s-3108-1000-1209-0",
-		"s-3108-1000-2211-0": "s-3108-1000-1211-0",
-
-		"s-3108-1000-1400-0": [{ type: "text", sub_type: "message", message: "Clones: Beam", message_RU: "Копии: волны" }], // 9023025
-		"s-3108-1000-1401-0": [{ type: "text", sub_type: "message", message: "Clones: Spin", message_RU: "Копии: круговые" }] // 9023027
+		"ab-3108-1000-31083063": [{ type: "func", func: stacks_level_event }],
+		"ab-3108-1000-31083064": [{ type: "func", func: stacks_level_event }],
+		"s-3108-1000-209-0": [
+			{ type: "text", sub_type: "message", message: "Pushback!", message_RU: "Откид!" },
+			{ type: "func", func: () => stack_level = 0 }
+		],
+		"s-3108-1000-211-0": "s-3108-1000-209-0"
 	};
 };
