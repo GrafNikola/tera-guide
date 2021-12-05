@@ -39,7 +39,9 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "stop_timers" },
 			{ type: "despawn_all" }
 		],
-		"h-982-3000-99": [{ type: "func", func: () => stack_level = 0 }],
+		"h-3108-1000-99": [{ type: "func", func: () => stack_level = 0 }],
+		"h-3105-1000-60": [{ type: "text", sub_type: "message", message: "60%", message_RU: "60%" }],
+		"h-3105-1000-40": [{ type: "text", sub_type: "message", message: "40%", message_RU: "40%" }],
 
 		"s-3108-1000-104-0": [{ type: "func", func: back_notice_event }],
 		"s-3108-1000-105-0": [{ type: "text", sub_type: "message", message: "Cage (Target)", message_RU: "Клетка (таргет)" }],
@@ -93,6 +95,8 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "text", sub_type: "message", message: "Pushback!", message_RU: "Откид!" },
 			{ type: "func", func: () => stack_level = 0 }
 		],
-		"s-3108-1000-211-0": "s-3108-1000-209-0"
+		"s-3108-1000-211-0": "s-3108-1000-209-0",
+
+		"qb-3108-1000-31083002": [{ type: "text", sub_type: "message", message: "Cage", message_RU: "Клетка" }]
 	};
 };
