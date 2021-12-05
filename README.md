@@ -42,7 +42,7 @@ id | Dungeon name | Название данжа
 3042 | Gardan's Trial | Место казни (Подземелье испытаний)
 3043 | Harnovog's Trial | Крепость Тенебриса (Подземелье испытаний)
 3046 | Rogash's Trial | Лаборатория слияния (Подземелье испытаний)
-3030 | Commander's Residence | Старая резиденция
+3108 | Cursed Antaroth's Abyss | Проклятый Омут Антароса
 3126 | Corrupted Skynest (Hard) | Логово Келсаика (сложно)
 9044 | Bahaar's Sanctum | Святилище Бахаара
 3205 | Cursed Fusion Laboratory | Заколдованная лаборатория слияния

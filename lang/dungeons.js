@@ -35,7 +35,11 @@ module.exports = {
 		"ru": "Лаборатория слияния (Подземелье испытаний)"
 	},
 	3126: {
-		"en": "Corrupted Skynest (Hard) ",
+		"en": "Corrupted Skynest (Hard)",
 		"ru": "Логово Келсаика (сложно)"
+	},
+	3108: {
+		"en": "Cursed Antaroth's Abyss",
+		"ru": "Проклятый Омут Антароса"
 	}
 };
