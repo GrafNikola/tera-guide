@@ -89,8 +89,8 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "spawn", func: "semicircle", args: [0, 180, 912, 0, 0, 10, 300, 0, 1500] },
 			{ type: "spawn", func: "semicircle", args: [0, 180, 912, 0, 0, 8, 360, 0, 1500] },
 			{ type: "spawn", func: "marker", args: [false, 270, 300, 0, 1500, true, null] },
-			{ type: "spawn", func: "circle", args: [false, 445, 0, 0, 18, 157, 1000, 4000] },
-			{ type: "spawn", func: "circle", args: [false, 445, 0, 0, 12, 307, 1000, 4000] }
+			{ type: "spawn", func: "circle", args: [false, 445, 0, 0, 18, 157, 1500, 4000] },
+			{ type: "spawn", func: "circle", args: [false, 445, 0, 0, 12, 307, 1500, 4000] }
 		],
 		"s-3108-1000-111-0": [
 			{ type: "text", sub_type: "message", message: "Right", message_RU: "Право" },
@@ -103,8 +103,8 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "spawn", func: "semicircle", args: [180, 360, 912, 0, 0, 10, 300, 0, 1500] },
 			{ type: "spawn", func: "semicircle", args: [180, 360, 912, 0, 0, 8, 360, 0, 1500] },
 			{ type: "spawn", func: "marker", args: [false, 90, 300, 0, 1500, true, null] },
-			{ type: "spawn", func: "circle", args: [false, 445, 0, 0, 18, 157, 1000, 4000] },
-			{ type: "spawn", func: "circle", args: [false, 445, 0, 0, 12, 307, 1000, 4000] }
+			{ type: "spawn", func: "circle", args: [false, 445, 0, 0, 18, 157, 1500, 4000] },
+			{ type: "spawn", func: "circle", args: [false, 445, 0, 0, 12, 307, 1500, 4000] }
 		],
 
 		// Orbs mech
