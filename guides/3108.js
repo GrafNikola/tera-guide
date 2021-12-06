@@ -29,16 +29,11 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		}
 
 		if (now - rotation_last - rotation_delay < 2900) {
-			handlers.text({ type: "text", sub_type: "message", message: "Back Attack", message_RU: "Задний" });
+			handlers.text({ sub_type: "message", message: "Back Attack", message_RU: "Задний" });
 		}
 
 		rotation_last = now;
 		boss_id = ent.gameId;
-	}
-
-	function back_attack_event() {
-		rotation_last = 0;
-		rotation_delay_last = 0;
 	}
 
 	function cage_colour_event() {
@@ -93,7 +88,15 @@ module.exports = (dispatch, handlers, guide, lang) => {
 
 		// Back attack mech
 		"s-3108-1000-104-0": [{ type: "func", func: round_attack_event }],
-		"s-3108-1000-119-0": [{ type: "func", func: back_attack_event }],
+		"s-3108-1000-116-0": [
+			{ type: "func", func: () => rotation_last = 0 },
+			{ type: "func", func: () => rotation_delay_last = 0 }
+		],
+		"s-3108-1000-119-0": [
+			{ type: "func", func: () => rotation_last = 0 },
+			{ type: "func", func: () => rotation_delay_last = 0 },
+			{ type: "spawn", func: "circle", args: [false, 553, 0, -325, 12, 325, 0, 2000] }
+		],
 
 		// Waves mech
 		"s-3108-1000-201-0": [{ type: "func", func: () => blue_sword = false }],
@@ -102,6 +105,8 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "text", sub_type: "message", message: "Left", message_RU: "Лево" },
 			{ type: "text", sub_type: "message", message: "Inward (In > Out)", message_RU: "Внутрь (к нему > от него)", check_func: () => !blue_sword, delay: 1000 },
 			{ type: "text", sub_type: "message", message: "Unstable (In > In > Mid)", message_RU: "Двойные (к нему > к нему > середина)", check_func: () => blue_sword, delay: 1000 },
+			{ type: "spawn", func: "vector", args: [553, 0, 0, 180, 500, 0, 1500] },
+			{ type: "spawn", func: "vector", args: [553, 0, 0, 0, 500, 0, 1500] },
 			{ type: "spawn", func: "semicircle", args: [0, 180, 912, 0, 0, 20, 160, 0, 1500] },
 			{ type: "spawn", func: "semicircle", args: [0, 180, 912, 0, 0, 12, 220, 0, 1500] },
 			{ type: "spawn", func: "semicircle", args: [0, 180, 912, 0, 0, 10, 300, 0, 1500] },
@@ -114,6 +119,8 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "text", sub_type: "message", message: "Right", message_RU: "Право" },
 			{ type: "text", sub_type: "message", message: "Outward (Out > In)", message_RU: "Наружу (от него > к нему)", check_func: () => !blue_sword, delay: 1000 },
 			{ type: "text", sub_type: "message", message: "Unstable (Mid > In > Mid)", message_RU: "Двойные (середина > к нему > середина)", check_func: () => blue_sword, delay: 1000 },
+			{ type: "spawn", func: "vector", args: [553, 0, 0, 180, 500, 0, 1500] },
+			{ type: "spawn", func: "vector", args: [553, 0, 0, 0, 500, 0, 1500] },
 			{ type: "spawn", func: "semicircle", args: [180, 360, 912, 0, 0, 20, 160, 0, 1500] },
 			{ type: "spawn", func: "semicircle", args: [180, 360, 912, 0, 0, 12, 220, 0, 1500] },
 			{ type: "spawn", func: "semicircle", args: [180, 360, 912, 0, 0, 10, 300, 0, 1500] },
@@ -138,9 +145,9 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		],
 
 		// Pushback mech
-		"ab-3108-1000-31083063-1": [{ type: "text", sub_type: "message", message: "Stack 1", message_RU: "Стак 1" }],
-		"ab-3108-1000-31083063-2": [{ type: "text", sub_type: "message", message: "Stack 2", message_RU: "Стак 2" }],
-		"ab-3108-1000-31083063-3": [{ type: "text", sub_type: "message", message: "Stack 3", message_RU: "Стак 3" }],
+		"ab-3108-1000-31083063-1": [{ type: "text", sub_type: "notification", message: "Stack 1", message_RU: "Стак 1" }],
+		"ab-3108-1000-31083063-2": [{ type: "text", sub_type: "notification", message: "Stack 2", message_RU: "Стак 2" }],
+		"ab-3108-1000-31083063-3": [{ type: "text", sub_type: "notification", message: "Stack 3", message_RU: "Стак 3" }],
 		"ab-3108-1000-31083064": [
 			{ type: "text", sub_type: "notification", message: "Charged", message_RU: "Заряжен", speech: false },
 			{ type: "text", sub_type: "alert", message: "Pushback soon", message_RU: "Скоро откид" }
