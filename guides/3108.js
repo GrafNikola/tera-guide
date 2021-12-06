@@ -5,35 +5,20 @@
 const util = require("util");
 
 module.exports = (dispatch, handlers, guide, lang) => {
+	let two_slash_time = 0;
 	let blue_sword = false;
 	let stack_red = 0;
 	let stack_blue = 0;
 	let stack_yellow = 0;
-	let boss_id = null;
-	let rotation_last = 0;
-	let rotation_delay = 0;
-	let rotation_delay_last = 0;
 
-	dispatch.hook("S_CREATURE_ROTATE", 2, event => {
-		if (!rotation_last || boss_id !== event.gameId) return;
+	function two_slash_event() {
+		const now_time = new Date();
 
-		rotation_delay_last = Date.now();
-		rotation_delay = event.time;
-	});
-
-	function round_attack_event(ent) {
-		const now = Date.now();
-
-		if (now - rotation_delay_last > 1200) {
-			rotation_delay = 0;
+		if ((now_time - two_slash_time) > 1800 && (now_time - two_slash_time) < 2250) {
+			handlers.text({ sub_type: "message", message: "Back Stun", message_RU: "Задняя" });
 		}
 
-		if (now - rotation_last - rotation_delay < 2900) {
-			handlers.text({ sub_type: "message", message: "Back Attack", message_RU: "Задний" });
-		}
-
-		rotation_last = now;
-		boss_id = ent.gameId;
+		two_slash_time = now_time;
 	}
 
 	function cage_colour_event() {
@@ -66,12 +51,12 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"h-3108-1000-64": [{ type: "text", sub_type: "message", message: "64%", message_RU: "64%" }],
 		"h-3105-1000-40": [{ type: "text", sub_type: "message", message: "40%", message_RU: "40%" }],
 
-		"s-3108-1000-105-0": [{ type: "text", sub_type: "message", message: "Cage (Target)", message_RU: "Клетка (таргет)" }],
+		"s-3108-1000-105-0": [{ type: "text", sub_type: "message", message: "Target Cage", message_RU: "Клетка (таргет)" }],
 		"s-3108-1000-107-0": [{ type: "text", sub_type: "message", message: "Random Jump", message_RU: "Прыжок (стан)" }],
 		"s-3108-1000-113-0": [
-			{ type: "text", sub_type: "message", message: "Front | Back Slam", message_RU: "Передний | Задний" },
-			{ type: "spawn", func: "circle", args: [false, 553, 0, 325, 12, 325, 0, 2000] },
-			{ type: "spawn", func: "circle", args: [false, 553, 0, -325, 12, 325, 500, 2000] }
+			{ type: "text", sub_type: "message", message: "Front | Back Stun", message_RU: "Передний | Задний" },
+			{ type: "spawn", func: "circle", args: [true, 553, 0, 325, 12, 325, 0, 2000] },
+			{ type: "spawn", func: "circle", args: [true, 553, 0, -325, 12, 325, 500, 2000] }
 		],
 		"s-3108-1000-115-0": [{ type: "text", sub_type: "message", message: "Spinning Attack", message_RU: "Круговая" }],
 		"s-3108-1000-131-0": [{ type: "text", sub_type: "message", message: "Front Knockup", message_RU: "Подкид вперед" }],
@@ -86,17 +71,9 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-3108-1000-400-0": [{ type: "text", sub_type: "message", message: "Clones: Beam", message_RU: "Копии: волны" }],
 		"s-3108-1000-401-0": [{ type: "text", sub_type: "message", message: "Clones: Spin", message_RU: "Копии: круговые" }],
 
-		// Back attack mech
-		"s-3108-1000-104-0": [{ type: "func", func: round_attack_event }],
-		"s-3108-1000-116-0": [
-			{ type: "func", func: () => rotation_last = 0 },
-			{ type: "func", func: () => rotation_delay_last = 0 }
-		],
-		"s-3108-1000-119-0": [
-			{ type: "func", func: () => rotation_last = 0 },
-			{ type: "func", func: () => rotation_delay_last = 0 },
-			{ type: "spawn", func: "circle", args: [false, 553, 0, -325, 12, 325, 0, 2000] }
-		],
+		// Back stun mech
+		"s-3108-1000-104-0": [{ type: "func", func: two_slash_event }],
+		"s-3108-1000-119-0": [{ type: "spawn", func: "circle", args: [true, 553, 0, -325, 12, 325, 0, 2000] }],
 
 		// Waves mech
 		"s-3108-1000-201-0": [{ type: "func", func: () => blue_sword = false }],
@@ -135,17 +112,17 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-3108-1000-315-0": [{ type: "text", sub_type: "message", message: "Pushback (Kaia)", message_RU: "Откид (кайа)" }],
 		"s-3108-1000-320-0": [
 			{ type: "text", sub_type: "message", message: "Left: Blue | Right: Red", message_RU: "Лево: синий | Право: красный" },
-			{ type: "spawn", func: "marker", args: [false, 90, 300, 0, 3000, "red", null] },
-			{ type: "spawn", func: "marker", args: [false, 270, 300, 0, 3000, "purple", null] },
-			{ type: "spawn", func: "vector", args: [553, 0, 0, 180, 500, 0, 3000] },
-			{ type: "spawn", func: "vector", args: [553, 0, 0, 0, 500, 0, 3000] }
+			{ type: "spawn", func: "marker", args: [false, 90, 300, 0, 6000, "red", null] },
+			{ type: "spawn", func: "marker", args: [false, 270, 300, 0, 6000, "purple", null] },
+			{ type: "spawn", func: "vector", args: [553, 0, 0, 180, 500, 0, 6000] },
+			{ type: "spawn", func: "vector", args: [553, 0, 0, 0, 500, 0, 6000] }
 		],
 		"s-3108-1000-321-0": [
 			{ type: "text", sub_type: "message", message: "Left: Red | Right: Blue", message_RU: "Лево: красный | Право: синий" },
-			{ type: "spawn", func: "marker", args: [false, 270, 300, 0, 3000, "red", null] },
-			{ type: "spawn", func: "marker", args: [false, 90, 300, 0, 3000, "purple", null] },
-			{ type: "spawn", func: "vector", args: [553, 0, 0, 180, 500, 0, 3000] },
-			{ type: "spawn", func: "vector", args: [553, 0, 0, 0, 500, 0, 3000] }
+			{ type: "spawn", func: "marker", args: [false, 270, 300, 0, 6000, "red", null] },
+			{ type: "spawn", func: "marker", args: [false, 90, 300, 0, 6000, "purple", null] },
+			{ type: "spawn", func: "vector", args: [553, 0, 0, 180, 500, 0, 6000] },
+			{ type: "spawn", func: "vector", args: [553, 0, 0, 0, 500, 0, 6000] }
 		],
 
 		// Pushback mech
