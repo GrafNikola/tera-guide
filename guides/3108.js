@@ -68,6 +68,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-3108-1000-312-0": "s-3108-1000-310-0",
 		"s-3108-1000-313-0": "s-3108-1000-310-0",
 		"s-3108-1000-314-0": "s-3108-1000-310-0",
+		"s-3108-1000-315-0": [{ type: "text", sub_type: "message", message: "Pushback (Kaia)", message_RU: "Откид (кайа)" }],
 		"s-3108-1000-400-0": [{ type: "text", sub_type: "message", message: "Clones: Beam", message_RU: "Копии: волны" }],
 		"s-3108-1000-401-0": [{ type: "text", sub_type: "message", message: "Clones: Spin", message_RU: "Копии: круговые" }],
 
@@ -109,7 +110,6 @@ module.exports = (dispatch, handlers, guide, lang) => {
 
 		// Orbs mech
 		"s-3108-1000-206-0": [{ type: "text", sub_type: "message", message: "Orbs", message_RU: "Шары" }],
-		"s-3108-1000-315-0": [{ type: "text", sub_type: "message", message: "Pushback (Kaia)", message_RU: "Откид (кайа)" }],
 		"s-3108-1000-320-0": [
 			{ type: "text", sub_type: "message", message: "Left: Blue | Right: Red", message_RU: "Лево: синий | Право: красный" },
 			{ type: "spawn", func: "marker", args: [false, 90, 300, 0, 6000, "red", null] },
