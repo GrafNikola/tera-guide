@@ -135,11 +135,15 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-3108-1000-315-0": [{ type: "text", sub_type: "message", message: "Pushback (Kaia)", message_RU: "Откид (кайа)" }],
 		"s-3108-1000-320-0": [
 			{ type: "text", sub_type: "message", message: "Left: Blue | Right: Red", message_RU: "Лево: синий | Право: красный" },
+			{ type: "spawn", func: "marker", args: [false, 90, 300, 0, 3000, "red", null] },
+			{ type: "spawn", func: "marker", args: [false, 270, 300, 0, 3000, "purple", null] },
 			{ type: "spawn", func: "vector", args: [553, 0, 0, 180, 500, 0, 3000] },
 			{ type: "spawn", func: "vector", args: [553, 0, 0, 0, 500, 0, 3000] }
 		],
 		"s-3108-1000-321-0": [
 			{ type: "text", sub_type: "message", message: "Left: Red | Right: Blue", message_RU: "Лево: красный | Право: синий" },
+			{ type: "spawn", func: "marker", args: [false, 270, 300, 0, 3000, "red", null] },
+			{ type: "spawn", func: "marker", args: [false, 90, 300, 0, 3000, "purple", null] },
 			{ type: "spawn", func: "vector", args: [553, 0, 0, 180, 500, 0, 3000] },
 			{ type: "spawn", func: "vector", args: [553, 0, 0, 0, 500, 0, 3000] }
 		],
