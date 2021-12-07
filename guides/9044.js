@@ -309,7 +309,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		],
 		"ab-444-2000-90442303": [{ type: "text", sub_type: "message", message: "Plague/Regress", message_RU: "Регресс" }],
 		"ab-444-2000-90442304": [
-			{ type: "text", sub_type: "notification", message: "Stun", message_RU: "Стан!" },
+			{ type: "text", sub_type: "notification", message: "Stun", message_RU: "Стан!", speech: false },
 			{ type: "text", sub_type: "message", message: "Stun", message_RU: "Стан!" }
 		]
 	};
