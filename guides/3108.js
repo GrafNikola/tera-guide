@@ -10,6 +10,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 	let stack_red = 0;
 	let stack_blue = 0;
 	let stack_yellow = 0;
+	let buff_merciless = false;
 
 	function two_slash_event() {
 		const now_time = new Date();
@@ -49,19 +50,27 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "despawn_all" }
 		],
 		"h-3108-1000-64": [{ type: "text", sub_type: "message", message: "64%", message_RU: "64%" }],
-		"h-3105-1000-40": [{ type: "text", sub_type: "message", message: "40%", message_RU: "40%" }],
+		"h-3108-1000-40": [{ type: "text", sub_type: "message", message: "40%", message_RU: "40%" }],
+
+		"ab-3108-1000-40004011": [{ type: "func", func: () => buff_merciless = true }], // resonance 31+ effect
 
 		"s-3108-1000-105-0": [{ type: "text", sub_type: "message", message: "Target Cage", message_RU: "Клетка (таргет)" }],
-		"s-3108-1000-107-0": [{ type: "text", sub_type: "message", message: "Random Jump", message_RU: "Прыжок (стан)" }],
+		"s-3108-1000-107-0": [
+			{ type: "text", sub_type: "message", message: "Random Jump", message_RU: "Прыжок (стан)" },
+			{ type: "spawn", func: "circle", args: [true, 553, 0, 85, 12, 250, 0, 3000] },
+			{ type: "text", sub_type: "message", message: "Spin soon", message_RU: "Скоро круговая", check_func: () => buff_merciless, delay: 1000 }
+		],
 		"s-3108-1000-113-0": [
 			{ type: "text", sub_type: "message", message: "Front | Back Stun", message_RU: "Передний | Задний" },
 			{ type: "spawn", func: "circle", args: [true, 553, 0, 325, 12, 325, 0, 2000] },
-			{ type: "spawn", func: "circle", args: [true, 553, 0, -325, 12, 325, 500, 2000] }
+			{ type: "spawn", func: "circle", args: [true, 553, 0, -325, 12, 325, 500, 2000] },
+			{ type: "text", sub_type: "message", message: "Spin soon", message_RU: "Скоро круговая", check_func: () => buff_merciless, delay: 500 }
 		],
-		"s-3108-1000-115-0": [{ type: "text", sub_type: "message", message: "Spinning Attack", message_RU: "Круговая" }],
+		"s-3108-1000-115-0": [{ type: "text", sub_type: "message", message: "Spin Attack", message_RU: "Круговая" }],
 		"s-3108-1000-131-0": [{ type: "text", sub_type: "message", message: "Front Knockup", message_RU: "Подкид вперед" }],
-		"s-3108-1000-120-0": [{ type: "text", sub_type: "message", message: "Energy Beam", message_RU: "Волна" }],
-		"s-3108-1000-204-0": [{ type: "text", sub_type: "message", message: "Energy Beam", message_RU: "Волна" }],
+		"s-3108-1000-120-0": [{ type: "text", sub_type: "message", message: "Energy Beam (Slow)", message_RU: "Волна (медленно)" }],
+		"s-3108-1000-122-0": [{ type: "text", sub_type: "message", message: "Energy Beam (Slow)", message_RU: "Волна (медленно)" }],
+		"s-3108-1000-204-0": [{ type: "text", sub_type: "message", message: "Energy Beam (Fast)", message_RU: "Волна (быстро)" }],
 		"s-3108-1000-309-0": [{ type: "text", sub_type: "message", message: "AoE", message_RU: "АоЕ" }],
 		"s-3108-1000-310-0": [{ type: "text", sub_type: "message", message: "Puddles", message_RU: "Лужи" }],
 		"s-3108-1000-311-0": "s-3108-1000-310-0",
@@ -74,7 +83,10 @@ module.exports = (dispatch, handlers, guide, lang) => {
 
 		// Back stun mech
 		"s-3108-1000-104-0": [{ type: "func", func: two_slash_event }],
-		"s-3108-1000-119-0": [{ type: "spawn", func: "circle", args: [true, 553, 0, -325, 12, 325, 0, 2000] }],
+		"s-3108-1000-119-0": [
+			{ type: "spawn", func: "circle", args: [true, 553, 0, -325, 12, 325, 0, 2000] },
+			{ type: "text", sub_type: "message", message: "Spin soon", message_RU: "Скоро круговая", check_func: () => buff_merciless, delay: 500 }
+		],
 
 		// Waves mech
 		"s-3108-1000-201-0": [{ type: "func", func: () => blue_sword = false }],
