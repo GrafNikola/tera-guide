@@ -59,7 +59,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "text", sub_type: "message", message: "Random Jump", message_RU: "Прыжок (стан)" },
 			{ type: "text", sub_type: "message", message: "Spin soon", message_RU: "Скоро круговая", check_func: () => buff_merciless, delay: 1000 }
 		],
-		"s-3108-1000-107-1": [{ type: "spawn", func: "circle", args: [true, 553, 0, 85, 12, 250, 0, 3000] }],
+		"s-3108-1000-107-1": [{ type: "spawn", func: "circle", args: [false, 553, 0, 85, 12, 250, 0, 3000] }],
 		"s-3108-1000-113-0": [
 			{ type: "text", sub_type: "message", message: "Front | Back Stun", message_RU: "Передний | Задний" },
 			{ type: "spawn", func: "circle", args: [true, 553, 0, 325, 12, 325, 0, 2000] },
