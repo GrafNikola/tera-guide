@@ -5,8 +5,8 @@ The dungeon guide module with Text-to-speech notifications, display hints on scr
 
 #### Other translations / Другие локализации
 * [**Spanish (Español)** by Loliconera](https://github.com/Loliconera/tera-guide-spanish)
-* [**Spanish (Español)** by Emilia](https://github.com/emilia-s2/Guia-DG-Espanol)
-* [**Portuguese (Português)** by Emilia](https://github.com/emilia-s2/Guia-DG-Portugues)
+* [**Spanish (Español)** by Emilia](https://github.com/emilia-s2/Guia-DG-Portugues-Espanol)
+* [**Portuguese (Português)** by Emilia](https://github.com/emilia-s2/Guia-DG-Portugues-Espanol)
 
 ## Dependencies / Зависимости
 * **tera-guide-core** - https://github.com/hsdn/tera-guide-core
