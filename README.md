@@ -46,7 +46,7 @@ id | Dungeon name | Название данжа
 3126 | Corrupted Skynest (Hard) | Логово Келсаика (сложно)
 9982 | Grotto of Lost Souls (Hard) | Мастерская Леандра (сложно)
 3044 | Stormed Citadel | Захваченная крепость Тенебриса
-9920 | Antaroth's Abyss (Hard) |Омут Антароса (сложно)
+9920 | Antaroth's Abyss (Hard) | Омут Бездушного Антароса
 3036 | Sky Cruiser (Hard) | Небесный крейсер (сложно)
 9068 | Shadow Sanguinary (Hard) | Убежище Дуриона (сложно)
 3027 | Forbidden Arena [Hagufna] | [Бессмертный воин] Арена безумия
