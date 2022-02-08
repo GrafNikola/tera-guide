@@ -44,18 +44,13 @@ id | Dungeon name | Название данжа
 3046 | Rogash's Trial | Лаборатория слияния (Подземелье испытаний)
 3108 | Cursed Antaroth's Abyss | Проклятый Омут Антароса
 3126 | Corrupted Skynest (Hard) | Логово Келсаика (сложно)
-9044 | Bahaar's Sanctum | Святилище Бахаара
-3205 | Cursed Fusion Laboratory | Заколдованная лаборатория слияния
-3107 | Desolarus Testing Grounds | Испытательный полигон Бьюрндена
-3036 | Sky Cruiser (Hard) | Небесный крейсер (сложно)
-3104 | Catalepticon | Сонный паралич Лукмии
 9982 | Grotto of Lost Souls (Hard) | Мастерская Леандра (сложно)
-3105 | Fusion Laboratory | Лаборатория слияния
 3044 | Stormed Citadel | Захваченная крепость Тенебриса
-3041 | Damned Citadel | Проклятая крепость Тенебриса
-3102 | Draakon Arena | Командный центр
-9780 | Velik's Hold (5-Person) | Вход в катакомбы Велики
-3023 | Akalath Quarantine | Секретное подземелье крепости Берарк
+9920 | Antaroth's Abyss (Hard) |Омут Антароса (сложно)
+3036 | Sky Cruiser (Hard) | Небесный крейсер (сложно)
+9068 | Shadow Sanguinary (Hard) | Убежище Дуриона (сложно)
+3027 | Forbidden Arena [Hagufna] | [Бессмертный воин] Арена безумия
+3105 | Fusion Laboratory | Лаборатория Слияния
 
 ## Notices settings / Настройка уведомлений
 

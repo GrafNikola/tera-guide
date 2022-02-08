@@ -123,6 +123,20 @@ module.exports = function MigrateSettings(from_ver, to_ver, settings) {
 					"guides/9970.js"
 				]);
 				break;
+
+			case 1.18:
+				remove([
+					"guides/3023.js",
+					"guides/3030.js",
+					"guides/3041.js",
+					"guides/3102.js",
+					"guides/3104.js",
+					"guides/3107.js",
+					"guides/3205.js",
+					"guides/9044.js",
+					"guides/9780.js"
+				]);
+				break;
 		}
 
 		for (const option in oldsettings) {
