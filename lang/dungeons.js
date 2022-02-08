@@ -36,7 +36,7 @@ module.exports = {
 	},
 	3126: {
 		"en": "Corrupted Skynest (Hard)",
-		"ru": "Логово Келсаика (сложно)"
+		"ru": "Логово Бессмертного Келсаика"
 	},
 	3108: {
 		"en": "Cursed Antaroth's Abyss",
