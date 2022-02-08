@@ -1,5 +1,4 @@
 {
-    "disableAutoUpdate": false,
     "name": "tera-guide",
     "options": {
         "niceName": "Guide",
@@ -16,5 +15,6 @@
         "library": "https://raw.githubusercontent.com/tera-toolbox-mods/library/master/module.json",
         "tera-guide-core": "https://raw.githubusercontent.com/hsdn/tera-guide-core/master/module.json"
     },
+    "disableAutoUpdate": false,
     "version": "2/8/2022"
 }

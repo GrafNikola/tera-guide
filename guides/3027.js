@@ -7,17 +7,17 @@
 module.exports = (dispatch, handlers, guide, lang) => {
 	const { HIGHLIGHT_ITEM } = module.parent.exports.spawn;
 
-	let timer1 = null;
-	let timer2 = null;
+	let shield_timer1 = null;
+	let shield_timer2 = null;
 	let print_shield = true;
 	let print_hp = true;
 	let is_hp_74_39 = false;
 
 	function shield_event() {
-		dispatch.clearTimeout(timer1);
-		dispatch.clearTimeout(timer2);
+		dispatch.clearTimeout(shield_timer1);
+		dispatch.clearTimeout(shield_timer2);
 
-		timer1 = dispatch.setTimeout(() => {
+		shield_timer1 = dispatch.setTimeout(() => {
 			if (!is_hp_74_39) {
 				handlers.text({
 					sub_type: "message",
@@ -27,7 +27,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			}
 		}, 85000);
 
-		timer2 = dispatch.setTimeout(() => {
+		shield_timer2 = dispatch.setTimeout(() => {
 			if (!is_hp_74_39) {
 				handlers.text({
 					sub_type: "message",
@@ -41,8 +41,8 @@ module.exports = (dispatch, handlers, guide, lang) => {
 	function boss_hp_event(hp) {
 		if ([74, 39].includes(hp)) {
 			if (print_hp) {
-				dispatch.clearTimeout(timer1);
-				dispatch.clearTimeout(timer2);
+				dispatch.clearTimeout(shield_timer1);
+				dispatch.clearTimeout(shield_timer2);
 				print_hp = false;
 				is_hp_74_39 = true;
 				dispatch.setTimeout(() => print_hp = true, 15000);
