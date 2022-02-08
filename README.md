@@ -44,8 +44,6 @@ id | Dungeon name | Название данжа
 3046 | Rogash's Trial | Лаборатория слияния (Подземелье испытаний)
 3108 | Cursed Antaroth's Abyss | Проклятый Омут Антароса
 3126 | Corrupted Skynest (Hard) | Логово Келсаика (сложно)
-9982 | Grotto of Lost Souls (Hard) | Мастерская Леандра (сложно)
-3044 | Stormed Citadel | Захваченная крепость Тенебриса
 9920 | Antaroth's Abyss (Hard) | Омут Бездушного Антароса
 3036 | Sky Cruiser (Hard) | Небесный крейсер (сложно)
 9068 | Shadow Sanguinary (Hard) | Убежище Дуриона (сложно)
