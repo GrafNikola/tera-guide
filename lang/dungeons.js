@@ -10,14 +10,6 @@ module.exports = {
 		"en": "Escape from Balder's Refuge (Guardian)",
 		"ru": "Спасти Убежище Балдера (хранитель)"
 	},
-	3032: {
-		"en": "Akalath Quarantine (Guide)",
-		"ru": "[Тренировка] Секретное подземелье крепости Берарк"
-	},
-	3037: {
-		"en": "Bahaar's Sanctum (Guide)",
-		"ru": "[Тренировка] Святилище Бахаара"
-	},
 	3040: {
 		"en": "Lumikan's Trial",
 		"ru": "Сонный паралич Лукмии (Подземелье испытаний)"
