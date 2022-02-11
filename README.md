@@ -36,8 +36,6 @@ id | Dungeon name | Название данжа
 --- | --- | ---
 7011 | Shadow of the Gutrends (Guardian) | Живодеры и черная тень (хранитель)
 7015 | Escape from Balder's Refuge (Guardian) | Операция "Спасти Убежище Балдера" (хранитель)
-3037 | Bahaar's Sanctum (Guide) | [Тренировка] Святилище Бахаара
-3032 | Akalath Quarantine (Guide) | [Тренировка] Секретное подземелье крепости Берарк
 3040 | Lumikan's Trial | Сонный паралич Лукмии (Подземелье испытаний)
 3042 | Gardan's Trial | Место казни (Подземелье испытаний)
 3043 | Harnovog's Trial | Крепость Тенебриса (Подземелье испытаний)
