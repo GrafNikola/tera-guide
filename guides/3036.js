@@ -15,7 +15,8 @@ module.exports = (dispatch, handlers, guide, lang) => {
 	let enrage = 0;
 	// let enrage_time = 0;
 	let counter = 0;
-	let is_hp_79 = false;
+	// let is_hp_79 = false;
+	let is_hp_49 = false;
 	let mech_total = 0;
 	let mech_counter = 0;
 
@@ -96,7 +97,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 
 	function boss_mech_eventP2(skillid) {
 		// enrage = new Date() - enrage_time >= 35100 ? 0 : 1;
-		mech_total = triple_attack ? (is_hp_79 ? 4 : 3) : 2;
+		mech_total = triple_attack ? (is_hp_49 ? 4 : 3) : 2; // is_hp_79
 
 		if (mech_counter == 0) {
 			handlers.text({ sub_type: "message",
@@ -184,9 +185,11 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "func", func: () => enrage = 0 }
 		],
 		*/
-		"h-3036-1000-100": [{ type: "func", func: () => is_hp_79 = false }],
+		// "h-3036-1000-100": [{ type: "func", func: () => is_hp_79 = false }],
+		"h-3036-1000-100": [{ type: "func", func: () => is_hp_49 = false }],
 		"h-3036-1000-94": [{ type: "text", sub_type: "message", message: "94%" }],
-		"h-3036-1000-79": [{ type: "text", sub_type: "message", message: "79%" }, { type: "func", func: () => is_hp_79 = true }],
+		// "h-3036-1000-79": [{ type: "text", sub_type: "message", message: "79%" }, { type: "func", func: () => is_hp_79 = true }],
+		"h-3036-1000-49": [{ type: "text", sub_type: "message", message: "49%" }, { type: "func", func: () => is_hp_49 = true }],
 		"h-3036-1000-35": [{ type: "text", sub_type: "message", message: "Watch the countdown", message_RU: "Смотреть обратный отсчет" }],
 		"h-3036-1000-34": [{ type: "text", sub_type: "message", message: "Third layer of shrinking ring preparation", message_RU: "Третий этап подготовки кольца" }],
 		"h-3036-1000-65": [{ type: "text", sub_type: "message", message: "Second layer of shrinking ring preparation", message_RU: "Второй этап подготовки кольца" }],
