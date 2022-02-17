@@ -13,7 +13,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 	let timer1 = null;
 	let timer2 = null;
 	let enrage = 0;
-	// let enrage_time = 0;
+	let enrage_time = 0;
 	let counter = 0;
 	// let is_hp_79 = false;
 	let is_hp_49 = false;
@@ -96,7 +96,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 	}
 
 	function boss_mech_eventP2(skillid) {
-		// enrage = new Date() - enrage_time >= 35100 ? 0 : 1;
+		enrage = new Date() - enrage_time >= 35100 ? 0 : 1;
 		mech_total = triple_attack ? (is_hp_49 ? 4 : 3) : 2; // is_hp_79
 
 		if (mech_counter == 0) {
@@ -115,7 +115,8 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "spawn", func: "vector", args: [553, 358, 0, 0, 1100, 100, 1500] }
 		]);
 
-		if (([1401, 1402].includes(skillid) ? (skillid % 2 + enrage) % 2 : skillid % 2) == 0) {
+		// if (([1401, 1402].includes(skillid) ? (skillid % 2 + enrage) % 2 : skillid % 2) == 0) {
+		if (([1401, 1402].includes(skillid) ? (skillid % 2) % 2 : skillid % 2) == 0) {
 			handlers.event([ // left
 				{ type: "text", sub_type: "alert", speech: false,
 					message: `(${mech_total - mech_counter}) Left`,
@@ -174,17 +175,15 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "stop_timers" },
 			{ type: "despawn_all" }
 		],
-		/*
 		"rb-3036-1000": [
-			{ type: "text", sub_type: "message", message: "Enrage On", message_RU: "Рага" },
+			// { type: "text", sub_type: "message", message: "Enrage On", message_RU: "Рага" },
 			{ type: "func", func: () => enrage = 1 },
 			{ type: "func", func: () => enrage_time = new Date() }
 		],
 		"re-3036-1000": [
-			{ type: "text", sub_type: "message", message: "Enrage Off", message_RU: "Конец раги" },
+			// { type: "text", sub_type: "message", message: "Enrage Off", message_RU: "Конец раги" },
 			{ type: "func", func: () => enrage = 0 }
 		],
-		*/
 		// "h-3036-1000-100": [{ type: "func", func: () => is_hp_79 = false }],
 		"h-3036-1000-100": [{ type: "func", func: () => is_hp_49 = false }],
 		"h-3036-1000-94": [{ type: "text", sub_type: "message", message: "94%" }],
