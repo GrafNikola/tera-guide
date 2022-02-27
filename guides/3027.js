@@ -86,18 +86,20 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-3027-1000-112-0": [{ type: "text", sub_type: "message", message: "Back Jump | Strike", message_RU: "Прыжок назад | Меч" }],                 //     121 102 -> 112 -> 130
 
 		// прыжок
-		"s-3027-1000-116-0": [{ type: "text", sub_type: "message", message: "Jump", message_RU: "прыжок)" }],
+		"s-3027-1000-116-0": [
+			{ type: "text", sub_type: "message", message: "Jump", message_RU: "Прыжок" }
+		],
 		"s-3027-1000-116-1": [
 			{ type: "text", sub_type: "message", message: "Dodge", message_RU: "Эвейд!" },
-			{ type: "spawn", func: "circle", args: [false, 912, 0, 180, 8, 480, 0, 3000] }
+			{ type: "spawn", func: "circle", args: [true, 912, 0, 110, 8, 480, 0, 3000] }
 		],
 
 		// 3 оборота -> прыжок (145 -> 139 -> 140)
 		"s-3027-1000-145-0": [{ type: "text", sub_type: "message", message: "3x360 | Jump", message_RU: "3 оборота | Прыжок" }],
-		"s-3027-1000-139-0": [{ type: "text", sub_type: "message", delay: 1000, message: "Jump", message_RU: "прыжок)" }],
+		"s-3027-1000-139-0": [{ type: "text", sub_type: "message", delay: 1000, message: "Jump", message_RU: "Прыжок" }],
 		"s-3027-1000-140-0": [
 			{ type: "text", sub_type: "message", message: "Dodge", message_RU: "Эвейд!" },
-			{ type: "spawn", func: "circle", args: [false, 912, 0, 180, 8, 480, 0, 3000] }
+			{ type: "spawn", func: "circle", args: [false, 912, 0, 110, 8, 480, 0, 3000] }
 		],
 
 		// 109 -> 402 -> 130
