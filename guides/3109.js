@@ -1,4 +1,4 @@
-﻿// Ice Throne
+// Ice Throne
 //
 // made by icebrog
 

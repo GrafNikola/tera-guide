@@ -1,4 +1,4 @@
-﻿// Chaos Ice Throne
+// Chaos Ice Throne
 //
 // made by icebrog
 
