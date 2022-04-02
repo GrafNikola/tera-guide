@@ -61,7 +61,8 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 8, 420, 0, 3000] }
 		],
 		"s-3209-2000-416-0": [
-			{ type: "text", sub_type: "message", message: "Out-In | Pizza", message_RU: "От него - К нему | Пицца" },
+			{ type: "text", sub_type: "message", message: "Out", message_RU: "От него" },
+			{ type: "text", sub_type: "message", message: "In | Pizza", message_RU: "К нему | Пицца", delay: 3000 },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 8, 420, 0, 6500] },
 			{ type: "spawn", func: "vector", args: [553, 0, 0, 7.5, 420, 0, 6500] },
 			{ type: "spawn", func: "marker", args: [false, 30, 200, 0, 1500, false], delay: 5000 },
@@ -81,7 +82,8 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "spawn", func: "marker", args: [false, 345, 200, 0, 5000, false] }
 		],
 		"s-3209-2000-417-0": [
-			{ type: "text", sub_type: "message", message: "In-Out | Pizza", message_RU: "К нему - От него | Пицца" },
+			{ type: "text", sub_type: "message", message: "In", message_RU: "К нему" },
+			{ type: "text", sub_type: "message", message: "Out | Pizza", message_RU: "От него | Пицца", delay: 3000 },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 8, 420, 0, 7500] },
 			{ type: "spawn", func: "vector", args: [553, 0, 0, 7.5, 420, 0, 7500] },
 			{ type: "spawn", func: "marker", args: [false, 30, 200, 0, 6000, false] },
@@ -111,12 +113,12 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		],
 		"s-3209-2000-604-0": [
 			{ type: "despawn_all", tag: "pre-cage" },
-			{ type: "text", sub_type: "message", message: "Cage", message_RU: "Клетка" },
+			{ type: "text", sub_type: "message", message: "Cage (In)", message_RU: "Клетка (к нему)" },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 10, 405, 0, 15000], tag: "cage" }
 		],
 		"s-3209-2000-605-0": [
-			{ type: "text", sub_type: "message", message: "Pizza | Out-in", message_RU: "Пицца | От него - К нему", delay: 2000 },
-			{ type: "text", sub_type: "message", message: "Pizza | Out-in", message_RU: "Пицца | От него - К нему", delay: 5000 },
+			{ type: "text", sub_type: "message", message: "Pizza", message_RU: "Пицца", delay: 2000 },
+			{ type: "text", sub_type: "message", message: "Out-In", message_RU: "От него - К нему", delay: 5000 },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 10, 407, 0, 10000] },
 			{ type: "despawn_all", tag: "cage" },
 			{ type: "spawn", func: "vector", args: [553, 0, 0, 22.5, 407, 0, 10000] },
@@ -141,12 +143,14 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"ae-0-0-32092005": [{ type: "text", sub_type: "message", message: "Dodge", message_RU: "Эвейд" }],
 		"s-3209-2000-617-0": [
 			{ type: "text", sub_type: "message", message: "Front | Back Waves", message_RU: "Передняя | Волны" },
-			{ type: "text", sub_type: "message", message: "Front | Back Waves", message_RU: "Передняя | Волны", delay: 3000 },
+			{ type: "text", sub_type: "message", message: "Back Waves", message_RU: "Волны", delay: 3000 },
 			{ type: "spawn", func: "vector", args: [553, 270, -950, 165, 1000, 0, 12000] },
 			{ type: "spawn", func: "vector", args: [553, 270, 950, -10, 1000, 0, 12000] },
 			{ type: "spawn", func: "vector", args: [553, 270, -950, 10, 1000, 0, 12000] },
 			{ type: "spawn", func: "vector", args: [553, 270, 950, -165, 1000, 0, 12000] }
 		],
+		//
+		"qb-3209-2000-32092011": [{ type: "text", sub_type: "message", message: "Debuff", message_RU: "Дебаф" }],
 		// Dakuryon
 		"s-3209-2750-301-0": [
 			{ type: "text", sub_type: "message", message: "Dakuryon", message_RU: "Дурион" },
