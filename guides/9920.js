@@ -68,6 +68,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-920-1000-2109-0": "s-920-1000-1109-0",
 		"s-920-1000-2130-0": [{ type: "text", sub_type: "message", message: "Full > Inner > Outer", message_RU: "Общий > Внутренний > Внешний" }],
 		"s-920-1000-2220-0": "s-920-1000-1220-0",
+		"qb-920-1000-9201000": [{ type: "text", sub_type: "message", message: "Flying", message_RU: "Подлет" }],
 
 		// 2 BOSS
 		"nd-920-2000": [
