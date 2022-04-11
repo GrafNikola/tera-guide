@@ -13,7 +13,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 	function secondboss_stacks_event() {
 		secondboss_mech_counter++;
 
-		handlers.text({ sub_type: "notification", message: `${secondboss_mech_counter} stack`, message_RU: `Стак ${secondboss_mech_counter}` });
+		handlers.text({ sub_type: "notification", message: `${secondboss_mech_counter} stack`, message_RU: `Стак ${secondboss_mech_counter}`, speech: false });
 
 		if (secondboss_mech_counter >= 5) {
 			secondboss_mech_counter = 0;
