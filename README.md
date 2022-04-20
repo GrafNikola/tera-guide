@@ -40,6 +40,7 @@ id | Dungeon name | Название данжа
 3042 | Gardan's Trial | Место казни (Подземелье испытаний)
 3043 | Harnovog's Trial | Крепость Тенебриса (Подземелье испытаний)
 3046 | Rogash's Trial | Лаборатория слияния (Подземелье испытаний)
+3047 | Hall of the Argon Queen (Hard) | Обитель Шандры Манайи (сложно)
 3209 | Chaos Ice Throne | Ледяной трон Хаоса
 3108 | Cursed Antaroth's Abyss | Проклятый Омут Антароса
 3126 | Corrupted Skynest (Hard) | Логово Бессмертного Келсаика
@@ -49,6 +50,7 @@ id | Dungeon name | Название данжа
 9068 | Shadow Sanguinary (Hard) | Убежище Дуриона (сложно)
 3027 | Forbidden Arena [Hagufna] | [Бессмертный воин] Арена безумия
 3105 | Fusion Laboratory | Лаборатория Слияния
+9794 | Thaumetal Refinery | Лаборатория Сайрекса
 
 ## Notices settings / Настройка уведомлений
 
