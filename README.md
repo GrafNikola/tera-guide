@@ -1,7 +1,7 @@
 # tera-guide
 
 ### :information_source: About patch 92 support   
-Technically, the tera-guide and [tera-guide-core](https://github.com/hsdn/tera-guide-core) are compatible with patch 92 already, but not all old guides have been added. You can get the neeeded guide files manually from the [tera-guide-archive](https://github.com/hsdn/tera-guide-archive).   
+Technically, the tera-guide and [tera-guide-core](https://github.com/hsdn/tera-guide-core) are compatible with patch 92 already, but not all old guides have been added. You can get the needed guide files manually from the [tera-guide-archive](https://github.com/hsdn/tera-guide-archive).   
 You will also need an compatible version of the **library** ([download here](https://git.dev.hsdn.org/tera-v92/library/archive/master.zip)).
 
 In the future, after the official server of Tera is closed, we will release a complete version of the guide for patch 92.
