@@ -12,6 +12,11 @@ In the future, after the official server of Tera is closed, we will release a co
 
 Вдальнейшем, после закрытия официального сервера Tera, мы выпустим готовую версию гайда под патч 92.
 
+### :white_check_mark: Поддержка русского языка в гайдах для сервера Menma's TERA
+
+1. Скачать файл [fonts_eur.patched.gpk](https://drive.google.com/file/d/1LQBCKI4yxprVOCqJSQa2bwNiVnNQoZyx/view?usp=sharing) и поместить его в директорию `\Client\S1Game\CookedPC\Art_Data\Packages\S1UI`.
+2. Зайти в Menma's TERA и ввести команду **guide ru** в чат Toolbox в игре.
+
 ---
 
 The dungeon guide module with Text-to-speech notifications, display hints on screen and drawing zones of bosses attacks and mechanics. Available English and Russian languages (detects automatically).
