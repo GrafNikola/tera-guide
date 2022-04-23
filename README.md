@@ -1,4 +1,15 @@
 # tera-guide
+
+### :information_source: About patch 92 support   
+Technically, the tera-guide and [tera-guide-core](https://github.com/hsdn/tera-guide-core) are compatible with patch 92 already, but not all old guides have been added. You can add them yourself from the [tera-guide-archive](https://github.com/hsdn/tera-guide-archive). You will also need an old version of the **library** ([download here](https://git.dev.hsdn.org/tera-v92/library/archive/master.zip)).   
+In the future, after the official server of Tera is closed, we will release a version of the guide for patch 92.
+
+### :information_source: О поддержке патча 92   
+Технически, tera-guide и [tera-guide-core](https://github.com/hsdn/tera-guide-core) совместимы с патчем 92 уже сейчас, однако не все гайды старые добавлены. Вы можете добавить их самостоятельно из [архива гайдов](https://github.com/hsdn/tera-guide-archive). Также вам потребуется старая версия **library** ([скачать тут](https://git.dev.hsdn.org/tera-v92/library/archive/master.zip)).   
+Вдальнейшем, после закрытия официального сервера Tera, мы выпустим версию гайда под патч 92.
+
+---
+
 The dungeon guide module with Text-to-speech notifications, display hints on screen and drawing zones of bosses attacks and mechanics. Available English and Russian languages (detects automatically).
 
 Модуль подсказок по данжам с возможностью голосовых уведомлений, вывод подсказок в чат или на экран, а также отрисовка зон атак боссов и механик. Поддерживаются Русский и Английский языки (определяются автоматически).
