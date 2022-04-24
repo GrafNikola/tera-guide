@@ -12,7 +12,6 @@
     "servers": ["https://raw.githubusercontent.com/hsdn/tera-guide/master/"],
     "supportUrl": "https://github.com/hsdn/tera-guide/issues",
     "dependencies": {
-        "library": "https://raw.githubusercontent.com/tera-toolbox-mods/library/master/module.json",
         "tera-guide-core": "https://raw.githubusercontent.com/hsdn/tera-guide-core/master/module.json"
     },
     "disableAutoUpdate": false,
