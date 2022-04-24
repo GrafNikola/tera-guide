@@ -84,6 +84,7 @@ id | Dungeon name | Название данжа
 9981 | Velik's Sanctuary (Hard) | Разрушенное Святилище Велики
 9044 | Bahaar's Sanctum | Святилище Бахаара
 9056 | Timescape (Hard) | Хроноплоскость (сложно)
+9759 | Forsaken Island (Hard) | Остров Мертвых (сложно)
 3201 | Gossamer Vault (Hard) | Гнездо сверкающей Паркин
 9920 | Antaroth's Abyss (Hard) | Омут Бездушного Антароса
 9982 | Grotto of Lost Souls (Hard) | Мастерская Леандра (сложно)
