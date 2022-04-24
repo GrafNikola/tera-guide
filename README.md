@@ -1,20 +1,19 @@
 # tera-guide
 
-### :information_source: About patch 92 support   
-Technically, the tera-guide and [tera-guide-core](https://github.com/hsdn/tera-guide-core) are compatible with patch 92 already, but not all old guides have been added. You can get the needed guide files manually from the [tera-guide-archive](https://github.com/hsdn/tera-guide-archive).   
-You will also need an compatible version of the **library** ([download here](https://git.dev.hsdn.org/tera-v92/library/archive/master.zip)).
+### :information_source: About support the patch v92.04
+The tera-guide and [tera-guide-core](https://github.com/hsdn/tera-guide-core) are already compatible with this patch.   
+For the guides to work you need a get compatible versions of **library** and **tera-guide-core**:
+1. Download **library** from **[here](https://git.dev.hsdn.org/tera-v92/library/archive/master.zip)** and place it to you **mods** folder.
+2. Download **tera-guide-core** from **[here](https://github.com/hsdn/tera-guide-core/archive/refs/heads/master.zip)** and place it to you **mods** folder as **"tera-guide-core"**, not "tera-guide-core-master".
 
-In the future, after the official server of Tera is closed, we will release a complete version of the guide for patch 92.
-
-### :information_source: О поддержке патча 92   
-Технически, tera-guide и [tera-guide-core](https://github.com/hsdn/tera-guide-core) совместимы с патчем 92 уже сейчас, однако не все гайды старые добавлены. Вы можете получить нужные файлы гайдов самостоятельно из [архива гайдов](https://github.com/hsdn/tera-guide-archive).   
-Также вам потребуется совместимая версия **library** ([скачать тут](https://git.dev.hsdn.org/tera-v92/library/archive/master.zip)).
-
-Вдальнейшем, после закрытия официального сервера Tera, мы выпустим готовую версию гайда под патч 92.
+### :information_source: О поддержке патча v92.04
+Модули tera-guide и [tera-guide-core](https://github.com/hsdn/tera-guide-core) совместимы с данным патчем уже сейчас.   
+Для работы гайдов вам потребуется установка совместимой версии **library** и **tera-guide-core**:
+1. Скачайте **library** **[здесь](https://git.dev.hsdn.org/tera-v92/library/archive/master.zip)** и поместите в вашу папку **mods**.
+2. Скачайте **tera-guide-core** **[здесь](https://github.com/hsdn/tera-guide-core/archive/refs/heads/master.zip)** и поместите в вашу папку **mods** как **"tera-guide-core"**, а не "tera-guide-core-master".
 
 ### :white_check_mark: Поддержка русского языка в гайдах для сервера Menma's TERA
-
-1. Скачать файл [fonts_eur.patched.gpk](https://drive.google.com/file/d/1LQBCKI4yxprVOCqJSQa2bwNiVnNQoZyx/view?usp=sharing) и поместить его в директорию `\Client\S1Game\CookedPC\Art_Data\Packages\S1UI`.
+1. Скачать файл **[fonts_eur.patched.gpk](https://drive.google.com/file/d/1LQBCKI4yxprVOCqJSQa2bwNiVnNQoZyx/view?usp=sharing)** и поместить его в директорию `\Client\S1Game\CookedPC\Art_Data\Packages\S1UI`.
 2. Зайти в Menma's TERA и ввести команду **guide ru** в чат Toolbox в игре.
 
 ---
@@ -29,7 +28,8 @@ The dungeon guide module with Text-to-speech notifications, display hints on scr
 * [**Portuguese (Português)** by Emilia](https://github.com/emilia-s2/Guia-DG-Portugues-Espanol)
 
 ## Dependencies / Зависимости
-* **tera-guide-core** - https://github.com/hsdn/tera-guide-core
+* **library** - https://git.dev.hsdn.org/tera-v92/library (v115.02 / v92.04)
+* **tera-guide-core** - https://github.com/hsdn/tera-guide-core (v115.02 / v92.04)
 
 When using TeraToolbox, all dependencies will be installed automatically.   
 При использовании TeraToolbox, все зависимости будут установлены автоматически.
@@ -52,6 +52,8 @@ Toolbox(/8) | Command description | Описание команды
 **guide&nbsp;help** | List of supported commands | Вывод поддерживаемых команд
 
 ## Supported dungeons / Поддерживаемые данжи
+
+### Patch v115.02
 id | Dungeon name | Название данжа
 --- | --- | ---
 7011 | Shadow of the Gutrends (Guardian) | Живодеры и черная тень (хранитель)
@@ -71,6 +73,22 @@ id | Dungeon name | Название данжа
 3027 | Forbidden Arena [Hagufna] | [Бессмертный воин] Арена безумия
 3105 | Fusion Laboratory | Лаборатория Слияния
 9794 | Thaumetal Refinery | Лаборатория Сайрекса
+
+### Patch v92.04 / Menma's TERA
+id | Dungeon name | Название данжа
+--- | --- | ---
+7011 | Shadow of the Gutrends (Guardian) | Живодеры и черная тень (хранитель)
+7015 | Escape from Balder's Refuge (Guardian) | Операция "Спасти Убежище Балдера" (хранитель)
+9981 | Velik's Sanctuary (Hard) | Разрушенное Святилище Велики
+9044 | Bahaar's Sanctum | Святилище Бахаара
+9056 | Timescape (Hard) | Хроноплоскость (сложно)
+3201 | Gossamer Vault (Hard) | Гнездо сверкающей Паркин
+9920 | Antaroth's Abyss (Hard) | Омут Бездушного Антароса
+9982 | Grotto of Lost Souls (Hard) | Мастерская Леандра (сложно)
+9735 | RK-9 Kennel | Ангар RK-9
+3739 | Red Refuge | Лагерь повстанцев
+9780 | Velik's Hold (5-Person) | Вход в катакомбы Велики
+9781 | Velik's Sanctuary | Святилище Велики
 
 ## Notices settings / Настройка уведомлений
 
