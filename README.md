@@ -4,13 +4,15 @@
 The tera-guide and [tera-guide-core](https://github.com/hsdn/tera-guide-core) are already compatible with this patch.   
 For the guides to work you need a get compatible versions of **library** and **tera-guide-core**:
 1. Download **library** from **[here](https://git.dev.hsdn.org/tera-v92/library/archive/master.zip)** and place it to you **mods** folder.
-2. Download **tera-guide-core** from **[here](https://github.com/hsdn/tera-guide-core/archive/refs/heads/master.zip)** and place it to you **mods** folder as **"tera-guide-core"**, not "tera-guide-core-master".
+2. Download **tera-guide-core** from **[here](https://github.com/hsdn/tera-guide-core/archive/refs/heads/master.zip)** and place it to you **mods** folder as **"tera-guide-core"**,   
+   not "tera-guide-core-master".
 
 ### :information_source: О поддержке патча v92.04
 Модули tera-guide и [tera-guide-core](https://github.com/hsdn/tera-guide-core) совместимы с данным патчем уже сейчас.   
 Для работы гайдов вам потребуется установка совместимой версии **library** и **tera-guide-core**:
 1. Скачайте **library** **[здесь](https://git.dev.hsdn.org/tera-v92/library/archive/master.zip)** и поместите в вашу папку **mods**.
-2. Скачайте **tera-guide-core** **[здесь](https://github.com/hsdn/tera-guide-core/archive/refs/heads/master.zip)** и поместите в вашу папку **mods** как **"tera-guide-core"**, а не "tera-guide-core-master".
+2. Скачайте **tera-guide-core** **[здесь](https://github.com/hsdn/tera-guide-core/archive/refs/heads/master.zip)** и поместите в вашу папку **mods** как **"tera-guide-core"**,   
+   а не "tera-guide-core-master".
 
 ### :white_check_mark: Поддержка русского языка в гайдах для сервера Menma's TERA
 1. Скачать файл **[fonts_eur.patched.gpk](https://drive.google.com/file/d/1LQBCKI4yxprVOCqJSQa2bwNiVnNQoZyx/view?usp=sharing)** и поместить его в директорию `\Client\S1Game\CookedPC\Art_Data\Packages\S1UI`.
