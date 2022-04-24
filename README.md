@@ -4,7 +4,7 @@
 The tera-guide and [tera-guide-core](https://github.com/hsdn/tera-guide-core) are already compatible with this patch.   
 For the guides to work you need a get compatible versions of **library** and **tera-guide-core**:
 1. Download **library** from **[here](https://git.dev.hsdn.org/tera-v92/library/archive/master.zip)** and place it to you **mods** folder.
-2. Download **tera-guide-core** from **[here](https://github.com/hsdn/tera-guide-core/archive/refs/heads/master.zip)** and place it to you **mods** folder as **"tera-guide-core"**,   
+2. Download **tera-guide-core** from **[here](https://github.com/hsdn/tera-guide-core/archive/refs/heads/master.zip)** and place it to you **mods** folder named as **"tera-guide-core"**,   
    not "tera-guide-core-master".
 
 ### :information_source: О поддержке патча v92.04
