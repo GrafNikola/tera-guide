@@ -93,6 +93,22 @@ id | Dungeon name | Название данжа
 9780 | Velik's Hold (5-Person) | Вход в катакомбы Велики
 9781 | Velik's Sanctuary | Святилище Велики
 
+### Patch v92.04 / Asura Tera
+7011 | Shadow of the Gutrends (Guardian) | Живодеры и черная тень (хранитель)
+7015 | Escape from Balder's Refuge (Guardian) | Операция "Спасти Убежище Балдера" (хранитель)
+3027 | Forbidden Arena [Hagufna] | [Бессмертный воин] Арена безумия
+9044 | Bahaar's Sanctum | Святилище Бахаара
+3026 | Corrupted Skynest | Логово Келсаика
+9970 | Ruinous Manor (Hard) | Руины Кошмарной Абнукты
+9067 | Demokron Factory (Hard) | Лаборатория Берна (сложно)
+3023 | Akalath Quarantine | Секретное подземелье крепости Берарк
+3201 | Gossamer Vault (Hard) | Гнездо сверкающей Паркин
+9920 | Antaroth's Abyss (Hard) | Омут Бездушного Антароса
+9982 | Grotto of Lost Souls (Hard) | Заброшенная Мастерская Леандра
+9735 | RK-9 Kennel | Ангар RK-9
+3739 | Red Refuge | Лагерь повстанцев
+9794 | Thaumetal Refinery | Лаборатория Сайрекса
+
 ## Notices settings / Настройка уведомлений
 
 * On screen (on bottom side) and chat notices, if **lNotice** parameter is *on*.   
