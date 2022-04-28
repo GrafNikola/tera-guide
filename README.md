@@ -94,6 +94,7 @@ id | Dungeon name | Название данжа
 9781 | Velik's Sanctuary | Святилище Велики
 
 ### Patch v92.04 / Asura Tera
+id | Dungeon name | Название данжа
 --- | --- | ---
 7011 | Shadow of the Gutrends (Guardian) | Живодеры и черная тень (хранитель)
 7015 | Escape from Balder's Refuge (Guardian) | Операция "Спасти Убежище Балдера" (хранитель)
