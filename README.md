@@ -100,8 +100,10 @@ id | Dungeon name | Название данжа
 7015 | Escape from Balder's Refuge (Guardian) | Операция "Спасти Убежище Балдера" (хранитель)
 3027 | Forbidden Arena [Hagufna] | [Бессмертный воин] Арена безумия
 9044 | Bahaar's Sanctum | Святилище Бахаара
+9759 | Forsaken Island (Hard) | Остров Мертвых (сложно)
 3026 | Corrupted Skynest | Логово Келсаика
 9970 | Ruinous Manor (Hard) | Руины Кошмарной Абнукты
+9056 | Timescape (Hard) | Хроноплоскость (сложно)
 9067 | Demokron Factory (Hard) | Лаборатория Берна (сложно)
 3023 | Akalath Quarantine | Секретное подземелье крепости Берарк
 3201 | Gossamer Vault (Hard) | Гнездо сверкающей Паркин
