@@ -3,10 +3,10 @@
 ## Patch v92.04
 
 ### :star: Available in TERA Toolbox for patch 92
-* Fully compatible with [unofficial varsion](https://github.com/tera-private-toolbox/tera-toolbox) of the Tera Toolbox for patch 92.   
+* Fully compatible with [unofficial version](https://github.com/tera-private-toolbox/tera-toolbox) of the TERA Toolbox for patch 92.   
   Automatic install from **Get More Mods** tab.
 
-* Полностью совместимо с [неофициальной версией](https://github.com/tera-private-toolbox/tera-toolbox) Tera Toolbox для патча 92.   
+* Полностью совместимо с [неофициальной версией](https://github.com/tera-private-toolbox/tera-toolbox) TERA Toolbox для патча 92.   
   Автоматическая установка через вкладку **Скачать модули**.
 
 ### :information_source: Manual installation
@@ -41,8 +41,8 @@ The dungeon guide module with Text-to-speech notifications, display hints on scr
 * [**Portuguese (Português)** by Emilia](https://github.com/emilia-s2/Guia-DG-Portugues-Espanol)
 
 ## Dependencies / Зависимости
-* **library** - https://github.com/tera-private-toolbox/library (v115.02 / v92.04)
-* **tera-guide-core** - https://github.com/hsdn/tera-guide-core (v115.02 / v92.04)
+* **library** - https://github.com/tera-private-toolbox/library
+* **tera-guide-core** - https://github.com/hsdn/tera-guide-core
 
 When using TeraToolbox, all dependencies will be installed automatically.   
 При использовании TeraToolbox, все зависимости будут установлены автоматически.
