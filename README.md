@@ -30,7 +30,7 @@ The dungeon guide module with Text-to-speech notifications, display hints on scr
 * [**Portuguese (Português)** by Emilia](https://github.com/emilia-s2/Guia-DG-Portugues-Espanol)
 
 ## Dependencies / Зависимости
-* **library** - https://git.dev.hsdn.org/tera-v92/library (v115.02 / v92.04)
+* **library** - https://github.com/tera-private-toolbox/library (v115.02 / v92.04)
 * **tera-guide-core** - https://github.com/hsdn/tera-guide-core (v115.02 / v92.04)
 
 When using TeraToolbox, all dependencies will be installed automatically.   
