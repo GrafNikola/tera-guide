@@ -116,6 +116,7 @@ id | Dungeon name | Название данжа
 9970 | Ruinous Manor (Hard) | Руины Кошмарной Абнукты
 9056 | Timescape (Hard) | Хроноплоскость (сложно)
 9067 | Demokron Factory (Hard) | Лаборатория Берна (сложно)
+9070 | Manglemire | Замок Парадоксов
 9935 | RK-9 Kennel (Hard) | Ангар совершенного RK-9
 3023 | Akalath Quarantine | Секретное подземелье крепости Берарк
 3201 | Gossamer Vault (Hard) | Гнездо сверкающей Паркин
