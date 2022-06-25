@@ -6,7 +6,7 @@
 * Fully compatible with [unofficial version](https://github.com/tera-private-toolbox/tera-toolbox) of the TERA Toolbox for patch 92 and 100.   
   Automatic install from **Get More Mods** tab.
 
-* Полностью совместимо с [неофициальной версией](https://github.com/tera-private-toolbox/tera-toolbox) TERA Toolbox для патчей 92 and 100.   
+* Полностью совместимо с [неофициальной версией](https://github.com/tera-private-toolbox/tera-toolbox) TERA Toolbox для патчей 92 и 100.   
   Автоматическая установка через вкладку **Скачать модули**.
 
 ### :information_source: Manual installation
