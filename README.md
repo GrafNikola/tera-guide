@@ -1,6 +1,6 @@
 # tera-guide
 
-## Patch v92.04
+## Patch v92.04 and v100.02 (x64)
 
 ### :star: Available in TERA Toolbox for patch 92.04 and 100.02 (x64)
 * Fully compatible with [unofficial version](https://github.com/tera-private-toolbox/tera-toolbox) of the TERA Toolbox for patch 92 and 100.   
@@ -23,7 +23,7 @@ For the guides to work you need a get compatible versions of **library** and **t
 2. Скачайте **tera-guide-core** **[здесь](https://github.com/hsdn/tera-guide-core/archive/refs/heads/master.zip)** и поместите в вашу папку **mods** как **"tera-guide-core"**,   
    а не "tera-guide-core-master".
 
-### :white_check_mark: Поддержка русского языка в гайдах и чате для сервера Menma's TERA
+### :white_check_mark: Поддержка русского языка в гайдах и чате для Menma's TERA (патч 92.04)
 1. Скачать файл **[fonts_eur.patched.gpk](https://drive.google.com/file/d/1LQBCKI4yxprVOCqJSQa2bwNiVnNQoZyx/view?usp=sharing)** и поместить его в директорию `\Client\S1Game\CookedPC\Art_Data\Packages\S1UI`.
 2. Зайти в Menma's TERA и ввести команду **guide ru** в чат Toolbox в игре.
 
