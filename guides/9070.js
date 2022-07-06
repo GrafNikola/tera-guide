@@ -71,7 +71,6 @@ module.exports = (dispatch, handlers, guide, lang) => {
 	dispatch.hook("S_ABNORMALITY_END", 1, abnormality_change.bind(null, false));
 
 	dispatch.hook("S_DUNGEON_EVENT_GAGE", 1, (event) => {
-		console.log(event);
 		if (shining) {
 			if (count === 100) {
 				count = -1;
