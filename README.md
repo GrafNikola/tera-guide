@@ -114,6 +114,7 @@ id | Dungeon name | Название данжа
 9044 | Bahaar's Sanctum | Святилище Бахаара
 9759 | Forsaken Island (Hard) | Остров Мертвых (сложно)
 3026 | Corrupted Skynest | Логово Келсаика
+9983 | Dark Reach Citadel (Hard) | Крепость Темного Тенебриса
 9970 | Ruinous Manor (Hard) | Руины Кошмарной Абнукты
 9056 | Timescape (Hard) | Хроноплоскость (сложно)
 9067 | Demokron Factory (Hard) | Лаборатория Берна (сложно)
