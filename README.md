@@ -93,6 +93,7 @@ id | Dungeon name | Название данжа
 7011 | Shadow of the Gutrends (Guardian) | Живодеры и черная тень (хранитель)
 7015 | Escape from Balder's Refuge (Guardian) | Операция "Спасти Убежище Балдера" (хранитель)
 9981 | Velik's Sanctuary (Hard) | Разрушенное Святилище Велики
+9027 | Manaya's Core (Hard) | Обитель Манайи (сложно)
 9044 | Bahaar's Sanctum | Святилище Бахаара
 9056 | Timescape (Hard) | Хроноплоскость (сложно)
 9759 | Forsaken Island (Hard) | Остров Мертвых (сложно)
