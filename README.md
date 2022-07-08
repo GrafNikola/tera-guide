@@ -23,10 +23,6 @@ For the guides to work you need a get compatible versions of **library** and **t
 2. Скачайте **tera-guide-core** **[здесь](https://github.com/hsdn/tera-guide-core/archive/refs/heads/master.zip)** и поместите в вашу папку **mods** как **"tera-guide-core"**,   
    а не "tera-guide-core-master".
 
-### :white_check_mark: Поддержка русского языка в гайдах и чате для Menma's TERA (патч 92.04)
-1. Скачать файл **[fonts_eur.patched.gpk](https://drive.google.com/file/d/1LQBCKI4yxprVOCqJSQa2bwNiVnNQoZyx/view?usp=sharing)** и поместить его в директорию `\Client\S1Game\CookedPC\Art_Data\Packages\S1UI`.
-2. Зайти в Menma's TERA и ввести команду **guide ru** в чат Toolbox в игре.
-
 ---
 
 ## Description / Описание
@@ -66,7 +62,6 @@ Toolbox(/8) | Command description | Описание команды
 
 ## Supported dungeons / Поддерживаемые данжи
 
-### Patch v115.02
 id | Dungeon name | Название данжа
 --- | --- | ---
 7011 | Shadow of the Gutrends (Guardian) | Живодеры и черная тень (хранитель)
@@ -79,19 +74,10 @@ id | Dungeon name | Название данжа
 3209 | Chaos Ice Throne | Ледяной трон Хаоса
 3108 | Cursed Antaroth's Abyss | Проклятый Омут Антароса
 3126 | Corrupted Skynest (Hard) | Логово Бессмертного Келсаика
-9920 | Antaroth's Abyss (Hard) | Омут Бездушного Антароса
 3109 | Ice Throne | Ледяной трон
 3036 | Sky Cruiser (Hard) | Небесный крейсер (сложно)
 9068 | Shadow Sanguinary (Hard) | Убежище Дуриона (сложно)
-3027 | Forbidden Arena [Hagufna] | [Бессмертный воин] Арена безумия
 3105 | Fusion Laboratory | Лаборатория Слияния
-9794 | Thaumetal Refinery | Лаборатория Сайрекса
-
-### Patch v92.04 (Menma's TERA)
-id | Dungeon name | Название данжа
---- | --- | ---
-7011 | Shadow of the Gutrends (Guardian) | Живодеры и черная тень (хранитель)
-7015 | Escape from Balder's Refuge (Guardian) | Операция "Спасти Убежище Балдера" (хранитель)
 9981 | Velik's Sanctuary (Hard) | Разрушенное Святилище Велики
 9027 | Manaya's Core (Hard) | Обитель Манайи (сложно)
 9044 | Bahaar's Sanctum | Святилище Бахаара
@@ -104,28 +90,14 @@ id | Dungeon name | Название данжа
 3739 | Red Refuge | Лагерь повстанцев
 9780 | Velik's Hold (5-Person) | Вход в катакомбы Велики
 9781 | Velik's Sanctuary | Святилище Велики
-
-### Patch v92.04 (Asura Tera)
-id | Dungeon name | Название данжа
---- | --- | ---
-7011 | Shadow of the Gutrends (Guardian) | Живодеры и черная тень (хранитель)
-7015 | Escape from Balder's Refuge (Guardian) | Операция "Спасти Убежище Балдера" (хранитель)
 3027 | Forbidden Arena [Hagufna] | [Бессмертный воин] Арена безумия
-9044 | Bahaar's Sanctum | Святилище Бахаара
-9759 | Forsaken Island (Hard) | Остров Мертвых (сложно)
 3026 | Corrupted Skynest | Логово Келсаика
 9983 | Dark Reach Citadel (Hard) | Крепость Темного Тенебриса
 9970 | Ruinous Manor (Hard) | Руины Кошмарной Абнукты
-9056 | Timescape (Hard) | Хроноплоскость (сложно)
 9067 | Demokron Factory (Hard) | Лаборатория Берна (сложно)
 9070 | Manglemire | Замок Парадоксов
 9935 | RK-9 Kennel (Hard) | Ангар совершенного RK-9
 3023 | Akalath Quarantine | Секретное подземелье крепости Берарк
-3201 | Gossamer Vault (Hard) | Гнездо сверкающей Паркин
-9920 | Antaroth's Abyss (Hard) | Омут Бездушного Антароса
-9982 | Grotto of Lost Souls (Hard) | Заброшенная Мастерская Леандра
-9735 | RK-9 Kennel | Ангар RK-9
-3739 | Red Refuge | Лагерь повстанцев
 9794 | Thaumetal Refinery | Лаборатория Сайрекса
 
 ## Notices settings / Настройка уведомлений
