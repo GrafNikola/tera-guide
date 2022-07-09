@@ -68,8 +68,10 @@ id | Dungeon name | Название данжа
 3026 | Corrupted Skynest | Логово Келсаика
 3027 | Forbidden Arena [Hagufna] | [Бессмертный воин] Арена безумия
 3036 | Sky Cruiser (Hard) | Небесный крейсер (сложно)
+3103 | Forbidden Arena [Undying Warlord] | [Этерния] Арена безумия
 3126 | Corrupted Skynest (Hard) | Логово Бессмертного Келсаика
 3201 | Gossamer Vault (Hard) | Гнездо сверкающей Паркин
+3203 | Forbidden Arena [Nightmare Undying Warlord] | [Бессмертный] Арена безумия
 3739 | Red Refuge | Лагерь повстанцев
 7011 | Shadow of the Gutrends (Guardian) | Живодеры и черная тень (хранитель)
 7015 | Escape from Balder's Refuge (Guardian) | Операция "Спасти Убежище Балдера" (хранитель)
