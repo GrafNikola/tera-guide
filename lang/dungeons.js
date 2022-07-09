@@ -25,13 +25,5 @@ module.exports = {
 	3046: {
 		"en": "Rogash's Trial",
 		"ru": "Лаборатория слияния (Подземелье испытаний)"
-	},
-	3126: {
-		"en": "Corrupted Skynest (Hard)",
-		"ru": "Логово Бессмертного Келсаика"
-	},
-	3108: {
-		"en": "Cursed Antaroth's Abyss",
-		"ru": "Проклятый Омут Антароса"
 	}
 };

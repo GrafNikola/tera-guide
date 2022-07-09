@@ -64,43 +64,34 @@ Toolbox(/8) | Command description | Описание команды
 
 id | Dungeon name | Название данжа
 --- | --- | ---
+3023 | Akalath Quarantine | Секретное подземелье крепости Берарк
+3026 | Corrupted Skynest | Логово Келсаика
+3027 | Forbidden Arena [Hagufna] | [Бессмертный воин] Арена безумия
+3036 | Sky Cruiser (Hard) | Небесный крейсер (сложно)
+3126 | Corrupted Skynest (Hard) | Логово Бессмертного Келсаика
+3201 | Gossamer Vault (Hard) | Гнездо сверкающей Паркин
+3739 | Red Refuge | Лагерь повстанцев
 7011 | Shadow of the Gutrends (Guardian) | Живодеры и черная тень (хранитель)
 7015 | Escape from Balder's Refuge (Guardian) | Операция "Спасти Убежище Балдера" (хранитель)
-3040 | Lumikan's Trial | Сонный паралич Лукмии (Подземелье испытаний)
-3042 | Gardan's Trial | Место казни (Подземелье испытаний)
-3043 | Harnovog's Trial | Крепость Тенебриса (Подземелье испытаний)
-3046 | Rogash's Trial | Лаборатория слияния (Подземелье испытаний)
-3047 | Hall of the Argon Queen (Hard) | Обитель Шандры Манайи (сложно)
-3209 | Chaos Ice Throne | Ледяной трон Хаоса
-3108 | Cursed Antaroth's Abyss | Проклятый Омут Антароса
-3126 | Corrupted Skynest (Hard) | Логово Бессмертного Келсаика
-3109 | Ice Throne | Ледяной трон
-3036 | Sky Cruiser (Hard) | Небесный крейсер (сложно)
-9068 | Shadow Sanguinary (Hard) | Убежище Дуриона (сложно)
-3105 | Fusion Laboratory | Лаборатория Слияния
-9981 | Velik's Sanctuary (Hard) | Разрушенное Святилище Велики
 9027 | Manaya's Core (Hard) | Обитель Манайи (сложно)
 9044 | Bahaar's Sanctum | Святилище Бахаара
 9054 | Bathysmal Rise (Hard) | Глубинный Храм (сложно)
-9754 | Bathysmal Rise | Глубинный Храм
 9056 | Timescape (Hard) | Хроноплоскость (сложно)
-9759 | Forsaken Island (Hard) | Остров Мертвых (сложно)
-3201 | Gossamer Vault (Hard) | Гнездо сверкающей Паркин
-9920 | Antaroth's Abyss (Hard) | Омут Бездушного Антароса
-9982 | Grotto of Lost Souls (Hard) | Мастерская Леандра (сложно)
+9067 | Demokron Factory (Hard) | Лаборатория Берна (сложно)
+9068 | Shadow Sanguinary (Hard) | Убежище Дуриона (сложно)
+9070 | Manglemire | Замок Парадоксов
 9735 | RK-9 Kennel | Ангар RK-9
-3739 | Red Refuge | Лагерь повстанцев
+9754 | Bathysmal Rise | Глубинный Храм
+9759 | Forsaken Island (Hard) | Остров Мертвых (сложно)
 9780 | Velik's Hold (5-Person) | Вход в катакомбы Велики
 9781 | Velik's Sanctuary | Святилище Велики
-3027 | Forbidden Arena [Hagufna] | [Бессмертный воин] Арена безумия
-3026 | Corrupted Skynest | Логово Келсаика
-9983 | Dark Reach Citadel (Hard) | Крепость Темного Тенебриса
-9970 | Ruinous Manor (Hard) | Руины Кошмарной Абнукты
-9067 | Demokron Factory (Hard) | Лаборатория Берна (сложно)
-9070 | Manglemire | Замок Парадоксов
-9935 | RK-9 Kennel (Hard) | Ангар совершенного RK-9
-3023 | Akalath Quarantine | Секретное подземелье крепости Берарк
 9794 | Thaumetal Refinery | Лаборатория Сайрекса
+9920 | Antaroth's Abyss (Hard) | Омут Бездушного Антароса
+9935 | RK-9 Kennel (Hard) | Ангар совершенного RK-9
+9970 | Ruinous Manor (Hard) | Руины Кошмарной Абнукты
+9981 | Velik's Sanctuary (Hard) | Разрушенное Святилище Велики
+9982 | Grotto of Lost Souls (Hard) | Мастерская Леандра (сложно)
+9983 | Dark Reach Citadel (Hard) | Крепость Темного Тенебриса
 
 ## Notices settings / Настройка уведомлений
 
