@@ -81,6 +81,8 @@ id | Dungeon name | Название данжа
 9981 | Velik's Sanctuary (Hard) | Разрушенное Святилище Велики
 9027 | Manaya's Core (Hard) | Обитель Манайи (сложно)
 9044 | Bahaar's Sanctum | Святилище Бахаара
+9054 | Bathysmal Rise (Hard) | Глубинный Храм (сложно)
+9754 | Bathysmal Rise | Глубинный Храм
 9056 | Timescape (Hard) | Хроноплоскость (сложно)
 9759 | Forsaken Island (Hard) | Остров Мертвых (сложно)
 3201 | Gossamer Vault (Hard) | Гнездо сверкающей Паркин
