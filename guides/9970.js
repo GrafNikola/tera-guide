@@ -14,10 +14,10 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "despawn_all" }
 		],
 		"die": [{ type: "func", func: () => { debuff = null; } }],
-		"ae-0-0-97000057": [{ type: "func", func: () => debuff = 1 }], // AoE (red)
-		"ae-0-0-97000058": [{ type: "func", func: () => debuff = 2 }], // AoE (blue)
-		"am-970-1000-97000057": [{ type: "func", func: () => debuff = 1 }], // Red
-		"am-970-1000-97000058": [{ type: "func", func: () => debuff = 2 }], // Blue
+		"ae-0-0-97000042": [{ type: "func", func: () => debuff = 1 }], // AoE (red)
+		"ae-0-0-97000043": [{ type: "func", func: () => debuff = 2 }], // AoE (blue)
+		"am-970-1000-97000042": [{ type: "func", func: () => debuff = 1 }], // Red
+		"am-970-1000-97000043": [{ type: "func", func: () => debuff = 2 }], // Blue
 		"s-970-1000-1306-0": [ // red inside
 			{ type: "text", sub_type: "message", message: "OUT", message_RU: "ОТ НЕГО", check_func: () => debuff === 1, delay: 500 },
 			{ type: "text", sub_type: "message", message: "IN", message_RU: "К НЕМУ", check_func: () => debuff === 2, delay: 500 },
