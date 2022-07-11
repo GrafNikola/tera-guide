@@ -28,6 +28,24 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-970-1000-1117-0": [{ type: "text", sub_type: "message", message: "Crush Front", message_RU: "Удары" }],
 		"s-970-1000-2117-0": [{ type: "text", sub_type: "message", message: "Crush Front", message_RU: "Удары" }],
 
+		// 2 BOSS
+		"nd-970-2000": [
+			{ type: "stop_timers" },
+			{ type: "despawn_all" }
+		],
+		"s-970-2000-1103-0": [{ type: "text", sub_type: "message", message: "Frontal Attack", message_RU: "Передняя атака" }],
+		"s-970-2000-2103-0": [{ type: "text", sub_type: "message", message: "Frontal Attack", message_RU: "Передняя атака" }],
+		"s-970-2000-1105-0": [{ type: "text", sub_type: "message", message: "Random Target", message_RU: "Таргет" }],
+		"s-970-2000-2105-0": [{ type: "text", sub_type: "message", message: "Random Target", message_RU: "Таргет" }],
+		"s-970-2000-1106-0": [{ type: "text", sub_type: "message", message: "Stun (Dodge)", message_RU: "Стан (эвейд)" },
+			{ type: "spawn", func: "circle", args: [false, 553, 0, 40, 13, 180, 0, 2000] }
+		],
+		"s-970-2000-2106-0": [{ type: "text", sub_type: "message", message: "Stun (Dodge)", message_RU: "Стан (эвейд)" },
+			{ type: "spawn", func: "circle", args: [false, 553, 0, 40, 13, 180, 0, 2000] }
+		],
+		"s-970-2000-1111-0": [{ type: "text", sub_type: "message", message: "Many Hits (Target)", message_RU: "Множество ударов (таргет)" }],
+		"s-970-2000-2111-0": [{ type: "text", sub_type: "message", message: "Many Hits (Target)", message_RU: "Множество ударов (таргет)" }],
+
 		// 3 BOSS
 		"nd-970-3000": [
 			{ type: "stop_timers" },

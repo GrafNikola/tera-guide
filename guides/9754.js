@@ -83,7 +83,8 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "text", sub_type: "alert", "delay": 45000, message_RU: "Электрическая сфера готова", message: "Electric Ball Ready" }
 		],
 		// Special attacks
-		"s-754-100-1101-0": [{ type: "text", sub_type: "notification", message_RU: "Сфера (держить дальше)", message: "Ball (Stay Away)" },
+		"s-754-100-1101-0": [
+			// { type: "text", sub_type: "notification", message_RU: "Сфера (держить дальше)", message: "Ball (Stay Away)" },
 			{ type: "spawn", func: "marker", args: [false, 0, 0, 100, 3000] }
 		]
 	};

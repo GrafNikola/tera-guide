@@ -92,8 +92,10 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-454-1002-2106-0": "s-454-1002-1106-0",
 		"s-454-1002-2110-0": "s-454-1002-1110-0",
 		"s-454-1002-3105-0": [{ type: "text", sub_type: "message", message_RU: "К нему", message: "Get In" }],
-		"s-454-1002-3117-0": [{ type: "text", sub_type: "message", message_RU: "К нему - От него - К нему", message: "In - Out - In" },
-			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 12, 290, 0, 10000] }
+		"s-454-1002-3117-0": [{ type: "text", sub_type: "message", message_RU: "К нему", message: "In" },
+			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 10, 290, 0, 10000] },
+			{ type: "text", sub_type: "message", message_RU: "От него", message: "Out", delay: 3500 },
+			{ type: "text", sub_type: "message", message_RU: "К нему", message: "In", delay: 5500 }
 		],
 		"s-454-1002-3110-0": [{ type: "text", sub_type: "message", message_RU: "Пицца", message: "Pizza" },
 			{ type: "spawn", func: "marker", args: [false, 30, 201, 100, 2000, true, null] },
@@ -132,20 +134,21 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		],
 		"qb-454-1000-454012": [{ type: "text", sub_type: "message", message_RU: "Починить плиту", message: "Fix the SLATE" }],
 		"dm-0-0-905420": [{ type: "text", sub_type: "message", message_RU: "Проверка водяной стены", message: "Water Wall Check" }],
-		"s-454-100-1101-0": [{ type: "text", sub_type: "notification", message_RU: "Сфера (держить дальше)", message: "Ball (Stay Away)" },
+		"s-454-100-1101-0": [
+			// { type: "text", sub_type: "notification", message_RU: "Сфера (держить дальше)", message: "Ball (Stay Away)" },
 			{ type: "spawn", func: "marker", args: [false, 0, 0, 100, 3000] }
 		],
 		"s-454-106-3101-0": [{ type: "text", sub_type: "message", message_RU: "1", message: "1" },
-			{ type: "spawn", func: "vector", args: [553, 0, 0, 0, 2200, 0, 17000] }
+			{ type: "spawn", func: "vector", args: [553, 0, 0, 0, 2200, 0, 15000] }
 		],
 		"s-454-107-3102-0": [{ type: "text", sub_type: "message", message_RU: "2", message: "2" },
-			{ type: "spawn", func: "vector", args: [553, 0, 0, 0, 2200, 0, 17000] }
+			{ type: "spawn", func: "vector", args: [553, 0, 0, 0, 2200, 0, 15000] }
 		],
 		"s-454-108-3103-0": [{ type: "text", sub_type: "message", message_RU: "3", message: "3" },
-			{ type: "spawn", func: "vector", args: [553, 0, 0, 0, 2200, 0, 17000] }
+			{ type: "spawn", func: "vector", args: [553, 0, 0, 0, 2200, 0, 15000] }
 		],
 		"s-454-109-3104-0": [{ type: "text", sub_type: "message", message_RU: "4", message: "4" },
-			{ type: "spawn", func: "vector", args: [553, 0, 0, 0, 2200, 0, 17000] }
+			{ type: "spawn", func: "vector", args: [553, 0, 0, 0, 2200, 0, 15000] }
 		]
 	};
 };
