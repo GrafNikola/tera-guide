@@ -81,9 +81,11 @@ id | Dungeon name | Название данжа
 9056 | Timescape (Hard) | Хроноплоскость (сложно)
 9067 | Demokron Factory (Hard) | Лаборатория Берна (сложно)
 9068 | Shadow Sanguinary (Hard) | Убежище Дуриона (сложно)
+9057 | Akeron's Inferno (Hard) | Акероново пекло (сложно)
 9070 | Manglemire | Замок Парадоксов
 9735 | RK-9 Kennel | Ангар RK-9
 9754 | Bathysmal Rise | Глубинный Храм
+9757 | Akeron's Inferno | Акероново пекло
 9759 | Forsaken Island (Hard) | Остров Мертвых (сложно)
 9770 | Ruinous Manor | Руины Абнукты
 9780 | Velik's Hold (5-Person) | Вход в катакомбы Велики
