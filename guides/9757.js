@@ -35,14 +35,14 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		],
 		"s-757-1002-1105-0": [{ type: "text", sub_type: "message", message_RU: "Огненное дыхание", message: "Fire Breath" }],
 		"s-757-1002-1108-0": [{ type: "text", sub_type: "message", message_RU: "Огненные бомбы (спереди)", message: "Fire Bombs" }],
-		"s-757-1002-1109-0": [{ type: "text", sub_type: "message", message_RU: "Плавание + Заднее АоЕ", message: "Swim + Back AoE" }],
+		"s-757-1002-1109-0": [{ type: "text", sub_type: "message", message_RU: "Плавание + Задняя", message: "Swim + Back Attack" }],
 		"s-757-1002-1206-0": [{ type: "text", sub_type: "message", message_RU: "Прыжок + Случайная атака", message: "Jump + Random Target" }],
 		"s-757-1002-1204-0": [{ type: "text", sub_type: "message", message_RU: "Большое АоЕ", message: "Large AoE", delay: 3000 },
-			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 6, 650, 3000, 4000] }
+			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 6, 630, 3000, 4000] }
 		],
 		"s-757-1002-1107-0": [{ type: "text", sub_type: "message", message_RU: "Крутилка", message: "Spin" }],
-		"s-757-1002-1106-1": [{ type: "text", sub_type: "message", message_RU: "АоЕ + Пламя", message: "AoE + Side Flames", delay: 4000 },
-			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 8, 450, 4000, 4000] }
+		"s-757-1002-1106-1": [{ type: "text", sub_type: "message", message_RU: "АоЕ + Пламя", message: "AoE + Side Flames", delay: 3000 },
+			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 8, 550, 3000, 4000] }
 		],
 		"s-757-1002-1112-0": [{ type: "text", sub_type: "message", message_RU: "Огненные шары (таргет)", message: "Target Fireball" }],
 		"s-757-1002-2105-0": "s-757-1002-1105-0",
@@ -87,7 +87,6 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-757-1004-2105-0": "s-757-1004-1105-0",
 		"s-757-1004-2106-0": "s-757-1004-1106-0",
 		"s-757-1004-2107-0": "s-757-1004-1107-0",
-		"s-757-1004-2109-0": "s-757-1004-1109-0",
 		"s-757-1004-2108-0": "s-757-1004-1108-0",
 		"s-757-1004-2111-0": "s-757-1004-1111-0"
 	};

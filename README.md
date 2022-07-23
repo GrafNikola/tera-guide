@@ -79,9 +79,9 @@ id | Dungeon name | Название данжа
 9044 | Bahaar's Sanctum | Святилище Бахаара
 9054 | Bathysmal Rise (Hard) | Глубинный Храм (сложно)
 9056 | Timescape (Hard) | Хроноплоскость (сложно)
+9057 | Akeron's Inferno (Hard) | Акероново пекло (сложно)
 9067 | Demokron Factory (Hard) | Лаборатория Берна (сложно)
 9068 | Shadow Sanguinary (Hard) | Убежище Дуриона (сложно)
-9057 | Akeron's Inferno (Hard) | Акероново пекло (сложно)
 9070 | Manglemire | Замок Парадоксов
 9735 | RK-9 Kennel | Ангар RK-9
 9754 | Bathysmal Rise | Глубинный Храм
