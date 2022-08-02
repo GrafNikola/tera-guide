@@ -83,6 +83,7 @@ id | Dungeon name | Название данжа
 9067 | Demokron Factory (Hard) | Лаборатория Берна (сложно)
 9068 | Shadow Sanguinary (Hard) | Убежище Дуриона (сложно)
 9070 | Manglemire | Замок Парадоксов
+9716 | Sky Cruiser Endeavor | Крейсер "Стремление"
 9735 | RK-9 Kennel | Ангар RK-9
 9754 | Bathysmal Rise | Глубинный Храм
 9757 | Akeron's Inferno | Акероново пекло
@@ -91,6 +92,7 @@ id | Dungeon name | Название данжа
 9780 | Velik's Hold (5-Person) | Вход в катакомбы Велики
 9781 | Velik's Sanctuary | Святилище Велики
 9794 | Thaumetal Refinery | Лаборатория Сайрекса
+9916 | Sky Cruiser Endeavor (Hard) | Крейсер "Стремление" (Сложно)
 9920 | Antaroth's Abyss (Hard) | Омут Бездушного Антароса
 9935 | RK-9 Kennel (Hard) | Ангар совершенного RK-9
 9970 | Ruinous Manor (Hard) | Руины Кошмарной Абнукты
