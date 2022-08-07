@@ -12,7 +12,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-454-1000-1103-0": [{ type: "text", sub_type: "message", message_RU: "Удар головой!", message: "Head Slam!" }, //
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 200, 12, 275, 0, 4000] }
 		],
-		"s-454-1000-1104-0": [{ type: "text", sub_type: "message", message_RU: "Giro Alejarse (Lento)", message: "Spin get out (Slow)" },
+		"s-454-1000-1104-0": [{ type: "text", sub_type: "message", message_RU: "Крутилка (медленно)", message: "Spin get out (Slow)" },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 15, 200, 0, 5000] }
 		],
 		"s-454-1000-1105-0": [{ type: "text", sub_type: "message", message_RU: "К нему", message: "Get In" }],
@@ -58,8 +58,8 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-454-1001-1110-0": [{ type: "text", sub_type: "message", message_RU: "Крутилка! (медленно)", message: "Spin! (Slow)" }],
 		"s-454-1001-1113-0": [{ type: "text", sub_type: "message", message_RU: "Лужа", message: "Slime Puddle" }],
 		"s-454-1001-1111-0": [{ type: "text", sub_type: "message", message_RU: "Крутилка с выпадом", message: "Spin Lunge Attack" }],
-		"s-454-1001-2101-0": "s-454-1000-1101-0",
-		"s-454-1001-2102-0": "s-454-1001-1102-0",
+		//"s-454-1001-2101-0": "s-454-1000-1101-0",
+		//"s-454-1001-2102-0": "s-454-1001-1102-0",
 		"s-454-1001-2104-0": "s-454-1001-1104-0",
 		"s-454-1001-2105-0": "s-454-1001-1105-0",
 		"s-454-1001-2108-0": "s-454-1001-1108-0",
