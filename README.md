@@ -68,6 +68,7 @@ id | Dungeon name | Название данжа
 3026 | Corrupted Skynest | Логово Келсаика
 3027 | Forbidden Arena [Hagufna] | [Бессмертный воин] Арена безумия
 3036 | Sky Cruiser (Hard) | Небесный крейсер (сложно)
+3101 | Gossamer Vault | Гнездо Паркин
 3102 | Draakon Arena | Командный центр
 3103 | Forbidden Arena [Undying Warlord] | [Этерния] Арена безумия
 3126 | Corrupted Skynest (Hard) | Логово Бессмертного Келсаика
