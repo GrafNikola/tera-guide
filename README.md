@@ -67,7 +67,9 @@ id | Dungeon name | Название данжа
 3023 | Akalath Quarantine | Секретное подземелье крепости Берарк
 3026 | Corrupted Skynest | Логово Келсаика
 3027 | Forbidden Arena [Hagufna] | [Бессмертный воин] Арена безумия
+3032 | Akalath Quarantine (Guide) | [Тренировка] Секретное подземелье крепости Берарк
 3036 | Sky Cruiser (Hard) | Небесный крейсер (сложно)
+3037 | Bahaar's Sanctum (Guide) | [Тренировка] Святилище Бахаара
 3101 | Gossamer Vault | Гнездо Паркин
 3102 | Draakon Arena | Командный центр
 3103 | Forbidden Arena [Undying Warlord] | [Этерния] Арена безумия
@@ -87,6 +89,7 @@ id | Dungeon name | Название данжа
 9068 | Shadow Sanguinary (Hard) | Убежище Дуриона (сложно)
 9070 | Manglemire | Замок Парадоксов
 9716 | Sky Cruiser Endeavor | Крейсер "Стремление"
+9720 | Antaroth's Abyss | Омут Антароса
 9735 | RK-9 Kennel | Ангар RK-9
 9754 | Bathysmal Rise | Глубинный Храм
 9757 | Akeron's Inferno | Акероново пекло
