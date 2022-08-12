@@ -94,6 +94,7 @@ id | Dungeon name | Название данжа
 9770 | Ruinous Manor | Руины Абнукты
 9780 | Velik's Hold (5-Person) | Вход в катакомбы Велики
 9781 | Velik's Sanctuary | Святилище Велики
+9782 | Grotto of Lost Souls | Мастерская Леандра
 9794 | Thaumetal Refinery | Лаборатория Сайрекса
 9916 | Sky Cruiser Endeavor (Hard) | Крейсер "Стремление" (Сложно)
 9920 | Antaroth's Abyss (Hard) | Омут Бездушного Антароса
