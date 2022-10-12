@@ -68,6 +68,7 @@ id | Dungeon name | Название данжа
 3026 | Corrupted Skynest | Логово Келсаика
 3027 | Forbidden Arena [Hagufna] | [Бессмертный воин] Арена безумия
 3032 | Akalath Quarantine (Guide) | [Тренировка] Секретное подземелье крепости Берарк
+3034 | Rampaging RK-9 Kennel | Ангар RK-9 (сложно)
 3036 | Sky Cruiser (Hard) | Небесный крейсер (сложно)
 3037 | Bahaar's Sanctum (Guide) | [Тренировка] Святилище Бахаара
 3101 | Gossamer Vault | Гнездо Паркин
