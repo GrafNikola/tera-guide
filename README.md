@@ -12,14 +12,14 @@
 ### :information_source: Manual installation
 The tera-guide and [tera-guide-core](https://github.com/hsdn/tera-guide-core) are already compatible with this patch.   
 For the guides to work you need a get compatible versions of **library** and **tera-guide-core**:
-1. Download **library** from **[here](https://git.dev.hsdn.org/tera-v92/library/archive/master.zip)** and place it to you **mods** folder.
+1. Download **library** from **[here](https://github.com/tera-private-toolbox/library/archive/refs/heads/master.zip)** and place it to you **mods** folder named as **"library"**.
 2. Download **tera-guide-core** from **[here](https://github.com/hsdn/tera-guide-core/archive/refs/heads/master.zip)** and place it to you **mods** folder named as **"tera-guide-core"**,   
    not "tera-guide-core-master".
 
 ### :information_source: Ручная установка
 Модули tera-guide и [tera-guide-core](https://github.com/hsdn/tera-guide-core) совместимы с данным патчем уже сейчас.   
 Для работы гайдов вам потребуется установка совместимой версии **library** и **tera-guide-core**:
-1. Скачайте **library** **[здесь](https://git.dev.hsdn.org/tera-v92/library/archive/master.zip)** и поместите в вашу папку **mods**.
+1. Скачайте **library** **[здесь](https://github.com/tera-private-toolbox/library/archive/refs/heads/master.zip)** и поместите в вашу папку **mods** как **"library"**.
 2. Скачайте **tera-guide-core** **[здесь](https://github.com/hsdn/tera-guide-core/archive/refs/heads/master.zip)** и поместите в вашу папку **mods** как **"tera-guide-core"**,   
    а не "tera-guide-core-master".
 
