@@ -6,14 +6,15 @@ module.exports = (dispatch, handlers, guide, lang) => {
 	guide.type = SP;
 
 	let debuff = null; // default debuff
+	let skullDebuff = false;
 
 	return {
 		// 1 BOSS
+		"die": [{ type: "func", func: () => { debuff = null; } }],
 		"nd-970-1000": [
 			{ type: "stop_timers" },
 			{ type: "despawn_all" }
 		],
-		"die": [{ type: "func", func: () => { debuff = null; } }],
 		"ae-0-0-97000042": [{ type: "func", func: () => debuff = 1 }], // AoE (red)
 		"ae-0-0-97000043": [{ type: "func", func: () => debuff = 2 }], // AoE (blue)
 		"am-970-1000-97000042": [{ type: "func", func: () => debuff = 1 }], // Red
@@ -64,6 +65,8 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-970-2000-2111-0": [{ type: "text", sub_type: "message", message: "Many Hits (Target)", message_RU: "Множество ударов (таргет)" }],
 
 		// 3 BOSS
+		"am-970-3000-97000052": [{ type: "func", func: () => skullDebuff = true }],
+		"ar-970-3000-97000052": [{ type: "func", func: () => skullDebuff = false }],
 		"nd-970-3000": [
 			{ type: "stop_timers" },
 			{ type: "despawn_all" }
@@ -104,19 +107,19 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-970-3000-1303-0": [{ type: "text", sub_type: "message", message: "Get Ready!", message_RU: "Готовность!" }],
 		"s-970-3000-1113-0": [
 			{ type: "text", sub_type: "message", message_RU: "От него", message: "Out" },
-			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 15, 300, 0, 5000] }
+			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 15, 300, 0, 2000] }
 		],
 		"s-970-3000-1114-0": [
 			{ type: "text", sub_type: "message", message_RU: "К нему", message: "In" },
-			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 15, 300, 0, 5000] }
+			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 15, 300, 0, 2000] }
 		],
 		"s-970-3000-1116-0": [
 			{ type: "text", sub_type: "message", message_RU: "К нему", message: "In" },
-			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 15, 300, 0, 5000] }
+			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 15, 300, 0, 2000] }
 		],
 		"s-970-3000-1117-0": [
 			{ type: "text", sub_type: "message", message_RU: "От него", message: "Out" },
-			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 15, 300, 0, 5000] }
+			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 15, 300, 0, 2000] }
 		],
 		"s-970-3000-2113-0": "s-970-3000-1113-0",
 		"s-970-3000-2114-0": "s-970-3000-1114-0",
@@ -130,11 +133,14 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "text", sub_type: "message", message: "Tail", message_RU: "Удар хвостом" },
 			{ type: "spawn", func: "circle", args: [false, 553, -7, 280, 20, 155, 0, 2000] }
 		],
-		"s-970-3000-1318-0": [{ type: "text", sub_type: "message", message: "Get Red Skull!", message_RU: "Взять красную голову!" }],
-		"s-970-3000-1317-0": [{ type: "text", sub_type: "message", message: "Get Red Skull!", message_RU: "Взять красную голову!" }],
-		"s-970-3000-1319-0": [{ type: "text", sub_type: "message", message: "Get Red Skull!", message_RU: "Взять красную голову!" }],
+		"s-970-3000-1317-0": [
+			{ type: "text", sub_type: "message", message: "Get Red Skull!", message_RU: "Взять красную голову!", check_func: () => !skullDebuff },
+			{ type: "text", sub_type: "message", message: "Get Yellow Skull!", message_RU: "Взять желтую голову!", check_func: () => skullDebuff }
+		],
+		"s-970-3000-1318-0": "s-970-3000-1317-0",
+		"s-970-3000-1319-0": "s-970-3000-1318-0",
 		"s-970-3000-1322-0": [
-			{ type: "text", sub_type: "message", message: "Dodge!", message_RU: "Эвейд!" },
+			{ type: "text", sub_type: "message", message: "Dodge!", message_RU: "Циркуль (эвейд)" },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 14, 230, 0, 5000] },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 12, 430, 0, 5000] },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 8, 630, 0, 5000] }
