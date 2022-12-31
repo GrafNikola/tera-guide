@@ -91,6 +91,7 @@ id | Dungeon name | Название данжа
 9067 | Demokron Factory (Hard) | Лаборатория Берна (сложно)
 9068 | Shadow Sanguinary (Hard) | Убежище Дуриона (сложно)
 9070 | Manglemire | Замок Парадоксов
+9710 | Broken Prison | Разрушенный алтарь Лакана
 9716 | Sky Cruiser Endeavor | Крейсер "Стремление"
 9720 | Antaroth's Abyss | Омут Антароса
 9735 | RK-9 Kennel | Ангар RK-9
