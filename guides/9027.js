@@ -95,7 +95,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		// Fase 2
 		"s-427-2007-1103-0": [{ type: "text", sub_type: "message", message_RU: "Передняя атака", message: "Frontal Attack" }],
 		"s-427-2007-1205-0": [{ type: "text", sub_type: "message", message_RU: "Телепорт", message: "Teleport" }],
-		"s-427-2007-1102-0": [{ type: "text", sub_type: "message", message_RU: "Вертолет", message: "Helicopter" }],
+		"s-427-2007-1102-0": [{ type: "text", sub_type: "message", message_RU: "К нему > От него", message: "In > Out" }],
 		"s-427-2007-1113-0": [{ type: "text", sub_type: "message", message_RU: "Левая рука ", message: "Left Hand Attack" }],
 		"s-427-2007-1105-0": [{ type: "text", sub_type: "message", message_RU: "Правая рука ", message: "Right Hand Attack" }],
 		"s-427-2007-1112-0": [{ type: "text", sub_type: "message", message_RU: "Дебаф (бублик)", message: "Donut Debuff" },
