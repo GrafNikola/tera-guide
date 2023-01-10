@@ -49,11 +49,11 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "text", sub_type: "message", delay: 1750, message: "Dodge!", message_RU: "Эвейд!" }
 		],
 		"s-3202-1000-1115-0": [
-			{ type: "text", sub_type: "message", message: "AOE Bombs (spread if no ninja)", message_RU: "AOE бомбы (разойтись если нет тучки)" },
+			{ type: "text", sub_type: "message", message: "AOE Bombs (Spread)", message_RU: "AOE бомбы (разойтись)" },
 			{ type: "text", sub_type: "message", delay: 3000, message: "Gather!", message_RU: "Собраться!" }
 		],
 		"s-3202-1000-2115-0": [
-			{ type: "text", sub_type: "message", message: "AOE Bombs (spread if no ninja)", message_RU: "AOE бомбы (разойтись если нет тучки)" },
+			{ type: "text", sub_type: "message", message: "AOE Bombs (Spread)", message_RU: "AOE бомбы (разойтись)" },
 			{ type: "text", sub_type: "message", delay: 3000, message: "Gather!", message_RU: "Собраться!" }
 		],
 		"s-3202-1000-1112-0": [
