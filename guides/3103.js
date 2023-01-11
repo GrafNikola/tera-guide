@@ -52,7 +52,6 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "stop_timers" },
 			{ type: "despawn_all" }
 		],
-
 		"h-3103-1000-99": [{ type: "func", func: () => gettingserious = false }],
 		"h-3103-1000-70": [{ type: "func", func: () => gettingserious = true }],
 
@@ -69,10 +68,11 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		//"s-3103-1000-127-0": [{ type: "text", class_position: "tank", sub_type: "message", message: "Many Kicks", message_RU: "Несколько ударов" }],
 
 		"s-3103-1000-121-0": [{ type: "text", sub_type: "message", message: "Flip Kick (Stun)", message_RU: "Удар в воздухе (стан)" }],
-		"s-3103-1000-107-0": [
-			{ type: "text", sub_type: "message", message: "Bait", message_RU: "Байт" },
-			{ type: "func", func: back_kick_event, args: [107] }
-		],
+
+		"qb-3103-1000-31031000": [{ type: "text", sub_type: "message", message: "Bait (Dodge)", message_RU: "Байт (эвейд)" }],
+		// "s-3103-1000-124-0": [{ type: "text", sub_type: "message", message: "Dodge", message_RU: "Эвейд" }], // 305 124
+		"s-3103-1000-107-0": [{ type: "func", func: back_kick_event, args: [107] }],
+
 		"s-3103-1000-110-0": [
 			{ type: "text", sub_type: "message", message: "Spin", message_RU: "Крутилка" },
 			{ type: "spawn", func: "circle", args: [true, 553, 0, 0, 12, 420, 0, 3000] }
@@ -92,7 +92,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-3103-1000-131-0": [{ type: "text", sub_type: "message", message: "Rhythmic Blows", message_RU: "Ураганная серия" }], // 131 132 133
 		// 116 146
 		"s-3103-1000-146-0": [
-			{ type: "text", sub_type: "message", message: "Back Kick", message_RU: "Откид назад" },
+			{ type: "text", sub_type: "message", message: "Back Kick", message_RU: "Откид назад" }, // 116 146
 			{ type: "spawn", func: "vector", args: [553, 90, 120, 170, 600, 0, 3000] },
 			{ type: "spawn", func: "vector", args: [553, 270, 120, -170, 600, 0, 3000] }
 		],
@@ -102,11 +102,11 @@ module.exports = (dispatch, handlers, guide, lang) => {
 
 		// Target "Ha" attacks 308 31031007 125
 		"qb-3103-1000-31031007": [
-			{ type: "text", sub_type: "message", message: "Target", message_RU: "Таргет" },
+			{ type: "text", sub_type: "message", message: "Kick (Target)", message_RU: "Удар (таргет)", class_position: "tank" },
+			{ type: "text", sub_type: "message", message: "Dodge (Target)", message_RU: "Эвейд (таргет) ", class_position: ["heal", "dps"] },
 			{ type: "func", func: target_attack_event }
 		],
-		"s-3103-1000-124-0": [{ type: "text", sub_type: "message", message: "Kick", message_RU: "Удар" }], // 305 124
-		"s-3103-1000-125-0": [{ type: "text", sub_type: "message", message: "Kick", message_RU: "Удар" }],
+		// "s-3103-1000-125-0": [{ type: "text", sub_type: "message", message: "Kick", message_RU: "Удар" }], // 308 125
 
 		// Donuts
 		"qb-3103-1000-31031008": [{ type: "text", sub_type: "message", message: "Donuts: Out > In > Dodge", message_RU: "Бублики: От него > К нему > Эвейд" }], // 31031008 303/304 117 155
@@ -125,7 +125,10 @@ module.exports = (dispatch, handlers, guide, lang) => {
 
 		// Stun 142 148 129
 		"s-3103-1000-142-0": [{ type: "text", sub_type: "message", message: "Stun | Back Wave", message_RU: "Стан | Волна назад" }],
-		"s-3103-1000-148-0": [{ type: "spawn", func: "circle", args: [true, 912, 0, -10, 12, 300, 0, 3000] }],
+		"s-3103-1000-148-0": [
+			{ type: "text", sub_type: "message", delay: 1300, message: "Dodge", message_RU: "Эвейд" },
+			{ type: "spawn", func: "circle", args: [true, 912, 0, -10, 12, 300, 0, 3000] }
+		],
 		"s-3103-1000-129-0": [
 			{ type: "text", sub_type: "message", message: "Back Wave", message_RU: "Волна назад (откид)" },
 			{ type: "spawn", func: "vector", args: [912, 90, 210, 390, 300, 0, 2000] },
@@ -138,6 +141,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		],
 
 		// Jump 143-0 143-1
+		"qb-3103-1000-31031001": [{ type: "text", sub_type: "message", message: "Bait on res", message_RU: "Байт на рес" }],
 		"s-3103-1000-143-0": [{ type: "text", sub_type: "message", message: "Jump (Stun)", message_RU: "Прыжок (стан)" }],
 		"s-3103-1000-143-1": [{ type: "spawn", func: "circle", args: [true, 553, 0, 0, 14, 240, 0, 2000] }],
 
