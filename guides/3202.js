@@ -91,12 +91,14 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 10, 320, 0, 4000] }
 		],
 		"s-3202-1000-1109-0": [
-			{ type: "text", sub_type: "message", message: "Knockdown + Spin", message_RU: "Опрокид + Крутилка" },
+			{ type: "text", sub_type: "message", message: "Dodge (Knockdown)", message_RU: "Эвейд (опрокид)" },
+			{ type: "text", sub_type: "message", delay: 1300, message: "Dodge (Spin)", message_RU: "Эвейд (крутилка)" },
 			{ type: "spawn", func: "circle", args: [true, 553, 0, 100, 8, 420, 0, 1000] },
 			{ type: "spawn", func: "circle", delay: 1000, args: [true, 553, 180, 0, 8, 415, 0, 3000] }
 		],
 		"s-3202-1000-2109-0": [
-			{ type: "text", sub_type: "message", message: "Knockdown + Spin", message_RU: "Опрокид + Крутилка" },
+			{ type: "text", sub_type: "message", message: "Dodge (Knockdown)", message_RU: "Эвейд (опрокид)" },
+			{ type: "text", sub_type: "message", delay: 1300, message: "Dodge (Spin)", message_RU: "Эвейд (крутилка)" },
 			{ type: "spawn", func: "circle", args: [true, 553, 0, 100, 8, 420, 0, 1000] },
 			{ type: "spawn", func: "circle", delay: 1000, args: [true, 553, 180, 0, 8, 415, 0, 3000] }
 		],
