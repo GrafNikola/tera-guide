@@ -5,6 +5,38 @@
 module.exports = (dispatch, handlers, guide, lang) => {
 	guide.type = SP;
 
+	let debuff_to_take = 0;
+	let next_debuff = 0;
+	function debuff_event() {
+		if (next_debuff === 0) {
+			next_debuff = debuff_to_take;
+		} else {
+			next_debuff++;
+		}
+
+		if (next_debuff > 3) {
+			next_debuff = 1;
+		}
+
+		const debuff_messages = {
+			0: { message: "Debuff" },
+			1: { message: "Debuff 1" },
+			2: { message: "Debuff 2" },
+			3: { message: "Debuff 3" }
+		};
+
+		handlers.text({
+			sub_type: "notification",
+			message: debuff_messages[next_debuff].message,
+			speech: true
+		});
+	}
+
+	function debuff_removed() {
+		debuff_to_take = 0;
+		next_debuff = 0;
+	}
+
 	return {
 		// 1 BOSS
 		"s-427-42701-1106-0": [{ type: "text", sub_type: "message", message_RU: "Волна вперед", message: "Frontal Wind" }],
@@ -93,27 +125,29 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-427-2001-2109-0": "s-427-2001-1109-0",
 
 		// Fase 2
+		"die": [{ type: "func", func: debuff_removed }],
+		"nd-427-777": [{ type: "func", func: debuff_removed }],
 		"s-427-2007-1103-0": [{ type: "text", sub_type: "message", message_RU: "Передняя атака", message: "Frontal Attack" }],
 		"s-427-2007-1205-0": [{ type: "text", sub_type: "message", message_RU: "Телепорт", message: "Teleport" }],
 		"s-427-2007-1102-0": [{ type: "text", sub_type: "message", message_RU: "К нему > От него", message: "In > Out" }],
 		"s-427-2007-1113-0": [{ type: "text", sub_type: "message", message_RU: "Левая рука ", message: "Left Hand Attack" }],
 		"s-427-2007-1105-0": [{ type: "text", sub_type: "message", message_RU: "Правая рука ", message: "Right Hand Attack" }],
-		"s-427-2007-1112-0": [{ type: "text", sub_type: "message", message_RU: "Дебаф (бублик)", message: "Donut Debuff" },
-			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 8, 330, 0, 12000] },
-			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 16, 185, 0, 9000] }
-		],
+		"s-427-2007-1112-0": [{ type: "func", func: debuff_event }],
 		"s-427-2007-1108-0": [{ type: "text", sub_type: "message", message_RU: "Атака (таргет)", message: "Target Attack" }],
 		"s-427-2007-1114-0": [{ type: "text", sub_type: "message", message_RU: "Удар назад", message: "Back Attack" }],
-		"s-427-2007-1115-0": [{ type: "text", sub_type: "message", message_RU: "Хвост", message: "Tail Attack" }],
-		"s-427-2007-1111-0": [{ type: "text", sub_type: "message", message_RU: "Хвост вперед", message: "Frontal Tail Attack" }],
+		"s-427-2007-1115-0": [{ type: "text", sub_type: "message", message_RU: "Хвост", message: "Tail" }],
+		"s-427-2007-1111-0": [{ type: "text", sub_type: "message", message_RU: "Хвост вперед", message: "Frontal Attack" }],
 		"s-427-2007-1109-0": [{ type: "text", sub_type: "message", message_RU: "АоЕ (таргет)", message: "AoE Target" }],
+		"s-427-2007-1104-0": [{ type: "text", sub_type: "message", message: "Stomp" }],
 		"s-427-2007-1107-0": [{ type: "text", sub_type: "message", message_RU: "Лазер", message: "Laser Attack" },
 			{ type: "spawn", func: "vector", args: [912, 360, 985, 180, 950, 0, 2500] },
 			{ type: "spawn", func: "vector", args: [912, 369, 995, 180, 950, 0, 2500] },
 			{ type: "spawn", func: "vector", args: [912, 351, 995, 180, 950, 0, 2500] }
 		],
 		"s-427-2007-1106-0": [{ type: "text", sub_type: "message", message_RU: "Бомба (таргет)", message: "Target Bomb" }],
-		"s-427-2007-1204-0": [{ type: "text", sub_type: "message", message_RU: "Большая АоЕ (бежать)", message: "Big AoE (Run)" }],
+		"s-427-2007-1204-0": [{ type: "text", sub_type: "message", message_RU: "Большая АоЕ (бежать)", message: "Big AoE (Run)" },
+		{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 10, 550, 0, 4000] }
+	],
 		"qb-427-2007-427050": [
 			{ type: "text", sub_type: "message", message: "Plague of Exhaustion", message_RU: "Чума/Регресс", class_position: "priest" },
 			{ type: "text", sub_type: "message", message: "Regression", message_RU: "Регресс", class_position: "mystic" }
@@ -131,6 +165,10 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-427-2007-2204-0": "s-427-2007-1204-0",
 		"s-427-2007-2103-0": "s-427-2007-1103-0",
 		"s-427-2007-2114-0": "s-427-2007-1114-0",
-		"s-427-2007-2108-0": "s-427-2007-1108-0"
+		"s-427-2007-2108-0": "s-427-2007-1108-0",
+		"s-427-2007-2104-0": "s-427-2007-1104-0",
+		"am-427-2007-47702900": [{ type: "func", func: () => debuff_to_take = 2 }], // greedy thought #1
+		"am-427-2007-47703000": [{ type: "func", func: () => debuff_to_take = 3 }], // hateful thought #2
+		"am-427-2007-47703100": [{ type: "func", func: () => debuff_to_take = 1 }] // desperate thought #3
 	};
 };
