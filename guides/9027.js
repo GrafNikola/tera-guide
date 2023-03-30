@@ -19,15 +19,16 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		}
 
 		const debuff_messages = {
-			0: { message: "Debuff" },
-			1: { message: "Debuff 1" },
-			2: { message: "Debuff 2" },
-			3: { message: "Debuff 3" }
+			0: { message: "Debuff", message_RU: "Дебаф (бублик)" },
+			1: { message: "Debuff 1", message_RU: "Дебаф (бублик) 1" },
+			2: { message: "Debuff 2", message_RU: "Дебаф (бублик) 2" },
+			3: { message: "Debuff 3", message_RU: "Дебаф (бублик) 3" }
 		};
 
 		handlers.text({
 			sub_type: "notification",
 			message: debuff_messages[next_debuff].message,
+			message_RU: debuff_messages[next_debuff].message_RU,
 			speech: true
 		});
 	}
