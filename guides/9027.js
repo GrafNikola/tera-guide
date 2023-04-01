@@ -13,7 +13,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		} else {
 			next_debuff++;
 		}
-
+		
 		if (next_debuff > 3) {
 			next_debuff = 1;
 		}
@@ -34,6 +34,18 @@ module.exports = (dispatch, handlers, guide, lang) => {
 	}
 
 	function debuff_removed() {
+		if (next_debuff != 0){
+			let next = next_debuff + 1;
+			if (next > 3){next=1}
+			
+			handlers.text({
+				sub_type: "notification",
+				message: "next debuff: " + next,
+				message_RU: "Следующий Дебаф (бублик): " + next,
+				speech: false
+			});
+		}
+		
 		debuff_to_take = 0;
 		next_debuff = 0;
 	}
@@ -127,7 +139,6 @@ module.exports = (dispatch, handlers, guide, lang) => {
 
 		// Fase 2
 		"die": [{ type: "func", func: debuff_removed }],
-		"nd-427-777": [{ type: "func", func: debuff_removed }],
 		"s-427-2007-1103-0": [{ type: "text", sub_type: "message", message_RU: "Передняя атака", message: "Frontal Attack" }],
 		"s-427-2007-1205-0": [{ type: "text", sub_type: "message", message_RU: "Телепорт", message: "Teleport" }],
 		"s-427-2007-1102-0": [{ type: "text", sub_type: "message", message_RU: "К нему > От него", message: "In > Out" }],
