@@ -5,48 +5,48 @@
 module.exports = (dispatch, handlers, guide, lang) => {
 	guide.type = SP;
 
-	let debuff_to_take = 0;
 	let next_debuff = 0;
-	function debuff_event() {
+	function debuff_event(send_msg, debuff, ent) {
 		if (next_debuff === 0) {
-			next_debuff = debuff_to_take;
-		} else {
-			next_debuff++;
-		}
-		
-		if (next_debuff > 3) {
-			next_debuff = 1;
+			next_debuff = debuff;
 		}
 
-		const debuff_messages = {
-			0: { message: "Debuff", message_RU: "Дебаф (бублик)" },
-			1: { message: "Debuff 1", message_RU: "Дебаф (бублик) 1" },
-			2: { message: "Debuff 2", message_RU: "Дебаф (бублик) 2" },
-			3: { message: "Debuff 3", message_RU: "Дебаф (бублик) 3" }
-		};
+		if (send_msg) {
+			const debuff_messages = {
+				0: { message: "Debuff", message_RU: "Дебаф (бублик)" },
+				1: { message: "Debuff 1", message_RU: "Дебаф (бублик) 1" },
+				2: { message: "Debuff 2", message_RU: "Дебаф (бублик) 2" },
+				3: { message: "Debuff 3", message_RU: "Дебаф (бублик) 3" }
+			};
 
-		handlers.text({
-			sub_type: "notification",
-			message: debuff_messages[next_debuff].message,
-			message_RU: debuff_messages[next_debuff].message_RU,
-			speech: true
-		});
-	}
-
-	function debuff_removed() {
-		if (next_debuff != 0){
-			let next = next_debuff + 1;
-			if (next > 3){next=1}
-			
 			handlers.text({
 				sub_type: "notification",
-				message: "next debuff: " + next,
-				message_RU: "Следующий Дебаф (бублик): " + next,
+				message: debuff_messages[next_debuff].message,
+				message_RU: debuff_messages[next_debuff].message_RU,
+				speech: true
+			});
+
+			if (next_debuff !== 0){
+				next_debuff++;
+			}
+			
+			if (next_debuff > 3) {
+				next_debuff = 1;
+			}
+		}
+	}
+
+
+	function debuff_removed() {
+		if (next_debuff != 0) {
+			handlers.text({
+				sub_type: "notification",
+				message: "next debuff: " + next_debuff,
+				message_RU: "Следующий Дебаф (бублик): " + next_debuff,
 				speech: false
 			});
 		}
-		
-		debuff_to_take = 0;
+
 		next_debuff = 0;
 	}
 
@@ -144,7 +144,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-427-2007-1102-0": [{ type: "text", sub_type: "message", message_RU: "К нему > От него", message: "In > Out" }],
 		"s-427-2007-1113-0": [{ type: "text", sub_type: "message", message_RU: "Левая рука ", message: "Left Hand Attack" }],
 		"s-427-2007-1105-0": [{ type: "text", sub_type: "message", message_RU: "Правая рука ", message: "Right Hand Attack" }],
-		"s-427-2007-1112-0": [{ type: "func", func: debuff_event }],
+		"s-427-2007-1112-0": [{ type: "func", func: debuff_event, args: [true, 0] }],
 		"s-427-2007-1108-0": [{ type: "text", sub_type: "message", message_RU: "Атака (таргет)", message: "Target Attack" }],
 		"s-427-2007-1114-0": [{ type: "text", sub_type: "message", message_RU: "Удар назад", message: "Back Attack" }],
 		"s-427-2007-1115-0": [{ type: "text", sub_type: "message", message_RU: "Хвост", message: "Tail" }],
@@ -179,8 +179,8 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-427-2007-2114-0": "s-427-2007-1114-0",
 		"s-427-2007-2108-0": "s-427-2007-1108-0",
 		"s-427-2007-2104-0": "s-427-2007-1104-0",
-		"am-427-2007-47702900": [{ type: "func", func: () => debuff_to_take = 2 }], // greedy thought #1
-		"am-427-2007-47703000": [{ type: "func", func: () => debuff_to_take = 3 }], // hateful thought #2
-		"am-427-2007-47703100": [{ type: "func", func: () => debuff_to_take = 1 }] // desperate thought #3
+		"am-427-2007-47702900": [{ type: "func", func: debuff_event, args: [false, 2] }], // greedy thought #1
+		"am-427-2007-47703000": [{ type: "func", func: debuff_event, args: [false, 3] }], // hateful thought #2
+		"am-427-2007-47703100": [{ type: "func", func: debuff_event, args: [false, 1] }] // desperate thought #3
 	};
 };
