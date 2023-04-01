@@ -40,8 +40,8 @@ module.exports = (dispatch, handlers, guide, lang) => {
 
 		let time_diff = start - tmp;
 
-		let prev = prev_back_attack
-		prev_back_attack = curr
+		let prev = prev_back_attack;
+		prev_back_attack = curr;
 
 		let back_combo_time_diff = 5000;
 		if (counter1_date != null) {
@@ -56,7 +56,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			});
 		} else if (prev === 1103 && curr === 1105 && time_diff < 1000) {
 			counter = 1;
-			counter1_date = new Date()
+			counter1_date = new Date();
 		} else if (prev === 1105 && curr === 1106 && counter === 1 && time_diff < 1500 && back_combo_time_diff < 1500) {
 			counter = 2;
 		} else if (prev === 1106 && curr === 1108 && counter == 2 && time_diff < 1000 && back_combo_time_diff < 2000) {
