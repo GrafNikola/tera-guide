@@ -26,10 +26,10 @@ module.exports = (dispatch, handlers, guide, lang) => {
 				speech: true
 			});
 
-			if (next_debuff !== 0){
+			if (next_debuff !== 0) {
 				next_debuff++;
 			}
-			
+
 			if (next_debuff > 3) {
 				next_debuff = 1;
 			}
@@ -41,8 +41,8 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		if (next_debuff != 0) {
 			handlers.text({
 				sub_type: "notification",
-				message: "next debuff: " + next_debuff,
-				message_RU: "Следующий Дебаф (бублик): " + next_debuff,
+				message: `next debuff: ${next_debuff}`,
+				message_RU: `Следующий Дебаф (бублик): ${next_debuff}`,
 				speech: false
 			});
 		}
@@ -52,6 +52,10 @@ module.exports = (dispatch, handlers, guide, lang) => {
 
 	return {
 		// 1 BOSS
+		"nd-427-42701": [
+			{ type: "stop_timers" },
+			{ type: "despawn_all" }
+		],
 		"s-427-42701-1106-0": [{ type: "text", sub_type: "message", message_RU: "Волна вперед", message: "Frontal Wind" }],
 		"s-427-42701-1102-0": [{ type: "text", sub_type: "message", message_RU: "Передний разрез", message: "Frontal Cut" }],
 		"s-427-42701-1104-0": [{ type: "text", sub_type: "message", message_RU: "Передний удар", message: "Frontal Hit" }],
@@ -80,6 +84,10 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-427-42701-2204-0": "s-427-42701-1204-0",
 
 		// 2 BOSS
+		"nd-427-42702": [
+			{ type: "stop_timers" },
+			{ type: "despawn_all" }
+		],
 		"s-427-42702-1104-0": [{ type: "text", sub_type: "message", message_RU: "Лазер", message: "Laser" }],
 		"s-427-42702-1109-0": [{ type: "text", sub_type: "message", message_RU: "Удар щита назад", message: "Back Shield Hit" }],
 		"s-427-42702-1106-0": [{ type: "text", sub_type: "message", message_RU: "Бомба (таргет)", message: "Bomb (Target)" }],
@@ -102,6 +110,10 @@ module.exports = (dispatch, handlers, guide, lang) => {
 
 		// 3 BOSS
 		// Fase 1
+		"nd-427-2001": [
+			{ type: "stop_timers" },
+			{ type: "despawn_all" }
+		],
 		"s-427-2001-1101-0": [{ type: "text", sub_type: "message", message_RU: "АоЕ стрелы (+)", message: "Arrows AoE (+)" },
 			{ type: "spawn", func: "vector", args: [553, 120, 100, 176, 400, 0, 5000] },
 			{ type: "spawn", func: "vector", args: [553, 240, 100, -176, 400, 0, 5000] },
@@ -138,7 +150,12 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-427-2001-2109-0": "s-427-2001-1109-0",
 
 		// Fase 2
+		"nd-427-2007": [
+			{ type: "stop_timers" },
+			{ type: "despawn_all" }
+		],
 		"die": [{ type: "func", func: debuff_removed }],
+		"h-427-2007-99": [{ type: "func", func: () => next_debuff = 0 }],
 		"s-427-2007-1103-0": [{ type: "text", sub_type: "message", message_RU: "Передняя атака", message: "Frontal Attack" }],
 		"s-427-2007-1205-0": [{ type: "text", sub_type: "message", message_RU: "Телепорт", message: "Teleport" }],
 		"s-427-2007-1102-0": [{ type: "text", sub_type: "message", message_RU: "К нему > От него", message: "In > Out" }],
@@ -158,8 +175,8 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		],
 		"s-427-2007-1106-0": [{ type: "text", sub_type: "message", message_RU: "Бомба (таргет)", message: "Target Bomb" }],
 		"s-427-2007-1204-0": [{ type: "text", sub_type: "message", message_RU: "Большая АоЕ (бежать)", message: "Big AoE (Run)" },
-		{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 10, 550, 0, 4000] }
-	],
+			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 10, 550, 0, 4000] }
+		],
 		"qb-427-2007-427050": [
 			{ type: "text", sub_type: "message", message: "Plague of Exhaustion", message_RU: "Чума/Регресс", class_position: "priest" },
 			{ type: "text", sub_type: "message", message: "Regression", message_RU: "Регресс", class_position: "mystic" }
