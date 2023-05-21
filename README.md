@@ -64,6 +64,7 @@ Toolbox(/8) | Command description | Описание команды
 
 id | Dungeon name | Название данжа
 --- | --- | ---
+2800 | Dreadspire VALKYTEQ | Dreadspire VALKYTEQ
 3023 | Akalath Quarantine | Секретное подземелье крепости Берарк
 3026 | Corrupted Skynest | Логово Келсаика
 3027 | Forbidden Arena [Hagufna] | [Бессмертный воин] Арена безумия
@@ -75,6 +76,7 @@ id | Dungeon name | Название данжа
 3101 | Gossamer Vault | Гнездо Паркин
 3102 | Draakon Arena | Командный центр
 3103 | Forbidden Arena [Undying Warlord] | [Этерния] Арена безумия
+3123 | Akalath Quarantine (Hard) | Akalath Quarantine (Hard)
 3126 | Corrupted Skynest (Hard) | Логово Бессмертного Келсаика
 3201 | Gossamer Vault (Hard) | Гнездо сверкающей Паркин
 3202 | Draakon Arena (Hard) | Командный центр (сложно)
@@ -83,6 +85,7 @@ id | Dungeon name | Название данжа
 7011 | Shadow of the Gutrends (Guardian) | Живодеры и черная тень (хранитель)
 7015 | Escape from Balder's Refuge (Guardian) | Операция "Спасти Убежище Балдера" (хранитель)
 9027 | Manaya's Core (Hard) | Обитель Манайи (сложно)
+9034 | Dreadspire | Жуткий шпиль страха
 9044 | Bahaar's Sanctum | Святилище Бахаара
 9054 | Bathysmal Rise (Hard) | Глубинный Храм (сложно)
 9056 | Timescape (Hard) | Хроноплоскость (сложно)
