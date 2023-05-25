@@ -15,7 +15,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		knockbackCounter++;
 
 		if (knockbackCounter >= 2) {
-			handlers.text({ sub_type: "alert", message: "KNOCKBACK", message_RU: "Будет Отбрасывание" });
+			handlers.text({ type: "text", sub_type: "message", message: "KNOCKBACK", message_RU: "Будет Отбрасывание" });
 			knockbackCounter = 0;
 		}
 
