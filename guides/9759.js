@@ -23,11 +23,11 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "spawn", func: "vector", args: [553, 270, 80, 350, 1000, 0, 1500] }
 		],
 		"s-759-1001-3101-0": [
-			{ type: "text", sub_type: "message", message: "Out", message_RU: "От него" },
+			{ type: "text", sub_type: "message", message: "Out -> In", message_RU: "От него -> К нему" },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 10, 270, 0, 2000] }
 		],
 		"s-759-1001-3106-0": [
-			{ type: "text", sub_type: "message", message: "In", message_RU: "К нему " },
+			{ type: "text", sub_type: "message", message: "In -> Out", message_RU: "К нему -> От него" },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 10, 245, 0, 2000] }
 		],
 
