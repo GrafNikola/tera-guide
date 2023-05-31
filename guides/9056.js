@@ -9,12 +9,20 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		// Boss 1 (phase 1)
 		"s-456-401-104-0": [
 			{ type: "text", sub_type: "message", message: "Bomb", message_RU: "Бомба" },
-			{ type: "text", sub_type: "warning", message: "(1)", speech: false, delay: 300 },
-			{ type: "text", sub_type: "warning", message: "(2)", speech: false, delay: 800 },
-			{ type: "text", sub_type: "warning", message: "(3)", speech: false, delay: 1300 },
-			{ type: "text", sub_type: "message", message: "(4) Dodge!", message_RU: "(4) Эвейд!", delay: 1800 }
+			{ type: "text", sub_type: "warning", message: "(1)", speech: false, delay: 550 },
+			{ type: "text", sub_type: "warning", message: "(2)", speech: false, delay: 1300 },
+			{ type: "text", sub_type: "warning", message: "(3)", speech: false, delay: 2050 },
+			{ type: "text", sub_type: "message", message: "(4) Dodge!", message_RU: "(4) Эвейд!", delay: 2800 }
 		],
 		"s-456-1001-107-0": [{ type: "text", sub_type: "alert", message: "Shot", message_RU: "Выстрел", speech: false }],
+
+		"s-456-403-106-0": [{ type: "text", sub_type: "alert", message: "Circle", message_RU: "Круг", speech: false }],
+		"s-456-1001-103-0": [{ type: "text", sub_type: "alert", message: "Tail", message_RU: "Хвост", speech: false }],
+		"s-456-1001-101-0": [{ type: "text", sub_type: "alert", message: "Hit", message_RU: "Удар", speech: false }],
+		"s-456-1001-112-0": [{ type: "text", sub_type: "message", message: "Rotate", message_RU: "Разворот", speech: false }],
+		"s-456-1001-113-0": "s-456-1001-112-0",
+		"s-456-1001-111-0": [{ type: "text", sub_type: "message", message: "Give stun", message_RU: "Дать стан" }],
+		"qb-456-1001-456020": "s-456-1001-111-0",
 
 		// Boss 1 (phase 2)
 		"s-456-413-104-0": [
@@ -33,6 +41,13 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "text", sub_type: "message", message: "Regression", message_RU: "Регресс", class_position: "mystic" }
 		],
 
+		"s-456-1000-103-0": "s-456-1001-103-0",
+		"s-456-1000-101-0": "s-456-1001-101-0",
+		"s-456-1000-112-0": "s-456-1001-112-0",
+		"s-456-1000-113-0": "s-456-1001-112-0",
+		"s-456-1000-111-0": "s-456-1001-111-0",
+		"dm-456-1000-456001": "s-456-1001-111-0",
+
 		// Boss 2
 		"s-456-1002-102-0": [{ type: "text", sub_type: "message", message: "Jump", message_RU: "Прыжок" }],
 		"s-456-1002-103-0": [{ type: "text", sub_type: "message", message: "Combo", message_RU: "Комба" }],
@@ -41,7 +56,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-456-1002-110-0": [{ type: "text", sub_type: "message", message: "Clap", message_RU: "Удар вперед" }],
 		"s-456-1002-212-0": [{ type: "text", sub_type: "message", message: "Jump Back", message_RU: "Прыжок назад" }],
 		"s-456-1002-3110-0": [{ type: "text", sub_type: "message", message: "Breath", message_RU: "Дыхание" }],
-		"s-456-1002-3113-0": [{ type: "text", sub_type: "message", message: "AOE", message_RU: "АОЕ", delay: 4000 }],
+		"s-456-1002-3113-0": [{ type: "text", sub_type: "message", message: "AOE (Give stun)", message_RU: "АОЕ (Дать стан)", delay: 4000 }],
 
 		// Boss 3
 		"ab-456-1003-905607": [
