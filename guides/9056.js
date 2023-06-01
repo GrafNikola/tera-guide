@@ -21,6 +21,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-456-1001-101-0": [{ type: "text", sub_type: "alert", message: "Hit", message_RU: "Удар", speech: false }],
 		"s-456-1001-112-0": [{ type: "text", sub_type: "message", message: "Rotate", message_RU: "Разворот", speech: false }],
 		"s-456-1001-113-0": "s-456-1001-112-0",
+		"s-456-1001-111-0": [{ type: "text", sub_type: "message", message: "Flight", message_RU: "Взлет", speech: false }],
 		"qb-456-1001-456020": [{ type: "text", sub_type: "message", message: "Give stun", message_RU: "Дать стан" }],
 
 		// Boss 1 (phase 2)
@@ -44,6 +45,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-456-1000-101-0": "s-456-1001-101-0",
 		"s-456-1000-112-0": "s-456-1001-112-0",
 		"s-456-1000-113-0": "s-456-1001-112-0",
+		"s-456-1000-111-0": "s-456-1001-111-0",
 		"dm-456-1000-456001": "qb-456-1001-456020",
 
 		// Boss 2
