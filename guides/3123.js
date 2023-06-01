@@ -103,6 +103,9 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "spawn", func: "vector", args: [553, 90, 80, 10, 1000, 0, 4000] },
 			{ type: "spawn", func: "vector", args: [553, 270, 80, 350, 1000, 0, 4000] }
 		],
+
+		"s-3123-2000-214-0": [{ type: "text", sub_type: "message", message: "5x Rock", message_RU: "5x Полосы" }],
+
 		"s-3123-2000-182-0": [{ type: "text", sub_type: "message", message: "Knockdown", message_RU: "Опрокид" }],
 		"s-3123-2000-185-0": [
 			{ type: "text", sub_type: "message", message: "Big jump (Kaia's Shield)", message_RU: "Прыжок (кайа)", class_position: "priest" },

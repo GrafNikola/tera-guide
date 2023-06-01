@@ -380,6 +380,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-2800-3000-1134-0": [{ type: "text", sub_type: "message", message: "DEBUFF", message_RU: "ДЕБАФ" }], //
 		"s-2800-3000-1502-0": [{ type: "text", sub_type: "message", message: "FORCED CAGE", message_RU: "Скоро клетка" }], //
 
+		"nd-2800-3004": [{ type: "text", sub_type: "message", message: "Kill mobs", message_RU: "Убить мобов" }],
 
 		"s-2800-3000-2106-0": "s-2800-3000-1106-0",
 		"s-2800-3000-2108-0": "s-2800-3000-1108-0",
@@ -406,6 +407,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-2800-4000-1205-0": [{ type: "text", sub_type: "message", message: "Beam in a circle", message_RU: "Луч по кругу" }],
 		"s-2800-4000-1206-0": [{ type: "text", sub_type: "message", message: "Beam forward, left, right", message_RU: "Луч вперед, лево, право" }],
 
+		"nd-2800-4001": [{ type: "text", sub_type: "message", message: "Kill mobs", message_RU: "Убить мобов" }],
 
 		"s-2800-4000-2102-0": "s-2800-4000-1102-0",
 		"s-2800-4000-2103-0": "s-2800-4000-1103-0",
@@ -450,6 +452,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-2800-5000-1124-0": [{ type: "text", sub_type: "message", message: "Jump", message_RU: "Прыжок" }],
 		"s-2800-5000-1127-0": [{ type: "text", sub_type: "message", message: "DEBUFF", message_RU: "ДЕБАФ" }],
 
+		"nd-2800-5002": [{ type: "text", sub_type: "message", message: "Kill your mob", message_RU: "Убить своего моба" }],
 
 		"s-2800-5000-2103-0": "s-2800-5000-1103-0",
 		"s-2800-5000-2104-0": "s-2800-5000-1104-0",
