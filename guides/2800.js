@@ -6,6 +6,8 @@ module.exports = (dispatch, handlers, guide, lang) => {
 	guide.type = SP;
 	let thirdboss_fifty = false;
 
+	let fifthDebuff = null;
+
 	// Knockback
 	let knockbackCounter = 0;
 	let knockbackTimer = null;
@@ -14,8 +16,8 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		clearTimeout(knockbackTimer);
 		knockbackCounter++;
 
-		if (knockbackCounter >= 2) {
-			handlers.text({ type: "text", sub_type: "message", message: "KNOCKBACK", message_RU: "Будет Отбрасывание" });
+		if (knockbackCounter === 2) {
+			handlers.text({ type: "text", sub_type: "message", message: "KNOCKBACK", message_RU: "Будет Отбрасывание", speech: true });
 			knockbackCounter = 0;
 		}
 
@@ -347,21 +349,21 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		// Third Floor
 
 		// Cage Mechanic
-		"s-2800-3000-1122-0": [{ "type": "func", "func": cage_mechanic_thirdfloor.bind(null, 1122) }],
-		"s-2800-3000-1123-0": [{ "type": "func", "func": cage_mechanic_thirdfloor.bind(null, 1123) }],
-		"s-2800-3000-1124-0": [{ "type": "func", "func": cage_mechanic_thirdfloor.bind(null, 1124) }],
-		"s-2800-3000-1127-0": [{ "type": "func", "func": cage_mechanic_thirdfloor.bind(null, 1127) }],
+		"s-2800-3000-1122-0": [{ "type": "func", "func": cage_mechanic_thirdfloor.bind(1122) }],
+		"s-2800-3000-1123-0": [{ "type": "func", "func": cage_mechanic_thirdfloor.bind(1123) }],
+		"s-2800-3000-1124-0": [{ "type": "func", "func": cage_mechanic_thirdfloor.bind(1124) }],
+		"s-2800-3000-1127-0": [{ "type": "func", "func": cage_mechanic_thirdfloor.bind(1127) }],
 
-		"ae-0-0-90340306": [{ "type": "func", "func": cage_set_debuff.bind(null, 0, true) }],
-		"ae-0-0-90340307": [{ "type": "func", "func": cage_set_debuff.bind(null, 0, false) }],
-		"ae-0-0-90340308": [{ "type": "func", "func": cage_set_debuff.bind(null, 1, true) }],
-		"ae-0-0-90340309": [{ "type": "func", "func": cage_set_debuff.bind(null, 1, false) }],
-		"ae-0-0-90340310": [{ "type": "func", "func": cage_set_debuff.bind(null, 2, true) }],
-		"ae-0-0-90340311": [{ "type": "func", "func": cage_set_debuff.bind(null, 2, false) }],
-		"ae-0-0-90340312": [{ "type": "func", "func": cage_set_debuff.bind(null, 3, true) }],
-		"ae-0-0-90340313": [{ "type": "func", "func": cage_set_debuff.bind(null, 3, false) }],
-		"ae-0-0-90340314": [{ "type": "func", "func": cage_set_debuff.bind(null, 4, true) }],
-		"ae-0-0-90340315": [{ "type": "func", "func": cage_set_debuff.bind(null, 4, false) }],
+		"ae-0-0-90340306": [{ "type": "func", "func": cage_set_debuff.bind(0, true) }],
+		"ae-0-0-90340307": [{ "type": "func", "func": cage_set_debuff.bind(0, false) }],
+		"ae-0-0-90340308": [{ "type": "func", "func": cage_set_debuff.bind(1, true) }],
+		"ae-0-0-90340309": [{ "type": "func", "func": cage_set_debuff.bind(1, false) }],
+		"ae-0-0-90340310": [{ "type": "func", "func": cage_set_debuff.bind(2, true) }],
+		"ae-0-0-90340311": [{ "type": "func", "func": cage_set_debuff.bind(2, false) }],
+		"ae-0-0-90340312": [{ "type": "func", "func": cage_set_debuff.bind(3, true) }],
+		"ae-0-0-90340313": [{ "type": "func", "func": cage_set_debuff.bind(3, false) }],
+		"ae-0-0-90340314": [{ "type": "func", "func": cage_set_debuff.bind(4, true) }],
+		"ae-0-0-90340315": [{ "type": "func", "func": cage_set_debuff.bind(4, false) }],
 
 
 		"s-2800-3000-1106-0": [{ type: "text", sub_type: "message", message: "Kick back!", message_RU: "Удар назад!" }],
@@ -452,7 +454,16 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-2800-5000-1124-0": [{ type: "text", sub_type: "message", message: "Jump", message_RU: "Прыжок" }],
 		"s-2800-5000-1127-0": [{ type: "text", sub_type: "message", message: "DEBUFF", message_RU: "ДЕБАФ" }],
 
-		"ns-2800-5002": [{ type: "text", sub_type: "message", message: "Kill your mob", message_RU: "Убить своего моба" }],
+		"ns-2800-5002": [
+			{ type: "text", sub_type: "message", message: "Kill your mob(fire)", message_RU: "Убить своего моба(огонь)", check_func: () => fifthDebuff === "blue" },
+			{ type: "spawn", func: "marker", args: [false, 0, 0, 0, 30000, true, null], tag: "mob1", check_func: () => fifthDebuff === "blue" }
+		],
+		"ns-2800-5003": [
+			{ type: "text", sub_type: "message", message: "Kill your mob(ice)", message_RU: "Убить своего моба(лед)", check_func: () => fifthDebuff === "red" },
+			{ type: "spawn", func: "marker", args: [false, 0, 0, 0, 30000, true, null], tag: "mob2", check_func: () => fifthDebuff === "red" }
+		],
+		"nd-2800-5002": [{ type: "despawn_all", tag: "mob1" }],
+		"nd-2800-5003": [{ type: "despawn_all", tag: "mob2" }],
 
 		"s-2800-5000-2103-0": "s-2800-5000-1103-0",
 		"s-2800-5000-2104-0": "s-2800-5000-1104-0",
@@ -466,7 +477,11 @@ module.exports = (dispatch, handlers, guide, lang) => {
 
 
 		// Debuff Tracker
-		// "h-2800-5000-100": [{"type": "func","func": start_fifthfloor}],
+		"am-2800-5000-90340501": [{ type: "text", sub_type: "message", message: "Ice is taken", message_RU: "Взят лед" },
+			{ type: "func", "func": () => fifthDebuff = "red" }],
+		"am-2800-5000-90340502": [{ type: "text", sub_type: "message", message: "Fire is taken", message_RU: "Взят огонь"},
+			{ type: "func", "func": () => fifthDebuff = "blue" }],
+		"am-2800-5000-90340503": [{ type: "func", "func": () => fifthDebuff = null }],
 
 
 		// Mob Wave Attack

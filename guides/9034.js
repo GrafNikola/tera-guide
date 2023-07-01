@@ -461,18 +461,21 @@ module.exports = (dispatch, handlers, guide, lang) => {
 
 
 		// Debuff Tracker
-		// "h-434-5000-100": [{"type": "func","func": start_fifthfloor}],
+		"am-2800-5000-90340501": [{ type: "text", sub_type: "message", message: "Ice is taken", message_RU: "Взят лед" },
+			{ type: "func", "func": () => fifthDebuff = "red" }],
+		"am-2800-5000-90340502": [{ type: "text", sub_type: "message", message: "Fire is taken", message_RU: "Взят огонь"},
+			{ type: "func", "func": () => fifthDebuff = "blue" }],
+		"am-2800-5000-90340503": [{ type: "func", "func": () => fifthDebuff = null }],
 
 
 		// Mob Wave Attack
 
-		"s-434-5002-1106-0": [{ type: "spawn", func: "vector", args: [553, 120, 30, 10, 450, 0, 4000] },
+		"s-2800-5002-1106-0": [{ type: "spawn", func: "vector", args: [553, 120, 30, 10, 450, 0, 4000] },
 			{ type: "spawn", func: "vector", args: [553, 120, -30, -10, 450, 0, 4000] }],
-		"s-434-5003-1101-0": "s-434-5002-1106-0",
+		"s-2800-5003-1101-0": "s-2800-5002-1106-0",
 
-		"s-434-5002-2106-0": "s-434-5002-1106-0",
-		"s-434-5003-2101-0": "s-434-5002-1106-0",
-
+		"s-2800-5002-2106-0": "s-2800-5002-1106-0",
+		"s-2800-5003-2101-0": "s-2800-5002-1106-0",
 
 		//Sixth floor
 
