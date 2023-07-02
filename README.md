@@ -144,7 +144,7 @@ id | Dungeon name | Название данжа
 ## More information / Дополнительная информация
 
 * Developers wiki: https://github.com/hsdn/tera-guide-core/wiki
-* For questions and suggestions, contact via Discord: **JKQ#5649**
+* For questions and suggestions, ask in our Discord: https://discord.gg/sJzRJhtwWX
 
 ## Credits
 - **[Kasea](https://github.com/Kaseaa)** - Original developer of Tera-Guide module
