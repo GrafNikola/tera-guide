@@ -113,7 +113,7 @@ id | Dungeon name | Название данжа
 9916 | Sky Cruiser Endeavor (Hard) | Крейсер "Стремление" (Сложно)
 9920 | Antaroth's Abyss (Hard) | Омут Бездушного Антароса
 9935 | RK-9 Kennel (Hard) | Ангар совершенного RK-9
-3939 | Red Refuge (Hard) | Секретный лагерь повстанцев
+9939 | Red Refuge (Hard) | Секретный лагерь повстанцев
 9970 | Ruinous Manor (Hard) | Руины Кошмарной Абнукты
 9981 | Velik's Sanctuary (Hard) | Разрушенное Святилище Велики
 9982 | Grotto of Lost Souls (Hard) | Мастерская Леандра (сложно)
