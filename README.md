@@ -87,6 +87,7 @@ id | Dungeon name | Название данжа
 9027 | Manaya's Core (Hard) | Обитель Манайи (сложно)
 9034 | Dreadspire | Жуткий шпиль страха
 9044 | Bahaar's Sanctum | Святилище Бахаара
+9053 | Kezzel's Gorge | Ущелье Кеззела
 9054 | Bathysmal Rise (Hard) | Глубинный Храм (сложно)
 9056 | Timescape (Hard) | Хроноплоскость (сложно)
 9057 | Akeron's Inferno (Hard) | Акероново пекло (сложно)
@@ -99,16 +100,20 @@ id | Dungeon name | Название данжа
 9720 | Antaroth's Abyss | Омут Антароса
 9735 | RK-9 Kennel | Ангар RK-9
 9754 | Bathysmal Rise | Глубинный Храм
+9756 | Timescape | Хроноплоскость
 9757 | Akeron's Inferno | Акероново пекло
 9759 | Forsaken Island (Hard) | Остров Мертвых (сложно)
+9768 | Shadow Sanguinary | Убежище Дуриона
 9770 | Ruinous Manor | Руины Абнукты
 9780 | Velik's Hold (5-Person) | Вход в катакомбы Велики
 9781 | Velik's Sanctuary | Святилище Велики
 9782 | Grotto of Lost Souls | Мастерская Леандра
+9783 | Dark Reach Citadel | Крепость Тенебриса
 9794 | Thaumetal Refinery | Лаборатория Сайрекса
 9916 | Sky Cruiser Endeavor (Hard) | Крейсер "Стремление" (Сложно)
 9920 | Antaroth's Abyss (Hard) | Омут Бездушного Антароса
 9935 | RK-9 Kennel (Hard) | Ангар совершенного RK-9
+3939 | Red Refuge (Hard) | Секретный лагерь повстанцев
 9970 | Ruinous Manor (Hard) | Руины Кошмарной Абнукты
 9981 | Velik's Sanctuary (Hard) | Разрушенное Святилище Велики
 9982 | Grotto of Lost Souls (Hard) | Мастерская Леандра (сложно)
