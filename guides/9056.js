@@ -16,12 +16,12 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		],
 		"s-456-1001-107-0": [{ type: "text", sub_type: "alert", message: "Shot", message_RU: "Выстрел", speech: false }],
 
-		"s-456-403-106-0": [{ type: "text", sub_type: "alert", message: "Circle", message_RU: "Круг", speech: false }],
-		"s-456-1001-103-0": [{ type: "text", sub_type: "alert", message: "Tail", message_RU: "Хвост", speech: false }],
-		"s-456-1001-101-0": [{ type: "text", sub_type: "alert", message: "Hit", message_RU: "Удар", speech: false }],
-		"s-456-1001-112-0": [{ type: "text", sub_type: "message", message: "Rotate", message_RU: "Разворот", speech: false }],
+		"s-456-403-106-0": [{ type: "text", sub_type: "alert", message: "Circle", message_RU: "Круг" }],
+		"s-456-1001-103-0": [{ type: "text", sub_type: "alert", message: "Tail", message_RU: "Хвост" }],
+		"s-456-1001-101-0": [{ type: "text", sub_type: "alert", message: "Hit", message_RU: "Удар" }],
+		"s-456-1001-112-0": [{ type: "text", sub_type: "message", message: "Rotate", message_RU: "Разворот" }],
 		"s-456-1001-113-0": "s-456-1001-112-0",
-		"s-456-1001-111-0": [{ type: "text", sub_type: "message", message: "Flight", message_RU: "Взлет", speech: false }],
+		"s-456-1001-111-0": [{ type: "text", sub_type: "message", message: "Flight", message_RU: "Взлет" }],
 		"qb-456-1001-456020": [{ type: "text", sub_type: "message", message: "Give stun", message_RU: "Дать стан" }],
 
 		// Boss 1 (phase 2)
@@ -54,6 +54,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-456-1002-104-0": [{ type: "text", sub_type: "message", message: "Shot (target)", message_RU: "Выстрел (таргет)" }],
 		"s-456-1002-107-0": [{ type: "text", sub_type: "message", message: "Many Pokes", message_RU: "Серия ударов" }],
 		"s-456-1002-110-0": [{ type: "text", sub_type: "message", message: "Clap", message_RU: "Удар вперед" }],
+		"s-456-1002-111-0": [{ type: "text", sub_type: "message", message: "Front | Jump Back", message_RU: "Удар вперед | Прыжок назад" }],
 		"s-456-1002-212-0": [{ type: "text", sub_type: "message", message: "Jump Back", message_RU: "Прыжок назад" }],
 		"s-456-1002-3110-0": [{ type: "text", sub_type: "message", message: "Breath", message_RU: "Дыхание" }],
 		"s-456-1002-3113-0": [{ type: "text", sub_type: "message", message: "AOE (Give stun)", message_RU: "АОЕ (Дать стан)", delay: 4000 }],
