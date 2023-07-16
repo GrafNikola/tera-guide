@@ -65,8 +65,6 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "stop_timers" },
 			{ type: "despawn_all" }
 		],
-		"h-768-3000-60": [{ type: "text", sub_type: "message", message: "60%" }],
-		"h-768-3000-40": [{ type: "text", sub_type: "message", message: "40%" }],
 		//
 		"s-768-3000-101-0": [
 			{ type: "event", check_func: () => thirdboss_print_combo, args: [
