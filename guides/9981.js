@@ -273,12 +273,15 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-981-927-1301-0": [{ type: "func", func: secondboss_floor_event, args: [4, 7] }],
 		"s-981-927-1302-0": [{ type: "func", func: secondboss_floor_event, args: [2, 6] }],
 		"s-981-927-1303-0": [{ type: "func", func: secondboss_floor_event, args: [7, 3] }],
+		"s-981-927-1307-0": [{ type: "func", func: secondboss_floor_event, args: [4, 7] }],
+		"s-981-927-1308-0": [{ type: "func", func: secondboss_floor_event, args: [2, 6] }],
+		"s-981-927-1309-0": [{ type: "func", func: secondboss_floor_event, args: [7, 3] }],
 		"s-981-927-1310-0": [{ type: "func", func: secondboss_floor_event, args: [4, 7] }],
 		"s-981-927-1311-0": [{ type: "func", func: secondboss_floor_event, args: [2, 6] }],
 		"s-981-927-1312-0": [{ type: "func", func: secondboss_floor_event, args: [7, 3] }],
 		"s-981-927-1313-0": [{ type: "func", func: secondboss_floor_event, args: [4, 7] }],
 		"s-981-927-1314-0": [{ type: "func", func: secondboss_floor_event, args: [2, 6] }],
-		"s-781-927-1315-0": [{ type: "func", func: secondboss_floor_event, args: [7, 3] }],
+		"s-981-927-1315-0": [{ type: "func", func: secondboss_floor_event, args: [7, 3] }],
 		//
 		"qb-981-4000-9981046": [{ type: "text", sub_type: "notification", message: "First: (Debuffs) Closest", message_RU: "[ДКБ] Первая: дебафф (ближние)" }], // Thank you... for this release...
 		"qb-981-4000-9981047": [{ type: "text", sub_type: "notification", message: "First: (Circles) Spread", message_RU: "[КБД] Первая: круги (отдельно)" }], // Beware the... red lightning...
