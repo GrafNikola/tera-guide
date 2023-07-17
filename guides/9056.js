@@ -14,7 +14,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "text", sub_type: "warning", message: "(3)", speech: false, delay: 2050 },
 			{ type: "text", sub_type: "message", message: "(4) Dodge!", message_RU: "(4) Эвейд!", delay: 2800 }
 		],
-		"s-456-1001-107-0": [{ type: "text", sub_type: "alert", message: "Shot", message_RU: "Выстрел", speech: false }],
+		"s-456-1001-107-0": [{ type: "text", sub_type: "alert", message: "Shot", message_RU: "Выстрел" }],
 
 		"s-456-403-106-0": [{ type: "text", sub_type: "alert", message: "Circle", message_RU: "Круг" }],
 		"s-456-1001-103-0": [{ type: "text", sub_type: "alert", message: "Tail", message_RU: "Хвост" }],
@@ -35,7 +35,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-456-414-104-0": "s-456-413-104-0",
 		"s-456-415-104-0": "s-456-413-104-0",
 		"s-456-416-104-0": "s-456-413-104-0",
-		"s-456-1000-107-0": [{ type: "text", sub_type: "alert", message: "Shot", message_RU: "Выстрел", speech: false }],
+		"s-456-1000-107-0": [{ type: "text", sub_type: "alert", message: "Shot", message_RU: "Выстрел" }],
 		"ab-456-1000-905685": [
 			{ type: "text", sub_type: "message", message: "Plague of Exhaustion", message_RU: "Регресс", class_position: "priest" },
 			{ type: "text", sub_type: "message", message: "Regression", message_RU: "Регресс", class_position: "mystic" }
@@ -56,6 +56,9 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-456-1002-110-0": [{ type: "text", sub_type: "message", message: "Clap", message_RU: "Удар вперед" }],
 		"s-456-1002-111-0": [{ type: "text", sub_type: "message", message: "Front | Jump Back", message_RU: "Удар вперед | Прыжок назад" }],
 		"s-456-1002-212-0": [{ type: "text", sub_type: "message", message: "Jump Back", message_RU: "Прыжок назад" }],
+		"s-456-1002-314-0": [{ type: "text", sub_type: "alert", message: "Lay Back", message_RU: "Кувырок назад" }],
+		"s-456-1002-315-0": [{ type: "text", sub_type: "alert", message: "Lay Front", message_RU: "Кувырок вперед" }],
+		"s-456-1002-319-0": [{ type: "text", sub_type: "alert", message: "Spin", message_RU: "Крутилка" }],
 		"s-456-1002-3110-0": [{ type: "text", sub_type: "message", message: "Breath", message_RU: "Дыхание" }],
 		"s-456-1002-3113-0": [{ type: "text", sub_type: "message", message: "AOE (Give stun)", message_RU: "АОЕ (Дать стан)", delay: 4000 }],
 

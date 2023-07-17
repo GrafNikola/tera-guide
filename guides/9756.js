@@ -14,7 +14,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "text", sub_type: "warning", message: "(3)", speech: false, delay: 2050 },
 			{ type: "text", sub_type: "message", message: "(4) Dodge!", message_RU: "(4) Эвейд!", delay: 2800 }
 		],
-		"s-756-1001-107-0": [{ type: "text", sub_type: "alert", message: "Shot", message_RU: "Выстрел", speech: false }],
+		"s-756-1001-107-0": [{ type: "text", sub_type: "alert", message: "Shot", message_RU: "Выстрел" }],
 		"s-756-403-106-0": [{ type: "text", sub_type: "alert", message: "Circle", message_RU: "Круг" }],
 		"s-756-1001-103-0": [{ type: "text", sub_type: "alert", message: "Tail", message_RU: "Хвост" }],
 		"s-756-1001-101-0": [{ type: "text", sub_type: "alert", message: "Hit", message_RU: "Удар" }],
@@ -32,6 +32,9 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-756-1002-110-0": [{ type: "text", sub_type: "message", message: "Clap", message_RU: "Удар вперед" }],
 		"s-756-1002-111-0": [{ type: "text", sub_type: "message", message: "Front | Jump Back", message_RU: "Удар вперед | Прыжок назад" }],
 		"s-756-1002-212-0": [{ type: "text", sub_type: "message", message: "Jump Back", message_RU: "Прыжок назад" }],
+		"s-756-1002-314-0": [{ type: "text", sub_type: "alert", message: "Lay Back", message_RU: "Кувырок назад" }],
+		"s-756-1002-315-0": [{ type: "text", sub_type: "alert", message: "Lay Front", message_RU: "Кувырок вперед" }],
+		"s-756-1002-319-0": [{ type: "text", sub_type: "alert", message: "Spin", message_RU: "Крутилка" }],
 		"s-756-1002-3110-0": [{ type: "text", sub_type: "message", message: "Breath", message_RU: "Дыхание" }],
 		"s-756-1002-3112-0": [{ type: "text", sub_type: "message", message: "AOE", message_RU: "АОЕ", delay: 4000 }],
 
