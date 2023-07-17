@@ -12,7 +12,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			handlers.event([
 				{ type: "text", sub_type: "message", message: "Pizza", message_RU: "Пицца" },
 				{ type: "spawn", func: "marker", args: [false, one * 45 + 70, 500, 0, 5000, true, null] },
-				{ type: "spawn", func: "marker", args: [false, two * 45 + 70, 300, 8000, 5000, true, null] }
+				{ type: "spawn", func: "marker", args: [false, two * 45 + 70, 300, 7000, 5000, true, null] }
 			]);
 		}
 	}
@@ -131,7 +131,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "text", sub_type: "message", delay: 3000, message: "1" }
 		],
 		"s-781-2000-1138-0": [
-			{ type: "event", delay: 7000, args: [
+			{ type: "event", delay: 6900, args: [
 				// x6 normal + in circle
 				{ type: "spawn", func: "marker", args: [false, 15, 270, 0, 3500, true, null] },
 				{ type: "spawn", func: "marker", args: [false, 75, 270, 0, 3500, true, null] },
@@ -154,7 +154,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			] }
 		],
 		"s-781-2000-1139-0": [
-			{ type: "event", delay: 7000, args: [
+			{ type: "event", delay: 6900, args: [
 				// x6 reverse
 				{ type: "spawn", func: "marker", args: [false, 45, 270, 1000, 2000, true, null] },
 				{ type: "spawn", func: "marker", args: [false, 105, 270, 1000, 2000, true, null] },
@@ -177,7 +177,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			] }
 		],
 		"s-781-2000-1140-0": [
-			{ type: "event", delay: 7000, args: [
+			{ type: "event", delay: 6900, args: [
 				// in circle + x6 reverse
 				{ type: "spawn", func: "marker", args: [false, 45, 270, 0, 3500, true, null] },
 				{ type: "spawn", func: "marker", args: [false, 105, 270, 0, 3500, true, null] },
@@ -200,7 +200,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			] }
 		],
 		"s-781-2000-1141-0": [
-			{ type: "event", delay: 7000, args: [
+			{ type: "event", delay: 6900, args: [
 				// x6 normal
 				{ type: "spawn", func: "marker", args: [false, 15, 270, 1000, 2000, true, null] },
 				{ type: "spawn", func: "marker", args: [false, 75, 270, 1000, 2000, true, null] },
@@ -273,15 +273,15 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-781-927-1301-0": [{ type: "func", func: secondboss_floor_event, args: [4, 7] }],
 		"s-781-927-1302-0": [{ type: "func", func: secondboss_floor_event, args: [2, 6] }],
 		"s-781-927-1303-0": [{ type: "func", func: secondboss_floor_event, args: [7, 3] }],
-		"s-781-927-1307-0": [{ type: "func", func: secondboss_floor_event, args: [4, 7] }],
-		"s-781-927-1308-0": [{ type: "func", func: secondboss_floor_event, args: [2, 6] }],
-		"s-781-927-1309-0": [{ type: "func", func: secondboss_floor_event, args: [7, 3] }],
+		"s-781-927-1307-0": [{ type: "func", func: secondboss_floor_event, args: [1, 6] }],
+		"s-781-927-1308-0": [{ type: "func", func: secondboss_floor_event, args: [3, 6] }],
+		"s-781-927-1309-0": [{ type: "func", func: secondboss_floor_event, args: [6, 3] }],
 		"s-781-927-1310-0": [{ type: "func", func: secondboss_floor_event, args: [4, 7] }],
 		"s-781-927-1311-0": [{ type: "func", func: secondboss_floor_event, args: [2, 6] }],
 		"s-781-927-1312-0": [{ type: "func", func: secondboss_floor_event, args: [7, 3] }],
-		"s-781-927-1313-0": [{ type: "func", func: secondboss_floor_event, args: [4, 7] }],
-		"s-781-927-1314-0": [{ type: "func", func: secondboss_floor_event, args: [2, 6] }],
-		"s-781-927-1315-0": [{ type: "func", func: secondboss_floor_event, args: [7, 3] }],
+		"s-781-927-1313-0": [{ type: "func", func: secondboss_floor_event, args: [1, 6] }],
+		"s-781-927-1314-0": [{ type: "func", func: secondboss_floor_event, args: [3, 6] }],
+		"s-781-927-1315-0": [{ type: "func", func: secondboss_floor_event, args: [6, 3] }],
 		//
 		"qb-781-4000-9781046": [{ type: "text", sub_type: "notification", message: "First: (Debuffs) Closest", message_RU: "[ДКБ] Первая: дебафф (ближние)" }], // Thank you... for this release...
 		"qb-781-4000-9781047": [{ type: "text", sub_type: "notification", message: "First: (Circles) Spread", message_RU: "[КБД] Первая: круги (отдельно)" }], // Beware the... red lightning...
