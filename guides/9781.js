@@ -130,68 +130,29 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "text", sub_type: "message", delay: 2000, message: "2" },
 			{ type: "text", sub_type: "message", delay: 3000, message: "1" }
 		],
-		"s-781-2000-1138-0": [
+		"s-781-2000-1138-0": [ // T1
 			{ type: "event", delay: 6900, args: [
 				// x6 normal + in circle
-				{ type: "spawn", func: "marker", args: [false, 15, 270, 0, 3500, true, null] },
-				{ type: "spawn", func: "marker", args: [false, 75, 270, 0, 3500, true, null] },
-				{ type: "spawn", func: "marker", args: [false, 135, 270, 0, 3500, true, null] },
-				{ type: "spawn", func: "marker", args: [false, 195, 270, 0, 3500, true, null] },
-				{ type: "spawn", func: "marker", args: [false, 255, 270, 0, 3500, true, null] },
-				{ type: "spawn", func: "marker", args: [false, 315, 270, 0, 3500, true, null] },
-				// out circle + x6 reverse
-				{ type: "spawn", func: "marker", args: [false, 45, 170, 3500, 2000, true, null] },
-				{ type: "spawn", func: "marker", args: [false, 105, 170, 3500, 2000, true, null] },
-				{ type: "spawn", func: "marker", args: [false, 165, 170, 3500, 2000, true, null] },
-				{ type: "spawn", func: "marker", args: [false, 225, 170, 3500, 2000, true, null] },
-				{ type: "spawn", func: "marker", args: [false, 285, 170, 3500, 2000, true, null] },
-				{ type: "spawn", func: "marker", args: [false, 345, 170, 3500, 2000, true, null] },
-				// x4 normal
-				{ type: "spawn", func: "marker", args: [false, 75, 170, 5500, 2000, true, null] },
-				{ type: "spawn", func: "marker", args: [false, 165, 170, 5500, 2000, true, null] },
-				{ type: "spawn", func: "marker", args: [false, 255, 170, 5500, 2000, true, null] },
-				{ type: "spawn", func: "marker", args: [false, 345, 170, 5500, 2000, true, null] }
-			] }
-		],
-		"s-781-2000-1139-0": [
-			{ type: "event", delay: 6900, args: [
+				{ type: "spawn", func: "marker", args: [false, 15, 270, 0, 3000, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 75, 270, 0, 3000, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 135, 270, 0, 3000, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 195, 270, 0, 3000, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 255, 270, 0, 3000, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 315, 270, 0, 3000, true, null] },
+				// out circle
+				{ type: "spawn", func: "marker", args: [false, 15, 170, 3000, 1500, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 75, 170, 3000, 1500, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 135, 170, 3000, 1500, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 195, 170, 3000, 1500, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 255, 170, 3000, 1500, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 315, 170, 3000, 1500, true, null] },
 				// x6 reverse
-				{ type: "spawn", func: "marker", args: [false, 45, 270, 1000, 2000, true, null] },
-				{ type: "spawn", func: "marker", args: [false, 105, 270, 1000, 2000, true, null] },
-				{ type: "spawn", func: "marker", args: [false, 165, 270, 1000, 2000, true, null] },
-				{ type: "spawn", func: "marker", args: [false, 225, 270, 1000, 2000, true, null] },
-				{ type: "spawn", func: "marker", args: [false, 285, 270, 1000, 2000, true, null] },
-				{ type: "spawn", func: "marker", args: [false, 345, 270, 1000, 2000, true, null] },
-				// x6 normal + out circle
-				{ type: "spawn", func: "marker", args: [false, 15, 170, 3000, 3000, true, null] },
-				{ type: "spawn", func: "marker", args: [false, 75, 170, 3000, 3000, true, null] },
-				{ type: "spawn", func: "marker", args: [false, 135, 170, 3000, 3000, true, null] },
-				{ type: "spawn", func: "marker", args: [false, 195, 170, 3000, 3000, true, null] },
-				{ type: "spawn", func: "marker", args: [false, 255, 170, 3000, 3000, true, null] },
-				{ type: "spawn", func: "marker", args: [false, 315, 170, 3000, 3000, true, null] },
-				// in circle + x4
-				{ type: "spawn", func: "marker", args: [false, 75, 270, 6000, 3500, true, null] },
-				{ type: "spawn", func: "marker", args: [false, 165, 270, 6000, 3500, true, null] },
-				{ type: "spawn", func: "marker", args: [false, 255, 270, 6000, 3500, true, null] },
-				{ type: "spawn", func: "marker", args: [false, 345, 270, 6000, 3500, true, null] }
-			] }
-		],
-		"s-781-2000-1140-0": [
-			{ type: "event", delay: 6900, args: [
-				// in circle + x6 reverse
-				{ type: "spawn", func: "marker", args: [false, 45, 270, 0, 3500, true, null] },
-				{ type: "spawn", func: "marker", args: [false, 105, 270, 0, 3500, true, null] },
-				{ type: "spawn", func: "marker", args: [false, 165, 270, 0, 3500, true, null] },
-				{ type: "spawn", func: "marker", args: [false, 225, 270, 0, 3500, true, null] },
-				{ type: "spawn", func: "marker", args: [false, 285, 270, 0, 3500, true, null] },
-				{ type: "spawn", func: "marker", args: [false, 345, 270, 0, 3500, true, null] },
-				// x6 normal + out circle
-				{ type: "spawn", func: "marker", args: [false, 15, 170, 3500, 2000, true, null] },
-				{ type: "spawn", func: "marker", args: [false, 75, 170, 3500, 2000, true, null] },
-				{ type: "spawn", func: "marker", args: [false, 135, 170, 3500, 2000, true, null] },
-				{ type: "spawn", func: "marker", args: [false, 195, 170, 3500, 2000, true, null] },
-				{ type: "spawn", func: "marker", args: [false, 255, 170, 3500, 2000, true, null] },
-				{ type: "spawn", func: "marker", args: [false, 315, 170, 3500, 2000, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 45, 170, 4500, 1000, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 105, 170, 4500, 1000, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 165, 170, 4500, 1000, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 225, 170, 4500, 1000, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 285, 170, 4500, 1000, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 345, 170, 4500, 1000, true, null] },
 				// x4
 				{ type: "spawn", func: "marker", args: [false, 75, 170, 5500, 2000, true, null] },
 				{ type: "spawn", func: "marker", args: [false, 165, 170, 5500, 2000, true, null] },
@@ -199,27 +160,99 @@ module.exports = (dispatch, handlers, guide, lang) => {
 				{ type: "spawn", func: "marker", args: [false, 345, 170, 5500, 2000, true, null] }
 			] }
 		],
-		"s-781-2000-1141-0": [
-			{ type: "event", delay: 6900, args: [
+		"s-781-2000-1139-0": [ // T2
+			{ type: "event", delay: 7900, args: [
+				// x6 reverse
+				{ type: "spawn", func: "marker", args: [false, 45, 270, 0, 1500, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 105, 270, 0, 1500, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 165, 270, 0, 1500, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 225, 270, 0, 1500, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 285, 270, 0, 1500, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 345, 270, 0, 1500, true, null] },
 				// x6 normal
-				{ type: "spawn", func: "marker", args: [false, 15, 270, 1000, 2000, true, null] },
-				{ type: "spawn", func: "marker", args: [false, 75, 270, 1000, 2000, true, null] },
-				{ type: "spawn", func: "marker", args: [false, 135, 270, 1000, 2000, true, null] },
-				{ type: "spawn", func: "marker", args: [false, 195, 270, 1000, 2000, true, null] },
-				{ type: "spawn", func: "marker", args: [false, 255, 270, 1000, 2000, true, null] },
-				{ type: "spawn", func: "marker", args: [false, 315, 270, 1000, 2000, true, null] },
-				// x6 reverse + out circle
-				{ type: "spawn", func: "marker", args: [false, 45, 270, 3000, 3000, true, null] },
-				{ type: "spawn", func: "marker", args: [false, 105, 270, 3000, 3000, true, null] },
-				{ type: "spawn", func: "marker", args: [false, 165, 270, 3000, 3000, true, null] },
-				{ type: "spawn", func: "marker", args: [false, 225, 270, 3000, 3000, true, null] },
-				{ type: "spawn", func: "marker", args: [false, 285, 270, 3000, 3000, true, null] },
-				{ type: "spawn", func: "marker", args: [false, 345, 270, 3000, 3000, true, null] },
-				// in circle + x4
-				{ type: "spawn", func: "marker", args: [false, 75, 170, 6000, 3500, true, null] },
-				{ type: "spawn", func: "marker", args: [false, 165, 170, 6000, 3500, true, null] },
-				{ type: "spawn", func: "marker", args: [false, 255, 170, 6000, 3500, true, null] },
-				{ type: "spawn", func: "marker", args: [false, 345, 170, 6000, 3500, true, null] }
+				{ type: "spawn", func: "marker", args: [false, 15, 270, 1500, 1500, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 75, 270, 1500, 1500, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 135, 270, 1500, 1500, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 195, 270, 1500, 1500, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 255, 270, 1500, 1500, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 315, 270, 1500, 1500, true, null] },
+				// out circle
+				{ type: "spawn", func: "marker", args: [false, 15, 170, 3000, 1500, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 75, 170, 3000, 1500, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 135, 170, 3000, 1500, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 195, 170, 3000, 1500, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 255, 170, 3000, 1500, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 315, 170, 3000, 1500, true, null] },
+				// in circle
+				{ type: "spawn", func: "marker", args: [false, 15, 270, 4500, 1500, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 75, 270, 4500, 1500, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 135, 270, 4500, 1500, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 195, 270, 4500, 1500, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 255, 270, 4500, 1500, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 315, 270, 4500, 1500, true, null] },
+				// x4
+				{ type: "spawn", func: "marker", args: [false, 75, 270, 6000, 1500, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 165, 270, 6000, 1500, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 255, 270, 6000, 1500, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 345, 270, 6000, 1500, true, null] }
+			] }
+		],
+		"s-781-2000-1140-0": [ // T1
+			{ type: "event", delay: 6900, args: [
+				// in circle
+				{ type: "spawn", func: "marker", args: [false, 45, 270, 0, 1500, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 105, 270, 0, 1500, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 165, 270, 0, 1500, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 225, 270, 0, 1500, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 285, 270, 0, 1500, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 345, 270, 0, 1500, true, null] },
+				// x6 reverse
+				{ type: "spawn", func: "marker", args: [false, 45, 170, 1500, 1500, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 105, 170, 1500, 1500, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 165, 170, 1500, 1500, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 225, 170, 1500, 1500, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 285, 170, 1500, 1500, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 345, 170, 1500, 1500, true, null] },
+				// x6 normal + out circle
+				{ type: "spawn", func: "marker", args: [false, 15, 170, 3000, 2500, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 75, 170, 3000, 2500, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 135, 170, 3000, 2500, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 195, 170, 3000, 2500, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 255, 170, 3000, 2500, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 315, 170, 3000, 2500, true, null] },
+				// x4
+				{ type: "spawn", func: "marker", args: [false, 75, 170, 5500, 2000, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 165, 170, 5500, 2000, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 255, 170, 5500, 2000, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 345, 170, 5500, 2000, true, null] }
+			] }
+		],
+		"s-781-2000-1141-0": [ // T2
+			{ type: "event", delay: 7900, args: [
+				// x6 normal
+				{ type: "spawn", func: "marker", args: [false, 15, 270, 0, 1500, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 75, 270, 0, 1500, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 135, 270, 0, 1500, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 195, 270, 0, 1500, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 255, 270, 0, 1500, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 315, 270, 0, 1500, true, null] },
+				// x6 reverse
+				{ type: "spawn", func: "marker", args: [false, 45, 270, 1500, 1500, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 105, 270, 1500, 1500, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 165, 270, 1500, 1500, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 225, 270, 1500, 1500, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 285, 270, 1500, 1500, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 345, 270, 1500, 1500, true, null] },
+				// in circle
+				{ type: "spawn", func: "marker", args: [false, 75, 270, 3000, 1500, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 165, 270, 3000, 1500, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 255, 270, 3000, 1500, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 345, 270, 3000, 1500, true, null] },
+				// out circle + x4
+				{ type: "spawn", func: "marker", args: [false, 75, 170, 4500, 3000, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 165, 170, 4500, 3000, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 255, 170, 4500, 3000, true, null] },
+				{ type: "spawn", func: "marker", args: [false, 345, 170, 4500, 3000, true, null] }
 			] }
 		],
 		//
