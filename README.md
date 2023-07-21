@@ -115,6 +115,7 @@ id | Dungeon name | Название данжа
 9935 | RK-9 Kennel (Hard) | Ангар совершенного RK-9
 9939 | Red Refuge (Hard) | Секретный лагерь повстанцев
 9970 | Ruinous Manor (Hard) | Руины Кошмарной Абнукты
+9980 | Velik's Hold (Hard) | Вход в разрушенные катакомбы Велики
 9981 | Velik's Sanctuary (Hard) | Разрушенное Святилище Велики
 9982 | Grotto of Lost Souls (Hard) | Мастерская Леандра (сложно)
 9983 | Dark Reach Citadel (Hard) | Крепость Темного Тенебриса
