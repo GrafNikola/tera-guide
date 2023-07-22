@@ -34,12 +34,21 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		const small = calc_step(third_boss_small_w, third_boss_wall_w);
 		const middle = calc_step(third_boss_middle_w, third_boss_wall_w, true);
 		const large = calc_step(third_boss_large_w, third_boss_wall_w);
-		handlers.text({
-			sub_type: "notification",
-			message: `Small: ${small}, Middle: ${middle}, Large: ${large}`,
-			message_RU: `Малый: ${small}, Средний: ${middle}, Большой: ${large}`,
-			speech: false
-		});
+		if (small + middle + large === 0) {
+			handlers.text({
+				sub_type: "notification",
+				message: "Set",
+				message_RU: "Установлено",
+				speech: false
+			});
+		} else {
+			handlers.text({
+				sub_type: "notification",
+				message: `Small: ${small}, Middle: ${middle}, Large: ${large}`,
+				message_RU: `Малый: ${small}, Средний: ${middle}, Большой: ${large}`,
+				speech: false
+			});
+		}
 	}
 
 	dispatch.hook("S_SPAWN_NPC", "*", e => {
@@ -147,8 +156,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		],
 		"s-756-1003-3101-0": [
 			{ type: "text", sub_type: "message", message: "Take a Circle", message_RU: "Взять бублик", check_func: () => third_boss_wall_w !== third_boss_middle_w },
-			{ type: "text", sub_type: "message", message: "Don't Take a Circle", message_RU: "Не брать бублик", check_func: () => third_boss_wall_w === third_boss_middle_w },
-			{ type: "func", func: third_boss_wall_announce, delay: 2000 }
+			{ type: "text", sub_type: "message", message: "Don't Take a Circle", message_RU: "Не брать бублик", check_func: () => third_boss_wall_w === third_boss_middle_w }
 		],
 		"s-756-1003-103-0": [
 			{ type: "text", sub_type: "message", message: "Spin", message_RU: "Крутилка" },
