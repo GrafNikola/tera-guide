@@ -5,8 +5,102 @@
 module.exports = (dispatch, handlers, guide, lang) => {
 	guide.type = ES;
 
+	const third_boss_sun_w = -2;
+	const third_boss_daemon_w = 0;
+	const third_boss_goddess_w = 2;
+	let third_boss_wall_w = null;
+	let third_boss_small_w = null;
+	let third_boss_middle_w = null;
+	let third_boss_large_w = null;
+	let third_boss_small_game_id = null;
+	let third_boss_middle_game_id = null;
+	let third_boss_large_game_id = null;
+
+	function w_to_deg(radians) {
+		if (radians == 0) return 0;
+		if (radians == 2) return 120;
+		if (radians == -2) return 240;
+	}
+
+	function calc_step(a, b, reverse = false) {
+		if (a === b) return 0;
+		let diff = w_to_deg(b) - w_to_deg(a);
+		if (diff <= 0) diff += 360;
+		if (reverse) return diff > 120 ? 1 : 2;
+		return diff > 120 ? 2 : 1;
+	}
+
+	function third_boss_wall_announce() {
+		const small = calc_step(third_boss_small_w, third_boss_wall_w);
+		const middle = calc_step(third_boss_middle_w, third_boss_wall_w, true);
+		const large = calc_step(third_boss_large_w, third_boss_wall_w);
+		handlers.text({
+			sub_type: "notification",
+			message: `Small: ${small}, Middle: ${middle}, Large: ${large}`,
+			message_RU: `Малый: ${small}, Средний: ${middle}, Большой: ${large}`,
+			speech: false
+		});
+	}
+
+	dispatch.hook("S_SPAWN_NPC", "*", e => {
+		if (e.templateId === 243) {
+			third_boss_wall_w = third_boss_sun_w;
+			handlers.event([
+				{ type: "text", sub_type: "alert", message: "Wall Change (Sun)", message_RU: "Смена печати (Солнце)" },
+				{ type: "func", func: third_boss_wall_announce, delay: 2000 }
+			]);
+		}
+		if (e.templateId === 244) {
+			third_boss_wall_w = third_boss_daemon_w;
+			handlers.event([
+				{ type: "text", sub_type: "alert", message: "Wall Change (Demon)", message_RU: "Смена печати (Демон)" },
+				{ type: "func", func: third_boss_wall_announce, delay: 2000 }
+			]);
+		}
+		if (e.templateId === 245) {
+			third_boss_wall_w = third_boss_goddess_w;
+			handlers.event([
+				{ type: "text", sub_type: "alert", message: "Wall Change (Goddess)", message_RU: "Смена печати (Богиня)" },
+				{ type: "func", func: third_boss_wall_announce, delay: 2000 }
+			]);
+		}
+		if (e.templateId === 301) {
+			third_boss_small_game_id = e.gameId;
+			third_boss_small_w = parseInt(e.w);
+		}
+		if (e.templateId === 302) {
+			third_boss_middle_game_id = e.gameId;
+			third_boss_middle_w = parseInt(e.w);
+		}
+		if (e.templateId === 303) {
+			third_boss_large_game_id = e.gameId;
+			third_boss_large_w = parseInt(e.w);
+		}
+	});
+
+	dispatch.hook("S_CREATURE_ROTATE", "*", e => {
+		dispatch.setTimeout(() => {
+			if (e.gameId === third_boss_small_game_id) {
+				third_boss_small_w = parseInt(e.w);
+				third_boss_wall_announce();
+			}
+			if (e.gameId === third_boss_middle_game_id) {
+				third_boss_middle_w = parseInt(e.w);
+				third_boss_wall_announce();
+			}
+			if (e.gameId === third_boss_large_game_id) {
+				third_boss_large_w = parseInt(e.w);
+				third_boss_wall_announce();
+			}
+		}, e.time + 100);
+	});
+
 	return {
 		// Boss 1 (phase 1)
+		"nd-456-401": [
+			{ type: "stop_timers" },
+			{ type: "despawn_all" }
+		],
 		"s-456-401-104-0": [
 			{ type: "text", sub_type: "message", message: "Bomb", message_RU: "Бомба" },
 			{ type: "text", sub_type: "warning", message: "(1)", speech: false, delay: 550 },
@@ -25,6 +119,10 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"qb-456-1001-456020": [{ type: "text", sub_type: "message", message: "Give stun", message_RU: "Дать стан" }],
 
 		// Boss 1 (phase 2)
+		"nd-456-413": [
+			{ type: "stop_timers" },
+			{ type: "despawn_all" }
+		],
 		"s-456-413-104-0": [
 			{ type: "text", sub_type: "message", message: "Bomb", message_RU: "Бомба" },
 			{ type: "text", sub_type: "warning", message: "(1)", speech: false, delay: 550 },
@@ -49,6 +147,10 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"dm-456-1000-456001": "qb-456-1001-456020",
 
 		// Boss 2
+		"nd-456-1002": [
+			{ type: "stop_timers" },
+			{ type: "despawn_all" }
+		],
 		"s-456-1002-102-0": [{ type: "text", sub_type: "message", message: "Jump", message_RU: "Прыжок" }],
 		"s-456-1002-103-0": [{ type: "text", sub_type: "message", message: "Combo", message_RU: "Комба" }],
 		"s-456-1002-104-0": [{ type: "text", sub_type: "message", message: "Shot (target)", message_RU: "Выстрел (таргет)" }],
@@ -63,11 +165,23 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-456-1002-3113-0": [{ type: "text", sub_type: "message", message: "AOE (Give stun)", message_RU: "АОЕ (Дать стан)", delay: 4000 }],
 
 		// Boss 3
+		"nd-456-1003": [
+			{ type: "stop_timers" },
+			{ type: "despawn_all" }
+		],
 		"ab-456-1003-905607": [
 			{ type: "text", sub_type: "message", message: "Cleanse + Plague of Exhaustion", message_RU: "Клинс + регресс", class_position: "priest" },
 			{ type: "text", sub_type: "message", message: "Cleanse + Regression", message_RU: "Клинс + регресс", class_position: "mystic" }
 		],
-		"s-456-1003-103-0": [{ type: "text", sub_type: "message", message: "Spin", message_RU: "Крутилка" }],
+		"s-456-1003-3101-0": [
+			{ type: "text", sub_type: "message", message: "Take a Circle", message_RU: "Взять бублик", check_func: () => third_boss_wall_w !== third_boss_middle_w },
+			{ type: "text", sub_type: "message", message: "Don't Take a Circle", message_RU: "Не брать бублик", check_func: () => third_boss_wall_w === third_boss_middle_w },
+			{ type: "func", func: third_boss_wall_announce, delay: 2000 }
+		],
+		"s-756-1003-103-0": [
+			{ type: "text", sub_type: "message", message: "Spin", message_RU: "Крутилка" },
+			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 10, 340, 0, 5000] }
+		],
 		"s-456-1003-104-0": [{ type: "text", sub_type: "message", message: "Clap", message_RU: "Удар вперед" }],
 		"s-456-1003-105-0": [{ type: "text", sub_type: "message", message: "Front", message_RU: "Вперед" }],
 		"s-456-1003-105-1": [{ type: "text", sub_type: "message", message: "Back", message_RU: "Назад" }],
@@ -78,9 +192,6 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-456-1003-3104-0": [{ type: "text", sub_type: "message", message: "Cage", message_RU: "Клетка" }], // 456016
 		"s-456-1003-3108-0": [{ type: "text", sub_type: "message", message: "Waves", message_RU: "Волны" }],
 		"qb-456-1003-456015": [{ type: "text", sub_type: "message", message: "AOE", message_RU: "АОЕ" }], // 3103
-		"qb-456-1003-456017": [{ type: "text", sub_type: "message", message: "Give Stun", message_RU: "Дать стан" }], // 3102
-		"dm-0-0-905624": [{ type: "text", sub_type: "alert", message: "Wall Change", message_RU: "Смена печати", delay: 1000 }],
-		"dm-0-0-905625": [{ type: "text", sub_type: "alert", message: "Wall Change", message_RU: "Смена печати", delay: 1000 }],
-		"dm-0-0-905626": [{ type: "text", sub_type: "alert", message: "Wall Change", message_RU: "Смена печати", delay: 1000 }]
+		"qb-456-1003-456017": [{ type: "text", sub_type: "message", message: "Give Stun", message_RU: "Дать стан" }] // 3102
 	};
 };
