@@ -79,9 +79,9 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"h-939-3001-30": [{ type: "text", sub_type: "message", message: "Reveal soon...", message_RU: "Скоро разоблачение..." }],
 		"s-939-3001-201-0": [
 			{ type: "text", sub_type: "message", message: "Stun (Pushback)", message_RU: "Рёв (откид)" },
-			{ type: "text", sub_type: "message", delay: 1000, message: "3", message_RU: "3" },
-			{ type: "text", sub_type: "message", delay: 2000, message: "2", message_RU: "2" },
-			{ type: "text", sub_type: "message", delay: 3000, message: "2", message_RU: "1" },
+			{ type: "text", sub_type: "message", delay: 1000, message: "3" },
+			{ type: "text", sub_type: "message", delay: 2000, message: "2" },
+			{ type: "text", sub_type: "message", delay: 3000, message: "1" },
 			{ type: "text", sub_type: "message", delay: 4000, message: "Dodge!", message_RU: "Эвейд!" },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 10, 630, 0, 5000] }
 		],
