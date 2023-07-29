@@ -121,7 +121,6 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		],
 		"s-981-1000-1115-0": [{ type: "text", sub_type: "message", delay: 3200, message_RU: "Эвейд", message: "Dodge" }], // dodge circle
 		"s-981-1000-1117-0": [{ type: "text", sub_type: "message", delay: 5200, message_RU: "Эвейд", message: "Dodge" }], // dodge circles
-		"s-981-1000-2103-0": "s-981-1000-1103-0",
 		"s-981-1000-2111-0": "s-981-1000-1111-0",
 		"s-981-1000-2112-0": "s-981-1000-1112-0",
 		"s-981-1000-2113-0": "s-981-1000-1113-0",
