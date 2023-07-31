@@ -58,7 +58,8 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-983-1000-109-0": [{ type: "text", sub_type: "message", message: "Push Back", message_RU: "Откид назад" }],
 		"s-983-1000-119-0": [{ type: "text", sub_type: "message", message: "Dodge (Heavy Attack)", message_RU: "Эвейд (тяжелый удар)", delay: 300 }],
 		"s-983-1000-127-0": [{ type: "text", sub_type: "message", message: "Many Attack", message_RU: "Серия ударов" }],
-		"s-983-1000-130-0": [{ type: "text", sub_type: "message", message: "Lazer", message_RU: "Луч" }],
+		"s-983-1000-128-0": [{ type: "text", sub_type: "message", message: "Lazer", message_RU: "Луч" }],
+		"s-983-1000-130-0": "s-983-1000-128-0",
 		"s-983-1000-301-0": [{ type: "text", sub_type: "message", message: "Dodge", message_RU: "Эвейд", delay: 1900 }],
 		"s-983-1000-304-0": [{ type: "text", sub_type: "message", message: "Pull", message_RU: "Стяжка" }],
 		"s-983-1000-305-0": [{ type: "text", sub_type: "message", message: "Triple Laser (Together)", message_RU: "Тройной лазер (собраться)" }],
@@ -165,20 +166,20 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-983-3000-142-0": [{ type: "text", sub_type: "message", message: "Frontal Combo", message_RU: "Передняя комба" }],
 		"s-983-3000-301-0": [
 			{ type: "text", sub_type: "message", message: "Thorns (Target)", message_RU: "Шипы х5" },
-			{ type: "text", sub_type: "message", message: "Dodge", message_RU: "Эвейд", delay: 1500 }
+			{ type: "text", sub_type: "message", message: "Dodge", message_RU: "Эвейд", delay: 1200 }
 		],
 		"s-983-3000-303-0": [
 			{ type: "text", sub_type: "message", message: "Right Safe", message_RU: "Право сейф" },
 			{ type: "spawn", func: "marker", args: [false, 120, 250, 0, 4000, true, null] },
 			{ type: "spawn", func: "marker", args: [false, 300, 250, 0, 4000, true, null] }
 		],
-		"s-983-3000-304-0": "s-983-3000-303-0",
+		"s-983-3000-304-0": "s-983-3000-306-0",
 		"s-983-3000-306-0": [
 			{ type: "text", sub_type: "message", message: "Left Safe", message_RU: "Лево сейф" },
 			{ type: "spawn", func: "marker", args: [false, 240, 250, 0, 4000, true, null] },
 			{ type: "spawn", func: "marker", args: [false, 60, 250, 0, 4000, true, null] }
 		],
-		"s-983-3000-307-0": "s-983-3000-306-0",
+		"s-983-3000-307-0": "s-983-3000-303-0",
 		"s-983-3000-309-0": [
 			{ type: "text", sub_type: "message", message: "Debuff!!!", message_RU: "Дебафф!!!" },
 			{ type: "text", sub_type: "message", message: "Lasers", message_RU: "Лазеры", delay: 3000 }
