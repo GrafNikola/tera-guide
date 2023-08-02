@@ -173,17 +173,12 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "spawn", func: "marker", args: [false, 120, 250, 0, 4000, true, null] },
 			{ type: "spawn", func: "marker", args: [false, 300, 250, 0, 4000, true, null] }
 		],
-		"s-783-3000-304-0": "s-783-3000-306-0",
 		"s-783-3000-306-0": [
 			{ type: "text", sub_type: "message", message: "Left Safe", message_RU: "Лево сейф" },
 			{ type: "spawn", func: "marker", args: [false, 240, 250, 0, 4000, true, null] },
 			{ type: "spawn", func: "marker", args: [false, 60, 250, 0, 4000, true, null] }
 		],
-		"s-783-3000-307-0": "s-783-3000-303-0",
-		"s-783-3000-309-0": [
-			{ type: "text", sub_type: "message", message: "Debuff!!!", message_RU: "Дебафф!!!" },
-			{ type: "text", sub_type: "message", message: "Lasers", message_RU: "Лазеры", delay: 3000 }
-		],
+		"s-783-3000-309-0": [{ type: "text", sub_type: "message", message: "Debuff!!!", message_RU: "Дебафф!!!" }],
 		"s-783-3000-315-0": [
 			{ type: "text", sub_type: "message", message: "Dodge | Out", message_RU: "Эвейд | От него" },
 			{ type: "spawn", func: "circle", args: [false, 553, 180, 0, null, 400, 0, 6000] }
