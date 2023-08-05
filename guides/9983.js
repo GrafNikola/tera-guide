@@ -168,18 +168,24 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "text", sub_type: "message", message: "Thorns (Target)", message_RU: "Шипы х5" },
 			{ type: "text", sub_type: "message", message: "Dodge", message_RU: "Эвейд", delay: 1200 }
 		],
-		"s-983-3000-303-0": [
+		"s-983-3000-303-0": [// 303 - 304 - 305 - 308 - 305
 			{ type: "text", sub_type: "message", message: "Right Safe", message_RU: "Право сейф" },
-			{ type: "spawn", func: "marker", args: [false, 120, 250, 0, 4000, true, null] },
-			{ type: "spawn", func: "marker", args: [false, 300, 250, 0, 4000, true, null] }
+			{ type: "spawn", func: "marker", args: [false, 120, 250, 0, 3000, true, null] },
+			{ type: "spawn", func: "marker", args: [false, 300, 250, 0, 3000, true, null] }
 		],
-		"s-983-3000-304-0": "s-983-3000-306-0",
-		"s-983-3000-306-0": [
+		"s-983-3000-305-0": [
+			{ type: "spawn", func: "marker", args: [false, 120, 250, 0, 1500, true, null] },
+			{ type: "spawn", func: "marker", args: [false, 300, 250, 0, 1500, true, null] }
+		],
+		"s-983-3000-306-0": [ // 306 - 307 - 308 - 305 - 308
 			{ type: "text", sub_type: "message", message: "Left Safe", message_RU: "Лево сейф" },
-			{ type: "spawn", func: "marker", args: [false, 240, 250, 0, 4000, true, null] },
-			{ type: "spawn", func: "marker", args: [false, 60, 250, 0, 4000, true, null] }
+			{ type: "spawn", func: "marker", args: [false, 240, 250, 0, 3000, true, null] },
+			{ type: "spawn", func: "marker", args: [false, 60, 250, 0, 3000, true, null] }
 		],
-		"s-983-3000-307-0": "s-983-3000-303-0",
+		"s-983-3000-308-0": [
+			{ type: "spawn", func: "marker", args: [false, 240, 250, 0, 1500, true, null] },
+			{ type: "spawn", func: "marker", args: [false, 60, 250, 0, 1500, true, null] }
+		],
 		"s-983-3000-309-0": [
 			{ type: "text", sub_type: "message", message: "Debuff!!!", message_RU: "Дебафф!!!" },
 			{ type: "text", sub_type: "message", message: "Lasers", message_RU: "Лазеры", delay: 3000 }
