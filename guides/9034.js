@@ -183,21 +183,6 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		}
 	}
 
-	function seventh_spawn_tables() {
-		handlers.event([
-			{ "type": "spawn", "sub_type": "build_object", "id": 1, "sub_delay": 4000, "distance": 525, "offset": 2.8, "ownerName": "SAFE SPOT", "message": "SAFE" },
-			{ "type": "spawn", "sub_type": "build_object", "id": 1, "sub_delay": 4000, "distance": 525, "offset": 3.46, "ownerName": "SAFE SPOT", "message": "SAFE" },
-			{ "type": "spawn", "sub_type": "build_object", "id": 1, "sub_delay": 4000, "distance": 525, "offset": 4.12, "ownerName": "SAFE SPOT", "message": "SAFE" },
-			{ "type": "spawn", "sub_type": "build_object", "id": 1, "sub_delay": 4000, "distance": 525, "offset": 4.75, "ownerName": "SAFE SPOT", "message": "SAFE" },
-			{ "type": "spawn", "sub_type": "build_object", "id": 1, "sub_delay": 4000, "distance": 525, "offset": 5.38, "ownerName": "SAFE SPOT", "message": "SAFE" },
-			{ "type": "spawn", "sub_type": "build_object", "id": 1, "sub_delay": 4000, "distance": 525, "offset": 5.97, "ownerName": "SAFE SPOT", "message": "SAFE" },
-			{ "type": "spawn", "sub_type": "build_object", "id": 1, "sub_delay": 4000, "distance": 525, "offset": 6.58, "ownerName": "SAFE SPOT", "message": "SAFE" },
-			{ "type": "spawn", "sub_type": "build_object", "id": 1, "sub_delay": 4000, "distance": 525, "offset": 7.2, "ownerName": "SAFE SPOT", "message": "SAFE" },
-			{ "type": "spawn", "sub_type": "build_object", "id": 1, "sub_delay": 4000, "distance": 525, "offset": 7.8, "ownerName": "SAFE SPOT", "message": "SAFE" },
-			{ "type": "spawn", "sub_type": "build_object", "id": 1, "sub_delay": 4000, "distance": 525, "offset": 8.44, "ownerName": "SAFE SPOT", "message": "SAFE" }
-		]);
-	}
-
 	function seventh_spawn_tables(is_normal_world, ent) {
 		let regularWorld = [
 			// dps
@@ -269,7 +254,6 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-434-1000-2108-0": "s-434-1000-1108-0",
 		"s-434-1000-2203-0": "s-434-1000-1203-0",
 		"s-434-1000-2304-0": "s-434-1000-1304-0",
-
 
 
 		// SECOND FLOOR
@@ -377,6 +361,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-434-4000-2207-0": "s-434-4000-1205-0",
 		"s-434-4000-2206-0": "s-434-4000-1206-0",
 
+
 		// FIFTH FLOOR
 
 		"h-434-5000-85": [{ "type": "text", "sub_type": "notification", "message": "85%... Big Jump + mob ", "message_RU": "85% Скоро Большой прыжок + мобы" }],
@@ -415,8 +400,8 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "text", sub_type: "message", message: "Stun + reclining", message_RU: "Стан + откид" },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 150, 0, 680, 0, 7000] }
 		],
-		"s-434-5000-1124-0": [{ type: "text", sub_type: "message", message: "Slow Jump", message_RU: "Медленный прыжок" }],
-		"s-434-5000-2124-0": [{ type: "text", sub_type: "message", message: "Fast Jump", message_RU: "быстрый прыжок" }],
+		"s-434-5000-1124-0": [{ type: "text", sub_type: "message", message: "Slow", message_RU: "Медленный" }],
+		"s-434-5000-2124-0": [{ type: "text", sub_type: "message", message: "Fast", message_RU: "быстрый" }],
 		"s-434-5000-1127-0": [{ type: "text", sub_type: "message", message: "DEBUFF", message_RU: "ДЕБАФ" }],
 		"ns-434-5002": [
 			{ type: "text", sub_type: "message", message: "Kill your mob(fire)", message_RU: "Убить своего моба(огонь)", check_func: () => fifth_debuff === "blue" },
@@ -517,6 +502,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 
 		// SEVENTH FLOOR
 
+		// Lasers + Mechanic
 		"nd-434-7000": [
 			{ type: "stop_timers" },
 			{ type: "despawn_all" }
