@@ -93,7 +93,8 @@ module.exports = (dispatch, handlers, guide, lang) => {
 				const pattern = !debuffs_thirdfloor[i] ? mechanic.order[i] : mechanic.order[i].counter;
 
 				for (const offset of pattern.offsets) {
-					handlers.event([{ "type": "spawn",
+					handlers.event([{
+						"type": "spawn",
 						"id": flower_id,
 						"delay": mechanic.delays[i],
 						"sub_delay": mechanic.delays[i] + 1900,
@@ -120,13 +121,8 @@ module.exports = (dispatch, handlers, guide, lang) => {
 
 	function sixth_regress() {
 		handlers.text({ sub_type: "notification", message: "Plague/Regress", message_RU: "[c=#E904CA]!!!!![/c][c=#E904CA]!!!![/c][c=#39FF33]!!!![/c]!!!!!!![c=#F90531]!!!!!!!!!!![/c] Регресс[c=#39FF33]!![/c][c=#E904CA]!!!!![/c]!!!![c=#0517F9]!!!![/c]!!!!!!![c=#F90531]!!!!!!!!!!![/c]" });
-		// handlers.text({ sub_type: "alert", message: "Plague/Regress", message_RU: "Регресс!!", delay: 0 });
 		handlers.text({ sub_type: "warning", message: "Plague/Regress", message_RU: "Регресс!!" });
 		handlers.text({ sub_type: "message", message: "Plague/Regress", message_RU: "Регресс!!" });
-		// handlers.text({ sub_type: "alert", message: "Plague/Regress", message_RU: "Регресс!!" });
-		// handlers.text({ sub_type: "warning", message: "Plague/Regress", message_RU: "Регресс!!" });
-		// handlers.text({ sub_type: "message", message: "Plague/Regress", message_RU: "Регресс!!" });
-		// handlers.text({ sub_type: "speech", message: "Plague/Regress", message_RU: "Регресс!!" });
 	}
 
 
@@ -187,8 +183,15 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		}
 	}
 
-	function seventh_spawn_tables() {
-		handlers.event([
+	function seventh_spawn_tables(is_normal_world, ent) {
+		let regularWorld = [
+			// dps
+			{ type: "spawn", func: "marker", args: [false, 180, 225, 0, 2000, true, ["Safe", "Spot"]] },
+			{ type: "spawn", func: "marker", args: [false, 210, 225, 2000, 1500, true, ["Safe", "Spot"]] },
+			// tank
+			{ type: "spawn", func: "marker", args: [false, -45, 225, 0, 2000, true, ["Safe", "Spot"]] },
+			{ type: "spawn", func: "marker", args: [false, 0, 225, 2000, 1500, true, ["Safe", "Spot"]] },
+			// general safe spots
 			{ "type": "spawn", "sub_type": "build_object", "id": 1, "sub_delay": 4000, "distance": 525, "offset": 2.8, "ownerName": "SAFE SPOT", "message": "SAFE" },
 			{ "type": "spawn", "sub_type": "build_object", "id": 1, "sub_delay": 4000, "distance": 525, "offset": 3.46, "ownerName": "SAFE SPOT", "message": "SAFE" },
 			{ "type": "spawn", "sub_type": "build_object", "id": 1, "sub_delay": 4000, "distance": 525, "offset": 4.12, "ownerName": "SAFE SPOT", "message": "SAFE" },
@@ -199,104 +202,35 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ "type": "spawn", "sub_type": "build_object", "id": 1, "sub_delay": 4000, "distance": 525, "offset": 7.2, "ownerName": "SAFE SPOT", "message": "SAFE" },
 			{ "type": "spawn", "sub_type": "build_object", "id": 1, "sub_delay": 4000, "distance": 525, "offset": 7.8, "ownerName": "SAFE SPOT", "message": "SAFE" },
 			{ "type": "spawn", "sub_type": "build_object", "id": 1, "sub_delay": 4000, "distance": 525, "offset": 8.44, "ownerName": "SAFE SPOT", "message": "SAFE" }
-		]);
+		]
+
+		let soulWorld = [
+			// dps
+			{ type: "spawn", func: "marker", args: [false, 210, 225, 0, 2000, true, ["Safe", "Spot"]] },
+			{ type: "spawn", func: "marker", args: [false, 180, 225, 2000, 1500, true, ["Safe", "Spot"]] },
+			// tank
+			{ type: "spawn", func: "marker", args: [false, 0, 225, 0, 2000, true, ["Safe", "Spot"]] },
+			{ type: "spawn", func: "marker", args: [false, -45, 225, 2000, 1500, true, ["Safe", "Spot"]] },
+			// general safe spots
+			{ "type": "spawn", "sub_type": "build_object", "id": 1, "sub_delay": 4000, "distance": 525, "offset": 2.8, "ownerName": "SAFE SPOT", "message": "SAFE" },
+			{ "type": "spawn", "sub_type": "build_object", "id": 1, "sub_delay": 4000, "distance": 525, "offset": 3.46, "ownerName": "SAFE SPOT", "message": "SAFE" },
+			{ "type": "spawn", "sub_type": "build_object", "id": 1, "sub_delay": 4000, "distance": 525, "offset": 4.12, "ownerName": "SAFE SPOT", "message": "SAFE" },
+			{ "type": "spawn", "sub_type": "build_object", "id": 1, "sub_delay": 4000, "distance": 525, "offset": 4.75, "ownerName": "SAFE SPOT", "message": "SAFE" },
+			{ "type": "spawn", "sub_type": "build_object", "id": 1, "sub_delay": 4000, "distance": 525, "offset": 5.38, "ownerName": "SAFE SPOT", "message": "SAFE" },
+			{ "type": "spawn", "sub_type": "build_object", "id": 1, "sub_delay": 4000, "distance": 525, "offset": 5.97, "ownerName": "SAFE SPOT", "message": "SAFE" },
+			{ "type": "spawn", "sub_type": "build_object", "id": 1, "sub_delay": 4000, "distance": 525, "offset": 6.58, "ownerName": "SAFE SPOT", "message": "SAFE" },
+			{ "type": "spawn", "sub_type": "build_object", "id": 1, "sub_delay": 4000, "distance": 525, "offset": 7.2, "ownerName": "SAFE SPOT", "message": "SAFE" },
+			{ "type": "spawn", "sub_type": "build_object", "id": 1, "sub_delay": 4000, "distance": 525, "offset": 7.8, "ownerName": "SAFE SPOT", "message": "SAFE" },
+			{ "type": "spawn", "sub_type": "build_object", "id": 1, "sub_delay": 4000, "distance": 525, "offset": 8.44, "ownerName": "SAFE SPOT", "message": "SAFE" }
+		]
+
+		if (is_normal_world) {
+			handlers.event(regularWorld);
+		} else {
+			handlers.event(soulWorld);
+		}
+
 	}
-
-	// Lasers mech
-	const lasers_markers_seventhfloor = [];
-	const inverted_lasers_markers_seventhfloor = [];
-	const sign_offsets_seventhfloor = [-0.32, -0.94, -1.57, -2.2, -2.83, 2.83, 2.2, 1.57, 0.94, 0.32];
-
-	for (const offset of sign_offsets_seventhfloor) {
-		const event = {
-			"type": "spawn",
-			"sub_type": "build_object",
-			"id": 1,
-			"sub_delay": 4000,
-			"distance": 450,
-			"ownerName": "SAFE SPOT",
-			"message": "SAFE",
-			"offset": offset
-		};
-
-		lasers_markers_seventhfloor.push(event);
-		inverted_lasers_markers_seventhfloor.push(event);
-	}
-
-	for (let distance = 175; distance <= 425; distance += 25) {
-		lasers_markers_seventhfloor.push({
-			"type": "spawn",
-			"id": 603,
-			"sub_delay": 4000,
-			"distance": distance,
-			"offset": 0
-		});
-		lasers_markers_seventhfloor.push({
-			"type": "spawn",
-			"id": 603,
-			"sub_delay": 4000,
-			"distance": distance,
-			"offset": 1.25
-		});
-		lasers_markers_seventhfloor.push({
-			"type": "spawn",
-			"id": 603,
-			"sub_delay": 4000,
-			"distance": distance,
-			"offset": 2.5
-		});
-		lasers_markers_seventhfloor.push({
-			"type": "spawn",
-			"id": 603,
-			"sub_delay": 4000,
-			"distance": distance,
-			"offset": -2.5
-		});
-		lasers_markers_seventhfloor.push({
-			"type": "spawn",
-			"id": 603,
-			"sub_delay": 4000,
-			"distance": distance,
-			"offset": -1.25
-		});
-
-		inverted_lasers_markers_seventhfloor.push({
-			"type": "spawn",
-			"id": 603,
-			"sub_delay": 4000,
-			"distance": distance,
-			"offset": 0.62
-		});
-		inverted_lasers_markers_seventhfloor.push({
-			"type": "spawn",
-			"id": 603,
-			"sub_delay": 4000,
-			"distance": distance,
-			"offset": 1.87
-		});
-		inverted_lasers_markers_seventhfloor.push({
-			"type": "spawn",
-			"id": 603,
-			"sub_delay": 4000,
-			"distance": distance,
-			"offset": 3.12
-		});
-		inverted_lasers_markers_seventhfloor.push({
-			"type": "spawn",
-			"id": 603,
-			"sub_delay": 4000,
-			"distance": distance,
-			"offset": -1.88
-		});
-		inverted_lasers_markers_seventhfloor.push({
-			"type": "spawn",
-			"id": 603,
-			"sub_delay": 4000,
-			"distance": distance,
-			"offset": -0.63
-		});
-	}
-
 
 	return {
 		// FIRST FLOOR
@@ -305,20 +239,16 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "stop_timers" },
 			{ type: "despawn_all" }
 		],
-		// Clone Mechanic
-		// "h-434-1000-99": [{"type": "text","sub_type": "notification","message": "BlackJacka  is looking after you","message_RU": "БлекДжека присматривает за вами" }],
 		"ab-434-1000-90340105": [{ type: "text", sub_type: "message", message: "STUN IT", message_RU: "Застанить босса!" }],
-		// Backstep + Knockback
-		// "s-434-1000-212-0": [{type: "text", sub_type: "message", message: "BACKSTEP + KNOCKBACK", message_RU: "Назад + Отбрасывание"}],
-		// "s-434-1000-304-0": [{type: "text", sub_type: "message", message: "STUN", message_RU: "СТАН!"},
-		// { type: "spawn", func: "circle", args: [false, 553, 0, 0, 0, 250, 0, 1500] }],
 		"s-434-1000-1102-0": [{ type: "text", sub_type: "message", message: "Running", message_RU: "Пробежка" },
-			{ type: "func", func: knockback_firstfloor.bind(null) }],
-		"s-434-1000-1105-0": [{ type: "text", sub_type: "message", message: "KNOCKBACK", message_RU: "Атака вперед" }],
+		{ type: "func", func: knockback_firstfloor.bind(null) }],
+		"s-434-1000-1105-0": [{ type: "text", sub_type: "message", message: "Breath", message_RU: "Атака вперед" }],
 		"s-434-1000-1108-0": [{ type: "text", sub_type: "message", message: "KNOCKBACK", message_RU: "Отбрасывание" }],
-		"s-434-1000-1203-0": [{ type: "text", sub_type: "message", message: "Sleep", message_RU: "Сон!" },
-			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 0, 250, 0, 3500] }],
-		"s-434-1000-1304-0": [{ type: "text", sub_type: "message", message: "BACKSTEP + KNOCKBACK", message_RU: "Назад + Отбрасывание" }],
+		"s-434-1000-1203-0": [
+			{ type: "text", sub_type: "message", message: "Sleep", message_RU: "Сон!" },
+			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 0, 250, 0, 3500] },
+			{ type: "text", sub_type: "message", delay: 900, message: "dodge", message_RU: "dodge" }],
+		"s-434-1000-1304-0": [{ type: "text", sub_type: "message", message: "Backstep", message_RU: "Назад + Отбрасывание" }],
 		"s-434-1000-2102-0": "s-434-1000-1102-0",
 		"s-434-1000-2105-0": "s-434-1000-1105-0",
 		"s-434-1000-2108-0": "s-434-1000-1108-0",
@@ -328,20 +258,34 @@ module.exports = (dispatch, handlers, guide, lang) => {
 
 		// SECOND FLOOR
 
-		// "s-434-2000-101-0": [{type: "text", sub_type: "message", message: "SMASH COMING", message_RU: "Скоро разгром"}],
 		"s-434-2000-1102-0": [{ type: "text", sub_type: "message", message: "SPIN", message_RU: "Вращение" }],
+		"s-434-2000-1106-0": [{ type: "text", sub_type: "message", message: "Stomp", message_RU: "топать" }],
 		"s-434-2000-1107-0": [{ type: "text", sub_type: "message", message: "BACK", message_RU: "Стан назад" }],
 		"s-434-2000-1108-0": [{ type: "text", sub_type: "message", message: "FRONT", message_RU: "Атака вперед" }],
-		"s-434-2000-1109-0": [{ type: "text", sub_type: "message", message: "BACK SPIN", message_RU: "Вращение назад" }],
-		"s-434-2000-1110-0": [{ type: "text", sub_type: "message", message: "OUT", message_RU: "От босса!" }],
+		"s-434-2000-1109-0": [{ type: "text", sub_type: "message", message: "Back Spin", message_RU: "поворот Combo" }],
+		"s-434-2000-1110-0": [
+			{ type: "text", sub_type: "message", message: "OUT", message_RU: "От босса!" },
+			{ type: "text", sub_type: "message", message: "3", delay: 1000 },
+			{ type: "text", sub_type: "message", message: "2", delay: 2000 },
+			{ type: "text", sub_type: "message", message: "1", delay: 3000 }
+		],
+		"s-434-2000-1113-0": [{ type: "text", sub_type: "message", message: "Back Combo", message_RU: "Вращение назад" }],
 		"s-434-2000-1119-0": [{ type: "text", sub_type: "message", message: "PULL", message_RU: "Притяжка + вращение" }],
 		"s-434-2000-1122-0": [{ type: "text", sub_type: "message", message: "IN", message_RU: "К боссу!" }],
-		"s-434-2000-1306-0": [{ type: "text", sub_type: "message", message: "Run away", message_RU: "Текайте, глупцы!" }],
+		"s-434-2000-1306-0": [
+			{ type: "text", sub_type: "message", message: "Run away", message_RU: "Текайте, глупцы!" },
+			{ type: "text", sub_type: "message", message: "4", delay: 5000 },
+			{ type: "text", sub_type: "message", message: "3", delay: 6000 },
+			{ type: "text", sub_type: "message", message: "2", delay: 7000 },
+			{ type: "text", sub_type: "message", message: "1", delay: 8000 }
+		],
 		"s-434-2000-2102-0": "s-434-2000-1102-0",
+		"s-434-2000-2106-0": "s-434-2000-1106-0",
 		"s-434-2000-2107-0": "s-434-2000-1107-0",
 		"s-434-2000-2108-0": "s-434-2000-1108-0",
 		"s-434-2000-2109-0": "s-434-2000-1109-0",
 		"s-434-2000-2110-0": "s-434-2000-1110-0",
+		"s-434-2000-2113-0": "s-434-2000-1113-0",
 		"s-434-2000-2119-0": "s-434-2000-1119-0",
 		"s-434-2000-2122-0": "s-434-2000-1122-0",
 		"s-434-2000-2306-0": "s-434-2000-1306-0",
@@ -350,36 +294,32 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		// THIRD FLOOR
 
 		// Cage Mechanic
-		"s-434-3000-1122-0": [{ "type": "func", "func": cage_mechanic_thirdfloor.bind(1122) }],
-		"s-434-3000-1123-0": [{ "type": "func", "func": cage_mechanic_thirdfloor.bind(1123) }],
-		"s-434-3000-1124-0": [{ "type": "func", "func": cage_mechanic_thirdfloor.bind(1124) }],
-		"s-434-3000-1127-0": [{ "type": "func", "func": cage_mechanic_thirdfloor.bind(1127) }],
-		"ae-0-0-90340306": [{ "type": "func", "func": cage_set_debuff.bind(0, true) }],
-		"ae-0-0-90340307": [{ "type": "func", "func": cage_set_debuff.bind(0, false) }],
-		"ae-0-0-90340308": [{ "type": "func", "func": cage_set_debuff.bind(1, true) }],
-		"ae-0-0-90340309": [{ "type": "func", "func": cage_set_debuff.bind(1, false) }],
-		"ae-0-0-90340310": [{ "type": "func", "func": cage_set_debuff.bind(2, true) }],
-		"ae-0-0-90340311": [{ "type": "func", "func": cage_set_debuff.bind(2, false) }],
-		"ae-0-0-90340312": [{ "type": "func", "func": cage_set_debuff.bind(3, true) }],
-		"ae-0-0-90340313": [{ "type": "func", "func": cage_set_debuff.bind(3, false) }],
-		"ae-0-0-90340314": [{ "type": "func", "func": cage_set_debuff.bind(4, true) }],
-		"ae-0-0-90340315": [{ "type": "func", "func": cage_set_debuff.bind(4, false) }],
-		"s-434-3000-1106-0": [{ type: "text", sub_type: "message", message: "Kick back!", message_RU: "Удар назад!" }],
-		"s-434-3000-1108-0": [{ type: "text", sub_type: "message", message: "Kick forward!", message_RU: "Удар вперед!" }],
-		"s-434-3000-1112-0": [{ type: "text", sub_type: "message", message: "To the Boss", message_RU: "К Боссу" }], //
+		// "s-434-3000-1122-0": [{ "type": "func", "func": cage_mechanic_thirdfloor.bind(1122) }],
+		// "s-434-3000-1123-0": [{ "type": "func", "func": cage_mechanic_thirdfloor.bind(1123) }],
+		// "s-434-3000-1124-0": [{ "type": "func", "func": cage_mechanic_thirdfloor.bind(1124) }],
+		// "s-434-3000-1127-0": [{ "type": "func", "func": cage_mechanic_thirdfloor.bind(1127) }],
+		// "ae-0-0-90340306": [{ "type": "func", "func": cage_set_debuff.bind(0, true) }],
+		// "ae-0-0-90340307": [{ "type": "func", "func": cage_set_debuff.bind(0, false) }],
+		// "ae-0-0-90340308": [{ "type": "func", "func": cage_set_debuff.bind(1, true) }],
+		// "ae-0-0-90340309": [{ "type": "func", "func": cage_set_debuff.bind(1, false) }],
+		// "ae-0-0-90340310": [{ "type": "func", "func": cage_set_debuff.bind(2, true) }],
+		// "ae-0-0-90340311": [{ "type": "func", "func": cage_set_debuff.bind(2, false) }],
+		// "ae-0-0-90340312": [{ "type": "func", "func": cage_set_debuff.bind(3, true) }],
+		// "ae-0-0-90340313": [{ "type": "func", "func": cage_set_debuff.bind(3, false) }],
+		// "ae-0-0-90340314": [{ "type": "func", "func": cage_set_debuff.bind(4, true) }],
+		// "ae-0-0-90340315": [{ "type": "func", "func": cage_set_debuff.bind(4, false) }],
+		"s-434-3000-1106-0": [{ type: "text", sub_type: "message", message: "back!", message_RU: "Удар назад!" }],
+		"s-434-3000-1108-0": [{ type: "text", sub_type: "message", message: "forward!", message_RU: "Удар вперед!" }],
+		"s-434-3000-1112-0": [{ type: "text", sub_type: "message", message: "To the Boss", message_RU: "К Боссу" }],
 		"s-434-3000-1130-0": [
-			{ type: "text", sub_type: "message", "message": "LEFT SWIPE", message_RU: "Удар вправо" },
-			{ "type": "spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 200, "offset": 2.3, "ownerName": "SAFE SPOT", "message": "SAFE" },
-			{ "type": "spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 200, "offset": 1, "ownerName": "SAFE SPOT", "message": "SAFE" },
-			{ "type": "spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 200, "offset": 2.3 },
-			{ "type": "spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 200, "offset": 1 }
+			{ type: "text", sub_type: "message", "message": "Right", message_RU: "Удар вправо" }, // left swipe
+			{ type: "spawn", func: "marker", args: [false, 130, 200, 0, 2000, true, null] },
+			{ type: "spawn", func: "marker", args: [false, 60, 200, 0, 2000, true, null] }
 		],
 		"s-434-3000-1131-0": [
-			{ type: "text", sub_type: "message", "message": "RIGHT SWIPE", message_RU: "Удар влево" },
-			{ "type": "spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 200, "offset": -2.3, "ownerName": "SAFE SPOT", "message": "SAFE" },
-			{ "type": "spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 200, "offset": -1, "ownerName": "SAFE SPOT", "message": "SAFE" },
-			{ "type": "spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 200, "offset": -2.3 },
-			{ "type": "spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 200, "offset": -1 }
+			{ type: "text", sub_type: "message", "message": "Left", message_RU: "Удар влево" }, // RIGHT SWIPE
+			{ type: "spawn", func: "marker", args: [false, -130, 200, 0, 2000, true, null] },
+			{ type: "spawn", func: "marker", args: [false, -60, 200, 0, 2000, true, null] }
 		],
 		"s-434-3000-1134-0": [{ type: "text", sub_type: "message", message: "DEBUFF", message_RU: "ДЕБАФ" }], //
 		"s-434-3000-1502-0": [{ type: "text", sub_type: "message", message: "FORCED CAGE", message_RU: "Скоро клетка" }], //
@@ -395,8 +335,8 @@ module.exports = (dispatch, handlers, guide, lang) => {
 
 		// FOURTH FLOOR
 
-		"s-434-4000-1102-0": [{ type: "text", sub_type: "message", message: "From boss - to boss", message_RU: "От босса - к боссу" }],
-		"s-434-4000-1103-0": [{ type: "text", sub_type: "message", message: "To the boss", message_RU: "К боссу" }],
+		"s-434-4000-1102-0": [{ type: "text", sub_type: "message", message: "Out | In", message_RU: "От босса - к боссу" }],
+		"s-434-4000-1103-0": [{ type: "text", sub_type: "message", message: "In | Out", message_RU: "К боссу" }],
 		"s-434-4000-1107-0": [{ type: "text", sub_type: "message", message: "Under the tank, then under the dd", message_RU: "Под танка, затем под мили дд" }],
 		"s-434-4000-1108-0": [
 			{ type: "text", sub_type: "message", message: "Lines", message_RU: "Линии" },
@@ -407,7 +347,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		],
 		"s-434-4000-1109-1": [{ type: "text", sub_type: "message", message: "Beam", message_RU: "Луч" }],
 		"s-434-4000-1109-2": [{ type: "text", sub_type: "message", message: "Dodge", message_RU: "Эвейд" }],
-		"s-434-4000-1205-0": [{ type: "text", sub_type: "message", message: "Beam in a circle", message_RU: "Луч по кругу" }],
+		"s-434-4000-1205-0": [{ type: "text", sub_type: "message", message: "Laser", message_RU: "Луч по кругу" }],
 		"s-434-4000-1206-0": [{ type: "text", sub_type: "message", message: "Beam forward, left, right", message_RU: "Луч вперед, лево, право" }],
 		"ns-434-4001": [{ type: "text", sub_type: "message", message: "Kill mobs", message_RU: "Убить мобов" }],
 		"s-434-4000-2102-0": "s-434-4000-1102-0",
@@ -417,6 +357,8 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-434-4000-2109-1": "s-434-4000-1109-1",
 		"s-434-4000-2109-2": "s-434-4000-1109-2",
 		"s-434-4000-2205-0": "s-434-4000-1205-0",
+		"s-434-4000-1207-0": "s-434-4000-1205-0",
+		"s-434-4000-2207-0": "s-434-4000-1205-0",
 		"s-434-4000-2206-0": "s-434-4000-1206-0",
 
 
@@ -436,7 +378,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "text", sub_type: "message", message: "Ice Storm DOTs", message_RU: "Ледяные лужи" },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 8, 500, 0, 5000] }
 		],
-		"s-434-5000-1105-0":	[
+		"s-434-5000-1105-0": [
 			{ type: "text", sub_type: "message", message: "Fire Bombs", message_RU: "Огненные бомбы" },
 			{ type: "spawn", func: "circle", args: [false, 553, 135, 500, 10, 125, 0, 3000] },
 			{ type: "spawn", func: "circle", args: [false, 553, 315, 500, 10, 125, 0, 3250] },
@@ -452,13 +394,14 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "text", sub_type: "message", message: "Change", message_RU: "Смена" },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 50, 0, 250, 0, 3000] }
 		],
-		"s-434-5000-1118-0": [{ type: "text", sub_type: "message", message: "Big Jump + mobs", message_RU: "Большой прыжок + мобы" }],
-		"s-434-5000-1118-2": [{ type: "text", sub_type: "message", message: "Dodge", message_RU: "Эвейд" }],
+		"s-434-5000-1118-0": [{ type: "text", sub_type: "message", message: "Slow Jump + mobs", message_RU: "Большой прыжок + мобы" }],
+		"s-434-5000-2118-0": [{ type: "text", sub_type: "message", message: "Fast Jump + mobs", message_RU: "Большой прыжок + мобы" }],
 		"s-434-5000-1120-0": [
 			{ type: "text", sub_type: "message", message: "Stun + reclining", message_RU: "Стан + откид" },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 150, 0, 680, 0, 7000] }
 		],
-		"s-434-5000-1124-0": [{ type: "text", sub_type: "message", message: "Jump", message_RU: "Прыжок" }],
+		"s-434-5000-1124-0": [{ type: "text", sub_type: "message", message: "Slow", message_RU: "Медленный" }],
+		"s-434-5000-2124-0": [{ type: "text", sub_type: "message", message: "Fast", message_RU: "быстрый" }],
 		"s-434-5000-1127-0": [{ type: "text", sub_type: "message", message: "DEBUFF", message_RU: "ДЕБАФ" }],
 		"ns-434-5002": [
 			{ type: "text", sub_type: "message", message: "Kill your mob(fire)", message_RU: "Убить своего моба(огонь)", check_func: () => fifth_debuff === "blue" },
@@ -470,15 +413,6 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		],
 		"nd-434-5002": [{ type: "despawn_all", tag: "mob1" }],
 		"nd-434-5003": [{ type: "despawn_all", tag: "mob2" }],
-		"s-434-5000-2103-0": "s-434-5000-1103-0",
-		"s-434-5000-2104-0": "s-434-5000-1104-0",
-		"s-434-5000-2105-0": "s-434-5000-1105-0",
-		"s-434-5000-2107-0": "s-434-5000-1107-0",
-		"s-434-5000-2118-0": "s-434-5000-1118-0",
-		"s-434-5000-2118-2": "s-434-5000-1118-2",
-		"s-434-5000-2120-0": "s-434-5000-1120-0",
-		"s-434-5000-2124-0": "s-434-5000-1124-0",
-		"s-434-5000-2127-0": "s-434-5000-1127-0",
 		// Debuff tracker
 		"am-434-5000-90340501": [
 			{ type: "text", sub_type: "message", message: "Ice is taken", message_RU: "Взят лед" },
@@ -491,10 +425,16 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"am-434-5000-90340503": [{ type: "func", "func": () => fifth_debuff = null }],
 		// Mob Wave Attack
 		"s-434-5002-1106-0": [{ type: "spawn", func: "vector", args: [553, 120, 30, 10, 450, 0, 4000] },
-			{ type: "spawn", func: "vector", args: [553, 120, -30, -10, 450, 0, 4000] }],
+		{ type: "spawn", func: "vector", args: [553, 120, -30, -10, 450, 0, 4000] }],
 		"s-434-5003-1101-0": "s-434-5002-1106-0",
-		"s-434-5002-2106-0": "s-434-5002-1106-0",
 		"s-434-5003-2101-0": "s-434-5002-1106-0",
+		"s-434-5000-2103-0": "s-434-5000-1103-0",
+		"s-434-5000-2104-0": "s-434-5000-1104-0",
+		"s-434-5000-2105-0": "s-434-5000-1105-0",
+		"s-434-5002-2106-0": "s-434-5002-1106-0",
+		"s-434-5000-2107-0": "s-434-5000-1107-0",
+		"s-434-5000-2120-0": "s-434-5000-1120-0",
+		"s-434-5000-2127-0": "s-434-5000-1127-0",
 
 
 		// SIXTH FLOOR
@@ -563,12 +503,6 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		// SEVENTH FLOOR
 
 		// Lasers + Mechanic
-		// "s-434-7000-901-0": [{"type": "text","sub_type": "notification","message": "DEBUFF (CLOSEST)"}].concat(lasers_markers_seventhfloor),
-		// "s-434-7000-902-0": [{"type": "text","sub_type": "notification","message": "DEBUFF (FURTHEST)"}].concat(inverted_lasers_markers_seventhfloor),
-		// "s-434-7000-903-0": [{"type": "text","sub_type": "notification","message": "GATHER + CLEANSE"}].concat(lasers_markers_seventhfloor),
-		// "s-434-7000-904-0": [{"type": "text","sub_type": "notification","message": "GATHER + NO CLEANSE"}].concat(inverted_lasers_markers_seventhfloor),
-		// "s-434-7000-905-0": [{"type": "text","sub_type": "notification","message": "SPREAD"}].concat(lasers_markers_seventhfloor),
-		// "s-434-7000-906-0": [{"type": "text","sub_type": "notification","message": "GATHER"}].concat(inverted_lasers_markers_seventhfloor),
 		"nd-434-7000": [
 			{ type: "stop_timers" },
 			{ type: "despawn_all" }
@@ -612,9 +546,8 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-434-7000-1401-0": [{ type: "text", sub_type: "message", message: "Plague/Regress", message_RU: "Регресс!!" }],
 		"s-434-7000-1402-0": [{ type: "text", sub_type: "message", message: "Sleep", message_RU: "Слип!!" }],
 		"s-434-7000-1701-0": [{ type: "text", sub_type: "message", message: "Back + front", message_RU: "Назад + Вперед" }],
-		//
 		"s-434-7000-1113-0": [{ type: "text", sub_type: "message", message: "Bait", message_RU: "Байт" }],
-		"s-434-7000-1151-0": [{ type: "text", sub_type: "message", message: "Attention stun", message_RU: "Стан" }],
+		"s-434-7000-1151-0": [{ type: "text", sub_type: "message", message: "Stun", message_RU: "Стан" }],
 		"s-434-7000-1152-0": [
 			{ type: "text", sub_type: "message", message: "Stun + Back", message_RU: "Стан + Откид назад" },
 			{ type: "spawn", func: "semicircle", args: [110, 250, 553, 0, 0, null, 1000, 0, 6000] },
@@ -630,50 +563,36 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 0, 700, 0, 6000] }
 		],
 		"s-434-7000-1154-0": [
-			{ "type": "text", "sub_type": "message", "message": "OUT + IN", message_RU: "От него => К нему" },
+			{ "type": "text", "sub_type": "message", "message": "OUT", message_RU: "От него => К нему" },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 10, 0, 250, 0, 3000] }
 		],
 		"s-434-7000-1155-0": [
-			{ "type": "text", "sub_type": "message", "message": "IN + OUT", message_RU: "К нему => От него" },
+			{ "type": "text", "sub_type": "message", "message": "IN", message_RU: "К нему => От него" },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 10, 0, 250, 0, 3000] }
 		],
-		"s-434-7000-1142-0": [
-			{ "type": "spawn", "sub_type": "build_object", "id": 1, "sub_delay": 4000, "distance": 525, "offset": 2.8, "ownerName": "SAFE SPOT", "message": "SAFE" },
-			{ "type": "spawn", "sub_type": "build_object", "id": 1, "sub_delay": 4000, "distance": 525, "offset": 3.46, "ownerName": "SAFE SPOT", "message": "SAFE" },
-			{ "type": "spawn", "sub_type": "build_object", "id": 1, "sub_delay": 4000, "distance": 525, "offset": 4.12, "ownerName": "SAFE SPOT", "message": "SAFE" },
-			{ "type": "spawn", "sub_type": "build_object", "id": 1, "sub_delay": 4000, "distance": 525, "offset": 4.75, "ownerName": "SAFE SPOT", "message": "SAFE" },
-			{ "type": "spawn", "sub_type": "build_object", "id": 1, "sub_delay": 4000, "distance": 525, "offset": 5.38, "ownerName": "SAFE SPOT", "message": "SAFE" },
-			{ "type": "spawn", "sub_type": "build_object", "id": 1, "sub_delay": 4000, "distance": 525, "offset": 5.97, "ownerName": "SAFE SPOT", "message": "SAFE" },
-			{ "type": "spawn", "sub_type": "build_object", "id": 1, "sub_delay": 4000, "distance": 525, "offset": 6.58, "ownerName": "SAFE SPOT", "message": "SAFE" },
-			{ "type": "spawn", "sub_type": "build_object", "id": 1, "sub_delay": 4000, "distance": 525, "offset": 7.2, "ownerName": "SAFE SPOT", "message": "SAFE" },
-			{ "type": "spawn", "sub_type": "build_object", "id": 1, "sub_delay": 4000, "distance": 525, "offset": 7.8, "ownerName": "SAFE SPOT", "message": "SAFE" },
-			{ "type": "spawn", "sub_type": "build_object", "id": 1, "sub_delay": 4000, "distance": 525, "offset": 8.44, "ownerName": "SAFE SPOT", "message": "SAFE" }
+		"s-434-7000-1901-0": [ // normal world
+			{ type: "text", sub_type: "notification", message: "Debuffs Closest", message_RU: "Дебафф (ближние)" },
+			{ type: "func", func: seventh_spawn_tables, args: [true] }
 		],
-		"s-434-7000-1143-0": "s-434-7000-1142-0",
-		"s-434-7000-1910-0": [{ type: "func", func: seventh_spawn_tables.bind(null) }],
-		"s-434-7000-1901-0": [
-			{ type: "text", sub_type: "message", message: "(Debuffs) Closest", message_RU: "Дебафф (ближние)" },
-			{ type: "func", func: seventh_spawn_tables.bind(null) }
+		"s-434-7000-1902-0": [ // soul world
+			{ type: "text", sub_type: "notification", message: "Debuffs Farthest", message_RU: "Дебафф (дальние)" },
+			{ type: "func", func: seventh_spawn_tables, args: [false] }
 		],
-		"s-434-7000-1902-0": [
-			{ type: "text", sub_type: "message", message: "(Debuffs) Farthest", message_RU: "Дебафф (дальние)" },
-			{ type: "func", func: seventh_spawn_tables.bind(null) }
+		"s-434-7000-1903-0": [ // normal world
+			{ type: "text", sub_type: "notification", message: "Gather + Cleanse", message_RU: "Бомбы (вместе!) + клинс" },
+			{ type: "func", func: seventh_spawn_tables, args: [true] }
 		],
-		"s-434-7000-1903-0": [
-			{ type: "text", sub_type: "message", message: "(Bombs) Gather + Cleanse", message_RU: "Бомбы (вместе!) + клинс" },
-			{ type: "func", func: seventh_spawn_tables.bind(null) }
+		"s-434-7000-1904-0": [ // soul world
+			{ type: "text", sub_type: "notification", message: "Gather + No cleanse", message_RU: "Бомбы (вместе!) + БЕЗ клинса" },
+			{ type: "func", func: seventh_spawn_tables, args: [false] }
 		],
-		"s-434-7000-1904-0": [
-			{ type: "text", sub_type: "message", message: "(Bombs) Gather + No cleanse", message_RU: "Бомбы (вместе!) + БЕЗ клинса" },
-			{ type: "func", func: seventh_spawn_tables.bind(null) }
+		"s-434-7000-1905-0": [ // normal world
+			{ type: "text", sub_type: "notification", message: "Spread", message_RU: "Круги (отдельно!)" },
+			{ type: "func", func: seventh_spawn_tables, args: [true] }
 		],
-		"s-434-7000-1905-0": [
-			{ type: "text", sub_type: "message", message: "(Circles) Spread", message_RU: "Круги (отдельно!)" },
-			{ type: "func", func: seventh_spawn_tables.bind(null) }
-		],
-		"s-434-7000-1906-0": [
-			{ type: "text", sub_type: "message", message: "(Circles) Gather", message_RU: "Круги (вместе!)" },
-			{ type: "func", func: seventh_spawn_tables.bind(null) }
+		"s-434-7000-1906-0": [ // soul world
+			{ type: "text", sub_type: "notification", message: "Gather", message_RU: "Круги (вместе!)" },
+			{ type: "func", func: seventh_spawn_tables, args: [false] }
 		],
 		"s-434-7000-1144-0": [
 			{ "type": "text", "sub_type": "message", "message": "OUT", message_RU: "От него" },
@@ -714,36 +633,26 @@ module.exports = (dispatch, handlers, guide, lang) => {
 
 
 		// EIGHTH FLOOR
-
-		"s-434-8000-1102-0": [
-			{ type: "text", sub_type: "message", message: "Pull in 5 sec", message_RU: "Скоро стяжка" },
-			{ type: "text", sub_type: "message", message: "Pull", message_RU: "Стяжка", delay: 4500 }
+		"nd-434-8000": [
+			{ type: "stop_timers" },
+			{ type: "despawn_all" },
 		],
-		"s-434-8000-2102-0": [
-			{ type: "text", sub_type: "message", message: "Pull in 5 sec", message_RU: "Скоро стяжка" },
-			{ type: "text", sub_type: "message", message: "Pull", message_RU: "Стяжка", delay: 3500 }
+		"ns-434-8100": [{ type: "text", sub_type: "notification", message: "Curse Mob Spawned", message_RU: "Создан дебафф-босс" }],
+		"ns-434-8200": [{ type: "text", sub_type: "notification", message: "Carpet Mob Spawned", message_RU: "Ковер Босс создан" }],
+		"qb-434-8000-459006": [{ type: "text", sub_type: "alert", message: "Circles", message_RU: "Круги" }],
+		"qb-434-8000-434801": [
+			{ type: "text", sub_type: "message", message: "Orbs", message_RU: "Клевер" },
+			{ type: "text", sub_type: "message", delay: 10000, message: "Attention Orbs", message_RU: "Эвейд" },
 		],
-		"s-434-8000-1101-0": [
-			{ type: "text", sub_type: "message", message: "Soon AOE", message_RU: "Скоро АОЕ" },
-			{ type: "text", sub_type: "message", message: "AOE", message_RU: "AOE", delay: 4500 }
-		],
-		"s-759-1003-2101-0": [
-			{ type: "text", sub_type: "message", message: "Soon AOE", message_RU: "Скоро АОЕ" },
-			{ type: "text", sub_type: "message", message: "AOE", message_RU: "AOE", delay: 3500 }
-		],
-		"s-434-8000-2110-0": [
-			{ type: "text", sub_type: "message", message: "Clover", message_RU: "Клевер" },
-			{ type: "spawn", func: "circle", args: [false, 553, 45, 180, 12, 230, 0, 3000] },
-			{ type: "spawn", func: "circle", args: [false, 553, 135, 180, 12, 230, 0, 3000] },
-			{ type: "spawn", func: "circle", args: [false, 553, 225, 180, 12, 230, 0, 3000] },
-			{ type: "spawn", func: "circle", args: [false, 553, 315, 180, 12, 230, 0, 3000] }
-		],
+		"s-434-8200-3102-0": [{ type: "text", sub_type: "message", message: "Circles", message_RU: "Круги" }],
 		"s-434-8000-1110-0": [
-			{ type: "text", sub_type: "message", message: "Clover", message_RU: "Клевер" },
+			{ type: "text", sub_type: "message", message: "Lightning", message_RU: "Клевер" },
 			{ type: "spawn", func: "circle", args: [false, 553, 45, 180, 12, 230, 0, 3000] },
 			{ type: "spawn", func: "circle", args: [false, 553, 135, 180, 12, 230, 0, 3000] },
 			{ type: "spawn", func: "circle", args: [false, 553, 225, 180, 12, 230, 0, 3000] },
 			{ type: "spawn", func: "circle", args: [false, 553, 315, 180, 12, 230, 0, 3000] }
-		]
+		],
+		"s-434-8000-2110-0": "s-434-8000-1110-0",
+
 	};
 };
