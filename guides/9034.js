@@ -633,36 +633,26 @@ module.exports = (dispatch, handlers, guide, lang) => {
 
 
 		// EIGHTH FLOOR
-
-		"s-434-8000-1102-0": [
-			{ type: "text", sub_type: "message", message: "Pull in 5 sec", message_RU: "Скоро стяжка" },
-			{ type: "text", sub_type: "message", message: "Pull", message_RU: "Стяжка", delay: 4500 }
+		"nd-434-8000": [
+			{ type: "stop_timers" },
+			{ type: "despawn_all" },
 		],
-		"s-434-8000-2102-0": [
-			{ type: "text", sub_type: "message", message: "Pull in 5 sec", message_RU: "Скоро стяжка" },
-			{ type: "text", sub_type: "message", message: "Pull", message_RU: "Стяжка", delay: 3500 }
+		"ns-434-8100": [{ type: "text", sub_type: "notification", message: "Curse Mob Spawned", message_RU: "Создан дебафф-босс" }],
+		"ns-434-8200": [{ type: "text", sub_type: "notification", message: "Carpet Mob Spawned", message_RU: "Ковер Босс создан" }],
+		"qb-434-8000-459006": [{ type: "text", sub_type: "alert", message: "Circles", message_RU: "Круги" }],
+		"qb-434-8000-434801": [
+			{ type: "text", sub_type: "message", message: "Orbs", message_RU: "Клевер" },
+			{ type: "text", sub_type: "message", delay: 10000, message: "Attention Orbs", message_RU: "Эвейд" },
 		],
-		"s-434-8000-1101-0": [
-			{ type: "text", sub_type: "message", message: "Soon AOE", message_RU: "Скоро АОЕ" },
-			{ type: "text", sub_type: "message", message: "AOE", message_RU: "AOE", delay: 4500 }
-		],
-		"s-759-1003-2101-0": [
-			{ type: "text", sub_type: "message", message: "Soon AOE", message_RU: "Скоро АОЕ" },
-			{ type: "text", sub_type: "message", message: "AOE", message_RU: "AOE", delay: 3500 }
-		],
-		"s-434-8000-2110-0": [
-			{ type: "text", sub_type: "message", message: "Clover", message_RU: "Клевер" },
-			{ type: "spawn", func: "circle", args: [false, 553, 45, 180, 12, 230, 0, 3000] },
-			{ type: "spawn", func: "circle", args: [false, 553, 135, 180, 12, 230, 0, 3000] },
-			{ type: "spawn", func: "circle", args: [false, 553, 225, 180, 12, 230, 0, 3000] },
-			{ type: "spawn", func: "circle", args: [false, 553, 315, 180, 12, 230, 0, 3000] }
-		],
+		"s-434-8200-3102-0": [{ type: "text", sub_type: "message", message: "Circles", message_RU: "Круги" }],
 		"s-434-8000-1110-0": [
-			{ type: "text", sub_type: "message", message: "Clover", message_RU: "Клевер" },
+			{ type: "text", sub_type: "message", message: "Lightning", message_RU: "Клевер" },
 			{ type: "spawn", func: "circle", args: [false, 553, 45, 180, 12, 230, 0, 3000] },
 			{ type: "spawn", func: "circle", args: [false, 553, 135, 180, 12, 230, 0, 3000] },
 			{ type: "spawn", func: "circle", args: [false, 553, 225, 180, 12, 230, 0, 3000] },
 			{ type: "spawn", func: "circle", args: [false, 553, 315, 180, 12, 230, 0, 3000] }
-		]
+		],
+		"s-434-8000-2110-0": "s-434-8000-1110-0",
+
 	};
 };
