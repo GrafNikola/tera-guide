@@ -259,9 +259,9 @@ module.exports = (dispatch, handlers, guide, lang) => {
 
 
 	function curse_mob_spawned(ent) {
-		let angle = ent.loc.angleTo(boss_data.loc);
-		let curse_msg = angle > 0 ? "Curse Left" : "Curse Right";
-		let curse_msg_ru = angle > 0 ? "Дебафф Левый" : "Дебафф Правый";
+		const angle = ent.loc.angleTo(boss_data.loc);
+		const curse_msg = angle > 0 ? "Curse Left" : "Curse Right";
+		const curse_msg_ru = angle > 0 ? "Дебафф Левый" : "Дебафф Правый";
 		handlers.text({
 			sub_type: "message",
 			message: curse_msg,
@@ -983,8 +983,6 @@ module.exports = (dispatch, handlers, guide, lang) => {
 
 		// EIGHTH FLOOR
 		"ns-434-8000": [
-			{ type: "stop_timers" },
-			{ type: "despawn_all" },
 			{ type: "func", func: () => is_eighth_floor = true },
 			{ type: "func", func: set_boss_data },
 		],
