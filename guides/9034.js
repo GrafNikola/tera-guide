@@ -5,6 +5,9 @@
 module.exports = (dispatch, handlers, guide, lang) => {
 	guide.type = SP;
 
+	const { entity } = dispatch.require.library;
+
+
 	// FIRST FLOOR
 
 	let knockbackCounter = 0;
@@ -233,16 +236,361 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		}
 	}
 
+	let boss_data = null;
+	function set_boss_data(ent) {
+		boss_data = ent;
+	}
+
+	// 8th floor
+	let is_eighth_floor = false;
+	let carpet_mob_game_id = null;
+	let carpet_mob_angle = null;
+	let carpet_event_done = false;
+	const BackCarpetMarkers = 0;
+	const FrontCarpetMarkers = 1;
+	const LeftCarpetMarkers = 2;
+	const RightCarpetMarkers = 3;
+	const CarpetMarkers = [
+		[{ type: "text", sub_type: "notification", message: "Back -> Front", message_RU: "Назад -> Спереди" }],
+		[{ type: "text", sub_type: "notification", message: "Front -> Back", message_RU: "Спереди -> Назад" }],
+		[{ type: "text", sub_type: "notification", message: "Left -> Right", message_RU: "Левый -> Правый" }],
+		[{ type: "text", sub_type: "notification", message: "Right -> Left", message_RU: "Правый -> Левый" }]
+	];
+
+
+	function curse_mob_spawned(ent) {
+		let angle = ent.loc.angleTo(boss_data.loc);
+		let curse_msg = angle > 0 ? "Curse Left" : "Curse Right";
+		let curse_msg_ru = angle > 0 ? "Дебафф Левый" : "Дебафф Правый";
+		handlers.text({
+			sub_type: "message",
+			message: curse_msg,
+			message_RU: curse_msg_ru,
+		});
+	}
+
+	function carpet_mob_spawned(ent) {
+		handlers.text({
+			sub_type: "message",
+			message_RU: "Появился ковровый моб",
+			message: "Carpet Mob Spawned",
+		});
+		carpet_mob_game_id = ent.gameId;
+		carpet_mob_angle = ent.loc.angleTo(boss_data.loc);
+	}
+
+	function carpet_mob_reset_event() {
+		carpet_mob_angle = null;
+		carpet_mob_game_id = null;
+		carpet_event_done = false;
+	}
+
+	dispatch.hook("S_CREATURE_ROTATE", "*", e => {
+		if (!is_eighth_floor) return;
+		if (e.gameId != carpet_mob_game_id) return;
+		if (carpet_event_done) return;
+		carpet_event_done = true;
+		let pattern = null;
+		let angle = e.w.toFixed(5);
+
+		if (carpet_mob_angle > Math.PI / 2 && carpet_mob_angle < Math.PI) {
+			// front left
+			pattern = angle > 0 ? RightCarpetMarkers : BackCarpetMarkers;
+		} else if (carpet_mob_angle > 0 && carpet_mob_angle < Math.PI / 2) {
+			// back left
+			pattern = angle < -2 ? RightCarpetMarkers : FrontCarpetMarkers;
+		} else if (carpet_mob_angle > -Math.PI && carpet_mob_angle < -Math.PI / 2) {
+			// front right
+			pattern = angle > 1 ? BackCarpetMarkers : LeftCarpetMarkers;
+		} else {
+			// back right
+			pattern = angle > 0 ? FrontCarpetMarkers : LeftCarpetMarkers;
+		}
+
+		handlers.event(CarpetMarkers[pattern]);
+	});
+
+	// 9th floor darkan
+
+	let secondary_aggro_date = 0;
+	let is_ninth_floor = false;
+	let ninth_floor_fifty = false;
+	dispatch.hook("S_USER_EFFECT", "*", e => {
+		if (!is_ninth_floor) return;
+		if (e.circle == 3 && e.operation == 1 && e.source == boss_data.gameId) {
+			secondary_aggro_date = new Date();
+		}
+	});
+
+	let back_print = false;
+	let back_time = 0;
+	let end_back_time = 0;
+	let is_one_back = false;
+	let counter = 0;
+	let counter1_date = null;
+
+	let prev_back_attack = 0;
+	let prev_date = 0;
+	function boss_backattack_event() {
+		end_back_time = new Date() - back_time;
+
+		if (!back_print) {
+			back_print = true;
+			is_one_back = end_back_time > 0 && end_back_time < 1500;
+
+			if (is_one_back) {
+				handlers.text({
+					sub_type: "message",
+					message_RU: "360",
+					message: "360",
+				});
+			}
+		}
+		dispatch.setTimeout(() => back_print = false, 3500);
+	}
+
+
+	function boss_backattack_event_new(curr, ent) {
+		let start = new Date();
+		let tmp = prev_date;
+		prev_date = start;
+
+		let time_diff = start - tmp;
+
+		let prev = prev_back_attack;
+		prev_back_attack = curr;
+
+		let back_combo_time_diff = 5000;
+		if (counter1_date != null) {
+			back_combo_time_diff = start - counter1_date;
+		}
+
+		if (curr == 1103 || curr == 1106) {
+			let secondary_time_diff = start - secondary_aggro_date;
+			const markers = [
+				[
+					{ type: "text", sub_type: "message", message_RU: "Левый", message: "Left" },
+					{ type: "spawn", func: "marker", args: [false, 300, 100, 0, 2500, true, null] },
+					{ type: "spawn", func: "vector", args: [553, 358, 0, 180, 1100, 100, 2500] },
+					{ type: "spawn", func: "vector", args: [553, 358, 0, 0, 1100, 100, 2500] }
+				],
+				[
+					{ type: "text", sub_type: "message", message_RU: "Правый", message: "Right" },
+					{ type: "spawn", func: "marker", args: [false, 60, 100, 0, 2500, true, null] },
+					{ type: "spawn", func: "vector", args: [553, 358, 0, 180, 1100, 100, 2500] },
+					{ type: "spawn", func: "vector", args: [553, 358, 0, 0, 1100, 100, 2500] }
+				]
+			];
+
+			if (secondary_time_diff < 3000) {
+				if (ninth_floor_fifty) {
+					let safe_spot_index = curr == 1103 ? 0 : 1;
+					handlers.event(markers[safe_spot_index]);
+				}
+				ninth_secondary_event();
+			}
+		}
+
+		if (prev == 1106 && curr == 1103 && time_diff < 1000) {
+			handlers.text({
+				sub_type: "message",
+				message_RU: "360",
+				message: "360"
+			});
+		} else if (prev === 1103 && curr === 1105 && time_diff < 1000) {
+			counter = 1;
+			counter1_date = new Date();
+		} else if (prev === 1105 && curr === 1106 && counter === 1 && time_diff < 1500 && back_combo_time_diff < 1500) {
+			counter = 2;
+		} else if (prev === 1106 && curr === 1108 && counter == 2 && time_diff < 1000 && back_combo_time_diff < 2000) {
+			handlers.text({
+				sub_type: "message",
+				message_RU: "2x360",
+				message: "2x360"
+			});
+		} else {
+			counter = 0;
+			counter1_date = null;
+		}
+	}
+
+	let ninth_triple_swipe_remaining = 0;
+	function ninth_new_swipe_event(curr, ent) {
+		ninth_triple_swipe_remaining--;
+		if (ninth_triple_swipe_remaining > 0) {
+			if (curr == 1407) {
+				handlers.event([
+					{ type: "text", sub_type: "message", message_RU: "Левый", message: "Left" },
+					{ type: "spawn", func: "marker", args: [false, 300, 100, 0, 1000, true, null] },
+					{ type: "spawn", func: "vector", args: [553, 358, 0, 180, 1100, 100, 1000] },
+					{ type: "spawn", func: "vector", args: [553, 358, 0, 0, 1100, 100, 1000] }
+				]);
+			} else {
+				handlers.event([
+					{ type: "text", sub_type: "message", message_RU: "Правый", message: "Right" },
+					{ type: "spawn", func: "marker", args: [false, 60, 100, 0, 1000, true, null] },
+					{ type: "spawn", func: "vector", args: [553, 358, 0, 180, 1100, 100, 1000] },
+					{ type: "spawn", func: "vector", args: [553, 358, 0, 0, 1100, 100, 1000] }
+				]);
+			}
+		} else {
+			// non triple
+			if (curr == 1407) {
+				handlers.event([
+					{ type: "text", sub_type: "message", message_RU: "Левый (Двойной)", message: "Left (Double)" },
+					{ type: "spawn", func: "marker", args: [false, 300, 100, 0, 1000, true, null] },
+					{ type: "spawn", func: "vector", args: [553, 358, 0, 180, 1100, 100, 2500] },
+					{ type: "spawn", func: "vector", args: [553, 358, 0, 0, 1100, 100, 2500] },
+					{ type: "spawn", func: "marker", args: [false, 60, 100, 1000, 1000, true, null] },
+
+				]);
+			} else {
+				handlers.event([
+					{ type: "text", sub_type: "message", message_RU: "Правый (Двойной)", message: "Right (Double)" },
+					{ type: "spawn", func: "marker", args: [false, 60, 100, 0, 1000, true, null] },
+					{ type: "spawn", func: "vector", args: [553, 358, 0, 180, 1100, 100, 2500] },
+					{ type: "spawn", func: "vector", args: [553, 358, 0, 0, 1100, 100, 2500] },
+					{ type: "spawn", func: "marker", args: [false, 300, 100, 1000, 1000, true, null] },
+				]);
+			}
+
+		}
+	}
+
+	function ninth_old_swipe_event(curr, ent) {
+		if (ninth_triple_swipe_remaining > 0) {
+			ninth_triple_swipe_remaining--;
+		}
+		if (curr == 1401) {
+			handlers.event([
+				{ type: "text", sub_type: "message", message_RU: "Левый", message: "Left" },
+				{ type: "spawn", func: "marker", args: [false, 300, 100, 0, 1000, true, null] },
+				{ type: "spawn", func: "vector", args: [553, 358, 0, 180, 1100, 100, 1000] },
+				{ type: "spawn", func: "vector", args: [553, 358, 0, 0, 1100, 100, 1000] }
+			]);
+		} else {
+			handlers.event([
+				{ type: "text", sub_type: "message", message_RU: "Правый", message: "Right" },
+				{ type: "spawn", func: "marker", args: [false, 60, 100, 0, 1000, true, null] },
+				{ type: "spawn", func: "vector", args: [553, 358, 0, 180, 1100, 100, 1000] },
+				{ type: "spawn", func: "vector", args: [553, 358, 0, 0, 1100, 100, 1000] }
+			]);
+		}
+	}
+
+	let triples_timer = null;
+	function ninth_triples_event() {
+		if (triples_timer != null) {
+			dispatch.clearTimeout(triples_timer);
+		}
+
+		triples_timer = dispatch.setTimeout(() => {
+			handlers.text({
+				sub_type: "notification",
+				message: "Triples Soon!",
+				message_RU: "тройки Скоро!"
+			});
+		}, 100000);
+
+	}
+
+	let secondary_timer = null;
+	function ninth_secondary_event() {
+		if (secondary_timer != null) {
+			dispatch.clearTimeout(secondary_timer);
+		}
+
+		secondary_timer = dispatch.setTimeout(() => {
+			if (ninth_floor_fifty) {
+				handlers.text({
+					sub_type: "notification",
+					message: "Secondary Soon!",
+					message_RU: "вторичный скоро!"
+				});
+			}
+		}, 45000);
+
+	}
+	function reset_backevent() {
+		back_print = false;
+		back_time = 0;
+		end_back_time = 0;
+		is_one_back = false;
+		counter = 0;
+		counter1_date = null;
+		prev_back_attack = 0;
+		prev_date = 0;
+
+		// reset aggro event
+		secondary_aggro_date = 0;
+		is_ninth_floor = false;
+		ninth_floor_fifty = false;
+
+		if (triples_timer != null) {
+			dispatch.clearTimeout(triples_timer);
+			triples_timer = null;
+		}
+
+		if (secondary_timer != null) {
+			dispatch.clearTimeout(secondary_timer);
+			secondary_timer = null;
+		}
+
+
+	}
+
+
+	// 10th floor
+	let next_debuff = 0;
+	function debuff_event(send_msg, debuff, ent) {
+		if (next_debuff === 0) {
+			next_debuff = debuff;
+		}
+
+		if (send_msg) {
+			const debuff_messages = {
+				0: { message: `Debuff`, message_RU: "Дебаф (бублик)" },
+				2: { message: `Debuff 1, 2`, message_RU: "Дебаф (бублик) 1, 2" },
+				3: { message: "Debuff 1, 3", message_RU: "Дебаф (бублик) 1, 3" }
+			};
+
+			handlers.text({
+				sub_type: "notification",
+				message: debuff_messages[next_debuff].message,
+				message_RU: debuff_messages[next_debuff].message_RU,
+				speech: true
+			});
+
+			if (next_debuff !== 0) {
+				next_debuff = next_debuff === 2 ? 3 : 2;
+			}
+		}
+	}
+
+
+	function debuff_removed() {
+		if (next_debuff != 0) {
+			handlers.text({
+				sub_type: "notification",
+				message: `next debuff: 1, ${next_debuff}`,
+				message_RU: `Следующий Дебаф (бублик): 1, ${next_debuff}`,
+				speech: false
+			});
+		}
+
+		next_debuff = 0;
+	}
+
 	return {
 		// FIRST FLOOR
 
-		"nd-9034-1000": [
+		"nd-434-1000": [
 			{ type: "stop_timers" },
-			{ type: "despawn_all" }
+			{ type: "despawn_all" },
 		],
 		"ab-434-1000-90340105": [{ type: "text", sub_type: "message", message: "STUN IT", message_RU: "Застанить босса!" }],
 		"s-434-1000-1102-0": [{ type: "text", sub_type: "message", message: "Running", message_RU: "Пробежка" },
-			{ type: "func", func: knockback_firstfloor.bind(null) }],
+		{ type: "func", func: knockback_firstfloor.bind(null) }],
 		"s-434-1000-1105-0": [{ type: "text", sub_type: "message", message: "Breath", message_RU: "Атака вперед" }],
 		"s-434-1000-1108-0": [{ type: "text", sub_type: "message", message: "KNOCKBACK", message_RU: "Отбрасывание" }],
 		"s-434-1000-1203-0": [
@@ -426,7 +774,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"am-434-5000-90340503": [{ type: "func", "func": () => fifth_debuff = null }],
 		// Mob Wave Attack
 		"s-434-5002-1106-0": [{ type: "spawn", func: "vector", args: [553, 120, 30, 10, 450, 0, 4000] },
-			{ type: "spawn", func: "vector", args: [553, 120, -30, -10, 450, 0, 4000] }],
+		{ type: "spawn", func: "vector", args: [553, 120, -30, -10, 450, 0, 4000] }],
 		"s-434-5003-1101-0": "s-434-5002-1106-0",
 		"s-434-5003-2101-0": "s-434-5002-1106-0",
 		"s-434-5000-2103-0": "s-434-5000-1103-0",
@@ -634,25 +982,154 @@ module.exports = (dispatch, handlers, guide, lang) => {
 
 
 		// EIGHTH FLOOR
+		"ns-434-8000": [
+			{ type: "stop_timers" },
+			{ type: "despawn_all" },
+			{ type: "func", func: () => is_eighth_floor = true },
+			{ type: "func", func: set_boss_data },
+		],
 		"nd-434-8000": [
 			{ type: "stop_timers" },
-			{ type: "despawn_all" }
+			{ type: "despawn_all" },
+			{ type: "func", func: () => is_eighth_floor = false },
+			{ type: "func", func: () => boss_data = null },
 		],
-		"ns-434-8100": [{ type: "text", sub_type: "notification", message: "Curse Mob Spawned", message_RU: "Создан дебафф-босс" }],
-		"ns-434-8200": [{ type: "text", sub_type: "notification", message: "Carpet Mob Spawned", message_RU: "Ковер Босс создан" }],
-		"qb-434-8000-459006": [{ type: "text", sub_type: "alert", message: "Circles", message_RU: "Круги" }],
+		"ns-434-8100": [{ type: "func", func: curse_mob_spawned }],
+		"ns-434-8200": [{ type: "func", func: carpet_mob_spawned }],
+		"nd-434-8200": [{ type: "func", func: carpet_mob_reset_event }],
+		"qb-434-8000-459006": [{ type: "text", sub_type: "alert", message: "Red Circles", message_RU: "Красные круги" }],
 		"qb-434-8000-434801": [
-			{ type: "text", sub_type: "message", message: "Orbs", message_RU: "Клевер" },
-			{ type: "text", sub_type: "message", delay: 10000, message: "Attention Orbs", message_RU: "Эвейд" }
+			{ type: "text", sub_type: "message", message: "Orbs", message_RU: "сферы" },
+			{ type: "text", sub_type: "message", delay: 10000, message: "Attention Orbs", message_RU: "Сферы внимания" },
 		],
-		"s-434-8200-3102-0": [{ type: "text", sub_type: "message", message: "Circles", message_RU: "Круги" }],
+		"s-434-8200-3102-0": [{ type: "text", sub_type: "message", message: "Yellow Circles", message_RU: "Желтые круги" }],
 		"s-434-8000-1110-0": [
-			{ type: "text", sub_type: "message", message: "Lightning", message_RU: "Клевер" },
+			{ type: "text", sub_type: "message", message: "Lightning", message_RU: "Молния" },
 			{ type: "spawn", func: "circle", args: [false, 553, 45, 180, 12, 230, 0, 3000] },
 			{ type: "spawn", func: "circle", args: [false, 553, 135, 180, 12, 230, 0, 3000] },
 			{ type: "spawn", func: "circle", args: [false, 553, 225, 180, 12, 230, 0, 3000] },
 			{ type: "spawn", func: "circle", args: [false, 553, 315, 180, 12, 230, 0, 3000] }
 		],
-		"s-434-8000-2110-0": "s-434-8000-1110-0"
+		"s-434-8000-2110-0": "s-434-8000-1110-0",
+
+		// 9th FLOOR
+		"ns-434-9000": [
+			{ type: "func", func: () => is_ninth_floor = true },
+			{ type: "func", func: ninth_triples_event, args: [false] },
+			{ type: "func", func: ninth_secondary_event },
+			{ type: "func", func: set_boss_data },
+		],
+		"nd-434-9000": [
+			{ type: "stop_timers" },
+			{ type: "despawn_all" },
+			{ type: "func", func: reset_backevent },
+			{ type: "func", func: () => boss_data = null },
+		],
+		"h-434-9000-99": [{ type: "func", func: () => is_ninth_floor = true }],
+		"h-434-9000-49": [
+			{ type: "text", sub_type: "message", message: "49%" },
+			{ type: "func", func: () => ninth_floor_fifty = true },
+			{ type: "text", sub_type: "notification", message: "Triples Soon!", message_RU: "тройки Скоро!", delay: 1000, speech: false }
+		],
+		"dm-0-0-9034901": [
+			{ type: "text", sub_type: "message", message: "Triples!", message_RU: "тройки!" },
+			{ type: "func", func: () => ninth_triple_swipe_remaining = 3 },
+			{ type: "func", func: ninth_triples_event, args: [false] },
+		],
+		"s-434-9000-1112-0": [{ type: "text", sub_type: "message", message_RU: "Рывок назад", message: "Back Move" }],
+		"s-434-9000-1102-0": [{ type: "func", func: () => back_time = new Date() }],
+		"s-434-9000-1101-0": [{ type: "func", func: boss_backattack_event }],
+		"s-434-9000-1106-0": [{ type: "func", func: boss_backattack_event_new, args: [1106] }],
+		"s-434-9000-1105-0": [{ type: "func", func: boss_backattack_event_new, args: [1105] }],
+		"s-434-9000-1103-0": [{ type: "func", func: boss_backattack_event_new, args: [1103] }],
+		"s-434-9000-1108-0": [{ type: "func", func: boss_backattack_event_new, args: [1108] }],
+		"s-434-9000-1114-0": [
+			{ type: "text", sub_type: "message", message_RU: "Таргет", message: "Target Attack" },
+			{ type: "spawn", func: "vector", args: [553, 90, 150, 0, 1300, 0, 2500] },
+			{ type: "spawn", func: "vector", args: [553, 90, 75, 0, 1300, 0, 2500] },
+			{ type: "spawn", func: "vector", args: [553, 0, 0, 0, 1300, 0, 2500] },
+			{ type: "spawn", func: "vector", args: [553, 270, 75, 0, 1300, 0, 2500] },
+			{ type: "spawn", func: "vector", args: [553, 270, 150, 0, 1300, 0, 2500] }
+		],
+		"s-434-9000-1115-0": [
+			{ type: "text", sub_type: "message", message: "3" },
+			{ type: "text", sub_type: "message", delay: 1000, message: "2" },
+			{ type: "text", sub_type: "message", delay: 2000, message: "1" },
+			{ type: "text", sub_type: "message", delay: 3200, message_RU: "Эвейд", message: "Dodge" }
+		],
+		"s-434-9000-1117-0": [{ type: "text", sub_type: "message", message_RU: "Удар вперед", message: "Front" }],
+		"s-434-9000-1302-0": [
+			{ type: "text", sub_type: "message", message_RU: "АоЕ", message: "AOE" },
+			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 8, 500, 100, 6000] }
+		],
+		"s-434-9000-1407-0": [{ type: "func", func: ninth_new_swipe_event, args: [1407] }],
+		"s-434-9000-1408-0": [{ type: "func", func: ninth_new_swipe_event, args: [1408] }],
+		"s-434-9000-2101-0": "s-434-9000-1101-0",
+		"s-434-9000-2102-0": "s-434-9000-1102-0",
+		"s-434-9000-2103-0": "s-434-9000-1103-0",
+		"s-434-9000-2105-0": "s-434-9000-1105-0",
+		"s-434-9000-2106-0": "s-434-9000-1106-0",
+		"s-434-9000-2108-0": "s-434-9000-1108-0",
+		"s-434-9000-2112-0": "s-434-9000-1112-0",
+		"s-434-9000-1303-0": [{ type: "text", sub_type: "message", message_RU: "Крутилка", message: "Spin Attack" }],
+		"s-434-9000-1401-0": [{ type: "func", func: ninth_old_swipe_event, args: [1401] }],
+		"s-434-9000-1402-0": [{ type: "func", func: ninth_old_swipe_event, args: [1402] }],
+		"s-434-9000-1301-0": [{ type: "text", sub_type: "message", message_RU: "вопль", message: "Scream" }],
+		"s-434-9000-2114-0": "s-434-9000-1114-0",
+		"s-434-9000-2115-0": "s-434-9000-1115-0",
+		"s-434-9000-2117-0": "s-434-9000-1117-0",
+
+		// Manyaa floor 10
+
+		"nd-434-10000": [
+			{ type: "stop_timers" },
+			{ type: "despawn_all" }
+		],
+		"die": [{ type: "func", func: debuff_removed }],
+		"h-434-10000-99": [{ type: "func", func: () => next_debuff = 0 }],
+		"s-434-10000-1103-0": [{ type: "text", sub_type: "message", message_RU: "Передняя атака", message: "Frontal Attack" }],
+		"s-434-10000-1205-0": [{ type: "text", sub_type: "message", message_RU: "Телепорт", message: "Teleport" }],
+		"s-434-10000-1102-0": [{ type: "text", sub_type: "message", message_RU: "К нему > От него", message: "In > Out" }],
+		"s-434-10000-1113-0": [{ type: "text", sub_type: "message", message_RU: "Левая рука ", message: "Left Hand Attack" }],
+		"s-434-10000-1105-0": [{ type: "text", sub_type: "message", message_RU: "Правая рука ", message: "Right Hand Attack" }],
+		"s-434-10000-1112-0": [{ type: "func", func: debuff_event, args: [true, 0] }],
+		"s-434-10000-1108-0": [{ type: "text", sub_type: "message", message_RU: "Атака (таргет)", message: "Target Attack" }],
+		"s-434-10000-1114-0": [{ type: "text", sub_type: "message", message_RU: "Удар назад", message: "Back Attack" }],
+		"s-434-10000-1115-0": [{ type: "text", sub_type: "message", message_RU: "Хвост", message: "Tail" }],
+		"s-434-10000-1111-0": [{ type: "text", sub_type: "message", message_RU: "Хвост вперед", message: "Frontal Attack" }],
+		"s-434-10000-1109-0": [{ type: "text", sub_type: "message", message_RU: "АоЕ (таргет)", message: "AoE Target" }],
+		"s-434-10000-1104-0": [{ type: "text", sub_type: "message", message: "Stomp" }],
+		"s-434-10000-1107-0": [{ type: "text", sub_type: "message", message_RU: "Лазер", message: "Laser Attack" },
+		{ type: "spawn", func: "vector", args: [912, 360, 985, 180, 950, 0, 2500] },
+		{ type: "spawn", func: "vector", args: [912, 369, 995, 180, 950, 0, 2500] },
+		{ type: "spawn", func: "vector", args: [912, 351, 995, 180, 950, 0, 2500] }
+		],
+		"s-434-10000-1106-0": [{ type: "text", sub_type: "message", message_RU: "Бомба (таргет)", message: "Target Bomb" }],
+		"s-434-10000-1204-0": [{ type: "text", sub_type: "message", message_RU: "Большая АоЕ (бежать)", message: "Big AoE (Run)" },
+		{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 10, 550, 0, 4000] }
+		],
+		"qb-434-10000-427050": [
+			{ type: "text", sub_type: "message", message: "Plague of Exhaustion", message_RU: "Чума/Регресс", class_position: "priest" },
+			{ type: "text", sub_type: "message", message: "Regression", message_RU: "Регресс", class_position: "mystic" }
+		],
+		"s-434-10000-2205-0": "s-434-10000-1205-0",
+		"s-434-10000-2102-0": "s-434-10000-1102-0",
+		"s-434-10000-2113-0": "s-434-10000-1113-0",
+		"s-434-10000-2105-0": "s-434-10000-1105-0",
+		"s-434-10000-2112-0": "s-434-10000-1112-0",
+		"s-434-10000-2115-0": "s-434-10000-1115-0",
+		"s-434-10000-2111-0": "s-434-10000-1111-0",
+		"s-434-10000-2109-0": "s-434-10000-1109-0",
+		"s-434-10000-2107-0": "s-434-10000-1107-0",
+		"s-434-10000-2106-0": "s-434-10000-1106-0",
+		"s-434-10000-2204-0": "s-434-10000-1204-0",
+		"s-434-10000-2103-0": "s-434-10000-1103-0",
+		"s-434-10000-2114-0": "s-434-10000-1114-0",
+		"s-434-10000-2108-0": "s-434-10000-1108-0",
+		"s-434-10000-2104-0": "s-434-10000-1104-0",
+		"am-434-10000-90341002": [{ type: "func", func: debuff_event, args: [false, 3] }], // hateful thought #2
+		"am-434-10000-90341003": [{ type: "func", func: debuff_event, args: [false, 2] }], // desperate thought #3 90341006
+		"am-434-10000-90341006": "am-434-10000-90341003",
+		"am-434-10000-90341005": "am-434-10000-90341002"
 	};
 };
