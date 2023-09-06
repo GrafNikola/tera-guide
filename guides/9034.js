@@ -1013,7 +1013,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		// 9th FLOOR
 		"ns-434-9000": [
 			{ type: "func", func: () => is_ninth_floor = true },
-			{ type: "func", func: ninth_triples_event, args: [false] },
+			{ type: "func", func: ninth_triples_event },
 			{ type: "func", func: ninth_secondary_event },
 			{ type: "func", func: set_boss_data },
 		],
@@ -1032,7 +1032,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"dm-0-0-9034901": [
 			{ type: "text", sub_type: "message", message: "Triples!", message_RU: "тройки!" },
 			{ type: "func", func: () => ninth_triple_swipe_remaining = 3 },
-			{ type: "func", func: ninth_triples_event, args: [false] },
+			{ type: "func", func: ninth_triples_event },
 		],
 		"s-434-9000-1112-0": [{ type: "text", sub_type: "message", message_RU: "Рывок назад", message: "Back Move" }],
 		"s-434-9000-1102-0": [{ type: "func", func: () => back_time = new Date() }],
