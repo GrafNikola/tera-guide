@@ -549,8 +549,8 @@ module.exports = (dispatch, handlers, guide, lang) => {
 
 		if (send_msg) {
 			const debuff_messages = {
-				0: { message: `Debuff`, message_RU: "Дебаф (бублик)" },
-				2: { message: `Debuff 1, 2`, message_RU: "Дебаф (бублик) 1, 2" },
+				0: { message: "Debuff", message_RU: "Дебаф (бублик)" },
+				2: { message: "Debuff 1, 2", message_RU: "Дебаф (бублик) 1, 2" },
 				3: { message: "Debuff 1, 3", message_RU: "Дебаф (бублик) 1, 3" }
 			};
 
@@ -1027,7 +1027,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"h-434-9000-49": [
 			{ type: "text", sub_type: "message", message: "49%" },
 			{ type: "func", func: () => ninth_floor_fifty = true },
-			{ type: "text", sub_type: "notification", message: "Triples Soon!", message_RU: "тройки Скоро!", delay: 1000, speech: false }
+			{ type: "text", sub_type: "notification", message: "Triples Soon!", message_RU: "тройки Скоро!", delay: 1000 }
 		],
 		"dm-0-0-9034901": [
 			{ type: "text", sub_type: "message", message: "Triples!", message_RU: "тройки!" },
