@@ -76,11 +76,13 @@ id | Dungeon name | Название данжа
 3101 | Gossamer Vault | Гнездо Паркин
 3102 | Draakon Arena | Командный центр
 3103 | Forbidden Arena [Undying Warlord] | [Этерния] Арена безумия
+3104 | Catalepticon | Сонный паралич Лукмии
 3123 | Akalath Quarantine (Hard) | Akalath Quarantine (Hard)
 3126 | Corrupted Skynest (Hard) | Логово Бессмертного Келсаика
 3201 | Gossamer Vault (Hard) | Гнездо сверкающей Паркин
 3202 | Draakon Arena (Hard) | Командный центр (сложно)
 3203 | Forbidden Arena [Nightmare Undying Warlord] | [Бессмертный] Арена безумия
+3204 | Catalepticon (Hard) | Сонный паралич Лукмии (сложно)
 3739 | Red Refuge | Лагерь повстанцев
 7011 | Shadow of the Gutrends (Guardian) | Живодеры и черная тень (хранитель)
 7015 | Escape from Balder's Refuge (Guardian) | Операция "Спасти Убежище Балдера" (хранитель)
