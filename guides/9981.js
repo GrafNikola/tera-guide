@@ -105,7 +105,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 
 		// 1402 non-enraged
 		const leftSafe = [
-			{ type: "text", sub_type: "message", message: `Left ${double}`, message_RU: `Левый ${double_ru} `},
+			{ type: "text", sub_type: "message", message: `Left ${double}`, message_RU: `Левый ${double_ru} ` },
 			{ type: "spawn", func: "vector", args: [553, 360, 400, 180, 800, 0, 2000] },
 			{ type: "spawn", func: "marker", args: [false, 60, 100, 0, 2000, true, null] },
 			{ type: "spawn", func: "marker", args: [false, 130, 100, 0, 2000, true, null] },
@@ -286,8 +286,8 @@ module.exports = (dispatch, handlers, guide, lang) => {
 				{ type: "spawn", func: "semicircle", args: [0, 180, 912, 0, 0, 8, 360, 4600, 2200] }
 			];
 
-			const pattern3 = [{ type: "text", sub_type: "message", message: "Back - Front", message_RU: "Назад - Передний"}];
-			const pattern4 = [{ type: "text", sub_type: "message", message: "Front - Back", message_RU: "Передний - Назад"}];
+			const pattern3 = [{ type: "text", sub_type: "message", message: "Back - Front", message_RU: "Назад - Передний" }];
+			const pattern4 = [{ type: "text", sub_type: "message", message: "Front - Back", message_RU: "Передний - Назад" }];
 
 
 			pattern = skillid === 1101 ? pattern3 : pattern4;
@@ -656,10 +656,10 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-981-3000-2130-0": "s-981-3000-1130-0",
 
 		"s-981-3000-1116-0": [
-			{ type: "text", sub_type: "message", message: "Red Donut", check_func: () => !thirdboss_soul_world && !thirdboss_fifty},
-			{ type: "text", sub_type: "message", message: "Blue Donut", check_func: () => thirdboss_soul_world && !thirdboss_fifty},
-			{ type: "text", sub_type: "message", message: "Red Donut (Double)", check_func: () => !thirdboss_soul_world && thirdboss_fifty},
-			{ type: "text", sub_type: "message", message: "Blue Donut (Double)", check_func: () => thirdboss_soul_world && thirdboss_fifty},
+			{ type: "text", sub_type: "message", message: "Red Donut", check_func: () => !thirdboss_soul_world && !thirdboss_fifty },
+			{ type: "text", sub_type: "message", message: "Blue Donut", check_func: () => thirdboss_soul_world && !thirdboss_fifty },
+			{ type: "text", sub_type: "message", message: "Red Donut (Double)", check_func: () => !thirdboss_soul_world && thirdboss_fifty },
+			{ type: "text", sub_type: "message", message: "Blue Donut (Double)", check_func: () => thirdboss_soul_world && thirdboss_fifty },
 		],
 		"s-981-3000-2116-0": "s-981-3000-1116-0",
 		"h-981-3000-99": [{ type: "func", func: () => thirdboss_fifty = false }],
@@ -682,7 +682,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"qb-981-3000-98133": [
 			{ type: "func", func: () => clever_mech_active = true },
 			{ type: "text", sub_type: "message", message: "Cone + Donuts" },
-	], // let's see just how clever you are...
+		], // let's see just how clever you are...
 		"qb-981-3000-98134": [
 			{ type: "func", func: () => afriad_mech_active = true },
 			{ type: "text", sub_type: "message", message: "Double Cones" },
