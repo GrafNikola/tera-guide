@@ -596,7 +596,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-981-2000-1102-0": [{ type: "func", func: secondboss_swipe_event, args: [1102] }],
 		"s-981-2000-2102-0": "s-981-2000-1102-0",
 		"s-981-2000-1134-0": [
-			{ type: "text", sub_type: "message", message: "Pull", message_RU: "Ближний + АоЕ" },
+			{ type: "text", sub_type: "message", message: "Inner + AoE", message_RU: "Ближний + АоЕ" },
 			{ type: "spawn", func: "circle", args: [true, 553, 0, 75, 14, 175, 0, 1500] }
 		],
 		"s-981-2000-1134-1": [
