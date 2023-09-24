@@ -388,16 +388,15 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		if (!run_mech_active) return;
 
 		if (skillid === 1117) {
-			handlers.event([{ type: "text", sub_type: "message", message: "Stun + Push Back" }]);
+			handlers.event([{ type: "text", sub_type: "message", message: "Stun + Back" }]);
 		}
 
 		if (skillid === 1105) {
 			run_mech_push_back = true;
-			handlers.event([{ type: "text", sub_type: "message", message: "Push Back" }]);
 		} else if (run_mech_push_back) {
 			let msg = skillid === 1102 ? "In" : "Out";
 			handlers.event([
-				{ type: "text", sub_type: "message", message: msg },
+				{ type: "text", sub_type: "notification", message: msg },
 				{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 10, 250, 0, 6000] }
 			]);
 			run_mech_active = false;
@@ -416,7 +415,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		}
 
 		handlers.event([
-			{ type: "text", sub_type: "message", message: msg }
+			{ type: "text", sub_type: "notification", message: msg }
 		]);
 		afriad_mech_active = false;
 	}
@@ -425,7 +424,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 	function are_you_clever(skillid) {
 		if (!clever_mech_active) return;
 		if (skillid === 1102) {
-			handlers.event([{ type: "text", sub_type: "message", message: "Turn Back", delay: 900 }]);
+			handlers.event([{ type: "text", sub_type: "message", message: "Spin", delay: 900 }]);
 		}
 		if (skillid === 1131 || skillid === 1132) {
 			let msg = "";
@@ -436,8 +435,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			}
 
 			handlers.event([
-				{ type: "text", sub_type: "message", message: msg },
-				{ type: "text", sub_type: "message", message: "Back Push", delay: 2000 },
+				{ type: "text", sub_type: "notification", message: msg },
 				{ type: "text", sub_type: "message", message: msg, delay: 2000 }
 			]);
 			clever_mech_active = false;
@@ -658,8 +656,10 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-981-3000-2130-0": "s-981-3000-1130-0",
 
 		"s-981-3000-1116-0": [
-			{ type: "text", sub_type: "message", message: "Red Donut", check_func: () => !thirdboss_soul_world },
-			{ type: "text", sub_type: "message", message: "Blue Donut", check_func: () => thirdboss_soul_world },
+			{ type: "text", sub_type: "message", message: "Red Donut", check_func: () => !thirdboss_soul_world && !thirdboss_fifty},
+			{ type: "text", sub_type: "message", message: "Blue Donut", check_func: () => thirdboss_soul_world && !thirdboss_fifty},
+			{ type: "text", sub_type: "message", message: "Red Donut (Double)", check_func: () => !thirdboss_soul_world && thirdboss_fifty},
+			{ type: "text", sub_type: "message", message: "Blue Donut (Double)", check_func: () => thirdboss_soul_world && thirdboss_fifty},
 		],
 		"s-981-3000-2116-0": "s-981-3000-1116-0",
 		"h-981-3000-99": [{ type: "func", func: () => thirdboss_fifty = false }],
@@ -668,24 +668,24 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"dm-0-0-9981044": [{ type: "func", func: thirdboss_message_event, args: [1044] }], // Lakan is trying to take you on one at a time.
 		"dm-0-0-9981045": [{ type: "func", func: thirdboss_message_event, args: [1045] }], // Lakan intends to kill all of you at once.
 		"qb-981-3000-98131": [{ type: "text", sub_type: "message", message: "Range Check" }],
-		"qb-981-3000-98135": [
-			{ type: "text", sub_type: "message", message: "Begone + Stun Mechanic" },
-			{ type: "func", func: () => run_mech_active = true },
-		],
+		"qb-981-3000-98135": [{ type: "func", func: () => run_mech_active = true }],
 		"s-981-3000-1101-0": [{ type: "func", func: run_if_you_can, args: [1101] }],
 		"s-981-3000-1102-0": [
 			{ type: "func", func: run_if_you_can, args: [1102] },
 			{ type: "func", func: are_you_clever, args: [1102] }
 		],
-		"s-981-3000-1105-0": [{ type: "func", func: run_if_you_can, args: [1105] }],
+		"s-981-3000-1105-0": [
+			{ type: "func", func: run_if_you_can, args: [1105] },
+			{ type: "text", sub_type: "message", message: "Back" },
+		],
 		"s-981-3000-1117-0": [{ type: "func", func: run_if_you_can, args: [1117] }],
 		"qb-981-3000-98133": [
-			{ type: "text", sub_type: "message", message: "Begone + Donuts Mechanic" },
 			{ type: "func", func: () => clever_mech_active = true },
-		], // let's see just how clever you are...
+			{ type: "text", sub_type: "message", message: "Cone + Donuts" },
+	], // let's see just how clever you are...
 		"qb-981-3000-98134": [
-			{ type: "text", sub_type: "message", message: "Double Begone Mechanic" },
 			{ type: "func", func: () => afriad_mech_active = true },
+			{ type: "text", sub_type: "message", message: "Double Cones" },
 		], //are_you_afraid_of_me
 		"s-981-3000-1131-0": [
 			{ type: "func", func: are_you_afraid_of_me, args: [1131] },
@@ -731,7 +731,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-981-3000-1701-0": [{ type: "text", sub_type: "message", message: "Back + front", message_RU: "Назад + Вперед" }],
 		//
 		"s-981-3000-1113-0": [{ type: "text", sub_type: "message", message: "Bait", message_RU: "Байт" }],
-		"s-981-3000-1151-0": [{ type: "text", sub_type: "message", message: "stun", message_RU: "Стан" }],
+		"s-981-3000-1151-0": [{ type: "text", sub_type: "message", message: "Stun", message_RU: "Стан" }],
 		"s-981-3000-1152-0": [{ type: "text", sub_type: "message", message: "Stun + Back", message_RU: "Стан + Откид назад" }],
 		"s-981-3000-1152-1": [{ type: "text", sub_type: "message", message: "Dodge", message_RU: "Эвейд", delay: 1900 }],
 		"s-981-3000-1138-0": [{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 10, 250, 0, 6000] }], // begone
