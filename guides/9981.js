@@ -142,7 +142,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			handlers.text({
 				sub_type: "notification",
 				message: "Triples Soon!",
-				message_RU: "тройки Скоро!"
+				message_RU: "Тройки Скоро!"
 			});
 		}, 55000);
 
@@ -150,40 +150,42 @@ module.exports = (dispatch, handlers, guide, lang) => {
 
 	let last_donut_msg = null;
 	function first_fly_mech(skillid) {
-		let PizzaUnEnragedMarkers = [
-			// 476 Azure Shard Blue
-			{ type: "spawn", func: "vector", args: [476, 0, 0, 45 + 90, 750, 0, 6000] },
-			{ type: "spawn", func: "vector", args: [476, 0, 0, (45 + 90) + 30, 750, 0, 6000] },
-			{ type: "spawn", func: "vector", args: [476, 0, 0, 6 * 45 + 45, 750, 0, 6000] },
-			{ type: "spawn", func: "vector", args: [476, 0, 0, (6 * 45 + 45) + 30, 750, 0, 6000] },
-			// 474 Crimson Shard Red
-			{ type: "spawn", func: "vector", args: [474, 0, 0, 4 * 45 + 45, 750, 0, 6000] },
-			{ type: "spawn", func: "vector", args: [474, 0, 0, 195, 750, 0, 6000] },
-			{ type: "spawn", func: "vector", args: [474, 0, 0, 7 * 45 + 90, 750, 0, 6000] },
-			{ type: "spawn", func: "vector", args: [474, 0, 0, (7 * 45 + 90) - 30, 750, 0, 6000] },
-			// 477 Aetherduct Green
-			{ type: "spawn", func: "vector", args: [477, 0, 0, (45 + 90) - 30, 750, 0, 6000] },
-			{ type: "spawn", func: "vector", args: [477, 0, 0, (45 + 90) - 60, 750, 0, 6000] },
-			{ type: "spawn", func: "vector", args: [477, 0, 0, (6 * 45 + 45) - 30, 750, 0, 6000] },
-			{ type: "spawn", func: "vector", args: [477, 0, 0, (6 * 45 + 45) - 60, 750, 0, 6000] },
+		let PizzaMarkers = [
+			{ type: "spawn", func: "vector", args: [553, 0, 0,  15, 750, 0, 6000] },
+			{ type: "spawn", func: "vector", args: [553, 0, 0,  45, 750, 0, 6000] },
+
+			{ type: "spawn", func: "vector", args: [553, 0, 0,  75, 750, 0, 6000] },
+			{ type: "spawn", func: "vector", args: [553, 0, 0, 105, 750, 0, 6000] },
+
+			{ type: "spawn", func: "vector", args: [553, 0, 0, 135, 750, 0, 6000] },
+			{ type: "spawn", func: "vector", args: [553, 0, 0, 165, 750, 0, 6000] },
+
+			{ type: "spawn", func: "vector", args: [553, 0, 0, 195, 750, 0, 6000] },
+			{ type: "spawn", func: "vector", args: [553, 0, 0, 225, 750, 0, 6000] },
+
+			{ type: "spawn", func: "vector", args: [553, 0, 0, 255, 750, 0, 6000] },
+			{ type: "spawn", func: "vector", args: [553, 0, 0, 285, 750, 0, 6000] },
+
+			{ type: "spawn", func: "vector", args: [553, 0, 0, 315, 750, 0, 6000] },
+			{ type: "spawn", func: "vector", args: [553, 0, 0, 345, 750, 0, 6000] }
 		];
 
-		let PizzaEnragedMarkers = [
-			// 476 Azure Shard Blue
-			{ type: "spawn", func: "vector", args: [476, 0, 0, (45 + 90) + 30, 750, 0, 6000] },
-			{ type: "spawn", func: "vector", args: [476, 0, 0, 195, 750, 0, 6000] },
-			{ type: "spawn", func: "vector", args: [476, 0, 0, (6 * 45 + 45) + 30, 750, 0, 6000] },
-			{ type: "spawn", func: "vector", args: [476, 0, 0, (7 * 45 + 90) - 30, 750, 0, 6000] },
-			// 474 Crimson Shard Red
-			{ type: "spawn", func: "vector", args: [474, 0, 0, 4 * 45 + 45, 750, 0, 6000] },
-			{ type: "spawn", func: "vector", args: [474, 0, 0, (6 * 45 + 45) - 60, 750, 0, 6000] },
-			{ type: "spawn", func: "vector", args: [474, 0, 0, (45 + 90) - 60, 750, 0, 6000] },
-			{ type: "spawn", func: "vector", args: [474, 0, 0, 7 * 45 + 90, 750, 0, 6000] },
-			// 477 Aetherduct Green
-			{ type: "spawn", func: "vector", args: [477, 0, 0, 45 + 90, 750, 0, 6000] },
-			{ type: "spawn", func: "vector", args: [477, 0, 0, (45 + 90) - 30, 750, 0, 6000] },
-			{ type: "spawn", func: "vector", args: [477, 0, 0, 6 * 45 + 45, 750, 0, 6000] },
-			{ type: "spawn", func: "vector", args: [477, 0, 0, (6 * 45 + 45) - 30, 750, 0, 6000] },
+		let safe_enraged_markers = [
+			{ type: "spawn", func: "vector", args: [548, 0, 0,   0, 750, 0, 1500] },
+			{ type: "spawn", func: "vector", args: [548, 0, 0,  60, 750, 0, 1500] },
+			{ type: "spawn", func: "vector", args: [548, 0, 0, 120, 750, 0, 1500] },
+			{ type: "spawn", func: "vector", args: [548, 0, 0, 180, 750, 0, 1500] },
+			{ type: "spawn", func: "vector", args: [548, 0, 0, 240, 750, 0, 1500] },
+			{ type: "spawn", func: "vector", args: [548, 0, 0, 300, 750, 0, 1500] }
+		];
+
+		let safe_unenraged_markers = [
+			{ type: "spawn", func: "vector", args: [548, 0, 0,  30, 750, 0, 1500] },
+			{ type: "spawn", func: "vector", args: [548, 0, 0,  90, 750, 0, 1500] },
+			{ type: "spawn", func: "vector", args: [548, 0, 0, 150, 750, 0, 1500] },
+			{ type: "spawn", func: "vector", args: [548, 0, 0, 210, 750, 0, 1500] },
+			{ type: "spawn", func: "vector", args: [548, 0, 0, 270, 750, 0, 1500] },
+			{ type: "spawn", func: "vector", args: [548, 0, 0, 330, 750, 0, 1500] }
 		];
 
 		if (!first_fifty) {
@@ -194,20 +196,23 @@ module.exports = (dispatch, handlers, guide, lang) => {
 					{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 10, 300, 0, 6000] },
 				]);
 			} else {
-				handlers.event([{ type: "text", sub_type: "message", message: "Pizza", message_RU: "Пицца" }]);
-				if (boss_enraged) {
-					handlers.event(PizzaEnragedMarkers);
-				} else {
-					handlers.event(PizzaUnEnragedMarkers);
-				}
-
+//                handlers.event(PizzaMarkers);
+                if (boss_enraged) {
+                    handlers.event(safe_enraged_markers);
+                    handlers.text({ sub_type: "notification", message: "Pizza + enraged", message_RU: "Пицца + В раге" });
+                } else {
+                    handlers.event(safe_unenraged_markers);
+                    handlers.text({ sub_type: "notification", message: "Pizza x un enraged", message_RU: "Пицца x Без раги" });
+                }
 			}
 		} else {
-			if (boss_enraged) {
-				handlers.event(PizzaEnragedMarkers);
-			} else {
-				handlers.event(PizzaUnEnragedMarkers);
-			}
+			handlers.event([{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 10, 300, 0, 6000]}]);
+//            handlers.event(PizzaMarkers);
+            if (boss_enraged) {
+                handlers.event(safe_enraged_markers);
+            } else {
+                handlers.event(safe_unenraged_markers);
+            }
 
 			if ((skillid === 1308 || skillid === 1309) && last_donut_msg == null) {
 				last_donut_msg = skillid === 1308 ? "last: IN" : "last: OUT";
@@ -472,22 +477,49 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		],
 		"s-981-1000-1308-0": [
 			{ type: "func", func: first_fly_mech, args: [1308], check_func: () => first_fifty },
-			{ type: "text", sub_type: "message", message: "Out", message_RU: "Наружу" }
+			{ type: "text", sub_type: "message", message: "Out", message_RU: "Наружу" },
+            { type: "spawn", func: "marker", args: [false,  75, 370, 0, 1000, true, null] },
+            { type: "spawn", func: "marker", args: [false, 165, 370, 0, 1000, true, null] },
+            { type: "spawn", func: "marker", args: [false, 255, 370, 0, 1000, true, null] },
+            { type: "spawn", func: "marker", args: [false, 345, 370, 0, 1000, true, null] }
 		], //out
 		"s-981-1000-1309-0": [
 			{ type: "func", func: first_fly_mech, args: [1309], check_func: () => first_fifty },
-			{ type: "text", sub_type: "message", message: "In", message_RU: "Внутрь" }], //in
+			{ type: "text", sub_type: "message", message: "In", message_RU: "Внутрь" },
+            { type: "spawn", func: "marker", args: [false,  75, 100, 0, 1000, true, null] },
+            { type: "spawn", func: "marker", args: [false, 165, 100, 0, 1000, true, null] },
+            { type: "spawn", func: "marker", args: [false, 255, 100, 0, 1000, true, null] },
+            { type: "spawn", func: "marker", args: [false, 345, 100, 0, 1000, true, null] }],
+		"s-981-1000-1310-0": [
+            { type: "spawn", func: "marker", args: [false,  30, 200, 0, 1000, true, null] },
+            { type: "spawn", func: "marker", args: [false,  90, 200, 0, 1000, true, null] },
+            { type: "spawn", func: "marker", args: [false, 150, 200, 0, 1000, true, null] },
+            { type: "spawn", func: "marker", args: [false, 210, 200, 0, 1000, true, null] },
+            { type: "spawn", func: "marker", args: [false, 270, 200, 0, 1000, true, null] },
+            { type: "spawn", func: "marker", args: [false, 330, 200, 0, 1000, true, null] }],
+		"s-981-1000-1311-0": [
+            { type: "spawn", func: "marker", args: [false,   0, 200, 0, 1000, true, null] },
+            { type: "spawn", func: "marker", args: [false,  60, 200, 0, 1000, true, null] },
+            { type: "spawn", func: "marker", args: [false, 120, 200, 0, 1000, true, null] },
+            { type: "spawn", func: "marker", args: [false, 180, 200, 0, 1000, true, null] },
+            { type: "spawn", func: "marker", args: [false, 240, 200, 0, 1000, true, null] },
+            { type: "spawn", func: "marker", args: [false, 300, 200, 0, 1000, true, null] }],
+		"s-981-1000-1313-0": [
+            { type: "text", sub_type: "message", message: "3" },
+            { type: "text", sub_type: "message", delay:  400, message: "2" },
+            { type: "text", sub_type: "message", delay:  800, message: "1" },
+            { type: "text", sub_type: "message", delay: 1200, message: "Dodge", message_RU: "Эвейд" }],
 		"s-981-1000-1111-0": [{ type: "func", func: () => prev_attack = 1111 }],
 		"s-981-1000-1113-0": [
 			{ type: "text", sub_type: "message", message: "Front + AoEs", message_RU: "Передняя + AOE" },
 			{ type: "func", func: () => prev_attack = 1113 }
 		],
 		"s-981-1000-1114-0": [
-			{ type: "text", sub_type: "message", message_RU: "Таргет", message: "Target Attack" },
-			{ type: "spawn", func: "vector", args: [553, 90, 150, 0, 1300, 0, 2500] },
-			{ type: "spawn", func: "vector", args: [553, 90, 75, 0, 1300, 0, 2500] },
-			{ type: "spawn", func: "vector", args: [553, 0, 0, 0, 1300, 0, 2500] },
-			{ type: "spawn", func: "vector", args: [553, 270, 75, 0, 1300, 0, 2500] },
+			{ type: "text", sub_type: "message", message: "Bait on res", message_RU: "Байт на рес" },
+			{ type: "spawn", func: "vector", args: [553,  90, 150, 0, 1300, 0, 2500] },
+			{ type: "spawn", func: "vector", args: [553,  90,  75, 0, 1300, 0, 2500] },
+			{ type: "spawn", func: "vector", args: [553,   0,   0, 0, 1300, 0, 2500] },
+			{ type: "spawn", func: "vector", args: [553, 270,  75, 0, 1300, 0, 2500] },
 			{ type: "spawn", func: "vector", args: [553, 270, 150, 0, 1300, 0, 2500] }
 		],
 		"s-981-1000-1115-0": [{ type: "text", sub_type: "message", delay: 2500, message_RU: "Эвейд", message: "Dodge" }], // dodge circle

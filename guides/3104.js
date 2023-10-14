@@ -23,6 +23,9 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "text", sub_type: "message", message: "Arrows", message_RU: "Стрелки" },
 			{ type: "func", func: () => combo_count = 0 }
 		],
+		"qb-3104-1000-32041000": [
+			{ type: "text", sub_type: "message", message: "Bait (Target)", message_RU: "Байт (таргет)" }
+		],
 		"h-3104-1000-35": [{ type: "text", sub_type: "message", message: "35%", message_RU: "35%" }],
 
 		"s-3104-1000-104-0": [
