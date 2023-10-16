@@ -1,10 +1,9 @@
 // Dark Reach Citadel (Hard)
 //
-// made by ITunk / HSDN / FrostSigil
+// made by ITunk / HSDN / FrostSigil / Calvary
 
 module.exports = (dispatch, handlers, guide, lang) => {
 	let firstboss_prepare_stun = false;
-
 	let secondboss_show_book_notify = true;
 	let secondboss_game_id_for_book = null;
 	let secondboss_red_book_loc = null;
@@ -16,35 +15,35 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		return nums.reduce((prev, curr) => (Math.abs(curr - num) < Math.abs(prev - num) ? curr : prev));
 	}
 
-    function thirdboss_mech(skillid) {
-        if (first_skillid === 0) {
-            first_skillid = skillid;
-        } else if (first_skillid === 119 && skillid === 116) {
-            handlers.event([
-                { type: "despawn_all" },
-                { type: "spawn", func: "marker", args: [false, 90, 100, 0, 3000, true, null] },
-                { type: "spawn", func: "semicircle", args: [135, 405, 553, 0, 0, 20, 160, 0, 3000] },
-                { type: "spawn", func: "semicircle", args: [135, 405, 553, 0, 0, 12, 220, 0, 3000] },
-                { type: "spawn", func: "semicircle", args: [135, 405, 553, 0, 0, 10, 300, 0, 3000] },
-                { type: "spawn", func: "semicircle", args: [135, 405, 553, 0, 0,  8, 360, 0, 3000] }
-            ]);
+	function thirdboss_mech(skillid) {
+		if (first_skillid === 0) {
+			first_skillid = skillid;
+		} else if (first_skillid === 119 && skillid === 116) {
+			handlers.event([
+				{ type: "despawn_all" },
+				{ type: "spawn", func: "marker", args: [false, 90, 100, 0, 3000, true, null] },
+				{ type: "spawn", func: "semicircle", args: [135, 405, 553, 0, 0, 20, 160, 0, 3000] },
+				{ type: "spawn", func: "semicircle", args: [135, 405, 553, 0, 0, 12, 220, 0, 3000] },
+				{ type: "spawn", func: "semicircle", args: [135, 405, 553, 0, 0, 10, 300, 0, 3000] },
+				{ type: "spawn", func: "semicircle", args: [135, 405, 553, 0, 0, 8, 360, 0, 3000] }
+			]);
 
 			first_skillid = 0;
-        } else if (first_skillid === 116 && skillid === 119) {
-            handlers.event([
-                { type: "despawn_all" },
-                { type: "spawn", func: "marker", args: [false, 270, 100, 0, 3000, true, null] },
-                { type: "spawn", func: "semicircle", args: [-45, 225, 553, 0, 0, 20, 160, 0, 3000] },
-                { type: "spawn", func: "semicircle", args: [-45, 225, 553, 0, 0, 12, 220, 0, 3000] },
-                { type: "spawn", func: "semicircle", args: [-45, 225, 553, 0, 0, 10, 300, 0, 3000] },
-                { type: "spawn", func: "semicircle", args: [-45, 225, 553, 0, 0,  8, 360, 0, 3000] }
-            ]);
+		} else if (first_skillid === 116 && skillid === 119) {
+			handlers.event([
+				{ type: "despawn_all" },
+				{ type: "spawn", func: "marker", args: [false, 270, 100, 0, 3000, true, null] },
+				{ type: "spawn", func: "semicircle", args: [-45, 225, 553, 0, 0, 20, 160, 0, 3000] },
+				{ type: "spawn", func: "semicircle", args: [-45, 225, 553, 0, 0, 12, 220, 0, 3000] },
+				{ type: "spawn", func: "semicircle", args: [-45, 225, 553, 0, 0, 10, 300, 0, 3000] },
+				{ type: "spawn", func: "semicircle", args: [-45, 225, 553, 0, 0, 8, 360, 0, 3000] }
+			]);
 
 			first_skillid = 0;
-        } else if (skillid === 116 || skillid === 119) {
-        	first_skillid = 0;
-        }
-    }
+		} else if (skillid === 116 || skillid === 119) {
+			first_skillid = 0;
+		}
+	}
 
 	dispatch.hook("S_NPC_LOCATION", "*", e => {
 		if (!secondboss_show_book_notify || e.gameId !== secondboss_game_id_for_book) return;
