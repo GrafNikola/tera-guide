@@ -375,6 +375,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-781-3000-3103-0": [{ type: "text", sub_type: "message", message: "(Circles) Spread", message_RU: "Круги (отдельно!)" }],
 		"s-781-3000-3105-0": [{ type: "text", sub_type: "message", message: "(Circles) Gather", message_RU: "Круги (вместе!)" }],
 		"s-781-3000-1136-0": [{ type: "text", sub_type: "message", message: "Claw", message_RU: "Когти" }],
+		"s-781-3000-1136-1": [{ type: "text", sub_type: "message", message: "Dodge", message_RU: "Эвейд", delay: 1000 }],
 		"s-781-3000-1144-0": [{ type: "text", sub_type: "message", message: "OUT", message_RU: "Наружу" }],
 		"s-781-3000-1145-0": [{ type: "text", sub_type: "message", message: "IN", message_RU: "Внутрь" }],
 		"s-781-3000-1240-0": [
@@ -397,6 +398,8 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-781-3000-2151-0": "s-781-3000-1151-0",
 		"s-781-3000-2152-0": "s-781-3000-1152-0",
 		"s-781-3000-2152-1": "s-781-3000-1152-1",
-		"s-781-3000-2138-0": "s-781-3000-1138-0"
+		"s-781-3000-2138-0": "s-781-3000-1138-0",
+		"s-781-3000-2136-0": "s-781-3000-1136-0",
+		"s-781-3000-2136-1": "s-781-3000-1136-1"
 	};
 };

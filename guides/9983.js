@@ -10,10 +10,41 @@ module.exports = (dispatch, handlers, guide, lang) => {
 	let secondboss_red_book_loc = null;
 	let secondboss_blue_book_loc = null;
 	let secondboss_green_book_loc = null;
+	let first_skillid = 0;
 
 	function closest(nums, num) {
 		return nums.reduce((prev, curr) => (Math.abs(curr - num) < Math.abs(prev - num) ? curr : prev));
 	}
+
+    function thirdboss_mech(skillid) {
+        if (first_skillid === 0) {
+            first_skillid = skillid;
+        } else if (first_skillid === 119 && skillid === 116) {
+            handlers.event([
+                { type: "despawn_all" },
+                { type: "spawn", func: "marker", args: [false, 90, 100, 0, 3000, true, null] },
+                { type: "spawn", func: "semicircle", args: [135, 405, 553, 0, 0, 20, 160, 0, 3000] },
+                { type: "spawn", func: "semicircle", args: [135, 405, 553, 0, 0, 12, 220, 0, 3000] },
+                { type: "spawn", func: "semicircle", args: [135, 405, 553, 0, 0, 10, 300, 0, 3000] },
+                { type: "spawn", func: "semicircle", args: [135, 405, 553, 0, 0,  8, 360, 0, 3000] }
+            ]);
+
+			first_skillid = 0;
+        } else if (first_skillid === 116 && skillid === 119) {
+            handlers.event([
+                { type: "despawn_all" },
+                { type: "spawn", func: "marker", args: [false, 270, 100, 0, 3000, true, null] },
+                { type: "spawn", func: "semicircle", args: [-45, 225, 553, 0, 0, 20, 160, 0, 3000] },
+                { type: "spawn", func: "semicircle", args: [-45, 225, 553, 0, 0, 12, 220, 0, 3000] },
+                { type: "spawn", func: "semicircle", args: [-45, 225, 553, 0, 0, 10, 300, 0, 3000] },
+                { type: "spawn", func: "semicircle", args: [-45, 225, 553, 0, 0,  8, 360, 0, 3000] }
+            ]);
+
+			first_skillid = 0;
+        } else if (skillid === 116 || skillid === 119) {
+        	first_skillid = 0;
+        }
+    }
 
 	dispatch.hook("S_NPC_LOCATION", "*", e => {
 		if (!secondboss_show_book_notify || e.gameId !== secondboss_game_id_for_book) return;
@@ -133,11 +164,13 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-983-3000-114-0": [{ type: "text", sub_type: "message", message: "Bait (Target)", message_RU: "Байт (таргет)" }],
 		"s-983-3000-116-0": [ // 116 - 117 - 118
 			{ type: "text", sub_type: "message", message: "Throw Back (Stun)", message_RU: "Удар назад (стан)" },
-			{ type: "spawn", func: "circle", args: [true, 553, 205, 410, null, 220, 0, 2000] }
+			{ type: "spawn", func: "circle", args: [true, 553, 205, 410, null, 220, 0, 2000] },
+			{ type: "func", func: thirdboss_mech, args: [116] }
 		],
-		"s-983-3000-119-0": [ // 119 - 120 - 121
+		"s-983-3000-119-0": [ // 119 - 120 -
 			{ type: "text", sub_type: "message", message: "Throw Back (Stun)", message_RU: "Удар назад (стан)" },
-			{ type: "spawn", func: "circle", args: [true, 553, 155, 410, null, 220, 0, 2000] }
+			{ type: "spawn", func: "circle", args: [true, 553, 155, 410, null, 220, 0, 2000] },
+			{ type: "func", func: thirdboss_mech, args: [119] }
 		],
 		"s-983-3000-122-0": [ // 122 - 123 - 124
 			{ type: "text", sub_type: "message", message: "Throw (Target)", message_RU: "Удар (таргет)" },
