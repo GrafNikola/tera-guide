@@ -8,6 +8,8 @@ module.exports = (dispatch, handlers, guide, lang) => {
 	let debuff = 0;
 	let print_wave = true;
 
+	const is_mt = dispatch._mod.connection.metadata.serverList[dispatch._mod.serverId].name.includes("MT");
+
 	return {
 		// 1 BOSS
 		"nd-782-1000": [
@@ -118,7 +120,8 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "despawn_all" }
 		],
 		"h-782-3000-99": [{ type: "func", func: () => print_wave = true }],
-		"h-782-3000-80": [{ type: "text", sub_type: "message", message: "80%", message_RU: "80%" }],
+		"h-782-3000-80": [{ type: "text", sub_type: "message", message: "80%", message_RU: "80%", check_func: () => !is_mt }],
+		"h-782-3000-70": [{ type: "text", sub_type: "message", message: "70%", message_RU: "70%", check_func: () => is_mt }],
 		"s-782-3000-109-0": [{ type: "text", sub_type: "message", message: "Front Throw (Target)", message_RU: "Удар вперед (таргет)" }],
 		"s-782-3000-134-0": [{ type: "text", sub_type: "message", message: "Front Throw (Target)", message_RU: "Удар вперед (таргет)" }],
 		"s-782-3000-118-0": [{ type: "text", sub_type: "message", message: "Front Triple", message_RU: "Передняя комба" }],
@@ -135,7 +138,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-782-3000-146-0": [
 			{ type: "text", sub_type: "message", message: "Pulses Left", message_RU: "Бублики слева" },
 			{ type: "spawn", func: "circle", args: [true, 553, 200, 350, null, 280, 500, 2000] },
-			{ type: "spawn", func: "marker", args: [false, 215, 370, 5300, 3000, true, null] }, // 1
+			{ type: "spawn", func: "marker", args: [false, 215, 370, is_mt ? 3200 : 5300, 3000, true, null] }, // 1
 			{ type: "spawn", func: "circle", args: [false, 445, 215, 370, 15, 160, 2000, 6000] },
 			{ type: "spawn", func: "circle", args: [false, 445, 215, 370, 12, 320, 2000, 6000] },
 			{ type: "spawn", func: "circle", args: [false, 445, 215, 370, 10, 480, 2000, 6000] },
@@ -145,7 +148,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-782-3000-154-0": [
 			{ type: "text", sub_type: "message", message: "Pulses Left", message_RU: "Бублики слева" },
 			{ type: "spawn", func: "circle", args: [true, 553, 200, 350, null, 280, 500, 2000] },
-			{ type: "spawn", func: "marker", args: [false, 215, 370, 4200, 4000, true, null] }, // 2
+			{ type: "spawn", func: "marker", args: [false, 215, 370, is_mt ? 3200 : 4200, 4000, true, null] }, // 2
 			{ type: "spawn", func: "circle", args: [false, 445, 215, 370, 15, 160, 2000, 6000] },
 			{ type: "spawn", func: "circle", args: [false, 445, 215, 370, 12, 320, 2000, 6000] },
 			{ type: "spawn", func: "circle", args: [false, 445, 215, 370, 10, 480, 2000, 6000] },
@@ -155,7 +158,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-782-3000-148-0": [
 			{ type: "text", sub_type: "message", message: "Pulses Right", message_RU: "Бублики справа" },
 			{ type: "spawn", func: "circle", args: [true, 553, 160, 350, null, 280, 500, 2000] },
-			{ type: "spawn", func: "marker", args: [false, 155, 388, 5300, 3000, true, null] }, // 1
+			{ type: "spawn", func: "marker", args: [false, 155, 388, is_mt ? 3200 : 5300, 3000, true, null] }, // 1
 			{ type: "spawn", func: "circle", args: [false, 445, 155, 388, 15, 160, 2000, 6000] },
 			{ type: "spawn", func: "circle", args: [false, 445, 155, 388, 12, 320, 2000, 6000] },
 			{ type: "spawn", func: "circle", args: [false, 445, 155, 388, 10, 480, 2000, 6000] },
@@ -165,7 +168,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-782-3000-155-0": [
 			{ type: "text", sub_type: "message", message: "Pulses Right", message_RU: "Бублики справа" },
 			{ type: "spawn", func: "circle", args: [true, 553, 160, 350, null, 280, 500, 2000] },
-			{ type: "spawn", func: "marker", args: [false, 155, 388, 4200, 4000, true, null] }, // 2
+			{ type: "spawn", func: "marker", args: [false, 155, 388, is_mt ? 3200 : 4200, 4000, true, null] }, // 2
 			{ type: "spawn", func: "circle", args: [false, 445, 155, 388, 15, 160, 2000, 6000] },
 			{ type: "spawn", func: "circle", args: [false, 445, 155, 388, 12, 320, 2000, 6000] },
 			{ type: "spawn", func: "circle", args: [false, 445, 155, 388, 10, 480, 2000, 6000] },
