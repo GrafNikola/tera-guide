@@ -1,63 +1,57 @@
 // Demon's Wheel
 //
-// made by michengs
+// made by michengs / Calvary
 
 module.exports = (dispatch, handlers, guide, lang) => {
 	guide.type = SP;
 
 	let	print = false;
-	let circlecount = 0;
+	let msg_num = null;
+
+	const mech_messages = {
+		0: { message: "Don't hit RED",	message_RU: "Не бить КРАСНЫЙ" },
+		1: { message: "Don't hit WHITE",message_RU: "Не бить БЕЛЫЙ" },
+		2: { message: "Don't hit BLUE",	message_RU: "Не бить СИНИЙ" },
+		3: { message: "Hit RED",		message_RU: "Бить КРАСНЫЙ" },
+		4: { message: "Hit WHITE",		message_RU: "Бить БЕЛЫЙ" },
+		5: { message: "Hit BLUE",		message_RU: "Бить СИНИЙ" },
+	};
 
 	function skilld_event(skillid) {
 		if ([1311, 1313, 1315, 1317].includes(skillid)) {
-			circlecount = 0;
-
-			handlers.text({ sub_type: "message", message: "OUT", message_RU: "К нему" });
+			handlers.text({ sub_type: "message", message: "OUT", message_RU: "От него" });
 		}
 
 		if ([1312, 1313, 1316, 1318].includes(skillid)) {
-			circlecount = 0;
-
 			handlers.text({ sub_type: "message", message: "IN", message_RU: "К нему" });
 		}
 
-		if ([1306, 1307, 1308, 1309, 1310].includes(skillid)) {
-			circlecount += (skillid - 1306) + 1;
-
-			handlers.text({
-				sub_type: "notification",
-				message: `${circlecount} - ${circlecount & 1 ? "Odd - Red" : "Even - Blue"}`,
-				message_RU: `${circlecount} - ${circlecount & 1 ? "Нечетный - Красный" : "Четный - Синий"}`
-			});
-		}
-
-		if ([1319, 1320, 1321, 1322, 1323].includes(skillid)) {
-			// circlecount += (skillid - 1306) + 1;
-			circlecount += (skillid - 1319) + 1;
-
-			handlers.text({
-				sub_type: "notification",
-				message: `${circlecount} - ${circlecount & 1 ? "Odd - Red" : "Even - Blue"}`,
-				message_RU: `${circlecount} - ${circlecount & 1 ? "Нечетный - Красный" : "Четный - Синий"}`
-			});
-		}
-
 		if ([21311, 21314].includes(skillid)) {
-			handlers.text({ sub_type: "message", message: "IN | OUT", message_RU: "К нему | От него" });
+			handlers.event([
+				{ type: "text", sub_type: "message", message: "IN | OUT", message_RU: "К нему | От него" },
+				{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 10, 200, 0, 4000] }
+			]);
 		}
 
 		if ([21312, 21313].includes(skillid)) {
-			handlers.text({ sub_type: "message", message: "OUT | IN", message_RU: "От него | К нему" });
+			handlers.event([
+				{ type: "text", sub_type: "message", message: "OUT | IN", message_RU: "От него | К нему" },
+				{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 10, 200, 0, 4000] }
+			]);
 		}
 
 		if ([21303].includes(skillid)) {
 			if (print) {
-				handlers.text({ sub_type: "notification", message: "Hit ALL", message_RU: "Бить ВСЕ", speech: false });
 				handlers.text({ sub_type: "message", message: "Hit ALL", message_RU: "Бить ВСЕ" });
 			} else {
-				handlers.text({ sub_type: "message", message: "Hit ALL", message_RU: "Бить ВСЕ" });
+				handlers.text({ sub_type: "message", message: mech_messages[msg_num].message, message_RU: mech_messages[msg_num].message_RU });
 			}
 		}
+	}
+
+	function secondboss_message(num) {
+		msg_num = num;
+		handlers.text({ sub_type: "notification", message: mech_messages[num].message, message_RU: mech_messages[num].message_RU });
 	}
 
 	return {
@@ -65,30 +59,12 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"h-466-46602-99": [{ type: "func", func: () => print = false }],
 		"h-466-46602-30": [{ type: "func", func: () => print = true }],
 		//
-		"qb-466-46621-466050": [
-			{ type: "text", sub_type: "notification", message: "Don't hit RED", message_RU: "Не бить КРАСНЫЙ", speech: false },
-			{ type: "text", sub_type: "message", message: "Don't hit RED", message_RU: "Не бить КРАСНЫЙ" }
-		],
-		"qb-466-46621-466051": [
-			{ type: "text", sub_type: "notification", message: "Don't hit WHITE", message_RU: "Не бить БЕЛЫЙ", speech: false },
-			{ type: "text", sub_type: "message", message: "Don't hit WHITE", message_RU: "Не бить БЕЛЫЙ" }
-		],
-		"qb-466-46621-466052": [
-			{ type: "text", sub_type: "notification", message: "Don't hit BLUE", message_RU: "Не бить СИНИЙ", speech: false },
-			{ type: "text", sub_type: "message", message: "Don't hit BLUE", message_RU: "Не бить СИНИЙ" }
-		],
-		"qb-466-46622-466054": [
-			{ type: "text", sub_type: "notification", message: "Hit RED", message_RU: "Бить КРАСНЫЙ", speech: false },
-			{ type: "text", sub_type: "message", message: "Hit RED", message_RU: "Бить КРАСНЫЙ" }
-		],
-		"qb-466-46622-466055": [
-			{ type: "text", sub_type: "notification", message: "Hit WHITE", message_RU: "Бить БЕЛЫЙ", speech: false },
-			{ type: "text", sub_type: "message", message: "Hit WHITE", message_RU: "Бить БЕЛЫЙ" }
-		],
-		"qb-466-46622-466056": [
-			{ type: "text", sub_type: "notification", message: "Hit BLUE", message_RU: "Бить СИНИЙ", speech: false },
-			{ type: "text", sub_type: "message", message: "Hit BLUE", message_RU: "Бить СИНИЙ" }
-		],
+		"qb-466-46621-466050": [{ type: "func", func: secondboss_message, args: [0] }],
+		"qb-466-46621-466051": [{ type: "func", func: secondboss_message, args: [1] }],
+		"qb-466-46621-466052": [{ type: "func", func: secondboss_message, args: [2] }],
+		"qb-466-46622-466054": [{ type: "func", func: secondboss_message, args: [3] }],
+		"qb-466-46622-466055": [{ type: "func", func: secondboss_message, args: [4] }],
+		"qb-466-46622-466056": [{ type: "func", func: secondboss_message, args: [5] }],
 		//
 		"s-466-46601-1105-0": [{ type: "text", sub_type: "message", message: "Stun", message_RU: "Стан" }],
 		"s-466-46601-1106-0": [{ type: "text", sub_type: "message", message: "Exhaust", message_RU: "Выхлоп" }],
@@ -106,18 +82,11 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-466-46601-1314-0": [{ type: "func", func: skilld_event.bind(null, 1314) }],
 		"s-466-46601-1316-0": [{ type: "func", func: skilld_event.bind(null, 1316) }],
 		"s-466-46601-1318-0": [{ type: "func", func: skilld_event.bind(null, 1318) }],
-		"s-466-46601-1306-0": [{ type: "func", func: skilld_event.bind(null, 1306) }],
-		"s-466-46601-1307-0": [{ type: "func", func: skilld_event.bind(null, 1307) }],
-		"s-466-46601-1308-0": [{ type: "func", func: skilld_event.bind(null, 1308) }],
-		"s-466-46601-1309-0": [{ type: "func", func: skilld_event.bind(null, 1309) }],
-		"s-466-46601-1310-0": [{ type: "func", func: skilld_event.bind(null, 1310) }],
-		"s-466-46601-1319-0": [{ type: "func", func: skilld_event.bind(null, 1319) }],
-		"s-466-46601-1320-0": [{ type: "func", func: skilld_event.bind(null, 1320) }],
-		"s-466-46601-1321-0": [{ type: "func", func: skilld_event.bind(null, 1321) }],
-		"s-466-46601-1322-0": [{ type: "func", func: skilld_event.bind(null, 1322) }],
-		"s-466-46601-1323-0": [{ type: "func", func: skilld_event.bind(null, 1323) }],
 		//
-		"s-466-46602-1116-0": [{ type: "text", sub_type: "message", message: "Pull", message_RU: "Притяжка" }],
+		"s-466-46602-1116-0": [
+			{ type: "text", sub_type: "message", message: "Dodge. Pull", message_RU: "Эвейд. Притяжка" },
+			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 10, 200, 0, 6000] }
+		],
 		"s-466-46602-1223-0": [{ type: "text", sub_type: "message", message: "Double RED", message_RU: "Двойной КРАСНЫЙ" }],
 		"s-466-46602-1113-0": [{ type: "text", sub_type: "message", message: "LASER!!!", message_RU: "ЛАЗЕР!!!" }],
 		"s-466-46602-2116-0": "s-466-46602-1116-0",
