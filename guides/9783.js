@@ -4,7 +4,6 @@
 
 module.exports = (dispatch, handlers, guide, lang) => {
 	let firstboss_prepare_stun = false;
-
 	let secondboss_show_book_notify = true;
 	let secondboss_game_id_for_book = null;
 	let secondboss_red_book_loc = null;
@@ -105,7 +104,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-783-2000-105-0": [{ type: "text", sub_type: "message", message: "Whip (Dodge)", message_RU: "Хлыст (эвейд)" }],
 		"s-783-2000-110-0": [{ type: "text", sub_type: "message", message: "Front Attack (Dodge)", message_RU: "Удар вперед (эвейд)" }],
 		"s-783-2000-112-0": [{ type: "text", sub_type: "message", message: "Push Back (Right)", message_RU: "Откид назад правой" }],
-		"s-783-2000-114-0": [{ type: "text", sub_type: "message", message: "Ground Hit", message_RU: "Удар в землю" }],
+		"s-783-2000-114-0": [{ type: "text", sub_type: "message", message: "Ground Hit (Dodge)", message_RU: "Удар в землю (эвейд)" }],
 		"s-783-2000-115-0": [{ type: "text", sub_type: "message", message: "Push Back (Left)", message_RU: "Откид назад левой" }],
 		"s-783-2000-119-0": [{ type: "text", sub_type: "message", message: "Jump (Dodge)", message_RU: "Прыжок (эвейд)" }],
 		"s-783-2000-120-0": [{ type: "text", sub_type: "message", message: "Front Attack | Push Back", message_RU: "Удар вперед | Откид назад" }],
@@ -127,7 +126,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "stop_timers" },
 			{ type: "despawn_all" }
 		],
-		"s-783-3000-106-0": [{ type: "text", sub_type: "message", message: "Push", message_RU: "Откид" }],
+		"s-783-3000-106-0": [{ type: "text", sub_type: "message", message: "Push (Tank)", message_RU: "Откид (танк)" }],
 		"s-783-3000-110-0": [{ type: "text", sub_type: "message", message: "Throw Front (Stun)", message_RU: "Удар вперед (стан)" }],
 		"s-783-3000-113-0": [{ type: "text", sub_type: "message", message: "Push Back", message_RU: "Откид назад" }],
 		"s-783-3000-114-0": [{ type: "text", sub_type: "message", message: "Bait (Target)", message_RU: "Байт (таргет)" }],
@@ -147,7 +146,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "spawn", func: "vector", args: [553, 90, 80, 0, 500, 0, 2000] },
 			{ type: "spawn", func: "vector", args: [553, 270, 80, 0, 500, 0, 2000] }
 		],
-		"s-783-3000-124-0": [{ type: "text", sub_type: "message", message: "AoE", message_RU: "АоЕ" }],
+		"s-783-3000-124-0": [{ type: "text", sub_type: "message", message: "AoE (Dodge)", message_RU: "АоЕ (эвейд)" }],
 		"s-783-3000-125-0": [{ type: "text", sub_type: "message", message: "Hit | Frontal Stun", message_RU: "Удар | Передний стан" }],
 		"s-783-3000-126-0": [
 			{ type: "text", sub_type: "message", message: "Frontal Stun", message_RU: "Передний стан" },
@@ -166,7 +165,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-783-3000-142-0": [{ type: "text", sub_type: "message", message: "Frontal Combo", message_RU: "Передняя комба" }],
 		"s-783-3000-301-0": [
 			{ type: "text", sub_type: "message", message: "Thorns (Target)", message_RU: "Шипы х5" },
-			{ type: "text", sub_type: "message", message: "Dodge", message_RU: "Эвейд", delay: 1200 }
+			{ type: "text", sub_type: "message", message: "Dodge", message_RU: "Эвейд", delay: 2200 }
 		],
 		"s-783-3000-303-0": [
 			{ type: "text", sub_type: "message", message: "Right Safe", message_RU: "Право сейф" },

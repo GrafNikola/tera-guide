@@ -100,7 +100,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-983-1000-128-0": [{ type: "text", sub_type: "message", message: "Lazer", message_RU: "Луч" }],
 		"s-983-1000-130-0": "s-983-1000-128-0",
 		"s-983-1000-301-0": [{ type: "text", sub_type: "message", message: "Dodge", message_RU: "Эвейд", delay: 1900 }],
-		"s-983-1000-304-0": [{ type: "text", sub_type: "message", message: "Pull", message_RU: "Стяжка" }],
+		"s-983-1000-304-0": [{ type: "text", sub_type: "message", message: "Pull (Take circles away from the boss)", message_RU: "Стяжка (отвести круги от босса)" }],
 		"s-983-1000-305-0": [{ type: "text", sub_type: "message", message: "Triple Laser (Together)", message_RU: "Тройной лазер (собраться)" }],
 
 		// 2 BOSS

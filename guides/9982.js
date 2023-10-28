@@ -11,6 +11,8 @@ module.exports = (dispatch, handlers, guide, lang) => {
 	let awakening_two = false;
 	let stack_level = 0;
 
+	const is_mt = dispatch._mod.connection.metadata.serverList[dispatch._mod.serverId].name.includes("MT");
+
 	function stacks_level_event() {
 		if (!awakening_one) return;
 
@@ -135,6 +137,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, null, 260, 0, 3000] },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, null, 650, 0, 3000] }
 		],
+		"s-982-2000-303-0": [{ type: "text", sub_type: "message", message: "Waves", message_RU: "Волны" }],
 		"s-982-2000-307-0": [{ type: "text", sub_type: "message", message: "Target", message_RU: "Таргет" }],
 		"s-982-2000-307-2": [{ type: "text", sub_type: "message", message: "Dodge", message_RU: "Эвейд" }],
 
@@ -149,8 +152,10 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "func", func: () => awakening_two = false },
 			{ type: "func", func: () => stack_level = 0 }
 		],
-		"h-982-3000-80": [{ type: "text", sub_type: "message", message: "80%", message_RU: "80%" }],
-		"h-982-3000-30": [{ type: "text", sub_type: "message", message: "30%", message_RU: "30%" }],
+		"h-982-3000-90": [{ type: "text", sub_type: "message", message: "90%", message_RU: "90%", check_func: () => is_mt }],
+		"h-982-3000-80": [{ type: "text", sub_type: "message", message: "80%", message_RU: "80%", check_func: () => !is_mt }],
+		"h-982-3000-45": [{ type: "text", sub_type: "message", message: "45%", message_RU: "45%", check_func: () => is_mt }],
+		"h-982-3000-30": [{ type: "text", sub_type: "message", message: "30%", message_RU: "30%", check_func: () => !is_mt }],
 		"s-982-3000-109-0": [{ type: "text", sub_type: "message", message: "Front Throw (Target)", message_RU: "Удар вперед (таргет)" }],
 		"s-982-3000-134-0": [{ type: "text", sub_type: "message", message: "Front Throw (Target)", message_RU: "Удар вперед (таргет)" }],
 		"s-982-3000-118-0": [{ type: "text", sub_type: "message", message: "Front Triple", message_RU: "Передняя комба" }],
@@ -167,7 +172,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-982-3000-146-0": [
 			{ type: "text", sub_type: "message", message: "Pulses Left", message_RU: "Бублики слева" },
 			{ type: "spawn", func: "circle", args: [true, 553, 200, 350, null, 280, 500, 2000] },
-			{ type: "spawn", func: "marker", args: [false, 215, 370, 5300, 3000, true, null] }, // 1
+			{ type: "spawn", func: "marker", args: [false, 215, 370, is_mt ? 4200 : 5300, 3000, true, null] }, // 1
 			{ type: "spawn", func: "circle", args: [false, 445, 215, 370, 15, 160, 2000, 6000] },
 			{ type: "spawn", func: "circle", args: [false, 445, 215, 370, 12, 320, 2000, 6000] },
 			{ type: "spawn", func: "circle", args: [false, 445, 215, 370, 10, 480, 2000, 6000] },
@@ -187,7 +192,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-982-3000-148-0": [
 			{ type: "text", sub_type: "message", message: "Pulses Right", message_RU: "Бублики справа" },
 			{ type: "spawn", func: "circle", args: [true, 553, 160, 350, null, 280, 500, 2000] },
-			{ type: "spawn", func: "marker", args: [false, 155, 388, 5300, 3000, true, null] }, // 1
+			{ type: "spawn", func: "marker", args: [false, 155, 388, is_mt ? 4200 : 5300, 3000, true, null] }, // 1
 			{ type: "spawn", func: "circle", args: [false, 445, 155, 388, 15, 160, 2000, 6000] },
 			{ type: "spawn", func: "circle", args: [false, 445, 155, 388, 12, 320, 2000, 6000] },
 			{ type: "spawn", func: "circle", args: [false, 445, 155, 388, 10, 480, 2000, 6000] },
