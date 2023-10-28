@@ -28,15 +28,15 @@ module.exports = (dispatch, handlers, guide, lang) => {
 
 		if ([21311, 21314].includes(skillid)) {
 			handlers.event([
-				{ type: "text", sub_type: "message", message: "IN | OUT", message_RU: "К нему | От него" },
-				{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 10, 200, 0, 4000] }
+				{ type: "text", sub_type: "message", message: "IN | OUT (Kaia)", message_RU: "К нему | От него (Кайа)" },
+				{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 10, 300, 0, 4000] }
 			]);
 		}
 
 		if ([21312, 21313].includes(skillid)) {
 			handlers.event([
-				{ type: "text", sub_type: "message", message: "OUT | IN", message_RU: "От него | К нему" },
-				{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 10, 200, 0, 4000] }
+				{ type: "text", sub_type: "message", message: "OUT | IN (Kaia)", message_RU: "От него | К нему (Кайа)" },
+				{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 10, 300, 0, 4000] }
 			]);
 		}
 
@@ -82,19 +82,21 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-466-46601-1314-0": [{ type: "func", func: skilld_event.bind(null, 1314) }],
 		"s-466-46601-1316-0": [{ type: "func", func: skilld_event.bind(null, 1316) }],
 		"s-466-46601-1318-0": [{ type: "func", func: skilld_event.bind(null, 1318) }],
-		//
+		// Second boss
 		"s-466-46602-1116-0": [
 			{ type: "text", sub_type: "message", message: "Dodge. Pull", message_RU: "Эвейд. Притяжка" },
-			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 10, 200, 0, 6000] }
+			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 10, 220, 0, 6000] }
 		],
 		"s-466-46602-1223-0": [{ type: "text", sub_type: "message", message: "Double RED", message_RU: "Двойной КРАСНЫЙ" }],
 		"s-466-46602-1113-0": [{ type: "text", sub_type: "message", message: "LASER!!!", message_RU: "ЛАЗЕР!!!" }],
-		"s-466-46602-2116-0": "s-466-46602-1116-0",
-		"s-466-46602-2113-0": "s-466-46602-1113-0",
 		"s-466-46602-1311-0": [{ type: "func", func: skilld_event.bind(null, 21311) }],
 		"s-466-46602-1314-0": [{ type: "func", func: skilld_event.bind(null, 21314) }],
 		"s-466-46602-1312-0": [{ type: "func", func: skilld_event.bind(null, 21312) }],
 		"s-466-46602-1313-0": [{ type: "func", func: skilld_event.bind(null, 21313) }],
-		"s-466-46602-1303-0": [{ type: "func", func: skilld_event.bind(null, 21303) }]
+		"s-466-46602-1303-0": [{ type: "func", func: skilld_event.bind(null, 21303) }],
+		"s-466-46602-1105-0": [{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 10, 200, 0, 6000]}],
+		"s-466-46602-2105-0": "s-466-46602-1105-0",
+		"s-466-46602-2116-0": "s-466-46602-1116-0",
+		"s-466-46602-2113-0": "s-466-46602-1113-0"
 	};
 };
