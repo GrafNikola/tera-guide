@@ -1,6 +1,6 @@
 // Grotto of Lost Souls (Hard)
 //
-// made by michengs / HSDN
+// made by michengs / HSDN / Calvary
 
 module.exports = (dispatch, handlers, guide, lang) => {
 
@@ -65,13 +65,17 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-982-1000-113-0": [{ type: "text", sub_type: "message", message: "Thorns (Bleed)", message_RU: "Колючки (кровоток)" }],
 		"s-982-1000-116-0": [
 			{ type: "text", sub_type: "message", message: "AoE", message_RU: "АоЕ" },
-			{ type: "text", sub_type: "message", message: "Dodge", message_RU: "Эвейд", delay: 2000 }
+			{ type: "text", sub_type: "message", message: "3" },
+			{ type: "text", sub_type: "message", delay: 500, message: "2" },
+			{ type: "text", sub_type: "message", delay: 1000, message: "1" },
+			{ type: "text", sub_type: "message", delay: 1500, message: "Dodge", message_RU: "Эвейд" }
 		],
 		"s-982-1000-301-0": [
 			{ type: "text", sub_type: "message", message: "Flower Stuns", message_RU: "Оглушающие цветы" },
 			{ type: "text", sub_type: "message", message: "Dodge", message_RU: "Эвейд", delay: 2000 }
 		],
 		"s-982-1000-307-0": [{ type: "text", sub_type: "message", message: "Cage (Don't move)", message_RU: "Клетка (не двигаться)" }],
+		"s-982-1032-349-0": [{ type: "text", sub_type: "message", message: "Dodge", message_RU: "Эвейд"}],
 		// Flowers mech
 		"ab-982-1003-98200161": [
 			{ type: "text", sub_type: "message", message: "Green", message_RU: "Зеленый" },
@@ -107,7 +111,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "despawn_all" }
 		],
 		"s-982-2000-105-0": [{ type: "text", sub_type: "message", message: "Spin", message_RU: "Кувырок" }],
-		"s-982-2000-108-0": [{ type: "text", sub_type: "message", message: "Shot Forward", message_RU: "Выстрел вперед" }],
+		"s-982-2000-108-0": [{ type: "text", sub_type: "message", message: "Dodge. Shot Forward", message_RU: "Эвейд. Выстрел вперед", delay:  500 }],
 		"s-982-2000-109-0": [{ type: "text", sub_type: "message", message: "Wave Forward", message_RU: "Волна вперед" }],
 		"s-982-2000-112-0": [{ type: "text", sub_type: "message", message: "Kick Forward", message_RU: "Удар вперед" }],
 		"s-982-2000-113-0": [
@@ -248,12 +252,18 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-982-3000-152-1": "s-982-3000-141-0",
 		"s-982-3000-152-2": "s-982-3000-141-0",
 		"s-982-3000-300-0": [
-			{ type: "text", sub_type: "message", message: "Dodge! (Awakening 1)", message_RU: "Эвейд! (Пробуждение 1)", delay: 800 }, // <80%
+			{ type: "text", sub_type: "message", message: "3" },
+			{ type: "text", sub_type: "message", delay: 300, message: "2" },
+			{ type: "text", sub_type: "message", delay: 600, message: "1" },
+			{ type: "text", sub_type: "message", delay: 800, message: "Dodge! (Awakening 1)", message_RU: "Эвейд! (Пробуждение 1)" }, // <80%
 			{ type: "func", func: () => awakening_one = true },
 			{ type: "func", func: () => stack_level = 0 }
 		],
 		"s-982-3000-399-0": [
-			{ type: "text", sub_type: "message", message: "Dodge! (Awakening 2)", message_RU: "Эвейд! (Пробуждение 2)", delay: 1400 }, // <30%
+			{ type: "text", sub_type: "message", message: "3" },
+			{ type: "text", sub_type: "message", delay: 400, message: "2" },
+			{ type: "text", sub_type: "message", delay: 800, message: "1" },
+			{ type: "text", sub_type: "message", delay: 1200,message: "Dodge! (Awakening 2)", message_RU: "Эвейд! (Пробуждение 2)"}, // <30%
 			{ type: "func", func: () => awakening_two = true },
 			{ type: "func", func: () => stack_level = 0 }
 		],

@@ -22,11 +22,10 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			handlers.event([
 				{ type: "despawn_all" },
 				{ type: "spawn", func: "marker", args: [false, 90, 100, 0, 3000, true, null] },
-				{ type: "spawn", func: "semicircle", args: [135, 405, 553, 0, 0, 20, 160, 0, 3000] },
-				{ type: "spawn", func: "semicircle", args: [135, 405, 553, 0, 0, 12, 220, 0, 3000] },
-				{ type: "spawn", func: "semicircle", args: [135, 405, 553, 0, 0, 10, 300, 0, 3000] },
-				{ type: "spawn", func: "semicircle", args: [135, 405, 553, 0, 0, 8, 360, 0, 3000] },
-				{ type: "spawn", func: "semicircle", args: [135, 405, 553, 0, 0, 6, 420, 0, 3000] }
+				{ type: "spawn", func: "semicircle", args: [135, 405, 553, 0, 0, 20, 180, 0, 3000] },
+				{ type: "spawn", func: "semicircle", args: [135, 405, 553, 0, 0, 12, 280, 0, 3000] },
+				{ type: "spawn", func: "semicircle", args: [135, 405, 553, 0, 0, 10, 380, 0, 3000] },
+				{ type: "spawn", func: "semicircle", args: [135, 405, 553, 0, 0,  8, 480, 0, 3000] }
 			]);
 
 			first_skillid = 0;
@@ -34,11 +33,10 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			handlers.event([
 				{ type: "despawn_all" },
 				{ type: "spawn", func: "marker", args: [false, 270, 100, 0, 3000, true, null] },
-				{ type: "spawn", func: "semicircle", args: [-45, 225, 553, 0, 0, 20, 160, 0, 3000] },
-				{ type: "spawn", func: "semicircle", args: [-45, 225, 553, 0, 0, 12, 220, 0, 3000] },
-				{ type: "spawn", func: "semicircle", args: [-45, 225, 553, 0, 0, 10, 300, 0, 3000] },
-				{ type: "spawn", func: "semicircle", args: [-45, 225, 553, 0, 0, 8, 360, 0, 3000] },
-				{ type: "spawn", func: "semicircle", args: [-45, 225, 553, 0, 0, 6, 420, 0, 3000] }
+				{ type: "spawn", func: "semicircle", args: [-45, 225, 553, 0, 0, 20, 180, 0, 3000] },
+				{ type: "spawn", func: "semicircle", args: [-45, 225, 553, 0, 0, 12, 280, 0, 3000] },
+				{ type: "spawn", func: "semicircle", args: [-45, 225, 553, 0, 0, 10, 380, 0, 3000] },
+				{ type: "spawn", func: "semicircle", args: [-45, 225, 553, 0, 0,  8, 480, 0, 3000] }
 			]);
 
 			first_skillid = 0;
@@ -195,14 +193,12 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "spawn", func: "vector", args: [553, 270, 80, 0, 500, 0, 2000] }
 		],
 		"s-983-3000-124-0": [{ type: "text", sub_type: "message", message: "AoE (Dodge)", message_RU: "АоЕ (эвейд)" }],
-		"s-983-3000-125-0": [{ type: "text", sub_type: "message", message: "Hit | Frontal Stun", message_RU: "Удар | Передний стан" }],
 		"s-983-3000-126-0": [
 			{ type: "text", sub_type: "message", message: "Frontal Stun | Back Hit", message_RU: "Передний стан | Удар назад" },
 			{ type: "spawn", func: "vector", args: [553, 60, 220, 20, 500, 0, 2000] },
 			{ type: "spawn", func: "vector", args: [553, 300, 220, 340, 500, 0, 2000] }
 		],
 		"s-983-3000-127-0": [
-			{ type: "text", sub_type: "message", message: "Back Hit", message_RU: "Удар назад" },
 			{ type: "spawn", func: "circle", args: [true, 553, 180, 350, null, 380, 0, 2000] }
 		],
 		"s-983-3000-129-0": [{ type: "text", sub_type: "message", message: "Somersault | Back Hit", message_RU: "Кувырок | Удар назад" }],
