@@ -69,9 +69,12 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "text", sub_type: "message", message: "Dodge", message_RU: "Эвейд", delay: 4500 }
 		],
 		"s-780-3000-307-0": "s-780-3000-306-0",
-		"s-780-3000-308-0": "s-780-3000-306-0",
+		"s-780-3000-308-0": [
+			{ type: "text", sub_type: "message", message: "AOE (Flying)", message_RU: "АОЕ (подлет)" },
+			{ type: "text", sub_type: "message", message: "Dodge", message_RU: "Эвейд", delay: 4500 }
+		],
 		"s-780-3000-309-0": [
-			{ type: "text", sub_type: "message", message: "Jump", message_RU: "Прыжок" },
+			{ type: "text", sub_type: "message", message: "Jump (Pushback)", message_RU: "Прыжок (откид)" },
 			{ type: "text", sub_type: "message", message: "Dodge", message_RU: "Эвейд", delay: 2200 }
 		]
 	};
