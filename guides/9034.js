@@ -608,21 +608,21 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		// SECOND FLOOR
 
 		"s-434-2000-1102-0": [{ type: "text", sub_type: "message", message: "SPIN", message_RU: "Вращение" }],
-		"s-434-2000-1106-0": [{ type: "text", sub_type: "message", message: "Stomp", message_RU: "топать" }],
+		"s-434-2000-1106-0": [{ type: "text", sub_type: "message", message: "EVADE/Front AOE", message_RU: "Эвейд/Переднее AOE" }],
 		"s-434-2000-1107-0": [{ type: "text", sub_type: "message", message: "BACK", message_RU: "Стан назад" }],
 		"s-434-2000-1108-0": [{ type: "text", sub_type: "message", message: "FRONT", message_RU: "Атака вперед" }],
-		"s-434-2000-1109-0": [{ type: "text", sub_type: "message", message: "Back Spin", message_RU: "поворот Combo" }],
+		"s-434-2000-1109-0": [{ type: "text", sub_type: "message", message: "Back Spin", message_RU: "Разворот назад Combo" }],
 		"s-434-2000-1110-0": [
-			{ type: "text", sub_type: "message", message: "OUT", message_RU: "От босса!" },
+			{ type: "text", sub_type: "message", message: "OUT", message_RU: "От него" },
 			{ type: "text", sub_type: "message", message: "3", delay: 1000 },
 			{ type: "text", sub_type: "message", message: "2", delay: 2000 },
 			{ type: "text", sub_type: "message", message: "1", delay: 3000 }
 		],
 		"s-434-2000-1113-0": [{ type: "text", sub_type: "message", message: "Back Combo", message_RU: "Вращение назад" }],
 		"s-434-2000-1119-0": [{ type: "text", sub_type: "message", message: "PULL", message_RU: "Притяжка + вращение" }],
-		"s-434-2000-1122-0": [{ type: "text", sub_type: "message", message: "IN", message_RU: "К боссу!" }],
+		"s-434-2000-1122-0": [{ type: "text", sub_type: "message", message: "IN", message_RU: "К нему" }],
 		"s-434-2000-1306-0": [
-			{ type: "text", sub_type: "message", message: "Run away", message_RU: "Текайте, глупцы!" },
+			{ type: "text", sub_type: "message", message: "Stand by head", message_RU: "За крокодила" },
 			{ type: "text", sub_type: "message", message: "4", delay: 5000 },
 			{ type: "text", sub_type: "message", message: "3", delay: 6000 },
 			{ type: "text", sub_type: "message", message: "2", delay: 7000 },
