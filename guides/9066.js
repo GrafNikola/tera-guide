@@ -68,7 +68,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		//
 		"s-466-46601-1105-0": [{ type: "text", sub_type: "message", message: "Stun", message_RU: "Стан" }],
 		"s-466-46601-1106-0": [{ type: "text", sub_type: "message", message: "Exhaust", message_RU: "Выхлоп" }],
-		"s-466-46601-1109-0": [{ type: "text", class_position: "tank", sub_type: "message", message: "Front", message_RU: "Передняя" }],
+		"s-466-46601-1109-0": [{ type: "text", class_position: "tank", sub_type: "message", message: "Stun (tank)", message_RU: "Стан (танк)" }],
 		"s-466-46601-1110-0": [{ type: "text", sub_type: "message", message: "Tail", message_RU: "Хвост" }],
 		"s-466-46601-2105-0": "s-466-46601-1105-0",
 		"s-466-46601-2106-0": "s-466-46601-1106-0",
