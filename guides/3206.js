@@ -99,8 +99,11 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-3206-1004-506-0": [{ type: "text", sub_type: "message", message: "Wave", message_RU: "Волна" }],
 		"s-3206-1000-522-0": [{ type: "text", sub_type: "message", message: "2 Bait", message_RU: "Второй байт" }],
 		"s-3206-1000-523-0": [{ type: "text", sub_type: "message", message: "Bait", message_RU: "Байт" }],
-		//"s-3206-1000-513-0": [{ type: "text", sub_type: "message", message: "Plague/Regress", message_RU: "Чума/регресс" }],
-		//"s-3206-1000-514-0": [{ type: "text", sub_type: "message", message: "Plague/Regress", message_RU: "Чума/регресс" }],
+		"s-3206-1000-513-0": [
+			{ type: "text", sub_type: "message", message: "Plague of Exhaustion", message_RU: "Чума/Регресс", class_position: "priest" },
+			{ type: "text", sub_type: "message", message: "Regression", message_RU: "Регресс", class_position: "mystic" }
+		],
+		"s-3206-1000-514-0": "s-3206-1000-513-0",
 
 		"s-3206-1000-502-0": [{ type: "text", sub_type: "message", message: "Unleash", message_RU: "Бешенство" }],
 		"s-3206-1000-518-0": [{ type: "text", sub_type: "message", message: "Unleash", message_RU: "Бешенство" }],
