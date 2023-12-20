@@ -47,7 +47,9 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "text", sub_type: "message", message: "Jump (Knockdown)", message_RU: "Прыжок (опрокид)" },
 			{ type: "spawn", func: "circle", args: [true, 553, 0, 150, 10, 300, 0, 2500] }
 		],
-		"s-3106-1000-201-0": [{ type: "text", sub_type: "message", message: "Front", message_RU: "Удар вперед" }],
+		"s-3106-1002-109-0": [{ type: "text", sub_type: "message", message: "Snowball", message_RU: "Снежок" }],
+		"s-3106-1000-111-0": [{ type: "text", sub_type: "message", message: "Knockdown (Dodge)", message_RU: "Опрокид (эвейд)", class_position: "tank" }],
+		"s-3106-1000-201-0": [{ type: "text", sub_type: "message", message: "Front (Dodge)", message_RU: "Удар вперед (эвейд)", class_position: "tank" }],
 		"s-3106-1000-202-0": [{ type: "text", sub_type: "message", message: "Front AoE", message_RU: "Переднее АоЕ" }],
 		"s-3106-1000-203-0": [{ type: "text", sub_type: "message", message: "Front AoE + Wave", message_RU: "Переднее АоЕ + волна" }],
 		"s-3106-1000-205-0": [{ type: "text", sub_type: "message", message: "Spin", message_RU: "Крутилка" }],
