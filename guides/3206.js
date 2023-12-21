@@ -97,8 +97,8 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		],
 		"s-3206-1000-512-0": [{ type: "text", sub_type: "message", message: "Turn | Spin", message_RU: "Разворот | Крутилка" }],
 		"s-3206-1004-506-0": [{ type: "text", sub_type: "message", message: "Wave", message_RU: "Волна" }],
-		"s-3206-1000-522-0": [{ type: "text", sub_type: "message", message: "2 Bait", message_RU: "Второй байт" }],
-		"s-3206-1000-523-0": [{ type: "text", sub_type: "message", message: "Bait", message_RU: "Байт" }],
+		"s-3206-1000-522-0": [{ type: "text", sub_type: "message", message: "Bait on distant", message_RU: "Байт на дальнего" }],
+		"s-3206-1000-523-0": [{ type: "text", sub_type: "message", message: "Bait on ressurect", message_RU: "Байт на рес" }],
 		"s-3206-1000-513-0": [
 			{ type: "text", sub_type: "message", message: "Plague of Exhaustion", message_RU: "Чума/Регресс", class_position: "priest" },
 			{ type: "text", sub_type: "message", message: "Regression", message_RU: "Регресс", class_position: "mystic" }
