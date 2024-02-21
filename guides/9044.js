@@ -313,6 +313,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"ab-444-2000-90442304": [
 			{ type: "text", sub_type: "notification", message: "Stun", message_RU: "Стан!", speech: false },
 			{ type: "text", sub_type: "message", message: "Stun", message_RU: "Стан!" }
-		]
+		],
+		"ae-0-0-90442502": [{ type: "text", sub_type: "notification", message: "Laser on you", message_RU: "Лазер на тебе" }]
 	};
 };
