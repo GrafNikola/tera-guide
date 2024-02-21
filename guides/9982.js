@@ -10,6 +10,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 	let awakening_one = false;
 	let awakening_two = false;
 	let stack_level = 0;
+	let enrage = false;
 
 	const is_mt = dispatch._mod.connection.metadata.serverList[dispatch._mod.serverId].name.includes("MT");
 
@@ -148,8 +149,12 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		// 3 BOSS
 		"nd-982-3000": [
 			{ type: "stop_timers" },
-			{ type: "despawn_all" }
+			{ type: "despawn_all" },
+			{ type: "func", func: () => enrage = false }
 		],
+		"ns-982-3000": [{ type: "func", func: () => enrage = false }],
+		"rb-982-3000": [{ type: "func", func: () => enrage = true }],
+		"re-982-3000": [{ type: "func", func: () => enrage = false }],
 		"h-982-3000-99": [
 			{ type: "func", func: () => print_wave = true },
 			{ type: "func", func: () => awakening_one = false },
@@ -224,7 +229,8 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-982-3000-213-0": [{ type: "text", sub_type: "message", message: "Tail", message_RU: "Хвост" }],
 		"s-982-3000-215-0": [{ type: "text", sub_type: "message", message: "Tail (Combo)", message_RU: "Хвост (комба)" }],
 		"s-982-3000-139-0": [
-			{ type: "text", sub_type: "message", message: "Wave + Wing (Left Safe)", message_RU: "Волна (лево сейф)", check_func: () => print_wave },
+			{ type: "text", sub_type: "message", message: `Wave + Wing (Left Safe)`, message_RU: `Волна (лево сейф)`, check_func: () => print_wave && !enrage },
+			{ type: "text", sub_type: "message", message: `Wave Fast + Wing (Left Safe)`, message_RU: `Волна быстрая (лево сейф)`, check_func: () => print_wave && enrage },
 			{ type: "despawn_all", tag: "wave" },
 			{ type: "spawn", func: "vector", args: [912, 90, 0, 0, 600, 100, 3000], tag: "wave" },
 			{ type: "spawn", func: "vector", args: [912, 270, 0, 180, 600, 100, 3000], tag: "wave" },
@@ -238,7 +244,8 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-982-3000-150-1": "s-982-3000-139-0",
 		"s-982-3000-150-2": "s-982-3000-139-0",
 		"s-982-3000-141-0": [
-			{ type: "text", sub_type: "message", message: "Wave + Wing (Right Safe)", message_RU: "Волна (право сейф)", check_func: () => print_wave },
+			{ type: "text", sub_type: "message", message: "Wave + Wing (Right Safe)", message_RU: "Волна (право сейф)", check_func: () => print_wave && !enrage },
+			{ type: "text", sub_type: "message", message: "Wave Fast + Wing (Right Safe)", message_RU: "Волна быстрая (право сейф)", check_func: () => print_wave && enrage },
 			{ type: "despawn_all", tag: "wave" },
 			{ type: "spawn", func: "vector", args: [912, 90, 0, 0, 600, 100, 3000], tag: "wave" },
 			{ type: "spawn", func: "vector", args: [912, 270, 0, 180, 600, 100, 3000], tag: "wave" },
