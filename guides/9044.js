@@ -1,10 +1,11 @@
 ﻿// Bahaar's Sanctum
 //
-// made by michengs / Emilia-s2 / HSDN
+// made by michengs / Emilia-s2 / HSDN / Vampic
 
 module.exports = (dispatch, handlers, guide, lang) => {
 	guide.type = SP;
 
+	const { player } = dispatch.require.library;
 	let print_loading = true;
 	let print_lasers = true;
 
@@ -18,6 +19,23 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "text", sub_type: "alert", delay: 60000, message: "Waves soon...", message_RU: "Скоро волны..." }
 		]);
 	}
+
+	dispatch.hook("S_ABNORMALITY_BEGIN", dispatch._mod.majorPatchVersion >= 107 ? 5 : 4, event => {
+		if (event.id === 90442502) {
+			if (dispatch._mod.game.me.is(event.target)) {
+				handlers.text({ sub_type: "notification", message: "Laser on you", message_RU: "Лазер на тебе" });
+			} else {
+				const member = player.playersInParty.get(event.target);
+				if (member) {
+					handlers.text({
+						sub_type: "message",
+						message: `Laser on ${member.name}`,
+						message_RU: `Лазер на ${member.name}`
+					});
+				}
+			}
+		}
+	});
 
 	return {
 		// PHASE 1
@@ -313,7 +331,6 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"ab-444-2000-90442304": [
 			{ type: "text", sub_type: "notification", message: "Stun", message_RU: "Стан!", speech: false },
 			{ type: "text", sub_type: "message", message: "Stun", message_RU: "Стан!" }
-		],
-		"ae-0-0-90442502": [{ type: "text", sub_type: "notification", message: "Laser on you", message_RU: "Лазер на тебе" }]
+		]
 	};
 };
