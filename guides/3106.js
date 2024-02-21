@@ -11,7 +11,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 	dispatch.hook("S_USER_EFFECT", 1, event => {
 		if (event.circle == 3 && event.operation == 1) {
 			if (dispatch._mod.game.me.is(event.target)) {
-				handlers.text({ sub_type: "notification", message: "Snowball on you!", message_RU: "Снежок на тебе" });
+				handlers.text({ sub_type: "notification", message: "Snowball on you", message_RU: "Снежок на тебе" });
 			} else {
 				const member = player.playersInParty.get(event.target);
 				if (member) {
@@ -27,6 +27,25 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			handlers.marker({ id: event.target, color: "yellow", sub_delay: 1000000 });
 		} else if (event.circle == 3 && event.operation == 2) {
 			handlers.marker_remove_all({ delay: 1000 });
+		}
+	});
+
+	dispatch.hook("S_ABNORMALITY_BEGIN", dispatch._mod.majorPatchVersion >= 107 ? 5 : 4, event => {
+		if (event.id === 32060024) {
+			if (dispatch._mod.game.me.is(event.target)) {
+				handlers.text({ sub_type: "notification", message: "Eye on you", message_RU: "Глазик на тебе" });
+			} else {
+				const member = player.playersInParty.get(event.target);
+				if (member) {
+					handlers.text({
+						sub_type: "message",
+						message: `Eye on ${member.name}`,
+						message_RU: `Глазик на ${member.name}`
+					});
+				} else {
+					handlers.text({ sub_type: "message", message: "Eye", message_RU: "Глазик" });
+				}
+			}
 		}
 	});
 
@@ -106,7 +125,6 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-3106-1000-306-0": [{ type: "text", sub_type: "message", message: "Spin", message_RU: "Крутилка" }],
 		"s-3106-1000-309-0": [{ type: "text", sub_type: "message", message: "Front", message_RU: "Удар вперед" }],
 		"s-3106-1000-321-0": [{ type: "text", sub_type: "message", message: "AoE", message_RU: "АоЕ" }],
-		"s-3106-1000-324-0": [{ type: "text", sub_type: "message", message: "AoE", message_RU: "АоЕ" }],
-		"am-3106-1000-32060024": [{ type: "text", sub_type: "notification", message: "Eye on you!", message_RU: "Глазик на тебе!" }]
+		"s-3106-1000-324-0": [{ type: "text", sub_type: "message", message: "AoE", message_RU: "АоЕ" }]
 	};
 };
