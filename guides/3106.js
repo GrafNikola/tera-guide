@@ -1,13 +1,29 @@
 // Killing Grounds
 //
-// made by HSDN / Kuroine / Minghan
+// made by HSDN / Kuroine / Minghan / Vampic
 
 module.exports = (dispatch, handlers, guide, lang) => {
+
+	const { player } = dispatch.require.library;
 
 	let combo_start = false;
 
 	dispatch.hook("S_USER_EFFECT", 1, event => {
 		if (event.circle == 3 && event.operation == 1) {
+			if (dispatch._mod.game.me.is(event.target)) {
+				handlers.text({ sub_type: "notification", message: "Snowball on you!", message_RU: "Снежок на тебе" });
+			} else {
+				const member = player.playersInParty.get(event.target);
+				if (member) {
+					handlers.text({
+						sub_type: "message",
+						message: `Snowball on ${member.name}`,
+						message_RU: `Снежок на ${member.name}`
+					});
+				} else {
+					handlers.text({ sub_type: "message", message: "Snowball", message_RU: "Снежок" });
+				}
+			}
 			handlers.marker({ id: event.target, color: "yellow", sub_delay: 1000000 });
 		} else if (event.circle == 3 && event.operation == 2) {
 			handlers.marker_remove_all({ delay: 1000 });
@@ -20,7 +36,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "despawn_all" },
 			{ type: "marker_remove_all" }
 		],
-		"h-3106-1000-99": [
+		"ns-3106-1000": [
 			{ type: "spawn", func: "marker", args: [false, 3, -700, 100, 60000000, false, ["Giant", "Giant Direction"]] }
 		],
 
@@ -47,7 +63,6 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "text", sub_type: "message", message: "Jump (Knockdown)", message_RU: "Прыжок (опрокид)" },
 			{ type: "spawn", func: "circle", args: [true, 553, 0, 150, 10, 300, 0, 2500] }
 		],
-		"s-3106-1002-109-0": [{ type: "text", sub_type: "message", message: "Snowball", message_RU: "Снежок" }],
 		"s-3106-1000-111-0": [{ type: "text", sub_type: "message", message: "Knockdown (Dodge)", message_RU: "Опрокид (эвейд)", class_position: "tank" }],
 		"s-3106-1000-201-0": [{ type: "text", sub_type: "message", message: "Front (Dodge)", message_RU: "Удар вперед (эвейд)", class_position: "tank" }],
 		"s-3106-1000-202-0": [{ type: "text", sub_type: "message", message: "Front AoE", message_RU: "Переднее АоЕ" }],
@@ -91,6 +106,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-3106-1000-306-0": [{ type: "text", sub_type: "message", message: "Spin", message_RU: "Крутилка" }],
 		"s-3106-1000-309-0": [{ type: "text", sub_type: "message", message: "Front", message_RU: "Удар вперед" }],
 		"s-3106-1000-321-0": [{ type: "text", sub_type: "message", message: "AoE", message_RU: "АоЕ" }],
-		"s-3106-1000-324-0": [{ type: "text", sub_type: "message", message: "AoE", message_RU: "АоЕ" }]
+		"s-3106-1000-324-0": [{ type: "text", sub_type: "message", message: "AoE", message_RU: "АоЕ" }],
+		"am-3106-1000-32060024": [{ type: "text", sub_type: "notification", message: "Eye on you!", message_RU: "Глазик на тебе!" }]
 	};
 };
