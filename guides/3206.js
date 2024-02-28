@@ -8,6 +8,8 @@ module.exports = (dispatch, handlers, guide, lang) => {
 
 	let combo_start = false;
 
+	let stack = 0;
+
 	dispatch.hook("S_USER_EFFECT", 1, event => {
 		if (event.circle == 3 && event.operation == 1) {
 			if (dispatch._mod.game.me.is(event.target)) {
@@ -53,18 +55,26 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"nd-3206-1000": [
 			{ type: "stop_timers" },
 			{ type: "despawn_all" },
-			{ type: "marker_remove_all" }
+			{ type: "marker_remove_all" },
+			{ type: "func", func: () => stack = 0 }
 		],
 		"ns-3206-1000": [
-			{ type: "spawn", func: "marker", args: [false, 3, -700, 100, 60000000, false, ["Giant", "Giant Direction"]] }
+			{ type: "spawn", func: "marker", args: [false, 3, -700, 100, 60000000, false, ["Giant", "Giant Direction"]]},
+			{ type: "func", func: () => stack = 0 }
 		],
 
+		"die": [{ type: "func", func: () => stack = 0 }],
+
+		"am-3206-1000-32060007": [{ type: "func", func: () => stack++ }],
+		"ar-3206-1000-32060007": [{ type: "func", func: () => stack = 0 }],
 		"qb-3206-1000-32061001": [
-			{ type: "text", sub_type: "message", message: "Debuff (Close)", message_RU: "Дебаф (ближние)" },
+			{ type: "text", sub_type: "message", message: "Debuff (Close) - Take It", message_RU: "Дебаф (ближние) - взять", check_func: () => stack === 0 },
+			{ type: "text", sub_type: "message", message: "Debuff (Close) - OUT", message_RU: "Дебаф (ближние) - от него", check_func: () => stack !== 0 },
 			{ type: "text", sub_type: "alert", message: "Soon to give stun...", message_RU: "Скоро давать стан...", delay: 2000 }
 		],
 		"qb-3206-1000-32061002": [
-			{ type: "text", sub_type: "message", message: "Debuff (Furthest)", message_RU: "Дебаф (дальние)" },
+			{ type: "text", sub_type: "message", message: "Debuff (Furthest) - Take It", message_RU: "Дебаф (дальние) - взять", check_func: () => stack === 0 },
+			{ type: "text", sub_type: "message", message: "Debuff (Furthest) - IN", message_RU: "Дебаф (дальние) - к нему", check_func: () => stack !== 0 },
 			{ type: "text", sub_type: "alert", message: "Soon to give stun...", message_RU: "Скоро давать стан...", delay: 2000 }
 		],
 
