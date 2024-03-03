@@ -9,6 +9,18 @@ module.exports = (dispatch, handlers, guide, lang) => {
 	let combo_start = false;
 
 	let stack = 0;
+	let stackTimer = null;
+
+	function stack_add_event() {
+		stack++;
+		dispatch.clearTimeout(stackTimer);
+		stackTimer = dispatch.setTimeout(() => stack = 0, 87500);
+	}
+
+	function stack_remove_event() {
+		dispatch.clearTimeout(stackTimer);
+		stack = 0;
+	}
 
 	dispatch.hook("S_USER_EFFECT", 1, event => {
 		if (event.circle == 3 && event.operation == 1) {
@@ -56,24 +68,18 @@ module.exports = (dispatch, handlers, guide, lang) => {
 			{ type: "stop_timers" },
 			{ type: "despawn_all" },
 			{ type: "marker_remove_all" },
-			{ type: "func", func: () => stack = 0 }
+			{ type: "func", func: stack_remove_event }
 		],
 		"ns-3206-1000": [
 			{ type: "spawn", func: "marker", args: [false, 3, -700, 100, 60000000, false, ["Giant", "Giant Direction"]] },
-			{ type: "func", func: () => stack = 0 }
+			{ type: "func", func: stack_remove_event }
 		],
 
-		"die": [{ type: "func", func: () => stack = 0 }],
+		"die": [{ type: "func", func: stack_remove_event }],
 
-		"am-3206-1000-32060007": [
-			{
-				type: "func", func: () => {
-					stack++;
-					dispatch.setTimeout(() => stack = 0, 87500);
-				}
-			}
-		],
-		"ar-3206-1000-32060007": [{ type: "func", func: () => stack = 0 }],
+		"am-3206-1000-32060007": [{ type: "func", func: stack_add_event }],
+		"ar-3206-1000-32060007": [{ type: "func", func: stack_remove_event }],
+
 		"qb-3206-1000-32061001": [
 			{ type: "text", sub_type: "message", message: "Close - IN", message_RU: "Ближние - к нему", check_func: () => stack === 0 },
 			{ type: "text", sub_type: "message", message: "Close - OUT", message_RU: "Ближние - от него", check_func: () => stack !== 0 },
