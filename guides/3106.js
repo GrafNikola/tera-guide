@@ -65,16 +65,23 @@ module.exports = (dispatch, handlers, guide, lang) => {
 
 		"die": [{ type: "func", func: () => stack = 0 }],
 
-		"am-3106-1000-32060007": [{ type: "func", func: () => stack++ }],
+		"am-3106-1000-32060007": [
+			{
+				type: "func", func: () => {
+					stack++;
+					dispatch.setTimeout(() => stack = 0, 87500);
+				}
+			}
+		],
 		"ar-3106-1000-32060007": [{ type: "func", func: () => stack = 0 }],
 		"qb-3106-1000-32061001": [
-			{ type: "text", sub_type: "message", message: "Debuff (Close) - Take It", message_RU: "Дебаф (ближние) - взять", check_func: () => stack === 0 },
-			{ type: "text", sub_type: "message", message: "Debuff (Close) - OUT", message_RU: "Дебаф (ближние) - от него", check_func: () => stack !== 0 },
+			{ type: "text", sub_type: "message", message: "Close - IN", message_RU: "Ближние - к нему", check_func: () => stack === 0 },
+			{ type: "text", sub_type: "message", message: "Close - OUT", message_RU: "Ближние - от него", check_func: () => stack !== 0 },
 			{ type: "text", sub_type: "alert", message: "Soon to give stun...", message_RU: "Скоро давать стан...", delay: 2000 }
 		],
 		"qb-3106-1000-32061002": [
-			{ type: "text", sub_type: "message", message: "Debuff (Furthest) - Take It", message_RU: "Дебаф (дальние) - взять", check_func: () => stack === 0 },
-			{ type: "text", sub_type: "message", message: "Debuff (Furthest) - IN", message_RU: "Дебаф (дальние) - к нему", check_func: () => stack !== 0 },
+			{ type: "text", sub_type: "message", message: "Furthest - OUT", message_RU: "Дальние - от него", check_func: () => stack === 0 },
+			{ type: "text", sub_type: "message", message: "Furthest - IN", message_RU: "Дальние - к нему", check_func: () => stack !== 0 },
 			{ type: "text", sub_type: "alert", message: "Soon to give stun...", message_RU: "Скоро давать стан...", delay: 2000 }
 		],
 
@@ -112,14 +119,14 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-3106-1000-215-0": [{ type: "text", sub_type: "message", message: "Somersault", message_RU: "Кувырок" }],
 		"s-3106-1000-507-0": [{ type: "text", sub_type: "message", message: "Leash | Jump (Knockdown)", message_RU: "Притяжка | Прыжок (опрокид)" }],
 		"s-3106-1000-508-0": [
-			{ type: "text", sub_type: "message", message: "Outward Waves (Out > In)", message_RU: "Волны наружу (от него > к нему)" },
+			{ type: "text", sub_type: "message", message: "Donuts (Out > In)", message_RU: "Бублики (от него > к нему)" },
 			{ type: "spawn", func: "circle", args: [false, 445, 0, 0, 18, 180, 1500, 5000] },
 			{ type: "spawn", func: "circle", args: [false, 445, 0, 0, 12, 360, 1500, 5000] },
 			{ type: "spawn", func: "circle", args: [false, 445, 0, 0, 10, 550, 1500, 5000] },
 			{ type: "spawn", func: "circle", args: [false, 553, 0, 0, 8, 860, 1500, 5000] }
 		],
 		"s-3106-1000-509-0": [
-			{ type: "text", sub_type: "message", message: "Inward Waves (In > Out)", message_RU: "Волны внутрь (к нему > от него)" },
+			{ type: "text", sub_type: "message", message: "Donuts (In > Out)", message_RU: "Бублики (к нему > от него)" },
 			{ type: "spawn", func: "circle", args: [false, 445, 0, 0, 18, 180, 1500, 5000] },
 			{ type: "spawn", func: "circle", args: [false, 445, 0, 0, 12, 360, 1500, 5000] },
 			{ type: "spawn", func: "circle", args: [false, 445, 0, 0, 10, 550, 1500, 5000] },
@@ -134,6 +141,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 		"s-3106-1000-519-0": [{ type: "text", sub_type: "message", message: "Unleash", message_RU: "Бешенство" }],
 		"s-3106-1000-306-0": [{ type: "text", sub_type: "message", message: "Spin", message_RU: "Крутилка" }],
 		"s-3106-1000-309-0": [{ type: "text", sub_type: "message", message: "Front", message_RU: "Удар вперед" }],
+		"s-3106-1000-311-0": [{ type: "text", sub_type: "message", message: "Evade!", message_RU: "Эвейд!", delay: 150 }],
 		"s-3106-1000-321-0": [{ type: "text", sub_type: "message", message: "AoE", message_RU: "АоЕ" }],
 		"s-3106-1000-324-0": [{ type: "text", sub_type: "message", message: "AoE", message_RU: "АоЕ" }]
 	};

@@ -15,14 +15,14 @@
         "guides/3102.js": "5725a922a78cae3f5215f9f44e1fec9319160e3f65e225c45568b86c1a9f600e",
         "guides/3103.js": "9a42e4b66954b95d99469001e1857f818fb9443cafe0dc2ed4dea34047c377cc",
         "guides/3104.js": "47aeff6d9ae5f7bbc2e1d0fc7e29fdbc58d7b5f51240843600d9900cb3b6b3e2",
-        "guides/3106.js": "0b0dcbd0c74a18bbfdec4d3cadd58033700d3b6049079d783b8cb2600ca8738e",
+        "guides/3106.js": "3a61dafca5a1cea8f0eb227cacbb13f593f1c9e6137133db7249c6ab95fe61a8",
         "guides/3123.js": "d061aa0b3bf4115700c4763a73babaab0ea19a28c4661e07e92a5890f5498fc8",
         "guides/3126.js": "16717e0725fd0b9364ca5afa6bc077d9503b900d80abf88f72cd2db83d449cc1",
         "guides/3201.js": "8751127f127932a9becbe19bf6b291d8d58b5bbc737a7964dd88220d2fa5b0ff",
         "guides/3202.js": "3b95af260d47e14af90a2c803b5f79022476ba2820198c38494c62802c0b01f9",
         "guides/3203.js": "e48fe4b22ab154d5882bbc1ba2081c2ca4b29c1fc42d8fb1e1642238d30d6049",
         "guides/3204.js": "f72578b0517b790cdb3fdbac9d30fd14294787d99740d130be4db1af69b7ef26",
-        "guides/3206.js": "e49d43a97be34c258f0f7fda6d7f748d132f73bfe95d13e06da389a42d6db163",
+        "guides/3206.js": "eca19b6d1c8188885ea846cf31db22523ed8e0422b1674c302bf680815296870",
         "guides/7011.js": "a8bec81fe8d60268568425dc5ce47779b2e1897406db0b51bdcfe042c14132b1",
         "guides/7015.js": "f559103c9ac65a9f10f907f75bf5bb44a5e0ba700626a379411899d70057e179",
         "guides/9027.js": "f37cffceebc7baa3c6eb8dd3ee011e6a457c09afae5756f7e4ecbc0ed0727001",
@@ -64,7 +64,7 @@
         "index.js": "e96e5d5833e0c28967b3ac43f017af0e0c0a33ffa686f20c4398d86222eba491",
         "lang/dungeons.js": "4c4a16197bf9898e0a420c082c67457b007253db9a125cfe875e69c0fd0b16d9",
         "lang/strings.js": "33e95fa48d7a386620e561e696e52d7f72253bb1b2de749a99336110aaaade34",
-        "module.json": "15381ed944d963f6a11b98d6048230897570a94da3e1b5e850d866c8a4dece96",
+        "module.json": "8d7511d013116c9e0a5d5320878c2e80bbd292cfd55e8f9a3cd85c743ffa87fc",
         "settings_migrator.js": "0bf8fbc2bf67fab249c3b42d4e7ca424178641805ae3c168d855ce34da110b70"
     }
 }
