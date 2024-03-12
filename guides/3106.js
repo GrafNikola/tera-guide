@@ -14,7 +14,7 @@ module.exports = (dispatch, handlers, guide, lang) => {
 	function stack_add_event() {
 		stack++;
 		dispatch.clearTimeout(stackTimer);
-		stackTimer = dispatch.setTimeout(() => stack = 0, 87500);
+		stackTimer = dispatch.setTimeout(() => stack = 0, 86000);
 	}
 
 	function stack_remove_event() {
